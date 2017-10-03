@@ -1,0 +1,41 @@
+→​ ​ O ​ ​ que​ ​ é ​ ​ Bootstrap? 
+É​ ​ um​ ​ framework​ ​ front-end​ ​ que​ ​ facilita​ ​ o ​ ​ trabalho​ ​ com​ ​ HTML,​ ​ CSS​ ​ e ​ ​ JavaScript​ ​ e ​ ​ que
+será​ ​ implementado​ ​ no​ ​ trabalho​ ​ para​ ​ as​ ​ funcionalidades​ ​ de​ ​ web.
+
+→​ ​ Como​ ​ Implementar?
+ 
+//​Importar​ ​ o ​ ​ css​ ​ do​ ​ Bootstrap.​ ​ Existem​ ​ diversos​ ​ css​ ​ do​ ​ Bootstrap,​ ​ este​ ​ é ​ ​ um​ ​ deles.
+<link​ ​ href="css/bootstrap.css"​ ​ rel="stylesheet">
+
+//​Importar​ ​ o ​ ​ css​ ​ criado​ ​ por​ ​ vocês​ ​ que​ ​ será​ ​ usado​ ​ para​ ​ sobrescrever​ ​ algumas​ ​ classes
+do​ ​ css​ ​ do​ ​ Bootstrap​ ​ e ​ ​ para​ ​ criar​ ​ o ​ ​ que​ ​ não​ ​ é ​ ​ do​ ​ Bootstrap
+<link​ ​ href="css/estilos.css"​ ​ rel="stylesheet">
+
+//​Importar​ ​ o ​ ​ jquery,​ ​ uma​ ​ biblioteca​ ​ de​ ​ JavaScript,​ ​ que​ ​ é ​ ​ necessária​ ​ para​ ​ que​ ​ os
+artifícios​ ​ do​ ​ Bootstrap,​ ​ como​ ​ por​ ​ exemplo​ ​ deixar​ ​ o ​ ​ menu​ ​ responsivo,​ ​ funcione.
+<script​ ​ src="js/jquery.min.js"></script>
+
+//​Importar​ ​ o ​ ​ arquivo​ ​ js​ ​ do​ ​ Bootstrap
+<script​ ​ src="js/bootstrap.min.js"></script>
+
+//​Importar​ ​ o ​ ​ seu​ ​ js​ ​ criado
+<script​ ​ src="js/script.js"></script>
+
+→​ ​ Como​ ​ usar? 
+	Basicamente as classes dos arquivos Bootstrap são inseridas em seus códigos. Por
+exemplo, suponha que você queira usar uma classe para fazer um menu. Caso você
+queira trocar a cor que está na classe do Bootstrap basta você reescrever essa classe
+no seu css separado para não estragar o Bootstrap original. As classes importadas do
+Bootstrap facilitam a construção de código pois você estará manipulando arquivos
+prontos​ ​ adaptando-os​ ​ para​ ​ sua​ ​ finalidade.
+	Consultar​ ​ site​ ​ oficial​ ​ e ​ ​ para​ ​ ver​ ​ a ​ ​ documentação​ ​ e ​ ​ aprender​ ​ através​ ​ dos​ ​ exemplos​ ​ a
+manipulação​ ​ das​ ​ classes​ ​ Bootstrap.
+
+→​ ​ Documentação​ ​ Bootstrap
+https://getbootstrap.com/docs/4.0/getting-started/introduction/
+
+→​ ​ Exemplos​ ​ Bootstrap:
+https://getbootstrap.com/docs/4.0/examples/
+
+→​ ​ Projetos​ ​ funcionais​ ​ realizados​ ​ com​ ​ Bootstrap​ ​ para​ ​ ter​ ​ criatividade​ ​ nos​ ​ projetos.
+http://expo.getbootstrap.com/

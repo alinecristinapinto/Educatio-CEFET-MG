@@ -1,0 +1,33 @@
+/*
+  Grupo: <gerencia> 
+  Data de modificação: <03>/<10>/<2000>
+  Autora: <Aline><Pinto>
+  Objetivo da modificação: {A classe foooter define a altura e posição do rodapé com destaque para o linear-gradient
+  que torna a cor de fundo degradê. 
+  A classe backgroundFooter define azul como a cor de fundo para todo o rodapé
+  A classe footertext define que a cor da letra será branca}
+*/
+
+.foooter 
+{
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 290px;
+
+  background: 
+    linear-gradient(
+      to bottom,
+      rgba(40, 80, 40, 0.25), 
+      rgba(0, 0, 20, 0.8));
+}
+
+.backgroundFooter
+{
+  background-color: #4F75FF;
+}
+
+.footertext 
+{
+  color: #ffffff;
+}

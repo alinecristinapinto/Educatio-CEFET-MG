@@ -136,10 +136,11 @@ CREATE TABLE IF NOT EXISTS `diarios` (
   Biblioteca
 */;
 
-CREATE TABLE IF NOT EXISTS `acervo` (
+CREATE TABLE IF NOT EXISTS `obra` (
   id int(5) NOT NULL PRIMARY KEY AUTO_INCREMENT,
   idCampi int(5) NOT NULL,
-  nome varchar(30) NOT NULL,
+  idAutor int(5) NOT NULL,
+  nome varchar(60) NOT NULL,
   tipo varchar(15) NOT NULL,
   local varchar(60) NOT NULL,
   ano int(4) NOT NULL,
@@ -148,24 +149,23 @@ CREATE TABLE IF NOT EXISTS `acervo` (
   ativo varchar(1) NOT NULL
   );
 
-CREATE TABLE IF NOT EXISTS `livros` (
-  id int(5) NOT NULL PRIMARY KEY AUTO_INCREMENT,
-  idAcervo int(5) NOT NULL,
+CREATE TABLE IF NOT EXISTS `exemplar` (
+  idISBN int(13) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  idObra int(5) NOT NULL,
   edicao int(5) NOT NULL,
-  isbn int(13) NOT NULL,
   ativo varchar(1) NOT NULL
   );
 
 CREATE TABLE IF NOT EXISTS `academicos` (
   id int(5) NOT NULL PRIMARY KEY AUTO_INCREMENT,
-  idAcervo int(5) NOT NULL,
+  idObra int(5) NOT NULL,
   programa varchar(30) NOT NULL,
   ativo varchar(1) NOT NULL
   );
 
 CREATE TABLE IF NOT EXISTS `periodicos` (
   id int(5) NOT NULL PRIMARY KEY AUTO_INCREMENT,
-  idAcervo int(5) NOT NULL,
+  idObra int(5) NOT NULL,
   periodicidade varchar(10) NOT NULL,
   mes varchar(20) NOT NULL,
   volume int(4) NOT NULL,
@@ -175,8 +175,8 @@ CREATE TABLE IF NOT EXISTS `periodicos` (
   );
 
 CREATE TABLE IF NOT EXISTS `autores` (
-  idObra int(5) NOT NULL PRIMARY KEY,
-  nomes varchar(20) NOT NULL,
+  id int(5) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  nome varchar(20) NOT NULL,
   sobrenome varchar(80) NOT NULL,
   ordem varchar(20) NOT NULL,
   qualificacao varchar(20) NOT NULL,
@@ -185,7 +185,7 @@ CREATE TABLE IF NOT EXISTS `autores` (
 
 CREATE TABLE IF NOT EXISTS `midias` (
   id int(5) NOT NULL PRIMARY KEY AUTO_INCREMENT,
-  idAcervo int(5) NOT NULL,
+  idObra int(5) NOT NULL,
   tempo varchar(15) NOT NULL,
   subtipo varchar(15) NOT NULL,
   ativo varchar(1) NOT NULL
@@ -204,7 +204,7 @@ CREATE TABLE IF NOT EXISTS `partes` (
 CREATE TABLE IF NOT EXISTS `reservas` (
   id int(5) NOT NULL PRIMARY KEY AUTO_INCREMENT,
   idAluno varchar(11) NOT NULL,
-  idAcervo int(5) NOT NULL,
+  idObra int(5) NOT NULL,
   dataReserva varchar(10) NOT NULL,
   tempoEspera int(4) NOT NULL,
   emprestou varchar(1) NOT NULL,
@@ -214,7 +214,7 @@ CREATE TABLE IF NOT EXISTS `reservas` (
 CREATE TABLE IF NOT EXISTS `emprestimos` (
   id int(5) NOT NULL PRIMARY KEY AUTO_INCREMENT,
   idAluno varchar(11) NOT NULL,
-  idAcervo int(5) NOT NULL,
+  idObra int(5) NOT NULL,
   dataEmprestimo varchar(10) NOT NULL,
   dataPrevisaoDevolucao varchar(10) NOT NULL,
   dataDevolucao varchar(10) NOT NULL,
@@ -223,9 +223,10 @@ CREATE TABLE IF NOT EXISTS `emprestimos` (
   );
 
 CREATE TABLE IF NOT EXISTS `descartes` (
-  idAcervo int(5) NOT NULL PRIMARY KEY,
+  id int(5) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  idObra int(5) NOT NULL,
+  idFuncionario varchar(9) NOT NULL,
   dataDescarte varchar(10) NOT NULL,
-  motivos varchar(140) NOT NULL,
-  operador varchar(100) NOT NULL,
+  motivos varchar(300) NOT NULL,
   ativo varchar(1) NOT NULL
   );

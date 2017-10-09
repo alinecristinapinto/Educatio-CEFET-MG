@@ -21,8 +21,14 @@ public class Main {
             System.out.println("Driver não encontrado!"+e);
         }
         
-        Connection CONNECTION = null;
-        CONNECTION = DriverManager.getConnection("", "", "");
+        Connection connection = null;
+        connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/educatio", "root", "");
+        
+        if (connection != null){
+            System.out.println("Conexão realizada com sucesso");
+        }else{
+            System.out.println("Não foi possível realizar a conexão");
+        }
                 
         String ISBN; int edicao; int id; int idObra; int idCampi; String nome; String tipo; String local; int ano; String editora; int paginas;
         // TODO code application logic here

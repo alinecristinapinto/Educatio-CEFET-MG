@@ -138,39 +138,55 @@ CREATE TABLE IF NOT EXISTS `diarios` (
 
 CREATE TABLE IF NOT EXISTS `obra` (
   id int(5) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  nome varchar(60) NOT NULL,
+  ativo varchar(1) NOT NULL
+  );
+
+CREATE TABLE IF NOT EXISTS `livros` (
+  idISBN int(13) NOT NULL PRIMARY KEY,
   idCampi int(5) NOT NULL,
   idAutor int(5) NOT NULL,
+  idObra int(5) NOT NULL,
+  edicao int(5) NOT NULL,
   nome varchar(60) NOT NULL,
-  tipo varchar(15) NOT NULL,
-  local varchar(60) NOT NULL,
   ano int(4) NOT NULL,
   editora varchar(30) NOT NULL,
   paginas int(5) NOT NULL,
   ativo varchar(1) NOT NULL
   );
 
-CREATE TABLE IF NOT EXISTS `exemplar` (
-  idISBN int(13) NOT NULL PRIMARY KEY AUTO_INCREMENT,
-  idObra int(5) NOT NULL,
-  edicao int(5) NOT NULL,
-  ativo varchar(1) NOT NULL
-  );
-
 CREATE TABLE IF NOT EXISTS `academicos` (
   id int(5) NOT NULL PRIMARY KEY AUTO_INCREMENT,
   idObra int(5) NOT NULL,
+  idCampi int(5) NOT NULL,
+  nome varchar(60) NOT NULL,
   programa varchar(30) NOT NULL,
+  ano int(4) NOT NULL,
+  paginas int(5) NOT NULL,
   ativo varchar(1) NOT NULL
   );
 
 CREATE TABLE IF NOT EXISTS `periodicos` (
   id int(5) NOT NULL PRIMARY KEY AUTO_INCREMENT,
   idObra int(5) NOT NULL,
+  idCampi int(5) NOT NULL,
+  nome varchar(60) NOT NULL,
   periodicidade varchar(10) NOT NULL,
   mes varchar(20) NOT NULL,
   volume int(4) NOT NULL,
   subtipo varchar(15) NOT NULL,
   issn int(8) NOT NULL,
+  ativo varchar(1) NOT NULL
+  );
+
+CREATE TABLE IF NOT EXISTS `midias` (
+  id int(5) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  idObra int(5) NOT NULL,
+  idCampi int(5) NOT NULL,
+  nome varchar(60) NOT NULL,
+  tempo varchar(15) NOT NULL,
+  subtipo varchar(15) NOT NULL,
+  ano int(4) NOT NULL,
   ativo varchar(1) NOT NULL
   );
 
@@ -180,14 +196,6 @@ CREATE TABLE IF NOT EXISTS `autores` (
   sobrenome varchar(80) NOT NULL,
   ordem varchar(20) NOT NULL,
   qualificacao varchar(20) NOT NULL,
-  ativo varchar(1) NOT NULL
-  );
-
-CREATE TABLE IF NOT EXISTS `midias` (
-  id int(5) NOT NULL PRIMARY KEY AUTO_INCREMENT,
-  idObra int(5) NOT NULL,
-  tempo varchar(15) NOT NULL,
-  subtipo varchar(15) NOT NULL,
   ativo varchar(1) NOT NULL
   );
 

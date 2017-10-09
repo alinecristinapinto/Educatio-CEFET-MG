@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Formulário com imagem</title>
+</head>
+<body>
+    <form action="formImg.php" method="POST" name="ff" enctype="multipart/form-data">
+		<input type="file" name="imagem">
+		<input type="submit" value = "enviar">
+	</form>
+</body>
+</html>
+
+<?php
+	// conexão com o servidor
+	$conexao = mysqli_connect("localhost", "root", "usbw");
+	
+	//teste da conexão
+	if($conexao) {
+		$baseSelecionada = mysqli_select_db($conexao, "testeimagem");
+		if (!$baseSelecionada) {
+			die ('Não foi possível conectar a base de dados: ' . mysql_error());
+		} 
+	} else {
+		die('Não conectado : ' . mysql_error());
+	}
+	
+	// trabalhando com o arquivo
+	$imagem = $_FILES['imagem']['tmp_name'];
+	$tamanho = $_FILES['imagem']['size'];
+	$tipo = $_FILES['imagem']['type'];
+	$nome = $_FILES['imagem']['name'];
+	
+	if ( $imagem != "none" ) {
+		$fp = fopen($imagem, "rb");
+		$conteudo = fread($fp, $tamanho);
+		$conteudo = addslashes($conteudo);
+		fclose($fp);
+		
+		// inserindo a imagem no BD
+		$queryInsercao = "INSERT INTO imagens (imagemUm) VALUES ('$conteudo')";
+		mysqli_query($conexao, $queryInsercao) or die("Algo deu errado ao inserir o registro. Tente novamente.");
+		echo 'Registro inserido com sucesso!'; 
+		// teste de inserção
+		if (mysqli_affected_rows($conexao) > 0) {
+			print "A imagem foi salva na base de dados.";
+		} else {
+			print "Não foi possível salvar a imagem na base de dados.";
+		}
+	} else {
+		print "Não foi possível carregar a imagem.";
+	}
+	
+	// selecionando a imagem - alterar o ID
+  	$query = "SELECT imagemUm FROM imagens WHERE id=1";
+	$exe = mysqli_query($conexao, $query);
+	$result = mysqli_fetch_array($exe, MYSQLI_ASSOC);
+	// exibindo a imagem
+	echo '<img src="data:image/jpeg;base64,'.base64_encode( $result['imagemUm'] ).'"/>';
+?>

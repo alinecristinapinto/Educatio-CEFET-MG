@@ -1,0 +1,35 @@
+/*
+  Grupo: <gerencia> 
+  Data de modificação: <03>/<10>/<2000>
+  Autora: <Aline><Pinto>
+  Objetivo da modificação: {A classe container define a altura e posição do rodapé com destaque para o linear-gradient
+  que torna a cor de fundo degradê azul. Ela é uma classe nativa que foi sobrescrita.
+  A classe footertext define que a cor da letra será branca}
+*/
+
+.footertext 
+{
+  color: #ffffff;
+}
+
+.containeer 
+{
+  position: absolute;
+/*
+  Quando a página houver conteúdo deixar relative
+  position: relative;
+*/
+  bottom: 0;
+  width: 100%;
+  background: 
+  linear-gradient(
+    to bottom,
+    rgba(40, 80, 40, 0.25), 
+    rgba(0, 0, 20, 0.8));
+  background-color: #91c0ff;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+

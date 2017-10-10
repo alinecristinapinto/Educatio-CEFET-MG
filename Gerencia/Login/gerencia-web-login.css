@@ -41,11 +41,11 @@
   border-color: #ddd;
 }
 
-a{
+.a{
   color:white;
 }
 
-a:hover{
+.a:hover{
   color:white;
   text-decoration: none;
 }
@@ -70,5 +70,9 @@ a:hover{
   padding-left: 15px;
   margin-right: auto;
   margin-left: auto;
+}
+
+.panel-title{
+  color:white;
 }
 

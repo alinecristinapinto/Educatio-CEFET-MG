@@ -1,28 +1,45 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Educatio - CEFET-MG </title>
-  <meta charset="utf-8">
-  <link href="BLT-Web-Disciplinas.css" rel="stylesheet">
-  <link href="css/bootstrap.css" rel="stylesheet">
-  <link href="gerencia-web-estilos-rodape.css" rel="stylesheet">
-  <script src="js/jquery.min.js"></script>
-  <script src="js/bootstrap.min.js"></script> 
-  
+	<title></title>
+	<meta charset="utf-8">
+  	<link href="css/bootstrap.css" rel="stylesheet">
+ 	<link href="gerencia-web-estilos-rodape.css" rel="stylesheet">
+  	<link href="BLT-Web-Disciplinas.css" rel="stylesheet">
+  	<script src="js/jquery.min.js"></script>
+  	<script src="js/bootstrap.min.js"></script> 
+</head>
 <body>
-<div class="corpo">
-  	<div class="titulo">
-  		<h1><b>Gerenciamento de Disciplinas</b></h1>
-  	</div>
-
-	<div class="container-fluid">
-    	<button type="button" class="btn btn-outline-info btn-block" onclick="window.location.href='BLT-Web-ADCDisciplinas.html'">Adicionar</button>
-    	<button type="button" class="btn btn-primary btn-lg btn-block" onclick="window.location.href='BLT-Web-RMVDisciplinas.html'">Remover</button>
-    	<button type="button" class="btn btn-outline-info btn-block" onclick="window.location.href='BLT-Web-EDTDisciplinas.html'">Editar</button>
-	</div>
+<div class="container-fluid">
+	<div class="titulo">
+    	<h1><b>Adicionar Disciplina</b></h1>
+ 	</div>
+  <form >
+  <div class="row">
+    <div class="col-md-6 mb-3">
+      <label for="validationServer01">Nome da disciplina</label>
+      <input type="text" class="form-control is-valid" id="validationServer01" placeholder="Nome" value="" required>
+    </div>
+    <div class="col-md-6 mb-3">
+      <label for="validationServer02">ID da turma</label>
+      <input type="text" class="form-control is-valid" id="validationServer02" placeholder="ID" value="" required>
+    </div>
+  </div>
+  <div class="form-row align-items-center">
+    <div class="col-auto">
+      <label class="mr-sm-2" for="inlineFormCustomSelect">Carga horária minima</label>
+      <select class="custom-select col-md-6 mb-3" id="inlineFormCustomSelect">
+        <option selected>Escolha...</option>
+        <option value="1">Uma hora</option>
+        <option value="2">Duas horas</option>
+        <option value="3">Três horas</option>
+      </select>
+      <button type="submit" class="btn btn-primary btn-lg btn-block">Pronto</button>
+    </div>
+  </div>
+</form>
 </div>
-
-  <div class="container">
+<div class="container">
     <div class="row">
       <h3 class="footertext"><strong>  Quem Somos?</strong></h3><br>
         <div class="col-md-4">
@@ -57,7 +74,5 @@
           </div>
       </div>
   </div>
-
 </body>
 </html>
-

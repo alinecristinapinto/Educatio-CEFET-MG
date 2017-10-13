@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html>
     <head>
         <title>Adicionar Campus</title>
@@ -7,6 +6,7 @@
         <link href="css/JHJ-web-estilos.css" rel="stylesheet">
         <script src="js/jquery.min.js"></script>
         <script src="js/bootstrap.min.js"></script> 
+        <script type="text/javascript" src="js/JHJ-web-script.js"></script>
     </head>
     <body>
         <!-- menu coordenador (codigo da gerencia)-->
@@ -103,26 +103,48 @@
         </nav>        
         <!-- fim do menu coordenador (codigo da gerencia)-->
 
-    	<h1>Inclusão de Campus</h1>
+        <h1>Inclusão de Campus</h1>
+        <?php
+            $strNomeCampus = $_POST["nomeCampus"];
+            $strCidadeCampus = $_POST["cidadeCampus"];
+            $strUFCampus = $_POST["ufCampus"];
 
-        <div class="alinhamento">
-            <h4>Informações do campus</h4><br>
-            <form action="JHJ-web-adicionar-campus.php" method="POST">
-    		    <div class="form-group">
-          			<label for="usr">INSERIR NOME</label>
-          			<input type="text" class="input-xlarge" name="nomeCampus" required="required"/><span class="required"> *</span>
-    		    </div>
-    		    <div class="form-group">
-          			<labelfor="pwd">INSERIR CIDADE</label>
-          			<input type="text" class="input-xlarge" name="cidadeCampus" required="required"/><span class="required"> *</span>
-    		    </div>
-    		    <div class="form-group">
-          			<labelfor="pwd">INSERIR UF</label>
-          			<input type="text" class="input-xlarge" name="ufCampus" required="required"/><span class="required"> *</span>
-    		    </div>
-                <p style="font-size: 10px; color:#4F75FF;">* indica preenchimento obrigatório</p>
-        		<input type="submit" class="btn btn-primary" value="Incluir Campus"/>
-            </form>
+            // Conectando com o servidor MySQL
+            $link = mysqli_connect("localhost", "root", "");
+            if (!$link){
+            //     die("Conexao falhou: ".mysqli_connect_error()."<br/>");
+            } else {
+            //     echo "Conexao efetuada com sucesso!<br/>";
+            }
+
+            //Selecionado BD
+            $sql = mysqli_select_db($link, 'Educatio');
+
+            //Inserindo dados na tabela campi
+            $sql = "INSERT INTO campi (nome, cidade, UF, ativo) VALUES ('$strNomeCampus', '$strCidadeCampus', '$strUFCampus', 'S')";
+            if (mysqli_query($link, $sql)) {
+            //     echo "Campus adicionado com sucesso!";
+            }else{
+            //     echo "Erro ao adicionar campus: ".$sql."<br/>".$link->error."<br/>";
+            }
+        ?>
+
+        <!-- exibindo informações do novo campus adicionado dentro de um painel -->
+        <div class="container">    
+            <div style="margin-top:50px;" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">                    
+                <div class="panel panel-info" >
+                    <div class="panel-heading">
+                        <div class="panel-title">Campus adicionado com sucesso!</div>
+                    </div>  
+                    <div style="padding-top:20px" class="panel-body">     
+                            <p><strong>As informações do novo campus são:</strong><p> 
+                            <p><strong>Nome:</strong><?php echo " ".$strNomeCampus ?><p>
+                            <p><strong>Cidade:</strong><?php echo " ".$strCidadeCampus ?><p>
+                            <p><strong>UF:</strong><?php echo " ".$strUFCampus ?><p>
+                            <input type="button" class="btn btn-primary" value="Voltar" onClick="voltarParaPaginaInsersaoCampus()"/>
+                    </div>                     
+                </div>  
+            </div>
         </div>
 
         <!-- rodape -->

@@ -110,16 +110,17 @@
             <form action="JHJ-web-adicionar-campus.php" method="POST">
     		    <div class="form-group">
           			<label for="usr">INSERIR NOME</label>
-          			<input type="text" class="input-xlarge" name="nomeCampus">
+          			<input type="text" class="input-xlarge" name="nomeCampus" required="required"/><span class="required"> *</span>
     		    </div>
     		    <div class="form-group">
           			<labelfor="pwd">INSERIR CIDADE</label>
-          			<input type="text" class="input-xlarge" name="cidadeCampus">
+          			<input type="text" class="input-xlarge" name="cidadeCampus" required="required"/><span class="required"> *</span>
     		    </div>
     		    <div class="form-group">
           			<labelfor="pwd">INSERIR UF</label>
-          			<input type="text" class="input-xlarge" name="ufCampus">
+          			<input type="text" class="input-xlarge" name="ufCampus" required="required"/><span class="required"> *</span>
     		    </div>
+                <p style="font-size: 10px; color:#4F75FF;">* indica preenchimento obrigatório</p>
         		<input type="submit" class="btn btn-primary" value="Incluir Campus"/>
             </form>
         </div>

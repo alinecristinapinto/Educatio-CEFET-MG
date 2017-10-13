@@ -6,11 +6,7 @@
         <link href="css/JHJ-web-estilos.css" rel="stylesheet">
         <script src="js/jquery.min.js"></script>
         <script src="js/bootstrap.min.js"></script> 
-        <script type="text/javascript">
-            function voltarParaPaginaInsersaoCampus(){
-                location.href="JHJ-web-adicionar-campus.html"
-            }
-        </script>
+        <script type="text/javascript" src="js/JHJ-web-script.js"></script>
     </head>
     <body>
         <!-- menu coordenador (codigo da gerencia)-->

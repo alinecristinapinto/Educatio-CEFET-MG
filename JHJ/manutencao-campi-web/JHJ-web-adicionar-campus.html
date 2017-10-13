@@ -107,19 +107,21 @@
 
         <div class="alinhamento">
             <h4>Informações do campus</h4><br>
-		    <div class="form-group">
-      			<label for="usr">INSERIR NOME</label>
-      			<input type="text" class="input-xlarge">
-		    </div>
-		    <div class="form-group">
-      			<labelfor="pwd">INSERIR CIDADE</label>
-      			<input type="text" class="input-xlarge">
-		    </div>
-		    <div class="form-group">
-      			<labelfor="pwd">INSERIR UF</label>
-      			<input type="text" class="input-xlarge">
-		    </div>
-    		<button type="button" class="btn btn-primary">Incluir campus</button>
+            <form action="JHJ-web-adicionar-campus.php" method="POST">
+    		    <div class="form-group">
+          			<label for="usr">INSERIR NOME</label>
+          			<input type="text" class="input-xlarge" name="nomeCampus">
+    		    </div>
+    		    <div class="form-group">
+          			<labelfor="pwd">INSERIR CIDADE</label>
+          			<input type="text" class="input-xlarge" name="cidadeCampus">
+    		    </div>
+    		    <div class="form-group">
+          			<labelfor="pwd">INSERIR UF</label>
+          			<input type="text" class="input-xlarge" name="ufCampus">
+    		    </div>
+        		<input type="submit" class="btn btn-primary" value="Incluir Campus"/>
+            </form>
         </div>
 
         <!-- rodape -->

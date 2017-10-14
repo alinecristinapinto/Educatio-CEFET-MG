@@ -17,32 +17,40 @@
         
         			<div class=" fundo panel panel-default" >
 			    		<div class="panel-heading">
-						<div class="panel-title text-center">Educatio - CEFET-MG</div>
+							<div class="panel-title text-center">Educatio - CEFET-MG</div>
 			    		</div>     
 
 			    		<div class="panel-body" >
 
-						<form name="form" id="form" class="form-horizontal" enctype="multipart/form-data" method="POST">
-						   
-						    <div class="input-group">
-							<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-							<input id="user" type="text" class="form-control" name="user" value="" placeholder="Matricula">                                        
-						    </div>
+							<form name="form" id="form" class="form-horizontal" method="POST" action="gerencia-web-conecta-login.php">
+	                   
+			                    <div class="input-group">
+			                        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+			                        <input id="user" type="text" class="form-control" name="CPFUsuario" placeholder="login">                                        
+			                    </div>
 
-						    <div class="input-group">
-							<span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-							<input id="password" type="password" class="form-control" name="password" placeholder="Senha">
-						    </div>                                                                  
+			                    <div class="input-group">
+			                        <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+			                        <input id="password" type="password" class="form-control" name="senha" placeholder="senha">
+			                    </div>
 
-						    <div class="form-group">
-							<div class="col-sm-12 controls">
-							    <button type="submit" href="#" class="btn btn-primary pull-right"><i class="glyphicon glyphicon-log-in"></i> Log in</button>                          
-							</div>
-						    </div>
+			                    <div class="input-group">
+			                        <select name="opcao" class="form-control form-control-lg">
+			                            <option value="Aluno(a)">Aluno(a)</option>
+			                            <option value="Professor(a)">Professor(a)</option>
+			                            <option value="Coordenador(a)">Coordenador(a)</option>
+			                            <option value="Bibliotecário(a)">Bibliotecário(a)</option>
+			                        </select>
+			                    </div>                                                                  
 
-						</form>  
-						
-						<a>Cadastre-se</a>   
+			                    <div class="form-group">
+			                        <!-- Button -->
+			                        <div class="col-sm-12 controls">
+			                            <button type="submit" class="btn btn-primary pull-right"><i class="glyphicon glyphicon-log-in"></i> Log in</button>                          
+			                        </div>
+			                    </div>
+
+	                		</form>     
 
 			    		</div>                     
         			</div>  

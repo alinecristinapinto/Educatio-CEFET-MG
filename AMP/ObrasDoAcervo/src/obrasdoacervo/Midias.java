@@ -13,8 +13,8 @@ public class Midias extends Obras {
     String tempo;
     String subtipo;
 
-    public Midias(String tempo, String subtipo, int id, int idObra, int idCampi, String nome, String tipo, String local, int ano, String editora, int paginas) {
-        super(id, idObra, idCampi, nome, tipo, local, ano, editora, paginas);
+    public Midias(String tempo, String subtipo, int id, int idObra, int idCampi, String nome, String tipo, String local, String ano, String editora, String paginas) {
+        super(idObra, idCampi, nome, tipo, local, ano, editora, paginas);
         this.tempo = tempo;
         this.subtipo = subtipo;
     }

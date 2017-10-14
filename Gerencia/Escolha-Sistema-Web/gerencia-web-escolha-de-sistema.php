@@ -7,6 +7,17 @@
 	<link href="gerencia-web-escolha-de-sistema.css" rel="stylesheet">
   <script src="js/jquery.min.js"></script>
   <script src="js/bootstrap.min.js"></script> 
+
+  <?php 
+
+    require '../gerencia-web-conecta-login.php'; 
+
+    session_start();
+
+    //print_r($_SESSION['usuario']);
+
+  ?>
+
 </head>
 <body>
 
@@ -27,21 +38,27 @@
                 <li><a href="#"><span class="glyphicon glyphicon-book"></span> Acessar Biblioteca</a>
                 <li><a href="#"><span class="glyphicon glyphicon-folder-open"></span>  Acessar Sistema Acadêmico</a>
            </ul>
+
+           <ul class="nav navbar-nav navbar-right">
+              <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown"><?php echo '<img class="profile" src="data:image/jpeg;base64,'.base64_encode( $_SESSION['usuario']->foto ).'"/>';?>  <?php echo $_SESSION['usuario']->nome;?> <span class="caret"></span>&emsp;</a>
+
+                  <ul class="dropdown-menu">
+                    <li><a href= <?php session_start(); session_destroy(); header("Location: ../gerencia-web-login.html"); ?>><span class="glyphicon glyphicon-log-out"></span> - Sair</a></li>
+                  </ul>
+              </li>
+            </ul>
         </div>
     </nav>   
 
-    <?php 
+    <div class="alinhador">
+      <h1>Sistema Educatio - CEFET-MG</h1>
 
-    require '../gerencia-web-conecta-login.php'; 
+      <p>Seja Bem Vindo(a) <?php echo $_SESSION['usuario']->nome;?>!</p>
+      <p>Escolha qual sistema irá acessar!</p>    
 
-    session_start();
-
-    //print_r($_SESSION['usuario']);
-
-    ?>    
-     
-
-
+    </div>
+    
     <div class="container">
     <div class="row">
       <h3 class="footertext"><strong>  Quem Somos?</strong></h3><br>

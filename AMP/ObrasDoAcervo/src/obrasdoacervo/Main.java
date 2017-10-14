@@ -20,17 +20,18 @@ public class Main {
         }catch (ClassNotFoundException e) {
             System.out.println("Driver não encontrado!"+e);
         }
+        System.out.println("Driver encontrado com sucesso!");
         
         Connection connection = null;
-        connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/educatio", "root", "");
-        
+        System.out.println("null");
+        connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/educatio", "root", "usbw");
         if (connection != null){
             System.out.println("Conexão realizada com sucesso");
         }else{
             System.out.println("Não foi possível realizar a conexão");
         }
                 
-        String ISBN; int edicao; int id; int idObra; int idCampi; String nome; String tipo; String local; int ano; String editora; int paginas;
+        String ISBN; String edicao; int idObra; int idCampi; String nome; String tipo; String local; String ano; String editora; String paginas;
         // TODO code application logic here
         System.out.println("\n\nTeste com Livros");
         Scanner ent = new Scanner (System.in);
@@ -39,9 +40,8 @@ public class Main {
         System.out.println("Isbn:");
             ISBN = ent.next();
         System.out.println("Edicao:");
-            edicao = ent.nextInt();
-        System.out.println("Id");
-            id = ent.nextInt();
+            edicao = ent.next();
+            edicao += ent.nextLine();
         System.out.println("Idobra:");
             idObra = ent.nextInt();
         System.out.println("IdCampi:");
@@ -56,14 +56,16 @@ public class Main {
             local = ent.next();
             local += ent.nextLine();
         System.out.println("Ano: ");
-            ano = ent.nextInt();
+            ano = ent.next();
+            ano += ent.nextLine();
         System.out.println("Editora: ");
             editora = ent.next();
             editora += ent.nextLine();
         System.out.println("Paginas: ");
-            paginas = ent.nextInt();
+            paginas = ent.next();
+            paginas += ent.nextLine();
         
-        Livros testes = new Livros (ISBN,  edicao,  id,  idObra,  idCampi,  nome,  tipo,  local,  ano,  editora,  paginas);
+        Livros testes = new Livros (ISBN,  edicao, idObra,  idCampi,  nome,  tipo,  local,  ano,  editora,  paginas);
         
         
         System.out.println("Dados do livro \n" + testes);

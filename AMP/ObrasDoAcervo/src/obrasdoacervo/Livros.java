@@ -11,10 +11,10 @@ package obrasdoacervo;
  */
 public class Livros extends Obras {
     String ISBN;
-    int edicao;
+    String edicao;
 
-    public Livros(String ISBN, int edicao, int id, int idObra, int idCampi, String nome, String tipo, String local, int ano, String editora, int paginas) {
-        super(id, idObra, idCampi, nome, tipo, local, ano, editora, paginas);
+    public Livros(String ISBN, String edicao, int idObra, int idCampi, String nome, String tipo, String local, String ano, String editora, String paginas) {
+        super(idObra, idCampi, nome, tipo, local, ano, editora, paginas);
         this.ISBN = ISBN;
         this.edicao = edicao;
     }
@@ -29,11 +29,11 @@ public class Livros extends Obras {
         this.ISBN = ISBN;
     }
 
-    public int getEdicao() {
+    public String getEdicao() {
         return edicao;
     }
 
-    public void setEdicao(int edicao) {
+    public void setEdicao(String edicao) {
         this.edicao = edicao;
     }
     

@@ -12,11 +12,11 @@ package obrasdoacervo;
 public class Autores extends Obras {
     String nomeAutor;
     String sobrenome;
-    int ordem;
+    String ordem;
     String qualificacao;
 
-    public Autores(String nomeAutor, String sobrenome, int ordem, String qualificacao, int id, int idObra, int idCampi, String nome, String tipo, String local, int ano, String editora, int paginas) {
-        super(id, idObra, idCampi, nome, tipo, local, ano, editora, paginas);
+    public Autores(String nomeAutor, String sobrenome, String ordem, String qualificacao, int idObra, int idCampi, String nome, String tipo, String local, String ano, String editora, String paginas) {
+        super(idObra, idCampi, nome, tipo, local, ano, editora, paginas);
         this.nomeAutor = nomeAutor;
         this.sobrenome = sobrenome;
         this.ordem = ordem;
@@ -41,11 +41,11 @@ public class Autores extends Obras {
         this.sobrenome = sobrenome;
     }
 
-    public int getOrdem() {
+    public String getOrdem() {
         return ordem;
     }
 
-    public void setOrdem(int ordem) {
+    public void setOrdem(String ordem) {
         this.ordem = ordem;
     }
 

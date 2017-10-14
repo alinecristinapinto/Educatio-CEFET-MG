@@ -7,10 +7,6 @@
 	<link href="gerencia-web-escolha-de-sistema.css" rel="stylesheet">
   <script src="js/jquery.min.js"></script>
   <script src="js/bootstrap.min.js"></script> 
-  <?php 
-    session_start();
-    $logado = $_SESSION['dados'];
-  ?>
 </head>
 <body>
 
@@ -32,15 +28,19 @@
                 <li><a href="#"><span class="glyphicon glyphicon-folder-open"></span>  Acessar Sistema Acadêmico</a>
            </ul>
         </div>
-    </nav>      
+    </nav>   
 
-    <div class="container">
-      <p> 
-        <?php 
-        echo" Bem vindo $logado['nome']";
-      ?>    
-    </p>
-    </div>
+    <?php 
+
+    require '../gerencia-web-conecta-login.php'; 
+
+    session_start();
+
+    //print_r($_SESSION['usuario']);
+
+    ?>    
+     
+
 
     <div class="container">
     <div class="row">

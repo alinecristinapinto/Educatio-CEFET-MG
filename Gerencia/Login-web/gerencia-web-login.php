@@ -49,6 +49,30 @@
 		}
 
    }
+
+   class Professor extends Usuario{
+				
+		public function __construct($nome, $email, $foto) {
+			parent::__construct($nome, $email, $foto);
+		}
+
+   }
+
+   class Bibliotecario extends Usuario{
+				
+		public function __construct($nome, $email, $foto) {
+			parent::__construct($nome, $email, $foto);
+		}
+
+   }
+
+   class Coordenador extends Usuario{
+				
+		public function __construct($nome, $email, $foto) {
+			parent::__construct($nome, $email, $foto);
+		}
+
+   }
   
    class Login{
 		
@@ -68,16 +92,127 @@
 
 					if(!$resultado){
 						echo "Erro ao obter os dados da tabela";
-					} else {
-						echo "DEU CERTO PORRA";
-					}
+					} 
+
+			$dados = null;
+			$usuario;
 
 			$dados = mysqli_fetch_assoc($resultado);
 
-			$usuario = new Aluno($dados["nome"],
+			if($dados == null){
+				header('location:gerencia-web-login.html');
+			} else {
+				$usuario = new Aluno($dados["nome"],
 					$dados["email"],
 					$dados["foto"]
-					);
+				);	
+			}
+
+			return $usuario;
+		}
+
+
+		public static function logarProfessor($login, $senha){
+
+			$conexao = mysqli_connect(SERVIDOR, USUARIO, SENHA, BD);
+			
+			if(!$conexao){
+				echo 'Erro ao conectar ao banco de dados';
+				exit;
+			}
+			
+			mysqli_select_db($conexao, BD);
+
+			$query ="SELECT * FROM funcionario WHERE idSIAPE='$login' AND senha='$senha' AND hierarquia='P' AND ativo='S'";
+				$resultado = mysqli_query($conexao, $query);
+
+					if(!$resultado){
+						echo "Erro ao obter os dados da tabela";
+					}
+
+			$dados = null;
+			$usuario;
+
+			$dados = mysqli_fetch_assoc($resultado);
+
+			if($dados == null){
+				header('location:gerencia-web-login.html');
+			} else {
+				$usuario = new Professor($dados["nome"],
+					$dados["email"],
+					$dados["foto"]
+				);		
+			}
+
+			return $usuario;
+		}
+
+		public static function logarBibliotecario($login, $senha){
+
+			$conexao = mysqli_connect(SERVIDOR, USUARIO, SENHA, BD);
+			
+			if(!$conexao){
+				echo 'Erro ao conectar ao banco de dados';
+				exit;
+			}
+			
+			mysqli_select_db($conexao, BD);
+
+			$query ="SELECT * FROM funcionario WHERE idSIAPE='$login' AND senha='$senha' AND hierarquia='B' AND ativo='S'";
+				$resultado = mysqli_query($conexao, $query);
+
+					if(!$resultado){
+						echo "Erro ao obter os dados da tabela";
+					}
+
+			$dados = null;
+			$usuario;
+
+			$dados = mysqli_fetch_assoc($resultado);
+
+			if($dados == null){
+				header('location:gerencia-web-login.html');
+			} else {
+				$usuario = new Bibliotecario($dados["nome"],
+					$dados["email"],
+					$dados["foto"]
+				);		
+			}
+
+			return $usuario;
+		}
+
+		public static function logarCoordenador($login, $senha){
+
+			$conexao = mysqli_connect(SERVIDOR, USUARIO, SENHA, BD);
+			
+			if(!$conexao){
+				echo 'Erro ao conectar ao banco de dados';
+				exit;
+			}
+			
+			mysqli_select_db($conexao, BD);
+
+			$query ="SELECT * FROM funcionario WHERE idSIAPE='$login' AND senha='$senha' AND hierarquia='C' AND ativo='S'";
+				$resultado = mysqli_query($conexao, $query);
+
+					if(!$resultado){
+						echo "Erro ao obter os dados da tabela";
+					}
+
+			$dados = null;
+			$usuario;
+
+			$dados = mysqli_fetch_assoc($resultado);
+
+			if($dados == null){
+				header('location:gerencia-web-login.html');
+			} else {
+				$usuario = new Coordenador($dados["nome"],
+					$dados["email"],
+					$dados["foto"]
+				);		
+			}
 
 			return $usuario;
 		}

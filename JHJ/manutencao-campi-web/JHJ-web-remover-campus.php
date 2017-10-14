@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html>
     <head>
         <title>Remover Campus</title>
@@ -7,15 +6,7 @@
         <link href="css/JHJ-web-estilos.css" rel="stylesheet">
         <script src="js/jquery.min.js"></script>
         <script src="js/bootstrap.min.js"></script> 
-        <!-- esse script ainda sera passado para um arquivo externo -->
-        <script>
-            $(document).ready( function(){
-                $("#alerta").hide();
-                $("#botaoExcluirCampus").click(function() {
-                    $("#alerta").show();
-                });
-            });
-        </script>
+        <script type="text/javascript" src="js/JHJ-web-script.js"></script>
     </head>
     <body>
         <!-- menu coordenador (codigo da gerencia)-->
@@ -113,39 +104,74 @@
         <!-- fim do menu coordenador (codigo da gerencia)-->
 
         <h1>Exclusão de Campus</h1>
+        <?php
+            // Conectando com o servidor MySQL
+            $link = mysqli_connect("localhost", "root", "");
+            if (!$link){
+            //     die("Conexao falhou: ".mysqli_connect_error()."<br/>");
+            } else {
+            //     echo "Conexao efetuada com sucesso!<br/>";
+            }
 
-        <div class="alinhamento">
-            <select class="custom-select">
-                <option selected>Selecione o campus que você deseja excluir&nbsp;</option>
-                <option value="campus-1">Campus 1</option>
-                <option value="campus-2">Campus 2</option>
-                <option value="campus-3">Campus 3</option>
-                <option value="campus-4">...</option>
-            </select><br><br>
-            <button id="botaoExcluirCampus" type="button" class="btn btn-primary">Excluir campus</button>
-        </div>
+            //Selecionado BD
+            $sql = mysqli_select_db($link, 'Educatio');
+            //Seleciona os dados dos campus ativos
+            $query = mysqli_query($link, " SELECT id, nome, cidade, UF FROM campi WHERE ativo='S' ");
+        ?>
 
-        <!-- alerta -->
-        <div id="alerta" class="modal in" style="display: block;">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h4 style="color: #c42323;" class="modal-title">ALERTA</h4>
-                    </div>
-                    <div class="modal-body">
-                        <p>Você tem certeza que deseja <strong>excluir</strong> o campus selecionado?</p>
-                        <div class="row">
-                            <div class="col-12-xs text-center">
-                                <button class="btn btn-success btn-md">Sim</button>
-                                <button class="btn btn-danger btn-md">Não</button>
+        <form action="JHJ-web-remover-campus-exclusao-efetuada.php" method="POST">
+            <div class="alinhamento">
+                <select required="required" class="custom-select" id="selectParaExcluirCampus" name="selectParaExcluirCampus[]">
+                    <option value="">Selecione o campus que você deseja excluir&nbsp;</option>
+                    <!-- Usando os dados do BD para fazer o select com os campus ativos -->
+                    <?php while($campus = mysqli_fetch_array($query)) { ?>
+                    <option name="selectParaExcluirCampus[]" value="<?php echo $campus['id'] ?>">
+                    <?php echo $campus['nome']." - ".$campus['cidade']."-".$campus['UF'] ?></option><?php } ?>
+                </select><span class="required"> *</span><br><br>
+                <button type="button" id="botaoExcluirCampus" class="btn btn-primary">Excluir campus</button>
+            </div>
+
+            <!-- alerta para confirmar a exclusão -->
+            <div id="alertaConfirmaExclusao" class="modal in" style="display: block;">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 style="color: #c42323;" class="modal-title">ALERTA</h4>
+                        </div>
+                        <div class="modal-body">
+                            <p>Você tem certeza que deseja <strong>excluir</strong> o campus selecionado?</p>
+                            <div class="row">
+                                <div class="col-12-xs text-center">
+                                    <input type="submit" class="btn btn-success btn-md" value="Sim"/>
+                                    <input type="button" class="btn btn-danger btn-md" value="Não" onClick="voltarParaPaginaExclusaoCampus()">
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </div><!-- /.modal-content -->
-            </div><!-- /.modal-dialog -->
-        </div><!-- /.modal --> 
-        <!--  fim do alerta -->
+                    </div><!-- /.modal-content -->
+                </div><!-- /.modal-dialog -->
+            </div><!-- /.modal --> 
+            <!--  fim do alerta para confirmar a exclusão-->
 
+            <!-- alerta para verificar se o usuario selecionou um campus -->
+            <div id="alertaSelecioneCampus" class="modal in" style="display: block;">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 style="color: #c42323;" class="modal-title">ALERTA</h4>
+                        </div>
+                        <div class="modal-body">
+                            <p><strong>Selecione um campus!</strong></p>
+                            <div class="row">
+                                <div class="col-12-xs text-center">
+                                    <input type="button" class="btn btn-primary" value="OK" onClick="voltarParaPaginaExclusaoCampus()">
+                                </div>
+                            </div>
+                        </div>
+                    </div><!-- /.modal-content -->
+                </div><!-- /.modal-dialog -->
+            </div><!-- /.modal --> 
+            <!--  fim do alerta para verificar se o usuario selecionou um campus -->
+        </form>
         <!-- rodape -->
         <div class="containeer">
             <div class="row">

@@ -4,23 +4,32 @@ To change this template file, choose Tools | Templates
 and open the template in the editor.
 */
 /* 
-    Created on : 08/10/2017, 20:10:41
+    Created on : 15/10/2017, 17:58:24
     Author     : 7
 */
 .background
 {
     -fx-background-color:#2644B2;
 }
-.label-grande{
+.textfield
+{
+    -fx-background-color: #6989FF;
+    -fx-text-fill:white; 
+    -fx-border-color: #d8ac29;
+    -fx-border-width: 1px;
+}
+.label-cabecalho
+{
     -fx-font-family: 'Times New Roman';
-    -fx-font-size: 25px;
+    -fx-font-size: 40px;
     -fx-text-fill:white;  
     -fx-alignment: CENTER;
+
 }
 
 .label-pequena{
     -fx-font-family: 'Times New Roman';
-    -fx-font-size: 15px;
+    -fx-font-size: 20px;
     -fx-text-fill:white;  
     -fx-alignment: CENTER;
 }
@@ -36,6 +45,11 @@ and open the template in the editor.
     -fx-font-size: 12pt;
     -fx-text-fill: #ffffff;
 }
+
 .button:hover {
     -fx-background-color: #6989FF;
+}
+
+#separador{
+    -fx-border-color: white;
 }

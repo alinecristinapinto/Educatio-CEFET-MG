@@ -4,8 +4,7 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@estilos.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="educatio.app.view.GerentesTelaInicialAlunoController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@../Alunos/GerentesTelaInicialAlunos.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="educatio.app.view.Alunos.GerentesTelaInicialAlunoController">
    <children>
       <MenuBar layoutX="74.0" layoutY="2.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="41.0" prefWidth="538.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <menus>
@@ -31,9 +30,9 @@
             </Menu>
         </menus>
       </MenuBar>
-      <MenuBar layoutX="466.0" layoutY="2.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="41.0" prefWidth="134.0" stylesheets="@estilos.css" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <MenuBar layoutX="488.0" layoutY="2.0" prefHeight="41.0" prefWidth="115.0" styleClass="menu-background" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <menus>
-          <Menu mnemonicParsing="false" text="Aluno">
+          <Menu fx:id="menuAluno" mnemonicParsing="false" text="Aluno">
             <items>
               <MenuItem mnemonicParsing="false" text="Perfil" />
                   <MenuItem mnemonicParsing="false" onAction="#saiAplicacao" text="Sair" />

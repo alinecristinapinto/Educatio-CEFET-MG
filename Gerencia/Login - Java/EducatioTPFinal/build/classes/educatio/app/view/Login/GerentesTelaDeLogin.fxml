@@ -16,7 +16,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" styleClass="background" stylesheets="@TelaDeLogin.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="educatio.app.view.Login.GerentesTelaDeLoginController">
    <children>
-      <Button layoutX="511.0" layoutY="355.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Cadastro" AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="5.0" />
+      <Button layoutX="511.0" layoutY="355.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#acaoCadastro" text="Cadastro" AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="5.0" />
       <AnchorPane layoutX="11.0" layoutY="7.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="298.0" prefWidth="579.0" AnchorPane.bottomAnchor="95.0" AnchorPane.leftAnchor="11.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="7.0">
          <children>
             <VBox layoutX="147.0" layoutY="163.0" prefHeight="66.0" prefWidth="63.0">

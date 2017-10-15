@@ -19,6 +19,7 @@ and open the template in the editor.
 }
 .menu-background{
     -fx-background-color:#2644B2;
+    -fx-alignment:center;
 }
 .menu-bar{
     -fx-background-color:#2644B2;

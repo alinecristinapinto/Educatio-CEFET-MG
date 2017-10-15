@@ -12,7 +12,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="educatio.app.view.TelaInicialProfessoresController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@GerentesTelaInicialProfessores.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="educatio.app.view.Professores.GerentesTelaInicialProfessoresController">
    <children>
       <MenuBar layoutY="2.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="35.0" prefWidth="508.0" stylesheets="@estilos.css" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <menus>
@@ -28,7 +28,7 @@
             <Insets right="6.0" />
          </padding>
       </MenuBar>
-      <MenuBar layoutX="510.0" layoutY="2.0" maxHeight="1.7976931348623157E308" maxWidth="104.0" prefHeight="39.0" prefWidth="104.0" stylesheets="@estilos.css" AnchorPane.rightAnchor="-2.0" AnchorPane.topAnchor="0.0">
+      <MenuBar layoutX="510.0" layoutY="2.0" maxHeight="1.7976931348623157E308" maxWidth="120.0" prefHeight="39.0" prefWidth="120.0" stylesheets="@estilos.css" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <menus>
           <Menu mnemonicParsing="false" text="Professor">
             <items>

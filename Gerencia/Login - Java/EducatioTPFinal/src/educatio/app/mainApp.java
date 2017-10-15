@@ -6,9 +6,9 @@
 package educatio.app;
 
 import educatio.app.model.Login.*;
-import educatio.app.view.GerentesTelaInicialAlunoController;
+import educatio.app.view.Alunos.*;
 import educatio.app.view.Login.*;
-import educatio.app.view.GerentesTelaInicialProfessoresController;
+import educatio.app.view.Professores.*;
 
 import java.io.IOException;
 import javafx.application.Application;
@@ -52,7 +52,7 @@ public class mainApp extends Application {
     public void mostraLogin() {
         try {
             FXMLLoader carregadorFXML = new FXMLLoader();
-            carregadorFXML.setLocation(mainApp.class.getResource("view/GerentesTelaBase.fxml"));
+            carregadorFXML.setLocation(mainApp.class.getResource("view/Login/GerentesTelaBaseLogin.fxml"));
             telaBase = (BorderPane) carregadorFXML.load();
 
             FXMLLoader auxiliar = new FXMLLoader();
@@ -83,7 +83,7 @@ public class mainApp extends Application {
                 telaBase = (BorderPane) carregadorFXML.load();
 
                 FXMLLoader auxiliar = new FXMLLoader();
-                auxiliar.setLocation(mainApp.class.getResource("view/GerentesTelaInicialAlunos.fxml"));
+                auxiliar.setLocation(mainApp.class.getResource("view/Alunos/GerentesTelaInicialAlunos.fxml"));
                 telaInicial = (AnchorPane) auxiliar.load();
 
                 telaBase.setTop(telaInicial);
@@ -93,6 +93,7 @@ public class mainApp extends Application {
 
                 GerentesTelaInicialAlunoController controller = auxiliar.getController();
                 controller.setMainApp(this);
+                controller.mudaUsuario();
 
             } else if (usuarioAtual instanceof Professor) {
 
@@ -100,7 +101,7 @@ public class mainApp extends Application {
                 telaBase = (BorderPane) carregadorFXML.load();
 
                 FXMLLoader auxiliar = new FXMLLoader();
-                auxiliar.setLocation(mainApp.class.getResource("view/GerentesTelaInicialProfessores.fxml"));
+                auxiliar.setLocation(mainApp.class.getResource("view/Professores/GerentesTelaInicialProfessores.fxml"));
                 telaInicial = (AnchorPane) auxiliar.load();
 
                 telaBase.setTop(telaInicial);
@@ -180,6 +181,54 @@ public class mainApp extends Application {
             GerentesTelaDeSelecaoController controller = carregadorFXML.getController();
             controller.setMainApp(this);
             controller.setUsuario(usuario);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void mostraPagCadastro() {
+        try {
+            FXMLLoader carregadorFXML = new FXMLLoader();
+            carregadorFXML.setLocation(mainApp.class.getResource("view/GerentesTelaBase.fxml"));
+            telaBase = (BorderPane) carregadorFXML.load();
+
+            FXMLLoader auxiliar = new FXMLLoader();
+            auxiliar.setLocation(mainApp.class.getResource("view/Login/GerentesTelaCadastro.fxml"));
+            telaInicial = (AnchorPane) auxiliar.load();
+
+            telaBase.setCenter(telaInicial);
+            Scene cena = new Scene(telaBase);
+            palcoPrincipal.setScene(cena);
+            palcoPrincipal.show();
+
+            GerentesTelaCadastroController controller = auxiliar.getController();
+            controller.setMainApp(this);
+            
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    
+    public void mostraSegundaPagCadastro(Usuario usuario) {
+        try {
+            FXMLLoader carregadorFXML = new FXMLLoader();
+            carregadorFXML.setLocation(mainApp.class.getResource("view/Login/GerentesTelaBase.fxml"));
+            telaBase = (BorderPane) carregadorFXML.load();
+
+            FXMLLoader auxiliar = new FXMLLoader();
+            auxiliar.setLocation(mainApp.class.getResource("view/Login/GerentesSegundaTelaCadastro.fxml"));
+            telaInicial = (AnchorPane) auxiliar.load();
+
+            telaBase.setCenter(telaInicial);
+            Scene cena = new Scene(telaBase);
+            palcoPrincipal.setScene(cena);
+            palcoPrincipal.show();
+
+            GerentesTelaInicialAlunoController controller = auxiliar.getController();
+            controller.setMainApp(this);
+            controller.mudaUsuario();
 
         } catch (IOException e) {
             e.printStackTrace();

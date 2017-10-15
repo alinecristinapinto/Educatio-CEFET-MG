@@ -129,6 +129,11 @@ public class GerentesTelaDeLoginController {
 
     }
     
+    public void acaoCadastro()
+    {
+        mainApp.mostraPagCadastro();
+    }
+    
     public static String geraMd5(String senha){
 		String sen = "";
 		MessageDigest md = null;

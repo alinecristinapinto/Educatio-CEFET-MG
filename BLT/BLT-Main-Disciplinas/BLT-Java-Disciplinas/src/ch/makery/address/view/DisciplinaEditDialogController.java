@@ -18,16 +18,11 @@ import ch.makery.address.model.Disciplina;
 public class DisciplinaEditDialogController {
 
     @FXML
+    private TextField idTurmaField;
+    @FXML
     private TextField nomeField;
     @FXML
-    private TextField professorField;
-    @FXML
-    private TextField campusField;
-    @FXML
-    private TextField numeroAlunosField;
-    @FXML
-    private TextField cursoField;
-
+    private TextField cargaHorariaMinField;
 
     private Stage dialogStage;
     private Disciplina disciplina;
@@ -58,11 +53,10 @@ public class DisciplinaEditDialogController {
     public void setDisciplina(Disciplina disciplina) {
         this.disciplina = disciplina;
 
+        idTurmaField.setText(Integer.toString(disciplina.getIdTurma()));
         nomeField.setText(disciplina.getNome());
-        professorField.setText(disciplina.getProfessor());
-        campusField.setText(disciplina.getCampus());
-        numeroAlunosField.setText(Integer.toString(disciplina.getNumeroAlunos()));
-        cursoField.setText(disciplina.getCurso());
+        cargaHorariaMinField.setText(Integer.toString(disciplina.getCargaHorariaMin()));
+
     }
 
     /**
@@ -80,11 +74,11 @@ public class DisciplinaEditDialogController {
     @FXML
     private void handleOk() {
         if (isInputValid()) {
+
+            disciplina.setIdTurma(Integer.parseInt(idTurmaField.getText()));
+            disciplina.setCargaHorariaMin(Integer.parseInt(cargaHorariaMinField.getText()));
             disciplina.setNome(nomeField.getText());
-            disciplina.setProfessor(professorField.getText());
-            disciplina.setCampus(campusField.getText());
-            disciplina.setNumeroAlunos(Integer.parseInt(numeroAlunosField.getText()));
-            disciplina.setCurso(cursoField.getText());
+
 
             okClicked = true;
             dialogStage.close();
@@ -107,30 +101,34 @@ public class DisciplinaEditDialogController {
     private boolean isInputValid() {
         String errorMessage = "";
 
-        if (nomeField.getText() == null || nomeField.getText().length() == 0) {
-            errorMessage += "Nome inválido!\n";
-        }
-        if (professorField.getText() == null || professorField.getText().length() == 0) {
-            errorMessage += "Professor inválido!\n";
-        }
-        if (campusField.getText() == null || campusField.getText().length() == 0) {
-            errorMessage += "Campus inválido!\n";
-        }
 
-        if (numeroAlunosField.getText() == null || numeroAlunosField.getText().length() == 0) {
-            errorMessage += "Número de alunos inválido!\n";
+        if (idTurmaField.getText() == null || idTurmaField.getText().length() == 0) {
+            errorMessage += "Id da turma inválido!\n";
         } else {
             // tenta converter o código postal em um int.
             try {
-                Integer.parseInt(numeroAlunosField.getText());
+                Integer.parseInt(idTurmaField.getText());
             } catch (NumberFormatException e) {
-                errorMessage += "Número de alunos inválido (deve ser um inteiro)!\n";
+                errorMessage += "Id da turma inválido (deve ser um inteiro)!\n";
             }
         }
 
-        if (cursoField.getText() == null || cursoField.getText().length() == 0) {
-            errorMessage += "Curso inválido!\n";
+        if (nomeField.getText() == null || nomeField.getText().length() == 0) {
+            errorMessage += "Nome inválido!\n";
         }
+
+
+        if (cargaHorariaMinField.getText() == null || cargaHorariaMinField.getText().length() == 0) {
+            errorMessage += "Carga Horaria Mínima inválida!\n";
+        } else {
+            // tenta converter o código postal em um int.
+            try {
+                Integer.parseInt(cargaHorariaMinField.getText());
+            } catch (NumberFormatException e) {
+                errorMessage += "Carga Horaria Mínima inválida (deve ser um inteiro)!\n";
+            }
+        }
+
 
 
 

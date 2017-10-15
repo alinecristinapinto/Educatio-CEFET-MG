@@ -6,27 +6,18 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
 import ch.makery.address.MainApp;
+import ch.makery.address.jdbc.ConnectionFactory;
 import ch.makery.address.model.Disciplina;
+import java.sql.Connection;
+import java.sql.Connection;
 
 public class DisciplinaOverviewController {
-	 	@FXML
-	    private TableView<Disciplina> disciplinaTabela;
-	    @FXML
-	    private TableColumn<Disciplina, String> nomeColuna;
-	    @FXML
-	    private TableColumn<Disciplina, String> professorColuna;
-
-	    @FXML
-	    private Label nomeLabel;
-	    @FXML
-	    private Label professorLabel;
-	    @FXML
-	    private Label campusLabel;
-	    @FXML
-	    private Label numeroAlunosLabel;
-	    @FXML
-	    private Label cursoLabel;
 
 	 // Reference to the main application.
     private MainApp mainApp;
@@ -41,13 +32,31 @@ public class DisciplinaOverviewController {
     /**
      * Chamado quando o usuário clica no botão novo. Abre uma janela para editar
      * detalhes da nova pessoa.
+     * @throws SQLException
      */
     @FXML
-    private void handleNewDisciplina() {
+    private void handleNewDisciplina() throws SQLException {
         Disciplina tempDisciplina = new Disciplina();
+
         boolean okClicked = mainApp.showDisciplinaEditDialog(tempDisciplina);
         if (okClicked) {
-            mainApp.getDisciplinaData().add(tempDisciplina);
+            Connection con = new ConnectionFactory().getConnection();
+
+            String sql = "insert into disciplinas " +
+                    "(idTurma,nome, cargaHorariaMin, ativo)" +
+                    " values (?,?,?,?)";
+            PreparedStatement stmt = con.prepareStatement(sql);
+
+            stmt.setInt(1, tempDisciplina.getIdTurma());
+            stmt.setString(2, tempDisciplina.getNome());
+            stmt.setInt(3, tempDisciplina.getCargaHorariaMin());
+            stmt.setString(4, "s");
+
+            // executa
+            stmt.execute();
+            stmt.close();
+
+            con.close();
         }
     }
 
@@ -56,20 +65,18 @@ public class DisciplinaOverviewController {
      * detalhes da pessoa selecionada.
      */
     @FXML
-    private void handleEditDisciplina() {
+  /**  private void handleEditDisciplina() {
         Disciplina selectedDisciplina = disciplinaTabela.getSelectionModel().getSelectedItem();
         if (selectedDisciplina != null) {
             boolean okClicked = mainApp.showDisciplinaEditDialog(selectedDisciplina);
-            if (okClicked) {
-                showDisciplinaDetails(selectedDisciplina);
-            }
+
 
         } else {
             // Nada seleciondo.
             Alert alert = new Alert(AlertType.WARNING);
                 alert.setTitle("Nenhuma seleção");
-                alert.setHeaderText("Nenhuma Pessoa Selecionada");
-                alert.setContentText("Por favor, selecione uma pessoa na tabela.");
+                alert.setHeaderText("Nenhuma Disciplina Selecionada");
+                alert.setContentText("Por favor, selecione uma disciplina na tabela.");
                 alert.showAndWait();
         }
     }
@@ -80,7 +87,7 @@ public class DisciplinaOverviewController {
         if (selectedIndex >= 0) {
             disciplinaTabela.getItems().remove(selectedIndex);
         } else {
-            // Nada selecionado.
+ //            Nada selecionado.
 
         Alert alert = new Alert(AlertType.WARNING);
                 alert.setTitle("Nenhuma seleção");
@@ -90,43 +97,14 @@ public class DisciplinaOverviewController {
                 alert.showAndWait();
         }
     }
+*/
 
-    private void showDisciplinaDetails(Disciplina disciplina) {
-        if (disciplina != null) {
-            // Preenche as labels com informações do objeto person.
-            nomeLabel.setText(disciplina.getNome());
-            professorLabel.setText(disciplina.getProfessor());
-            campusLabel.setText(disciplina.getCampus());
-            numeroAlunosLabel.setText(Integer.toString(disciplina.getNumeroAlunos()));
-            cursoLabel.setText(disciplina.getCurso());
 
-            // TODO: Nós precisamos de uma maneira de converter o aniversário em um String!
-            // birthdayLabel.setText(...);
-        } else {
-            // Person é null, remove todo o texto.
-            nomeLabel.setText("");
-            professorLabel.setText("");
-            campusLabel.setText("");
-            numeroAlunosLabel.setText("");
-            cursoLabel.setText("");
-        }
-    }
 
-    @FXML
-    private void initialize() {
-        // Inicializa a tabela de pessoas com duas colunas.
-        nomeColuna.setCellValueFactory(
-                cellData -> cellData.getValue().nomeProperty());
-        professorColuna.setCellValueFactory(
-                cellData -> cellData.getValue().professorProperty());
 
-        // Limpa os detalhes da pessoa.
-        showDisciplinaDetails(null);
 
-        // Detecta mudanças de seleção e mostra os detalhes da pessoa quando houver mudança.
-        disciplinaTabela.getSelectionModel().selectedItemProperty().addListener(
-                (observable, oldValue, newValue) -> showDisciplinaDetails(newValue));
-    }
+
+
 
     /**
      * É chamado pela aplicação principal para dar uma referência de volta a si mesmo.
@@ -136,8 +114,6 @@ public class DisciplinaOverviewController {
     public void setMainApp(MainApp mainApp) {
         this.mainApp = mainApp;
 
-     // Adiciona os dados da observable list na tabela
-        disciplinaTabela.setItems(mainApp.getDisciplinaData());
     }
 }
 

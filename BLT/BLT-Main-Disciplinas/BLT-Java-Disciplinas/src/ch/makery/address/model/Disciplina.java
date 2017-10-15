@@ -13,16 +13,16 @@ import javafx.beans.property.StringProperty;
  */
 public class Disciplina {
 
+    private final IntegerProperty id;
+    private final IntegerProperty idTurma;
+    private final IntegerProperty cargaHorariaMin;
     private final StringProperty nome;
-    private final StringProperty professor;
-    private final IntegerProperty numeroAlunos;
-    private final StringProperty campus;
-    private final StringProperty curso;
+    private final StringProperty ativo;
     /**
      *  Construtor padrão.
      */
     public Disciplina() {
-        this(null, null, 0, null, null);
+        this(0, 0, 0, null, null);
     }
 
     /**
@@ -31,12 +31,36 @@ public class Disciplina {
      * @param firstName Primeiro nome da Pessoa.
      * @param lastName Sobrenome da Pessoa.
      */
-    public Disciplina(String nome, String professor, Integer numeroAlunos, String campus, String curso) {
+    public Disciplina(Integer id, Integer idTurma, Integer cargaHorariaMin, String nome, String ativo) {
+        this.id = new SimpleIntegerProperty(id);
+        this.idTurma = new SimpleIntegerProperty(idTurma);
+        this.cargaHorariaMin = new SimpleIntegerProperty(cargaHorariaMin);
         this.nome = new SimpleStringProperty(nome);
-        this.professor = new SimpleStringProperty(professor);
-        this.numeroAlunos = new SimpleIntegerProperty(numeroAlunos);
-        this.campus = new SimpleStringProperty(campus);
-        this.curso = new SimpleStringProperty(curso);
+        this.ativo = new SimpleStringProperty(ativo);
+    }
+
+    public int getId() {
+        return id.get();
+    }
+
+    public void setId(int id) {
+        this.id.set(id);
+    }
+
+    public IntegerProperty idProperty() {
+        return id;
+    }
+
+    public int getIdTurma() {
+        return idTurma.get();
+    }
+
+    public void setIdTurma(int idTurma) {
+        this.idTurma.set(idTurma);
+    }
+
+    public IntegerProperty idTurmaProperty() {
+        return idTurma;
     }
 
     public String getNome() {
@@ -51,52 +75,28 @@ public class Disciplina {
         return nome;
     }
 
-    public String getProfessor() {
-        return professor.get();
+    public int getCargaHorariaMin() {
+        return cargaHorariaMin.get();
     }
 
-    public void setProfessor(String professor) {
-        this.professor.set(professor);
+    public void setCargaHorariaMin(int cargaHorariaMin) {
+        this.cargaHorariaMin.set(cargaHorariaMin);
     }
 
-    public StringProperty professorProperty() {
-        return professor;
+    public IntegerProperty cargaHorariaMinProperty() {
+        return cargaHorariaMin;
     }
 
-    public String getCampus() {
-        return campus.get();
+    public String getAtivo() {
+        return ativo.get();
     }
 
-    public void setCampus(String campus) {
-        this.campus.set(campus);
+    public void setAtivo(String ativo) {
+        this.ativo.set(ativo);
     }
 
-    public StringProperty campusProperty() {
-        return campus;
-    }
-
-    public int getNumeroAlunos() {
-        return numeroAlunos.get();
-    }
-
-    public void setNumeroAlunos(int numeroAlunos) {
-        this.numeroAlunos.set(numeroAlunos);
-    }
-
-    public IntegerProperty numeroAlunosProperty() {
-        return numeroAlunos;
-    }
-
-    public String getCurso() {
-        return curso.get();
-    }
-
-    public void setCurso(String curso) {
-        this.curso.set(curso);
-    }
-
-    public StringProperty cursoProperty() {
-        return curso;
+    public StringProperty ativoProperty() {
+        return ativo;
     }
 
 }

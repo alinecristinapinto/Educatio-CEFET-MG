@@ -3,8 +3,8 @@
 include "gerencia-web-cadastro-login.php";
 
 $login = $_POST['idsuario'];
-$senha = $_POST['senha'];
-$confirmaSenha = $_POST['confirmaSenha'];
+$senha = md5($_POST['senha']);
+$confirmaSenha = md5($_POST['confirmaSenha']);
 $opcao = $_POST['opcao'];
 
 if($opcao == 'Aluno(a)')

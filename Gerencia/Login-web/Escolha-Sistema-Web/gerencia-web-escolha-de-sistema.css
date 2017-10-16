@@ -1,8 +1,26 @@
+.alinhador{
+  margin-top: 80px;
+  text-align: center;
+  font-size: 20px;
+}
+
+h1{
+  color: #d8ac29;
+}
+
 .slogan
 {
     margin-top: -5px;
     width: 100px; 
     height: 31px;
+}
+
+.profile
+{
+  border: 1px solid;
+  border-radius: 25px;
+  width: 22px; 
+  height: 22px;
 }
 
 .navbar-default 

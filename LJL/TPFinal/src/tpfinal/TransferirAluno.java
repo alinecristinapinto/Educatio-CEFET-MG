@@ -23,9 +23,11 @@ public class TransferirAluno {
             }
         }while(flag == false);
         
+        JOptionPane.showMessageDialog(null, "Chamando função que procura aluno no BD (Outro grupo)");
         //procurar aluno no BD
         Object[] options = { "Confirmar", "Cancelar" };
         if (JOptionPane.showOptionDialog(null, "Confirme a Transferencia:\n"/*dados do aluno*/, "Confirmação", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]) == 0){
+            JOptionPane.showMessageDialog(null, "Mudando ativo de aluno | Liberando histórico (Outro grupo)");
             //Ativo do aluno = false
             //libera Historico
         }

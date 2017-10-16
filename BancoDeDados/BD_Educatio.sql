@@ -63,7 +63,7 @@ CREATE TABLE IF NOT EXISTS `alunos` (
   UF varchar(2) NOT NULL,
   email varchar(30) NOT NULL,
   foto blob NOT NULL,
-  senha varchar(30) NOT NULL,
+  senha varchar(32) NOT NULL,
   ativo varchar(1) NOT NULL
   );
 
@@ -81,7 +81,8 @@ CREATE TABLE IF NOT EXISTS `funcionario` (
   nome varchar(80) NOT NULL,
   titulacao varchar(15) NOT NULL,
   hierarquia varchar(15) NOT NULL,
-  senha varchar(30) NOT NULL,
+  senha varchar(32) NOT NULL,
+  foto blob NOT NULL,
   ativo varchar(1) NOT NULL 
   );
 

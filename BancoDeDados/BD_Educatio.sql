@@ -144,6 +144,7 @@ CREATE TABLE IF NOT EXISTS `diarios` (
 CREATE TABLE IF NOT EXISTS `acervo` (
   id int(5) NOT NULL PRIMARY KEY AUTO_INCREMENT,
   idCampi int(5) NOT NULL,
+  idAutor int(5) NOT NULL,
   nome varchar(60) NOT NULL,
   tipo varchar(15) NOT NULL,
   local varchar(60) NOT NULL,
@@ -198,7 +199,8 @@ CREATE TABLE IF NOT EXISTS `partes` (
   );
 
 CREATE TABLE IF NOT EXISTS `autores` (
-  idAcervo int(5) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  id int(5) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  idAcervo int(5) NOT NULL,
   nome varchar(30) NOT NULL,
   sobrenome varchar(80) NOT NULL,
   ordem varchar(20) NOT NULL,

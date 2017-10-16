@@ -3,7 +3,7 @@
 	include 'gerencia-web-login.php';
 
 	$login = $_POST['CPFUsuario'];
-	$senha = $_POST['senha'];
+	$senha = md5($_POST['senha']);
 	$opcao = $_POST['opcao'];
 
 	if($opcao == 'Aluno(a)')

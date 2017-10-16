@@ -2,7 +2,7 @@
 
 define ("SERVIDOR", "localhost");
 define ("USUARIO", "root");
-define ("SENHA", "");
+define ("SENHA", "Bruali16");
 define ("BD", "educatio");
 
    class Cadastra{
@@ -33,8 +33,8 @@ define ("BD", "educatio");
 				header('location:gerencia-web-cadastro-login.html');
 			}
 			
-			$senha = md5($senha);
-			$confirmaSenha = md5($confirmaSenha);
+			//$senha = md5($senha);
+			//$confirmaSenha = md5($confirmaSenha);
 			
 			if($senha != $confirmaSenha){
 				header('location:gerencia-web-cadastro-login.html');		

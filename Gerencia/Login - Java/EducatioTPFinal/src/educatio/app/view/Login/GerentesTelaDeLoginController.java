@@ -54,7 +54,7 @@ public class GerentesTelaDeLoginController {
         String pesquisaBD;
         ResultSet resultadoPesquisa;
         
-        System.out.println(senhaEntrada);
+        //System.out.println(senhaEntrada);
         existeLogin=false;
 
         GerentesConexaoBDLogin conexaoBD = new GerentesConexaoBDLogin();
@@ -67,7 +67,8 @@ public class GerentesTelaDeLoginController {
                 pesquisaBD = "SELECT * FROM alunos WHERE idCPF=\'" + loginEntrada + "\' AND senha=\'" + senhaEntrada + "\'";
                 try {
                     resultadoPesquisa = conexaoBD.enviarQueryResultados(pesquisaBD);
-                    if (existeLogin) {
+                    
+                    if (existeLogin && (resultadoPesquisa.getString("ativo").equals("S"))) {
                         usuarioAtual = new Aluno(resultadoPesquisa.getString("sexo"), resultadoPesquisa.getString("nascimento"), 
                                 resultadoPesquisa.getString("logradouro"),
                                 resultadoPesquisa.getInt("numeroLogradouro"), resultadoPesquisa.getString("complemento"), resultadoPesquisa.getString("bairro"),

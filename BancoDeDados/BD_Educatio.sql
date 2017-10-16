@@ -198,7 +198,7 @@ CREATE TABLE IF NOT EXISTS `partes` (
   );
 
 CREATE TABLE IF NOT EXISTS `autores` (
-  idAcervo int(5) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  idAcervo int(5) NOT NULL,
   nome varchar(30) NOT NULL,
   sobrenome varchar(80) NOT NULL,
   ordem varchar(20) NOT NULL,

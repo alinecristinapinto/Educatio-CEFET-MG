@@ -22,7 +22,7 @@
 
 			    		<div class="panel-body" >
 
-							<form name="form" id="form" class="form-horizontal" method="POST" action="gerencia-web-conecta-cadastro-login.php">
+							<form name="form" id="form" class="form-horizontal" method="POST" action="gerencia-web-cadastro-login.php">
 	                   
 								<div class="input-group">
 			                    	<span class="input-group-addon"><i class="glyphicon glyphicon-user"> - Se identifique:</i></span>

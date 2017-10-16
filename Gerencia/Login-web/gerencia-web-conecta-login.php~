@@ -14,7 +14,7 @@
 	 	
 	 		session_start();
 	 		$_SESSION['usuario'] = $usuario;
-	 		header('location:Escolha-Sistema-Web/gerencia-web-escolha-de-sistema.php');	 
+	 		header('location:../Escolha-Sistema-Web/gerencia-web-escolha-de-sistema.php');	 
 	 	}
 	
 	} 

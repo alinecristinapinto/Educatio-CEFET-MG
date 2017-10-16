@@ -2,7 +2,7 @@
 
 define ("SERVIDOR", "localhost");
 define ("USUARIO", "root");
-define ("SENHA", "");
+define ("SENHA", "root");
 define ("BD", "educatio");
 
    class Cadastra{

@@ -1,6 +1,11 @@
 <?php 
 
-include "gerencia-web-cadastro-login.php";
+//include "gerencia-web-cadastro-login.php";
+
+define ("SERVIDOR", "localhost");
+define ("USUARIO", "root");
+define ("SENHA", "root");
+define ("BD", "educatio");
 
 $login = $_POST['idsuario'];
 $senha = $_POST['senha'];

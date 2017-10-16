@@ -13,7 +13,6 @@ import java.util.Scanner;
  */
 public class Obras {
 
-    int idObra;
     int idCampi;
     String nome;
     String tipo;
@@ -24,8 +23,7 @@ public class Obras {
     String ativo;
 
     
-    public Obras(int idObra, int idCampi, String nome, String tipo, String local, String ano, String editora, String paginas) {
-        this.idObra = idObra;
+    public Obras( int idCampi, String nome, String tipo, String local, String ano, String editora, String paginas) {
         this.idCampi = idCampi;
         this.nome = nome;
         this.tipo = tipo;
@@ -33,14 +31,6 @@ public class Obras {
         this.ano = ano;
         this.editora = editora;
         this.paginas = paginas;
-    }
-    
-    public int getIdObra() {
-        return idObra;
-    }
-
-    public void setIdobra(int idobra) {
-        this.idObra = idobra;
     }
 
 

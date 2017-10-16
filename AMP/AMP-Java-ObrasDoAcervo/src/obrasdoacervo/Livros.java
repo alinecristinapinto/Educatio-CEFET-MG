@@ -13,8 +13,8 @@ public class Livros extends Obras {
     String ISBN;
     String edicao;
 
-    public Livros(String ISBN, String edicao, int idObra, int idCampi, String nome, String tipo, String local, String ano, String editora, String paginas) {
-        super(idObra, idCampi, nome, tipo, local, ano, editora, paginas);
+    public Livros(String ISBN, String edicao, int idCampi, String nome, String tipo, String local, String ano, String editora, String paginas) {
+        super(idCampi, nome, tipo, local, ano, editora, paginas);
         this.ISBN = ISBN;
         this.edicao = edicao;
     }

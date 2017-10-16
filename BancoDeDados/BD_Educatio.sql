@@ -51,6 +51,7 @@ CREATE TABLE IF NOT EXISTS `turmas` (
 
 CREATE TABLE IF NOT EXISTS `alunos` (
   idCPF varchar(11) NOT NULL PRIMARY KEY,
+  idTurma int(5) NOT NULL,
   nome varchar(80) NOT NULL,
   sexo varchar(15) NOT NULL,
   nascimento varchar(10) NOT NULL,
@@ -120,7 +121,7 @@ CREATE TABLE IF NOT EXISTS `atividades` (
 CREATE TABLE IF NOT EXISTS `conteudos` (
   id int(5) NOT NULL PRIMARY KEY AUTO_INCREMENT,
   idEtapa int(5) NOT NULL,
-  idProfDisciplina int(5) NOT NULL,
+  idDisciplina int(5) NOT NULL,
   conteudo varchar(30) NOT NULL,
   datas varchar(10) NOT NULL,
   ativo varchar(1) NOT NULL
@@ -225,7 +226,7 @@ CREATE TABLE IF NOT EXISTS `emprestimos` (
   dataEmprestimo varchar(10) NOT NULL,
   dataPrevisaoDevolucao varchar(10) NOT NULL,
   dataDevolucao varchar(10) NOT NULL,
-  multa decimal(5,2) NOT NULL,
+  multa int(4) NOT NULL,
   ativo varchar(1) NOT NULL
   );
 

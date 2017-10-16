@@ -102,7 +102,7 @@ public class DisciplinaEditDialogController {
         String errorMessage = "";
 
 
-        if (idTurmaField.getText() == null || idTurmaField.getText().length() == 0) {
+        if (idTurmaField.getText() == null || idTurmaField.getText().length() == 0 || Integer.parseInt(idTurmaField.getText())==0) {
             errorMessage += "Id da turma inválido!\n";
         } else {
             // tenta converter o código postal em um int.
@@ -118,7 +118,7 @@ public class DisciplinaEditDialogController {
         }
 
 
-        if (cargaHorariaMinField.getText() == null || cargaHorariaMinField.getText().length() == 0) {
+        if (cargaHorariaMinField.getText() == null || cargaHorariaMinField.getText().length() == 0 ||  Integer.parseInt(cargaHorariaMinField.getText())==0) {
             errorMessage += "Carga Horaria Mínima inválida!\n";
         } else {
             // tenta converter o código postal em um int.

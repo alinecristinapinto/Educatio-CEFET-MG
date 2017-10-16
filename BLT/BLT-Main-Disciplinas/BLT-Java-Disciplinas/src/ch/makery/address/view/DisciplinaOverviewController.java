@@ -13,6 +13,7 @@ import java.sql.SQLException;
 
 import ch.makery.address.MainApp;
 import ch.makery.address.jdbc.ConnectionFactory;
+import ch.makery.address.jdbc.DisciplinaDao;
 import ch.makery.address.model.Disciplina;
 import java.sql.Connection;
 import java.sql.Connection;
@@ -21,7 +22,7 @@ public class DisciplinaOverviewController {
 
 	 // Reference to the main application.
     private MainApp mainApp;
-
+    DisciplinaDao bd = new DisciplinaDao();
     /**
      * O construtor.
      * O construtor é chamado antes do método inicialize().
@@ -35,28 +36,12 @@ public class DisciplinaOverviewController {
      * @throws SQLException
      */
     @FXML
-    private void handleNewDisciplina() throws SQLException {
+    private void handleNewDisciplina()  {
         Disciplina tempDisciplina = new Disciplina();
 
         boolean okClicked = mainApp.showDisciplinaEditDialog(tempDisciplina);
         if (okClicked) {
-            Connection con = new ConnectionFactory().getConnection();
-
-            String sql = "insert into disciplinas " +
-                    "(idTurma,nome, cargaHorariaMin, ativo)" +
-                    " values (?,?,?,?)";
-            PreparedStatement stmt = con.prepareStatement(sql);
-
-            stmt.setInt(1, tempDisciplina.getIdTurma());
-            stmt.setString(2, tempDisciplina.getNome());
-            stmt.setInt(3, tempDisciplina.getCargaHorariaMin());
-            stmt.setString(4, "s");
-
-            // executa
-            stmt.execute();
-            stmt.close();
-
-            con.close();
+            bd.adiciona(tempDisciplina);
         }
     }
 
@@ -97,7 +82,7 @@ public class DisciplinaOverviewController {
                 alert.showAndWait();
         }
     }
-*/
+/*
 
 
 

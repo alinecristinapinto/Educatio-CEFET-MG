@@ -12,8 +12,8 @@ package obrasdoacervo;
 public class Academicos extends Obras {
     String programa; 
 
-    public Academicos(String programa,int idObra, int idCampi, String nome, String tipo, String local, String ano, String editora, String paginas) {
-        super(idObra, idCampi, nome, tipo, local, ano, editora, paginas);
+    public Academicos(String programa,int idCampi, String nome, String tipo, String local, String ano, String editora, String paginas) {
+        super(idCampi, nome, tipo, local, ano, editora, paginas);
         this.programa = programa;
     }
 

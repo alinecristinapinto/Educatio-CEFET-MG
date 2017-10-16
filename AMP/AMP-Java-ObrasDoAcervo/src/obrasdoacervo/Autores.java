@@ -15,8 +15,8 @@ public class Autores extends Obras {
     String ordem;
     String qualificacao;
 
-    public Autores(String nomeAutor, String sobrenome, String ordem, String qualificacao, int idObra, int idCampi, String nome, String tipo, String local, String ano, String editora, String paginas) {
-        super(idObra, idCampi, nome, tipo, local, ano, editora, paginas);
+    public Autores(String nomeAutor, String sobrenome, String ordem, String qualificacao, int idCampi, String nome, String tipo, String local, String ano, String editora, String paginas) {
+        super(idCampi, nome, tipo, local, ano, editora, paginas);
         this.nomeAutor = nomeAutor;
         this.sobrenome = sobrenome;
         this.ordem = ordem;

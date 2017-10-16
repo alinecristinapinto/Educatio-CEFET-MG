@@ -16,8 +16,8 @@ public class Periodicos extends Obras {
     String subtipo;
     int ISSN;
 
-    public Periodicos(String periodicidade, String mes, int volume, String subtipo, int ISSN, int idObra, int idCampi, String nome, String tipo, String local, String ano, String editora, String paginas) {
-        super(idObra, idCampi, nome, tipo, local, ano, editora, paginas);
+    public Periodicos(String periodicidade, String mes, int volume, String subtipo, int ISSN, int idCampi, String nome, String tipo, String local, String ano, String editora, String paginas) {
+        super(idCampi, nome, tipo, local, ano, editora, paginas);
         this.periodicidade = periodicidade;
         this.mes = mes;
         this.volume = volume;

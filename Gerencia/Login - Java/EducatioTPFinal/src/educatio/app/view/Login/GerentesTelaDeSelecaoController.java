@@ -14,9 +14,7 @@ import educatio.app.model.Login.*;
  */
 public class GerentesTelaDeSelecaoController {
    
-    
-    String selecaoFeita;
-    Usuario usuario;
+    private Usuario usuario;
 
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;

@@ -2,18 +2,16 @@
 
 	define ("SERVIDOR", "localhost");
 	define ("USUARIO", "root");
-	define ("SENHA", "");
+	define ("SENHA", "Bruali16");
 	define ("BD", "educatio");
 
 	class Usuario {
 
 		public $nome;
-		public $email;
 		public $foto;
 
-		public function __construct($nome, $email, $foto) {
+		public function __construct($nome, $foto) {
 			$this->nome = $nome;
-			$this->email = $email;
 			$this->foto = $foto;
 		}
 
@@ -25,14 +23,6 @@
 			return $nome;
 		}
 		
-		function setEmail($email) {
-			$this->email = $email;
-		} 
-
-		function getEmail() {
-			return $email;
-		}
-
 		function setFoto($foto) {
 			$this->foto = $foto;
 		} 
@@ -41,38 +31,195 @@
 			return $foto;
 		}
 	}
+
+	class funcionario extends Usuario
+   {
+   		public $idSIAPE;
+   		public $idDepto;
+   		public $titulacao;
+   		public $hierarquia;	
+				
+		public function __construct($nome, $foto, $idSIAPE, $idDepto, $titulacao, $hierarquia) {
+			parent::__construct($nome, $foto);
+
+			$this->idSIAPE = $idSIAPE;
+			$this->idDepto = $idDepto;
+			$this->titulacao = $titulacao;
+			$this->hierarquia = $hierarquia;
+		}
+
+		function setIdSIAPE($idSIAPE) {
+			$this->idSIAPE = $idSIAPE;
+		}
+
+		function getIdSIAPE() {
+			return $idSIAPE;
+		}
+
+		function setIdDepto($idDepto) {
+			$this->idDepto = $idDepto;
+		}
+
+		function getIdDepto() {
+			return $idDepto;
+		}
+
+		function setTitulacao($titulacao) {
+			$this->titulacao = $titulacao;
+		}
+
+		function getTitulacao() {
+			return $titulacao;
+		}
+
+		function setHierarquia($hierarquia) {
+			$this->hierarquia = $hierarquia;
+		}
+
+		function getHierarquia() {
+			return $hierarquia;
+		}
+
+   	
+   }
+
+   /*class Professor extends funcionario{
+   		public function __construct($nome, $foto, $idSIAPE, $idDepto, $titulacao, $hierarquia) {
+			parent::__construct($nome, $foto, $idSIAPE, $idDepto, $titulacao, $hierarquia);
+		}
+   }
+
+   class Bibliotecario extends funcionario{
+   		public function __construct($nome, $foto, $idSIAPE, $idDepto, $titulacao, $hierarquia) {
+			parent::__construct($nome, $foto, $idSIAPE, $idDepto, $titulacao, $hierarquia);
+		}
+   }
+
+   class Coordenador extends funcionario{
+   		public function __construct($nome, $foto, $idSIAPE, $idDepto, $titulacao, $hierarquia) {
+			parent::__construct($nome, $foto, $idSIAPE, $idDepto, $titulacao, $hierarquia);
+		}
+   }*/
 	
    class Aluno extends Usuario{
+   		public $email;
+   		public $idCPF;
+   		public $sexo;
+   		public $nascimento;
+   		public $logradouro;
+   		public $numeroLogradouro;
+   		public $complemento;
+   		public $bairro;
+   		public $cidade;
+   		public $CEP;
+   		public $UF;
 				
-		public function __construct($nome, $email, $foto) {
-			parent::__construct($nome, $email, $foto);
+		public function __construct($nome, $foto, $email, $idCPF, $sexo, $nascimento, $logradouro, $numeroLogradouro, $complemento, $bairro, $cidade, $CEP, $UF) {
+			parent::__construct($nome, $foto);
+
+			$this->email = $email;
+			$this->idCPF = $idCPF;
+			$this->sexo = $sexo;
+			$this->nascimento = $nascimento;
+			$this->logradouro = $logradouro;
+			$this->numeroLogradouro = $numeroLogradouro;
+			$this->complemento = $complemento;
+			$this->bairro = $bairro;
+			$this->cidade = $cidade;
+			$this->CEP = $CEP;
+			$this->UF = $UF;
 		}
 
-   }
-
-   class Professor extends Usuario{
-				
-		public function __construct($nome, $email, $foto) {
-			parent::__construct($nome, $email, $foto);
+		function setEmail($email) {
+			$this->email = $email;
 		}
 
-   }
-
-   class Bibliotecario extends Usuario{
-				
-		public function __construct($nome, $email, $foto) {
-			parent::__construct($nome, $email, $foto);
+		function getEmail() {
+			return $email;
 		}
 
-   }
-
-   class Coordenador extends Usuario{
-				
-		public function __construct($nome, $email, $foto) {
-			parent::__construct($nome, $email, $foto);
+		function setIdCPF($idCPF) {
+			$this->idCPF = $idCPF;
 		}
 
+		function getIdCPF() {
+			return $idCPF;
+		}
+
+		function setSexo($sexo) {
+			$this->sexo = $sexo;
+		}
+
+		function getSexo() {
+			return $sexo;
+		} 
+
+		function setNascimento($nascimento) {
+			$this->nascimento = $nascimento;
+		}
+
+		function getNascimento() {
+			return $nascimento;
+		} 
+
+		function setLogradouro($logradouro) {
+			$this->logradouro = $logradouro;
+		}
+
+		function getLogradouro() {
+			return $logradouro;
+		}
+
+		function setNumeroLogradouro($numeroLogradouro) {
+			$this->numeroLogradouro = $numeroLogradouro;
+		}
+
+		function getNumeroLogradouro() {
+			return $numeroLogradouro;
+		}
+
+		function setComplemento($complemento) {
+			$this->complemento = $complemento;
+		}
+
+		function getComplemento() {
+			return $complemento;
+		}
+
+		function setBairro($bairro) {
+			$this->bairro = $bairro;
+		}
+
+		function getBairro() {
+			return $bairro;
+		}
+
+		function setCidade($cidade) {
+			$this->cidade = $cidade;
+		}
+
+		function getCidade() {
+			return $cidade;
+		}
+
+		function setCEP($CEP) {
+			$this->CEP = $CEP;
+		}
+
+		function getCEP() {
+			return $CEP;
+		}
+
+		function setUF($UF) {
+			$this->UF = $UF;
+		}
+
+		function getUF() {
+			return $UF;
+		}
    }
+
+
   
    class Login{
 		
@@ -103,14 +250,23 @@
 				header('location:gerencia-web-login.html');
 			} else {
 				$usuario = new Aluno($dados["nome"],
+					$dados["foto"],
 					$dados["email"],
-					$dados["foto"]
+					$dados["idCPF"],
+					$dados["sexo"],
+					$dados["nascimento"],
+					$dados["logradouro"],
+					$dados["numeroLogradouro"],
+					$dados["complemento"],
+					$dados["bairro"],
+					$dados["cidade"],
+					$dados["CEP"],
+					$dados["UF"]
 				);	
 			}
 
 			return $usuario;
 		}
-
 
 		public static function logarProfessor($login, $senha){
 
@@ -138,9 +294,12 @@
 			if($dados == null){
 				header('location:gerencia-web-login.html');
 			} else {
-				$usuario = new Professor($dados["nome"],
-					$dados["email"],
-					$dados["foto"]
+				$usuario = new funcionario($dados["nome"],
+					$dados["foto"],
+					$dados["idSIAPE"],
+					$dados["idDepto"],
+					$dados["titulacao"],
+					$dados["hierarquia"]
 				);		
 			}
 
@@ -173,9 +332,12 @@
 			if($dados == null){
 				header('location:gerencia-web-login.html');
 			} else {
-				$usuario = new Bibliotecario($dados["nome"],
-					$dados["email"],
-					$dados["foto"]
+				$usuario = new funcionario($dados["nome"],
+					$dados["foto"],
+					$dados["idSIAPE"],
+					$dados["idDepto"],
+					$dados["titulacao"],
+					$dados["hierarquia"]
 				);		
 			}
 
@@ -208,9 +370,12 @@
 			if($dados == null){
 				header('location:gerencia-web-login.html');
 			} else {
-				$usuario = new Coordenador($dados["nome"],
-					$dados["email"],
-					$dados["foto"]
+				$usuario = new funcionario($dados["nome"],
+					$dados["foto"],
+					$dados["idSIAPE"],
+					$dados["idDepto"],
+					$dados["titulacao"],
+					$dados["hierarquia"]
 				);		
 			}
 

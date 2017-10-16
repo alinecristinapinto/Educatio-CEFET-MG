@@ -51,6 +51,7 @@ public class mainApp extends Application {
 
     public void mostraLogin() {
         try {
+            usuarioAtual = null;
             FXMLLoader carregadorFXML = new FXMLLoader();
             carregadorFXML.setLocation(mainApp.class.getResource("view/Login/GerentesTelaBaseLogin.fxml"));
             telaBase = (BorderPane) carregadorFXML.load();
@@ -85,9 +86,10 @@ public class mainApp extends Application {
                 FXMLLoader auxiliar = new FXMLLoader();
                 auxiliar.setLocation(mainApp.class.getResource("view/Alunos/GerentesTelaInicialAlunos.fxml"));
                 telaInicial = (AnchorPane) auxiliar.load();
+                
 
                 telaBase.setTop(telaInicial);
-                Scene cena = new Scene(telaBase);
+                Scene cena = new Scene(telaBase,1280,720);
                 palcoPrincipal.setScene(cena);
                 palcoPrincipal.show();
 
@@ -105,7 +107,7 @@ public class mainApp extends Application {
                 telaInicial = (AnchorPane) auxiliar.load();
 
                 telaBase.setTop(telaInicial);
-                Scene cena = new Scene(telaBase);
+                Scene cena = new Scene(telaBase,1280,720);
                 palcoPrincipal.setScene(cena);
                 palcoPrincipal.show();
 
@@ -115,7 +117,7 @@ public class mainApp extends Application {
 
                 carregadorFXML.setLocation(mainApp.class.getResource("view/TelaInicialCoordenadorGeral.fxml"));
                 telaInicial = (AnchorPane) carregadorFXML.load();
-                Scene cena = new Scene(telaInicial);
+                Scene cena = new Scene(telaBase,1280,720);
                 palcoPrincipal.setScene(cena);
                 palcoPrincipal.show();
                 GerentesTelaDeLoginController controller = carregadorFXML.getController();
@@ -147,7 +149,7 @@ public class mainApp extends Application {
             } else if (usuarioAtual instanceof Professor) {
                 carregadorFXML.setLocation(mainApp.class.getResource("view/TelaInicialProfessores.fxml"));
                 telaInicial = (AnchorPane) carregadorFXML.load();
-                Scene cena = new Scene(telaInicial);
+               Scene cena = new Scene(telaBase,1280,720);
                 palcoPrincipal.setScene(cena);
                 palcoPrincipal.show();
                 GerentesTelaInicialProfessoresController controller = carregadorFXML.getController();
@@ -156,7 +158,7 @@ public class mainApp extends Application {
 
                 carregadorFXML.setLocation(mainApp.class.getResource("view/TelaInicialCoordenadorGeral.fxml"));
                 telaInicial = (AnchorPane) carregadorFXML.load();
-                Scene cena = new Scene(telaInicial);
+                Scene cena = new Scene(telaBase,1280,720);
                 palcoPrincipal.setScene(cena);
                 palcoPrincipal.show();
                 GerentesTelaDeLoginController controller = carregadorFXML.getController();
@@ -174,7 +176,7 @@ public class mainApp extends Application {
             carregadorFXML.setLocation(mainApp.class.getResource("view/Login/GerentesTelaDeSelecao.fxml"));
             loginLayout = (AnchorPane) carregadorFXML.load();
 
-            Scene cena = new Scene(loginLayout);
+            Scene cena = new Scene(loginLayout,1280,720);
             palcoPrincipal.setScene(cena);
             palcoPrincipal.show();
 
@@ -190,7 +192,7 @@ public class mainApp extends Application {
     public void mostraPagCadastro() {
         try {
             FXMLLoader carregadorFXML = new FXMLLoader();
-            carregadorFXML.setLocation(mainApp.class.getResource("view/GerentesTelaBase.fxml"));
+            carregadorFXML.setLocation(mainApp.class.getResource("view/Login/GerentesTelaBaseLogin.fxml"));
             telaBase = (BorderPane) carregadorFXML.load();
 
             FXMLLoader auxiliar = new FXMLLoader();
@@ -198,7 +200,7 @@ public class mainApp extends Application {
             telaInicial = (AnchorPane) auxiliar.load();
 
             telaBase.setCenter(telaInicial);
-            Scene cena = new Scene(telaBase);
+            Scene cena = new Scene(telaBase,1280,720);
             palcoPrincipal.setScene(cena);
             palcoPrincipal.show();
 

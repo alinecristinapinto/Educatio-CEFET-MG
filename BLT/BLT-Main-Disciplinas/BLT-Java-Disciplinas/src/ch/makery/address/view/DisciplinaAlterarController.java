@@ -15,14 +15,10 @@ import ch.makery.address.model.Disciplina;
  *
  * @author Gabriel Torres
  */
-public class DisciplinaEditDialogController {
+public class DisciplinaAlterarController {
 
     @FXML
-    private TextField idTurmaField;
-    @FXML
     private TextField nomeField;
-    @FXML
-    private TextField cargaHorariaMinField;
 
     private Stage dialogStage;
     private Disciplina disciplina;
@@ -53,9 +49,8 @@ public class DisciplinaEditDialogController {
     public void setDisciplina(Disciplina disciplina) {
         this.disciplina = disciplina;
 
-        idTurmaField.setText(Integer.toString(disciplina.getIdTurma()));
+
         nomeField.setText(disciplina.getNome());
-        cargaHorariaMinField.setText(Integer.toString(disciplina.getCargaHorariaMin()));
 
     }
 
@@ -75,8 +70,6 @@ public class DisciplinaEditDialogController {
     private void handleOk() {
         if (isInputValid()) {
 
-            disciplina.setIdTurma(Integer.parseInt(idTurmaField.getText()));
-            disciplina.setCargaHorariaMin(Integer.parseInt(cargaHorariaMinField.getText()));
             disciplina.setNome(nomeField.getText());
 
 
@@ -102,33 +95,9 @@ public class DisciplinaEditDialogController {
         String errorMessage = "";
 
 
-        if (idTurmaField.getText() == null || idTurmaField.getText().length() == 0 || Integer.parseInt(idTurmaField.getText())==0) {
-            errorMessage += "Id da turma inv�lido!\n";
-        } else {
-            // tenta converter o c�digo postal em um int.
-            try {
-                Integer.parseInt(idTurmaField.getText());
-            } catch (NumberFormatException e) {
-                errorMessage += "Id da turma inválido (deve ser um inteiro)!\n";
-            }
-        }
-
         if (nomeField.getText() == null || nomeField.getText().length() == 0) {
             errorMessage += "Nome inv�lido!\n";
         }
-
-
-        if (cargaHorariaMinField.getText() == null || cargaHorariaMinField.getText().length() == 0 ||  Integer.parseInt(cargaHorariaMinField.getText())==0) {
-            errorMessage += "Carga Horaria M�nima inv�lida!\n";
-        } else {
-            // tenta converter o c�digo postal em um int.
-            try {
-                Integer.parseInt(cargaHorariaMinField.getText());
-            } catch (NumberFormatException e) {
-                errorMessage += "Carga Horaria M�nima inv�lida (deve ser um inteiro)!\n";
-            }
-        }
-
 
 
 

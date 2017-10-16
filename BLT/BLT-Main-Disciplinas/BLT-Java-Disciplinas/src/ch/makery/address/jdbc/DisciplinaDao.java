@@ -7,7 +7,7 @@ import java.sql.SQLException;
 import ch.makery.address.model.Disciplina;
 
 public class DisciplinaDao {
-	 // a conexão com o banco de dados
+	 // a conexï¿½o com o banco de dados
 	  private Connection connection;
 
 	  public DisciplinaDao() {
@@ -20,7 +20,7 @@ public class DisciplinaDao {
                     " values (?,?,?,?)";
 
 		    try {
-		        // prepared statement para inserção
+		        // prepared statement para inserï¿½ï¿½o
 		        PreparedStatement stmt = connection.prepareStatement(sql);
 
 		        // seta os valores
@@ -28,7 +28,7 @@ public class DisciplinaDao {
 		        stmt.setInt(1,disciplina.getIdTurma());
 		        stmt.setString(2,disciplina.getNome());
 		        stmt.setInt(3,disciplina.getCargaHorariaMin());
-		        stmt.setString(4, "s");
+		        stmt.setString(4, "S");
 
 		        // executa
 		        stmt.execute();

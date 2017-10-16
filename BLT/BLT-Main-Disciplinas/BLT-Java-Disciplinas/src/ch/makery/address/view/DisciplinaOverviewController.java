@@ -12,26 +12,24 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 import ch.makery.address.MainApp;
-import ch.makery.address.jdbc.ConnectionFactory;
 import ch.makery.address.jdbc.DisciplinaDao;
 import ch.makery.address.model.Disciplina;
-import java.sql.Connection;
 import java.sql.Connection;
 
 public class DisciplinaOverviewController {
 
-	 // Reference to the main application.
+    // Reference to the main application.
     private MainApp mainApp;
     DisciplinaDao bd = new DisciplinaDao();
     /**
      * O construtor.
-     * O construtor é chamado antes do método inicialize().
+     * O construtor ï¿½ chamado antes do mï¿½todo inicialize().
      */
     public DisciplinaOverviewController() {
     }
 
     /**
-     * Chamado quando o usuário clica no botão novo. Abre uma janela para editar
+     * Chamado quando o usuï¿½rio clica no botï¿½o novo. Abre uma janela para editar
      * detalhes da nova pessoa.
      * @throws SQLException
      */
@@ -46,11 +44,11 @@ public class DisciplinaOverviewController {
     }
 
     /**
-     * Chamado quando o usuário clica no botão edit. Abre a janela para editar
+     * Chamado quando o usuï¿½rio clica no botï¿½o edit. Abre a janela para editar
      * detalhes da pessoa selecionada.
      */
-    @FXML
-  /**  private void handleEditDisciplina() {
+    /**@FXML
+    private void handleEditDisciplina() {
         Disciplina selectedDisciplina = disciplinaTabela.getSelectionModel().getSelectedItem();
         if (selectedDisciplina != null) {
             boolean okClicked = mainApp.showDisciplinaEditDialog(selectedDisciplina);
@@ -59,7 +57,7 @@ public class DisciplinaOverviewController {
         } else {
             // Nada seleciondo.
             Alert alert = new Alert(AlertType.WARNING);
-                alert.setTitle("Nenhuma seleção");
+                alert.setTitle("Nenhuma seleï¿½ï¿½o");
                 alert.setHeaderText("Nenhuma Disciplina Selecionada");
                 alert.setContentText("Por favor, selecione uma disciplina na tabela.");
                 alert.showAndWait();
@@ -75,7 +73,7 @@ public class DisciplinaOverviewController {
  //            Nada selecionado.
 
         Alert alert = new Alert(AlertType.WARNING);
-                alert.setTitle("Nenhuma seleção");
+                alert.setTitle("Nenhuma seleï¿½ï¿½o");
                 alert.setHeaderText("Nenhuma Disciplina Selecionada");
                 alert.setContentText("Por favor, selecione uma disciplina na tabela.");
 
@@ -92,7 +90,7 @@ public class DisciplinaOverviewController {
 
 
     /**
-     * É chamado pela aplicação principal para dar uma referência de volta a si mesmo.
+     * ï¿½ chamado pela aplicaï¿½ï¿½o principal para dar uma referï¿½ncia de volta a si mesmo.
      *
      * @param mainApp
      */

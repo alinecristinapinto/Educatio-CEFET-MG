@@ -95,8 +95,10 @@ CREATE TABLE IF NOT EXISTS `disciplinas` (
   );
 
 CREATE TABLE IF NOT EXISTS `profDisciplinas` (
-  idProfessor int(9) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  id int(5) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  idProfessor int(9) NOT NULL,
   idDisciplina int(5) NOT NULL,
+  idTurma int(5) NOT NULL,
   ativo varchar(1) NOT NULL
   );
 
@@ -108,7 +110,7 @@ CREATE TABLE IF NOT EXISTS `etapas` (
 
 CREATE TABLE IF NOT EXISTS `atividades` (
   id int(5) NOT NULL PRIMARY KEY AUTO_INCREMENT,
-  idDisciplina int(5) NOT NULL,
+  idProfDisciplina int(5) NOT NULL,
   nome varchar(30) NOT NULL,
   data varchar(10) NOT NULL,
   valor decimal(5,2) NOT NULL,
@@ -118,7 +120,7 @@ CREATE TABLE IF NOT EXISTS `atividades` (
 CREATE TABLE IF NOT EXISTS `conteudos` (
   id int(5) NOT NULL PRIMARY KEY AUTO_INCREMENT,
   idEtapa int(5) NOT NULL,
-  idDisciplina int(5) NOT NULL,
+  idProfDisciplina int(5) NOT NULL,
   conteudo varchar(30) NOT NULL,
   datas varchar(10) NOT NULL,
   ativo varchar(1) NOT NULL

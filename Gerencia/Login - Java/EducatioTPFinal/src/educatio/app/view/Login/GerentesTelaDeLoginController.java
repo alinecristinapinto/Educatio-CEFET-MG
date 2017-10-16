@@ -146,7 +146,7 @@ public class GerentesTelaDeLoginController {
 		BigInteger hash = new BigInteger(1, md.digest(senha.getBytes()));
 		sen = hash.toString(16);			
 		return sen;
-	}
+    }
    
 }
 

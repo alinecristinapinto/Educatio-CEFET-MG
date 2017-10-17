@@ -1,12 +1,11 @@
 <html>
     <head>
-        <title>Remover Campus</title>
+        <title>Alterar Campus</title>
         <meta charset="utf-8">
         <link href="css/bootstrap.css" rel="stylesheet">
         <link href="css/JHJ-web-estilos.css" rel="stylesheet">
         <script src="js/jquery.min.js"></script>
         <script src="js/bootstrap.min.js"></script> 
-        <script type="text/javascript" src="js/JHJ-web-script.js"></script>
     </head>
     <body>
         <!-- menu coordenador (codigo da gerencia)-->
@@ -103,14 +102,8 @@
         </nav>        
         <!-- fim do menu coordenador (codigo da gerencia)-->
 
-        <h1>Exclusão de Campus</h1>
+        <h1>Alteração de Campus</h1>
         <?php
-            $select = $_POST["selectParaExcluirCampus"];
-            foreach($select as $_valor){
-                //pega id do campus que sera excluido
-                $intIdCampus = $_valor;
-            }
-
             // Conectando com o servidor MySQL
             $link = mysqli_connect("localhost", "root", "");
             if (!$link){
@@ -118,43 +111,23 @@
             } else {
             //     echo "Conexao efetuada com sucesso!<br/>";
             }
-            // Selecionado BD
+            //Selecionado BD
             $sql = mysqli_select_db($link, 'Educatio');
-
-            //Seleciona os dados do campus com id recebido pelo select
-            $query = mysqli_query($link, " SELECT nome, cidade, UF, ativo FROM campi WHERE id = $intIdCampus ");
-            while($campus = mysqli_fetch_array($query)) { 
-                $strNomeCampus = $campus['nome'];
-                $strCidadeCampus = $campus['cidade'];
-                $strUFCampus = $campus['UF'];
-                $strAtivoCampus = $campus['ativo']; 
-            }
-            
-            //Tornando campus inativo ("excluindo")
-            $sql = "UPDATE campi SET ativo = 'N' WHERE id = $intIdCampus";
-            if (mysqli_query($link, $sql)) {
-            //     echo "sucesso";
-            }else{
-            //     echo "erro";
-            }
+            //Seleciona os dados dos campus ativos
+            $query = mysqli_query($link, " SELECT id, nome, cidade, UF FROM campi WHERE ativo='S' ");
         ?>
-        <!-- exibindo informações do campus que foi removido dentro de um painel -->
-        <div class="container">    
-            <div style="margin-top:50px;" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">                    
-                <div class="panel panel-info" >
-                    <div class="panel-heading">
-                        <div class="panel-title">Campus removido com sucesso!</div>
-                    </div>  
-                    <div style="padding-top:20px" class="panel-body">     
-                            <p><strong>As informações do campus excluído são:</strong><p> 
-                            <p><strong>Nome:</strong> <?php echo " ".$strNomeCampus ?><p>
-                            <p><strong>Cidade:</strong> <?php echo " ".$strCidadeCampus ?><p>
-                            <p><strong>UF:</strong><?php echo " ".$strUFCampus ?><p>
-                            <input type="button" class="btn btn-primary" value="Voltar" onClick="voltarParaPaginaExclusaoCampus()"/>
-                    </div>                     
-                </div>  
+        <form action="JHJ-web-alterar-campus-2-selecao-alteracoes.php" method="POST">
+            <div class="alinhamento">
+                <select required="required" class="custom-select" name="selectParaAlterarCampus[]">
+                    <option value="">Selecione o campus que você deseja alterar&nbsp;</option>
+                    <!-- Usando os dados do BD para fazer o select com os campus ativos -->
+                    <?php while($campus = mysqli_fetch_array($query)) { ?>
+                    <option name="selectParaAlterarCampus[]" value="<?php echo $campus['id'] ?>">
+                    <?php echo $campus['nome']." - ".$campus['cidade']."-".$campus['UF'] ?></option><?php } ?>
+                </select><span class="required"> *</span><br><br>
+                <button type="submit" class="btn btn-primary">Alterar campus</button>
             </div>
-        </div>
+        </form>
 
         <!-- rodape -->
         <div class="containeer">

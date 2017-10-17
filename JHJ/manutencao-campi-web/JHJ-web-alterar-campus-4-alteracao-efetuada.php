@@ -1,4 +1,55 @@
-<!DOCTYPE html>
+<?php
+            session_start();
+            $intIdCampus = $_SESSION['intIdCampus'];
+        
+
+            if (!isset($_POST['nomeCampus'])){
+                $strNomeCampus = $_SESSION['strNomeCampus'];
+            } else {
+                $strNomeCampus = $_POST['nomeCampus'];
+            } 
+            if (!isset($_POST['cidadeCampus'])){
+                $strCidadeCampus = $_SESSION['strCidadeCampus'];
+            } else {
+                 $strCidadeCampus = $_POST['cidadeCampus'];
+            }
+            if (!isset($_POST['ufCampus'])){
+                $strUFCampus = $_SESSION['strUFCampus'];
+            } else {
+                $strUFCampus = $_POST['ufCampus'];
+            }
+
+            // Conectando com o servidor MySQL
+            $link = mysqli_connect("localhost", "root", "");
+            if (!$link){
+            //     die("Conexao falhou: ".mysqli_connect_error()."<br/>");
+            } else {
+            //     echo "Conexao efetuada com sucesso!<br/>";
+            }
+            // Selecionado BD
+            $sql = mysqli_select_db($link, 'Educatio');
+
+            $sql = "UPDATE campi SET nome = '$strNomeCampus' WHERE id = $intIdCampus";
+            if (mysqli_query($link, $sql)) {
+            //     echo "sucesso";
+            }else{
+            //     echo "erro";
+            }
+
+            $sql = "UPDATE campi SET cidade = '$strCidadeCampus' WHERE id = $intIdCampus";
+            if (mysqli_query($link, $sql)) {
+            //     echo "sucesso";
+            }else{
+            //     echo "erro";
+            }
+
+            $sql = "UPDATE campi SET UF = '$strUFCampus' WHERE id = $intIdCampus";
+            if (mysqli_query($link, $sql)) {
+            //     echo "sucesso";
+            }else{
+            //     echo "erro";
+            }
+        ?>
 <html>
     <head>
         <title>Alterar Campus</title>
@@ -7,6 +58,7 @@
         <link href="css/JHJ-web-estilos.css" rel="stylesheet">
         <script src="js/jquery.min.js"></script>
         <script src="js/bootstrap.min.js"></script> 
+        <script type="text/javascript" src="js/JHJ-web-script-alterar-campus.js"></script>
     </head>
     <body>
         <!-- menu coordenador (codigo da gerencia)-->
@@ -104,29 +156,22 @@
         <!-- fim do menu coordenador (codigo da gerencia)-->
 
         <h1>Alteração de Campus</h1>
-
-        <div class="alinhamento">
-            <select class="custom-select">
-                <option selected>Selecione o campus que você deseja alterar&nbsp;</option>
-                <option value="campus-1">Campus 1</option>
-                <option value="campus-2">Campus 2</option>
-                <option value="campus-3">Campus 3</option>
-                <option value="campus-4">...</option>
-            </select><br><br>
-            <h4>Informações do campus</h4><br>
-              <div class="form-group">
-                    <label for="usr">ALTERAR NOME</label>
-                    <input type="text" class="input-xlarge"> <!-- value="Campus I" -->
-              </div>
-              <div class="form-group">
-                    <labelfor="pwd">ALTERAR CIDADE</label>
-                    <input type="text" class="input-xlarge"> <!-- value="Belo Horizonte" -->
-              </div>
-              <div class="form-group">
-                    <labelfor="pwd">ALTERAR UF</label>
-                    <input type="text" class="input-xlarge"> <!-- value="MG" -->
-              </div>
-              <button type="button" class="btn btn-primary">Enviar alterações</button>
+        <!-- exibindo novas informações do campus dentro de um painel -->
+        <div class="container">    
+            <div style="margin-top:50px;" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">                    
+                <div class="panel panel-info" >
+                    <div class="panel-heading">
+                        <div class="panel-title">Campus alterado com sucesso!</div>
+                    </div>  
+                    <div style="padding-top:20px" class="panel-body">     
+                            <p><strong>As novas informações do campus são:</strong><p> 
+                            <p><strong>Nome:</strong><?php echo " ".$strNomeCampus ?><p>
+                            <p><strong>Cidade:</strong><?php echo " ".$strCidadeCampus ?><p>
+                            <p><strong>UF:</strong><?php echo " ".$strUFCampus ?><p>
+                            <input type="button" class="btn btn-primary" value="Voltar" onClick="voltarParaPaginaAlteracaoCampus()"/>
+                    </div>                     
+                </div>  
+            </div>
         </div>
 
         <!-- rodape -->

@@ -1,5 +1,9 @@
 function voltarParaPaginaInsersaoCampus(){
-    location.href = "JHJ-web-adicionar-campus.html"
+    location.href = "JHJ-web-adicionar-campus.html";
+}
+
+function voltarParaPaginaExclusaoCampus(){
+    location.href = "JHJ-web-remover-campus.php";
 }
 
 $(document).ready( function(){
@@ -14,6 +18,4 @@ $(document).ready( function(){
     });
 });
 
-function voltarParaPaginaExclusaoCampus(){
-	location.href = "JHJ-web-remover-campus.php"
-}
+

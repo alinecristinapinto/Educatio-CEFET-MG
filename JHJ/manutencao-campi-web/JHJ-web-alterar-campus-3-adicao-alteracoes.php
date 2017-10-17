@@ -1,12 +1,11 @@
 <html>
     <head>
-        <title>Remover Campus</title>
+        <title>Alterar Campus</title>
         <meta charset="utf-8">
         <link href="css/bootstrap.css" rel="stylesheet">
         <link href="css/JHJ-web-estilos.css" rel="stylesheet">
         <script src="js/jquery.min.js"></script>
         <script src="js/bootstrap.min.js"></script> 
-        <script type="text/javascript" src="js/JHJ-web-script.js"></script>
     </head>
     <body>
         <!-- menu coordenador (codigo da gerencia)-->
@@ -103,59 +102,69 @@
         </nav>        
         <!-- fim do menu coordenador (codigo da gerencia)-->
 
-        <h1>Exclusão de Campus</h1>
-        <?php
-            $select = $_POST["selectParaExcluirCampus"];
-            foreach($select as $_valor){
-                //pega id do campus que sera excluido
-                $intIdCampus = $_valor;
-            }
-
-            // Conectando com o servidor MySQL
-            $link = mysqli_connect("localhost", "root", "");
-            if (!$link){
-            //     die("Conexao falhou: ".mysqli_connect_error()."<br/>");
-            } else {
-            //     echo "Conexao efetuada com sucesso!<br/>";
-            }
-            // Selecionado BD
-            $sql = mysqli_select_db($link, 'Educatio');
-
-            //Seleciona os dados do campus com id recebido pelo select
-            $query = mysqli_query($link, " SELECT nome, cidade, UF, ativo FROM campi WHERE id = $intIdCampus ");
-            while($campus = mysqli_fetch_array($query)) { 
-                $strNomeCampus = $campus['nome'];
-                $strCidadeCampus = $campus['cidade'];
-                $strUFCampus = $campus['UF'];
-                $strAtivoCampus = $campus['ativo']; 
-            }
-            
-            //Tornando campus inativo ("excluindo")
-            $sql = "UPDATE campi SET ativo = 'N' WHERE id = $intIdCampus";
-            if (mysqli_query($link, $sql)) {
-            //     echo "sucesso";
-            }else{
-            //     echo "erro";
-            }
-        ?>
-        <!-- exibindo informações do campus que foi removido dentro de um painel -->
-        <div class="container">    
-            <div style="margin-top:50px;" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">                    
-                <div class="panel panel-info" >
-                    <div class="panel-heading">
-                        <div class="panel-title">Campus removido com sucesso!</div>
-                    </div>  
-                    <div style="padding-top:20px" class="panel-body">     
-                            <p><strong>As informações do campus excluído são:</strong><p> 
-                            <p><strong>Nome:</strong> <?php echo " ".$strNomeCampus ?><p>
-                            <p><strong>Cidade:</strong> <?php echo " ".$strCidadeCampus ?><p>
-                            <p><strong>UF:</strong><?php echo " ".$strUFCampus ?><p>
-                            <input type="button" class="btn btn-primary" value="Voltar" onClick="voltarParaPaginaExclusaoCampus()"/>
-                    </div>                     
-                </div>  
-            </div>
+        <h1>Alteração de Campus</h1>
+        <div class="alinhamento">
+            <h4>Informações do campus</h4>
         </div>
+        <?php
+			$caixaSelecao = $_POST["checkboxParaAlterarCampus"];
+			$intI = 0;
+			foreach($caixaSelecao as $_valor){
+		    	if($caixaSelecao[$intI] == 'Nome'){
+					$strVet[0] = $caixaSelecao[$intI];		    		
+		    	} else if ($caixaSelecao[$intI] == 'Cidade'){
+					$strVet[1] = $caixaSelecao[$intI];		    		
+		    	} else if ($caixaSelecao[$intI] == 'UF'){
+					$strVet[2] = $caixaSelecao[$intI];		    		
+		    	}  
+		    	$intI++;
+			}
 
+			if (!isset($strVet[0])){
+				$strVet[0] = '';
+			} 
+			if (!isset($strVet[1])){
+				$strVet[1] = '';
+			} 
+			if (!isset($strVet[2])){
+				$strVet[2] = '';
+			} 
+			
+			echo "<form action='JHJ-web-alterar-campus-4-alteracao-efetuada.php' method='POST'>";
+			if($strVet[0] == 'Nome'){
+				echo "
+				<div class='alinhamento'>
+					<div class='form-group'>
+	          			<labelfor='pwd'>ALTERAR NOME</label>
+	          			<input type='text' class='input-xlarge' name='nomeCampus' required='required'/><span class='required'> *</span>
+	    		    </div>
+    		    </div>";
+			} 
+			if($strVet[1] == 'Cidade'){
+				echo "
+				<div class='alinhamento'>
+					<div class='form-group'>
+	          			<labelfor='pwd'>ALTERAR CIDADE</label>
+	          			<input type='text' class='input-xlarge' name='cidadeCampus' required='required'/><span class='required'> *</span>
+	    		    </div>
+    		    </div>";
+			} 
+			if($strVet[2] == 'UF'){
+				echo "
+				<div class='alinhamento'>
+					<div class='form-group'>
+	          			<labelfor='pwd'>ALTERAR UF</label>
+	          			<input type='text' class='input-xlarge' name='ufCampus' required='required'/><span class='required'> *</span>
+	    		    </div>
+    		    </div>";
+			} 
+			echo "
+			<div class='alinhamento'>
+				<input type='submit' class='btn btn-primary' value='Alterar!'/>
+			</div>
+			</form>";
+		?>
+                
         <!-- rodape -->
         <div class="containeer">
             <div class="row">

@@ -105,7 +105,6 @@
 
         <h1>Exclusão de Campus</h1>
         <?php
-
             $select = $_POST["selectParaExcluirCampus"];
             foreach($select as $_valor){
                 //pega id do campus que sera excluido
@@ -130,18 +129,16 @@
                 $strUFCampus = $campus['UF'];
                 $strAtivoCampus = $campus['ativo']; 
             }
-
+            
             //Tornando campus inativo ("excluindo")
             $sql = "UPDATE campi SET ativo = 'N' WHERE id = $intIdCampus";
             if (mysqli_query($link, $sql)) {
-            //     echo "Campus adicionado com sucesso!";
+            //     echo "sucesso";
             }else{
-            //     echo "Erro ao adicionar campus: ".$sql."<br/>".$link->error."<br/>";
+            //     echo "erro";
             }
-
         ?>
-
-        <!-- exibindo informações do novo campus adicionado dentro de um painel -->
+        <!-- exibindo informações do campus que foi removido dentro de um painel -->
         <div class="container">    
             <div style="margin-top:50px;" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">                    
                 <div class="panel panel-info" >
@@ -150,8 +147,8 @@
                     </div>  
                     <div style="padding-top:20px" class="panel-body">     
                             <p><strong>As informações do campus excluído são:</strong><p> 
-                            <p><strong>Nome:</strong><?php echo " ".$strNomeCampus ?><p>
-                            <p><strong>Cidade:</strong><?php echo " ".$strCidadeCampus ?><p>
+                            <p><strong>Nome:</strong> <?php echo " ".$strNomeCampus ?><p>
+                            <p><strong>Cidade:</strong> <?php echo " ".$strCidadeCampus ?><p>
                             <p><strong>UF:</strong><?php echo " ".$strUFCampus ?><p>
                             <input type="button" class="btn btn-primary" value="Voltar" onClick="voltarParaPaginaExclusaoCampus()"/>
                     </div>                     

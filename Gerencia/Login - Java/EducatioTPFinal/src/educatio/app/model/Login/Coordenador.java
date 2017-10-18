@@ -14,5 +14,12 @@ public class Coordenador extends Usuario {
     public Coordenador(String nome, String id) {
         super(nome, id);
     }
+
+    @Override
+    public String toString() {
+        return super.toString();
+    }
+    
+    
     
 }

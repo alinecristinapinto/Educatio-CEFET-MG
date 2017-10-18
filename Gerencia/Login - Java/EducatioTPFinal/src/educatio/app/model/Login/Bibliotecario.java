@@ -15,4 +15,8 @@ public class Bibliotecario extends Usuario {
         super(nome, id);
     }
     
+    @Override
+    public String toString() {
+        return super.toString();
+    }
 }

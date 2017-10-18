@@ -1,15 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" stylesheets="@../Alunos/GerentesTelaInicialAlunos.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="educatio.app.view.Alunos.GerentesTelaInicialAlunoController">
+<AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" stylesheets="@../Alunos/GerentesTelaInicialAlunos.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="educatio.app.view.Alunos.GerentesTelaInicialAlunoController">
    <children>
       <MenuBar layoutX="74.0" layoutY="2.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="41.0" prefWidth="538.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <menus>
+            <Menu mnemonicParsing="false" text="        ">
+              <items>
+                <MenuItem mnemonicParsing="false" text="Action 1" />
+              </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Início">
+              <items>
+                <MenuItem mnemonicParsing="false" text="Action 1" />
+              </items>
+            </Menu>
           <Menu mnemonicParsing="false" text="Diário">
             <items>
               <MenuItem mnemonicParsing="false" text="Close" />
@@ -32,7 +46,7 @@
             </Menu>
         </menus>
       </MenuBar>
-      <MenuBar layoutX="488.0" layoutY="2.0" prefHeight="41.0" prefWidth="135.0" styleClass="menu-background" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <MenuBar layoutX="488.0" layoutY="2.0" prefHeight="41.0" prefWidth="120.0" styleClass="menu-background" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <menus>
           <Menu fx:id="menuAluno" mnemonicParsing="false" text="Aluno">
             <items>
@@ -42,6 +56,11 @@
           </Menu>
         </menus>
       </MenuBar>
-      <ImageView fitHeight="23.0" fitWidth="115.0" layoutX="1006.0" layoutY="67.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fitHeight="32.0" fitWidth="120.0" layoutX="1012.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fitHeight="41.0" fitWidth="41.0" layoutX="6.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="10.0">
+         <image>
+            <Image url="@../../resources/Educatio.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

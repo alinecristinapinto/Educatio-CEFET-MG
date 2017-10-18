@@ -14,11 +14,12 @@
 
 .container 
 {
-  position: absolute;
+  position: relative;
 /*
   Quando a página houver conteúdo deixar relative
   position: relative;
 */
+margin-top: 100px;
   bottom: 0;
   width: 100%;
   background: 

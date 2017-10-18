@@ -70,6 +70,7 @@ public class Main {
         Livros testes = new Livros (ISBN,  edicao, idCampi,  nome,  tipo,  local,  ano,  editora,  paginas);
         //System.out.println("Dados do livro \n" + testes);
         InsereLivro(connection, testes);
+        // Remove(connection, 4);
     }
 
     public static void Insere (Connection connection, Obras obras){
@@ -84,7 +85,7 @@ public class Main {
         stmt = connection.createStatement();
         // rs = stmt.executeQuery(sql);
         stmt.execute(sql);
-        id++;
+        
         }catch(SQLException e){
             System.out.println("SQLException: " + e.getMessage());
             System.out.println("SQLState: " + e.getSQLState());
@@ -92,14 +93,20 @@ public class Main {
         }
     }
     
-    public static void InsereLivro (Connection connection, Livros livro){
-        Statement stmt = null;
-        // ResultSet rs = null;
-        String sql = "INSERT INTO livros(idAcervo, ISBN, edicao, ativo) VALUES(" + (id + 1) + ", " + livro.ISBN + 
-               ", " + livro.edicao + ", 'S')";
-        // String sql = "SELECT *  FROM acervo";
+    public static void InsereLivro (Connection connection, Livros livro) throws SQLException{
+        int id;
+        Statement stmt = connection.createStatement();
+        ResultSet rs = null;
+        String sql;
+        String findId = "SELECT *  FROM acervo";
         
         try{
+        rs = stmt.executeQuery(findId);
+        rs.last();
+        id = rs.getInt("id");
+        sql = "INSERT INTO livros(idAcervo, ISBN, edicao, ativo) VALUES(" + (id + 1) + ", " + livro.ISBN + 
+              ", " + livro.edicao + ", 'S')";
+        
         stmt = connection.createStatement();
         // rs = stmt.executeQuery(sql);
         stmt.execute(sql);
@@ -109,7 +116,7 @@ public class Main {
             System.out.println("SQLState: " + e.getSQLState());
             System.out.println("VendorError: " + e.getErrorCode());
         }
-        Obras obras = new Obras (livro.idCampi,  livro.nome,  livro.tipo,  livro.local,  livro.ano,  livro.editora,  livro.paginas);
+        Obras obras = new Obras (livro.idCampi,  livro.nome,  "livro",  livro.local,  livro.ano,  livro.editora,  livro.paginas);
         Insere(connection, obras);
     }
     
@@ -130,7 +137,7 @@ public class Main {
             System.out.println("SQLState: " + e.getSQLState());
             System.out.println("VendorError: " + e.getErrorCode());
         }
-        Obras obras = new Obras (midia.idCampi,  midia.nome,  midia.tipo,  midia.local,  midia.ano,  midia.editora,  midia.paginas);
+        Obras obras = new Obras (midia.idCampi,  midia.nome,  "midias",  midia.local,  midia.ano,  midia.editora,  midia.paginas);
         Insere(connection, obras);
     }
     
@@ -150,7 +157,7 @@ public class Main {
             System.out.println("SQLState: " + e.getSQLState());
             System.out.println("VendorError: " + e.getErrorCode());
         }
-        Obras obras = new Obras (academicos.idCampi,  academicos.nome,  academicos.tipo,  academicos.local,  academicos.ano,  academicos.editora,  academicos.paginas);
+        Obras obras = new Obras (academicos.idCampi,  academicos.nome,  "academicos",  academicos.local,  academicos.ano,  academicos.editora,  academicos.paginas);
         Insere(connection, obras);
     }
     
@@ -171,7 +178,7 @@ public class Main {
             System.out.println("SQLState: " + e.getSQLState());
             System.out.println("VendorError: " + e.getErrorCode());
         }
-        Obras obras = new Obras (periodicos.idCampi,  periodicos.nome,  periodicos.tipo,  periodicos.local,  periodicos.ano,  periodicos.editora,  periodicos.paginas);
+        Obras obras = new Obras (periodicos.idCampi,  periodicos.nome,  "periodicos",  periodicos.local,  periodicos.ano,  periodicos.editora,  periodicos.paginas);
         Insere(connection, obras);
     }
     
@@ -199,7 +206,7 @@ public class Main {
     public static void InsereAutores (Connection connection, Autores autores){
         Statement stmt = null;
         // ResultSet rs = null;
-        String sql = "INSERT INTO autores(nome,  sobrenome,  local,  ordem, qualificacao, ativo) VALUES(" + autores.nome + ", " + autores.sobrenome + 
+        String sql = "INSERT INTO autores(idAcervo, nome,  sobrenome,  local,  ordem, qualificacao, ativo) VALUES(" + id + ", " + autores.nome + ", " + autores.sobrenome + 
                ", " + autores.local + ", " + autores.ordem + ", " + autores.qualificacao + ", 'S')";
         // String sql = "SELECT *  FROM acervo";
         
@@ -213,5 +220,20 @@ public class Main {
             System.out.println("SQLState: " + e.getSQLState());
             System.out.println("VendorError: " + e.getErrorCode());
         }
+    }
+    
+    public static void Remove (Connection connection, int ident, String tabela){
+        String sql = "UPDATE " + tabela + " SET ativo='N' WHERE id=" + ident;
+        Statement stmt = null;
+        
+        try{
+        stmt = connection.createStatement();
+        stmt.execute(sql);
+        }catch(SQLException e){
+            System.out.println("SQLException: " + e.getMessage());
+            System.out.println("SQLState: " + e.getSQLState());
+            System.out.println("VendorError: " + e.getErrorCode());
+        }
+        
     }
 }

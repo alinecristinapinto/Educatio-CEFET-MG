@@ -29,7 +29,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>                
             </button>                
-            <a href="#" class="navbar-brand"><img class="slogan" src="imagens/slogan.png"></a>
+            <a href="#" class="navbar-brand"><img class="slogan" src="imagens/Educatio.png"></a>
         </div>
             
         <div id="menu" class="collapse navbar-collapse">

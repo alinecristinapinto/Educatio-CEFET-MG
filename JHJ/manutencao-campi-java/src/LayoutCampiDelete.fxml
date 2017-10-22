@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.BorderPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="LayoutCampiDeleteController">
+   <children>
+      <Pane layoutX="10.0" layoutY="10.0" prefHeight="400.0" prefWidth="600.0">
+         <children>
+            <Button layoutX="250.0" layoutY="157.0" mnemonicParsing="false" onAction="#handleDeleteCampi" prefHeight="60.0" prefWidth="100.0" text="Deletar" textFill="#1043eb">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Button>
+            <Button layoutX="493.0" layoutY="344.0" mnemonicParsing="false" onAction="#handleCancel" text="Cancelar" textFill="#2920dd" />
+            <ChoiceBox fx:id="caixaSelecao" layoutX="190.0" layoutY="83.0" prefHeight="19.0" prefWidth="220.0" />
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

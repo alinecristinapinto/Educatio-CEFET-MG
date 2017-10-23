@@ -1,55 +1,56 @@
 <?php
-            session_start();
-            $intIdCampus = $_SESSION['intIdCampus'];
-        
+    session_start();
+    $intIdCampus = $_SESSION['intIdCampus'];
 
-            if (!isset($_POST['nomeCampus'])){
-                $strNomeCampus = $_SESSION['strNomeCampus'];
-            } else {
-                $strNomeCampus = $_POST['nomeCampus'];
-            } 
-            if (!isset($_POST['cidadeCampus'])){
-                $strCidadeCampus = $_SESSION['strCidadeCampus'];
-            } else {
-                 $strCidadeCampus = $_POST['cidadeCampus'];
-            }
-            if (!isset($_POST['ufCampus'])){
-                $strUFCampus = $_SESSION['strUFCampus'];
-            } else {
-                $strUFCampus = $_POST['ufCampus'];
-            }
 
-            // Conectando com o servidor MySQL
-            $link = mysqli_connect("localhost", "root", "");
-            if (!$link){
-            //     die("Conexao falhou: ".mysqli_connect_error()."<br/>");
-            } else {
-            //     echo "Conexao efetuada com sucesso!<br/>";
-            }
-            // Selecionado BD
-            $sql = mysqli_select_db($link, 'Educatio');
+    if (!isset($_POST['nomeCampus'])){
+        $strNomeCampus = $_SESSION['strNomeCampus'];
+    } else {
+        $strNomeCampus = $_POST['nomeCampus'];
+    } 
+    if (!isset($_POST['cidadeCampus'])){
+        $strCidadeCampus = $_SESSION['strCidadeCampus'];
+    } else {
+         $strCidadeCampus = $_POST['cidadeCampus'];
+    }
+    if (!isset($_POST['ufCampus'])){
+        $strUFCampus = $_SESSION['strUFCampus'];
+    } else {
+        $strUFCampus = $_POST['ufCampus'];
+    }
 
-            $sql = "UPDATE campi SET nome = '$strNomeCampus' WHERE id = $intIdCampus";
-            if (mysqli_query($link, $sql)) {
-            //     echo "sucesso";
-            }else{
-            //     echo "erro";
-            }
+    // Conectando com o servidor MySQL
+    $link = mysqli_connect("localhost", "root", "");
+    if (!$link){
+    //     die("Conexao falhou: ".mysqli_connect_error()."<br/>");
+    } else {
+    //     echo "Conexao efetuada com sucesso!<br/>";
+    }
+    // Selecionado BD
+    $sql = mysqli_select_db($link, 'Educatio');
 
-            $sql = "UPDATE campi SET cidade = '$strCidadeCampus' WHERE id = $intIdCampus";
-            if (mysqli_query($link, $sql)) {
-            //     echo "sucesso";
-            }else{
-            //     echo "erro";
-            }
+    //Alterando informações
+    $sql = "UPDATE campi SET nome = '$strNomeCampus' WHERE id = $intIdCampus";
+    if (mysqli_query($link, $sql)) {
+    //     echo "sucesso";
+    }else{
+    //     echo "erro";
+    }
 
-            $sql = "UPDATE campi SET UF = '$strUFCampus' WHERE id = $intIdCampus";
-            if (mysqli_query($link, $sql)) {
-            //     echo "sucesso";
-            }else{
-            //     echo "erro";
-            }
-        ?>
+    $sql = "UPDATE campi SET cidade = '$strCidadeCampus' WHERE id = $intIdCampus";
+    if (mysqli_query($link, $sql)) {
+    //     echo "sucesso";
+    }else{
+    //     echo "erro";
+    }
+
+    $sql = "UPDATE campi SET UF = '$strUFCampus' WHERE id = $intIdCampus";
+    if (mysqli_query($link, $sql)) {
+    //     echo "sucesso";
+    }else{
+    //     echo "erro";
+    }
+?>
 <html>
     <head>
         <title>Alterar Campus</title>

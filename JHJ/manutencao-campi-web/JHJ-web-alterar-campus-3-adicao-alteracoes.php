@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
     <head>
         <title>Alterar Campus</title>
@@ -6,6 +7,7 @@
         <link href="css/JHJ-web-estilos.css" rel="stylesheet">
         <script src="js/jquery.min.js"></script>
         <script src="js/bootstrap.min.js"></script> 
+        <script type="text/javascript" src="js/JHJ-web-script-alterar-campus.js"></script>
     </head>
     <body>
         <!-- menu coordenador (codigo da gerencia)-->
@@ -161,6 +163,7 @@
 			echo "
 			<div class='alinhamento'>
 				<input type='submit' class='btn btn-primary' value='Alterar!'/>
+                <input type='button' class='btn btn-primary' value='Voltar para o início' onClick='voltarParaPaginaAlteracaoCampus()'/>
 			</div>
 			</form>";
 		?>

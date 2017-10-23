@@ -4,7 +4,9 @@ Todos os arquivos '.html' deverão ser feitos '.php'. Para isso, crie um arquivo
 
 ![exemplo html de .html para .php](image/exemplo-html-para-php.jpg)
 
+# Padrão Web Botões
 
-
+<input type="button" class="btn btn-primary" value="Botão"/>
+<button class="btn btn-primary">Botão</button>
 
 

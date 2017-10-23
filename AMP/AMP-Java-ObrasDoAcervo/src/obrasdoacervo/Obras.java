@@ -5,7 +5,7 @@
  */
 package obrasdoacervo;
 
-import java.util.Scanner;
+
 
 /**
  *
@@ -23,7 +23,7 @@ public class Obras {
     String ativo;
 
     
-    public Obras( int idCampi, String nome, String tipo, String local, String ano, String editora, String paginas) {
+    public Obras(int idCampi, String nome, String tipo, String local, String ano, String editora, String paginas) {
         this.idCampi = idCampi;
         this.nome = nome;
         this.tipo = tipo;

@@ -17,15 +17,16 @@ $IDacervo = $_POST['IDacervo'];
 $datacriacao = $_POST['datacriacao'];
 $datadevolucao = $_POST['datadevolucao'];
 $multa = $_POST['multa'];
-$ativo = "s";
+$ativo = "S";
 
-echo $datacriacao;
+str_replace("-", "", $datacriacao);
+str_replace("-", "", $datadevolucao);
 
 
 $sql = "INSERT INTO emprestimos (idAluno, idAcervo, dataEmprestimo, dataPrevisaoDevolucao, dataDevolucao, multa, ativo) VALUES ('$IDaluno', '$IDacervo', '$datacriacao', '$datadevolucao', '$datadevolucao', '$multa', '$ativo')";
 
 
-/*if ($conn->query($sql) === TRUE) {
+if ($conn->query($sql) === TRUE) {
 } else {
     echo "Error: " . $sql . "<br>" . $conn->error;
 }
@@ -33,5 +34,4 @@ $sql = "INSERT INTO emprestimos (idAluno, idAcervo, dataEmprestimo, dataPrevisao
 $conn->close();
 
 header('Location: http://localhost/Educatio-CEFET-MG/BLT/BLT-Main-Emprestimos/BLT-Web-Emprestimos.html')
-*/
 ?>

@@ -236,4 +236,19 @@ public class Main {
         }
         
     }
+    
+    public static void Altera (Connection connection, int ident, String tabela, String campo, String valor){
+        String sql = "UPDATE " + tabela + " SET " + campo +"=" + valor + " WHERE id=" + ident;
+        Statement stmt = null;
+        
+        try{
+        stmt = connection.createStatement();
+        stmt.execute(sql);
+        }catch(SQLException e){
+            System.out.println("SQLException: " + e.getMessage());
+            System.out.println("SQLState: " + e.getSQLState());
+            System.out.println("VendorError: " + e.getErrorCode());
+        }
+        
+    }
 }

@@ -81,17 +81,18 @@ public class Main {
         //Livros t1 = new Livros (ISBN,  edicao, idCampi, idAutor, nome,  "livros",  local,  ano,  editora,  paginas);
         //Livros t2 = new Livros (ISBN,  edicao, idCampi, idAutor, nome,  "livros",  local,  ano,  editora,  paginas);
         Partes testes = new Partes("Parte 1", 1, 20, "keywords", "Semanal", "Outubro", 2, "Edital", 1234, 1, "Parte 1", "periodicos", "Belo Horizonte", "2000", "Arqueiro", "20");
+        Autores corrigir = new Autores("Zeca", "Pagodinho", "Pagodeiro", "Mestre");
         //System.out.println("Dados do livro \n" + testes);
         System.out.println("\n\n");
-        InserePartes(connection, testes);
+        inserePartes(connection, testes);
         System.out.println("\n Insere 1 \n");
-        Remove(connection, 35, "periodicos");
+        remove(connection, 38, "periodicos");
         System.out.println("\n Remove 2 \n");
-        Altera(connection, 1, "acervo", "nome", "EMOCIONADO");
+        altera(connection, 1, "acervo", "nome", "EMOCIONADO");
         System.out.println("\n Altera 3 \n");
     }
 
-    public static void Insere (Connection connection, Obras obras){
+    public static void insere (Connection connection, Obras obras){
         Statement stmt = null;
         // ResultSet rs = null;
         String sql = "INSERT INTO acervo(idCampi, nome,  tipo,  local,  ano,  editora,  paginas, ativo) VALUES(" + obras.idCampi + ", '" + obras.nome + 
@@ -111,7 +112,7 @@ public class Main {
         }
     }
     
-    public static void InsereLivro (Connection connection, Livros livro) throws SQLException{
+    public static void insereLivro (Connection connection, Livros livro) throws SQLException{
         int id;
         Statement stmt = connection.createStatement();
         ResultSet rs = null;
@@ -132,10 +133,10 @@ public class Main {
             System.out.println("VendorError: " + e.getErrorCode());
         }
         Obras obras = new Obras (livro.idCampi, livro.nome,  "'livro'",  livro.local,  livro.ano,  livro.editora,  livro.paginas);
-        Insere(connection, obras);
+        insere(connection, obras);
     }
     
-    public static void InsereMidias (Connection connection, Midias midia){
+    public static void insereMidias (Connection connection, Midias midia){
         int id;
         Statement stmt = null;
         // ResultSet rs = null;
@@ -161,10 +162,10 @@ public class Main {
             System.out.println("VendorError: " + e.getErrorCode());
         }
         Obras obras = new Obras (midia.idCampi, midia.nome,  "'midias'",  midia.local,  midia.ano,  midia.editora,  midia.paginas);
-        Insere(connection, obras);
+        insere(connection, obras);
     }
     
-    public static void InsereAcademicos (Connection connection, Academicos academicos){
+    public static void insereAcademicos (Connection connection, Academicos academicos){
         int id;
         Statement stmt = null;
         // ResultSet rs = null;
@@ -188,10 +189,10 @@ public class Main {
             System.out.println("VendorError: " + e.getErrorCode());
         }
         Obras obras = new Obras (academicos.idCampi, academicos.nome,  "'academicos'",  academicos.local,  academicos.ano,  academicos.editora,  academicos.paginas);
-        Insere(connection, obras);
+        insere(connection, obras);
     }
     
-    public static void InserePeriodicos (Connection connection, Periodicos periodicos){
+    public static void inserePeriodicos (Connection connection, Periodicos periodicos){
         int id;
         Statement stmt = null;
         // ResultSet rs = null;
@@ -217,10 +218,10 @@ public class Main {
             System.out.println("VendorError: " + e.getErrorCode());
         }
         Obras obras = new Obras (periodicos.idCampi, periodicos.nome,  "'periodicos'",  periodicos.local,  periodicos.ano,  periodicos.editora,  periodicos.paginas);
-        Insere(connection, obras);
+        insere(connection, obras);
     }
     
-    public static void InserePartes (Connection connection, Partes partes){
+    public static void inserePartes (Connection connection, Partes partes){
         int id;
         Statement stmt = null;
         // ResultSet rs = null;
@@ -246,10 +247,10 @@ public class Main {
             System.out.println("VendorError: " + e.getErrorCode());
         }
         Periodicos periodicos = new Periodicos (partes.periodicidade, partes.mes, partes.volume, partes.subtipo, partes.ISSN, partes.idCampi, partes.nome, "'periodicos'", partes.local, partes.ano, partes.editora, partes.paginas);
-        InserePeriodicos(connection, periodicos);
+        inserePeriodicos(connection, periodicos);
     }
     
-    public static void InsereAutores (Connection connection, Autores autores){
+    public static void insereAutores (Connection connection, Autores autores){
         int id;
         Statement stmt = null;
         // ResultSet rs = null;
@@ -266,8 +267,8 @@ public class Main {
         rs.last();
         id = rs.getInt("id");
         // rs = stmt.executeQuery(sql);
-        String sql = "INSERT INTO autores(idAcervo, nome,  sobrenome,  local,  ordem, qualificacao, ativo) VALUES(" + id + ", " + autores.nome + ", " + autores.sobrenome + 
-               ", " + autores.local + ", " + autores.ordem + ", " + autores.qualificacao + ", 'S')";
+        String sql = "INSERT INTO autores(idAcervo, nome,  sobrenome, ordem, qualificacao, ativo) VALUES(" + id + ", " + autores.nomeAutor + ", " + autores.sobrenome + 
+               ", " + autores.ordem + ", " + autores.qualificacao + ", 'S')";
         stmt.execute(sql);
         }catch(SQLException e){
             System.out.println("SQLException: " + e.getMessage());
@@ -276,9 +277,34 @@ public class Main {
         }
     }
     
-    public static void Remove (Connection connection, int ident, String tabela){
+    public static void removePartes (Connection connection, int ident){
+        int id;
+        String sql = "UPDATE partes SET ativo='N' WHERE idPeriodico=" + ident;
+        Statement stmt = null;
+        
+        try{
+        //ResultSet rs = null;
+        //String findId = "SELECT *  FROM acervo";
+        //rs = stmt.executeQuery(findId);
+        //rs.last();
+        //id = rs.getInt("id");
+        stmt = connection.createStatement();
+        stmt.execute(sql);
+        }catch(SQLException e){
+            System.out.println("SQLException: " + e.getMessage());
+            System.out.println("SQLState: " + e.getSQLState());
+            System.out.println("VendorError: " + e.getErrorCode());
+        }
+        
+    }
+    
+    public static void remove (Connection connection, int ident, String tabela){
         String sql = "UPDATE " + tabela + " SET ativo='N' WHERE idAcervo=" + ident;
         Statement stmt = null;
+        if (tabela.compareTo("periodicos") == 0){
+            removePartes(connection, ident);
+        }
+        
         
         try{
         stmt = connection.createStatement();
@@ -289,11 +315,11 @@ public class Main {
             System.out.println("VendorError: " + e.getErrorCode());
         }
         
-        RemoveAcervo(connection, ident);
+        removeAcervo(connection, ident);
         
     }
     
-    public static void RemoveAcervo (Connection connection, int ident){
+    public static void removeAcervo (Connection connection, int ident){
         String sql = "UPDATE acervo SET ativo='N' WHERE id=" + ident;
         Statement stmt = null;
         
@@ -307,7 +333,7 @@ public class Main {
         }
         
     }
-    public static void Altera (Connection connection, int ident, String tabela, String campo, String valor){
+    public static void altera (Connection connection, int ident, String tabela, String campo, String valor){
         String sql = "UPDATE " + tabela + " SET " + campo + "='" + valor + "' WHERE id=" + ident;
         Statement stmt = null;
         

@@ -9,14 +9,13 @@ package obrasdoacervo;
  *
  * @author Aluno
  */
-public class Autores extends Obras {
+public class Autores{
     String nomeAutor;
     String sobrenome;
     String ordem;
     String qualificacao;
 
-    public Autores(String nomeAutor, String sobrenome, String ordem, String qualificacao, int idCampi, String nome, String tipo, String local, String ano, String editora, String paginas) {
-        super(idCampi, nome, tipo, local, ano, editora, paginas);
+    public Autores(String nomeAutor, String sobrenome, String ordem, String qualificacao) {
         this.nomeAutor = nomeAutor;
         this.sobrenome = sobrenome;
         this.ordem = ordem;
@@ -25,12 +24,12 @@ public class Autores extends Obras {
 
     
     
-    public String getNome() {
-        return nome;
+    public String getNomeAutor() {
+        return nomeAutor;
     }
 
     public void setNome(String nome) {
-        this.nome = nome;
+        this.nomeAutor = nomeAutor;
     }
 
     public String getSobrenome() {

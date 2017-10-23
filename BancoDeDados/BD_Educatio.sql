@@ -104,7 +104,7 @@ CREATE TABLE IF NOT EXISTS `profDisciplinas` (
   );
 
 CREATE TABLE IF NOT EXISTS `etapas` (
-  id int(5) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  idOrdem varchar(1) NOT NULL PRIMARY KEY,
   valor varchar(6) NOT NULL,
   ativo varchar(1) NOT NULL
   );
@@ -198,9 +198,14 @@ CREATE TABLE IF NOT EXISTS `partes` (
   ativo varchar(1) NOT NULL
   );
 
-CREATE TABLE IF NOT EXISTS `autores` (
+CREATE TABLE IF NOT EXISTS `autorAcervo` (
   id int(5) NOT NULL PRIMARY KEY AUTO_INCREMENT,
   idAcervo int(5) NOT NULL,
+  idAutor int(5) NOT NULL
+  );
+
+CREATE TABLE IF NOT EXISTS `autores` (
+  id int(5) NOT NULL PRIMARY KEY AUTO_INCREMENT,
   nome varchar(30) NOT NULL,
   sobrenome varchar(80) NOT NULL,
   ordem varchar(20) NOT NULL,

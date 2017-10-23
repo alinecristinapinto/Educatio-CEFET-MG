@@ -5,6 +5,7 @@ Data​ ​ de​ ​ modificação:​ ​ 09/10/2017
 Autor:​ ​ Allan Barbosa
 ​ ​ ​ ​ ​ ​ ​ ​ ​Objetivo​ ​ da​ ​ modificação:​ Criação do script da impressão via tela dos relatórios de multas
 
+        Comentário do desenvolvedor: Desculpe pela "gambiarra" usando vários echos, não sei fazer de outra forma ;-;
 -->
 
 <!DOCTYPE html>
@@ -17,7 +18,7 @@ Autor:​ ​ Allan Barbosa
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-    <title>Manutenção Multas</title>
+    <title>Relatórios de  Multas</title>
 
     <!-- jQuery (plugins JavaScript do Bootstrap) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
@@ -27,36 +28,26 @@ Autor:​ ​ Allan Barbosa
     <!--Div container -->
     <div class="container">
       <div class="btn-group">
-        <h2><center>Menu de manutenção, turmas</center></h2><br>
-        <p>Caro(a) (Nome do biliotecário logado), Escolha a opção desejada para a manutenção de turmas </p>
+        <h2><center>Menu de relatórios, multas</center></h2><br>
+        <p>Caro(a) (Nome do biliotecário logado), Escolha a opção desejada para mostrar as multas </p>
 
-        <!--Div com botão para criar -->
+        <!--Div com botão para mostrar o relatório -->
         <div class="form-group">
-          <form action="MAE-Web-ManutencaoTurmas-Criar.html" method="post" >
+          <form action="MAE-Web-RelatoriosMultas-Bibliotecario-Imprime.php" method="post" class="form-inline">
              <button type="submit" class="btn btn-default">
-              <span class="glyphicon glyphicon-file"></span>  Criar
+              <span class="glyphicon glyphicon-arrow-right"></span>  Mostrar relatório
              </button>
           </form>
         </div>
 
-        <!--Div com botão para editar-->
+        <!--Div com botão para fazer o dowload-->
         <div class="form-group">
-          <form action="MAE-Web-ManutencaoTurmas-Editar.html" method="post">
+          <form action="MAE-Web-RelatoriosMultas-Bibliotecario-Download.php" method="post">
              <button type="submit" class="btn btn-default">
-               <span class="glyphicon glyphicon-edit"></span>  Editar
+               <span class="glyphicon glyphicon-download-alt"></span>  Download .txt
              </button>
           </form>
         </div>
-
-        <!--Div com botão para excluir-->
-        <div class="form-group">
-          <form action="MAE-Web-ManutencaoTurmas-Excluir.html" method="post">
-             <button type="submit" class="btn btn-default">
-               <span class="glyphicon glyphicon-trash"></span>  Excluir
-             </button>
-          </form>
-        </div>
-
       </div>
     </div>
   </body>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="background" stylesheets="@LayoutCampiAlteracao.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="LayoutCampiAlteracaoController">
+   <children>
+      <VBox layoutX="195.0" layoutY="143.0" spacing="8.0" styleClass="background">
+         <children>
+            <CheckBox fx:id="checkBoxNome" mnemonicParsing="false" styleClass="textfield" text="Nome" />
+            <CheckBox fx:id="checkBoxCidade" mnemonicParsing="false" styleClass="textfield" text="Cidade" />
+            <CheckBox fx:id="checkBoxUf" mnemonicParsing="false" styleClass="textfield" text="UF" />
+         </children>
+      </VBox>
+      <Label layoutX="40.0" layoutY="40.0" styleClass="label-cabecalho" text="Selecione o campus e os dados a serem alterados" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Button layoutX="242.0" layoutY="219.0" mnemonicParsing="false" onAction="#proxJanela" prefHeight="17.0" prefWidth="58.0" text="OK" />
+      <ChoiceBox fx:id="caixaSelecao" layoutX="195.0" layoutY="97.0" prefHeight="25.0" prefWidth="199.0" styleClass="caixaselecao" />
+      <Button layoutX="321.0" layoutY="219.0" mnemonicParsing="false" onAction="#cancela" text="Cancelar" />
+   </children>
+</AnchorPane>

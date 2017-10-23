@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
     <head>
         <title>Alterar Campus</title>
@@ -116,6 +117,7 @@
             //Seleciona os dados dos campus ativos
             $query = mysqli_query($link, " SELECT id, nome, cidade, UF FROM campi WHERE ativo='S' ");
         ?>
+        
         <form action="JHJ-web-alterar-campus-2-selecao-alteracoes.php" method="POST">
             <div class="alinhamento">
                 <select required="required" class="custom-select" name="selectParaAlterarCampus[]">

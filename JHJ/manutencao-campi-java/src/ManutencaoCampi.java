@@ -5,6 +5,7 @@
  */
 
 import java.io.IOException;
+import java.sql.SQLException;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -141,7 +142,7 @@ public class ManutencaoCampi extends Application {
         }
         return false;
     }
-    public boolean invocaLayoutAlteracao2(boolean[] dadosSelecao, String nomeCampus){
+    public boolean invocaLayoutAlteracao2(boolean[] dadosSelecao, String nomeCampus) throws SQLException{
         try{
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(ManutencaoCampi.class.getResource("LayoutCampiAlteracao2.fxml"));

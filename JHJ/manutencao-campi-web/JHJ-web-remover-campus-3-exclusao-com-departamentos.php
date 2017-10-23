@@ -1,6 +1,20 @@
+<?php
+    session_start();
+    //pega id do campus que sera excluido
+    $intIdCampus = $_SESSION['intIdCampus'];
+    // Conectando com o servidor MySQL
+    $link = mysqli_connect("localhost", "root", "");
+    if (!$link){
+    //     die("Conexao falhou: ".mysqli_connect_error()."<br/>");
+    } else {
+    //     echo "Conexao efetuada com sucesso!<br/>";
+    }
+    // Selecionado BD
+    $sql = mysqli_select_db($link, 'Educatio');
+?>
 <html>
     <head>
-        <title>Adicionar Campus</title>
+        <title>Remover Campus</title>
         <meta charset="utf-8">
         <link href="css/bootstrap.css" rel="stylesheet">
         <link href="css/JHJ-web-estilos.css" rel="stylesheet">
@@ -103,45 +117,39 @@
         </nav>        
         <!-- fim do menu coordenador (codigo da gerencia)-->
 
-        <h1>Inclusão de Campus</h1>
+        <h1>Exclusão de Campus</h1>
         <?php
-            $strNomeCampus = $_POST["nomeCampus"];
-            $strCidadeCampus = $_POST["cidadeCampus"];
-            $strUFCampus = $_POST["ufCampus"];
-
-            // Conectando com o servidor MySQL
-            $link = mysqli_connect("localhost", "root", "");
-            if (!$link){
-            //     die("Conexao falhou: ".mysqli_connect_error()."<br/>");
-            } else {
-            //     echo "Conexao efetuada com sucesso!<br/>";
+            //Seleciona os dados do campus com id recebido pelo select
+            $query = mysqli_query($link, " SELECT nome, cidade, UF, ativo FROM campi WHERE id = $intIdCampus ");
+            while($campus = mysqli_fetch_array($query)) { 
+                $strNomeCampus = $campus['nome'];
+                $strCidadeCampus = $campus['cidade'];
+                $strUFCampus = $campus['UF'];
+                $strAtivoCampus = $campus['ativo']; 
             }
-
-            //Selecionado BD
-            $sql = mysqli_select_db($link, 'Educatio');
-
-            //Inserindo dados na tabela campi
-            $sql = "INSERT INTO campi (nome, cidade, UF, ativo) VALUES ('$strNomeCampus', '$strCidadeCampus', '$strUFCampus', 'S')";
+            
+            //Tornando campus inativo ("excluindo")
+            //IMPORTANTE !!! CHAMAR FUNÇÕES DE OUTROS GRUPOS PARA EXCLUIR (.. CURSOS, DEPARTAMENTOS)
+            $sql = "UPDATE campi SET ativo = 'N' WHERE id = $intIdCampus";
             if (mysqli_query($link, $sql)) {
-            //     echo "Campus adicionado com sucesso!";
+            //     echo "sucesso";
             }else{
-            //     echo "Erro ao adicionar campus: ".$sql."<br/>".$link->error."<br/>";
+            //     echo "erro";
             }
         ?>
-
-        <!-- exibindo informações do novo campus adicionado dentro de um painel -->
+        <!-- exibindo informações do campus que foi removido dentro de um painel -->
         <div class="container">    
             <div style="margin-top:50px;" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">                    
                 <div class="panel panel-info" >
                     <div class="panel-heading">
-                        <div class="panel-title">Campus adicionado com sucesso!</div>
+                        <div class="panel-title">Campus removido com sucesso!</div>
                     </div>  
                     <div style="padding-top:20px" class="panel-body">     
-                            <p><strong>As informações do novo campus são:</strong><p> 
-                            <p><strong>Nome:</strong><?php echo " ".$strNomeCampus ?><p>
-                            <p><strong>Cidade:</strong><?php echo " ".$strCidadeCampus ?><p>
+                            <p><strong>As informações do campus excluído são:</strong><p> 
+                            <p><strong>Nome:</strong> <?php echo " ".$strNomeCampus ?><p>
+                            <p><strong>Cidade:</strong> <?php echo " ".$strCidadeCampus ?><p>
                             <p><strong>UF:</strong><?php echo " ".$strUFCampus ?><p>
-                            <input type="button" class="btn btn-primary" value="Voltar" onClick="voltarParaPaginaInsersaoCampus()"/>
+                            <input type="button" class="btn btn-primary" value="Voltar" onClick="voltarParaPaginaExclusaoCampus()"/>
                     </div>                     
                 </div>  
             </div>

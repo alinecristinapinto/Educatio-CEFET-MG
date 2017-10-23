@@ -18,7 +18,3 @@ function fecharAlerta(){
 function voltarParaPaginaAlteracaoCampus(){
     location.href = "JHJ-web-alterar-campus-1.php";
 }
-function voltarParaPaginaSelecaoAlteracoesCampus(){
-    location.href = "JHJ-web-alterar-campus-2-selecao-alteracoes.php";
-}
-

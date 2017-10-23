@@ -133,5 +133,19 @@ public class ManutencaoCampiBD
     
     return dadosCampusDeletado;
   }
+  
+  public String[] pesquisaCampus(String nome) throws SQLException{
+      ResultSet result;
+      conn = DriverManager.getConnection("jdbc:mysql://localhost/educatio?autoReconnect=true&useSSL=false", "root", "");
+      
+      String sql_fetch = "SELECT cidade, uf FROM campi WHERE nome='"+nome+"'";
+      Statement fetch = conn.createStatement();
+      result = fetch.executeQuery(sql_fetch);
+      result.next();
+      dadosCampus[0]=nome;
+      dadosCampus[1]=result.getString("cidade");
+      dadosCampus[2]=result.getString("uf");
+      return dadosCampus;
+  }
 }
 

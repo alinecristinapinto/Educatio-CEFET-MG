@@ -54,10 +54,10 @@ public class LayoutCampiAlteracaoController implements Initializable {
     }
     
     @FXML
-    public void proxJanela(){
+    public void proxJanela() throws SQLException{
         boolean[] dadosSelecao={checkBoxNome.isSelected(), checkBoxCidade.isSelected(), checkBoxUf.isSelected()};
         boolean okClicked;
-        if(!(checkBoxNome.isSelected()==false&&checkBoxCidade.isSelected()==false&&checkBoxUf.isSelected()==false)){
+        if(!(checkBoxNome.isSelected()==false&&checkBoxCidade.isSelected()==false&&checkBoxUf.isSelected()==false)&&(caixaSelecao.getValue()!=null)){
             okClicked=manutencaoCampi.invocaLayoutAlteracao2(dadosSelecao, caixaSelecao.getValue().toString());
             dialogStage.close();
         }
@@ -65,5 +65,11 @@ public class LayoutCampiAlteracaoController implements Initializable {
     
     public void initialize(URL url, ResourceBundle rb) {
         caixaSelecao.setItems(nomesCampi);
+        
+    }
+    
+    @FXML
+    public void cancela(){
+        dialogStage.close();
     }
 }

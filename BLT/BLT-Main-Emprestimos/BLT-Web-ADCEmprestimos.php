@@ -33,5 +33,5 @@ if ($conn->query($sql) === TRUE) {
 
 $conn->close();
 
-header('Location: http://localhost/Educatio-CEFET-MG/BLT/BLT-Main-Emprestimos/BLT-Web-Emprestimos.html')
+header('Location: http://localhost/Educatio-CEFET-MG-master/BLT/BLT-Main-Emprestimos/BLT-Web-Emprestimos.html')
 ?>

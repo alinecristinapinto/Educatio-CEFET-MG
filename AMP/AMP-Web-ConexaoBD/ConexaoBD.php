@@ -1,12 +1,6 @@
-<!DOCTYPE html>
-<html>
-<head>
-</head>
-<body>
-
-<<?php 
+<?php 
 	
-function CreateBook($idAcervo, $ISBN, $edicao, $ativo){
+function CriaLivro($idAcervo, $ISBN, $edicao, $ativo){
 	$link = mysqli_connect("localhost", "root", "usbw", "educatio");
 	if (!$link) {
 		die("Conexão falhou: " . mysqli_connect_error());
@@ -19,16 +13,20 @@ function CreateBook($idAcervo, $ISBN, $edicao, $ativo){
 	}
 }
 
-CreateBook(1, 'teste', 5, '1');
+CriaLivro(1, 'teste', 5, 'S');
 
-function DeleteBook($ISBN)
-	$sql = "UPDATE livros SET $ativo ='0' WHERE ISBN = $ISBN";
+function DeletaLivro($ISBN){
+	$link = mysqli_connect("localhost", "root", "usbw", "educatio");
+	if (!$link) {
+		die("Conexão falhou: " . mysqli_connect_error());
+	}
+	$sql = "UPDATE livros SET $ativo ='N' WHERE ISBN = $ISBN";
 	if (mysqli_query($link, $sql)) {
 		echo "Livro deletado!<br>";
 	}else{
 	echo "Erro ao deletar o livro: " . mysqli_error($link);
+	}
 }
- ?>
 
-</body>
-</html>
+
+ ?>	

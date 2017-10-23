@@ -47,7 +47,11 @@ if ($result->num_rows > 0) {
     echo "</div>";
     echo "</div>";
 } else {
-    echo "0 results";
+    echo "<div class=\"corpo\">";
+    echo "<div class=\"titulo\">";
+    echo "<h1><h3><b>Sem valores no banco de dados</b></h3></h1>";
+    echo "</div>";
+    echo "</div>";
 }
 
 $conn->close();
@@ -67,18 +71,43 @@ $conn->close();
 <body>
 <div class="margem-DLTEmp">
 <div class="container-fluid">
-<form>
+<form action="BLT-Web-DLTEmprestimos2.php" method="post">
   	<div class="row" style="margin: 70px;">
     	<div class="col-md-6 mb-3">
-      		<label for="validationServer02">ID do aluno que deseja remover o empréstimo</label>
-      		<input type="text" class="form-control is-valid" id="validationServer02" name="IDaluno" placeholder="ID do aluno" value="" required>
+      		<label for="validationServer02">ID do acervo que deseja devolver</label>
+      		<input type="text" class="form-control is-valid" id="validationServer02" name="IDAcervo" placeholder="ID do acervo" value="" required>
       	</div>
+
       	<div class="col-md-6 mb-3">
       		<label for="validationServer02"></label>
-      		<button type="submit" class="btn btn-outline-info btn-block btn-lg">Remover</button>
+      		<button type="button" data-toggle="modal" data-target="#exampleModal" class="btn btn-outline-info btn-block btn-lg">Remover</button>
+
+            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                      <div class="col-md-6 mb-3">
+                        <label for="validationServer02">Data de devolução</label>
+                        <input type="date" name="datadevolucao" class="form-control is-valid" id="validationServer02" placeholder="ID" value="" required>
+                      </div>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                    <button type="submit" class="btn btn-primary">Pronto</button>
+                  </div>
+                </div>
+              </div>
+            </div>
     	</div>
+
   	</div>
- </form>
+ </form>  
 </div>
 </div>
 </body>

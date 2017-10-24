@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="300.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ch.makery.address.view.DisciplinaOverviewController">
+   <children>
+      <HBox alignment="BOTTOM_RIGHT" spacing="10.0" AnchorPane.bottomAnchor="16.0" AnchorPane.leftAnchor="82.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="257.0">
+         <children>
+            <Button layoutX="85.0" layoutY="257.0" mnemonicParsing="false" onAction="#handleNewDisciplina" text="Adicionar" />
+            <Button layoutX="137.0" layoutY="257.0" mnemonicParsing="false" text="Deletar" />
+            <Button layoutX="189.0" layoutY="257.0" mnemonicParsing="false" text="Alterar" />
+         </children>
+      </HBox>
+      <Label text="Detalhes das Disciplinas" AnchorPane.leftAnchor="5.0" />
+   </children>
+</AnchorPane>

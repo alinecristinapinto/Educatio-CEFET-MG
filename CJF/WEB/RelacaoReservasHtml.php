@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Relação Acervo</title>
+	<title>Relação de reservas</title>
 	<meta charset="utf-8">
 	<link href="CJF-web-estilos.css" rel="stylesheet" type="text/css" >
 	<link href="css/bootstrap.css" rel="stylesheet">
@@ -12,25 +12,18 @@
   	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
-
 	<div class="jumbotron">
-  		<h1 class="display-3">Relação do acervo por tipo</h1>
+  		<h1 class="display-3">Relação de reservas por data e geral</h1>
   		<hr class="my-4">
 	</div>
 
-		<form method='post' action='RelacaoAcervo.php'>
-			<div class="container">
-				<br><label>Selecione o acervo:</label>
-				<select class="custom-select" name="acervo">
-					<option>Livros</option>
-					<option>Periódicos</option>
-					<option>Academicos</option>
-					<option>Midias</option>
-				</select><br><br>
-
-				<input class="btn btn-primary btn-lg" type='submit' value='Exibir'>
-			</div>
+	<div class="container" class="form-group">
+		<form method='post' action='Relatorio3.php'>
+			<br><label for="entraData">Digite a data das reservas ou deixe em branco para gerar um relatório geral:</label>
+			<input type='textarea' class="form-control" name='data' aria-describedby="dataAjuda" placeholder="Data das reservas"><br>
+			<input class="btn btn-primary btn-lg btn-block" type='submit' value='Exibir'>
 		</form>
+	</div>
 
 	<div id="rodape">
 		<div class="container">

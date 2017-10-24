@@ -6,7 +6,7 @@ Todos os arquivos '.html' deverão ser feitos '.php'. Para isso, crie um arquivo
 
 # Padrão Web - Botões
 
-Todos os botões deverão usar a classe btn e btn-outline-primary
+Todos os botões deverão usar a classe btn e btn-outline-primary. No caso dessa classe, quando o usuário passa o mouse ou clica sobre o botão ele fica azul. Na imagem eu cliquei no botão. Posteriormente mudaremos a cor deste azul para um mais adequado para o site!
 
 ![padrao de botoes em bootstrap](image/padrao-botoes.png)
 

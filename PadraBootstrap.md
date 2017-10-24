@@ -12,5 +12,6 @@ Todos os botões deverão usar a classe btn e btn-outline-primary. No caso dessa
 
 # Padrão Web - Formulário
 
+Para fazer o formulário deverá ser usado label 
 
 

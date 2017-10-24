@@ -124,7 +124,7 @@
         <h1>Exclusão de Campus</h1>
         <?php
             //Verificando se existem departamentos ligados com o campus selecionado
-            if ($result = mysqli_query($link, "SELECT id FROM deptos WHERE idCampi = $intIdCampus")) {
+            if ($result = mysqli_query($link, " SELECT id FROM deptos WHERE idCampi = $intIdCampus AND ativo = 'S' ")) {
                 //total de departamentos do campus selecionado
                 $intTotalDeptosCampusSelecionado = mysqli_num_rows($result);
                 mysqli_free_result($result);
@@ -143,7 +143,7 @@
                 //Verifica linha por linha na tabela e salva o nome dos departamentos em um vetor
                 $intJ = 0;
                 for ($intI = 1; $intI <= $intTotalLinhasTabelaDeptos; $intI++){
-                    if ($query = mysqli_query($link, "SELECT nome FROM deptos WHERE id = $intI AND idCampi = $intIdCampus")) {
+                    if ($query = mysqli_query($link, " SELECT nome FROM deptos WHERE id = $intI AND idCampi = $intIdCampus AND ativo = 'S' ")) {
                         $departamento = mysqli_fetch_array($query);
                         if($departamento['nome'] != null){
                             $strVetorNomesDeptos[$intJ] = $departamento['nome']; 

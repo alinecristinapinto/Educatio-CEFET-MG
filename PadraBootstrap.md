@@ -8,8 +8,7 @@ Todos os arquivos '.html' deverão ser feitos '.php'. Para isso, crie um arquivo
 
 Todos os botões deverão usar a classe btn e btn-outline-primary
 
-'<input type="button" class="btn btn-outline-primary" value="Botão"/>'
-'<button class="btn btn-outline-primary">Botão</button>'
+![padrao de botoes em bootstrap](image/padrao-botoes.png)
 
 # Padrão Web - Formulário
 

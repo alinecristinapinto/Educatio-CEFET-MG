@@ -77,18 +77,20 @@ public class Main {
         */
             
         // Obras obras = new Obras(idCampi,  nome,  tipo,  local,  ano,  editora,  paginas);
-        //Livros testes = new Livros (ISBN,  edicao, idCampi, idAutor, nome,  "livros",  local,  ano,  editora,  paginas);
+        Livros testes = new Livros ("4444",  "1", 2, "4",  "livros",  "5",  "6",  "7",  "8");
         //Livros t1 = new Livros (ISBN,  edicao, idCampi, idAutor, nome,  "livros",  local,  ano,  editora,  paginas);
         //Livros t2 = new Livros (ISBN,  edicao, idCampi, idAutor, nome,  "livros",  local,  ano,  editora,  paginas);
-        Partes testes = new Partes("Parte 1", 1, 20, "keywords", "Semanal", "Outubro", 2, "Edital", 1234, 1, "Parte 1", "periodicos", "Belo Horizonte", "2000", "Arqueiro", "20");
+        // Partes testes = new Partes("Parte 1", 1, 20, "keywords", "Semanal", "Outubro", 2, "Edital", 1234, 1, "Parte 1", "periodicos", "Belo Horizonte", "2000", "Arqueiro", "20");
         Autores corrigir = new Autores("Zeca", "Pagodinho", "Pagodeiro", "Mestre");
         //System.out.println("Dados do livro \n" + testes);
         System.out.println("\n\n");
-        inserePartes(connection, testes);
+        insereLivro(connection, testes);
+        insereLivro(connection, testes);
+        insereLivro(connection, testes);
         System.out.println("\n Insere 1 \n");
-        remove(connection, 38, "periodicos");
+        remove(connection, 1, "livros");
         System.out.println("\n Remove 2 \n");
-        altera(connection, 1, "acervo", "nome", "EMOCIONADO");
+        altera(connection, 2, "acervo", "nome", "EMOCIONADO");
         System.out.println("\n Altera 3 \n");
     }
 
@@ -132,7 +134,7 @@ public class Main {
             System.out.println("SQLState: " + e.getSQLState());
             System.out.println("VendorError: " + e.getErrorCode());
         }
-        Obras obras = new Obras (livro.idCampi, livro.nome,  "'livro'",  livro.local,  livro.ano,  livro.editora,  livro.paginas);
+        Obras obras = new Obras (livro.idCampi, livro.nome,  "'livros'",  livro.local,  livro.ano,  livro.editora,  livro.paginas);
         insere(connection, obras);
     }
     

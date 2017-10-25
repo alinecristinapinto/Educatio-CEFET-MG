@@ -14,36 +14,16 @@
    <children>
       <MenuBar layoutX="74.0" layoutY="2.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="41.0" prefWidth="538.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <menus>
-            <Menu mnemonicParsing="false" text="        ">
-              <items>
-                <MenuItem mnemonicParsing="false" text="Action 1" />
-              </items>
-            </Menu>
-            <Menu mnemonicParsing="false" text="Início">
-              <items>
-                <MenuItem mnemonicParsing="false" text="Action 1" />
-              </items>
-            </Menu>
-          <Menu mnemonicParsing="false" text="Diário">
-            <items>
-              <MenuItem mnemonicParsing="false" text="Close" />
-            </items>
+            <Menu mnemonicParsing="false" text="        " />
+            <Menu mnemonicParsing="false" text="Início" />
+          <Menu mnemonicParsing="false" text="Diário" />
+          <Menu mnemonicParsing="false" onAction="#teste" onMenuValidation="#teste" text="Boletim">
+               <items>
+                  <MenuItem mnemonicParsing="false" onAction="#teste" text="Teste" />
+               </items>
           </Menu>
-          <Menu mnemonicParsing="false" text="Boletim">
-            <items>
-              <MenuItem mnemonicParsing="false" text="Delete" />
-            </items>
-          </Menu>
-          <Menu mnemonicParsing="false" text="Histórico">
-            <items>
-              <MenuItem mnemonicParsing="false" text="About" />
-            </items>
-          </Menu>
-            <Menu mnemonicParsing="false" text="Certificado">
-              <items>
-                <MenuItem mnemonicParsing="false" text="Action 1" />
-              </items>
-            </Menu>
+          <Menu mnemonicParsing="false" text="Histórico" />
+            <Menu mnemonicParsing="false" text="Certificado" />
         </menus>
       </MenuBar>
       <MenuBar layoutX="488.0" layoutY="2.0" prefHeight="41.0" prefWidth="120.0" styleClass="menu-background" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">

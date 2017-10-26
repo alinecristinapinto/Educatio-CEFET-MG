@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Login - Educatio - CEFET-MG</title>
+		<meta charset="utf-8">
+		<link href="../Bootstrap/css/bootstrap.css" rel="stylesheet">
+	  	<link href="gerencia-web-login.css" rel="stylesheet">
+	  	<script src="../Bootstrap/js/jquery.min.js"></script>
+	  	<script src="../gerencia-web-login.js"></script>
+	  	<script src="../Bootstrap/js/bootstrap.min.js"></script> 
+	</head>
+	<body>
+
+	<div class="container">
+		<div class="roow">
+			<div class="mainbox col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3"> 
+        
+        			<div class=" fundo panel panel-default" >
+			    		<div class="panel-heading">
+							<div class="panel-title text-center">Cadastro Educatio - CEFET-MG</div>
+			    		</div>     
+
+			    		<div class="panel-body" >
+
+							<form name="form" id="form" class="form-horizontal" method="POST" action="gerencia-web-conecta-cadastro-login.php">
+	                   
+								<div class="input-group">
+			                    	<span class="input-group-addon"><i class="glyphicon glyphicon-user"> - Se identifique:</i></span>
+			                        <select name="opcao" class="form-control form-control-lg">
+			                            <option value="Aluno(a)">Aluno(a)</option>
+			                            <option value="Professor(a)">Professor(a)</option>
+			                            <option value="Coordenador(a)">Coordenador(a)</option>
+			                            <option value="Bibliotecário(a)">Bibliotecário(a)</option>
+			                        </select>
+			                    </div>       
+
+			                    <div class="input-group">
+			                        <span class="input-group-addon"><i class="glyphicon glyphicon-user"> - Login:</i></span>
+			                        <input id="user" type="text" class="form-control" name="idsuario">                                        
+			                    </div>
+
+			                    <div class="input-group">
+			                        <span class="input-group-addon"><i class="glyphicon glyphicon-lock"> - Insira sua Senha:</i></span>
+			                        <input id="password" type="password" class="form-control" name="senha">
+			                    </div>
+
+			                    <div class="input-group">
+			                        <span class="input-group-addon"><i class="glyphicon glyphicon-lock"> - Confirme sua Senha:</i></span>
+			                        <input id="password" type="password" class="form-control" name="confirmaSenha">
+			                    </div>
+
+			                    <div class="form-group">
+			         		                    					             
+			                        <div class="col-sm-12 controls">
+			                            <button type="submit" class="btn btn-primary pull-right"><i class="glyphicon glyphicon-log-in"></i> Cadastre-se</button>                          
+			                        </div>
+
+			                    </div>                     
+	                    		<a href="gerencia-web-login.html">Voltar</a>
+	                		</form>     
+
+			    		</div>                     
+        			</div>  
+    			</div>
+		</div>	
+	</div>
+
+	<div class="containeer">
+	    <div class="row">
+		    <p><center><p class="footertext"><strong><a class="a" href="../Colaboradores/gerencia-web-colaboradores.html" >Educatio CEFET-MG - Copyright 2017</a></strong></p></center></p>
+		  </div>
+	      </div>
+	  </div>
+
+	<div id="particles"></div>
+
+	</body>
+</html>

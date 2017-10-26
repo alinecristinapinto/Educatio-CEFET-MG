@@ -81,12 +81,13 @@ public class GerentesConexaoBDLogin {
            query = conexao.prepareStatement("UPDATE alunos SET senha=?, ativo ='S' WHERE idCPF=?");
         }else if(usuario.equals("Funcionario"))
         {
-           query = conexao.prepareStatement("UPDATE alunos SET senha=?, ativo ='S' WHERE idSIAPE=?");
+           query = conexao.prepareStatement("UPDATE funcionario SET senha=?, ativo ='S' WHERE idSIAPE=?");
         }
         
         query.setString(1,senha);
         query.setString(2,id);
-        boolean resultado =query.execute();
+        
+        boolean resultado = query.execute();
        
         return resultado;
     }

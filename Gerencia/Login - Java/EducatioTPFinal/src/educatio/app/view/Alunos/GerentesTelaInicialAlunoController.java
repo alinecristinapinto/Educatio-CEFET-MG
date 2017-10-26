@@ -40,4 +40,9 @@ public class GerentesTelaInicialAlunoController {
     public void saiAplicacao(){
         mainApp.mostraLogin();
     }
+    public void teste()
+    {
+        System.out.println("TOP");
+        mainApp.mostraPagAluno();
+    }
 }

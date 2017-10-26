@@ -1,5 +1,5 @@
-[Mon Oct 23 10:06:35.244505 2017] [mpm_winnt:notice] [pid 6628:tid 720] AH00455: Apache/2.4.6 (Win32) PHP/5.4.17 configured -- resuming normal operations
-[Mon Oct 23 10:06:35.244505 2017] [mpm_winnt:notice] [pid 6628:tid 720] AH00456: Apache Lounge VC10 Server built: Jul 16 2013 11:15:41
-[Mon Oct 23 10:06:35.244505 2017] [core:notice] [pid 6628:tid 720] AH00094: Command line: 'C:\\Users\\Aluno\\Educatio-CEFET-MG\\USB-Server/apache2/bin/httpd_usbwv8.exe -d C:/Users/Aluno/Educatio-CEFET-MG/USB-Server/apache2'
-[Mon Oct 23 10:06:35.260131 2017] [mpm_winnt:notice] [pid 6628:tid 720] AH00418: Parent: Created child process 5276
-[Mon Oct 23 10:06:35.803946 2017] [mpm_winnt:notice] [pid 5276:tid 700] AH00354: Child: Starting 64 worker threads.
+[Tue Oct 24 10:48:07.238947 2017] [mpm_winnt:notice] [pid 6096:tid 372] AH00455: Apache/2.4.6 (Win32) PHP/5.4.17 configured -- resuming normal operations
+[Tue Oct 24 10:48:07.238947 2017] [mpm_winnt:notice] [pid 6096:tid 372] AH00456: Apache Lounge VC10 Server built: Jul 16 2013 11:15:41
+[Tue Oct 24 10:48:07.238947 2017] [core:notice] [pid 6096:tid 372] AH00094: Command line: 'C:\\Users\\Augusto\\Desktop\\Educatio-CEFET-MG\\USB-Server/apache2/bin/httpd_usbwv8.exe -d C:/Users/Augusto/Desktop/Educatio-CEFET-MG/USB-Server/apache2'
+[Tue Oct 24 10:48:07.240947 2017] [mpm_winnt:notice] [pid 6096:tid 372] AH00418: Parent: Created child process 5356
+[Tue Oct 24 10:48:07.838981 2017] [mpm_winnt:notice] [pid 5356:tid 388] AH00354: Child: Starting 64 worker threads.

@@ -8,7 +8,7 @@ Todos os arquivos '.html' deverão ser feitos '.php'. Para isso, crie um arquivo
 
 Código da gerencia que será disponibilizado
 
-![padrao de perfil em web](image/padrao-perfil.png)
+![padrao de perfil em web](image/padrao-perfil.jpg)
 
 # Padrão Web - Formulário
 

@@ -4,14 +4,14 @@ Todos os arquivos '.html' deverão ser feitos '.php'. Para isso, crie um arquivo
 
 ![exemplo html de .html para .php](image/exemplo-html-para-php.jpg)
 
-# Padrão Web - Botões
+# Padrão Web - Perfil
 
-Todos os botões deverão usar a classe btn e btn-outline-primary. No caso dessa classe, quando o usuário passa o mouse ou clica sobre o botão ele fica azul. Na imagem eu cliquei no botão. Posteriormente mudaremos a cor deste azul para um mais adequado para o site!
+Código da gerencia que será disponibilizado
 
-![padrao de botoes em bootstrap](image/padrao-botoes.png)
+![padrao de perfil em web](image/padrao-perfil.png)
 
 # Padrão Web - Formulário
 
-Para fazer o formulário deverá ser usado label 
+ 
 
 

@@ -12,6 +12,18 @@ Código da gerencia que será disponibilizado
 
 # Padrão Web - Formulário
 
+ Exemplo de Formulário :
  
-
+ ![padrao de formulário em web](image/padraoformJHJ.jpg)
+ 
+ Para o trabalho ficar mais "bunitin" nós usaremos icones nos form. Para isso segue uma lista do que temos disponíveis para vocês darem aquele ctrl c + ctrl v. A escolha dos icones será livre desde que faça sentido!
+ 
+  * nc-air-baloon
+  
+  Segue o que esses códigos geram:
+  
+   ![icones 1](image/icons2.jpg)
+   ![icones 2](image/icons3.jpg)
+   ![icones 3](image/icons4.jpg)
+   ![icones 4](image/foto(5).jpg)
 

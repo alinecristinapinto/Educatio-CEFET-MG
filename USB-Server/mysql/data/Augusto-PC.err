@@ -46,3 +46,27 @@ Version: '5.6.13'  socket: ''  port: 3307  MySQL Community Server (GPL)
 2017-10-24 10:48:09 5536 [Note] Event Scheduler: Loaded 0 events
 2017-10-24 10:48:09 5536 [Note] C:\Users\Augusto\Desktop\Educatio-CEFET-MG\USB-Server/mysql/bin/mysqld_usbwv8.exe: ready for connections.
 Version: '5.6.13'  socket: ''  port: 3307  MySQL Community Server (GPL)
+2017-10-28 14:41:09 5892 [Note] Plugin 'FEDERATED' is disabled.
+2017-10-28 14:41:10 5892 [Note] InnoDB: The InnoDB memory heap is disabled
+2017-10-28 14:41:10 5892 [Note] InnoDB: Mutexes and rw_locks use Windows interlocked functions
+2017-10-28 14:41:10 5892 [Note] InnoDB: Compressed tables use zlib 1.2.3
+2017-10-28 14:41:11 5892 [Note] InnoDB: Not using CPU crc32 instructions
+2017-10-28 14:41:11 5892 [Note] InnoDB: Initializing buffer pool, size = 128.0M
+2017-10-28 14:41:11 5892 [Note] InnoDB: Completed initialization of buffer pool
+2017-10-28 14:41:11 5892 [Note] InnoDB: Highest supported file format is Barracuda.
+2017-10-28 14:41:11 5892 [Note] InnoDB: The log sequence numbers 1626134 and 1626134 in ibdata files do not match the log sequence number 2055387 in the ib_logfiles!
+2017-10-28 14:41:11 5892 [Note] InnoDB: Database was not shutdown normally!
+2017-10-28 14:41:11 5892 [Note] InnoDB: Starting crash recovery.
+2017-10-28 14:41:11 5892 [Note] InnoDB: Reading tablespace information from the .ibd files...
+2017-10-28 14:41:14 5892 [Note] InnoDB: Restoring possible half-written data pages 
+2017-10-28 14:41:14 5892 [Note] InnoDB: from the doublewrite buffer...
+2017-10-28 14:41:22 5892 [Note] InnoDB: 128 rollback segment(s) are active.
+2017-10-28 14:41:22 5892 [Note] InnoDB: Waiting for purge to start
+2017-10-28 14:41:23 5892 [Note] InnoDB: 5.6.13 started; log sequence number 2055387
+2017-10-28 14:41:23 5892 [Note] Server hostname (bind-address): '*'; port: 3307
+2017-10-28 14:41:23 5892 [Note] IPv6 is available.
+2017-10-28 14:41:23 5892 [Note]   - '::' resolves to '::';
+2017-10-28 14:41:23 5892 [Note] Server socket created on IP: '::'.
+2017-10-28 14:41:24 5892 [Note] Event Scheduler: Loaded 0 events
+2017-10-28 14:41:24 5892 [Note] C:\Users\Augusto\Desktop\Educatio-CEFET-MG\USB-Server/mysql/bin/mysqld_usbwv8.exe: ready for connections.
+Version: '5.6.13'  socket: ''  port: 3307  MySQL Community Server (GPL)

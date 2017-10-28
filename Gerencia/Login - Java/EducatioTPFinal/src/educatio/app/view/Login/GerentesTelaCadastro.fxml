@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ChoiceBox?>
@@ -10,7 +14,7 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" styleClass="background" stylesheets="@GerentesTelaCadastro.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="educatio.app.view.Login.GerentesTelaCadastroController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" styleClass="background" stylesheets="@GerentesTelaCadastro.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="educatio.app.view.Login.GerentesTelaCadastroController">
    <children>
       <AnchorPane id="separador" layoutY="278.0" prefHeight="2.0" prefWidth="200.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
       <GridPane layoutY="114.0" prefHeight="146.0" prefWidth="600.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
@@ -37,21 +41,21 @@
                </GridPane.margin></ChoiceBox>
             <Label prefHeight="23.0" prefWidth="300.0" styleClass="label-pequena" text="Senha" GridPane.rowIndex="2" />
             <Label prefHeight="23.0" prefWidth="310.0" styleClass="label-pequena" text="Confirma Senha" GridPane.rowIndex="3" />
-            <TextField fx:id="senha" styleClass="textfield" GridPane.columnIndex="1" GridPane.rowIndex="2">
+            <PasswordField fx:id="senha" styleClass="textfield" GridPane.columnIndex="1" GridPane.rowIndex="2">
                <GridPane.margin>
                   <Insets left="5.0" right="5.0" />
                </GridPane.margin>
-            </TextField>
-            <TextField fx:id="confirmaSenha" styleClass="textfield" GridPane.columnIndex="1" GridPane.rowIndex="3">
+            </PasswordField>
+            <PasswordField fx:id="confirmaSenha" styleClass="textfield" GridPane.columnIndex="1" GridPane.rowIndex="3">
                <GridPane.margin>
                   <Insets left="5.0" right="5.0" />
                </GridPane.margin>
-            </TextField>
+            </PasswordField>
          </children>
       </GridPane>
       <Label layoutX="116.0" layoutY="22.0" prefHeight="53.0" prefWidth="369.0" styleClass="label-cabecalho" text="Cadastro Usuário" textAlignment="CENTER" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
       <Button layoutX="231.0" layoutY="310.0" mnemonicParsing="false" onAction="#acaoAvancar" prefHeight="38.0" prefWidth="138.0" text="Avançar" AnchorPane.leftAnchor="231.0" AnchorPane.rightAnchor="231.0" />
-      <AnchorPane id="separador" layoutX="1.0" layoutY="97.0" prefHeight="0.0" prefWidth="600.0" stylesheets="@../GerentesTelaCadastro.css" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+      <AnchorPane id="separador" layoutX="1.0" layoutY="97.0" prefHeight="0.0" prefWidth="600.0" stylesheets="@GerentesTelaCadastro.css" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
       <Button layoutX="531.0" layoutY="355.0" mnemonicParsing="false" onAction="#voltaLogin" text="Voltar" AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="5.0" />
    </children>
 </AnchorPane>

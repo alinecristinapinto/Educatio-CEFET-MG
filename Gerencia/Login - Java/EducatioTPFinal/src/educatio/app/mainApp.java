@@ -113,15 +113,17 @@ public class mainApp extends Application {
 
                 GerentesTelaInicialProfessoresController controller = auxiliar.getController();
                 controller.setMainApp(this);
+                controller.mudaUsuario();
             } else if (usuarioAtual instanceof Coordenador) {
 
-                carregadorFXML.setLocation(mainApp.class.getResource("view/TelaInicialCoordenadorGeral.fxml"));
+              /*  carregadorFXML.setLocation(mainApp.class.getResource("view/TelaInicialCoordenadorGeral.fxml"));
                 telaInicial = (AnchorPane) carregadorFXML.load();
                 Scene cena = new Scene(telaBase,1280,720);
                 palcoPrincipal.setScene(cena);
                 palcoPrincipal.show();
                 GerentesTelaDeLoginController controller = carregadorFXML.getController();
-                controller.setMainApp(this);
+                controller.setMainApp(this);*/
+                System.out.println(usuarioAtual);
             }
 
         } catch (IOException e) {
@@ -156,13 +158,15 @@ public class mainApp extends Application {
                 controller.setMainApp(this);
             } else if (usuarioAtual instanceof Bibliotecario) {
 
-                carregadorFXML.setLocation(mainApp.class.getResource("view/TelaInicialCoordenadorGeral.fxml"));
+                /*carregadorFXML.setLocation(mainApp.class.getResource("view/TelaInicialCoordenadorGeral.fxml"));
                 telaInicial = (AnchorPane) carregadorFXML.load();
                 Scene cena = new Scene(telaBase,1280,720);
                 palcoPrincipal.setScene(cena);
                 palcoPrincipal.show();
                 GerentesTelaDeLoginController controller = carregadorFXML.getController();
-                controller.setMainApp(this);
+                controller.setMainApp(this);*/
+                
+                System.out.println(usuarioAtual);
             }
 
         } catch (IOException e) {
@@ -213,25 +217,15 @@ public class mainApp extends Application {
         }
     }
     
-    public void mostraSegundaPagCadastro(Usuario usuario) {
+    public void mostraPagAluno() {
         try {
-            FXMLLoader carregadorFXML = new FXMLLoader();
-            carregadorFXML.setLocation(mainApp.class.getResource("view/Login/GerentesTelaBase.fxml"));
-            telaBase = (BorderPane) carregadorFXML.load();
-
             FXMLLoader auxiliar = new FXMLLoader();
-            auxiliar.setLocation(mainApp.class.getResource("view/Login/GerentesSegundaTelaCadastro.fxml"));
-            telaInicial = (AnchorPane) auxiliar.load();
-
-            telaBase.setCenter(telaInicial);
-            Scene cena = new Scene(telaBase);
-            palcoPrincipal.setScene(cena);
-            palcoPrincipal.show();
-
-            GerentesTelaInicialAlunoController controller = auxiliar.getController();
-            controller.setMainApp(this);
-            controller.mudaUsuario();
-
+                auxiliar.setLocation(mainApp.class.getResource("view/Alunos/VisaoGeralDoUsuario.fxml"));
+                telaInicial = (AnchorPane) auxiliar.load();
+                telaBase.setCenter(telaInicial);
+                Scene cena = new Scene(telaBase,1280,720);
+                palcoPrincipal.setScene(cena);
+                palcoPrincipal.show();
         } catch (IOException e) {
             e.printStackTrace();
         }

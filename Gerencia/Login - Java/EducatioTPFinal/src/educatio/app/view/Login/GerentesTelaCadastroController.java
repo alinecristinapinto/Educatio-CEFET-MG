@@ -21,6 +21,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Menu;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
 public class GerentesTelaCadastroController {
@@ -30,11 +31,11 @@ public class GerentesTelaCadastroController {
     @FXML
     private TextField idUsuario;
     @FXML
-    private TextField senha;
+    private PasswordField senha;
     @FXML
-    private TextField confirmaSenha;
+    private PasswordField confirmaSenha;
 
-    private ObservableList<String> listaOpcoes = FXCollections.observableArrayList("Aluno", "Professor", "Coordenador", "Bibliotecário");
+    private ObservableList<String> listaOpcoes = FXCollections.observableArrayList("Aluno", "Funcionário");
 
     private mainApp mainApp;
 
@@ -64,20 +65,20 @@ public class GerentesTelaCadastroController {
 
         conexaoBD.conectar();
         conexaoBD.setController2(this);
-        
+
         ResultSet resultado;
         String pesquisaBD;
         boolean cadastroSucesso;
 
         switch (opcaoSelecionada) {
             case "Aluno":
-                pesquisaBD = "SELECT * FROM alunos WHERE idCPF=\'" + id + "\'";
+                pesquisaBD = "SELECT * FROM alunos WHERE idCPF=\'" + id + "\' AND ativo = 'N'";
 
                 try {
                     resultado = conexaoBD.enviarQueryResultados2(pesquisaBD);
 
                     if (existeLogin) {
-                        if (resultado.getString("senha").equals("")&&resultado.getString("ativo").equals("N") ){
+                        if (resultado.getString("senha").equals("") && resultado.getString("ativo").equals("N")) {
                             if (strsenha.equals(strconfirma)) {
                                 cadastroSucesso = conexaoBD.enviarQueryCadastro(strsenha, id, "Aluno");
                                 if (!cadastroSucesso) {
@@ -96,25 +97,62 @@ public class GerentesTelaCadastroController {
                             }
                         } else {
                             Alert alert = new Alert(Alert.AlertType.ERROR);
-                            alert.setTitle("ID Inexistente.");
-                            alert.setContentText("Seu ID não existe");
+                            alert.setTitle("Erro.");
+                            alert.setContentText("Você está ativo e/ou já possui uma senha");
                             alert.showAndWait();
                             break;
                         }
-                    }else{
-                            Alert alert = new Alert(Alert.AlertType.ERROR);
-                            alert.setTitle("Cadastro já efetuado");
-                            alert.setContentText("Você já está cadastrado.");
-                            alert.showAndWait();
-                            break;
+                    } else {
+                        Alert alert = new Alert(Alert.AlertType.ERROR);
+                        alert.setTitle("ID Inexistente.");
+                        alert.setContentText("Seu ID não existe");
+                        alert.showAndWait();
+                        break;
                     }
 
                 } catch (SQLException ex) {
                     Logger.getLogger(GerentesTelaCadastroController.class.getName()).log(Level.SEVERE, null, ex);
                 }
                 break;
-            case "Professor":
-
+            case "Funcionário":
+                pesquisaBD = "SELECT * FROM funcionario WHERE idSIAPE=\'" + id + "\' AND ativo = 'N'";
+                try {
+                    resultado = conexaoBD.enviarQueryResultados2(pesquisaBD);
+                    if (existeLogin) {
+                        if (resultado.getString("senha").equals("") && resultado.getString("ativo").equals("N")) {
+                            if (strsenha.equals(strconfirma)) {
+                                cadastroSucesso = conexaoBD.enviarQueryCadastro(strsenha, id, "Funcionario");
+                                if (!cadastroSucesso) {
+                                    Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                                    alert.setTitle("Cadastro com sucesso.");
+                                    alert.setContentText("Seu cadastro foi efetuado com sucesso");
+                                    alert.showAndWait();
+                                    voltaLogin();
+                                }
+                            } else {
+                                Alert alert = new Alert(Alert.AlertType.ERROR);
+                                alert.setTitle("Senhas incorretas.");
+                                alert.setContentText("Suas senhas não correspondem uma a outra");
+                                alert.showAndWait();
+                                break;
+                            }
+                        } else {
+                            Alert alert = new Alert(Alert.AlertType.ERROR);
+                            alert.setTitle("Erro.");
+                            alert.setContentText("Você está ativo e/ou já possui uma senha");
+                            alert.showAndWait();
+                            break;
+                        }
+                    } else {
+                        Alert alert = new Alert(Alert.AlertType.ERROR);
+                        alert.setTitle("ID Inexistente.");
+                        alert.setContentText("Seu ID não existe");
+                        alert.showAndWait();
+                        break;
+                    }
+                } catch (SQLException ex) {
+                    Logger.getLogger(GerentesTelaCadastroController.class.getName()).log(Level.SEVERE, null, ex);
+                }
         }
     }
 

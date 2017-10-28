@@ -13,7 +13,7 @@
 </head>
 <body>
 	<form method='post' action='SelecaoConteudos.php'>
-		<div class="jumbotron jumbotron-fluid">
+		<div class="jumbotron">
   			<h1 class="display-3">Relação de conteúdos por disciplina</h1>
   			<hr class="my-4">
 		</div>

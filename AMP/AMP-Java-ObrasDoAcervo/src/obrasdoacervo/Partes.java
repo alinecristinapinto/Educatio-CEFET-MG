@@ -9,14 +9,13 @@ package obrasdoacervo;
  *
  * @author Aluno
  */
-public class Partes extends Periodicos {
+public class Partes{
     String titulo;
     int pagInicio;
     int pagFinal;
     String palavrasChave;
 
-    public Partes(String titulo, int pagInicio, int pagFinal, String palavrasChave, String periodicidade, String mes, int volume, String subtipo, int ISSN, int idCampi, String nome, String tipo, String local, String ano, String editora, String paginas) {
-        super(periodicidade, mes, volume, subtipo, ISSN, idCampi, nome, tipo, local, ano, editora, paginas);
+    public Partes(String titulo, int pagInicio, int pagFinal, String palavrasChave) {
         this.titulo = titulo;
         this.pagInicio = pagInicio;
         this.pagFinal = pagFinal;

@@ -77,21 +77,30 @@ public class Main {
         */
             
         // Obras obras = new Obras(idCampi,  nome,  tipo,  local,  ano,  editora,  paginas);
-        Livros testes = new Livros ("4444",  "1", 2, "4",  "livros",  "5",  "6",  "7",  "8");
+        //Livros testes = new Livros ("4444",  "1", 2, "4",  "livros",  "5",  "6",  "7",  "8");
         //Livros t1 = new Livros (ISBN,  edicao, idCampi, idAutor, nome,  "livros",  local,  ano,  editora,  paginas);
         //Livros t2 = new Livros (ISBN,  edicao, idCampi, idAutor, nome,  "livros",  local,  ano,  editora,  paginas);
-        // Partes testes = new Partes("Parte 1", 1, 20, "keywords", "Semanal", "Outubro", 2, "Edital", 1234, 1, "Parte 1", "periodicos", "Belo Horizonte", "2000", "Arqueiro", "20");
+        Periodicos periodicos = new Periodicos ("Semanal","Outubro",2, "Magazine", 1678, 2, "4",  "periodicos",  "5",  "6",  "7",  "60");
+        
+        Partes[] testes = new Partes[3];
+        int tam = 3;
+        
+        testes[0] = new Partes("Parte 1", 1, 20, "keywords");
+        testes[1] = new Partes("Parte 2", 21, 40, "keywords");
+        testes[2] = new Partes("Parte 3", 41, 60, "keywords");
         Autores corrigir = new Autores("Zeca", "Pagodinho", "Pagodeiro", "Mestre");
         //System.out.println("Dados do livro \n" + testes);
+        
+        
         System.out.println("\n\n");
-        insereLivro(connection, testes);
-        insereLivro(connection, testes);
-        insereLivro(connection, testes);
+        inserePartes(connection, testes, periodicos, tam);
+        //insereLivro(connection, testes);
+        //insereLivro(connection, testes);
         System.out.println("\n Insere 1 \n");
-        remove(connection, 1, "livros");
+        remove(connection, 22, "periodicos");
         System.out.println("\n Remove 2 \n");
-        altera(connection, 2, "acervo", "nome", "EMOCIONADO");
-        System.out.println("\n Altera 3 \n");
+        //altera(connection, 2, "acervo", "nome", "EMOCIONADO");
+        //System.out.println("\n Altera 3 \n");
     }
 
     public static void insere (Connection connection, Obras obras){
@@ -223,7 +232,7 @@ public class Main {
         insere(connection, obras);
     }
     
-    public static void inserePartes (Connection connection, Partes partes){
+    public static void inserePartes (Connection connection, Partes[] partes, Periodicos periodicos, int tam){
         int id;
         Statement stmt = null;
         // ResultSet rs = null;
@@ -239,16 +248,18 @@ public class Main {
         rs.last();
         id = rs.getInt("id");
         // rs = stmt.executeQuery(sql);
-        String sql = "INSERT INTO partes(idPeriodico, titulo, pagInicio, pagFinal, palavrasChave, ativo) VALUES('" + (id + 1) + "', '" + partes.titulo + 
-               "', '" + partes.pagInicio + "', '" + partes.pagFinal + "', '" + partes.palavrasChave + "', 'S')";
+        for (int i = 0; i < tam; i++){
+        String sql = "INSERT INTO partes(idPeriodico, titulo, pagInicio, pagFinal, palavrasChave, ativo) VALUES('" + (id + 1) + "', '" + partes[i].titulo + 
+               "', '" + partes[i].pagInicio + "', '" + partes[i].pagFinal + "', '" + partes[i].palavrasChave + "', 'S')";
         stmt.execute(sql);
+        }
         
         }catch(SQLException e){
             System.out.println("SQLException: " + e.getMessage());
             System.out.println("SQLState: " + e.getSQLState());
             System.out.println("VendorError: " + e.getErrorCode());
         }
-        Periodicos periodicos = new Periodicos (partes.periodicidade, partes.mes, partes.volume, partes.subtipo, partes.ISSN, partes.idCampi, partes.nome, "'periodicos'", partes.local, partes.ano, partes.editora, partes.paginas);
+        // Periodicos periodicos = new Periodicos (partes[0].periodicidade, partes[0].mes, partes[0].volume, partes[0].subtipo, partes[0].ISSN, partes[0].idCampi, partes[0].nome, "'periodicos'", partes[0].local, partes[0].ano, partes[0].editora, partes[0].paginas);
         inserePeriodicos(connection, periodicos);
     }
     
@@ -281,16 +292,17 @@ public class Main {
     
     public static void removePartes (Connection connection, int ident){
         int id;
-        String sql = "UPDATE partes SET ativo='N' WHERE idPeriodico=" + ident;
+        //String sql = "UPDATE partes SET ativo='N' WHERE idPeriodico=" + ident;
         Statement stmt = null;
         
         try{
-        //ResultSet rs = null;
-        //String findId = "SELECT *  FROM acervo";
-        //rs = stmt.executeQuery(findId);
-        //rs.last();
-        //id = rs.getInt("id");
         stmt = connection.createStatement();
+        ResultSet rs = null;
+        String findId = "SELECT * FROM periodicos WHERE idAcervo = " +ident;
+        rs = stmt.executeQuery(findId);
+        rs.last();
+        id = rs.getInt("id");
+        String sql = "UPDATE partes SET ativo='N' WHERE idPeriodico = " + id;
         stmt.execute(sql);
         }catch(SQLException e){
             System.out.println("SQLException: " + e.getMessage());

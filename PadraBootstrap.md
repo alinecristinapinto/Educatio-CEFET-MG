@@ -24,8 +24,8 @@ Código da gerencia que será disponibilizado
   
   Segue o que esses códigos geram:
   
-   ![icones 1](image/icons2.jpg)
-   ![icones 2](image/icons3.jpg)
-   ![icones 3](image/icons4.jpg)
-   ![icones 4](image/foto (5).jpg)
+   ![icones 1](image/icons1.jpg)
+   ![icones 2](image/icons2.jpg)
+   ![icones 3](image/icons3.jpg)
+   ![icones 4](image/icons4.jpg)
 

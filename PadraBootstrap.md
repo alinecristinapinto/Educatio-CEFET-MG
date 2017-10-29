@@ -62,6 +62,10 @@ O botão será  chamado entre duas divs, a primeira delimita um espaço na tela 
           border-color: #11277a;
         }
 
+# Botôes de Confirmação e Cancelar
+	<button type="button" class="btn btn-succes btn-rounds">Confirmar</button>
+	<button type="button" class="btn btn-danger btn-round">Danger</button>
+
 # Padrão Web - Formulário
 
  Para o trabalho ficar mais "bunitin" nós usaremos icones nos form. Para isso segue uma lista do que temos disponíveis para vocês darem aquele ctrl c + ctrl v. A escolha dos icones será livre desde que faça sentido!
@@ -261,24 +265,28 @@ O botão será  chamado entre duas divs, a primeira delimita um espaço na tela 
 # NA PASTA IMAGE DO REPOSITÓRIO HAVERÁ UM CÓDIGO DE EXEMPLO DE FORMULÁRIO.
 
 # Padrão Alerts
-	<div class="container">
-	    	<div class="modal fade" id="alerta" role="dialog">
-		    	<div class="modal-dialog">
-		      		<div class="modal-content">
-		        		<div class="modal-header">
-		          			<button type="button" class="close" data-dismiss="modal">&times;</button>
-		          			<h4 class="modal-title">Alerta TOP</h4>
-		        		</div>
-		        		<div class="modal-body">
-		          			<p>Exemplo de alerta com model usando o famigerado bootstrap+jquery</p>
-		       	 		</div>
-		        		<div class="modal-footer">
-		          			<button type="button" class="btn btn-info btn-round" data-dismiss="modal">Fechar</button>
-		        		</div>
-		      		</div>      
-		    	</div>
-		  	</div>
-	   </div>  
+	<div class="modal fade" id="alerta" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title text-center">Alerta</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">Você clicou no botão de adicionar aluno</div>
+                    <div class="modal-footer">
+                        <div class="left-side">
+                            <button type="button" class="btn btn-success btn-link" data-dismiss="modal">Continuar</button>
+                        </div>
+                        <div class="divider"></div>
+                        <div class="right-side">
+                            <button type="button" class="btn btn-danger btn-link">Cancelar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
 id alerta é usado para ser chamado no botão que irá invocar o alert. A invocação no botão é feita da seguinte forma:
 
@@ -287,3 +295,34 @@ id alerta é usado para ser chamado no botão que irá invocar o alert. A invoca
 
 
 # Padrão Tabelas
+	<div class="col-md-6">
+		<table class="table table-hover">
+		  <thead>
+		    <tr>
+		      <th>#</th>
+		      <th></th>
+		      <th></th>
+		      <th></th>
+		    </tr>
+		  </thead>
+		  <tbody>
+		    <tr>
+		      <th scope="row">1</th>
+		      <td></td>
+		      <td></td>
+		      <td></td>
+		    </tr>
+		    <tr>
+		      <th scope="row">2</th>
+		      <td></td>
+		      <td></td>
+		      <td></td>
+		    </tr>
+		    <tr>
+		      <th scope="row">3</th>
+		      <td colspan="2"></td>
+		      <td></td>
+		    </tr>
+		  </tbody>
+		</table>
+	</div>

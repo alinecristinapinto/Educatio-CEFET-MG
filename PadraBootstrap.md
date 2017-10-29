@@ -12,10 +12,6 @@ Código da gerencia que será disponibilizado
 
 # Padrão Web - Formulário
 
- Exemplo de Formulário :
- 
- ![padrao de formulário em web](image/padraoformJHJ.jpg)
- 
  Para o trabalho ficar mais "bunitin" nós usaremos icones nos form. Para isso segue uma lista do que temos disponíveis para vocês darem aquele ctrl c + ctrl v. A escolha dos icones será livre desde que faça sentido!
  
   * nc-air-baloon
@@ -125,4 +121,15 @@ Código da gerencia que será disponibilizado
    ![icones 2](image/icons2.jpg)
    ![icones 3](image/icons3.jpg)
    ![icones 4](image/icons4.jpg)
+   
+   Para adicionar esses ícones é necessário chamar outra classe junto com ele, a nc-icon além dessa chamada ser realizada dentro da tag i no html. Por definição nós usaremos a tag span que receberá também um classe e dentro dela a tag i para ficar um efeito com o input. Exemplificando o código será da seguinte maneira: (as '' sã
+  o para impedir que o arquivo.md converta as tags html)
+  
+  <'span class="input-group-addon">
+	      <'i class="nc-icon nc-check-2"><'/i>
+	 <'/span>
 
+Exemplo de Formulário Funcional:
+ 
+ ![padrao de formulário em web](image/padraoformJHJ.jpg)
+ 

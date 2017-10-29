@@ -124,9 +124,9 @@ Código da gerencia que será disponibilizado
    
    Para adicionar esses ícones é necessário chamar outra classe junto com ele, a nc-icon além dessa chamada ser realizada dentro da tag i no html. Por definição nós usaremos a tag span que receberá também um classe e dentro dela a tag i para ficar um efeito com o input. Exemplificando o código será da seguinte maneira: (as '' são para impedir que o arquivo.md converta as tags html)
   
-  # <'span class="input-group-addon">
-	# <'i class="nc-icon nc-check-2"><'/i>
-  # <'/span>
+  <span class="input-group-addon">
+	 <'i class="nc-icon nc-check-2"><'/i>
+  </span>
   
   Os input deverão chamar a classe form-control e utilizarem do recurso placeholder que deixa dentro do input um value que diz o que é para ser inserido e o required que não permite que o campo seja enviado vazio.
   

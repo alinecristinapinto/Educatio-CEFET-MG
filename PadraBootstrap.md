@@ -14,23 +14,26 @@ Código da gerencia que será disponibilizado
 
 O botão será  chamado entre duas divs, a primeira delimita um espaço na tela de uma linha, ou seja, tudo que for colocado nessa div deve ficar em uma linha na tela e a div com a classe col-md-4 ml-auto mr-auto, usadas no bootstrap para garantir responsividade. Existem vários tipo de col-md. 
 
-# <' div class="row">
-  	<'div class="col-md-4 ml-auto mr-auto">
-    		<'button type="button" class="btn btn-info btn-round">Função do Botão</button>
-  	<'/div>
-   <'/div>
+
+# Codigo do padrao bottun 
+	<div class="row">
+  		<div class="col-md-4 ml-auto mr-auto">
+    			<button type="button" class="btn btn-info btn-round">Função do Botão</button>
+  		</div>
+   	<'/div>
  
  O css usado foram classes nativas do bootstrap modificadas:
  
- # .btn-info {
+ # css dos botoes
+ 	.btn-info {
           background-color: #162e87;
           border-color: #162e87;
           color: #FFFFFF;
           opacity: 1;
           filter: alpha(opacity=100);
-        }
+         }
 	
-   # .btn-info:hover, .btn-info:focus, .btn-info:active, .btn-info.active, .show > .btn-info.dropdown-toggle {
+       .btn-info:hover, .btn-info:focus, .btn-info:active, .btn-info.active, .show > .btn-info.dropdown-toggle {
           background-color: #11277a;
           color: #FFFFFF;
           border-color: #11277a;
@@ -150,74 +153,82 @@ O botão será  chamado entre duas divs, a primeira delimita um espaço na tela 
    
    Para adicionar esses ícones é necessário chamar outra classe junto com ele, a nc-icon além dessa chamada ser realizada dentro da tag i no html. Por definição nós usaremos a tag span que receberá também um classe e dentro dela a tag i para ficar um efeito com o input. Exemplificando o código será da seguinte maneira: (as '' são para impedir que o arquivo.md converta as tags html)
   
-  # <'span class="input-group-addon">
-	 <'i class="nc-icon nc-check-2"><'/i>
-  # <'/span>
+  # chamada de icons
+  	<span class="input-group-addon">
+		<i class="nc-icon nc-check-2"></i>
+  	</span>
   
   Os input deverão chamar a classe form-control e utilizarem do recurso placeholder que deixa dentro do input um value que diz o que é para ser inserido e o required que não permite que o campo seja enviado vazio.
   
-  # <'input type="text" class="form-control" placeholder="Insira alguma coisa" required='required'>
+  # input 
+  	<input type="text" class="form-control" placeholder="Insira alguma coisa" required='required'>
   
   O input juntamente com o span deverá ser dentro de uma div que chamará a classe input-group.
   Além disso o nome do que seu input faz deve ser chamada dentro da tag label:
   
-  # <'label class="fonteTexto">Insira alguma coisa:</label>
+  # label
+  	<label class="fonteTexto">Insira alguma coisa:</label>
   
   A classe fonteTexto serve para definir a fonte e o tamanho da letra usados no input. o trecho de código é:
   
-  # '.fonteTexto{
+  # css da font
+  	.fonteTexto{
            font-family: 'Inconsolata', monospace;
            font-size: 16px;
         }
  
   E todo esse trecho de código ficará dentro de outra div  que chama a classe col-md-6. Essa classe é uma das mais importantes para o form pois garante a responsividade. Exemplificando o trecho de código:
   
- # <'div class="col-md-6">
-    <'label class="fonteTexto">Insera qualquer coisa:</label>
-	<'div class="input-group">
-	   <'span class="input-group-addon">
-	      <'i class="nc-icon nc-check-2"><'/i>
-	    <'/span>
-	    <'input type="text" class="form-control" placeholder="Insira alguma coisa" required='required'>
-	</div>
-  </div>
+ # Exemplificação do código
+ 	<div class="col-md-6">
+    		<label class="fonteTexto">Insera qualquer coisa:</label>
+		<div class="input-group">
+	   		<span class="input-group-addon">
+	      			<i class="nc-icon nc-check-2"></i>
+	    		</span>
+	    		<input type="text" class="form-control" placeholder="Insira alguma coisa" required='required'>
+		</div>
+  	</div>
   
   O form deverá chamar a classe contact-form e o título do seu formulário em um h2 chamando a classe text-center.
   A classe text-center é nativa do bootstrap e sofreu algumas alterações para ser usada no trabalho:
   
-  # .text-center{
+  # css text-center
+  	.text-center{
            font-family: 'Abel', sans-serif;
            color: #d8ac29;
         }
 	
  O link do google fonts responsável pela letra do text-center e fontTexto é:
  
- # <'link href="https://fonts.googleapis.com/css?family=Abel|Inconsolata" rel="stylesheet">
+ # link google fonts
+ 	<link href="https://fonts.googleapis.com/css?family=Abel|Inconsolata" rel="stylesheet">
  
  Por fim o formulário deverá estar entre divs mais comuns do Bootstrap: container e row, elas são responsáveis por delimitar os campos na tela e outras duas que chamam as classes col-md-8 ml-auto mr-auto que permite que o h2 fique alinhado com os inputs além de interfeirir no tamanho deles como um todo e a div que chama a classe section landing-section que carante a integridade do código em relação ao bloco do form com o rodapé e menu.
  
  Exemplificação do trecho de código:
  
- # <'div class="section landing-section">
- 	<'div class="container">
-        	<'div class="row">
-                        <'div class="col-md-8 ml-auto mr-auto">
-                            <'h2 class="text-center">Qualquer Coisa<'/h2>
-                            <'form class="contact-form">
-                                    <'div class="col-md-6">
-                                        <'label class="fonteTexto">Insera qualquer coisa:</label>
-						<'div class="input-group">
-	                                        	<'span class="input-group-addon">
-	                                            		<'i class="nc-icon nc-check-2"><'/i>
-	                                        	<'/span>
-	                                        <'input type="text" class="form-control" placeholder="qualquer coisa" required='required'>
-	                                    	<'/div>
-                                    <'/div>
-                            <'/form>
-                        <'/div>
-                 <'/div>
-         <'/div>
-   <'/div>
+ # Exemplo de form completo
+ 	<div class="section landing-section">
+ 		<div class="container">
+        		<div class="row">
+                        	<div class="col-md-8 ml-auto mr-auto">
+                            		<h2 class="text-center">Qualquer Coisa<'/h2>
+                            			<form class="contact-form">
+                                    			<div class="col-md-6">
+                                        			<label class="fonteTexto">Insera qualquer coisa:</label>
+								<div class="input-group">
+									<span class="input-group-addon">
+										<i class="nc-icon nc-check-2"></i>
+									</span>
+								<input type="text" class="form-control" placeholder="qualquer coisa" required='required'>
+								</div>
+						       </div>
+                            			</form>
+                        	</div>
+                 	</div>
+         	</div>
+   	</div>
         
 
 # Exemplo de Formulário Funcional:

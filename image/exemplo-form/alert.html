@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+    <meta name="viewport" content="width=device-width" />
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <script src="js/popper.js"></script>
+    <script src="js/jquery-3.2.1.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+
+    <!-- Fontes e icones -->
+    <link href="css/nucleo-icons.css" rel="stylesheet">
+
+    <!-- Deve estar em CSS externo, mas como é apenas um exemplo declaramos aqui -->
+
+    
+</head>
+<body>
+
+    <!-- Essa classe é necessária para que quando o menu fique responsivo ele não sobreponha o formulário -->
+    <div class="wrapper">    
+
+        <div class="section landing-section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8 ml-auto mr-auto">
+
+                        <h2 class="text-center">CADASTRO DE ALUNO</h2>
+
+                        <form class="contact-form">
+                            <div class="row">
+                                <label class="fonteTexto">Nome:</label>
+                                <div class="input-group">
+                                    <span class="input-group-addon">
+                                        <i class="nc-icon nc-circle-10"></i>
+                                    </span>
+                                    <input type="text" class="form-control" placeholder="Nome" required="required">
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-4 ml-auto mr-auto">
+                                	<button type="button" class="btn btn-info btn-round" data-toggle="modal" data-target="#alerta">Adicionar Aluno</button>
+                            	</div>
+                      		</div>
+                		</form>
+             		</div>
+          		</div>
+       		</div>
+       	</div>
+
+	    <div class="modal fade" id="alerta" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title text-center">Alerta</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">Você clicou no botão de adicionar aluno</div>
+                    <div class="modal-footer">
+                        <div class="left-side">
+                            <button type="button" class="btn btn-success btn-link" data-dismiss="modal">Continuar</button>
+                        </div>
+                        <div class="divider"></div>
+                        <div class="right-side">
+                            <button type="button" class="btn btn-danger btn-link">Cancelar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+	</div>
+
+</body>
+</html>

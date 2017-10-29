@@ -20,6 +20,7 @@ Código da gerencia que será disponibilizado
      <link href="" rel="stylesheet" />
 	
     <!-- Arquivos js -->
+    <script src="js/popper.js"></script>
     <script src="js/jquery-3.2.1.js" type="text/javascript"></script>
     <script src="js/bootstrap.min.js" type="text/javascript"></script>
 
@@ -260,3 +261,29 @@ O botão será  chamado entre duas divs, a primeira delimita um espaço na tela 
 # NA PASTA IMAGE DO REPOSITÓRIO HAVERÁ UM CÓDIGO DE EXEMPLO DE FORMULÁRIO.
 
 # Padrão Alerts
+	<div class="container">
+	    	<div class="modal fade" id="alerta" role="dialog">
+		    	<div class="modal-dialog">
+		      		<div class="modal-content">
+		        		<div class="modal-header">
+		          			<button type="button" class="close" data-dismiss="modal">&times;</button>
+		          			<h4 class="modal-title">Alerta TOP</h4>
+		        		</div>
+		        		<div class="modal-body">
+		          			<p>Exemplo de alerta com model usando o famigerado bootstrap+jquery</p>
+		       	 		</div>
+		        		<div class="modal-footer">
+		          			<button type="button" class="btn btn-info btn-round" data-dismiss="modal">Fechar</button>
+		        		</div>
+		      		</div>      
+		    	</div>
+		  	</div>
+	   </div>  
+
+id alerta é usado para ser chamado no botão que irá invocar o alert. A invocação no botão é feita da seguinte forma:
+
+# Invocação do model
+	<'button type="button" class="btn btn-info btn-round" data-toggle="modal" data-target="#alerta">Alerta</button>
+
+
+# Padrão Tabelas

@@ -122,14 +122,41 @@ Código da gerencia que será disponibilizado
    ![icones 3](image/icons3.jpg)
    ![icones 4](image/icons4.jpg)
    
-   Para adicionar esses ícones é necessário chamar outra classe junto com ele, a nc-icon além dessa chamada ser realizada dentro da tag i no html. Por definição nós usaremos a tag span que receberá também um classe e dentro dela a tag i para ficar um efeito com o input. Exemplificando o código será da seguinte maneira: (as '' sã
-  o para impedir que o arquivo.md converta as tags html)
+   Para adicionar esses ícones é necessário chamar outra classe junto com ele, a nc-icon além dessa chamada ser realizada dentro da tag i no html. Por definição nós usaremos a tag span que receberá também um classe e dentro dela a tag i para ficar um efeito com o input. Exemplificando o código será da seguinte maneira: (as '' são para impedir que o arquivo.md converta as tags html)
   
   <'span class="input-group-addon">
+	<'i class="nc-icon nc-check-2"><'/i>
+  <'/span>
+  
+  Os input deverão chamar a classe form-control e utilizarem do recurso placeholder que deixa dentro do input um value que diz o que é para ser inserido e o required que não permite que o campo seja enviado vazio.
+  
+  <'input type="text" class="form-control" placeholder="Insira alguma coisa" required='required'>
+  
+  O input juntamente com o span deverá ser dentro de uma div que chamará a classe input-group.
+  Além disso o nome do que seu input faz deve ser chamada dentro da tag label:
+  
+  <'label class="fonteTexto">Insira alguma coisa:</label>
+  
+  A classe fonteTexto serve para definir a fonte e o tamanho da letra usados no input. o trecho de código é:
+  
+  '.fonteTexto{
+           font-family: 'Inconsolata', monospace;
+           font-size: 16px;
+        }
+ 
+  E todo esse trecho de código ficará dentro de outra div  que chama a classe col-md-6. Essa classe é uma das mais importantes para o form pois garante a responsividade. Exemplificando o trecho de código:
+  
+  <'div class="col-md-6">
+    <'label class="fonteTexto">Insera qualquer coisa:</label>
+	<'div class="input-group">
+	   <'span class="input-group-addon">
 	      <'i class="nc-icon nc-check-2"><'/i>
-	 <'/span>
+	    <'/span>
+	    <'input type="text" class="form-control" placeholder="Insira alguma coisa" required='required'>
+	</div>
+  </div>
 
-Exemplo de Formulário Funcional:
+# Exemplo de Formulário Funcional:
  
  ![padrao de formulário em web](image/padraoformJHJ.jpg)
  

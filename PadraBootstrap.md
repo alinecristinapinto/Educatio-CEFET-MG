@@ -34,13 +34,13 @@ Todo html deve estar contido dentro da div com a class="wrapper" que empurra o c
 
 # Padrão Web - Botão
 
-O botão será  chamado entre duas divs, a primeira delimita um espaço na tela de uma linha, ou seja, tudo que for colocado nessa div deve ficar em uma linha na tela e a div com a classe col-md-4 ml-auto mr-auto, usadas no bootstrap para garantir responsividade. Existem vários tipo de col-md. 
+O botão será  chamado entre duas divs, a primeira delimita um espaço na tela de uma linha, ou seja, tudo que for colocado nessa div deve ficar em uma linha na tela e a div com a classe col-md-4 ml-auto mr-auto, usadas no bootstrap para garantir responsividade. Existem vários tipo de col-md.  (as '' são para impedir que o arquivo.md converta o botão)
 
 
 # Codigo do padrao bottun 
 	<div class="row">
   		<div class="col-md-4 ml-auto mr-auto">
-    			<button type="button" class="btn btn-info btn-round">Botao</button>
+    			<'button type="button" class="btn btn-info btn-round">Botao</button>
   		</div>
    	</div>
  
@@ -173,7 +173,7 @@ O botão será  chamado entre duas divs, a primeira delimita um espaço na tela 
    ![icones 3](image/icons3.jpg)
    ![icones 4](image/icons4.jpg)
    
-   Para adicionar esses ícones é necessário chamar outra classe junto com ele, a nc-icon além dessa chamada ser realizada dentro da tag i no html. Por definição nós usaremos a tag span que receberá também um classe e dentro dela a tag i para ficar um efeito com o input. Exemplificando o código será da seguinte maneira: (as '' são para impedir que o arquivo.md converta as tags html)
+   Para adicionar esses ícones é necessário chamar outra classe junto com ele, a nc-icon além dessa chamada ser realizada dentro da tag i no html. Por definição nós usaremos a tag span que receberá também um classe e dentro dela a tag i para ficar um efeito com o input. Exemplificando o código será da seguinte maneira: 
   
   # chamada de icons
   	<span class="input-group-addon">

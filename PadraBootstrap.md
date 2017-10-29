@@ -10,6 +10,28 @@ Código da gerencia que será disponibilizado
 
 ![padrao de perfil em web](image/padrao-perfil.jpg)
 
+# Importação Bootstrap
+
+    <!-- CSS do Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+    <link href="css/bootstrap.css" rel="stylesheet"/>
+    
+    <!-- CSS do grupo -->
+     <link href="" rel="stylesheet" />
+	
+    <!-- Arquivos js -->
+    <script src="js/jquery-3.2.1.js" type="text/javascript"></script>
+    <script src="js/bootstrap.min.js" type="text/javascript"></script>
+
+    <!-- Fontes e icones -->
+    <link href="css/nucleo-icons.css" rel="stylesheet">
+    
+   Existem outros recursos nas pastas do Bootstrap que poderão ser utilizadas caso alguém queira como o jQuery UI e arquivos separados de datepiker (uma função de data muito legal e bonita).
+   
+# Importante
+
+Todo html deve estar contido dentro da div com a class="wrapper" que empurra o contudo da página qunado o menu  está responsivo! 
+
 # Padrão Web - Botão
 
 O botão será  chamado entre duas divs, a primeira delimita um espaço na tela de uma linha, ou seja, tudo que for colocado nessa div deve ficar em uma linha na tela e a div com a classe col-md-4 ml-auto mr-auto, usadas no bootstrap para garantir responsividade. Existem vários tipo de col-md. 
@@ -18,7 +40,7 @@ O botão será  chamado entre duas divs, a primeira delimita um espaço na tela 
 # Codigo do padrao bottun 
 	<div class="row">
   		<div class="col-md-4 ml-auto mr-auto">
-    			<button type="button" class="btn btn-info btn-round">Função do Botão</button>
+    			<button type="button" class="btn btn-info btn-round">Botao</button>
   		</div>
    	</div>
  
@@ -236,3 +258,5 @@ O botão será  chamado entre duas divs, a primeira delimita um espaço na tela 
  ![padrao de formulário em web](image/padraoformJHJ.jpg)
  
 # NA PASTA IMAGE DO REPOSITÓRIO HAVERÁ UM CÓDIGO DE EXEMPLO DE FORMULÁRIO.
+
+# Padrão Alerts

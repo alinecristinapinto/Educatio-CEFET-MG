@@ -20,7 +20,7 @@ O botão será  chamado entre duas divs, a primeira delimita um espaço na tela 
   		<div class="col-md-4 ml-auto mr-auto">
     			<button type="button" class="btn btn-info btn-round">Função do Botão</button>
   		</div>
-   	<'/div>
+   	</div>
  
  O css usado foram classes nativas do bootstrap modificadas:
  
@@ -235,3 +235,4 @@ O botão será  chamado entre duas divs, a primeira delimita um espaço na tela 
  
  ![padrao de formulário em web](image/padraoformJHJ.jpg)
  
+# NA PASTA IMAGE DO REPOSITÓRIO HAVERÁ UM CÓDIGO DE EXEMPLO DE FORMULÁRIO.

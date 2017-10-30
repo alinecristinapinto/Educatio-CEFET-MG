@@ -1,6 +1,7 @@
 <?php
-	
 ###############################################################################################
+	header("Content-type: text/html; charset=utf-8");
+
 	$servername = "localhost";
 	$username = "root";
 	$password = "usbw";
@@ -140,7 +141,7 @@
 	$stmt = $conexao -> prepare (
 		"INSERT INTO turmas
 			(idCurso, serie, nome, ativo)
-			VALUES (?, ?, ?)"
+			VALUES (?, ?, ?, ?)"
 	);
 
 	$stmt -> bind_param (

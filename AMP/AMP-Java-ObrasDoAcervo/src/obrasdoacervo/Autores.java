@@ -10,13 +10,16 @@ package obrasdoacervo;
  * @author Aluno
  */
 public class Autores{
-    String nomeAutor;
+    String nome;
     String sobrenome;
     String ordem;
     String qualificacao;
 
-    public Autores(String nomeAutor, String sobrenome, String ordem, String qualificacao) {
-        this.nomeAutor = nomeAutor;
+    public Autores() {
+    }
+
+    public Autores(String nome, String sobrenome, String ordem, String qualificacao) {
+        this.nome = nome;
         this.sobrenome = sobrenome;
         this.ordem = ordem;
         this.qualificacao = qualificacao;
@@ -24,12 +27,12 @@ public class Autores{
 
     
     
-    public String getNomeAutor() {
-        return nomeAutor;
+    public String getNome() {
+        return nome;
     }
 
     public void setNome(String nome) {
-        this.nomeAutor = nomeAutor;
+        this.nome = nome;
     }
 
     public String getSobrenome() {

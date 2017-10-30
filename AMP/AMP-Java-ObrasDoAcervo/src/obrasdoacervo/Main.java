@@ -49,13 +49,13 @@ public class Main {
         //insereLivro(connection, testes);
         //insereLivro(connection, testes);
         //System.out.println("\n Insere 1 \n");
-        //remove(connection, 48, "periodicos");
-        //System.out.println("\n Remove 2 \n");
+        remove(connection, 50, "periodicos");
+        System.out.println("\n Remove 2 \n");
         //altera(connection, 2, "acervo", "nome", "EMOCIONADO");
         //System.out.println("\n Altera 3 \n");
         //pesquisaAutores(connection, "Kleber");
-        pesquisaAcervo(connection, "80");
-        System.out.println("\n Pesquisa 4 \n");
+        //pesquisaAcervo(connection, "80");
+        //System.out.println("\n Pesquisa 4 \n");
     }
 
     public static void insere (Connection connection, Obras obras){
@@ -258,14 +258,26 @@ public class Main {
     }
     
     public static void remove (Connection connection, int ident, String tabela){
-        String sql = "UPDATE " + tabela + " SET ativo='N' WHERE idAcervo=" + ident;
         Statement stmt = null;
+        try{
+        stmt = connection.createStatement();
+        ResultSet rs = null;
+        String findId = "SELECT * FROM emprestimos WHERE idAcervo = " +ident;
+        rs = stmt.executeQuery(findId);
+        while (rs.next()){
+            String ativo = rs.getString("ativo");
+            if ("S".equals(ativo)){
+                System.out.println("O livro está emprestado e não pode ser removido");
+                return;
+            }
+        }
+        
+        
+        String sql = "UPDATE " + tabela + " SET ativo='N' WHERE idAcervo=" + ident;
         if (tabela.compareTo("periodicos") == 0){
             removePartes(connection, ident);
         }
         
-        
-        try{
         stmt = connection.createStatement();
         stmt.execute(sql);
         }catch(SQLException e){

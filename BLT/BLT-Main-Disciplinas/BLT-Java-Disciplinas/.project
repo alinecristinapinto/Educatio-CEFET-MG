@@ -20,4 +20,11 @@
 		<nature>org.eclipse.xtext.ui.shared.xtextNature</nature>
 		<nature>org.eclipse.jdt.core.javanature</nature>
 	</natures>
+	<linkedResources>
+		<link>
+			<name>lib/mysql-connector-java-5.1.44-bin.jar</name>
+			<type>1</type>
+			<locationURI>PROJECT_LOC/mysql-connector-java-5.1.44-bin.jar</locationURI>
+		</link>
+	</linkedResources>
 </projectDescription>

@@ -77,14 +77,13 @@ class professor{
 
 
 }
-
-
+	
 
     $professorProf = new professor;
+   
 
-    $professorProf->adicionaProfessor(1,1,'augusto','mestrado','S','Professor','123','123');
-	$professorProf->deletaProfessor('nome', 'augusto');	
-	$professorProf->alteraProfessor('idSIAPE', '1', 'hierarquia' , 'coordenador');
+    $professorProf->adicionaProfessor($_POST["Siape"],$_POST["depto"],$_POST["name"]." ".$_POST["lastname"],$_POST["titulacao"],'S','Professor','123','123');
+
 
 
 

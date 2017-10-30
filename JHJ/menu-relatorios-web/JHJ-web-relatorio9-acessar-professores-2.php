@@ -2,112 +2,61 @@
 <html>
     <head>
         <title>Acessar professores</title>
-        <meta charset="utf-8">
-        <link href="css/bootstrap.css" rel="stylesheet">
-        <script src="js/jquery.min.js"></script>
-        <script src="js/bootstrap.min.js"></script>
-        <link href="css/JHJ-web-estilos.css" rel="stylesheet"> 
-        <link href="css/JHJ-web-estilos-relatorio9-tabela.css" rel="stylesheet">
-        <script type="text/javascript" src="js/JHJ-web-script-relatorio9-tabela.js"></script> 
-        <script type="text/javascript" src="js/JHJ-web-script.js"></script>
-        
+
+        <!-- CSS do Bootstrap -->
+        <link href="css/bootstrap.min.css" rel="stylesheet" />
+        <link href="css/bootstrap.css" rel="stylesheet"/>
+
+        <!-- CSS do grupo -->
+        <link href="css/JHJ-web-estilos.css" rel="stylesheet" />
+        <link href="css/JHJ-web-estilos-relatorio9-tabela.css" rel="stylesheet" />
+
+        <!-- Arquivos js -->
+        <script src="js/popper.js"></script>
+        <script src="js/jquery-3.2.1.js" type="text/javascript"></script>
+        <script src="js/bootstrap.min.js" type="text/javascript"></script>
+        <script src="js/JHJ-web-script.js" type="text/javascript"></script>
+        <script src="js/JHJ-web-script-relatorio9-tabela.js" type="text/javascript"></script>
+
+        <!-- Fontes e icones -->
+        <link href="css/nucleo-icons.css" rel="stylesheet">   
+
+        <style type="text/css">
+            .panel {              
+              border: 2px solid #164c87;
+              box-shadow: none;
+              border-radius: 10px;
+            }
+
+            .panel-heading{
+                background-color: #164c87;
+                color: white;
+                text-align: center;
+                border-radius: 3px;
+            }
+            .btn-info {
+              background-color: #164c87;
+              border-color: #164c87;
+              color: white;
+              opacity: 1;
+              filter: alpha(opacity=100);
+            }
+            .btn-info:hover, .btn-info:focus, .btn-info:active, .btn-info.active, .show > .btn-info.dropdown-toggle {
+              background-color: #164c87;
+              color: white;
+              border-color: #164c87;
+            }
+            #padin{
+                padding-left: 15px;
+            }
+
+        </style>     
+
     </head>
     <body>
-        <!-- menu coordenador (codigo da gerencia)-->
-        <nav role="navigation" class="navbar navbar-default">        
-        <div class="navbar-header">
-            <button type="button" data-target="#menu" data-toggle="collapse" class="navbar-toggle">                    
-                <span class="sr-only"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>                
-            </button>                
-                <a href="#" class="navbar-brand"><img src="slogan.png"></a>
-        </div>
-            
-        <div id="menu" class="collapse navbar-collapse">
-            <ul class="nav navbar-nav">
-                <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-pushpin"></span> Campus</a>
-                    <ul class="dropdown-menu">
-                        <li><a href="#">Alterar Campus</a></li>
-                        <li class="divider"></li>
-                        <li><a href="#">Adicionar Campus</a></li>
-                        <li class="divider"></li>
-                        <li><a href="#">Remover Campus</a></li>
-                    </ul>
-                </li>
-
-                <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-list"></span>  Departamentos</a>
-                    <ul class="dropdown-menu">
-                        <li><a href="#">Adicionar departamentos</a></li>
-                        <li class="divider"></li>
-                        <li><a href="#">Remover departamentos</a></li>
-                        <li class="divider"></li>
-                        <li><a href="#">Acessar departamentos</a></li>
-                    </ul>
-                </li>
-
-                <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon  glyphicon-user"></span>  Professores</a>
-                    <ul class="dropdown-menu">
-                        <li><a href="#">Adicionar professores</a></li>
-                        <li class="divider"></li>
-                        <li><a href="#">Remover professores</a></li>
-                        <li class="divider"></li>
-                        <li><a href="#">Acessar professores</a></li>
-                    </ul>
-                </li>
-
-                <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-list-alt"></span>  Cursos</a>
-                    <ul class="dropdown-menu">
-                        <li><a href="#">Adicionar cursos</a></li>
-                        <li class="divider"></li>
-                        <li><a href="#">Remover cursos</a></li>
-                        <li class="divider"></li>
-                        <li><a href="#">Acessar cursos</a></li>
-                    </ul>
-                </li>
-
-                <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-book"></span>  Disciplinas</a>
-                    <ul class="dropdown-menu">
-                        <li><a href="#">Adicionar disciplinas</a></li>
-                        <li class="divider"></li>
-                        <li><a href="#">Remover disciplinas</a></li>
-                        <li class="divider"></li>
-                        <li><a href="#">Acessar disciplinas</a></li>
-                    </ul>
-                </li>
-
-                <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="   glyphicon glyphicon-pencil"></span>  Alunos</a>
-                    <ul class="dropdown-menu">
-                        <li><a href="#">Adicionar alunos</a></li>
-                        <li class="divider"></li>
-                        <li><a href="#">Remover alunos</a></li>
-                        <li class="divider"></li>
-                        <li><a href="#">Acessar alunos</a></li>
-                    </ul>
-                </li>
-
-                <li><a href="#"><span class="glyphicon glyphicon-folder-open"></span> Registros</a>
-
-                <li><a href="#"><span class="glyphicon glyphicon-transfer"></span> Transferências</a>
-                </ul>
-
-                <ul class="nav navbar-nav navbar-right">
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img class="profile" src="padrao.png">  Coordenador (a) <span class="caret"></span>&emsp;</a>
-
-                    <ul class="dropdown-menu">
-                        <li><a href="#"><span class="glyphicon glyphicon-user icon-size"></span> - Seu perfil </a></li>
-                        <li class="divider"></li>
-                        <li><a href="#"><span class="glyphicon glyphicon-log-out"></span> - Sair</a></li>
-                    </ul>
-                </li>
-                </ul>
-        </div>
-        </nav>        
-        <!-- fim do menu coordenador (codigo da gerencia)-->
-
-        <h1>Acessar professores</h1>
+        <?php //header ('Content-type: text/html; charset=ISO-8859-1'); ?>
+        <?php //header ('Content-type: text/html; charset=UTF-8'); ?>
+        <h2 class="text-center">Acessar professores</h2>
         <?php
             // Conectando com o servidor MySQL
             $link = mysqli_connect("localhost", "root", "");
@@ -127,12 +76,10 @@
             $curso = mysqli_fetch_array($query);
             $intIdDeptoCursoSelecionado = $curso['idDepto'];  
             $strNomeCursoSelecionado = $curso['nome'];
-
             //Pegar nome do departamento
             $query = mysqli_query($link, "SELECT nome FROM deptos WHERE id = $intIdDeptoCursoSelecionado");
             $depto = mysqli_fetch_array($query);
             $strNomeDeptoCursoSelecionado = $depto['nome'];
-
             //Seleciona id's das turmas do curso por meio id do curso recebido pelo select
             $intExisteTurma = 0;
             $intJ = 0;
@@ -142,7 +89,6 @@
                 $intExisteTurma = 1;
                 $intJ++;
             }
-
             //Seleciona dados das disciplinas por meio dos id's das turmas
             $intExisteDisciplina = 0;
             if ($intExisteTurma == 1){
@@ -159,17 +105,19 @@
                 }
             } else {
                 echo "
-                <div class='container'>    
-                    <div style='margin-top:50px;' class='mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2'>                    
-                        <div class='panel panel-info'>
-                            <div class='panel-heading'>
-                                <div class='panel-title'>Curso de ".$strNomeCursoSelecionado." - ".$strNomeDeptoCursoSelecionado."</div>
-                            </div>  
-                            <div style='padding-top:20px' class='panel-body'>  
-                                <p><strong>O relatório não pode ser exibido!</strong></p>   
-                                <p>Não existe nenhuma turma no curso selecionado</p>";
-            }
-
+                <div class='wrapper'>     
+                    <div class='section landing-section'>
+                        <div class='container'>
+                            <div class='row'>
+                                <div class='col-md-8 ml-auto mr-auto'>                    
+                                    <div class='panel'>
+                                        <div class='panel-heading'>
+                                            <div class='panel-title'>Curso de ".$strNomeCursoSelecionado." - ".$strNomeDeptoCursoSelecionado."</div>
+                                        </div>  
+                                        <div style='padding-top:20px' class='panel-body' id = 'padin'>  
+                                            <p style = 'font-weight:bold'>O relatório não pode ser exibido!</p>   
+                                            <p>Não existe nenhuma turma no curso selecionado</p>";
+                        }
             //seleciona id's dos professores em profdisciplinas por meio dos id's das disciplinas
             $intExisteProfessor = 0;
             if ($intExisteDisciplina == 1){
@@ -208,7 +156,6 @@
                                 <p><strong>O relatório não pode ser exibido!</strong></p>   
                                 <p>Não existe nenhuma disciplina no curso selecionado</p>";
             }
-
             if($intExisteProfessor == 1){
                 //seleciona idSIAPE de todos os professores ativos em fucionario para comparar com id de profdisciplinas
                 $query = mysqli_query($link, "SELECT idSIAPE FROM funcionario WHERE hierarquia = 'P' AND ativo = 'S' ");
@@ -235,7 +182,6 @@
                         }
                     }
                 } 
-            
                 // echo "TESTE <br>";
                 // echo "Nome do curso selecionado: ";
                 // print_r($strNomeCursoSelecionado);
@@ -341,6 +287,33 @@
                                     </tr>
                                 </thead>
                                 <tbody>";
+                echo "
+                 <table class='table'>
+                    <thead class='thead-dark'>
+                      <tr>
+                        <th>Firstname</th>
+                        <th>Lastname</th>
+                        <th>Email</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>John</td>
+                        <td>Doe</td>
+                        <td>john@example.com</td>
+                      </tr>
+                      <tr>
+                        <td>Mary</td>
+                        <td>Moe</td>
+                        <td>mary@example.com</td>
+                      </tr>
+                      <tr>
+                        <td>July</td>
+                        <td>Dooley</td>
+                        <td>july@example.com</td>
+                      </tr>
+                    </tbody>
+                </table>";
                                   
                                     //função array_sum calcula a soma dos elementos de um array
                                     $intJ = 0;
@@ -390,19 +363,20 @@
             }
             if ($intExisteTurma == 0 || $intExisteDisciplina == 0 || $intExisteProfessor == 0){ 
                 echo "      
-                                <input type='button' class='btn btn-primary' value='Voltar' onClick='voltarParaPaginaAcessarProfessoresSelecionarCurso()'/> 
+                            <div class='row'>
+                                <div class='col-md-4 ml-auto mr-auto'>
+                                <button type='button' class='btn btn-info btn-round' value='Voltar' onClick='voltarParaPaginaAcessarProfessoresSelecionarCurso()'>Voltar</button>
+                                <p>
+                            </div>
                             </div>                     
                         </div>  
                     </div>
+                </div>
+                </div>
+                </div>
                 </div>";
 
             }
         ?>
-        <!-- rodape -->
-        <div class="containeer">
-            <div class="row">
-                <p><center><p class="footertext"><strong><a class="a" href="Colaboradores/gerencia-web-colaboradores.html">Educatio CEFET-MG - Copyright 2017</a></strong></p></center></p>
-            </div>
-        </div>
     </body>
 </html>

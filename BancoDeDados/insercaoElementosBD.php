@@ -639,56 +639,56 @@
 
 	####################################################
 		// idProfDisciplina 1
-		$idProfessor = "1";
+		$idProfessor = "9543746";
 		$idDisciplina = 1;
 		$idTurma = 1;
 		$ativo = "S";
 		$stmt -> execute();
 
 		// idProfDisciplina 2
-		$idProfessor = "2";
+		$idProfessor = "8026034";
 		$idDisciplina = 2;
 		$idTurma = 1;
 		$ativo = "S";
 		$stmt -> execute();
 
 		// idProfDisciplina 3
-		$idProfessor = "3";
+		$idProfessor = "3768433";
 		$idDisciplina = 3;
 		$idTurma = 2;
 		$ativo = "S";
 		$stmt -> execute();
 
 		// idProfDisciplina 4
-		$idProfessor = "4";
+		$idProfessor = "3346386";
 		$idDisciplina = 4;
 		$idTurma = 2;
 		$ativo = "S";
 		$stmt -> execute();
 
 		// idProfDisciplina 5
-		$idProfessor = "5";
+		$idProfessor = "6089259";
 		$idDisciplina = 5;
 		$idTurma = 3;
 		$ativo = "S";
 		$stmt -> execute();
 
 		// idProfDisciplina 6
-		$idProfessor = "6";
+		$idProfessor = "8970835";
 		$idDisciplina = 6;
 		$idTurma = 3;
 		$ativo = "S";
 		$stmt -> execute();
 
 		// idProfDisciplina 7
-		$idProfessor = "7";
+		$idProfessor = "4272678";
 		$idDisciplina = 7;
 		$idTurma = 4;
 		$ativo = "S";
 		$stmt -> execute();
 
 		// idProfDisciplina 8
-		$idProfessor = "8";
+		$idProfessor = "7130717";
 		$idDisciplina = 8;
 		$idTurma = 4;
 		$ativo = "S";

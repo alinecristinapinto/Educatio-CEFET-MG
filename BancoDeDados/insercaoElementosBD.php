@@ -150,25 +150,25 @@
 	####################################################
 		// idTurma 1
 		$idCurso = 1;
-		$nome = "2015";
+		$nome = "MEI3A";
 		$ativo = "S";
 		$stmt -> execute();
 
 		// idTurma 2
 		$idCurso = 2;
-		$nome = "2016/2";
+		$nome = "FIT2";
 		$ativo = "S";
 		$stmt -> execute();
 
 		// idTurma 3
 		$idCurso = 3;
-		$nome = "2016";
+		$nome = "INF2A";
 		$ativo = "S";
 		$stmt -> execute();
 
 		// idTurma 4
 		$idCurso = 4;
-		$nome = "2017";
+		$nome = "EDI1A";
 		$ativo = "S";
 		$stmt -> execute();
 	####################################################
@@ -3322,7 +3322,539 @@
 		$ativo = "S";
 		$stmt -> execute();
 	####################################################
+
+
+	//
+	// CÓDIGO PARA INSERÇÃO NAS TABELAS DO SISTEMA DE BIBLIOTECA
+	//
+	// INSERINDO NA TABELA ACERVO
+	//
+	// preparando os parâmetros
+	$stmt = $conexao -> prepare (
+			"INSERT INTO acervo
+				(idCampi, nome, tipo, local, ano, editora, paginas, ativo) 
+				VALUES (?, ?, ?, ?, ?, ?, ?, ?)"
+			);
+	// parâmetro não específico, para depois setar os valores e executar o query de inserção
+	$stmt -> bind_param (
+				"isssssss", 
+				$idCampi, $nome, $tipo, $local, $ano, $editora, $paginas, $ativo
+			 );
+	// preparando os valores e executando
+	####################################################
+		// idAcervo 1
+		$idCampi = 1;
+		$nome = "Dom Casmurro";
+		$tipo = "Livro";
+		$local = "Brasil";
+		$ano = "2003";
+		$editora = "Martin Claret";
+		$paginas = "223";
+		$ativo = "S";
+		$stmt -> execute();
+
+		// idAcervo 2
+		$idCampi = 1;
+		$nome = "O Cortiço";
+		$tipo = "Livro";
+		$local = "Brasil";
+		$ano = "2016";
+		$editora = "Nova Fronteira";
+		$paginas = "272";
+		$ativo = "S";
+		$stmt -> execute();
+
+		// idAcervo 3
+		$idCampi = 1;
+		$nome = "Inteligência Artificial em Jogos Digitais";
+		$tipo = "Acadêmico";
+		$local = "Campinas, SP, Brasil";
+		$ano = "2007";
+		$editora = "";
+		$paginas = "25";
+		$ativo = "S";
+		$stmt -> execute();
+
+		// idAcervo 4
+		$idCampi = 1;
+		$nome = "O Futuro da Robótica";
+		$tipo = "Acadêmico";
+		$local = "Brasil";
+		$ano = "2014";
+		$editora = "";
+		$paginas = "8";
+		$ativo = "S";
+		$stmt -> execute();
+
+		// idAcervo 5
+		$idCampi = 1;
+		$nome = "300";
+		$tipo = "Mídia";
+		$local = "Estados Unidos";
+		$ano = "2006";
+		$editora = "";
+		$paginas = "";
+		$ativo = "S";
+		$stmt -> execute();
+
+		// idAcervo 6
+		$idCampi = 1;
+		$nome = "I like it when you sleep";
+		$tipo = "Mídia";
+		$local = "Estados Unidos";
+		$ano = "2016";
+		$editora = "";
+		$paginas = "";
+		$ativo = "S";
+		$stmt -> execute();
+
+		// idAcervo 7
+		$idCampi = 1;
+		$nome = "Superinteressante";
+		$tipo = "Periódico";
+		$local = "Brasil";
+		$ano = "2006";
+		$editora = "Abril";
+		$paginas = "93";
+		$ativo = "S";
+		$stmt -> execute();
+
+		// idAcervo 8
+		$idCampi = 1;
+		$nome = "SQL Magazine";
+		$tipo = "Periódico";
+		$local = "Brasil";
+		$ano = "2010";
+		$editora = "DevMedia";
+		$paginas = "70";
+		$ativo = "S";
+		$stmt -> execute();
+	####################################################
+
+	//
+	// INSERINDO NA TABELA LIVROS
+	//
+	$stmt = $conexao -> prepare (
+			"INSERT INTO livros
+				(idAcervo, ISBN, edicao, ativo)
+				VALUES (?, ?, ?, ?)"
+			);
+	
+	$stmt -> bind_param (
+				"isss", 
+				$idAcervo, $ISBN, $edicao, $ativo
+			 );
+
+	####################################################
+		// Livro 1 - Dom Casmurro
+		$idAcervo = 1;
+		$ISBN = "8572322647";
+		$edicao = "1";
+		$ativo = "S";
+		$stmt -> execute();
+
+		// Livro 2 - O Cortiço
+		$idAcervo = 2;
+		$ISBN = "9788520927823";
+		$edicao = "1";
+		$ativo = "S";
+		$stmt -> execute();
+	####################################################
+
+	//
+	// INSERINDO NA TABELA ACADEMICOS
+	//
+	$stmt = $conexao -> prepare (
+			"INSERT INTO academicos
+				(idAcervo, programa, ativo) 
+				VALUES (?, ?, ?)"
+			);
+	
+	$stmt -> bind_param (
+				"iss", 
+				$idAcervo, $programa, $ativo
+			 );
+
+	####################################################
+		// idAcademicos 1
+		$idAcervo = 3;
+		$programa = "Bacharelado";
+		$ativo = "S";
+		$stmt -> execute();
+
+		// idAcademicos 2
+		$idAcervo = 4;
+		$programa = "Artigo Científico";
+		$ativo = "S";
+		$stmt -> execute();
+	####################################################
+
+	//
+	// INSERINDO NA TABELA MIDIAS
+	//
+	$stmt = $conexao -> prepare (
+			"INSERT INTO midias
+				(idAcervo, tempo, subtipo, ativo) 
+				VALUES (?, ?, ?, ?)"
+			);
+	
+	$stmt -> bind_param (
+				"isss", 
+				$idAcervo, $tempo, $subtipo, $ativo
+			 );
+
+	####################################################
+		// idMidia 1
+		$idAcervo = 5;
+		$tempo = "117";
+		$subtipo = "DVD";
+		$ativo = "S";
+		$stmt -> execute();
+
+		// idMidia 2
+		$idAcervo = 6;
+		$tempo = "74";
+		$subtipo = "CD";
+		$ativo = "S";
+		$stmt -> execute();
+	####################################################
+	
+	//
+	// INSERINDO NA TABELA PERIODICOS
+	//
+	$stmt = $conexao -> prepare (
+			"INSERT INTO periodicos
+				(idAcervo, periodicidade, mes, volume, subtipo, ISSN, ativo) 
+				VALUES (?, ?, ?, ?, ?, ?, ?)"
+			);
+	
+	$stmt -> bind_param (
+				"issssss", 
+				$idAcervo, $periodicidade, $mes, $volume, $subtipo, $ISSN, $ativo
+			 );
+
+	####################################################
+		// idPeriodico 1
+		$idAcervo = 7;
+		$periodicidade = "Mensal";
+		$mes = "Julho";
+		$volume = "228";
+		$subtipo = "Revista";
+		$ISSN = "01041789";
+		$ativo = "S";
+		$stmt -> execute();
+
+		// idPeriodico 2
+		$idAcervo = 8;
+		$periodicidade = "Mensal";
+		$mes = "Outubro";
+		$volume = "88";
+		$subtipo = "Revista";
+		$ISSN = "16779185";
+		$ativo = "S";
+		$stmt -> execute();
+	####################################################
+	
+	//
+	// INSERINDO NA TABELA PARTES
+	//
+	$stmt = $conexao -> prepare (
+			"INSERT INTO partes
+				(idPeriodico, titulo, pagInicio, pagFinal, palavrasChave, ativo) 
+				VALUES (?, ?, ?, ?, ?, ?)"
+			);
+	
+	$stmt -> bind_param (
+				"isssss", 
+				$idPeriodico, $titulo, $pagInicio, $pagFinal, $palavrasChave, $ativo
+			 );
+
+	####################################################
+		// Periódico 1
+		// idParte 1
+		$idPeriodico = 1;
+		$titulo = "Superpapo";
+		$pagInicio = "14";
+		$pagFinal = "17";
+		$palavrasChave = "Indústria farmacêutica";
+		$ativo = "S";
+		$stmt -> execute();
+		// idParte 2
+		$idPeriodico = 1;
+		$titulo = "Supernovas";
+		$pagInicio = "18";
+		$pagFinal = "27";
+		$palavrasChave = "mamífero, pré-história, energia, hospital, militar, nuclear";
+		$ativo = "S";
+		$stmt -> execute();
+		// idParte 3
+		$idPeriodico = 1;
+		$titulo = "Superrespostas";
+		$pagInicio = "28";
+		$pagFinal = "83";
+		$palavrasChave = "Brasil, universo, bomba, Einstein, internet";
+		$ativo = "S";
+		$stmt -> execute();
+
+		// Periódico 2
+		// idParte 4
+		$idPeriodico = 2;
+		$titulo = "Modelagem de Dados";
+		$pagInicio = "6";
+		$pagFinal = "14";
+		$palavrasChave = "modelagem, banco de dados, MySQL";
+		$ativo = "S";
+		$stmt -> execute();
+		// idParte 5
+		$idPeriodico = 2;
+		$titulo = "Dia a Dia";
+		$pagInicio = "15";
+		$pagFinal = "24";
+		$palavrasChave = "benchmark, MySQL, Linux, Windows";
+		$ativo = "S";
+		$stmt -> execute();
+		// idParte 6
+		$idPeriodico = 2;
+		$titulo = "Expert";
+		$pagInicio = "25";
+		$pagFinal = "32";
+		$palavrasChave = "práticas, Oracle, RAC";
+		$ativo = "S";
+		$stmt -> execute();
+	####################################################
+
+	//
+	// INSERINDO NA TABELA AUTORACERVO
+	//
+	$stmt = $conexao -> prepare (
+			"INSERT INTO autorAcervo
+				(idAcervo, idAutor) 
+				VALUES (?, ?)"
+			);
+	
+	$stmt -> bind_param (
+				"ii", 
+				$idAcervo, $idAutor
+			 );
+
+	####################################################
+		// idAutorAcervo 1
+		$idAcervo = 1;
+		$idAutor = 1;
+		$stmt -> execute();
+
+		// idAutorAcervo 2
+		$idAcervo = 2;
+		$idAutor = 2;
+		$stmt -> execute();
+
+		// idAutorAcervo 3
+		$idAcervo = 3;
+		$idAutor = 3;
+		$stmt -> execute();
+		// idAutorAcervo 4
+		$idAcervo = 3;
+		$idAutor = 4;
+		$stmt -> execute();
+		// idAutorAcervo 5
+		$idAcervo = 3;
+		$idAutor = 5;
+		$stmt -> execute();
+		// idAutorAcervo 6
+		$idAcervo = 3;
+		$idAutor = 6;
+		$stmt -> execute();
+
+		// idAutorAcervo 7
+		$idAcervo = 4;
+		$idAutor = 7;
+		$stmt -> execute();
+		// idAutorAcervo 8
+		$idAcervo = 4;
+		$idAutor = 8;
+		$stmt -> execute();
+
+		// idAutorAcervo 9
+		$idAcervo = 5;
+		$idAutor = 9;
+		$stmt -> execute();
+
+		// idAutorAcervo 10
+		$idAcervo = 6;
+		$idAutor = 10;
+		$stmt -> execute();
+	####################################################
+
+	//
+	// INSERINDO NA TABELA AUTORES
+	//
+
+	$stmt = $conexao -> prepare (
+			"INSERT INTO autores
+				(nome, sobrenome, ordem, qualificacao, ativo) 
+				VALUES (?, ?, ?, ?, ?)"
+			);
+	
+	$stmt -> bind_param (
+				"sssss",
+				$nome, $sobrenome, $ordem, $qualificacao, $ativo
+			 );
+	####################################################
+		// idAutor 1 - Machado de Assis
+		$nome = "Machado";
+		$sobrenome = "de Assis";
+		$ordem = "1a";
+		$qualificacao = "Doutor";
+		$ativo = "S";
+		$stmt -> execute();
+
+		// idAutor 2 - Aluísio Azevedo 
+		$nome = "Aluísio";
+		$sobrenome = "Azevedo";
+		$ordem = "1a";
+		$qualificacao = "Doutor";
+		$ativo = "S";
+		$stmt -> execute();
+
+		// idAutor 3 - acadêmico 1
+		$nome = "Bruno";
+		$sobrenome = "Ribeiro";
+		$ordem = "1a";
+		$qualificacao = "Bacharel";
+		$ativo = "S";
+		$stmt -> execute();
+		// idAutor 4 - acadêmico 1
+		$nome = "Fabiano";
+		$sobrenome = "Lucchese";
+		$ordem = "2a";
+		$qualificacao = "Bacharel";
+		$ativo = "S";
+		$stmt -> execute();
+		// idAutor 5 - acadêmico 1
+		$nome = "Maycon";
+		$sobrenome = "Rocha";
+		$ordem = "3a";
+		$qualificacao = "Bacharel";
+		$ativo = "S";
+		$stmt -> execute();
+		// idAutor 6 - acadêmico 1
+		$nome = "Vera";
+		$sobrenome = "Figueiredo";
+		$ordem = "4a";
+		$qualificacao = "Bacharel";
+		$ativo = "S";
+		$stmt -> execute();
+
+		// idAutor 7 - acadêmico 2
+		$nome = "Roberto";
+		$sobrenome = "Valério";
+		$ordem = "1a";
+		$qualificacao = "Pós-Graduado";
+		$ativo = "S";
+		$stmt -> execute();
+		// idAutor 8 - acadêmico 2
+		$nome = "Marcus";
+		$sobrenome = "Valério Rocha Garcia";
+		$ordem = "2a";
+		$qualificacao = "Mestre";
+		$ativo = "S";
+		$stmt -> execute();
+
+		// idAutor 9 - mídia 1
+		$nome = "Zack";
+		$sobrenome = "Snyder";
+		$ordem = "1a";
+		$qualificacao = "Diretor de cinema";
+		$ativo = "S";
+		$stmt -> execute();
+
+		// idAutor 10 - mídia 2
+		$nome = "The 1975";
+		$sobrenome = "";
+		$ordem = "1a";
+		$qualificacao = "Banda";
+		$ativo = "S";
+		$stmt -> execute();
+	####################################################
+/*
+	//
+	// INSERINDO NA TABELA RESERVAS
+	//
+	$stmt = $conexao -> prepare (
+			"INSERT INTO reservas
+				(idAluno, idAcervo, dataReserva,tempoEspera, emprestou, ativo) 
+				VALUES (?, ?, ?, ?, ?, ?)"
+			);
+	
+	$stmt -> bind_param (
+				"sissss", 
+				$idAluno, $idAcervo, $dataReserva, $tempoEspera, $emprestou, $ativo
+			 );
+
+	####################################################
+		$idAluno = ;
+		$idAcervo = ;
+		$dataReserva = ;
+		$tempoEspera = ;
+		$emprestou = ;
+		$ativo = ;
+		$stmt -> execute();
+	####################################################
+
+	//
+	// INSERINDO NA TABELA EMPRESTIMOS
+	//
+	$stmt = $conexao -> prepare (
+			"INSERT INTO emprestimos
+				(idAluno, idAcervo, dataEmprestimo, dataPrevisaoDevolucao, dataDevolucao, multa, ativo) 
+				VALUES (?, ?, ?, ?, ?, ?, ?)"
+			);
+	
+	// pode dar problema!!
+	$stmt -> bind_param (
+				"sisssss", 
+				$idAluno, $idAcervo, $dataEmprestimo, $dataPrevisaoDevolucao, $dataDevolucao, $multa, $ativo
+			 );
+
+	####################################################
+		$idAluno = ;
+		$idAcervo = ;
+		$dataEmprestimo = ;
+		$dataPrevisaoDevolucao = ;
+		$dataDevolucao = ;
+		$multa = ;
+		$ativo = ;
+		$stmt -> execute();
+	####################################################
+
+	//
+	// INSERINDO NA TABELA DESCARTES
+	//
+	$stmt = $conexao -> prepare (
+			"INSERT INTO descartes
+				(idAcervo, idFuncionario, dataDescarte, motivos, ativo) 
+				VALUES (?, ?, ?, ?, ?)"
+			);
+	
+	$stmt -> bind_param (
+				"issss", 
+				$idAcervo, $idFuncionario, $dataDescarte, $motivos, $ativo
+			 );
+
+	####################################################
+		$idAcervo = ;
+		$idFuncionario = ;
+		$dataDescarte = ;
+		$motivos = ;
+		$ativo = ;
+		$stmt -> execute();
+	####################################################
+*/
+
+
+###############################################################################################
+
 	// FECHANDO A CONEXÃO
-	mysqli_close($conexao);
+	//mysqli_close($conexao);
 
 ?>

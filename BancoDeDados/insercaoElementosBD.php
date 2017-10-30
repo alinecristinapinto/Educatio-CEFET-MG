@@ -1,6 +1,7 @@
 <?php
-	
 ###############################################################################################
+	header("Content-type: text/html; charset=utf-8");
+
 	$servername = "localhost";
 	$username = "root";
 	$password = "usbw";
@@ -64,25 +65,25 @@
 	####################################################
 		// idDepto 1
 		$idCampi = 1;
-		$nome = "Geografia e História";
+		$nome = "DGH";
 		$ativo = "S";
 		$stmt -> execute();
 		 
 		// idDepto 2
 		$idCampi = 1;
-		$nome = "Ciências Sociais e Filosofia";
+		$nome = "DCSF";
 		$ativo = "S";
 		$stmt -> execute();
 
 		// idDepto 3
 		$idCampi = 2;
-		$nome = "Computação";
+		$nome = "DECOM";
 		$ativo = "S";
 		$stmt -> execute();
 		 
 		// idDepto 4
 		$idCampi = 2;
-		$nome = "Engenharia Civil";
+		$nome = "CIVIL";
 		$ativo = "S";
 		$stmt -> execute();
 	####################################################
@@ -139,36 +140,42 @@
 	//
 	$stmt = $conexao -> prepare (
 		"INSERT INTO turmas
-			(idCurso, nome, ativo)
-			VALUES (?, ?, ?)"
+			(idCurso, serie, nome, ativo)
+			VALUES (?, ?, ?, ?)"
 	);
 
 	$stmt -> bind_param (
-		"iss", 
-		$idCurso, $nome, $ativo
+		"iiss", 
+		$idCurso, $serie, $nome, $ativo
 	);
+
+	// série da graduação varia de 1 a 10 (numero de semestres)
 	####################################################
 		// idTurma 1
 		$idCurso = 1;
-		$nome = "MEI3A";
+		$serie = 3;
+		$nome = "MEI A";
 		$ativo = "S";
 		$stmt -> execute();
 
 		// idTurma 2
 		$idCurso = 2;
-		$nome = "FIT2";
+		$serie = 2;
+		$nome = "FIT";
 		$ativo = "S";
 		$stmt -> execute();
 
 		// idTurma 3
 		$idCurso = 3;
-		$nome = "INF2A";
+		$serie = 2;
+		$nome = "INF A";
 		$ativo = "S";
 		$stmt -> execute();
 
 		// idTurma 4
 		$idCurso = 4;
-		$nome = "EDI1A";
+		$serie = 1;
+		$nome = "EDI A";
 		$ativo = "S";
 		$stmt -> execute();
 	####################################################

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+
+<AnchorPane prefHeight="300.0" prefWidth="600.0" styleClass="background" stylesheets="@DisciplinaVisaoGeral.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="blt.java.disciplina.view.DisciplinaVisaoGeralControlador">
+   <children>
+      <HBox alignment="BOTTOM_RIGHT" spacing="10.0" AnchorPane.bottomAnchor="16.0" AnchorPane.leftAnchor="82.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="257.0" />
+      <Label layoutX="115.0" layoutY="22.0" styleClass="label-cabecalho" text="Detalhes das Disciplinas" AnchorPane.leftAnchor="115.0" />
+      <Button layoutX="117.0" layoutY="191.0" mnemonicParsing="false" onAction="#botaoEditarDisciplina" prefHeight="25.0" prefWidth="389.0" text="Alterar" />
+      <Button layoutX="117.0" layoutY="77.0" mnemonicParsing="false" onAction="#botaoNovaDisciplina" prefHeight="25.0" prefWidth="389.0" text="Adicionar" />
+      <Button layoutX="117.0" layoutY="138.0" mnemonicParsing="false" onAction="#botaoDeletarDisciplina" prefHeight="25.0" prefWidth="389.0" text="Deletar" />
+      <Button layoutX="117.0" layoutY="245.0" mnemonicParsing="false" onAction="#botaoVisualizarDisciplina" prefHeight="25.0" prefWidth="389.0" text="Visualizar" />
+   </children>
+</AnchorPane>

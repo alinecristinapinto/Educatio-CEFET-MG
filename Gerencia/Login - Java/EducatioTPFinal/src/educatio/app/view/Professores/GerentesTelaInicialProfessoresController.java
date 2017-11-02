@@ -33,7 +33,10 @@ public class GerentesTelaInicialProfessoresController {
         String [] primeiroNome = profAtual.getNome().split(" ");
         menuProf.setText(primeiroNome[0]);
     }
-    
+    public void voltaPagSelecao()
+    {
+        mainApp.mostraPagSelecao(profAtual);
+    }
     public void saiAplicacao(){
         mainApp.mostraLogin();
     }

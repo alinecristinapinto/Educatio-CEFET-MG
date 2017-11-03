@@ -1463,7 +1463,7 @@
 	####################################################
 		// idConteudo 1
 		$idEtapa = 1;
-		$idProfDisciplina = 1;
+		$idDisciplina = 1;
 		$conteudo = "Conteúdo 1 de Geografia 1º Bimestre";
 		$datas = "20/02/2017";
 		$ativo = "S";
@@ -1471,7 +1471,7 @@
 
 		// idConteudo 2
 		$idEtapa = 1;
-		$idProfDisciplina = 2;
+		$idDisciplina = 2;
 		$conteudo = "Conteúdo 1 de História 1º Bimestre";
 		$datas = "20/02/2017";
 		$ativo = "S";
@@ -1479,7 +1479,7 @@
 
 		// idConteudo 3
 		$idEtapa = 5;
-		$idProfDisciplina = 3;
+		$idDisciplina = 3;
 		$conteudo = "Conteúdo 1 de Filosofia 1º Semestre";
 		$datas = "21/02/2017";
 		$ativo = "S";
@@ -1487,7 +1487,7 @@
 
 		// idConteudo 4
 		$idEtapa = 5;
-		$idProfDisciplina = 4;
+		$idDisciplina = 4;
 		$conteudo = "Conteúdo 1 de Sociologia 1º Semestre";
 		$datas = "21/02/2017";
 		$ativo = "S";
@@ -1495,7 +1495,7 @@
 
 		// idConteudo 5
 		$idEtapa = 1;
-		$idProfDisciplina = 5;
+		$idDisciplina = 5;
 		$conteudo = "Conteúdo 1 de LP 1º Bimestre";
 		$datas = "22/02/2017";
 		$ativo = "S";
@@ -1503,7 +1503,7 @@
 
 		// idConteudo 6
 		$idEtapa = 1;
-		$idProfDisciplina = 6;
+		$idDisciplina = 6;
 		$conteudo = "Conteúdo 1 de WEB 1º Bimestre";
 		$datas = "22/02/2017";
 		$ativo = "S";
@@ -1511,7 +1511,7 @@
 
 		// idConteudo 7
 		$idEtapa = 1;
-		$idProfDisciplina = 7;
+		$idDisciplina = 7;
 		$conteudo = "Conteúdo 1 de TOP 1º Bimestre";
 		$datas = "23/02/2017";
 		$ativo = "S";
@@ -1519,7 +1519,7 @@
 
 		// idConteudo 8
 		$idEtapa = 1;
-		$idProfDisciplina = 8;
+		$idDisciplina = 8;
 		$conteudo = "Conteúdo 1 de Materiais 1º Bimestre";
 		$datas = "23/02/2017";
 		$ativo = "S";
@@ -1527,7 +1527,7 @@
 
 		// idConteudo 9
 		$idEtapa = 2;
-		$idProfDisciplina = 1;
+		$idDisciplina = 1;
 		$conteudo = "Conteúdo 1 de Geografia 2º Bimestre";
 		$datas = "08/05/2017";
 		$ativo = "S";
@@ -1535,7 +1535,7 @@
 
 		// idConteudo 10
 		$idEtapa = 2;
-		$idProfDisciplina = 2;
+		$idDisciplina = 2;
 		$conteudo = "Conteúdo 1 de História 2º Bimestre";
 		$datas = "08/05/2017";
 		$ativo = "S";
@@ -1543,7 +1543,7 @@
 
 		// idConteudo 11
 		$idEtapa = 6;
-		$idProfDisciplina = 3;
+		$idDisciplina = 3;
 		$conteudo = "Conteúdo 1 de Filosofia 2º Semestre";
 		$datas = "09/05/2017";
 		$ativo = "S";
@@ -1551,7 +1551,7 @@
 
 		// idConteudo 12
 		$idEtapa = 6;
-		$idProfDisciplina = 4;
+		$idDisciplina = 4;
 		$conteudo = "Conteúdo 1 de Sociologia 2º Semestre";
 		$datas = "09/05/2017";
 		$ativo = "S";
@@ -1559,7 +1559,7 @@
 
 		// idConteudo 13
 		$idEtapa = 2;
-		$idProfDisciplina = 5;
+		$idDisciplina = 5;
 		$conteudo = "Conteúdo 1 de LP 2º Bimestre";
 		$datas = "10/05/2017";
 		$ativo = "S";
@@ -1567,7 +1567,7 @@
 
 		// idConteudo 14
 		$idEtapa = 2;
-		$idProfDisciplina = 6;
+		$idDisciplina = 6;
 		$conteudo = "Conteúdo 1 de WEB 2º Bimestre";
 		$datas = "10/05/2017";
 		$ativo = "S";
@@ -1575,7 +1575,7 @@
 
 		// idConteudo 15
 		$idEtapa = 2;
-		$idProfDisciplina = 7;
+		$idDisciplina = 7;
 		$conteudo = "Conteúdo 1 de TOP 2º Bimestre";
 		$datas = "11/05/2017";
 		$ativo = "S";
@@ -1583,7 +1583,7 @@
 
 		// idConteudo 16
 		$idEtapa = 2;
-		$idProfDisciplina = 8;
+		$idDisciplina = 8;
 		$conteudo = "Conteúdo 1 de Materiais 2º Bimestre";
 		$datas = "11/05/2017";
 		$ativo = "S";
@@ -1591,7 +1591,7 @@
 
 		// idConteudo 17
 		$idEtapa = 3;
-		$idProfDisciplina = 1;
+		$idDisciplina = 1;
 		$conteudo = "Conteúdo 1 de Geografia 3º Bimestre";
 		$datas = "07/08/2017";
 		$ativo = "S";
@@ -1599,7 +1599,7 @@
 
 		// idConteudo 18
 		$idEtapa = 3;
-		$idProfDisciplina = 2;
+		$idDisciplina = 2;
 		$conteudo = "Conteúdo 1 de História 3º Bimestre";
 		$datas = "07/08/2017";
 		$ativo = "S";
@@ -1607,7 +1607,7 @@
 
 		// idConteudo 19
 		$idEtapa = 3;
-		$idProfDisciplina = 5;
+		$idDisciplina = 5;
 		$conteudo = "Conteúdo 1 de LP 3º Bimestre";
 		$datas = "09/08/2017";
 		$ativo = "S";
@@ -1615,7 +1615,7 @@
 
 		// idConteudo 20
 		$idEtapa = 3;
-		$idProfDisciplina = 6;
+		$idDisciplina = 6;
 		$conteudo = "Conteúdo 1 de WEB 3º Bimestre";
 		$datas = "09/08/2017";
 		$ativo = "S";
@@ -1623,7 +1623,7 @@
 
 		// idConteudo 21
 		$idEtapa = 3;
-		$idProfDisciplina = 7;
+		$idDisciplina = 7;
 		$conteudo = "Conteúdo 1 de TOP 3º Bimestre";
 		$datas = "10/08/2017";
 		$ativo = "S";
@@ -1631,7 +1631,7 @@
 
 		// idConteudo 22
 		$idEtapa = 3;
-		$idProfDisciplina = 8;
+		$idDisciplina = 8;
 		$conteudo = "Conteúdo 1 de Materiais 3º Bimestre";
 		$datas = "10/08/2017";
 		$ativo = "S";
@@ -1639,7 +1639,7 @@
 
 		// idConteudo 23
 		$idEtapa = 4;
-		$idProfDisciplina = 1;
+		$idDisciplina = 1;
 		$conteudo = "Conteúdo 1 de Geografia 4º Bimestre";
 		$datas = "02/10/2017";
 		$ativo = "S";
@@ -1647,7 +1647,7 @@
 
 		// idConteudo 24
 		$idEtapa = 4;
-		$idProfDisciplina = 2;
+		$idDisciplina = 2;
 		$conteudo = "Conteúdo 1 de História 4º Bimestre";
 		$datas = "02/10/2017";
 		$ativo = "S";
@@ -1655,7 +1655,7 @@
 
 		// idConteudo 25
 		$idEtapa = 4;
-		$idProfDisciplina = 5;
+		$idDisciplina = 5;
 		$conteudo = "Conteúdo 1 de LP 4º Bimestre";
 		$datas = "04/10/2017";
 		$ativo = "S";
@@ -1663,7 +1663,7 @@
 
 		// idConteudo 26
 		$idEtapa = 4;
-		$idProfDisciplina = 6;
+		$idDisciplina = 6;
 		$conteudo = "Conteúdo 1 de WEB 4º Bimestre";
 		$datas = "04/10/2017";
 		$ativo = "S";
@@ -1671,7 +1671,7 @@
 
 		// idConteudo 27
 		$idEtapa = 4;
-		$idProfDisciplina = 7;
+		$idDisciplina = 7;
 		$conteudo = "Conteúdo 1 de TOP 4º Bimestre";
 		$datas = "05/10/2017";
 		$ativo = "S";
@@ -1679,7 +1679,7 @@
 
 		// idConteudo 28
 		$idEtapa = 4;
-		$idProfDisciplina = 8;
+		$idDisciplina = 8;
 		$conteudo = "Conteúdo 1 de Materiais 4º Bimestre";
 		$datas = "05/10/2017";
 		$ativo = "S";
@@ -3635,60 +3635,70 @@
 	//
 	$stmt = $conexao -> prepare (
 			"INSERT INTO autorAcervo
-				(idAcervo, idAutor) 
-				VALUES (?, ?)"
+				(idAcervo, idAutor, ativo) 
+				VALUES (?, ?, ?)"
 			);
 	
 	$stmt -> bind_param (
-				"ii", 
-				$idAcervo, $idAutor
+				"iis", 
+				$idAcervo, $idAutor, $ativo
 			 );
 
 	####################################################
 		// idAutorAcervo 1
 		$idAcervo = 1;
 		$idAutor = 1;
+		$ativo = "S";
 		$stmt -> execute();
 
 		// idAutorAcervo 2
 		$idAcervo = 2;
 		$idAutor = 2;
+		$ativo = "S";
 		$stmt -> execute();
 
 		// idAutorAcervo 3
 		$idAcervo = 3;
 		$idAutor = 3;
+		$ativo = "S";
 		$stmt -> execute();
 		// idAutorAcervo 4
 		$idAcervo = 3;
 		$idAutor = 4;
+		$ativo = "S";
 		$stmt -> execute();
 		// idAutorAcervo 5
 		$idAcervo = 3;
 		$idAutor = 5;
+		$ativo = "S";
 		$stmt -> execute();
 		// idAutorAcervo 6
 		$idAcervo = 3;
 		$idAutor = 6;
+		$ativo = "S";
 		$stmt -> execute();
 
 		// idAutorAcervo 7
 		$idAcervo = 4;
 		$idAutor = 7;
+		$ativo = "S";
 		$stmt -> execute();
 		// idAutorAcervo 8
 		$idAcervo = 4;
 		$idAutor = 8;
+		$ativo = "S";
 		$stmt -> execute();
 
 		// idAutorAcervo 9
 		$idAcervo = 5;
 		$idAutor = 9;
+		$ativo = "S";
 		$stmt -> execute();
 
 		// idAutorAcervo 10
 		$idAcervo = 6;
 		$idAutor = 10;
+		$ativo = "S";
 		$stmt -> execute();
 	####################################################
 

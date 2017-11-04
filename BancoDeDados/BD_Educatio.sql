@@ -204,7 +204,8 @@ CREATE TABLE IF NOT EXISTS `partes` (
 CREATE TABLE IF NOT EXISTS `autorAcervo` (
   id int(5) NOT NULL PRIMARY KEY AUTO_INCREMENT,
   idAcervo int(5) NOT NULL,
-  idAutor int(5) NOT NULL
+  idAutor int(5) NOT NULL,
+  ativo varchar(1) NOT NULL
   );
 
 CREATE TABLE IF NOT EXISTS `autores` (

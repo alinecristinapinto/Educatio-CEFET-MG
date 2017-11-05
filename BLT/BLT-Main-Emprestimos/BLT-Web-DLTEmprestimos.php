@@ -8,6 +8,7 @@
   <link href="BLT-Web-Emprestimos.css" rel="stylesheet">
   <script src="js/jquery.min.js"></script>
   <script src="js/bootstrap.min.js"></script> 
+      <script src="BLT-Web-Emprestimos.js"></script> 
  </head>
 <body>
 <div class="corpo">
@@ -38,33 +39,32 @@ $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
 	echo "<div class=\"container-fluid\">";
-    echo "<div class=\"TabelaExclusao\">";
+    echo "<div id=\"Tab\">";
     echo "<ul class=\"list-group\">";
     while($row = $result->fetch_assoc()) {
-    	echo "<li class=\"list-group-item align-items-center\">ID Aluno: ".$row["idAluno"]." | ID Acervo: ".$row["idAcervo"]." | Data empréstimo: ".$row["dataEmprestimo"]."</li>
-        </ul>
-        </div>
-        </div>";
-  }
-  echo "<body>
+    	echo "<li class=\"list-group-item align-items-center\" >ID Aluno: ".$row["idAluno"]." | ID Acervo: ".$row["idAcervo"]." | Data empréstimo: ".$row["dataEmprestimo"]."</li>";
+    }
+    echo "</ul>
+          </div>
+          </div>";
+    echo "<body>
+        <form id=\"DLTemprestimo\">
           <div class=\"margem-DLTEmp\">
           <div class=\"container-fluid\">
-          <form action=\"BLT-Web-DLTEmprestimos2.php\" method=\"post\">
               <div class=\"row\" style=\"margin: 70px;\">
                 <div class=\"col-md-6 mb-3\">
-                    <label for=\"validationServer02\">ID do acervo que deseja devolver</label>
-                    <input type=\"text\" class=\"form-control is-valid\" id=\"validationServer02\" name=\"IDAcervo\" placeholder=\"ID do acervo\" value=\"\" required>
+                    <label for=\"IDAcervo\">ID do acervo que deseja devolver</label>
+                    <input type=\"text\" class=\"form-control is-valid\" id=\"IDAcervo\" name=\"IDAcervo\" placeholder=\"ID do acervo\" >
                   </div>
-
                   <div class=\"col-md-6 mb-3\">
                     <label for=\"validationServer02\"></label>
-                    <button type=\"button\" data-toggle=\"modal\" data-target=\"#exampleModal\" class=\"btn btn-outline-info btn-block btn-lg\">Remover</button>
+                    <button id=\"EnvioData\" type=\"button\" data-toggle=\"modal\" data-target=\"#exampleModal\" class=\"btn btn-outline-info btn-block btn-lg\">Remover</button>
 
                       <div class=\"modal fade\" id=\"exampleModal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"exampleModalLabel\" aria-hidden=\"true\">
                         <div class=\"modal-dialog\" role=\"document\">
                           <div class=\"modal-content\">
                             <div class=\"modal-header\">
-                              <h5 class=\"modal-title\" id=\"exampleModalLabel\">Modal title</h5>
+                              <h5 class=\"modal-title\" id=\"exampleModalLabel\">Data de entrega</h5>
                               <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\">
                                 <span aria-hidden=\"true\">&times;</span>
                               </button>
@@ -77,7 +77,9 @@ if ($result->num_rows > 0) {
                             </div>
                             <div class=\"modal-footer\">
                               <button type=\"button\" class=\"btn btn-secondary\" data-dismiss=\"modal\">Fechar</button>
-                              <button type=\"submit\" class=\"btn btn-primary\">Pronto</button>
+                              <button type=\"button\" id=\"Envio\" class=\"btn btn-primary\">Pronto</button>
+                              </form>
+
                             </div>
                           </div>
                         </div>

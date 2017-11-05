@@ -32,13 +32,13 @@ d8ac29
 
 <div class="wrapper">
 	<div class="title" style="text-align: center;">
-		<h1><b>Manutenção de Professor</b></h1>
+		<h1><b>Manutenção de Acervo</b></h1>
 	</div>
-		<p id="p1">Crie, edite e exclua professores</p>
+		<p id="p1">Crie, edite e exclua obras do acervo</p>
 
 	<div class="container">
-		<div class="head">
-             <h2 class="text-center">Professor</h2>
+		<div class="title">
+             <h2 class="text-center">Academico</h2>
         </div>
 		<form class="contact-form">
 			<div class="container">
@@ -48,20 +48,20 @@ d8ac29
 	         			<label class="fonteTexto">Nome:</label>
 								<div class="input-group">
 									<span class="input-group-addon">
-										<i class="nc-icon nc-circle-10"></i>
+										<i class="nc-icon nc-tag-content"></i>
 									</span>
-									<input type="text" class="form-control" placeholder="Nome do professor" required='required'>
+									<input type="text" class="form-control" placeholder="Nome do academico" required='required'>
 								</div>
 				      </div>
 					</div>
 					<div class="col ml-auto mr-auto">
        			<div class="col-md-12">
-         			<label class="fonteTexto">ID Siape:</label>
+         			<label class="fonteTexto">Programa:</label>
 							<div class="input-group">
 								<span class="input-group-addon">
-									<i class="nc-icon nc-credit-card"></i>
+									<i class="nc-icon nc-check-2"></i>
 								</span>
-								<input type="text" class="form-control" placeholder="ID Siape do professor" required='required'>
+								<input type="text" class="form-control" placeholder="Programa do academico" required='required'>
 							</div>
 			      </div>
 					</div>	
@@ -70,23 +70,23 @@ d8ac29
 				<div class="row">
 					<div class="col ml-auto mr-auto">
 	       			<div class="col-md-12">
-	         			<label class="fonteTexto">ID Departamento:</label>
+	         			<label class="fonteTexto">Tipo:</label>
 								<div class="input-group">
 									<span class="input-group-addon">
 										<i class="nc-icon nc-bookmark-2"></i>
 									</span>
-									<input type="number" class="form-control" placeholder="Departamento do professor" required='required'>
+									<input type="text" class="form-control" placeholder="Tipo do academico" required='required'>
 								</div>
 				      </div>
 					</div>
 					<div class="col ml-auto mr-auto">
        			<div class="col-md-12">
-         			<label class="fonteTexto">Titulação:</label>
+         			<label class="fonteTexto">Local:</label>
 							<div class="input-group">
 								<span class="input-group-addon">
-									<i class="nc-icon nc-hat-3"></i>
+									<i class="nc-icon nc-pin-3"></i>
 								</span>
-								<input type="text" class="form-control" placeholder="Formação do professor" required='required'>
+								<input type="text" class="form-control" placeholder="Local do academico" required='required'>
 							</div>
 			      </div>
 					</div>	
@@ -95,27 +95,44 @@ d8ac29
 				<div class="row">
 					<div class="col ml-auto mr-auto">
 	       			<div class="col-md-12">
-	         			<label class="fonteTexto">Senha:</label>
+	         			<label class="fonteTexto">Ano:</label>
 								<div class="input-group">
 									<span class="input-group-addon">
-										<i class="nc-icon nc-lock-circle-open"></i>
+										<i class="nc-icon nc-calendar-60"></i>
 									</span>
-									<input type="password" class="form-control" placeholder="********" required='required'>
+									<input type="number" class="form-control" placeholder="qualquer coisa" required='required'>
 								</div>
 				      </div>
 					</div>
 					<div class="col ml-auto mr-auto">
        			<div class="col-md-12">
-         			<label class="fonteTexto">Foto:</label>	
-                        <input type="file" class="form-control" placeholder="Editora do livro" required='required'>
+         			<label class="fonteTexto">Editora:</label>
+							<div class="input-group">
+								<span class="input-group-addon">
+									<i class="nc-icon nc-paper"></i>
+								</span>
+								<input type="text" class="form-control" placeholder="Editora do academico" required='required'>
+							</div>
 			      </div>
 					</div>	
 				</div>
 
-				<div class="btn-group" role="group" aria-label="...">
-					<button class="btn btn-neutral">Excluir</button>
-					<button type="submit" class="btn btn-neutral">Editar</button>
+				<div class="row">
+					<div class="col ml-auto mr-auto">
+	       			<div class="col-md-12">
+	         			<label class="fonteTexto">Paginas:</label>
+								<div class="input-group">
+									<span class="input-group-addon">
+										<i class="nc-icon nc-single-copy-04"></i>
+									</span>
+									<input type="number" class="form-control" placeholder="Numero de paginas" required='required'>
+								</div>
+				      </div>
+					</div>	
 				</div>
+
+					<button id="criar" type="submit" class="btn btn-neutral">Criar</button>
+			
 			</div>	
 		</form>	
 	</div>

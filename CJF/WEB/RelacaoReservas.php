@@ -1,5 +1,36 @@
 <?php
 
+printf(" 
+	<html>
+	<head>
+	<title>Relação de reservas</title>
+  	<meta charset='utf-8'>
+  	<meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  	<meta name='viewport' content='width=device-width, initial-scale=1.0'>
+  	<link href='https://fonts.googleapis.com/css?family=Abel|Inconsolata' rel='stylesheet'>
+
+	<!-- CSS do Bootstrap -->
+	<link href='css/bootstrap.min.css' rel='stylesheet'/>
+	<link href='css/bootstrap.css' rel='stylesheet'/>
+
+	<!-- CSS do grupo -->
+	<link href='CJF-web-estilos.css' rel='stylesheet' type='text/css' >
+
+	<!-- Arquivos js -->
+	<script src='js/popper.js'></script>
+	<script src='js/jquery-3.2.1.js' type='text/javascript'></script>
+	<script src='js/bootstrap.min.js' type='text/javascript'></script>
+
+	<!-- Fontes e icones -->
+	<link href='css/nucleo-icons.css' rel='stylesheet'>
+</head>
+<body>
+	<div class='section landing-section'>
+		<div class='container'>
+			<div class='row'>
+				<div class='col-md-8 ml-auto mr-auto'>
+					<h2 class='text-center'>Relação de reservas</h2><br>
+						<div class='col-md-6'>");
 
 if (isset($_POST['data'])) {
 
@@ -133,5 +164,11 @@ if (isset($_POST['data'])) {
 } else {
 	echo "Não econtramos o que deve ser pesquisado!";
 }
-
-	
+printf("				</div>
+					</div>
+				</div>
+			</div>				
+		</div>					
+</body>
+</html>");
+?>	

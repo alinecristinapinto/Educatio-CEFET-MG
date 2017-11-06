@@ -11,8 +11,7 @@ SET time_zone = "-03:00";
   id varchar(5);
   <nomes-no-geral> varchar(30) -> alunos.nome varchar(80);
   ativo varchar(1); // 'S'[Sim] ou 'N'[Não] (maiúsculas)
-  hierarquia, titulacao, subtipo, qualificacao varchar(15); *SOMENTE a primeira letra maiúscula, o resto minúsculo, 
-  															                             sem espacos, sem hífens*
+  hierarquia, titulacao, subtipo, qualificacao varchar(15); *SOMENTE a primeira letra maiúscula, o resto minúsculo*
 */;
 
 CREATE DATABASE IF NOT EXISTS `educatio`;

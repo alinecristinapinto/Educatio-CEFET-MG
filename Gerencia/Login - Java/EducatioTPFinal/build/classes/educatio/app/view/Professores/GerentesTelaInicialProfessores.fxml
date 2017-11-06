@@ -31,6 +31,7 @@
         <menus>
           <Menu fx:id="menuProf" mnemonicParsing="false" text="Professor">
             <items>
+                  <MenuItem mnemonicParsing="false" onAction="#voltaPagSelecao" text="Tela de Seleção" />
                   <MenuItem mnemonicParsing="false" text="Perfil" />
                   <MenuItem mnemonicParsing="false" onAction="#saiAplicacao" text="Sair" />
             </items>

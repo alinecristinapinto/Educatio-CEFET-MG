@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="background" stylesheets="@EmprestimoVisaoGeral.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="blt.java.emprestimo.view.EmprestimoVisaoGeralControlador">
+   <children>
+      <Button layoutX="100.0" layoutY="160.0" mnemonicParsing="false" onAction="#botaoNovoEmprestimo" prefHeight="25.0" prefWidth="401.0" text="Criar" />
+      <Button layoutX="100.0" layoutY="230.0" mnemonicParsing="false" onAction="#botaoDeletarEmprestimo" prefHeight="25.0" prefWidth="401.0" text="Remover" />
+      <Label layoutX="52.0" layoutY="41.0" styleClass="label-cabecalho" text="Gerenciamento de Emprestimos" />
+      <Button layoutX="101.0" layoutY="303.0" mnemonicParsing="false" onAction="#botaoVisualizarEmprestimo" prefHeight="25.0" prefWidth="401.0" text="Visualizar" />
+   </children>
+</AnchorPane>

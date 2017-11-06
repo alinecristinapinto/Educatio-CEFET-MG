@@ -32,7 +32,8 @@ public class GerentesTelaDeLoginController {
 
     @FXML
     private void initialize() {
-
+        login.setPromptText("Insira seu id");
+        senha.setPromptText("Insira sua senha");
     }
 
     public void setMainApp(mainApp mainApp) {
@@ -69,15 +70,28 @@ public class GerentesTelaDeLoginController {
                 try {
                     resultadoPesquisa = conexaoBD.enviarQueryResultados(pesquisaBD);
 
-                    if (existeLogin && (resultadoPesquisa.getString("ativo").equals("S"))) {
-                        usuarioAtual = new Aluno(resultadoPesquisa.getString("sexo"), resultadoPesquisa.getString("nascimento"),
-                                resultadoPesquisa.getString("logradouro"),
-                                resultadoPesquisa.getInt("numeroLogradouro"), resultadoPesquisa.getString("complemento"), resultadoPesquisa.getString("bairro"),
-                                resultadoPesquisa.getString("cidade"), resultadoPesquisa.getInt("CEP"), resultadoPesquisa.getString("UF"),
-                                resultadoPesquisa.getString("email"),
-                                resultadoPesquisa.getBlob("foto"), "", resultadoPesquisa.getString("nome"), resultadoPesquisa.getString("idCPF"));
+                    if (existeLogin) {
+                        if (resultadoPesquisa.getString("ativo").equals("S")) {
+                            usuarioAtual = new Aluno(resultadoPesquisa.getString("sexo"), resultadoPesquisa.getString("nascimento"),
+                                    resultadoPesquisa.getString("logradouro"),
+                                    resultadoPesquisa.getInt("numeroLogradouro"), resultadoPesquisa.getString("complemento"), resultadoPesquisa.getString("bairro"),
+                                    resultadoPesquisa.getString("cidade"), resultadoPesquisa.getInt("CEP"), resultadoPesquisa.getString("UF"),
+                                    resultadoPesquisa.getString("email"),
+                                    resultadoPesquisa.getBlob("foto"), "", resultadoPesquisa.getString("nome"), resultadoPesquisa.getString("idCPF"));
 
-                        mainApp.mostraPagSelecao(usuarioAtual);
+                            mainApp.mostraPagSelecao(usuarioAtual);
+                        } else if (resultadoPesquisa.getString("senha").equals(geraMd5(""))) {
+                            Alert alert = new Alert(Alert.AlertType.ERROR);
+                            alert.setTitle("Não foi possível efetuar o login.");
+                            alert.setContentText("Você não está cadastrado no sistema. Clique em 'Cadastro'");
+                            alert.showAndWait();
+                        } else {
+                            Alert alert = new Alert(Alert.AlertType.ERROR);
+                            alert.setTitle("Não foi possível efetuar o login.");
+                            alert.setContentText("Você está desativado do sistema.");
+                            alert.showAndWait();
+                        }
+
                     } else {
                         Alert alert = new Alert(Alert.AlertType.ERROR);
                         alert.setTitle("Não foi possível efetuar o login.");
@@ -94,27 +108,40 @@ public class GerentesTelaDeLoginController {
                 pesquisaBD = "SELECT * FROM funcionario WHERE idSIAPE='" + loginEntrada + "'AND senha='" + senhaEntrada + "';";
                 try {
                     resultadoPesquisa = conexaoBD.enviarQueryResultados(pesquisaBD);
-                    if (existeLogin && (resultadoPesquisa.getString("ativo").equals("S"))) {
-                        switch (resultadoPesquisa.getString("hierarquia")) {
-                            case "P":
-                                usuarioAtual = new Professor(resultadoPesquisa.getString("idDepto"), resultadoPesquisa.getString("titulacao"),
-                                        resultadoPesquisa.getString("nome"), resultadoPesquisa.getString("idSIAPE"));
-                                mainApp.mostraPagSelecao(usuarioAtual);
-                                break;
-                            case "C":
-                                usuarioAtual = new Coordenador(resultadoPesquisa.getString("nome"), resultadoPesquisa.getString("idSIAPE"));
-                                mainApp.mostraPagInicialSistemaAcademico(usuarioAtual);
-                                break;
-                            case "B":
-                                usuarioAtual = new Bibliotecario(resultadoPesquisa.getString("nome"), resultadoPesquisa.getString("idSIAPE"));
-                                mainApp.mostraPagInicialBiblioteca(usuarioAtual);
-                                break;
-                            default:
-                                Alert alert = new Alert(Alert.AlertType.ERROR);
-                                alert.setTitle("Seu funcionário não possui uma hierarquia.");
-                                alert.setContentText("Cadastre o funcionário corretamente!");
-                                alert.showAndWait();
-                                break;
+                    if (existeLogin) {
+                        if (resultadoPesquisa.getString("ativo").equals("S")) {
+                            switch (resultadoPesquisa.getString("hierarquia")) {
+                                case "Professor":
+                                    usuarioAtual = new Professor(resultadoPesquisa.getString("idDepto"), resultadoPesquisa.getString("titulacao"),
+                                            resultadoPesquisa.getString("nome"), resultadoPesquisa.getString("idSIAPE"));
+                                    mainApp.mostraPagSelecao(usuarioAtual);
+                                    break;
+                                case "Coordenador":
+                                    usuarioAtual = new Coordenador(resultadoPesquisa.getString("nome"), resultadoPesquisa.getString("idSIAPE"));
+                                    mainApp.mostraPagInicialSistemaAcademico(usuarioAtual);
+                                    break;
+                                case "Bibliotecário":
+                                    usuarioAtual = new Bibliotecario(resultadoPesquisa.getString("nome"), resultadoPesquisa.getString("idSIAPE"));
+                                    mainApp.mostraPagInicialBiblioteca(usuarioAtual);
+                                    break;
+                                default:
+                                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                                    alert.setTitle("Seu funcionário não possui uma hierarquia.");
+                                    alert.setContentText("Cadastre o funcionário corretamente!");
+                                    alert.showAndWait();
+                                    break;
+                            }
+
+                        } else if (resultadoPesquisa.getString("senha").equals(geraMd5(""))) {
+                            Alert alert = new Alert(Alert.AlertType.ERROR);
+                            alert.setTitle("Não foi possível efetuar o login.");
+                            alert.setContentText("Você não está cadastrado no sistema. Clique em 'Cadastro'");
+                            alert.showAndWait();
+                        } else {
+                            Alert alert = new Alert(Alert.AlertType.ERROR);
+                            alert.setTitle("Não foi possível efetuar o login.");
+                            alert.setContentText("Você está desativado do sistema.");
+                            alert.showAndWait();
                         }
                     } else {
                         Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -122,6 +149,7 @@ public class GerentesTelaDeLoginController {
                         alert.setContentText("Sua senha e/ou login não existem. Efetue um cadastro em nosso sistema");
                         alert.showAndWait();
                     }
+
                 } catch (SQLException ex) {
                     Logger.getLogger(GerentesTelaDeLoginController.class.getName()).log(Level.SEVERE, null, ex);
                 }

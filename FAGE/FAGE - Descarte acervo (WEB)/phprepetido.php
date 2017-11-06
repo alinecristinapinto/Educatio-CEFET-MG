@@ -12,7 +12,7 @@
 		$idprof=$_GET['prof'];
 		$data=$_GET['data'];
 		$mot=$_GET['mot'];
-		$op=$_GET['op']; 
+	 
 //seleciona a tabela descarte
 		$sql = "SELECT idAcervo FROM descartes  ";
 //cria variavel para ativar fução sql
@@ -101,10 +101,10 @@
 			echo "<input class='btn btn-primary btn-lg btn-block' type='button' value='Voltar' onClick='history.go(-3)'> ";
 			ECHO"<div class='progress'>
 			  		<div class='progress-bar' role='progressbar' style='width: 100%;' aria-valuenow='25' aria-valuemin='0' aria-valuemax='100'>25%</div>
-					</div>"
+					</div>";
 		}
 		else{
-			echo"o acervo ja foi deletado";
+			echo"o acervo ja tinha sido deletado ";
 		}
  ?>
  </div>

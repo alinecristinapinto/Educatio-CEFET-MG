@@ -49,6 +49,9 @@ public class GerentesTelaCadastroController {
     private void initialize() {
         caixaSelecaoCargo.setValue("Aluno");
         caixaSelecaoCargo.setItems(listaOpcoes);
+        idUsuario.setPromptText("Insira seu id");
+        senha.setPromptText("Insira sua senha");
+        confirmaSenha.setPromptText("Confirme sua senha");
     }
 
     public void setMainApp(mainApp mainApp) {
@@ -78,7 +81,7 @@ public class GerentesTelaCadastroController {
                     resultado = conexaoBD.enviarQueryResultados2(pesquisaBD);
 
                     if (existeLogin) {
-                        if (resultado.getString("senha").equals("") && resultado.getString("ativo").equals("N")) {
+                        if (resultado.getString("senha").equals(geraMd5(""))) {
                             if (strsenha.equals(strconfirma)) {
                                 cadastroSucesso = conexaoBD.enviarQueryCadastro(strsenha, id, "Aluno");
                                 if (!cadastroSucesso) {
@@ -98,7 +101,7 @@ public class GerentesTelaCadastroController {
                         } else {
                             Alert alert = new Alert(Alert.AlertType.ERROR);
                             alert.setTitle("Erro.");
-                            alert.setContentText("Você está ativo e/ou já possui uma senha");
+                            alert.setContentText("Você está desativado do sistema.");
                             alert.showAndWait();
                             break;
                         }
@@ -119,7 +122,7 @@ public class GerentesTelaCadastroController {
                 try {
                     resultado = conexaoBD.enviarQueryResultados2(pesquisaBD);
                     if (existeLogin) {
-                        if (resultado.getString("senha").equals("") && resultado.getString("ativo").equals("N")) {
+                        if (resultado.getString("senha").equals(geraMd5(""))) {
                             if (strsenha.equals(strconfirma)) {
                                 cadastroSucesso = conexaoBD.enviarQueryCadastro(strsenha, id, "Funcionario");
                                 if (!cadastroSucesso) {
@@ -139,7 +142,7 @@ public class GerentesTelaCadastroController {
                         } else {
                             Alert alert = new Alert(Alert.AlertType.ERROR);
                             alert.setTitle("Erro.");
-                            alert.setContentText("Você está ativo e/ou já possui uma senha");
+                            alert.setContentText("Você está desativado do sistema");
                             alert.showAndWait();
                             break;
                         }

@@ -15,7 +15,7 @@ if ($conn->connect_error) {
 $nomeDisciplina = $_POST['nomeDisciplina'];
 $idTurma = $_POST['idTurma'];
 $cargaHoraria = $_POST['cargaHoraria'];
-$ativo = "s";
+$ativo = "S";
 
 $sql = "INSERT INTO disciplinas (idTurma, nome, cargaHorariaMin, ativo) VALUES ('$idTurma', '$nomeDisciplina', '$cargaHoraria', '$ativo')";
 

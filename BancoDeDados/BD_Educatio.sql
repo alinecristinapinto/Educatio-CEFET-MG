@@ -12,11 +12,13 @@ SET time_zone = "-03:00";
   <nomes-no-geral> varchar(30) -> alunos.nome varchar(80);
   ativo varchar(1); // 'S'[Sim] ou 'N'[Não] (maiúsculas)
   hierarquia, titulacao, subtipo, qualificacao varchar(15); *SOMENTE a primeira letra maiúscula, o resto minúsculo, 
-  															                             sem espacos, sem hífens, sem acento*
+  															                             sem espacos, sem hífens*
 */;
 
 CREATE DATABASE IF NOT EXISTS `educatio`;
 USE `educatio`;
+
+ALTER DATABASE educatio CHARACTER SET utf8 COLLATE utf8_unicode_ci;
 
 CREATE TABLE IF NOT EXISTS `campi` (
   id int(5) NOT NULL PRIMARY KEY AUTO_INCREMENT,
@@ -45,6 +47,7 @@ CREATE TABLE IF NOT EXISTS `cursos` (
 CREATE TABLE IF NOT EXISTS `turmas` (
   id int(5) NOT NULL PRIMARY KEY AUTO_INCREMENT,
   idCurso int(5) NOT NULL,
+  serie int(2) NOT NULL,
   nome varchar(30) NOT NULL,
   ativo varchar(1) NOT NULL
   );
@@ -201,7 +204,8 @@ CREATE TABLE IF NOT EXISTS `partes` (
 CREATE TABLE IF NOT EXISTS `autorAcervo` (
   id int(5) NOT NULL PRIMARY KEY AUTO_INCREMENT,
   idAcervo int(5) NOT NULL,
-  idAutor int(5) NOT NULL
+  idAutor int(5) NOT NULL,
+  ativo varchar(1) NOT NULL
   );
 
 CREATE TABLE IF NOT EXISTS `autores` (

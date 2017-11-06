@@ -17,19 +17,12 @@ and open the template in the editor.
     -fx-alignment:center;
     
 }
-.menu-background{
-    -fx-background-color:#2644B2;
-    -fx-alignment:center;
-}
 .menu-bar{
     -fx-background-color:#2644B2;
     -fx-text-base-color:white;  
 }
 .menu-item{
     -fx-background-color:#2644B2;
-     -fx-text-base-color:white; 
+    -fx-text-base-color:white; 
     
 }
-
-
-

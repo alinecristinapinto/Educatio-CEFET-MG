@@ -7,6 +7,7 @@ package educatio.app.view.Alunos;
 
 import educatio.app.mainApp;
 import educatio.app.model.Login.Aluno;
+import educatio.app.view.Alunos.controlador.*;
 import javafx.fxml.FXML;
 import javafx.scene.control.Menu;
 
@@ -18,16 +19,20 @@ public class GerentesTelaInicialAlunoController {
     
     private Aluno alunoAtual;
 
-    public void setAlunoAtual(Aluno alunoAtual) {
-        this.alunoAtual = alunoAtual;
-    }
+   
     private mainApp mainApp;
+    
+    private ManuntencaoAluno manuntencaoAluno = new ManuntencaoAluno();
    
     @FXML
     private void initialize() {
-        
+       
     }
-    
+
+     public void setAlunoAtual(Aluno alunoAtual) {
+        this.alunoAtual = alunoAtual;
+    }
+     
     public void setMainApp(mainApp mainApp) {
         this.mainApp = mainApp;
     }
@@ -40,9 +45,15 @@ public class GerentesTelaInicialAlunoController {
     public void saiAplicacao(){
         mainApp.mostraLogin();
     }
-    public void teste()
+    
+    public void voltaPagSelecao()
     {
-        System.out.println("TOP");
-        mainApp.mostraPagAluno();
+        mainApp.mostraPagSelecao(alunoAtual);
+    }
+    
+    public void mostraFormulario()
+    {
+        manuntencaoAluno.setMainApp(mainApp);
+        manuntencaoAluno.mostraFormulario();
     }
 }

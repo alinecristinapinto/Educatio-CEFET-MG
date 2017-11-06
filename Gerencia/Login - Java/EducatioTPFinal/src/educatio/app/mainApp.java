@@ -38,7 +38,11 @@ public class mainApp extends Application {
     public void setUsuarioAtual(Usuario usuarioAtual) {
         this.usuarioAtual = usuarioAtual;
     }
-
+    public void setTelaBaseCentro(AnchorPane conteudoCentro)
+    {
+        telaBase.setCenter(conteudoCentro);
+    }
+    
     @Override
     public void start(Stage palcoPrincipal) {
         usuarioAtual = null;
@@ -217,10 +221,10 @@ public class mainApp extends Application {
         }
     }
     
-    public void mostraPagAluno() {
+   /* public void mostraPagAluno() {
         try {
             FXMLLoader auxiliar = new FXMLLoader();
-                auxiliar.setLocation(mainApp.class.getResource("view/Alunos/VisaoGeralDoUsuario.fxml"));
+                auxiliar.setLocation(mainApp.class.getResource("view/Alunos/GerentesTelaInicialAlunos.fxml"));
                 telaInicial = (AnchorPane) auxiliar.load();
                 telaBase.setCenter(telaInicial);
                 Scene cena = new Scene(telaBase,1280,720);
@@ -230,7 +234,7 @@ public class mainApp extends Application {
             e.printStackTrace();
         }
     }
-
+*/
     public static void main(String[] args) {
         launch(args);
     }

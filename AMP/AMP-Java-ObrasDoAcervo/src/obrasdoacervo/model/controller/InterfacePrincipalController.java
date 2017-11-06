@@ -42,22 +42,22 @@ public class InterfacePrincipalController implements Initializable{
     }
     
     
-    /*
+    
     @FXML
-    public void alteraTelaAlterarTurma() throws IOException{
-        main.abreAlteraTurma();
+    public void pesquisaObras() throws IOException{
+        main.abreInterfacePrincipal();
+     }
+    
+    @FXML
+    public void abreMenuSwitchObras() throws IOException{
+        main.abreMenuSwitchObras();
     }
     
     @FXML
-    public void alteraTelaApagarTurma() throws IOException{
-        main.abreApagaTurma();
+    public void sair() throws IOException{
+        System.exit(0);
     }
-    
-    @FXML
-    public void alteraTelaCriarTurma() throws IOException{
-        main.abreCriaTurma();
-    }
-*/
+
     public void setMain(ObrasDoAcervo main) {
         this.main = main;
     }

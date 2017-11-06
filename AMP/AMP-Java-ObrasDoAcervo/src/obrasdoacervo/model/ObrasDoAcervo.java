@@ -19,14 +19,18 @@ import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
-import obrasdoacervo.model.Academicos;
-import obrasdoacervo.model.Autores;
-import obrasdoacervo.model.Livros;
-import obrasdoacervo.model.Midias;
-import obrasdoacervo.model.Obras;
-import obrasdoacervo.model.Partes;
-import obrasdoacervo.model.Periodicos;
+import obrasdoacervo.model.controller.CriaAcademicoController;
+import obrasdoacervo.model.controller.CriaLivroController;
+import obrasdoacervo.model.controller.CriaMidiaController;
+import obrasdoacervo.model.controller.CriaParteController;
+import obrasdoacervo.model.controller.CriaPeriodicoController;
+import obrasdoacervo.model.controller.EditaAcademicoController;
+import obrasdoacervo.model.controller.EditaLivroController;
+import obrasdoacervo.model.controller.EditaMidiaController;
+import obrasdoacervo.model.controller.EditaParteController;
+import obrasdoacervo.model.controller.EditaPeriodicosController;
 import obrasdoacervo.model.controller.InterfacePrincipalController;
+import obrasdoacervo.model.controller.MenuSwitchObrasController;
 
 /**
  *
@@ -63,117 +67,108 @@ public class ObrasDoAcervo extends Application {
         controller.setMain(this);
     }
     
-    public void abreTelaInicial() throws IOException{
-            FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(ObrasDoAcervo.class.getResource("view/InterfacePrincipal.fxml"));
-        AnchorPane tela = (AnchorPane) loader.load();
-        borda.setCenter(tela);
-        InterfacePrincipalController controller = loader.getController();
-        controller.setMain(this);
-    }
-    
     public void abreCriaAcademico() throws IOException{
         FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(ObrasDoAcervo.class.getResource("view/InterfacePrincipal.fxml"));
+        loader.setLocation(ObrasDoAcervo.class.getResource("view/CriaAcademico.fxml"));
         AnchorPane tela = (AnchorPane) loader.load();
         borda.setCenter(tela);
-        InterfacePrincipalController controller = loader.getController();
+        CriaAcademicoController controller = loader.getController();
         controller.setMain(this);
     }
     
     public void abreCriaLivro() throws IOException{
-    FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(ObrasDoAcervo.class.getResource("view/InterfacePrincipal.fxml"));
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(ObrasDoAcervo.class.getResource("view/CriaLivro.fxml"));
         AnchorPane tela = (AnchorPane) loader.load();
         borda.setCenter(tela);
-        InterfacePrincipalController controller = loader.getController();
+        CriaLivroController controller = loader.getController();
         controller.setMain(this);
     }
     
     public void abreCriaMidia() throws IOException{
         FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(ObrasDoAcervo.class.getResource("view/InterfacePrincipal.fxml"));
+        loader.setLocation(ObrasDoAcervo.class.getResource("view/CriaMidia.fxml"));
         AnchorPane tela = (AnchorPane) loader.load();
         borda.setCenter(tela);
-        InterfacePrincipalController controller = loader.getController();
+        CriaMidiaController controller = loader.getController();
         controller.setMain(this);
     } 
     
     public void abreCriaParte() throws IOException{
         FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(ObrasDoAcervo.class.getResource("view/InterfacePrincipal.fxml"));
+        loader.setLocation(ObrasDoAcervo.class.getResource("view/CriaParte.fxml"));
         AnchorPane tela = (AnchorPane) loader.load();
         borda.setCenter(tela);
-        InterfacePrincipalController controller = loader.getController();
+        CriaParteController controller = loader.getController();
         controller.setMain(this);
     }
     
     public void abreCriaPeriodico() throws IOException{
         FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(ObrasDoAcervo.class.getResource("view/InterfacePrincipal.fxml"));
+        loader.setLocation(ObrasDoAcervo.class.getResource("view/CriaPeriodico.fxml"));
         AnchorPane tela = (AnchorPane) loader.load();
         borda.setCenter(tela);
-        InterfacePrincipalController controller = loader.getController();
+        CriaPeriodicoController controller = loader.getController();
         controller.setMain(this);
     }
     
     public void abreEditaAcademico() throws IOException{
         FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(ObrasDoAcervo.class.getResource("view/InterfacePrincipal.fxml"));
+        loader.setLocation(ObrasDoAcervo.class.getResource("view/EditaAcademico.fxml"));
         AnchorPane tela = (AnchorPane) loader.load();
         borda.setCenter(tela);
-        InterfacePrincipalController controller = loader.getController();
+        EditaAcademicoController controller = loader.getController();
         controller.setMain(this);
     }
     
     public void abreEditaLivro() throws IOException{    FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(ObrasDoAcervo.class.getResource("view/InterfacePrincipal.fxml"));
+        loader.setLocation(ObrasDoAcervo.class.getResource("view/EditaLivro.fxml"));
         AnchorPane tela = (AnchorPane) loader.load();
         borda.setCenter(tela);
-        InterfacePrincipalController controller = loader.getController();
+        EditaLivroController controller = loader.getController();
         controller.setMain(this);
     }
     
     public void abreEditaMidia() throws IOException{
         FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(ObrasDoAcervo.class.getResource("view/InterfacePrincipal.fxml"));
+        loader.setLocation(ObrasDoAcervo.class.getResource("view/EditaMidia.fxml"));
         AnchorPane tela = (AnchorPane) loader.load();
         borda.setCenter(tela);
-        InterfacePrincipalController controller = loader.getController();
+        EditaMidiaController controller = loader.getController();
         controller.setMain(this);
     }
     
     public void abreEditaParte() throws IOException{
         FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(ObrasDoAcervo.class.getResource("view/InterfacePrincipal.fxml"));
+        loader.setLocation(ObrasDoAcervo.class.getResource("view/EditaParte.fxml"));
         AnchorPane tela = (AnchorPane) loader.load();
         borda.setCenter(tela);
-        InterfacePrincipalController controller = loader.getController();
+        EditaParteController controller = loader.getController();
         controller.setMain(this);
     }
     
     public void abreEditaPeriodicos() throws IOException{
         FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(ObrasDoAcervo.class.getResource("view/InterfacePrincipal.fxml"));
+        loader.setLocation(ObrasDoAcervo.class.getResource("view/EditaPeriodicos.fxml"));
         AnchorPane tela = (AnchorPane) loader.load();
         borda.setCenter(tela);
-        InterfacePrincipalController controller = loader.getController();
+        EditaPeriodicosController controller = loader.getController();
         controller.setMain(this);
     }
     
     public void abreMenuSwitchObras() throws IOException{
         FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(ObrasDoAcervo.class.getResource("view/InterfacePrincipal.fxml"));
+        loader.setLocation(ObrasDoAcervo.class.getResource("view/MenuSwitchObras.fxml"));
         AnchorPane tela = (AnchorPane) loader.load();
         borda.setCenter(tela);
-        InterfacePrincipalController controller = loader.getController();
+        MenuSwitchObrasController controller = loader.getController();
         controller.setMain(this);
     }
         
     public static void main(String[] args) throws SQLException{
         launch(args);
         
-        // /*
+        /*
         try{
             //Carrega o driver especificado
             Class.forName("com.mysql.jdbc.Driver");
@@ -216,7 +211,7 @@ public class ObrasDoAcervo extends Application {
         //pesquisaAcervo(connection, "80");
         //System.out.println("\n Pesquisa 4 \n");
 
-// */
+*/
     }
 
     public static void insere (Connection connection, Obras obras){

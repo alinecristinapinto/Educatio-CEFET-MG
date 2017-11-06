@@ -8,36 +8,62 @@
   	<link href="BLT-Web-Emprestimos.css" rel="stylesheet">
   	<script src="js/jquery.min.js"></script>
   	<script src="js/bootstrap.min.js"></script> 
+    <script src="BLT-Web-Emprestimos.js"></script> 
 </head>
 <body>
-<div class="container-fluid">
-	<div class="titulo">
-    	<h1><b>Criar empréstimo</b></h1>
- 	</div>
-<form action="BLT-Web-ADCEmprestimos.php" method="post">
-  <div class="row">
-    <div class="col-md-6 mb-3">
-      <label for="validationServer01">ID do acervo</label>
-      <input type="number" class="form-control is-valid" id="validationServer01" name="IDacervo" placeholder="ID do acervo" value="" required>
+    <div class="container-fluid">
+    	<div class="titulo">
+        	<h1><b>Criar empréstimo</b></h1>
+     	</div>
+      <form id="ADCEmpp">
+        <div class="row">
+          <div class="col-md-6 mb-3">
+            <label for="validationServer01">ID do acervo</label>
+            <input type="number" class="form-control is-valid" id="validationServer01" name="IDacervo" placeholder="ID do acervo" value="" required>
+          </div>
+          <div class="col-md-6 mb-3">
+            <label for="validationServer02">ID do aluno</label>
+            <input type="text" class="form-control is-valid" id="validationServer02" name="IDaluno" placeholder="ID do aluno" value="" required>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6 mb-3">
+            <label for="validationServer01">Data de criação do empréstimo</label>
+            <input type="date" class="form-control is-valid" id="validationServer01" name="datacriacao" placeholder="Nome" value="" required>
+          </div>
+          <div class="col-md-6 mb-3">
+            <label for="validationServer02">Data limite para devolução</label>
+            <input type="date" name="datadevolucao" class="form-control is-valid" id="validationServer02" placeholder="ID" value="" required>
+          </div>
+        </div>
+          <button type="button" id="ADCEmp" class="btn btn-primary btn-lg btn-block" data-toggle="modal" data-target="#exampleModal">
+          Pronto
+          </button>
+
+          <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Gerenciamento de empréstimo</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <div class="titulo">
+                  <h4>As informações estão corretas?</h4>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Não</button>
+                <button type="button" id="conf" class="btn btn-primary">Sim</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
     </div>
-    <div class="col-md-6 mb-3">
-      <label for="validationServer02">ID do aluno</label>
-      <input type="text" class="form-control is-valid" id="validationServer02" name="IDaluno" placeholder="ID do aluno" value="" required>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-md-6 mb-3">
-      <label for="validationServer01">Data de criação do empréstimo</label>
-      <input type="date" class="form-control is-valid" id="validationServer01" name="datacriacao" placeholder="Nome" value="" required>
-    </div>
-    <div class="col-md-6 mb-3">
-      <label for="validationServer02">Data limite para devolução</label>
-      <input type="date" name="datadevolucao" class="form-control is-valid" id="validationServer02" placeholder="ID" value="" required>
-    </div>
-  </div>
-      <button type="submit" class="btn btn-primary btn-lg btn-block">Pronto</button>
-</form>
-</div>
 
 </body>
 </html>

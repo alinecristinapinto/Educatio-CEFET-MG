@@ -1,12 +1,10 @@
 <?php
 ###############################################################################################
 	header("Content-type: text/html; charset=utf-8");
-
 	$servername = "localhost";
 	$username = "root";
 	$password = "usbw";
 	$bd = "educatio";
-
 	$conexao = mysqli_connect($servername, $username, $password, $bd);
 	
 	mysqli_set_charset($conexao, "utf8");
@@ -28,7 +26,6 @@
 			(nome, cidade, UF, ativo) 
 			VALUES (?, ?, ?, ?)"
 	);
-
 	$stmt -> bind_param (
 		"ssss", 
 		$nome, $cidade, $UF, $ativo
@@ -48,7 +45,6 @@
 		$ativo = "S";
 		$stmt -> execute();
 	####################################################
-
 	//
 	//INSERINDO NA TABELA DEPTOS
 	//
@@ -57,7 +53,6 @@
 			(idCampi, nome, ativo)
 			VALUES (?, ?, ?)"
 	);
-
 	$stmt -> bind_param (
 		"iss", 
 		$idCampi, $nome, $ativo
@@ -74,7 +69,6 @@
 		$nome = "DCSF";
 		$ativo = "S";
 		$stmt -> execute();
-
 		// idDepto 3
 		$idCampi = 2;
 		$nome = "DECOM";
@@ -87,7 +81,6 @@
 		$ativo = "S";
 		$stmt -> execute();
 	####################################################
-
 	//
 	//INSERINDO NA TABELA CURSOS
 	//
@@ -96,7 +89,6 @@
 			(idDepto, nome, horasTotal, modalidade, ativo)
 			VALUES (?, ?, ?, ?, ?)"
 	);
-
 	$stmt -> bind_param (
 		"issss", 
 		$idDepto, $nome, $horasTotal, $modalidade, $ativo
@@ -117,7 +109,6 @@
 		$modalidade = "Graduação";
 		$ativo = "S";
 		$stmt -> execute();
-
 		// idCurso 3
 		$idDepto = 3;
 		$nome = "Informática";
@@ -125,7 +116,6 @@
 		$modalidade = "Técnico Integrado";
 		$ativo = "S";
 		$stmt -> execute();
-
 		// idCurso 4
 		$idDepto = 4;
 		$nome = "Edificações";
@@ -134,7 +124,6 @@
 		$ativo = "S";
 		$stmt -> execute();
 	####################################################
-
 	//
 	//INSERINDO NA TABELA TURMAS
 	//
@@ -143,12 +132,10 @@
 			(idCurso, serie, nome, ativo)
 			VALUES (?, ?, ?, ?)"
 	);
-
 	$stmt -> bind_param (
 		"iiss", 
 		$idCurso, $serie, $nome, $ativo
 	);
-
 	// série da graduação varia de 1 a 10 (numero de semestres)
 	####################################################
 		// idTurma 1
@@ -157,21 +144,18 @@
 		$nome = "MEI A";
 		$ativo = "S";
 		$stmt -> execute();
-
 		// idTurma 2
 		$idCurso = 2;
-		$serie = 2;
+		$serie = 1;
 		$nome = "FIT";
 		$ativo = "S";
 		$stmt -> execute();
-
 		// idTurma 3
 		$idCurso = 3;
 		$serie = 2;
 		$nome = "INF A";
 		$ativo = "S";
 		$stmt -> execute();
-
 		// idTurma 4
 		$idCurso = 4;
 		$serie = 1;
@@ -179,7 +163,6 @@
 		$ativo = "S";
 		$stmt -> execute();
 	####################################################
-
 	//
 	//INSERINDO NA TABELA ALUNOS
 	//
@@ -189,13 +172,11 @@
   			 bairro, cidade, CEP, UF, email, senha, ativo)
 			VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"
 	);
-
 	$stmt -> bind_param (
 		"sisssssssssssss", 
 		$idCPF, $idTurma, $nome, $sexo, $nascimento, $logradouro, $numeroLogradouro, $complemento,
   		$bairro, $cidade, $CEP, $UF, $email, $senha, $ativo
 	);
-
 	####################################################
 		$idCPF = "89594318180";
 		$idTurma = 1;
@@ -214,7 +195,7 @@
 		$senha = "62cd275989e78ee56a81f0265a87562e";
 		$ativo = "S";
 		$stmt -> execute();
-
+		
 		$idCPF = "13612887106";
 		$idTurma = 1;
 		$nome = "Clarissa Fairchild";
@@ -232,7 +213,7 @@
 		$senha = "c8581bc43486c23ee099afe031f4de31";
 		$ativo = "S";
 		$stmt -> execute();
-
+		
 		$idCPF = "86312366243";
 		$idTurma = 2;
 		$nome = "Jonathan Morgenstern";
@@ -250,7 +231,7 @@
 		$senha = "2cb1be65eb9f215215a0725a10b6e39e";
 		$ativo = "S";
 		$stmt -> execute();
-
+		
 		$idCPF = "37326385610";
 		$idTurma = 2;
 		$nome = "Jonathan Herondale";
@@ -268,7 +249,7 @@
 		$senha = "41a1c0ea99261a72c5c51787d51b8935";
 		$ativo = "S";
 		$stmt -> execute();
-
+		
 		$idCPF = "70264415400";
 		$idTurma = 3;
 		$nome = "Teresa Gray";
@@ -286,7 +267,7 @@
 		$senha = "a1ce0a5c0397d339acb4575c4af5e2a5";
 		$ativo = "S";
 		$stmt -> execute();
-
+		
 		$idCPF = "83755279711";
 		$idTurma = 3;
 		$nome = "William Herondale";
@@ -304,7 +285,7 @@
 		$senha = "328573e80f3dfc694143f580ba74b1ed";
 		$ativo = "S";
 		$stmt -> execute();
-
+		
 		$idCPF = "50595766714";
 		$idTurma = 4;
 		$nome = "James Carstairs";
@@ -322,7 +303,7 @@
 		$senha = "9a4d208d1b53ff8f95e4a7268a8aa786";
 		$ativo = "S";
 		$stmt -> execute();
-
+		
 		$idCPF = "41125360623";
 		$idTurma = 4;
 		$nome = "Julian Blackthorn";
@@ -350,12 +331,10 @@
 			(idAluno, idDisciplina, ano, ativo)
 			VALUES (?, ?, ?, ?)"
 	);
-
 	$stmt -> bind_param (
 		"siss", 
 		$idAluno, $idDisciplina, $ano, $ativo
 	);
-
 	####################################################
 		// idMatricula 1
 		$idAluno = "89594318180";
@@ -369,7 +348,6 @@
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
-
 		// idMatricula 3
 		$idAluno = "13612887106";
 		$idDisciplina = 1;
@@ -382,7 +360,6 @@
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
-
 		// idMatricula 5
 		$idAluno = "86312366243";
 		$idDisciplina = 3;
@@ -395,7 +372,6 @@
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
-
 		// idMatricula 7
 		$idAluno = "37326385610";
 		$idDisciplina = 3;
@@ -408,7 +384,6 @@
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
-
 		// idMatricula 9
 		$idAluno = "70264415400";
 		$idDisciplina = 5;
@@ -421,7 +396,6 @@
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
-
 		// idMatricula 11
 		$idAluno = "83755279711";
 		$idDisciplina = 5;
@@ -434,7 +408,6 @@
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
-
 		// idMatricula 13
 		$idAluno = "50595766714";
 		$idDisciplina = 7;
@@ -447,21 +420,19 @@
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
-
 		// idMatricula 15
-		$idAluno = "50595766714";
+		$idAluno = "41125360623";
 		$idDisciplina = 7;
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
 		// idMatricula 16
-		$idAluno = "50595766714";
+		$idAluno = "41125360623";
 		$idDisciplina = 8;
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
 	####################################################
-
 	//
 	//INSERINDO NA TABELA FUNCIONARIO
 	//
@@ -470,12 +441,10 @@
 			(idSIAPE, idDepto, nome, titulacao, hierarquia, senha, ativo)
 			VALUES (?, ?, ?, ?, ?, ?, ?)"
 	);
-
 	$stmt -> bind_param (
 		"sisssss", 
 		$idSIAPE, $idDepto, $nome, $titulacao, $hierarquia, $senha, $ativo
 	);
-
 	####################################################
 		$idSIAPE = "925437416";
 		$idDepto = 1;
@@ -486,7 +455,6 @@
 		$senha = "ecc174e3e02c82f34c14fe860bf47ef2";
 		$ativo = "S";
 		$stmt -> execute();
-
 		$idSIAPE = "802602374";
 		$idDepto = 1;
 		$nome = "Margareth Cordeiro Franklim";
@@ -496,7 +464,6 @@
 		$senha = "65b50b04a6af50bb2f174db30a8c6dad";
 		$ativo = "S";
 		$stmt -> execute();
-
 		$idSIAPE = "376843913";
 		$idDepto = 2;
 		$nome = "Guilherme Araújo Cardoso";
@@ -506,7 +473,6 @@
 		$senha = "d47bfd5933612d778f880a64e7032751";
 		$ativo = "S";
 		$stmt -> execute();
-
 		$idSIAPE = "383463866";
 		$idDepto = 2;
 		$nome = "Túlio Cardoso Rebehy";
@@ -516,7 +482,6 @@
 		$senha = "1b1844daa452df42c6f9123857ca686c";
 		$ativo = "S";
 		$stmt -> execute();
-
 		$idSIAPE = "620589259";
 		$idDepto = 3;
 		$nome = "José Wilson da Costa";
@@ -526,7 +491,6 @@
 		$senha = "351325a660b25474456af5c9a5606c4e";
 		$ativo = "S";
 		$stmt -> execute();
-
 		$idSIAPE = "849470835";
 		$idDepto = 3;
 		$nome = "William Geraldo Sallum";
@@ -536,7 +500,6 @@
 		$senha = "2567a5ec9705eb7ac2c984033e06189d";
 		$ativo = "S";
 		$stmt -> execute();
-
 		$idSIAPE = "427265728";
 		$idDepto = 4;
 		$nome = "Diego Barbosa";
@@ -546,7 +509,6 @@
 		$senha = "d0163339ed4f88a47eb254aa784f4230";
 		$ativo = "S";
 		$stmt -> execute();
-
 		$idSIAPE = "713027127";
 		$idDepto = 4;
 		$nome = "Marcos Paulo";
@@ -557,7 +519,6 @@
 		$ativo = "S";
 		$stmt -> execute();
 	####################################################
-
 	//
 	//INSERINDO NA TABELA DISCIPLINAS
 	//
@@ -566,7 +527,6 @@
 			(idTurma, nome, cargaHorariaMin, ativo)
 			VALUES (?, ?, ?, ?)"
 	);
-
 	$stmt -> bind_param (
 		"isss", 
 		$idTurma, $nome, $cargaHorariaMin, $ativo
@@ -578,49 +538,42 @@
 		$cargaHorariaMin = "20";
 		$ativo = "S";
 		$stmt -> execute();
-
 		// idDisciplina 2
 		$idTurma = 1;
 		$nome = "História";
 		$cargaHorariaMin = "18";
 		$ativo = "S";
 		$stmt -> execute();
-
 		// idDisciplina 3
 		$idTurma = 2;
 		$nome = "Filosofia";
 		$cargaHorariaMin = "10";
 		$ativo = "S";
 		$stmt -> execute();
-
 		// idDisciplina 4
 		$idTurma = 2;
 		$nome = "Sociologia";
 		$cargaHorariaMin = "12";
 		$ativo = "S";
 		$stmt -> execute();
-
 		// idDisciplina 5
 		$idTurma = 3;
 		$nome = "LP";
 		$cargaHorariaMin = "50";
 		$ativo = "S";
 		$stmt -> execute();
-
 		// idDisciplina 6
 		$idTurma = 3;
 		$nome = "WEB";
 		$cargaHorariaMin = "40";
 		$ativo = "S";
 		$stmt -> execute();
-
 		// idDisciplina 7
 		$idTurma = 4;
 		$nome = "TOP";
 		$cargaHorariaMin = "35";
 		$ativo = "S";
 		$stmt -> execute();
-
 		// idDisciplina 8
 		$idTurma = 4;
 		$nome = "Materiais";
@@ -628,7 +581,6 @@
 		$ativo = "S";
 		$stmt -> execute();
 	####################################################
-
 	//
 	//INSERINDO NA TABELA PROFDISCIPLINAS
 	//
@@ -637,12 +589,10 @@
 			(idProfessor, idDisciplina, idTurma, ativo)
 			VALUES (?, ?, ?, ?)"
 	);
-
 	$stmt -> bind_param (
 		"siis", 
 		$idProfessor, $idDisciplina, $idTurma, $ativo
 	);
-
 	####################################################
 		// idProfDisciplina 1
 		$idProfessor = "925437416";
@@ -650,49 +600,42 @@
 		$idTurma = 1;
 		$ativo = "S";
 		$stmt -> execute();
-
 		// idProfDisciplina 2
 		$idProfessor = "802602374";
 		$idDisciplina = 2;
 		$idTurma = 1;
 		$ativo = "S";
 		$stmt -> execute();
-
 		// idProfDisciplina 3
 		$idProfessor = "376843913";
 		$idDisciplina = 3;
 		$idTurma = 2;
 		$ativo = "S";
 		$stmt -> execute();
-
 		// idProfDisciplina 4
 		$idProfessor = "383463866";
 		$idDisciplina = 4;
 		$idTurma = 2;
 		$ativo = "S";
 		$stmt -> execute();
-
 		// idProfDisciplina 5
 		$idProfessor = "620589259";
 		$idDisciplina = 5;
 		$idTurma = 3;
 		$ativo = "S";
 		$stmt -> execute();
-
 		// idProfDisciplina 6
 		$idProfessor = "849470835";
 		$idDisciplina = 6;
 		$idTurma = 3;
 		$ativo = "S";
 		$stmt -> execute();
-
 		// idProfDisciplina 7
 		$idProfessor = "427265728";
 		$idDisciplina = 7;
 		$idTurma = 4;
 		$ativo = "S";
 		$stmt -> execute();
-
 		// idProfDisciplina 8
 		$idProfessor = "713027127";
 		$idDisciplina = 8;
@@ -700,7 +643,6 @@
 		$ativo = "S";
 		$stmt -> execute();
 	####################################################
-
 	//
 	//INSERINDO NA TABELA ETAPAS
 	//
@@ -709,50 +651,42 @@
 			(idOrdem, valor, ativo)
 			VALUES (?, ?, ?)"
 	);
-
 	$stmt -> bind_param (
 		"sds", 
 		$idOrdem, $valor, $ativo
 	);
-
 	####################################################
 		// idEtapa 1
 		$idOrdem = "1";
 		$valor = 20.00;
 		$ativo = "S";
 		$stmt -> execute();
-
 		// idEtapa 2
 		$idOrdem = "2";
 		$valor = 30.00;
 		$ativo = "S";
 		$stmt -> execute();
-
 		// idEtapa 3
 		$idOrdem = "3";
 		$valor = 20.00;
 		$ativo = "S";
 		$stmt -> execute();
-
 		// idEtapa 4
 		$idOrdem = "4";
 		$valor = 30.00;
 		$ativo = "S";
 		$stmt -> execute();
-
 		// idEtapa 5
 		$idOrdem = "5";
 		$valor = 100.00;
 		$ativo = "S";
 		$stmt -> execute();
-
 		// idEtapa 6
 		$idOrdem = "6";
 		$valor = 100.00;
 		$ativo = "S";
 		$stmt -> execute();
 	####################################################
-
 	//
 	//INSERINDO NA TABELA ATIVIDADES
 	//
@@ -761,12 +695,10 @@
 			(idProfDisciplina, nome, data, valor, ativo)
 			VALUES (?, ?, ?, ?, ?)"
 	);
-
 	$stmt -> bind_param (
 		"issds",
 		$idProfDisciplina, $nome, $data, $valor, $ativo
 	);
-
 	####################################################
 		// idAtividade 1
 		$idProfDisciplina = 1;
@@ -775,7 +707,6 @@
 		$valor = 0.00;
 		$ativo = "S";
 		$stmt -> execute();
-
 		// idAtividade 2
 		$idProfDisciplina = 2;
 		$nome = "Aula História";
@@ -783,7 +714,6 @@
 		$valor = 0.00;
 		$ativo = "S";
 		$stmt -> execute();
-
 		// idAtividade 3
 		$idProfDisciplina = 3;
 		$nome = "Aula Filosofia";
@@ -791,7 +721,6 @@
 		$valor = 0.00;
 		$ativo = "S";
 		$stmt -> execute();
-
 		// idAtividade 4
 		$idProfDisciplina = 4;
 		$nome = "Aula Sociologia";
@@ -799,7 +728,6 @@
 		$valor = 0.00;
 		$ativo = "S";
 		$stmt -> execute();
-
 		// idAtividade 5
 		$idProfDisciplina = 5;
 		$nome = "Aula LP";
@@ -807,7 +735,6 @@
 		$valor = 0.00;
 		$ativo = "S";
 		$stmt -> execute();
-
 		// idAtividade 6
 		$idProfDisciplina = 6;
 		$nome = "Aula WEB";
@@ -815,7 +742,6 @@
 		$valor = 0.00;
 		$ativo = "S";
 		$stmt -> execute();
-
 		// idAtividade 7
 		$idProfDisciplina = 7;
 		$nome = "Aula TOP";
@@ -823,7 +749,6 @@
 		$valor = 0.00;
 		$ativo = "S";
 		$stmt -> execute();
-
 		// idAtividade 8
 		$idProfDisciplina = 8;
 		$nome = "Aula Materiais";
@@ -831,7 +756,6 @@
 		$valor = 0.00;
 		$ativo = "S";
 		$stmt -> execute();
-
 		// idAtividade 9
 		$idProfDisciplina = 1;
 		$nome = "Prova Geografia";
@@ -839,7 +763,6 @@
 		$valor = 10.00;
 		$ativo = "S";
 		$stmt -> execute();
-
 		// idAtividade 10
 		$idProfDisciplina = 2;
 		$nome = "Prova História";
@@ -847,7 +770,6 @@
 		$valor = 10.00;
 		$ativo = "S";
 		$stmt -> execute();
-
 		// idAtividade 11
 		$idProfDisciplina = 3;
 		$nome = "Prova Filosofia";
@@ -855,7 +777,6 @@
 		$valor = 50.00;
 		$ativo = "S";
 		$stmt -> execute();
-
 		// idAtividade 12
 		$idProfDisciplina = 4;
 		$nome = "Prova Sociologia";
@@ -863,7 +784,6 @@
 		$valor = 50.00;
 		$ativo = "S";
 		$stmt -> execute();
-
 		// idAtividade 13
 		$idProfDisciplina = 5;
 		$nome = "Prova LP";
@@ -871,7 +791,6 @@
 		$valor = 10.00;
 		$ativo = "S";
 		$stmt -> execute();
-
 		// idAtividade 14
 		$idProfDisciplina = 6;
 		$nome = "Prova WEB";
@@ -879,7 +798,6 @@
 		$valor = 10.00;
 		$ativo = "S";
 		$stmt -> execute();
-
 		// idAtividade 15
 		$idProfDisciplina = 7;
 		$nome = "Prova TOP";
@@ -887,7 +805,6 @@
 		$valor = 10.00;
 		$ativo = "S";
 		$stmt -> execute();
-
 		// idAtividade 16
 		$idProfDisciplina = 8;
 		$nome = "Prova Materiais";
@@ -895,7 +812,6 @@
 		$valor = 10.00;
 		$ativo = "S";
 		$stmt -> execute();
-
 		// idAtividade 17
 		$idProfDisciplina = 1;
 		$nome = "Trabalho Geografia";
@@ -903,7 +819,6 @@
 		$valor = 10.00;
 		$ativo = "S";
 		$stmt -> execute();
-
 		// idAtividade 18
 		$idProfDisciplina = 2;
 		$nome = "Trabalho História";
@@ -911,7 +826,6 @@
 		$valor = 0.00;
 		$ativo = "S";
 		$stmt -> execute();
-
 		// idAtividade 19
 		$idProfDisciplina = 3;
 		$nome = "Trabalho Filosofia";
@@ -919,7 +833,6 @@
 		$valor = 50.00;
 		$ativo = "S";
 		$stmt -> execute();
-
 		// idAtividade 20
 		$idProfDisciplina = 4;
 		$nome = "Trabalho Sociologia";
@@ -927,7 +840,6 @@
 		$valor = 50.00;
 		$ativo = "S";
 		$stmt -> execute();
-
 		// idAtividade 21
 		$idProfDisciplina = 5;
 		$nome = "Trabalho LP";
@@ -935,7 +847,6 @@
 		$valor = 10.00;
 		$ativo = "S";
 		$stmt -> execute();
-
 		// idAtividade 22
 		$idProfDisciplina = 6;
 		$nome = "Trabalho WEB";
@@ -943,7 +854,6 @@
 		$valor = 10.00;
 		$ativo = "S";
 		$stmt -> execute();
-
 		// idAtividade 23
 		$idProfDisciplina = 7;
 		$nome = "Trabalho TOP";
@@ -951,7 +861,6 @@
 		$valor = 10.00;
 		$ativo = "S";
 		$stmt -> execute();
-
 		// idAtividade 24
 		$idProfDisciplina = 8;
 		$nome = "Trabalho Materiais";
@@ -967,7 +876,6 @@
 		$valor = 0.00;
 		$ativo = "S";
 		$stmt -> execute();
-
 		// idAtividade 26
 		$idProfDisciplina = 2;
 		$nome = "Aula História";
@@ -975,7 +883,6 @@
 		$valor = 0.00;
 		$ativo = "S";
 		$stmt -> execute();
-
 		// idAtividade 27
 		$idProfDisciplina = 3;
 		$nome = "Aula Filosofia";
@@ -983,7 +890,6 @@
 		$valor = 0.00;
 		$ativo = "S";
 		$stmt -> execute();
-
 		// idAtividade 28
 		$idProfDisciplina = 4;
 		$nome = "Aula Sociologia";
@@ -991,7 +897,6 @@
 		$valor = 0.00;
 		$ativo = "S";
 		$stmt -> execute();
-
 		// idAtividade 29
 		$idProfDisciplina = 5;
 		$nome = "Aula LP";
@@ -999,7 +904,6 @@
 		$valor = 0.00;
 		$ativo = "S";
 		$stmt -> execute();
-
 		// idAtividade 30
 		$idProfDisciplina = 6;
 		$nome = "Aula WEB";
@@ -1007,7 +911,6 @@
 		$valor = 0.00;
 		$ativo = "S";
 		$stmt -> execute();
-
 		// idAtividade 31
 		$idProfDisciplina = 7;
 		$nome = "Aula TOP";
@@ -1015,7 +918,6 @@
 		$valor = 0.00;
 		$ativo = "S";
 		$stmt -> execute();
-
 		// idAtividade 32
 		$idProfDisciplina = 8;
 		$nome = "Aula Materiais";
@@ -1023,7 +925,6 @@
 		$valor = 0.00;
 		$ativo = "S";
 		$stmt -> execute();
-
 		// idAtividade 33
 		$idProfDisciplina = 1;
 		$nome = "Prova Geografia";
@@ -1031,7 +932,6 @@
 		$valor = 15.00;
 		$ativo = "S";
 		$stmt -> execute();
-
 		// idAtividade 34
 		$idProfDisciplina = 2;
 		$nome = "Prova História";
@@ -1039,7 +939,6 @@
 		$valor = 15.00;
 		$ativo = "S";
 		$stmt -> execute();
-
 		// idAtividade 35
 		$idProfDisciplina = 3;
 		$nome = "Prova Filosofia";
@@ -1047,7 +946,6 @@
 		$valor = 50.00;
 		$ativo = "S";
 		$stmt -> execute();
-
 		// idAtividade 36
 		$idProfDisciplina = 4;
 		$nome = "Prova Sociologia";
@@ -1055,7 +953,6 @@
 		$valor = 50.00;
 		$ativo = "S";
 		$stmt -> execute();
-
 		// idAtividade 37
 		$idProfDisciplina = 5;
 		$nome = "Prova LP";
@@ -1063,7 +960,6 @@
 		$valor = 15.00;
 		$ativo = "S";
 		$stmt -> execute();
-
 		// idAtividade 38
 		$idProfDisciplina = 6;
 		$nome = "Prova WEB";
@@ -1071,7 +967,6 @@
 		$valor = 15.00;
 		$ativo = "S";
 		$stmt -> execute();
-
 		// idAtividade 39
 		$idProfDisciplina = 7;
 		$nome = "Prova TOP";
@@ -1079,7 +974,6 @@
 		$valor = 15.00;
 		$ativo = "S";
 		$stmt -> execute();
-
 		// idAtividade 40
 		$idProfDisciplina = 8;
 		$nome = "Prova Materiais";
@@ -1087,7 +981,6 @@
 		$valor = 15.00;
 		$ativo = "S";
 		$stmt -> execute();
-
 		// idAtividade 41
 		$idProfDisciplina = 1;
 		$nome = "Trabalho Geografia";
@@ -1095,7 +988,6 @@
 		$valor = 15.00;
 		$ativo = "S";
 		$stmt -> execute();
-
 		// idAtividade 42
 		$idProfDisciplina = 2;
 		$nome = "Trabalho História";
@@ -1103,7 +995,6 @@
 		$valor = 15.00;
 		$ativo = "S";
 		$stmt -> execute();
-
 		// idAtividade 43
 		$idProfDisciplina = 3;
 		$nome = "Trabalho Filosofia";
@@ -1111,7 +1002,6 @@
 		$valor = 50.00;
 		$ativo = "S";
 		$stmt -> execute();
-
 		// idAtividade 44
 		$idProfDisciplina = 4;
 		$nome = "Trabalho Sociologia";
@@ -1119,7 +1009,6 @@
 		$valor = 50.00;
 		$ativo = "S";
 		$stmt -> execute();
-
 		// idAtividade 45
 		$idProfDisciplina = 5;
 		$nome = "Trabalho LP";
@@ -1127,7 +1016,6 @@
 		$valor = 15.00;
 		$ativo = "S";
 		$stmt -> execute();
-
 		// idAtividade 46
 		$idProfDisciplina = 6;
 		$nome = "Trabalho WEB";
@@ -1135,7 +1023,6 @@
 		$valor = 15.00;
 		$ativo = "S";
 		$stmt -> execute();
-
 		// idAtividade 47
 		$idProfDisciplina = 7;
 		$nome = "Trabalho TOP";
@@ -1143,7 +1030,6 @@
 		$valor = 15.00;
 		$ativo = "S";
 		$stmt -> execute();
-
 		// idAtividade 48
 		$idProfDisciplina = 8;
 		$nome = "Trabalho Materiais";
@@ -1151,7 +1037,6 @@
 		$valor = 15.00;
 		$ativo = "S";
 		$stmt -> execute();
-
 		///////////////////////////////////////
 		// idAtividade 49
 		$idProfDisciplina = 1;
@@ -1160,7 +1045,6 @@
 		$valor = 0.00;
 		$ativo = "S";
 		$stmt -> execute();
-
 		// idAtividade 50
 		$idProfDisciplina = 2;
 		$nome = "Aula História";
@@ -1168,7 +1052,6 @@
 		$valor = 0.00;
 		$ativo = "S";
 		$stmt -> execute();
-
 		// idAtividade 51
 		$idProfDisciplina = 5;
 		$nome = "Aula LP";
@@ -1176,7 +1059,6 @@
 		$valor = 0.00;
 		$ativo = "S";
 		$stmt -> execute();
-
 		// idAtividade 52
 		$idProfDisciplina = 6;
 		$nome = "Aula WEB";
@@ -1184,7 +1066,6 @@
 		$valor = 0.00;
 		$ativo = "S";
 		$stmt -> execute();
-
 		// idAtividade 53
 		$idProfDisciplina = 7;
 		$nome = "Aula TOP";
@@ -1192,7 +1073,6 @@
 		$valor = 0.00;
 		$ativo = "S";
 		$stmt -> execute();
-
 		// idAtividade 54
 		$idProfDisciplina = 8;
 		$nome = "Aula Materiais";
@@ -1200,7 +1080,6 @@
 		$valor = 0.00;
 		$ativo = "S";
 		$stmt -> execute();
-
 		// idAtividade 55
 		$idProfDisciplina = 1;
 		$nome = "Prova Geografia";
@@ -1208,7 +1087,6 @@
 		$valor = 10.00;
 		$ativo = "S";
 		$stmt -> execute();
-
 		// idAtividade 56
 		$idProfDisciplina = 2;
 		$nome = "Prova História";
@@ -1216,7 +1094,6 @@
 		$valor = 10.00;
 		$ativo = "S";
 		$stmt -> execute();
-
 		// idAtividade 57
 		$idProfDisciplina = 5;
 		$nome = "Prova LP";
@@ -1224,7 +1101,6 @@
 		$valor = 10.00;
 		$ativo = "S";
 		$stmt -> execute();
-
 		// idAtividade 58
 		$idProfDisciplina = 6;
 		$nome = "Prova WEB";
@@ -1232,7 +1108,6 @@
 		$valor = 10.00;
 		$ativo = "S";
 		$stmt -> execute();
-
 		// idAtividade 59
 		$idProfDisciplina = 7;
 		$nome = "Prova TOP";
@@ -1240,7 +1115,6 @@
 		$valor = 10.00;
 		$ativo = "S";
 		$stmt -> execute();
-
 		// idAtividade 60
 		$idProfDisciplina = 8;
 		$nome = "Prova Materiais";
@@ -1248,7 +1122,6 @@
 		$valor = 10.00;
 		$ativo = "S";
 		$stmt -> execute();
-
 		// idAtividade 61
 		$idProfDisciplina = 1;
 		$nome = "Trabalho Geografia";
@@ -1256,7 +1129,6 @@
 		$valor = 10.00;
 		$ativo = "S";
 		$stmt -> execute();
-
 		// idAtividade 62
 		$idProfDisciplina = 2;
 		$nome = "Trabalho História";
@@ -1264,7 +1136,6 @@
 		$valor = 10.00;
 		$ativo = "S";
 		$stmt -> execute();
-
 		// idAtividade 63
 		$idProfDisciplina = 5;
 		$nome = "Trabalho LP";
@@ -1272,7 +1143,6 @@
 		$valor = 10.00;
 		$ativo = "S";
 		$stmt -> execute();
-
 		// idAtividade 64
 		$idProfDisciplina = 6;
 		$nome = "Trabalho WEB";
@@ -1280,7 +1150,6 @@
 		$valor = 10.00;
 		$ativo = "S";
 		$stmt -> execute();
-
 		// idAtividade 65
 		$idProfDisciplina = 7;
 		$nome = "Trabalho TOP";
@@ -1288,7 +1157,6 @@
 		$valor = 10.00;
 		$ativo = "S";
 		$stmt -> execute();
-
 		// idAtividade 66
 		$idProfDisciplina = 8;
 		$nome = "Trabalho Materiais";
@@ -1296,7 +1164,6 @@
 		$valor = 10.00;
 		$ativo = "S";
 		$stmt -> execute();
-
 		///////////////////////////////////////
 		// idAtividade 67
 		$idProfDisciplina = 1;
@@ -1305,7 +1172,6 @@
 		$valor = 0.00;
 		$ativo = "S";
 		$stmt -> execute();
-
 		// idAtividade 68
 		$idProfDisciplina = 2;
 		$nome = "Aula História";
@@ -1313,7 +1179,6 @@
 		$valor = 0.00;
 		$ativo = "S";
 		$stmt -> execute();
-
 		// idAtividade 69
 		$idProfDisciplina = 5;
 		$nome = "Aula LP";
@@ -1321,7 +1186,6 @@
 		$valor = 0.00;
 		$ativo = "S";
 		$stmt -> execute();
-
 		// idAtividade 70
 		$idProfDisciplina = 6;
 		$nome = "Aula WEB";
@@ -1329,7 +1193,6 @@
 		$valor = 0.00;
 		$ativo = "S";
 		$stmt -> execute();
-
 		// idAtividade 71
 		$idProfDisciplina = 7;
 		$nome = "Aula TOP";
@@ -1337,7 +1200,6 @@
 		$valor = 0.00;
 		$ativo = "S";
 		$stmt -> execute();
-
 		// idAtividade 72
 		$idProfDisciplina = 8;
 		$nome = "Aula Materiais";
@@ -1345,7 +1207,6 @@
 		$valor = 0.00;
 		$ativo = "S";
 		$stmt -> execute();
-
 		// idAtividade 73
 		$idProfDisciplina = 1;
 		$nome = "Prova Geografia";
@@ -1353,7 +1214,6 @@
 		$valor = 15.00;
 		$ativo = "S";
 		$stmt -> execute();
-
 		// idAtividade 74
 		$idProfDisciplina = 2;
 		$nome = "Prova História";
@@ -1361,7 +1221,6 @@
 		$valor = 15.00;
 		$ativo = "S";
 		$stmt -> execute();
-
 		// idAtividade 75
 		$idProfDisciplina = 5;
 		$nome = "Prova LP";
@@ -1369,7 +1228,6 @@
 		$valor = 15.00;
 		$ativo = "S";
 		$stmt -> execute();
-
 		// idAtividade 76
 		$idProfDisciplina = 6;
 		$nome = "Prova WEB";
@@ -1377,7 +1235,6 @@
 		$valor = 15.00;
 		$ativo = "S";
 		$stmt -> execute();
-
 		// idAtividade 77
 		$idProfDisciplina = 7;
 		$nome = "Prova TOP";
@@ -1385,7 +1242,6 @@
 		$valor = 15.00;
 		$ativo = "S";
 		$stmt -> execute();
-
 		// idAtividade 78
 		$idProfDisciplina = 8;
 		$nome = "Prova Materiais";
@@ -1393,7 +1249,6 @@
 		$valor = 15.00;
 		$ativo = "S";
 		$stmt -> execute();
-
 		// idAtividade 79
 		$idProfDisciplina = 1;
 		$nome = "Trabalho Geografia";
@@ -1401,7 +1256,6 @@
 		$valor = 15.00;
 		$ativo = "S";
 		$stmt -> execute();
-
 		// idAtividade 80
 		$idProfDisciplina = 2;
 		$nome = "Trabalho História";
@@ -1409,7 +1263,6 @@
 		$valor = 15.00;
 		$ativo = "S";
 		$stmt -> execute();
-
 		// idAtividade 81
 		$idProfDisciplina = 5;
 		$nome = "Trabalho LP";
@@ -1417,7 +1270,6 @@
 		$valor = 15.00;
 		$ativo = "S";
 		$stmt -> execute();
-
 		// idAtividade 82
 		$idProfDisciplina = 6;
 		$nome = "Trabalho WEB";
@@ -1425,7 +1277,6 @@
 		$valor = 15.00;
 		$ativo = "S";
 		$stmt -> execute();
-
 		// idAtividade 83
 		$idProfDisciplina = 7;
 		$nome = "Trabalho TOP";
@@ -1433,7 +1284,6 @@
 		$valor = 15.00;
 		$ativo = "S";
 		$stmt -> execute();
-
 		// idAtividade 84
 		$idProfDisciplina = 8;
 		$nome = "Trabalho Materiais";
@@ -1442,23 +1292,18 @@
 		$ativo = "S";
 		$stmt -> execute();
 	####################################################
-
-
 	//
 	//INSERINDO NA TABELA CONTEUDOS
 	//
-
 	$stmt = $conexao -> prepare (
 		"INSERT INTO conteudos
 			(idEtapa, idDisciplina, conteudo, datas, ativo)
 			VALUES (?, ?, ?, ?, ?)"
 	);
-
 	$stmt -> bind_param (
 		"iisss",
 		$idEtapa, $idDisciplina, $conteudo, $datas, $ativo
 	);
-
 	####################################################
 		// idConteudo 1
 		$idEtapa = 1;
@@ -1467,7 +1312,6 @@
 		$datas = "20/02/2017";
 		$ativo = "S";
 		$stmt -> execute();
-
 		// idConteudo 2
 		$idEtapa = 1;
 		$idDisciplina = 2;
@@ -1475,7 +1319,6 @@
 		$datas = "20/02/2017";
 		$ativo = "S";
 		$stmt -> execute();
-
 		// idConteudo 3
 		$idEtapa = 5;
 		$idDisciplina = 3;
@@ -1483,7 +1326,6 @@
 		$datas = "21/02/2017";
 		$ativo = "S";
 		$stmt -> execute();
-
 		// idConteudo 4
 		$idEtapa = 5;
 		$idDisciplina = 4;
@@ -1491,7 +1333,6 @@
 		$datas = "21/02/2017";
 		$ativo = "S";
 		$stmt -> execute();
-
 		// idConteudo 5
 		$idEtapa = 1;
 		$idDisciplina = 5;
@@ -1499,7 +1340,6 @@
 		$datas = "22/02/2017";
 		$ativo = "S";
 		$stmt -> execute();
-
 		// idConteudo 6
 		$idEtapa = 1;
 		$idDisciplina = 6;
@@ -1507,7 +1347,6 @@
 		$datas = "22/02/2017";
 		$ativo = "S";
 		$stmt -> execute();
-
 		// idConteudo 7
 		$idEtapa = 1;
 		$idDisciplina = 7;
@@ -1515,7 +1354,6 @@
 		$datas = "23/02/2017";
 		$ativo = "S";
 		$stmt -> execute();
-
 		// idConteudo 8
 		$idEtapa = 1;
 		$idDisciplina = 8;
@@ -1523,7 +1361,6 @@
 		$datas = "23/02/2017";
 		$ativo = "S";
 		$stmt -> execute();
-
 		// idConteudo 9
 		$idEtapa = 2;
 		$idDisciplina = 1;
@@ -1531,7 +1368,6 @@
 		$datas = "08/05/2017";
 		$ativo = "S";
 		$stmt -> execute();
-
 		// idConteudo 10
 		$idEtapa = 2;
 		$idDisciplina = 2;
@@ -1539,7 +1375,6 @@
 		$datas = "08/05/2017";
 		$ativo = "S";
 		$stmt -> execute();
-
 		// idConteudo 11
 		$idEtapa = 6;
 		$idDisciplina = 3;
@@ -1547,7 +1382,6 @@
 		$datas = "09/05/2017";
 		$ativo = "S";
 		$stmt -> execute();
-
 		// idConteudo 12
 		$idEtapa = 6;
 		$idDisciplina = 4;
@@ -1555,7 +1389,6 @@
 		$datas = "09/05/2017";
 		$ativo = "S";
 		$stmt -> execute();
-
 		// idConteudo 13
 		$idEtapa = 2;
 		$idDisciplina = 5;
@@ -1563,7 +1396,6 @@
 		$datas = "10/05/2017";
 		$ativo = "S";
 		$stmt -> execute();
-
 		// idConteudo 14
 		$idEtapa = 2;
 		$idDisciplina = 6;
@@ -1571,7 +1403,6 @@
 		$datas = "10/05/2017";
 		$ativo = "S";
 		$stmt -> execute();
-
 		// idConteudo 15
 		$idEtapa = 2;
 		$idDisciplina = 7;
@@ -1579,7 +1410,6 @@
 		$datas = "11/05/2017";
 		$ativo = "S";
 		$stmt -> execute();
-
 		// idConteudo 16
 		$idEtapa = 2;
 		$idDisciplina = 8;
@@ -1587,7 +1417,6 @@
 		$datas = "11/05/2017";
 		$ativo = "S";
 		$stmt -> execute();
-
 		// idConteudo 17
 		$idEtapa = 3;
 		$idDisciplina = 1;
@@ -1595,7 +1424,6 @@
 		$datas = "07/08/2017";
 		$ativo = "S";
 		$stmt -> execute();
-
 		// idConteudo 18
 		$idEtapa = 3;
 		$idDisciplina = 2;
@@ -1603,7 +1431,6 @@
 		$datas = "07/08/2017";
 		$ativo = "S";
 		$stmt -> execute();
-
 		// idConteudo 19
 		$idEtapa = 3;
 		$idDisciplina = 5;
@@ -1611,7 +1438,6 @@
 		$datas = "09/08/2017";
 		$ativo = "S";
 		$stmt -> execute();
-
 		// idConteudo 20
 		$idEtapa = 3;
 		$idDisciplina = 6;
@@ -1619,7 +1445,6 @@
 		$datas = "09/08/2017";
 		$ativo = "S";
 		$stmt -> execute();
-
 		// idConteudo 21
 		$idEtapa = 3;
 		$idDisciplina = 7;
@@ -1627,7 +1452,6 @@
 		$datas = "10/08/2017";
 		$ativo = "S";
 		$stmt -> execute();
-
 		// idConteudo 22
 		$idEtapa = 3;
 		$idDisciplina = 8;
@@ -1635,7 +1459,6 @@
 		$datas = "10/08/2017";
 		$ativo = "S";
 		$stmt -> execute();
-
 		// idConteudo 23
 		$idEtapa = 4;
 		$idDisciplina = 1;
@@ -1643,7 +1466,6 @@
 		$datas = "02/10/2017";
 		$ativo = "S";
 		$stmt -> execute();
-
 		// idConteudo 24
 		$idEtapa = 4;
 		$idDisciplina = 2;
@@ -1651,7 +1473,6 @@
 		$datas = "02/10/2017";
 		$ativo = "S";
 		$stmt -> execute();
-
 		// idConteudo 25
 		$idEtapa = 4;
 		$idDisciplina = 5;
@@ -1659,7 +1480,6 @@
 		$datas = "04/10/2017";
 		$ativo = "S";
 		$stmt -> execute();
-
 		// idConteudo 26
 		$idEtapa = 4;
 		$idDisciplina = 6;
@@ -1667,7 +1487,6 @@
 		$datas = "04/10/2017";
 		$ativo = "S";
 		$stmt -> execute();
-
 		// idConteudo 27
 		$idEtapa = 4;
 		$idDisciplina = 7;
@@ -1675,7 +1494,6 @@
 		$datas = "05/10/2017";
 		$ativo = "S";
 		$stmt -> execute();
-
 		// idConteudo 28
 		$idEtapa = 4;
 		$idDisciplina = 8;
@@ -1692,12 +1510,10 @@
 			(idConteudo, idMatricula, idAtividade, faltas, nota, ano, ativo)
 			VALUES (?, ?, ?, ?, ?, ?, ?)"
 	);
-
 	$stmt -> bind_param (
 		"iiisdss", 
 		$idConteudo, $idMatricula, $idAtividade, $faltas, $nota, $ano, $ativo
 	);
-
 	####################################################
 		// Aluno 1, disciplina 1, 1º bimestre (aula, prova e trabalho)
 		// idDiario 1
@@ -1727,7 +1543,6 @@
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
-
 		// Aluno 1, disciplina 2, 1º bimestre (aula, prova e trabalho)
 		// idDiario 4
 		$idConteudo = 2;
@@ -1756,7 +1571,6 @@
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
-
 		// Aluno 2, disciplina 1, 1º bimestre (aula, prova e trabalho)
 		// idDiario 7
 		$idConteudo = 1;
@@ -1785,7 +1599,6 @@
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
-
 		// Aluno 2, disciplina 2, 1º bimestre (aula, prova e trabalho)
 		// idDiario 10
 		$idConteudo = 2;
@@ -1814,7 +1627,6 @@
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
-
 		// Aluno 3, disciplina 3, 1º semestre (aula, prova e trabalho)
 		// idDiario 13
 		$idConteudo = 3;
@@ -1843,7 +1655,6 @@
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
-
 		// Aluno 3, disciplina 4, 1º semestre (aula, prova e trabalho)
 		// idDiario 16
 		$idConteudo = 4;
@@ -1872,7 +1683,6 @@
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
-
 		// Aluno 4, disciplina 3, 1º semestre (aula, prova e trabalho)
 		// idDiario 19
 		$idConteudo = 3;
@@ -1901,7 +1711,6 @@
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
-
 		// Aluno 4, disciplina 4, 1º semestre (aula, prova e trabalho)
 		// idDiario 22
 		$idConteudo = 4;
@@ -1930,7 +1739,6 @@
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
-
 		// Aluno 5, disciplina 5, 1º bimestre (aula, prova e trabalho)
 		// idDiario 25
 		$idConteudo = 5;
@@ -1959,7 +1767,6 @@
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
-
 		// Aluno 5, disciplina 6, 1º bimestre (aula, prova e trabalho)
 		// idDiario 28
 		$idConteudo = 6;
@@ -1988,7 +1795,6 @@
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
-
 		// Aluno 6, disciplina 5, 1º bimestre (aula, prova e trabalho)
 		// idDiario 31
 		$idConteudo = 5;
@@ -2017,7 +1823,6 @@
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
-
 		// Aluno 6, disciplina 6, 1º bimestre (aula, prova e trabalho)
 		// idDiario 34
 		$idConteudo = 6;
@@ -2046,7 +1851,6 @@
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
-
 		// Aluno 7, disciplina 7, 1º bimestre (aula, prova e trabalho)
 		// idDiario 37
 		$idConteudo = 7;
@@ -2075,7 +1879,6 @@
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
-
 		// Aluno 7, disciplina 8, 1º bimestre (aula, prova e trabalho)
 		// idDiario 40
 		$idConteudo = 8;
@@ -2104,7 +1907,6 @@
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
-
 		// Aluno 8, disciplina 7, 1º bimestre (aula, prova e trabalho)
 		// idDiario 43
 		$idConteudo = 7;
@@ -2133,7 +1935,6 @@
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
-
 		// Aluno 8, disciplina 8, 1º bimestre (aula, prova e trabalho)
 		// idDiario 46
 		$idConteudo = 8;
@@ -2192,7 +1993,6 @@
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
-
 		// Aluno 1, disciplina 2, 2º bimestre (aula, prova e trabalho)
 		// idDiario 52
 		$idConteudo = 10;
@@ -2221,7 +2021,6 @@
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
-
 		// Aluno 2, disciplina 1, 2º bimestre (aula, prova e trabalho)
 		// idDiario 55
 		$idConteudo = 9;
@@ -2250,7 +2049,6 @@
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
-
 		// Aluno 2, disciplina 2, 2º bimestre (aula, prova e trabalho)
 		// idDiario 58
 		$idConteudo = 10;
@@ -2279,7 +2077,6 @@
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
-
 		// Aluno 3, disciplina 3, 2º semestre (aula, prova e trabalho)
 		// idDiario 61
 		$idConteudo = 11;
@@ -2308,7 +2105,6 @@
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
-
 		// Aluno 3, disciplina 4, 2º semestre (aula, prova e trabalho)
 		// idDiario 64
 		$idConteudo = 12;
@@ -2337,7 +2133,6 @@
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
-
 		// Aluno 4, disciplina 3, 2º semestre (aula, prova e trabalho)
 		// idDiario 67
 		$idConteudo = 11;
@@ -2366,7 +2161,6 @@
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
-
 		// Aluno 4, disciplina 4, 2º semestre (aula, prova e trabalho)
 		// idDiario 70
 		$idConteudo = 12;
@@ -2395,7 +2189,6 @@
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
-
 		// Aluno 5, disciplina 5, 2º bimestre (aula, prova e trabalho)
 		// idDiario 73
 		$idConteudo = 13;
@@ -2424,7 +2217,6 @@
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
-
 		// Aluno 5, disciplina 6, 2º bimestre (aula, prova e trabalho)
 		// idDiario 76
 		$idConteudo = 14;
@@ -2453,7 +2245,6 @@
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
-
 		// Aluno 6, disciplina 5, 2º bimestre (aula, prova e trabalho)
 		// idDiario 79
 		$idConteudo = 13;
@@ -2482,7 +2273,6 @@
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
-
 		// Aluno 6, disciplina 6, 2º bimestre (aula, prova e trabalho)
 		// idDiario 82
 		$idConteudo = 14;
@@ -2511,7 +2301,6 @@
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
-
 		// Aluno 7, disciplina 7, 2º bimestre (aula, prova e trabalho)
 		// idDiario 85
 		$idConteudo = 15;
@@ -2540,7 +2329,6 @@
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
-
 		// Aluno 7, disciplina 8, 2º bimestre (aula, prova e trabalho)
 		// idDiario 88
 		$idConteudo = 16;
@@ -2569,7 +2357,6 @@
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
-
 		// Aluno 8, disciplina 7, 2º bimestre (aula, prova e trabalho)
 		// idDiario 91
 		$idConteudo = 15;
@@ -2598,7 +2385,6 @@
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
-
 		// Aluno 8, disciplina 8, 2º bimestre (aula, prova e trabalho)
 		// idDiario 94
 		$idConteudo = 16;
@@ -2627,7 +2413,6 @@
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
-
 		//
 		//
 		// Aluno 1, disciplina 1, 3º bimestre (aula, prova e trabalho)
@@ -2658,7 +2443,6 @@
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
-
 		// Aluno 1, disciplina 2, 3º bimestre (aula, prova e trabalho)
 		// idDiario 100
 		$idConteudo = 18;
@@ -2687,7 +2471,6 @@
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
-
 		// Aluno 2, disciplina 1, 3º bimestre (aula, prova e trabalho)
 		// idDiario 103
 		$idConteudo = 17;
@@ -2716,7 +2499,6 @@
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
-
 		// Aluno 2, disciplina 2, 3º bimestre (aula, prova e trabalho)
 		// idDiario 106
 		$idConteudo = 18;
@@ -2745,7 +2527,6 @@
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
-
 		// Aluno 5, disciplina 5, 3º bimestre (aula, prova e trabalho)
 		// idDiario 109
 		$idConteudo = 19;
@@ -2774,7 +2555,6 @@
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
-
 		// Aluno 5, disciplina 6, 3º bimestre (aula, prova e trabalho)
 		// idDiario 112
 		$idConteudo = 20;
@@ -2803,7 +2583,6 @@
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
-
 		// Aluno 6, disciplina 5, 3º bimestre (aula, prova e trabalho)
 		// idDiario 115
 		$idConteudo = 19;
@@ -2832,7 +2611,6 @@
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
-
 		// Aluno 6, disciplina 6, 3º bimestre (aula, prova e trabalho)
 		// idDiario 118
 		$idConteudo = 20;
@@ -2861,7 +2639,6 @@
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
-
 		// Aluno 7, disciplina 7, 3º bimestre (aula, prova e trabalho)
 		// idDiario 121
 		$idConteudo = 21;
@@ -2890,7 +2667,6 @@
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
-
 		// Aluno 7, disciplina 8, 3º bimestre (aula, prova e trabalho)
 		// idDiario 124
 		$idConteudo = 22;
@@ -2919,7 +2695,6 @@
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
-
 		// Aluno 8, disciplina 7, 3º bimestre (aula, prova e trabalho)
 		// idDiario 127
 		$idConteudo = 21;
@@ -2948,7 +2723,6 @@
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
-
 		// Aluno 8, disciplina 8, 3º bimestre (aula, prova e trabalho)
 		// idDiario 130
 		$idConteudo = 22;
@@ -2977,7 +2751,6 @@
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
-
 		//
 		//
 		// Aluno 1, disciplina 1, 4º bimestre (aula, prova e trabalho)
@@ -3008,7 +2781,6 @@
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
-
 		// Aluno 1, disciplina 2, 4º bimestre (aula, prova e trabalho)
 		// idDiario 136
 		$idConteudo = 24;
@@ -3037,7 +2809,6 @@
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
-
 		// Aluno 2, disciplina 1, 4º bimestre (aula, prova e trabalho)
 		// idDiario 139
 		$idConteudo = 23;
@@ -3066,7 +2837,6 @@
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
-
 		// Aluno 2, disciplina 2, 4º bimestre (aula, prova e trabalho)
 		// idDiario 142
 		$idConteudo = 24;
@@ -3095,7 +2865,6 @@
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
-
 		// Aluno 5, disciplina 5, 4º bimestre (aula, prova e trabalho)
 		// idDiario 145
 		$idConteudo = 25;
@@ -3124,7 +2893,6 @@
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
-
 		// Aluno 5, disciplina 6, 4º bimestre (aula, prova e trabalho)
 		// idDiario 148
 		$idConteudo = 26;
@@ -3153,7 +2921,6 @@
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
-
 		// Aluno 6, disciplina 5, 4º bimestre (aula, prova e trabalho)
 		// idDiario 151
 		$idConteudo = 25;
@@ -3182,7 +2949,6 @@
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
-
 		// Aluno 6, disciplina 6, 4º bimestre (aula, prova e trabalho)
 		// idDiario 154
 		$idConteudo = 26;
@@ -3211,7 +2977,6 @@
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
-
 		// Aluno 7, disciplina 7, 4º bimestre (aula, prova e trabalho)
 		// idDiario 157
 		$idConteudo = 27;
@@ -3240,7 +3005,6 @@
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
-
 		// Aluno 7, disciplina 8, 4º bimestre (aula, prova e trabalho)
 		// idDiario 160
 		$idConteudo = 28;
@@ -3269,7 +3033,6 @@
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
-
 		// Aluno 8, disciplina 7, 4º bimestre (aula, prova e trabalho)
 		// idDiario 163
 		$idConteudo = 27;
@@ -3298,7 +3061,6 @@
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
-
 		// Aluno 8, disciplina 8, 3º bimestre (aula, prova e trabalho)
 		// idDiario 166
 		$idConteudo = 28;
@@ -3328,8 +3090,6 @@
 		$ativo = "S";
 		$stmt -> execute();
 	####################################################
-
-
 	//
 	// CÓDIGO PARA INSERÇÃO NAS TABELAS DO SISTEMA DE BIBLIOTECA
 	//
@@ -3358,7 +3118,6 @@
 		$paginas = "223";
 		$ativo = "S";
 		$stmt -> execute();
-
 		// idAcervo 2
 		$idCampi = 1;
 		$nome = "O Cortiço";
@@ -3369,7 +3128,6 @@
 		$paginas = "272";
 		$ativo = "S";
 		$stmt -> execute();
-
 		// idAcervo 3
 		$idCampi = 1;
 		$nome = "Inteligência Artificial em Jogos Digitais";
@@ -3380,7 +3138,6 @@
 		$paginas = "25";
 		$ativo = "S";
 		$stmt -> execute();
-
 		// idAcervo 4
 		$idCampi = 1;
 		$nome = "O Futuro da Robótica";
@@ -3391,7 +3148,6 @@
 		$paginas = "8";
 		$ativo = "S";
 		$stmt -> execute();
-
 		// idAcervo 5
 		$idCampi = 1;
 		$nome = "300";
@@ -3402,7 +3158,6 @@
 		$paginas = "";
 		$ativo = "S";
 		$stmt -> execute();
-
 		// idAcervo 6
 		$idCampi = 1;
 		$nome = "I like it when you sleep";
@@ -3413,7 +3168,6 @@
 		$paginas = "";
 		$ativo = "S";
 		$stmt -> execute();
-
 		// idAcervo 7
 		$idCampi = 1;
 		$nome = "Superinteressante";
@@ -3424,7 +3178,6 @@
 		$paginas = "93";
 		$ativo = "S";
 		$stmt -> execute();
-
 		// idAcervo 8
 		$idCampi = 1;
 		$nome = "SQL Magazine";
@@ -3436,7 +3189,6 @@
 		$ativo = "S";
 		$stmt -> execute();
 	####################################################
-
 	//
 	// INSERINDO NA TABELA LIVROS
 	//
@@ -3450,7 +3202,6 @@
 				"isss", 
 				$idAcervo, $ISBN, $edicao, $ativo
 			 );
-
 	####################################################
 		// Livro 1 - Dom Casmurro
 		$idAcervo = 1;
@@ -3458,7 +3209,6 @@
 		$edicao = "1";
 		$ativo = "S";
 		$stmt -> execute();
-
 		// Livro 2 - O Cortiço
 		$idAcervo = 2;
 		$ISBN = "9788520927823";
@@ -3466,7 +3216,6 @@
 		$ativo = "S";
 		$stmt -> execute();
 	####################################################
-
 	//
 	// INSERINDO NA TABELA ACADEMICOS
 	//
@@ -3480,21 +3229,18 @@
 				"iss", 
 				$idAcervo, $programa, $ativo
 			 );
-
 	####################################################
 		// idAcademicos 1
 		$idAcervo = 3;
 		$programa = "Bacharelado";
 		$ativo = "S";
 		$stmt -> execute();
-
 		// idAcademicos 2
 		$idAcervo = 4;
 		$programa = "Artigo Científico";
 		$ativo = "S";
 		$stmt -> execute();
 	####################################################
-
 	//
 	// INSERINDO NA TABELA MIDIAS
 	//
@@ -3508,7 +3254,6 @@
 				"isss", 
 				$idAcervo, $tempo, $subtipo, $ativo
 			 );
-
 	####################################################
 		// idMidia 1
 		$idAcervo = 5;
@@ -3516,7 +3261,6 @@
 		$subtipo = "DVD";
 		$ativo = "S";
 		$stmt -> execute();
-
 		// idMidia 2
 		$idAcervo = 6;
 		$tempo = "74";
@@ -3538,7 +3282,6 @@
 				"issssss", 
 				$idAcervo, $periodicidade, $mes, $volume, $subtipo, $ISSN, $ativo
 			 );
-
 	####################################################
 		// idPeriodico 1
 		$idAcervo = 7;
@@ -3549,7 +3292,6 @@
 		$ISSN = "01041789";
 		$ativo = "S";
 		$stmt -> execute();
-
 		// idPeriodico 2
 		$idAcervo = 8;
 		$periodicidade = "Mensal";
@@ -3574,7 +3316,6 @@
 				"isssss", 
 				$idPeriodico, $titulo, $pagInicio, $pagFinal, $palavrasChave, $ativo
 			 );
-
 	####################################################
 		// Periódico 1
 		// idParte 1
@@ -3601,7 +3342,6 @@
 		$palavrasChave = "Brasil, universo, bomba, Einstein, internet";
 		$ativo = "S";
 		$stmt -> execute();
-
 		// Periódico 2
 		// idParte 4
 		$idPeriodico = 2;
@@ -3628,7 +3368,6 @@
 		$ativo = "S";
 		$stmt -> execute();
 	####################################################
-
 	//
 	// INSERINDO NA TABELA AUTORACERVO
 	//
@@ -3642,20 +3381,17 @@
 				"iis", 
 				$idAcervo, $idAutor, $ativo
 			 );
-
 	####################################################
 		// idAutorAcervo 1
 		$idAcervo = 1;
 		$idAutor = 1;
 		$ativo = "S";
 		$stmt -> execute();
-
 		// idAutorAcervo 2
 		$idAcervo = 2;
 		$idAutor = 2;
 		$ativo = "S";
 		$stmt -> execute();
-
 		// idAutorAcervo 3
 		$idAcervo = 3;
 		$idAutor = 3;
@@ -3676,7 +3412,6 @@
 		$idAutor = 6;
 		$ativo = "S";
 		$stmt -> execute();
-
 		// idAutorAcervo 7
 		$idAcervo = 4;
 		$idAutor = 7;
@@ -3687,24 +3422,20 @@
 		$idAutor = 8;
 		$ativo = "S";
 		$stmt -> execute();
-
 		// idAutorAcervo 9
 		$idAcervo = 5;
 		$idAutor = 9;
 		$ativo = "S";
 		$stmt -> execute();
-
 		// idAutorAcervo 10
 		$idAcervo = 6;
 		$idAutor = 10;
 		$ativo = "S";
 		$stmt -> execute();
 	####################################################
-
 	//
 	// INSERINDO NA TABELA AUTORES
 	//
-
 	$stmt = $conexao -> prepare (
 			"INSERT INTO autores
 				(nome, sobrenome, ordem, qualificacao, ativo) 
@@ -3723,7 +3454,6 @@
 		$qualificacao = "Doutor";
 		$ativo = "S";
 		$stmt -> execute();
-
 		// idAutor 2 - Aluísio Azevedo 
 		$nome = "Aluísio";
 		$sobrenome = "Azevedo";
@@ -3731,7 +3461,6 @@
 		$qualificacao = "Doutor";
 		$ativo = "S";
 		$stmt -> execute();
-
 		// idAutor 3 - acadêmico 1
 		$nome = "Bruno";
 		$sobrenome = "Ribeiro";
@@ -3760,7 +3489,6 @@
 		$qualificacao = "Bacharel";
 		$ativo = "S";
 		$stmt -> execute();
-
 		// idAutor 7 - acadêmico 2
 		$nome = "Roberto";
 		$sobrenome = "Valério";
@@ -3775,7 +3503,6 @@
 		$qualificacao = "Mestre";
 		$ativo = "S";
 		$stmt -> execute();
-
 		// idAutor 9 - mídia 1
 		$nome = "Zack";
 		$sobrenome = "Snyder";
@@ -3783,7 +3510,6 @@
 		$qualificacao = "Diretor de cinema";
 		$ativo = "S";
 		$stmt -> execute();
-
 		// idAutor 10 - mídia 2
 		$nome = "The 1975";
 		$sobrenome = "";
@@ -3806,7 +3532,6 @@
 				"sissss", 
 				$idAluno, $idAcervo, $dataReserva, $tempoEspera, $emprestou, $ativo
 			 );
-
 	####################################################
 		$idAluno = ;
 		$idAcervo = ;
@@ -3816,7 +3541,6 @@
 		$ativo = ;
 		$stmt -> execute();
 	####################################################
-
 	//
 	// INSERINDO NA TABELA EMPRESTIMOS
 	//
@@ -3831,7 +3555,6 @@
 				"sisssss", 
 				$idAluno, $idAcervo, $dataEmprestimo, $dataPrevisaoDevolucao, $dataDevolucao, $multa, $ativo
 			 );
-
 	####################################################
 		$idAluno = ;
 		$idAcervo = ;
@@ -3842,7 +3565,6 @@
 		$ativo = ;
 		$stmt -> execute();
 	####################################################
-
 	//
 	// INSERINDO NA TABELA DESCARTES
 	//
@@ -3856,7 +3578,6 @@
 				"issss", 
 				$idAcervo, $idFuncionario, $dataDescarte, $motivos, $ativo
 			 );
-
 	####################################################
 		$idAcervo = ;
 		$idFuncionario = ;
@@ -3866,11 +3587,7 @@
 		$stmt -> execute();
 	####################################################
 */
-
-
 ###############################################################################################
-
 	// FECHANDO A CONEXÃO
 	//mysqli_close($conexao);
-
 ?>

@@ -4,7 +4,7 @@
 
 	$servername = "localhost";
 	$username = "root";
-	$password = "usbw";
+	$password = "";
 	$bd = "educatio";
 
 	$conexao = mysqli_connect($servername, $username, $password, $bd);

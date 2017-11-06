@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javax.swing.JOptionPane;
 
 /**
@@ -12,18 +14,18 @@ import javax.swing.JOptionPane;
  */
 public class Atividade {
     
+    private ObservableList turmas = FXCollections.observableArrayList();
+    private ObservableList disciplinas = FXCollections.observableArrayList();
+    private ObservableList nomes = FXCollections.observableArrayList();
+    
     public Atividade(){
         
     }
     
     public void insereAtividade(String nomeDisciplina, String nomeAtividade, String dataAtividade, double valorAtividade, int idProfessor, String nomeTurma) throws ClassNotFoundException, SQLException{
-        
-        
         Connection conexao = new ConnectionFactory().getConexao();
         
-        int idTurma = pegaIdTurma(nomeTurma);
-        int idDisciplina = pegaIdDisciplina(nomeDisciplina);
-        int idProfDisciplina = pegaIdProfDisciplina(idProfessor, idDisciplina, idTurma);
+        int idProfDisciplina = pegaIdProfDisciplina(pegaIdDisciplina(nomeDisciplina), pegaIdTurma(nomeTurma));
         
         /*
             Insere os dados na tabela
@@ -50,9 +52,7 @@ public class Atividade {
     public void alteraNomeAtividade(String nomeNovoAtividade, String nomeDisciplina, int idProfessor, String nomeTurma) throws ClassNotFoundException, SQLException{
         Connection conexao = new ConnectionFactory().getConexao();
         
-        int idTurma = pegaIdTurma(nomeTurma);
-        int idDisciplina = pegaIdDisciplina(nomeDisciplina);
-        int idProfDisciplina = pegaIdProfDisciplina(idProfessor, idDisciplina, idTurma);
+        int idProfDisciplina = pegaIdProfDisciplina(pegaIdDisciplina(nomeDisciplina), pegaIdTurma(nomeTurma));
         
         String nomeAtividade = JOptionPane.showInputDialog("Digite o nome referente a atividade que deseja alterar\n" + 
                 imprimeAtividades(idProfDisciplina));
@@ -78,9 +78,7 @@ public class Atividade {
     public void alteraValorAtividade(double valorAtividade, String nomeDisciplina, int idProfessor, String nomeTurma) throws ClassNotFoundException, SQLException{
         Connection conexao = new ConnectionFactory().getConexao();
         
-        int idTurma = pegaIdTurma(nomeTurma);
-        int idDisciplina = pegaIdDisciplina(nomeDisciplina);
-        int idProfDisciplina = pegaIdProfDisciplina(idProfessor, idDisciplina, idTurma);
+        int idProfDisciplina = pegaIdProfDisciplina(pegaIdDisciplina(nomeDisciplina), pegaIdTurma(nomeTurma));
         
         String nomeAtividade = JOptionPane.showInputDialog("Digite o nome referente a atividade que deseja alterar\n" + 
                 imprimeAtividades(idProfDisciplina));
@@ -105,9 +103,7 @@ public class Atividade {
     public void alteraDataAtividade(String dataAtividade, String nomeDisciplina, int idProfessor, String nomeTurma) throws ClassNotFoundException, SQLException{
         Connection conexao = new ConnectionFactory().getConexao();
         
-        int idTurma = pegaIdTurma(nomeTurma);
-        int idDisciplina = pegaIdDisciplina(nomeDisciplina);
-        int idProfDisciplina = pegaIdProfDisciplina(idProfessor, idDisciplina, idTurma);
+        int idProfDisciplina = pegaIdProfDisciplina(pegaIdDisciplina(nomeDisciplina), pegaIdTurma(nomeTurma));
         
         String nomeAtividade = JOptionPane.showInputDialog("Digite o nome referente a atividade que deseja alterar\n" + 
                 imprimeAtividades(idProfDisciplina));
@@ -132,9 +128,7 @@ public class Atividade {
     public void removeAtividade(String nomeDisciplina, int idProfessor, String nomeTurma) throws ClassNotFoundException, SQLException{
         Connection conexao = new ConnectionFactory().getConexao();
         
-        int idTurma = pegaIdTurma(nomeTurma);
-        int idDisciplina = pegaIdDisciplina(nomeDisciplina);
-        int idProfDisciplina = pegaIdProfDisciplina(idProfessor, idDisciplina, idTurma);
+        int idProfDisciplina = pegaIdProfDisciplina(pegaIdDisciplina(nomeDisciplina), pegaIdTurma(nomeTurma));
         
         String nomeAtividade = JOptionPane.showInputDialog("Digite o nome referente a atividade que deseja remover\n" + 
                 imprimeAtividades(idProfDisciplina));
@@ -195,7 +189,7 @@ public class Atividade {
         int idDisciplina = pegaIdDisciplina(nomeDisciplina);
         int idTurma = pegaIdTurma(nomeTurma);
         
-        int idProfDisciplina = pegaIdProfDisciplina(idProfessor, idDisciplina, idTurma);
+        int idProfDisciplina = pegaIdProfDisciplina(idDisciplina, idTurma);
         
         sql = "SELECT * FROM atividades WHERE idProfDisciplina = (?) AND ativo = \"S\"";
         
@@ -212,7 +206,7 @@ public class Atividade {
         JOptionPane.showMessageDialog(null, dadosAtividade);
     }
     
-    private int pegaIdTurma(String nomeTurma) throws SQLException{
+    public int pegaIdTurma(String nomeTurma) throws SQLException{
         Connection conexao = new ConnectionFactory().getConexao();
         
         String sql = "SELECT id FROM turmas WHERE nome = (?) AND ativo = \"S\""; 
@@ -227,7 +221,7 @@ public class Atividade {
         return idTurma;
     }
     
-    private int pegaIdDisciplina(String nomeDisciplina) throws SQLException{
+    public int pegaIdDisciplina(String nomeDisciplina) throws SQLException{
         Connection conexao = new ConnectionFactory().getConexao();
         
         String sql = "SELECT id FROM disciplinas WHERE nome = (?) AND ativo = \"S\"";
@@ -242,10 +236,10 @@ public class Atividade {
         return idDisciplina;
     }
     
-    private int pegaIdProfDisciplina(int idProf, int idDisciplina, int idTurma) throws SQLException{
+    private int pegaIdProfDisciplina(int idDisciplina, int idTurma) throws SQLException{
         Connection conexao = new ConnectionFactory().getConexao();
         
-        int idprofessor = 1;
+        int idprofessor = 8026034;
         
         String sql = "SELECT id FROM profdisciplinas WHERE idProfessor = (?) AND idDisciplina = (?) AND idTurma = (?) AND ativo = \"S\"";
         
@@ -260,4 +254,79 @@ public class Atividade {
         
         return idProfDisciplina;
     }
+    
+    public ObservableList pegaDisciplinas() throws SQLException{
+        Connection conexao = new ConnectionFactory().getConexao();
+        
+        int idDisc;
+        int idProfessor = 8026034;
+        
+        String sql = "SELECT idDisciplina FROM profdisciplinas WHERE idProfessor = (?) AND ativo = 'S'";
+        
+        PreparedStatement declaracao = conexao.prepareStatement(sql);
+        declaracao.setInt(1, idProfessor);
+        
+        ResultSet rs = declaracao.executeQuery();
+        while(rs.next()){
+            idDisc = rs.getInt("idDisciplina");
+            sql = "SELECT nome FROM disciplinas WHERE id = (?) AND ativo = 'S'";
+            
+            declaracao = conexao.prepareStatement(sql);
+            declaracao.setInt(1, idDisc);
+            
+            ResultSet result = declaracao.executeQuery();
+            while(result.next()){
+                disciplinas.add(result.getString("nome"));
+            }
+        }
+        
+        return disciplinas;
+    }
+    
+    public ObservableList pegaTurmas(String disciplina) throws SQLException{
+        Connection conexao = new ConnectionFactory().getConexao();
+        
+        int idTurma;
+        
+        String sql = "SELECT idTurma FROM disciplinas WHERE nome = (?) AND ativo = 'S'";
+        
+        PreparedStatement declaracao = conexao.prepareStatement(sql);
+        declaracao.setString(1, disciplina);
+        
+        ResultSet rs = declaracao.executeQuery();
+        while(rs.next()){
+            idTurma = rs.getInt("idTurma");
+            sql = "SELECT nome FROM turmas WHERE id = (?) AND ativo = 'S'";
+            
+            declaracao = conexao.prepareStatement(sql);
+            declaracao.setInt(1, idTurma);
+            
+            ResultSet result = declaracao.executeQuery();
+            while(result.next()){
+                turmas.add(result.getString("nome"));
+            }
+        }
+        
+        return turmas;
+    }
+    
+    public ObservableList pegaNomes(String disciplina, String turma) throws SQLException{
+        Connection conexao = new ConnectionFactory().getConexao();
+        
+        int idProfDisc = pegaIdProfDisciplina(pegaIdDisciplina(disciplina), pegaIdTurma(turma));
+        
+        String sql = "SELECT nome FROM atividades WHERE idProfDisciplina = (?) AND ativo = 'S'";
+        
+        PreparedStatement declaracao = conexao.prepareStatement(sql);
+        declaracao.setInt(1, idProfDisc);
+        
+        ResultSet rs = declaracao.executeQuery();
+        while(rs.next()){
+            nomes.add(rs.getString("nome"));
+        }
+        
+        return nomes;
+    }
+    
+    
 }

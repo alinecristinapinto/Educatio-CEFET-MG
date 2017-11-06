@@ -61,7 +61,6 @@ public class MainApp extends Application {
             ListaAcervoController controller = (ListaAcervoController)loader.getController();
             controller.setMainApp(this);
             controller.setAcervoMostra(acervo);
-            controller.montaTabela();
         } catch (IOException e) {
             e.printStackTrace();
         }

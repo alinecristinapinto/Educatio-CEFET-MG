@@ -2,30 +2,28 @@ package ch.makery.address.view;
 
 import ch.makery.address.MainApp;
 import ch.makery.address.model.Acervo;
+import ch.makery.jdbc.BancoDeDados;
 import ch.makery.jdbc.ConectaComBD;
-import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ListView;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 public class ListaAcervoController {
+
     @FXML
-    private ListView listaDeAcervos;
-    @FXML
-    private Alert alert;
+    private TextField txtNomeAcervo;
     @FXML
     private TableView<Acervo> tabela;
     @FXML
@@ -38,15 +36,12 @@ public class ListaAcervoController {
     private TableColumn<Acervo, String> colunaLocal;
     @FXML
     private TableColumn<Acervo, String> colunaEditora;
-    @FXML
+    
     private ObservableList<Acervo> lista;
     
     private MainApp mainApp;
     private Acervo acervoMostra;
-
-    //public ListaAcervoController(String nomeAcervo) {
-    //    this.nomeAcervo = nomeAcervo;
-    //}
+    private static Connection conexao;
     
     public void setAcervoMostra(Acervo acervoMostra) {
         this.acervoMostra = acervoMostra;
@@ -55,54 +50,71 @@ public class ListaAcervoController {
     public void setMainApp(MainApp mainApp) {
         this.mainApp = mainApp;
     }
-    @FXML
-    public ListView getListaDeAcervos() {
-        return listaDeAcervos;
-    }
-    @FXML
-    public void setListaDeAcervos(ListView listaDeAcervos) {
-        this.listaDeAcervos = listaDeAcervos;
-    }
     
     @FXML
-    private void selecionaId(){
-        montaTabela();
+    private void selecionaId() {
+        System.out.println(tabela.getSelectionModel().getSelectedItem());
+        BancoDeDados bd = new BancoDeDados();
+        try {
+            bd.deletaAcervo(tabela.getSelectionModel().getSelectedItem().getIdAcervo().get());
+            bd.guardaDescarte(
+                    tabela.getSelectionModel().getSelectedItem().getIdAcervo().get(),
+                    tabela.getSelectionModel().getSelectedItem().getData(),
+                    tabela.getSelectionModel().getSelectedItem().getMotivo(),
+                    tabela.getSelectionModel().getSelectedItem().getIdFuncionario());
+        } catch (SQLException | ClassNotFoundException ex) {
+            Logger.getLogger(ListaAcervoController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     @FXML
     public void initialize() {
-        colunaIdAcervo = new TableColumn<>();
-        colunaNomeAcervo = new TableColumn<>();
-        colunaLocal = new TableColumn<>();
-        colunaEditora = new TableColumn<>();
-        colunaAno = new TableColumn<>();
-        tabela = new TableView<>();
-    }
-    @FXML
-    public void montaTabela()
-    {
-        try {
+                try {
+                    conexao = ConectaComBD.getConnection();
+                } catch (SQLException | ClassNotFoundException ex) {
+                    Logger.getLogger(ListaAcervoController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                
+                String sql = "SELECT * FROM acervo WHERE ativo = 'S'";
+                
+                lista = FXCollections.observableArrayList();
+                
+                try (PreparedStatement stmt = conexao.prepareStatement(sql)) {
+                    ResultSet rs = stmt.executeQuery();
+                    while(rs.next()){
+                        lista.add(new Acervo(rs.getInt(1),rs.getInt(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8)));
+                    }
+                }catch (SQLException ex) {
+                    Logger.getLogger(ListaAcervoController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                colunaIdAcervo.setCellValueFactory(cellData -> cellData.getValue().getIdAcervo().asObject());
+                colunaNomeAcervo.setCellValueFactory(cellData -> cellData.getValue().getNomeAcervo());
+                colunaEditora.setCellValueFactory(cellData -> cellData.getValue().getEditora());
+                colunaLocal.setCellValueFactory(cellData -> cellData.getValue().getLocal());  
+                colunaAno.setCellValueFactory(cellData -> cellData.getValue().getAno());
+                tabela.setItems(lista);
+                
+                FilteredList<Acervo> filtraDados = new FilteredList<>(lista, p -> true);
             
-            Connection conexao = ConectaComBD.getConnection();
-            String sql = "SELECT * FROM acervo WHERE nome = '" + acervoMostra.getNomeAcervo() + "' AND ativo = 'S' ORDER BY id";
-            lista =  FXCollections.observableArrayList();
-            PreparedStatement stmt = conexao.prepareStatement(sql);
-            ResultSet rs = stmt.executeQuery();
-            while(rs.next()){
-                lista.add(new Acervo(rs.getInt("id"), rs.getString("nome"), rs.getString("local"), rs.getString("editora"), rs.getString("ano")));
-                System.out.println(lista.toString());
-            }
-            stmt.close();
-        } catch (SQLException | ClassNotFoundException ex) {
-            Logger.getLogger(ListaAcervoController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        colunaIdAcervo.setCellValueFactory(new PropertyValueFactory<Acervo, Integer>("idAcervo"));
-        colunaNomeAcervo.setCellValueFactory(new PropertyValueFactory<Acervo, String>("nomeAcervo"));
-        colunaLocal.setCellValueFactory(new PropertyValueFactory<Acervo, String>("local"));
-        colunaEditora.setCellValueFactory(new PropertyValueFactory<Acervo, String>("editora"));
-        colunaAno.setCellValueFactory(new PropertyValueFactory<Acervo, String>("ano"));
-        
-        tabela.setItems(lista);
-        
+                txtNomeAcervo.textProperty().addListener((observable, oldValue, newValue) -> {
+                filtraDados.setPredicate(Acervo -> {
+                // If filter text is empty, display all persons.
+                if (newValue == null || newValue.isEmpty()) {
+                    return true;
+                }
+                
+                // Compare first name and last name of every person with filter text.
+                String lowerCaseFilter = newValue.toLowerCase();
+                
+                if (Acervo.getNomeAcervo().toString().toLowerCase().contains(lowerCaseFilter)) {
+                    return true; // Filter matches first name.
+                }
+                return false; // Does not match.
+                });
+            });
+                SortedList<Acervo> sorteiaDados = new SortedList<>(filtraDados);
+                sorteiaDados.comparatorProperty().bind(tabela.comparatorProperty());
+                tabela.setItems(sorteiaDados);
     }
+    
 }  

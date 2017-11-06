@@ -1,8 +1,8 @@
 package ManutencaoDiarios;
 
-import ManutencaoDiarios.Visualisacao.PainelAltera2Controller;
-import ManutencaoDiarios.Visualisacao.PainelAlteraController;
-import ManutencaoDiarios.Visualisacao.PainelInsereController;
+import ManutencaoDiarios.Visualisacao.MostraDisciplinasController;
+import ManutencaoDiarios.Visualizacao.PainelInsereController;
+import ManutencaoDiarios.Visualizacao.PainelMostraAtividadeController;
 import java.io.IOException;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -24,7 +24,7 @@ public class ManutencaoDiarios extends Application {
         this.palcoPrincipal = palcoPrincipal;
         palcoPrincipal.setTitle("Manutenção Diários - Atividades");
         
-        chamaLayoutInsere();
+        chamaMostraDisciplinas();
     }
     
     public void chamaLayoutInsere(){
@@ -44,34 +44,34 @@ public class ManutencaoDiarios extends Application {
         }
     }
     
-    public void chamaLayoutAltera(){
+    public void chamaMostraDisciplinas(){
         try{
             FXMLLoader carregadorFXML = new FXMLLoader();
-            carregadorFXML.setLocation(ManutencaoDiarios.class.getResource("Visualisacao/PainelAltera.fxml"));
+            carregadorFXML.setLocation(ManutencaoDiarios.class.getResource("Visualisacao/MostraDisciplinas.fxml"));
             telaBase = (AnchorPane) carregadorFXML.load();
             
             Scene cena = new Scene(telaBase);
             palcoPrincipal.setScene(cena);
             palcoPrincipal.show();
             
-            PainelAlteraController controller = carregadorFXML.getController();
+            MostraDisciplinasController controller = carregadorFXML.getController();
             controller.setManutencaoDiarios(this);
         }catch(IOException e){
             e.printStackTrace();
         }
     }
     
-    public void chamaLayoutAltera2(){
+    public void chamaLayoutMostraAtividades(){
         try{
             FXMLLoader carregadorFXML = new FXMLLoader();
-            carregadorFXML.setLocation(ManutencaoDiarios.class.getResource("Visualisacao/PainelAltera2.fxml"));
+            carregadorFXML.setLocation(ManutencaoDiarios.class.getResource("Visualisacao/PainelMostraAtividades.fxml"));
             telaBase = (AnchorPane) carregadorFXML.load();
             
             Scene cena = new Scene(telaBase);
             palcoPrincipal.setScene(cena);
             palcoPrincipal.show();
             
-            PainelAltera2Controller controller = carregadorFXML.getController();
+            PainelMostraAtividadeController controller = carregadorFXML.getController();
             controller.setManutencaoDiarios(this);
         }catch(IOException e){
             e.printStackTrace();

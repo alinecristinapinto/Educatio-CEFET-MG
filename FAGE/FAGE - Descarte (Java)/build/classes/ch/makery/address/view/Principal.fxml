@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ch.makery.address.view.PrincipalController">
+   <children>
+      <Button layoutX="452.0" layoutY="360.0" mnemonicParsing="false" onAction="#recebeDados" prefHeight="25.0" prefWidth="92.0" text="Deleta" />
+      <Label fx:id="lblMotivo" layoutX="36.0" layoutY="247.0" prefHeight="25.0" prefWidth="63.0" text="Motivo: " />
+      <Label fx:id="lblAcervoNome" layoutX="36.0" layoutY="85.0" prefHeight="25.0" prefWidth="216.0" text="Digite o nome do acervo a ser deletado:" />
+      <Label fx:id="lblMatricula" layoutX="36.0" layoutY="40.0" prefHeight="25.0" prefWidth="143.0" text="Matricula do Funcionario: " textAlignment="CENTER" />
+      <TextField fx:id="txtIdFuncionario" layoutX="300.0" layoutY="40.0" />
+      <TextField fx:id="txtNomeAcervo" layoutX="301.0" layoutY="85.0" prefHeight="25.0" prefWidth="149.0" />
+      <RadioButton fx:id="livros" layoutX="84.0" layoutY="155.0" mnemonicParsing="false" text="Livro">
+         <toggleGroup>
+            <ToggleGroup fx:id="tipoDoAcervo" />
+         </toggleGroup>
+      </RadioButton>
+      <RadioButton fx:id="academicos" layoutX="164.0" layoutY="155.0" mnemonicParsing="false" text="Acadêmico" toggleGroup="$tipoDoAcervo" />
+      <RadioButton fx:id="periodicos" layoutX="337.0" layoutY="155.0" mnemonicParsing="false" text="Periodicos" toggleGroup="$tipoDoAcervo" />
+      <RadioButton fx:id="midias" layoutX="264.0" layoutY="155.0" mnemonicParsing="false" text="Mídia" toggleGroup="$tipoDoAcervo" />
+      <Label layoutX="36.0" layoutY="128.0" prefHeight="17.0" prefWidth="87.0" text="Tipo do acervo: " />
+      <DatePicker fx:id="data" layoutX="278.0" layoutY="196.0" />
+      <Label layoutX="36.0" layoutY="200.0" text="Coloque a data do descarte:" />
+      <TextArea fx:id="txtMotivo" layoutX="86.0" layoutY="236.0" prefHeight="116.0" prefWidth="488.0" />
+   </children>
+</AnchorPane>

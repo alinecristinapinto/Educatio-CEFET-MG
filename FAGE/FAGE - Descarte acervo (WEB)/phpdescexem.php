@@ -15,30 +15,30 @@
 	$result = $con->query($sql);
 //cria variavel para controlar acesso
 	$acess=0;
-//confere se id digitado existe na tabela
+//confere se existe idSiape digitado existe na tabela
 	while($row = $result->fetch_assoc()) {
 		$id=$row["idSIAPE"];
 		$hierarquia=$row["hierarquia"];
 		if($idprof == $id && $hierarquia == 'B'){
 			$acess = 1;
 		}
-		//a vai verificar se exste doi nomes iguais
-			$a=0;
-
 	}
 
 	//se tiver roda o resto do programa
 	if($acess==1){
+//seleciona a tabela descarte
+		
 		//pega valores que o usuario mandou
 		$nomelivro=$_GET['num'];
 		$data=$_GET['data'];
 		$mot=$_GET['mot'];
-		$op=$_GET['op'];
+		
 		//tipo verifica se e um livro,midia,academico ou periodico
-			$tipo=$_GET['tipo'];		
+			$tipo=$_GET['tipo'];
+				$a=0;		
 //seleciona tabela livros
 			if($tipo=="l"){
-			$sql="SELECT id FROM livros";
+			$sql="SELECT id,idAcervo FROM livros";
 //ativa função sql
 			$result = $con->query($sql);
 
@@ -46,13 +46,15 @@
 			while($row = $result->fetch_assoc()){
 				if ($nomelivro == $row["id"]) {
 					$a++;
-				
+					$idAcervo=$row["idAcervo"];
 				}
 			}
 		}
+//VARIAVEL PARA CONTAR QUANTAS OBRAS TEM
+
 //seleciona tabela midias
 			else if($tipo=="m"){
-			$sql="SELECT id FROM midias";
+			$sql="SELECT id,idAcervo FROM midias";
 //ativa função sql
 			$result = $con->query($sql);
 //percorre tabela livro e verifica se existe o livro digitado			
@@ -60,13 +62,14 @@
 			while($row = $result->fetch_assoc()){
 				if ($nomelivro == $row["id"]) {
 					$a++;
+					$idAcervo=$row["idAcervo"];
 					
 				}
 			}
 		}
 //seleciona tabela periodicos
 			else if($tipo=="p"){
-			$sql="SELECT id FROM periodicos";
+			$sql="SELECT id,idAcervo FROM periodicos";
 //ativa função sql
 			$result = $con->query($sql);
 			
@@ -74,13 +77,15 @@
 			while($row = $result->fetch_assoc()){
 				if ($nomelivro == $row["id"]) {
 					$a++;
+					$idAcervo=$row["idAcervo"];
 				}
 			}
 		}
 
+
 //seleciona tabela academicos
 		else if($tipo=="a"){
-			$sql="SELECT id FROM academicos";
+			$sql="SELECT id,idAcervo FROM academicos";
 //ativa função sql
 			$result = $con->query($sql);
 			
@@ -88,11 +93,24 @@
 			while($row = $result->fetch_assoc()){
 				if ($nomelivro == $row["id"]) {
 					$a++;
+					$idAcervo=$row["idAcervo"];
 				}
 			}
 		}
 			if($a=1){
+$sql = "SELECT idAcervo FROM descartes";
+//cria variavel para ativar fução sql
+		$result = $con->query($sql);
+		$repetido=0;
+//roda a tabela acervo e compara se o acervo ja foi excluido
+		//roda a tabela acervo e compara se o acervo ja foi excluido
+		while($row = $result->fetch_assoc()) {
+		if($idAcervo == $row["idAcervo"]){
+				$repetido=1;
+			}
+		}
 
+		if($repetido==0){
 
 //selecona tabela descarte
 		$tab=mysqli_query($con,"SELECT * from descartes");
@@ -103,7 +121,7 @@
 
 //incere valores no descarte
 		
-			$sql="INSERT INTO descartes values(DEFAULT,'$nomelivro','$idprof','$data','$mot','S')";
+			$sql="INSERT INTO descartes values(DEFAULT,'$idAcervo','$idprof','$data','$mot','S')";
 //ativa função sql
 			$t=mysqli_query($con,$sql);
 //mostra quantas linha forão afetadas
@@ -124,7 +142,7 @@
 
 		if($tipo=="a"){
 			//deleta livros
-			$sql2     = "UPDATE acervo SET ativo='n' where id = $nomelivro";
+			$sql2     = "UPDATE academicos SET ativo='N' where id = $nomelivro";
 			$qry2     = mysqli_query($con,$sql2);
 		}
 		if($tipo=="m"){
@@ -134,7 +152,7 @@
 		}
 		if($tipo=="p"){
 			 //pega o id do periodico que vai ser deletado
-			$sql = "SELECT id FROM periodicos ";
+			$sql = "SELECT id,idAcervo FROM periodicos ";
 			$result = $con->query($sql);
 //deleta partes
 			while($row = $result->fetch_assoc()) {
@@ -142,6 +160,7 @@
 					$idperiodico=$row["id"];
 					$sql2     = "UPDATE partes SET ativo ='N' where idPeriodico = $idperiodico ";
 					$qry2     = mysqli_query($con,$sql2);
+
 				}
 			}
  
@@ -149,9 +168,19 @@
 			$sql2     = "UPDATE periodicos SET ativo='n' where id = $nomelivro";
 			$qry2     = mysqli_query($con,$sql2);
 		}
+//deleta acervo
+					 //pega o id do periodico que vai ser deletado
+			$sql = "SELECT id,idAcervo FROM periodicos ";
+			$result = $con->query($sql);
+
+			while($row = $result->fetch_assoc()) {
+			$sql2     = "UPDATE acervo SET ativo='N' where id = $idAcervo";
+			$qry2     = mysqli_query($con,$sql2);
+			}
+
 //mosta valores colocados pelo usuario
 
-			echo "$nomelivro<br>$data<br>$mot<br>$op<br>";
+			echo "$nomelivro<br>$data<br>$mot<br>";
 			//butao voltar
 			echo "<input class='btn btn-primary btn-lg btn-block' type='button' value='Voltar' onClick='history.go(-2)'> ";
 			ECHO"<div class='progress'>
@@ -160,6 +189,11 @@
 
 		
 }
+else{
+	echo "A OBRA JA FOI DESCARTADA";
+}
+}
+
 else{
 	echo "livro não existe<br><br>";
 		echo "<input class='btn btn-primary btn-lg btn-block' type='button' value='Voltar' onClick='history.go(-1)'> ";

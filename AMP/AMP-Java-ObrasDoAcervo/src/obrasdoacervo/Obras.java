@@ -22,6 +22,8 @@ public class Obras {
     String paginas;
     String ativo;
 
+    public Obras() {
+    }
     
     public Obras(int idCampi, String nome, String tipo, String local, String ano, String editora, String paginas) {
         this.idCampi = idCampi;

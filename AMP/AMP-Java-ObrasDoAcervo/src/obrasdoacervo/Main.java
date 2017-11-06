@@ -6,6 +6,7 @@
 package obrasdoacervo;
 
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
@@ -30,56 +31,6 @@ public class Main {
             System.out.println("Não foi possível realizar a conexão");
         }
          
-        /* 
-        
-        String ISBN;
-        String edicao;
-        int idObra;
-        int idCampi;
-        int idAutor;
-        String nome;
-        String local;
-        String ano;
-        String editora;
-        String paginas;
-        
-        // TODO code application logic here
-        
-        System.out.println("\n\nTeste com Livros");
-        Scanner ent = new Scanner (System.in);
-        
-        System.out.println("Escreva os dados: ");
-        System.out.println("Isbn:");
-            ISBN = ent.next();
-        System.out.println("Edicao:");
-            edicao = ent.next();
-            edicao += ent.nextLine();      
-        System.out.println("IdCampi:");
-            idCampi = ent.nextInt();
-        System.out.println("IdAutor:");
-            idAutor = ent.nextInt();
-        System.out.println("Nome: ");
-            nome = ent.next();
-            nome += ent.nextLine();
-
-        System.out.println("Local: ");
-            local = ent.next();
-            local += ent.nextLine();
-        System.out.println("Ano: ");
-            ano = ent.next();
-            ano += ent.nextLine();
-        System.out.println("Editora: ");
-            editora = ent.next();
-            editora += ent.nextLine();
-        System.out.println("Paginas: ");
-            paginas = ent.next();
-            paginas += ent.nextLine();
-        */
-            
-        // Obras obras = new Obras(idCampi,  nome,  tipo,  local,  ano,  editora,  paginas);
-        //Livros testes = new Livros ("4444",  "1", 2, "4",  "livros",  "5",  "6",  "7",  "8");
-        //Livros t1 = new Livros (ISBN,  edicao, idCampi, idAutor, nome,  "livros",  local,  ano,  editora,  paginas);
-        //Livros t2 = new Livros (ISBN,  edicao, idCampi, idAutor, nome,  "livros",  local,  ano,  editora,  paginas);
         Periodicos periodicos = new Periodicos ("Semanal","Outubro",2, "Magazine", 1678, 2, "4",  "periodicos",  "5",  "6",  "7",  "60");
         
         Partes[] testes = new Partes[3];
@@ -88,19 +39,23 @@ public class Main {
         testes[0] = new Partes("Parte 1", 1, 20, "keywords");
         testes[1] = new Partes("Parte 2", 21, 40, "keywords");
         testes[2] = new Partes("Parte 3", 41, 60, "keywords");
-        Autores corrigir = new Autores("Zeca", "Pagodinho", "Pagodeiro", "Mestre");
-        //System.out.println("Dados do livro \n" + testes);
-        
+        Autores autores = new Autores("John", "Friedrich", "Escritor", "Graduado"); 
+        Autores autoresnovo = new Autores("K.", "J.", "John", "Doutora"); 
         
         System.out.println("\n\n");
-        inserePartes(connection, testes, periodicos, tam);
+        //inserePartes(connection, testes, periodicos, tam);
+        //insereAutores(connection, autores);
+        //insereAutores(connection, autoresnovo);
         //insereLivro(connection, testes);
         //insereLivro(connection, testes);
-        System.out.println("\n Insere 1 \n");
-        remove(connection, 22, "periodicos");
+        //System.out.println("\n Insere 1 \n");
+        remove(connection, 50, "periodicos");
         System.out.println("\n Remove 2 \n");
         //altera(connection, 2, "acervo", "nome", "EMOCIONADO");
         //System.out.println("\n Altera 3 \n");
+        //pesquisaAutores(connection, "Kleber");
+        //pesquisaAcervo(connection, "80");
+        //System.out.println("\n Pesquisa 4 \n");
     }
 
     public static void insere (Connection connection, Obras obras){
@@ -150,10 +105,6 @@ public class Main {
     public static void insereMidias (Connection connection, Midias midia){
         int id;
         Statement stmt = null;
-        // ResultSet rs = null;
-        // String sql = "INSERT INTO midias(idAcervo, tempo, subtipo, ativo) VALUES(" + (id + 1) + ", " + midia.tempo + 
-        //       ", " + midia.subtipo + ", 'S')";
-        // String sql = "SELECT *  FROM acervo";
         
         try{
         stmt = connection.createStatement();
@@ -164,7 +115,6 @@ public class Main {
         id = rs.getInt("id");
         String sql = "INSERT INTO midias(idAcervo, tempo, subtipo, ativo) VALUES(" + (id + 1) + ", " + midia.tempo + 
                ", " + midia.subtipo + ", 'S')";
-        // rs = stmt.executeQuery(sql);
         stmt.execute(sql);
         
         }catch(SQLException e){
@@ -179,9 +129,6 @@ public class Main {
     public static void insereAcademicos (Connection connection, Academicos academicos){
         int id;
         Statement stmt = null;
-        // ResultSet rs = null;
-        //String sql = "INSERT INTO academicos(idAcervo, programa, ativo) VALUES(" + (id + 1) + ", " + academicos.programa + ", 'S')";
-        // String sql = "SELECT *  FROM acervo";
         
         try{
         stmt = connection.createStatement();
@@ -190,7 +137,6 @@ public class Main {
         rs = stmt.executeQuery(findId);
         rs.last();
         id = rs.getInt("id");
-        // rs = stmt.executeQuery(sql);
         String sql = "INSERT INTO academicos(idAcervo, programa, ativo) VALUES(" + (id + 1) + ", " + academicos.programa + ", 'S')";
         stmt.execute(sql);
         
@@ -235,10 +181,6 @@ public class Main {
     public static void inserePartes (Connection connection, Partes[] partes, Periodicos periodicos, int tam){
         int id;
         Statement stmt = null;
-        // ResultSet rs = null;
-        //String sql = "INSERT INTO partes(idAcervo, titulo, pagInicio, pagFinal, palavrasChave, ativo) VALUES(" + (id + 1) + ", " + partes.titulo + 
-        //       ", " + partes.pagInicio + ", " + partes.pagFinal + ", " + partes.palavrasChave + ", 'S')";
-        // String sql = "SELECT *  FROM acervo";
         
         try{
         stmt = connection.createStatement();
@@ -265,12 +207,8 @@ public class Main {
     
     public static void insereAutores (Connection connection, Autores autores){
         int id;
+        int idAutor;
         Statement stmt = null;
-        // ResultSet rs = null;
-        //String sql = "INSERT INTO autores(idAcervo, nome,  sobrenome,  local,  ordem, qualificacao, ativo) VALUES(" + id + ", " + autores.nome + ", " + autores.sobrenome + 
-        //      ", " + autores.local + ", " + autores.ordem + ", " + autores.qualificacao + ", 'S')";
-        // String sql = "SELECT *  FROM acervo";
-        
         
         try{
         stmt = connection.createStatement();
@@ -279,10 +217,17 @@ public class Main {
         rs = stmt.executeQuery(findId);
         rs.last();
         id = rs.getInt("id");
-        // rs = stmt.executeQuery(sql);
-        String sql = "INSERT INTO autores(idAcervo, nome,  sobrenome, ordem, qualificacao, ativo) VALUES(" + id + ", " + autores.nomeAutor + ", " + autores.sobrenome + 
-               ", " + autores.ordem + ", " + autores.qualificacao + ", 'S')";
+        String sql = "INSERT INTO autores(nome,  sobrenome, ordem, qualificacao, ativo) VALUES('" + autores.nome + "', '" + autores.sobrenome + 
+               "', '" + autores.ordem + "', '" + autores.qualificacao + "', 'S')";
         stmt.execute(sql);
+        String findIdAutor = "SELECT *  FROM autores";
+        rs = stmt.executeQuery(findIdAutor);
+        rs.last();
+        idAutor = rs.getInt("id");
+        String index = "INSERT INTO autoracervo(idAcervo, idAutor) VALUES('" + id + "', '" + idAutor + "')";
+        stmt.execute(index);
+
+        
         }catch(SQLException e){
             System.out.println("SQLException: " + e.getMessage());
             System.out.println("SQLState: " + e.getSQLState());
@@ -313,14 +258,26 @@ public class Main {
     }
     
     public static void remove (Connection connection, int ident, String tabela){
-        String sql = "UPDATE " + tabela + " SET ativo='N' WHERE idAcervo=" + ident;
         Statement stmt = null;
+        try{
+        stmt = connection.createStatement();
+        ResultSet rs = null;
+        String findId = "SELECT * FROM emprestimos WHERE idAcervo = " +ident;
+        rs = stmt.executeQuery(findId);
+        while (rs.next()){
+            String ativo = rs.getString("ativo");
+            if ("S".equals(ativo)){
+                System.out.println("O livro está emprestado e não pode ser removido");
+                return;
+            }
+        }
+        
+        
+        String sql = "UPDATE " + tabela + " SET ativo='N' WHERE idAcervo=" + ident;
         if (tabela.compareTo("periodicos") == 0){
             removePartes(connection, ident);
         }
         
-        
-        try{
         stmt = connection.createStatement();
         stmt.execute(sql);
         }catch(SQLException e){
@@ -346,7 +303,37 @@ public class Main {
             System.out.println("VendorError: " + e.getErrorCode());
         }
         
+        removeAutores (connection, ident);
+        
     }
+    
+    public static void removeAutores (Connection connection, int ident){
+        int id = 0;
+        int[] idAutor;
+        idAutor = new int[5];
+        Statement stmt = null;
+        String sql;
+        
+        try{
+        stmt = connection.createStatement();
+        ResultSet rs = null;
+        String findIdAutor = "SELECT * FROM autoracervo WHERE idAcervo = " + ident;
+        rs = stmt.executeQuery(findIdAutor);
+        while(rs.next()){
+        idAutor[id] = rs.getInt("idAutor");
+        id++;
+        }
+        for(int j = 0; j < id; j++){
+        sql = "UPDATE autores SET ativo='N' WHERE id=" + idAutor[j];
+        stmt.execute(sql);
+        }
+        }catch(SQLException e){
+            System.out.println("SQLException: " + e.getMessage());
+            System.out.println("SQLState: " + e.getSQLState());
+            System.out.println("VendorError: " + e.getErrorCode());
+        }
+    }
+
     public static void altera (Connection connection, int ident, String tabela, String campo, String valor){
         String sql = "UPDATE " + tabela + " SET " + campo + "='" + valor + "' WHERE id=" + ident;
         Statement stmt = null;
@@ -360,5 +347,78 @@ public class Main {
             System.out.println("VendorError: " + e.getErrorCode());
         }
         
+    }
+    
+    public static void pesquisaAutores (Connection connection, String determinado){
+        ArrayList<Autores> lista = new ArrayList<Autores>();
+        Autores autor = new Autores();
+        int verificador = 0;
+        int i = 0;
+        ResultSet result;
+        String sql_fetch = "SELECT * FROM autores WHERE ativo='S'";
+        try{
+        Statement fetch = connection.createStatement();
+        result = fetch.executeQuery(sql_fetch);        
+        while(result.next()){
+           autor.nome = result.getString(2);
+           autor.sobrenome = result.getString(3);
+           autor.ordem = result.getString(4);
+           autor.qualificacao = result.getString(5);
+           
+           if (determinado.equals(autor.nome) || determinado.equals(autor.sobrenome) || determinado.equals(autor.ordem) || determinado.equals(autor.qualificacao) ){
+               lista.add(new Autores(autor.nome, autor.sobrenome, autor.ordem, autor.qualificacao));
+               i++;
+           }
+        }
+        }catch(SQLException e){
+            System.out.println("SQLException: " + e.getMessage());
+            System.out.println("SQLState: " + e.getSQLState());
+            System.out.println("VendorError: " + e.getErrorCode());  
+        }
+                
+        for(int j = 0; j < i; j++){
+            //System.out.println(j);
+            autor = lista.get(j);
+            System.out.println("\n\nAutor: " + "\nNome: " + autor.nome + "\nSobrenome: " + autor.sobrenome
+            + "\nOrdem: " + autor.ordem + "\nQualificacao: " + autor.qualificacao);
+        }
+    }
+    
+    public static void pesquisaAcervo (Connection connection, String determinado){
+        ArrayList<Obras> lista = new ArrayList<Obras>();
+        Obras obra = new Obras();
+        int verificador = 0;
+        int i = 0;
+        ResultSet result;
+        String sql_fetch = "SELECT * FROM acervo WHERE ativo='S'";
+        try{
+        Statement fetch = connection.createStatement();
+        result = fetch.executeQuery(sql_fetch);        
+        while(result.next()){
+           obra.idCampi = result.getInt(2);
+           obra.nome = result.getString(3);
+           obra.tipo = result.getString(4);
+           obra.local = result.getString(5);
+           obra.ano = result.getString(6);
+           obra.editora = result.getString(7);
+           obra.paginas = result.getString(8);
+           
+           if (determinado.equals(obra.idCampi) || determinado.equals(obra.nome) || determinado.equals(obra.tipo) || determinado.equals(obra.local) || determinado.equals(obra.ano) || determinado.equals(obra.editora) || determinado.equals(obra.paginas) ){
+               lista.add(new Obras(obra.idCampi, obra.nome, obra.tipo, obra.local, obra.ano, obra.editora, obra.paginas));
+               i++;
+           }
+        }
+        }catch(SQLException e){
+            System.out.println("SQLException: " + e.getMessage());
+            System.out.println("SQLState: " + e.getSQLState());
+            System.out.println("VendorError: " + e.getErrorCode());  
+        }
+                
+        for(int j = 0; j < i; j++){
+            //System.out.println(j);
+            obra = lista.get(j);
+            System.out.println("\n\nAcervo: " + "\nidCampi: " + obra.idCampi + "\nNome: " + obra.nome + "\nTipo: " + obra.tipo
+            + "\nLocal: " + obra.local + "\nAno: " + obra.ano + "\nEditora: " + obra.editora + "\nPaginas: " + obra.paginas);
+        }
     }
 }

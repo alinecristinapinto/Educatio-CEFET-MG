@@ -3,21 +3,10 @@
 //Cria classe livro que tem todas as funções de criação, alteração e exclusão de livros e acervo
 
 class Livro{
-	public $intIdAcervo; 
-	public $charISBN;
-	public $intEdicao;
-	public $charAtivo;
-	public $intIdCampi;
-	public $charNome;
-	public $charTipo;
-	public $charLocal;
-	public $charAno;
-	public $charEditora;
-	public $charPaginas;
 
 	//Função que cria um livro com todos os parametros necessarios
 
-	function criaLivro($intIdAcervo, $charISBN, $intEdicao, $charAtivo, $intIdCampi, $charNome, $charTipo, $charLocal, $charAno, $charEditora, $charPaginas){
+	function criaLivro($charISBN, $intEdicao, $charAtivo, $intIdCampi, $charNome, $charTipo, $charLocal, $charAno, $charEditora, $charPaginas){
 
 		//Abre a conexão com o banco de dados
 
@@ -25,6 +14,21 @@ class Livro{
 		if (!$sqlConexao) {
 			die("Conexão falhou: " . mysqli_connect_error());
 		}
+
+		$sqlIdAcervo = "SELECT  MAX(id) FROM acervo";
+
+		$result = mysqli_query($sqlConexao, $sqlIdAcervo);
+
+		$aux = mysqli_fetch_array($result);
+
+		if (mysqli_query($sqlConexao, $sqlIdAcervo)) {
+			echo "$aux[0] !<br>";
+		}
+		else{
+			echo "Erro ao selecionar o acervo: " . mysqli_error($sqlConexao);
+		}
+
+		$intIdAcervo = $aux[0]+1;
 
 		//Insere dados na tabela livro 
 
@@ -51,7 +55,7 @@ class Livro{
 
 	function deletaLivroISBN($charISBN){
 
-		//Abre a cibexão com o banco de dados
+		//Abre a conexão com o banco de dados
 
 		$sqlConexao = mysqli_connect("localhost", "root", "usbw", "educatio");
 		if (!$sqlConexao) {
@@ -71,6 +75,8 @@ class Livro{
 		//Seleciona o ID do acervo
 
 		$sqlIdAcervo = "SELECT idAcervo FROM livros WHERE ISBN = '$charISBN'";
+
+
 		if (mysqli_query($sqlConexao, $sqlIdAcervo)) {
 			echo "Acervo selecionado!<br>";
 		}
@@ -90,212 +96,103 @@ class Livro{
 
 	}
 
-	//Função que altera o ISBN do livro
+	//Função que altera o  livro e o acervo
 
-	function alteraISBN($charISBN, $charNovoISBN){
-
-		//Abre conexão com banco de dados
-
-		$sqlConexao = mysqli_connect("localhost", "root", "usbw", "educatio");
-		if (!$sqlConexao) {
-			die("Conexão falhou: " . mysqli_connect_error());
-		}
-
-		$sqlAlterando = "UPDATE livros SET ISBN = '$charNovoISBN' WHERE ISBN = '$charISBN'";
-		if (mysqli_query($sqlConexao, $sqlAlterando)) {
-			echo "ISBN alterado!<br>";
-		}
-		else{
-			echo "Erro ao alterar o ISBN: " . mysqli_error($sqlConexao);
-		}
-	}
-
-	//Função que altera o idAcervo do livro
-
-	function alteraidAcervo($charISBN, $charNovoIdAcervo){
+	function alteraLivroAcervo($intIdAcervo, $charNovoISBN, $charNovoEdicao, $intNovoIdCampi, $charNovoNome, $charNovoTipo, $charNovoLocal, $charNovoAno, $charNovoEditora, $charNovoPaginas){
 
 		//Abre conexão com o banco de dados
 
 		$sqlConexao = mysqli_connect("localhost", "root", "usbw", "educatio");
-		if (!$sqlConexao) {
-			die("Conexão falhou: " . mysqli_connect_error());
-		}
+				if (!$sqlConexao) {
+					die("Conexão falhou: " . mysqli_connect_error());
+				}
 
-		$sqlAlterando = "UPDATE livros SET idAcervo = '$charNovoIdAcervo' WHERE ISBN = '$charISBN'";
-		if (mysqli_query($sqlConexao, $sqlAlterando)) {
-			echo "idAcervo alterado!<br>";
-		}
-		else{
-			echo "Erro ao alterar o idAcervo: " . mysqli_error($sqlConexao);
-		}
-	}
 
-	//Função que altera a Edição do livro
+		$sqlAlterandoISBN = "UPDATE livros SET ISBN = '$charNovoISBN' WHERE idAcervo = '$intIdAcervo'";
+				if (mysqli_query($sqlConexao, $sqlAlterandoISBN)) {
+					echo "ISBN alterado!<br>";
+				}
+				else{
+					echo "Erro ao alterar o ISBN: " . mysqli_error($sqlConexao);
+				}	
 
-	function alteraEdicao($charISBN, $charNovoEdicao){
 
-		//Abre conexão com o banco de dados
+		$sqlAlterandoEdicao = "UPDATE livros SET edicao = '$charNovoEdicao' WHERE idAcervo = '$intIdAcervo'";
+				if (mysqli_query($sqlConexao, $sqlAlterandoEdicao)) {
+					echo "Edição alterada!<br>";
+				}
+				else{
+					echo "Erro ao alterar a Edição: " . mysqli_error($sqlConexao);
+				}		
 
-		$sqlConexao = mysqli_connect("localhost", "root", "usbw", "educatio");
-		if (!$sqlConexao) {
-			die("Conexão falhou: " . mysqli_connect_error());
-		}
-		
-		$sqlAlterando = "UPDATE livros SET edicao = '$charNovoEdicao' WHERE ISBN = '$charISBN'";
-		if (mysqli_query($sqlConexao, $sqlAlterando)) {
-			echo "Edição alterada!<br>";
-		}
-		else{
-			echo "Erro ao alterar a Edição: " . mysqli_error($sqlConexao);
-		}
-	}
 
-	//Função que altera o IdCampi do Acervo
+		$sqlAlterandoIdCampi = "UPDATE acervo SET idCampi = '$intNovoIdCampi' WHERE id = '$intIdAcervo'";
+				if (mysqli_query($sqlConexao, $sqlAlterandoIdCampi)) {
+					echo "idAcervo alterado!<br>";
+				}
+				else{
+					echo "Erro ao alterar o idAcervo: " . mysqli_error($sqlConexao);
+				}		
 
-	function alteraidCampi($intId, $intNovoIdCampi){
 
-		//Abre conexão com o banco de dados
+		$sqlAlterandoNome = "UPDATE acervo SET nome = '$charNovoNome' WHERE id = '$intIdAcervo'";
+				if (mysqli_query($sqlConexao, $sqlAlterandoNome)) {
+					echo "nome alterado!<br>";
+				}
+				else{
+					echo "Erro ao alterar o nome: " . mysqli_error($sqlConexao);
+				}
 
-		$sqlConexao = mysqli_connect("localhost", "root", "usbw", "educatio");
-		if (!$sqlConexao) {
-			die("Conexão falhou: " . mysqli_connect_error());
-		}
-		
-		$sqlAlterando = "UPDATE acervo SET idCampi = '$intNovoIdCampi' WHERE id = '$intId'";
-		if (mysqli_query($sqlConexao, $sqlAlterando)) {
-			echo "idAcervo alterado!<br>";
-		}
-		else{
-			echo "Erro ao alterar o idAcervo: " . mysqli_error($sqlConexao);
-		}
-	}
 
-	//Função que altera o nome do Acervo
+		$sqlAlterandoTipo = "UPDATE acervo SET tipo = '$charNovoTipo' WHERE id = '$intIdAcervo'";
+				if (mysqli_query($sqlConexao, $sqlAlterandoTipo)) {
+					echo "Tipo alterado!<br>";
+				}
+				else{
+					echo "Erro ao alterar o Tipo: " . mysqli_error($sqlConexao);
+				}
 
-	function alteraNome($intId, $charNovoNome){
 
-		//Abre conexão com o banco de dados
+		$sqlAlterandoLocal = "UPDATE acervo SET local = '$charNovoLocal' WHERE id = '$intIdAcervo'";
+				if (mysqli_query($sqlConexao, $sqlAlterandoLocal)) {
+					echo "Local alterado!<br>";
+				}
+				else{
+					echo "Erro ao alterar o Local: " . mysqli_error($sqlConexao);
+				}						
 
-		$sqlConexao = mysqli_connect("localhost", "root", "usbw", "educatio");
-		if (!$sqlConexao) {
-			die("Conexão falhou: " . mysqli_connect_error());
-		}
-		
-		$sqlAlterando = "UPDATE acervo SET nome = '$charNovoNome' WHERE id = '$intId'";
-		if (mysqli_query($sqlConexao, $sqlAlterando)) {
-			echo "nome alterado!<br>";
-		}
-		else{
-			echo "Erro ao alterar o nome: " . mysqli_error($sqlConexao);
-		}
-	}
 
-	//Função que altera o Tipo do Acervo
+		$sqlAlterandoAno = "UPDATE acervo SET ano = '$charNovoAno' WHERE id = '$intIdAcervo'";
+				if (mysqli_query($sqlConexao, $sqlAlterandoAno)) {
+					echo "Ano alterado!<br>";
+				}
+				else{
+					echo "Erro ao alterar o Ano: " . mysqli_error($sqlConexao);
+				}	
+				
 
-	function alteraTipo($intId, $charNovoTipo){
+		$sqlAlterandoEditora = "UPDATE acervo SET editora = '$charNovoEditora' WHERE id = '$intIdAcervo'";
+				if (mysqli_query($sqlConexao, $sqlAlterandoEditora)) {
+					echo "Editora alterada!<br>";
+				}
+				else{
+					echo "Erro ao alterar a Editora: " . mysqli_error($sqlConexao);
+				}		
 
-		//Abre conexão com o banco de dados
 
-		$sqlConexao = mysqli_connect("localhost", "root", "usbw", "educatio");
-		if (!$sqlConexao) {
-			die("Conexão falhou: " . mysqli_connect_error());
-		}
-		
-		$sqlAlterando = "UPDATE acervo SET tipo = '$charNovoTipo' WHERE id = '$intId'";
-		if (mysqli_query($sqlConexao, $sqlAlterando)) {
-			echo "Tipo alterado!<br>";
-		}
-		else{
-			echo "Erro ao alterar o Tipo: " . mysqli_error($sqlConexao);
-		}
-	}
-
-	//Função que altera o Local do Acervo
-
-	function alteraLocal($intId, $charNovoLocal){
-
-		//Abre conexão com o banco de dados
-
-		$sqlConexao = mysqli_connect("localhost", "root", "usbw", "educatio");
-		if (!$sqlConexao) {
-			die("Conexão falhou: " . mysqli_connect_error());
-		}
-		
-		$sqlAlterando = "UPDATE acervo SET local = '$charNovoLocal' WHERE id = '$intId'";
-		if (mysqli_query($sqlConexao, $sqlAlterando)) {
-			echo "Local alterado!<br>";
-		}
-		else{
-			echo "Erro ao alterar o Local: " . mysqli_error($sqlConexao);
-		}
-	}
-
-	//Função que altera o Ano do Acervo
-
-	function alteraAno($intId, $charNovoAno){
-
-		//Abre conexão com o banco de dados
-
-		$sqlConexao = mysqli_connect("localhost", "root", "usbw", "educatio");
-		if (!$sqlConexao) {
-			die("Conexão falhou: " . mysqli_connect_error());
-		}
-		
-		$sqlAlterando = "UPDATE acervo SET ano = '$charNovoAno' WHERE id = '$intId'";
-		if (mysqli_query($sqlConexao, $sqlAlterando)) {
-			echo "Ano alterado!<br>";
-		}
-		else{
-			echo "Erro ao alterar o Ano: " . mysqli_error($sqlConexao);
-		}
-	}
-
-	//Função que altera a Editora do Acervo
-
-	function alteraEditora($intId, $charNovoEditora){
-
-		//Abre conexão com o banco de dados
-
-		$sqlConexao = mysqli_connect("localhost", "root", "usbw", "educatio");
-		if (!$sqlConexao) {
-			die("Conexão falhou: " . mysqli_connect_error());
-		}
-		
-		$sqlAlterando = "UPDATE acervo SET editora = '$charNovoEditora' WHERE id = '$intId'";
-		if (mysqli_query($sqlConexao, $sqlAlterando)) {
-			echo "Editora alterada!<br>";
-		}
-		else{
-			echo "Erro ao alterar a Editora: " . mysqli_error($sqlConexao);
-		}
-	}
-
-	//Função que altera as Paginas do Acervo
-
-	function alteraPaginas($intId, $charNovoPaginas){
-
-		//Abre conexão com o banco de dados
-
-		$sqlConexao = mysqli_connect("localhost", "root", "usbw", "educatio");
-		if (!$sqlConexao) {
-			die("Conexão falhou: " . mysqli_connect_error());
-		}
-		
-		$sqlAlterando = "UPDATE acervo SET paginas = '$charNovoPaginas' WHERE id = '$intId'";
-		if (mysqli_query($sqlConexao, $sqlAlterando)) {
-			echo "Paginas alteradas!<br>";
-		}
-		else{
-			echo "Erro ao alterar as Paginas: " . mysqli_error($sqlConexao);
-		}
-	}
-
+		$sqlAlterandoPaginas = "UPDATE acervo SET paginas = '$charNovoPaginas' WHERE id = '$intIdAcervo'";
+				if (mysqli_query($sqlConexao, $sqlAlterandoPaginas)) {
+					echo "Paginas alteradas!<br>";
+				}
+				else{
+					echo "Erro ao alterar as Paginas: " . mysqli_error($sqlConexao);	
+				}
+	}			
 }
 
-$livro1 = new livro;
+$livrinho = new livro;
 
-$livro1 -> crialivro(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1);
+$livrinho -> criaLivro(1,1,1,1,1,1,1,1,1,1);
 
-//$livro1 -> alteraEditora(1, 5555);	
 
  ?>	

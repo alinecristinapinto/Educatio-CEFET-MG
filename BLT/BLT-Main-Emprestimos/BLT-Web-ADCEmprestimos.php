@@ -39,19 +39,18 @@ $multa = "0";
 $ativo = "S";
 
 
-
 $sql = "SELECT idAluno, idAcervo, dataEmprestimo, dataPrevisaoDevolucao, dataDevolucao, multa, ativo FROM emprestimos WHERE idAcervo = '$IDacervo' AND ativo='S'";
 
 $result = $conn->query($sql);
-$dataComp= "12-12-2016";
+$dataComp= "2016-12-12";
 if ($result->num_rows > 0) {
     while($row = $result->fetch_assoc()) {
     	if($IDacervo == $row["idAcervo"]){
 
+    			$sqlio = "SELECT idAluno, idAcervo, dataReserva, tempoEspera, emprestou, ativo FROM reservas WHERE idAcervo = '$IDacervo' AND ativo='S'";
 
-    			$sqli = "SELECT idAluno, idAcervo, dataReserva, tempoEspera, emprestou, ativo FROM reservas WHERE idAcervo = '$IDacervo' AND ativo='S'";
+				$resulta = $conn->query($sqlio);
 
-				$resulta = $conn->query($sqli);
 
 				if ($resulta->num_rows > 0) {
 				    while($rows = $resulta->fetch_assoc()) {
@@ -64,23 +63,23 @@ if ($result->num_rows > 0) {
 
 				      		$dife = $diferenca->format("%R%a");
 
-
 			    			if($dife>0){
 			    				$dataComp=$rows["dataReserva"];
 			    				$daysDife=$rows["tempoEspera"];
 			    			}
 			    		}
-		    		}
-		    		$daysDif = 'P'.$daysDife.'D';
+			    	}
+			    	$daysDif = 'P'.$daysDife.'D';
 		    		$dataCompe = new DateTime($dataComp);
 		    		$dataCompe->add(new DateInterval($daysDif));
-		    		$dataCompe->add(new DateInterval('P1D'));
+			    	$dataCompe->add(new DateInterval('P1D'));
 		    		$datarres = $dataCompe->format('Y-m-d');
 
 		    		$datamaaior= date_create($datadevolucao);
 		      		$datameenor= date_create($datacriacao);
 		      		$temp=date_diff($datameenor,$datamaaior);
 		      		$tempoesp = $temp->format("%a");
+
 
 		    		$sqlii = "INSERT INTO reservas (idAluno, idAcervo, dataReserva, tempoEspera, emprestou, ativo) VALUES ('$IDaluno', '$IDacervo', '$datarres', '$tempoesp', 'N', 'S')";
 
@@ -89,7 +88,71 @@ if ($result->num_rows > 0) {
 				echo "<div class=\"container-fluid\">";
 				echo "<div class=\"corpo\">";
 	            echo "<div class=\"titulo\">";
-	            echo "<h1><h5>Acervo já está emprestado... Reserva efetuada para o dia: ".$datarres."</h5></h1>" ;
+	            echo "<h1>";
+	            echo "<b>Reserva efetuada!</b>";
+	            echo "</h1>";
+	             echo "<h1><h5>Acervo já está emprestado... Reserva efetuada para o dia: ".$datarres."</h5></h1>" ;
+	            echo "<div class=\"row\">
+	                  <div class=\"col-md-12 mb-3\">
+	                  <div class=\"container-fluid\">
+	                  <button type=\"button\" style=\"margin-top: 70px;\"class=\"btn btn-outline-info btn-block \" onclick=\"window.location.href='BLT-Web-Emprestimos.html'\">Pronto</button>
+	                  </div>
+	                  </div>
+	                  </div>";
+	            echo "</div>";
+	            echo "</div>";
+	            echo "</div>";
+	            $conn->close();
+
+			} else {
+			    echo "Error: " . $sql . "<br>" . $conn->error;
+			}
+
+
+		}else{
+
+
+			$dataMaior= date_create($row["dataPrevisaoDevolucao"]);
+      		$dataMenor= date_create($row["dataEmprestimo"]);
+			$datarres=date_diff($dataMenor,$dataMaior);
+			$datarrres = $datarres->format("%a");
+			//$daysDif = 'P'.$datarrres.'D';
+			$dataMaiorParaDataRes = new DateTime($row["dataPrevisaoDevolucao"]);
+			//$dataMaiorParaDataRes->add(new DateInterval($daysDif));
+			$dataMaiorParaDataRes->add(new DateInterval('P1D'));
+
+    		$dataReserva = $dataMaiorParaDataRes->format('Y-m-d');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+			$datamaaior= date_create($datadevolucao);
+      		$datameenor= date_create($datacriacao);
+      		$temp=date_diff($datameenor,$datamaaior);
+      		$tempoesp = $temp->format("%a");
+
+			$sqlii = "INSERT INTO reservas (idAluno, idAcervo, dataReserva, tempoEspera, emprestou, ativo) VALUES ('$IDaluno', '$IDacervo', '$dataReserva', '$tempoesp', 'N', 'S')";
+
+			if ($conn->query($sqlii) === TRUE) {
+				echo "<div class=\"container-fluid\">";
+				echo "<div class=\"corpo\">";
+	            echo "<div class=\"titulo\">";
+	            echo "<h1><h5>Acervo já está emprestado... Reserva efetuada para o dia: ".$dataReserva."</h5></h1>" ;
 	            echo "<h1>";
 	            echo "<b>Reserva efetuada!</b>";
 	            echo "</h1>";
@@ -108,7 +171,6 @@ if ($result->num_rows > 0) {
 			} else {
 			    echo "Error: " . $sql . "<br>" . $conn->error;
 			}
-
 
 		}
 

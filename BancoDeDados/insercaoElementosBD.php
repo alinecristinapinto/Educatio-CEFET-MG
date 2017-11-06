@@ -3,7 +3,7 @@
 	header("Content-type: text/html; charset=utf-8");
 	$servername = "localhost";
 	$username = "root";
-	$password = "usbw";
+	$password = "";
 	$bd = "educatio";
 	$conexao = mysqli_connect($servername, $username, $password, $bd);
 	

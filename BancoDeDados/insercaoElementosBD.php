@@ -188,7 +188,6 @@
   			(idCPF, idTurma, nome, sexo, nascimento, logradouro, numeroLogradouro, complemento,
   			 bairro, cidade, CEP, UF, email, senha, ativo)
 			VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"
-			// pode dar problema (foto)
 	);
 
 	$stmt -> bind_param (
@@ -478,81 +477,81 @@
 	);
 
 	####################################################
-		$idSIAPE = "9543746";
+		$idSIAPE = "925437416";
 		$idDepto = 1;
 		$nome = "Letícia Carvalho";
-		$titulacao = "M";
-		$hierarquia = "P";
+		$titulacao = "Mestrado";
+		$hierarquia = "Professor";
 		// senha - geo
 		$senha = "ecc174e3e02c82f34c14fe860bf47ef2";
 		$ativo = "S";
 		$stmt -> execute();
 
-		$idSIAPE = "8026034";
+		$idSIAPE = "802602374";
 		$idDepto = 1;
 		$nome = "Margareth Cordeiro Franklim";
-		$titulacao = "D";
-		$hierarquia = "C";
+		$titulacao = "Doutorado";
+		$hierarquia = "Coordenador";
 		// senha - his
 		$senha = "65b50b04a6af50bb2f174db30a8c6dad";
 		$ativo = "S";
 		$stmt -> execute();
 
-		$idSIAPE = "3768433";
+		$idSIAPE = "376843913";
 		$idDepto = 2;
 		$nome = "Guilherme Araújo Cardoso";
-		$titulacao = "D";
-		$hierarquia = "P";
+		$titulacao = "Doutorado";
+		$hierarquia = "Professor";
 		// senha - filo
 		$senha = "d47bfd5933612d778f880a64e7032751";
 		$ativo = "S";
 		$stmt -> execute();
 
-		$idSIAPE = "3346386";
+		$idSIAPE = "383463866";
 		$idDepto = 2;
 		$nome = "Túlio Cardoso Rebehy";
-		$titulacao = "D";
-		$hierarquia = "C";
+		$titulacao = "Doutorado";
+		$hierarquia = "Coordenador";
 		// senha - socio
 		$senha = "1b1844daa452df42c6f9123857ca686c";
 		$ativo = "S";
 		$stmt -> execute();
 
-		$idSIAPE = "6089259";
+		$idSIAPE = "620589259";
 		$idDepto = 3;
 		$nome = "José Wilson da Costa";
-		$titulacao = "G";
-		$hierarquia = "C";
+		$titulacao = "Doutorado";
+		$hierarquia = "Coordenador";
 		// senha - lp
 		$senha = "351325a660b25474456af5c9a5606c4e";
 		$ativo = "S";
 		$stmt -> execute();
 
-		$idSIAPE = "8970835";
+		$idSIAPE = "849470835";
 		$idDepto = 3;
 		$nome = "William Geraldo Sallum";
-		$titulacao = "M";
-		$hierarquia = "P";
+		$titulacao = "Mestrado";
+		$hierarquia = "Professor";
 		// senha - web
 		$senha = "2567a5ec9705eb7ac2c984033e06189d";
 		$ativo = "S";
 		$stmt -> execute();
 
-		$idSIAPE = "4272678";
+		$idSIAPE = "427265728";
 		$idDepto = 4;
 		$nome = "Diego Barbosa";
-		$titulacao = "E";
-		$hierarquia = "C";
+		$titulacao = "Mestrado";
+		$hierarquia = "Coordenador";
 		// senha - edi123
 		$senha = "d0163339ed4f88a47eb254aa784f4230";
 		$ativo = "S";
 		$stmt -> execute();
 
-		$idSIAPE = "7130717";
+		$idSIAPE = "713027127";
 		$idDepto = 4;
 		$nome = "Marcos Paulo";
-		$titulacao = "D";
-		$hierarquia = "P";
+		$titulacao = "Doutorado";
+		$hierarquia = "Professor";
 		// senha - edi456
 		$senha = "831fc87205fea5fbfbdf026f2f7d2803";
 		$ativo = "S";
@@ -646,56 +645,56 @@
 
 	####################################################
 		// idProfDisciplina 1
-		$idProfessor = "9543746";
+		$idProfessor = "925437416";
 		$idDisciplina = 1;
 		$idTurma = 1;
 		$ativo = "S";
 		$stmt -> execute();
 
 		// idProfDisciplina 2
-		$idProfessor = "8026034";
+		$idProfessor = "802602374";
 		$idDisciplina = 2;
 		$idTurma = 1;
 		$ativo = "S";
 		$stmt -> execute();
 
 		// idProfDisciplina 3
-		$idProfessor = "3768433";
+		$idProfessor = "376843913";
 		$idDisciplina = 3;
 		$idTurma = 2;
 		$ativo = "S";
 		$stmt -> execute();
 
 		// idProfDisciplina 4
-		$idProfessor = "3346386";
+		$idProfessor = "383463866";
 		$idDisciplina = 4;
 		$idTurma = 2;
 		$ativo = "S";
 		$stmt -> execute();
 
 		// idProfDisciplina 5
-		$idProfessor = "6089259";
+		$idProfessor = "620589259";
 		$idDisciplina = 5;
 		$idTurma = 3;
 		$ativo = "S";
 		$stmt -> execute();
 
 		// idProfDisciplina 6
-		$idProfessor = "8970835";
+		$idProfessor = "849470835";
 		$idDisciplina = 6;
 		$idTurma = 3;
 		$ativo = "S";
 		$stmt -> execute();
 
 		// idProfDisciplina 7
-		$idProfessor = "4272678";
+		$idProfessor = "427265728";
 		$idDisciplina = 7;
 		$idTurma = 4;
 		$ativo = "S";
 		$stmt -> execute();
 
 		// idProfDisciplina 8
-		$idProfessor = "7130717";
+		$idProfessor = "713027127";
 		$idDisciplina = 8;
 		$idTurma = 4;
 		$ativo = "S";
@@ -3641,7 +3640,7 @@
 	
 	$stmt -> bind_param (
 				"iis", 
-				$idAcervo, $idAutor, $ativo
+				$idAcervo, $idAutor
 			 );
 
 	####################################################

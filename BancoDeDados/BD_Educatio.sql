@@ -108,7 +108,7 @@ CREATE TABLE IF NOT EXISTS `profDisciplinas` (
 
 CREATE TABLE IF NOT EXISTS `etapas` (
   idOrdem varchar(1) NOT NULL PRIMARY KEY,
-  valor varchar(6) NOT NULL,
+  valor decimal(5,2) NOT NULL,
   ativo varchar(1) NOT NULL
   );
 
@@ -117,7 +117,7 @@ CREATE TABLE IF NOT EXISTS `atividades` (
   idProfDisciplina int(5) NOT NULL,
   nome varchar(30) NOT NULL,
   data varchar(10) NOT NULL,
-  valor varchar(6) NOT NULL,
+  valor decimal(5,2) NOT NULL,
   ativo varchar(1) NOT NULL
   );
 
@@ -131,11 +131,12 @@ CREATE TABLE IF NOT EXISTS `conteudos` (
   );
 
 CREATE TABLE IF NOT EXISTS `diarios` (
+  id int(5) NOT NULL PRIMARY KEY AUTO_INCREMENT,
   idConteudo int(5) NOT NULL,
   idMatricula int(5) NOT NULL,
   idAtividade int(5) NOT NULL,
   faltas varchar(4) NOT NULL,
-  nota varchar(6) NOT NULL,
+  nota decimal(5,2) NOT NULL,
   ano varchar(4) NOT NULL,
   ativo varchar(1) NOT NULL
   );

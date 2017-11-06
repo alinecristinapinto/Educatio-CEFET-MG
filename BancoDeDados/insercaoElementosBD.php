@@ -711,44 +711,44 @@
 	);
 
 	$stmt -> bind_param (
-		"sss", 
+		"sds", 
 		$idOrdem, $valor, $ativo
 	);
 
 	####################################################
 		// idEtapa 1
 		$idOrdem = "1";
-		$valor = "20";
+		$valor = 20.00;
 		$ativo = "S";
 		$stmt -> execute();
 
 		// idEtapa 2
 		$idOrdem = "2";
-		$valor = "30";
+		$valor = 30.00;
 		$ativo = "S";
 		$stmt -> execute();
 
 		// idEtapa 3
 		$idOrdem = "3";
-		$valor = "20";
+		$valor = 20.00;
 		$ativo = "S";
 		$stmt -> execute();
 
 		// idEtapa 4
 		$idOrdem = "4";
-		$valor = "30";
+		$valor = 30.00;
 		$ativo = "S";
 		$stmt -> execute();
 
 		// idEtapa 5
 		$idOrdem = "5";
-		$valor = "100";
+		$valor = 100.00;
 		$ativo = "S";
 		$stmt -> execute();
 
 		// idEtapa 6
 		$idOrdem = "6";
-		$valor = "100";
+		$valor = 100.00;
 		$ativo = "S";
 		$stmt -> execute();
 	####################################################
@@ -763,7 +763,7 @@
 	);
 
 	$stmt -> bind_param (
-		"issss",
+		"issds",
 		$idProfDisciplina, $nome, $data, $valor, $ativo
 	);
 
@@ -772,7 +772,7 @@
 		$idProfDisciplina = 1;
 		$nome = "Aula Geografia";
 		$data = "20/02/2017";
-		$valor = "0";
+		$valor = 0.00;
 		$ativo = "S";
 		$stmt -> execute();
 
@@ -780,7 +780,7 @@
 		$idProfDisciplina = 2;
 		$nome = "Aula História";
 		$data = "20/02/2017";
-		$valor = "0";
+		$valor = 0.00;
 		$ativo = "S";
 		$stmt -> execute();
 
@@ -788,7 +788,7 @@
 		$idProfDisciplina = 3;
 		$nome = "Aula Filosofia";
 		$data = "21/02/2017";
-		$valor = "0";
+		$valor = 0.00;
 		$ativo = "S";
 		$stmt -> execute();
 
@@ -796,7 +796,7 @@
 		$idProfDisciplina = 4;
 		$nome = "Aula Sociologia";
 		$data = "21/02/2017";
-		$valor = "0";
+		$valor = 0.00;
 		$ativo = "S";
 		$stmt -> execute();
 
@@ -804,7 +804,7 @@
 		$idProfDisciplina = 5;
 		$nome = "Aula LP";
 		$data = "22/02/2017";
-		$valor = "0";
+		$valor = 0.00;
 		$ativo = "S";
 		$stmt -> execute();
 
@@ -812,7 +812,7 @@
 		$idProfDisciplina = 6;
 		$nome = "Aula WEB";
 		$data = "22/02/2017";
-		$valor = "0";
+		$valor = 0.00;
 		$ativo = "S";
 		$stmt -> execute();
 
@@ -820,7 +820,7 @@
 		$idProfDisciplina = 7;
 		$nome = "Aula TOP";
 		$data = "23/02/2017";
-		$valor = "0";
+		$valor = 0.00;
 		$ativo = "S";
 		$stmt -> execute();
 
@@ -828,7 +828,7 @@
 		$idProfDisciplina = 8;
 		$nome = "Aula Materiais";
 		$data = "23/02/2017";
-		$valor = "0";
+		$valor = 0.00;
 		$ativo = "S";
 		$stmt -> execute();
 
@@ -836,7 +836,7 @@
 		$idProfDisciplina = 1;
 		$nome = "Prova Geografia";
 		$data = "13/03/2017";
-		$valor = "10";
+		$valor = 10.00;
 		$ativo = "S";
 		$stmt -> execute();
 
@@ -844,7 +844,7 @@
 		$idProfDisciplina = 2;
 		$nome = "Prova História";
 		$data = "13/03/2017";
-		$valor = "10";
+		$valor = 10.00;
 		$ativo = "S";
 		$stmt -> execute();
 
@@ -852,7 +852,7 @@
 		$idProfDisciplina = 3;
 		$nome = "Prova Filosofia";
 		$data = "14/03/2017";
-		$valor = "50";
+		$valor = 50.00;
 		$ativo = "S";
 		$stmt -> execute();
 
@@ -860,7 +860,7 @@
 		$idProfDisciplina = 4;
 		$nome = "Prova Sociologia";
 		$data = "14/03/2017";
-		$valor = "50";
+		$valor = 50.00;
 		$ativo = "S";
 		$stmt -> execute();
 
@@ -868,7 +868,7 @@
 		$idProfDisciplina = 5;
 		$nome = "Prova LP";
 		$data = "15/03/2017";
-		$valor = "10";
+		$valor = 10.00;
 		$ativo = "S";
 		$stmt -> execute();
 
@@ -876,7 +876,7 @@
 		$idProfDisciplina = 6;
 		$nome = "Prova WEB";
 		$data = "15/03/2017";
-		$valor = "10";
+		$valor = 10.00;
 		$ativo = "S";
 		$stmt -> execute();
 
@@ -884,7 +884,7 @@
 		$idProfDisciplina = 7;
 		$nome = "Prova TOP";
 		$data = "16/03/2017";
-		$valor = "10";
+		$valor = 10.00;
 		$ativo = "S";
 		$stmt -> execute();
 
@@ -892,7 +892,7 @@
 		$idProfDisciplina = 8;
 		$nome = "Prova Materiais";
 		$data = "16/03/2017";
-		$valor = "10";
+		$valor = 10.00;
 		$ativo = "S";
 		$stmt -> execute();
 
@@ -900,7 +900,7 @@
 		$idProfDisciplina = 1;
 		$nome = "Trabalho Geografia";
 		$data = "20/03/2017";
-		$valor = "10";
+		$valor = 10.00;
 		$ativo = "S";
 		$stmt -> execute();
 
@@ -908,7 +908,7 @@
 		$idProfDisciplina = 2;
 		$nome = "Trabalho História";
 		$data = "20/03/2017";
-		$valor = "0";
+		$valor = 0.00;
 		$ativo = "S";
 		$stmt -> execute();
 
@@ -916,7 +916,7 @@
 		$idProfDisciplina = 3;
 		$nome = "Trabalho Filosofia";
 		$data = "21/03/2017";
-		$valor = "50";
+		$valor = 50.00;
 		$ativo = "S";
 		$stmt -> execute();
 
@@ -924,7 +924,7 @@
 		$idProfDisciplina = 4;
 		$nome = "Trabalho Sociologia";
 		$data = "21/03/2017";
-		$valor = "50";
+		$valor = 50.00;
 		$ativo = "S";
 		$stmt -> execute();
 
@@ -932,7 +932,7 @@
 		$idProfDisciplina = 5;
 		$nome = "Trabalho LP";
 		$data = "22/03/2017";
-		$valor = "10";
+		$valor = 10.00;
 		$ativo = "S";
 		$stmt -> execute();
 
@@ -940,7 +940,7 @@
 		$idProfDisciplina = 6;
 		$nome = "Trabalho WEB";
 		$data = "22/03/2017";
-		$valor = "10";
+		$valor = 10.00;
 		$ativo = "S";
 		$stmt -> execute();
 
@@ -948,7 +948,7 @@
 		$idProfDisciplina = 7;
 		$nome = "Trabalho TOP";
 		$data = "23/03/2017";
-		$valor = "10";
+		$valor = 10.00;
 		$ativo = "S";
 		$stmt -> execute();
 
@@ -956,7 +956,7 @@
 		$idProfDisciplina = 8;
 		$nome = "Trabalho Materiais";
 		$data = "23/03/2017";
-		$valor = "10";
+		$valor = 10.00;
 		$ativo = "S";
 		$stmt -> execute();
 		///////////////////////////////////////
@@ -964,7 +964,7 @@
 		$idProfDisciplina = 1;
 		$nome = "Aula Geografia";
 		$data = "08/05/2017";
-		$valor = "0";
+		$valor = 0.00;
 		$ativo = "S";
 		$stmt -> execute();
 
@@ -972,7 +972,7 @@
 		$idProfDisciplina = 2;
 		$nome = "Aula História";
 		$data = "08/05/2017";
-		$valor = "0";
+		$valor = 0.00;
 		$ativo = "S";
 		$stmt -> execute();
 
@@ -980,7 +980,7 @@
 		$idProfDisciplina = 3;
 		$nome = "Aula Filosofia";
 		$data = "09/08/2017";
-		$valor = "0";
+		$valor = 0.00;
 		$ativo = "S";
 		$stmt -> execute();
 
@@ -988,7 +988,7 @@
 		$idProfDisciplina = 4;
 		$nome = "Aula Sociologia";
 		$data = "09/08/2017";
-		$valor = "0";
+		$valor = 0.00;
 		$ativo = "S";
 		$stmt -> execute();
 
@@ -996,7 +996,7 @@
 		$idProfDisciplina = 5;
 		$nome = "Aula LP";
 		$data = "10/05/2017";
-		$valor = "0";
+		$valor = 0.00;
 		$ativo = "S";
 		$stmt -> execute();
 
@@ -1004,7 +1004,7 @@
 		$idProfDisciplina = 6;
 		$nome = "Aula WEB";
 		$data = "10/05/2017";
-		$valor = "0";
+		$valor = 0.00;
 		$ativo = "S";
 		$stmt -> execute();
 
@@ -1012,7 +1012,7 @@
 		$idProfDisciplina = 7;
 		$nome = "Aula TOP";
 		$data = "11/05/2017";
-		$valor = "0";
+		$valor = 0.00;
 		$ativo = "S";
 		$stmt -> execute();
 
@@ -1020,7 +1020,7 @@
 		$idProfDisciplina = 8;
 		$nome = "Aula Materiais";
 		$data = "11/05/2017";
-		$valor = "0";
+		$valor = 0.00;
 		$ativo = "S";
 		$stmt -> execute();
 
@@ -1028,7 +1028,7 @@
 		$idProfDisciplina = 1;
 		$nome = "Prova Geografia";
 		$data = "23/05/2017";
-		$valor = "15";
+		$valor = 15.00;
 		$ativo = "S";
 		$stmt -> execute();
 
@@ -1036,7 +1036,7 @@
 		$idProfDisciplina = 2;
 		$nome = "Prova História";
 		$data = "23/05/2017";
-		$valor = "15";
+		$valor = 15.00;
 		$ativo = "S";
 		$stmt -> execute();
 
@@ -1044,7 +1044,7 @@
 		$idProfDisciplina = 3;
 		$nome = "Prova Filosofia";
 		$data = "23/08/2017";
-		$valor = "50";
+		$valor = 50.00;
 		$ativo = "S";
 		$stmt -> execute();
 
@@ -1052,7 +1052,7 @@
 		$idProfDisciplina = 4;
 		$nome = "Prova Sociologia";
 		$data = "23/08/2017";
-		$valor = "50";
+		$valor = 50.00;
 		$ativo = "S";
 		$stmt -> execute();
 
@@ -1060,7 +1060,7 @@
 		$idProfDisciplina = 5;
 		$nome = "Prova LP";
 		$data = "25/05/2017";
-		$valor = "15";
+		$valor = 15.00;
 		$ativo = "S";
 		$stmt -> execute();
 
@@ -1068,7 +1068,7 @@
 		$idProfDisciplina = 6;
 		$nome = "Prova WEB";
 		$data = "25/05/2017";
-		$valor = "15";
+		$valor = 15.00;
 		$ativo = "S";
 		$stmt -> execute();
 
@@ -1076,7 +1076,7 @@
 		$idProfDisciplina = 7;
 		$nome = "Prova TOP";
 		$data = "26/05/2017";
-		$valor = "15";
+		$valor = 15.00;
 		$ativo = "S";
 		$stmt -> execute();
 
@@ -1084,7 +1084,7 @@
 		$idProfDisciplina = 8;
 		$nome = "Prova Materiais";
 		$data = "26/05/2017";
-		$valor = "15";
+		$valor = 15.00;
 		$ativo = "S";
 		$stmt -> execute();
 
@@ -1092,7 +1092,7 @@
 		$idProfDisciplina = 1;
 		$nome = "Trabalho Geografia";
 		$data = "29/05/2017";
-		$valor = "15";
+		$valor = 15.00;
 		$ativo = "S";
 		$stmt -> execute();
 
@@ -1100,7 +1100,7 @@
 		$idProfDisciplina = 2;
 		$nome = "Trabalho História";
 		$data = "29/05/2017";
-		$valor = "15";
+		$valor = 15.00;
 		$ativo = "S";
 		$stmt -> execute();
 
@@ -1108,7 +1108,7 @@
 		$idProfDisciplina = 3;
 		$nome = "Trabalho Filosofia";
 		$data = "30/08/2017";
-		$valor = "50";
+		$valor = 50.00;
 		$ativo = "S";
 		$stmt -> execute();
 
@@ -1116,7 +1116,7 @@
 		$idProfDisciplina = 4;
 		$nome = "Trabalho Sociologia";
 		$data = "30/08/2017";
-		$valor = "50";
+		$valor = 50.00;
 		$ativo = "S";
 		$stmt -> execute();
 
@@ -1124,7 +1124,7 @@
 		$idProfDisciplina = 5;
 		$nome = "Trabalho LP";
 		$data = "31/05/2017";
-		$valor = "15";
+		$valor = 15.00;
 		$ativo = "S";
 		$stmt -> execute();
 
@@ -1132,7 +1132,7 @@
 		$idProfDisciplina = 6;
 		$nome = "Trabalho WEB";
 		$data = "31/05/2017";
-		$valor = "15";
+		$valor = 15.00;
 		$ativo = "S";
 		$stmt -> execute();
 
@@ -1140,7 +1140,7 @@
 		$idProfDisciplina = 7;
 		$nome = "Trabalho TOP";
 		$data = "01/06/2017";
-		$valor = "15";
+		$valor = 15.00;
 		$ativo = "S";
 		$stmt -> execute();
 
@@ -1148,7 +1148,7 @@
 		$idProfDisciplina = 8;
 		$nome = "Trabalho Materiais";
 		$data = "01/06/2017";
-		$valor = "15";
+		$valor = 15.00;
 		$ativo = "S";
 		$stmt -> execute();
 
@@ -1157,7 +1157,7 @@
 		$idProfDisciplina = 1;
 		$nome = "Aula Geografia";
 		$data = "07/08/2017";
-		$valor = "0";
+		$valor = 0.00;
 		$ativo = "S";
 		$stmt -> execute();
 
@@ -1165,7 +1165,7 @@
 		$idProfDisciplina = 2;
 		$nome = "Aula História";
 		$data = "07/08/2017";
-		$valor = "0";
+		$valor = 0.00;
 		$ativo = "S";
 		$stmt -> execute();
 
@@ -1173,7 +1173,7 @@
 		$idProfDisciplina = 5;
 		$nome = "Aula LP";
 		$data = "09/08/2017";
-		$valor = "0";
+		$valor = 0.00;
 		$ativo = "S";
 		$stmt -> execute();
 
@@ -1181,7 +1181,7 @@
 		$idProfDisciplina = 6;
 		$nome = "Aula WEB";
 		$data = "09/08/2017";
-		$valor = "0";
+		$valor = 0.00;
 		$ativo = "S";
 		$stmt -> execute();
 
@@ -1189,7 +1189,7 @@
 		$idProfDisciplina = 7;
 		$nome = "Aula TOP";
 		$data = "10/08/2017";
-		$valor = "0";
+		$valor = 0.00;
 		$ativo = "S";
 		$stmt -> execute();
 
@@ -1197,7 +1197,7 @@
 		$idProfDisciplina = 8;
 		$nome = "Aula Materiais";
 		$data = "10/08/2017";
-		$valor = "0";
+		$valor = 0.00;
 		$ativo = "S";
 		$stmt -> execute();
 
@@ -1205,7 +1205,7 @@
 		$idProfDisciplina = 1;
 		$nome = "Prova Geografia";
 		$data = "21/08/2017";
-		$valor = "10";
+		$valor = 10.00;
 		$ativo = "S";
 		$stmt -> execute();
 
@@ -1213,7 +1213,7 @@
 		$idProfDisciplina = 2;
 		$nome = "Prova História";
 		$data = "21/08/2017";
-		$valor = "10";
+		$valor = 10.00;
 		$ativo = "S";
 		$stmt -> execute();
 
@@ -1221,7 +1221,7 @@
 		$idProfDisciplina = 5;
 		$nome = "Prova LP";
 		$data = "23/08/2017";
-		$valor = "10";
+		$valor = 10.00;
 		$ativo = "S";
 		$stmt -> execute();
 
@@ -1229,7 +1229,7 @@
 		$idProfDisciplina = 6;
 		$nome = "Prova WEB";
 		$data = "23/08/2017";
-		$valor = "10";
+		$valor = 10.00;
 		$ativo = "S";
 		$stmt -> execute();
 
@@ -1237,7 +1237,7 @@
 		$idProfDisciplina = 7;
 		$nome = "Prova TOP";
 		$data = "24/08/2017";
-		$valor = "10";
+		$valor = 10.00;
 		$ativo = "S";
 		$stmt -> execute();
 
@@ -1245,7 +1245,7 @@
 		$idProfDisciplina = 8;
 		$nome = "Prova Materiais";
 		$data = "24/08/2017";
-		$valor = "10";
+		$valor = 10.00;
 		$ativo = "S";
 		$stmt -> execute();
 
@@ -1253,7 +1253,7 @@
 		$idProfDisciplina = 1;
 		$nome = "Trabalho Geografia";
 		$data = "28/08/2017";
-		$valor = "10";
+		$valor = 10.00;
 		$ativo = "S";
 		$stmt -> execute();
 
@@ -1261,7 +1261,7 @@
 		$idProfDisciplina = 2;
 		$nome = "Trabalho História";
 		$data = "28/08/2017";
-		$valor = "10";
+		$valor = 10.00;
 		$ativo = "S";
 		$stmt -> execute();
 
@@ -1269,7 +1269,7 @@
 		$idProfDisciplina = 5;
 		$nome = "Trabalho LP";
 		$data = "30/08/2017";
-		$valor = "10";
+		$valor = 10.00;
 		$ativo = "S";
 		$stmt -> execute();
 
@@ -1277,7 +1277,7 @@
 		$idProfDisciplina = 6;
 		$nome = "Trabalho WEB";
 		$data = "30/08/2017";
-		$valor = "10";
+		$valor = 10.00;
 		$ativo = "S";
 		$stmt -> execute();
 
@@ -1285,7 +1285,7 @@
 		$idProfDisciplina = 7;
 		$nome = "Trabalho TOP";
 		$data = "31/08/2017";
-		$valor = "10";
+		$valor = 10.00;
 		$ativo = "S";
 		$stmt -> execute();
 
@@ -1293,7 +1293,7 @@
 		$idProfDisciplina = 8;
 		$nome = "Trabalho Materiais";
 		$data = "31/08/2017";
-		$valor = "10";
+		$valor = 10.00;
 		$ativo = "S";
 		$stmt -> execute();
 
@@ -1302,7 +1302,7 @@
 		$idProfDisciplina = 1;
 		$nome = "Aula Geografia";
 		$data = "02/10/2017";
-		$valor = "0";
+		$valor = 0.00;
 		$ativo = "S";
 		$stmt -> execute();
 
@@ -1310,7 +1310,7 @@
 		$idProfDisciplina = 2;
 		$nome = "Aula História";
 		$data = "02/10/2017";
-		$valor = "0";
+		$valor = 0.00;
 		$ativo = "S";
 		$stmt -> execute();
 
@@ -1318,7 +1318,7 @@
 		$idProfDisciplina = 5;
 		$nome = "Aula LP";
 		$data = "04/10/2017";
-		$valor = "0";
+		$valor = 0.00;
 		$ativo = "S";
 		$stmt -> execute();
 
@@ -1326,7 +1326,7 @@
 		$idProfDisciplina = 6;
 		$nome = "Aula WEB";
 		$data = "04/10/2017";
-		$valor = "0";
+		$valor = 0.00;
 		$ativo = "S";
 		$stmt -> execute();
 
@@ -1334,7 +1334,7 @@
 		$idProfDisciplina = 7;
 		$nome = "Aula TOP";
 		$data = "05/10/2017";
-		$valor = "0";
+		$valor = 0.00;
 		$ativo = "S";
 		$stmt -> execute();
 
@@ -1342,7 +1342,7 @@
 		$idProfDisciplina = 8;
 		$nome = "Aula Materiais";
 		$data = "05/10/2017";
-		$valor = "0";
+		$valor = 0.00;
 		$ativo = "S";
 		$stmt -> execute();
 
@@ -1350,7 +1350,7 @@
 		$idProfDisciplina = 1;
 		$nome = "Prova Geografia";
 		$data = "16/10/2017";
-		$valor = "15";
+		$valor = 15.00;
 		$ativo = "S";
 		$stmt -> execute();
 
@@ -1358,7 +1358,7 @@
 		$idProfDisciplina = 2;
 		$nome = "Prova História";
 		$data = "16/10/2017";
-		$valor = "15";
+		$valor = 15.00;
 		$ativo = "S";
 		$stmt -> execute();
 
@@ -1366,7 +1366,7 @@
 		$idProfDisciplina = 5;
 		$nome = "Prova LP";
 		$data = "18/10/2017";
-		$valor = "15";
+		$valor = 15.00;
 		$ativo = "S";
 		$stmt -> execute();
 
@@ -1374,7 +1374,7 @@
 		$idProfDisciplina = 6;
 		$nome = "Prova WEB";
 		$data = "18/10/2017";
-		$valor = "15";
+		$valor = 15.00;
 		$ativo = "S";
 		$stmt -> execute();
 
@@ -1382,7 +1382,7 @@
 		$idProfDisciplina = 7;
 		$nome = "Prova TOP";
 		$data = "19/10/2017";
-		$valor = "15";
+		$valor = 15.00;
 		$ativo = "S";
 		$stmt -> execute();
 
@@ -1390,7 +1390,7 @@
 		$idProfDisciplina = 8;
 		$nome = "Prova Materiais";
 		$data = "19/10/2017";
-		$valor = "15";
+		$valor = 15.00;
 		$ativo = "S";
 		$stmt -> execute();
 
@@ -1398,7 +1398,7 @@
 		$idProfDisciplina = 1;
 		$nome = "Trabalho Geografia";
 		$data = "23/10/2017";
-		$valor = "15";
+		$valor = 15.00;
 		$ativo = "S";
 		$stmt -> execute();
 
@@ -1406,7 +1406,7 @@
 		$idProfDisciplina = 2;
 		$nome = "Trabalho História";
 		$data = "23/10/2017";
-		$valor = "15";
+		$valor = 15.00;
 		$ativo = "S";
 		$stmt -> execute();
 
@@ -1414,7 +1414,7 @@
 		$idProfDisciplina = 5;
 		$nome = "Trabalho LP";
 		$data = "25/10/2017";
-		$valor = "15";
+		$valor = 15.00;
 		$ativo = "S";
 		$stmt -> execute();
 
@@ -1422,7 +1422,7 @@
 		$idProfDisciplina = 6;
 		$nome = "Trabalho WEB";
 		$data = "25/10/2017";
-		$valor = "15";
+		$valor = 15.00;
 		$ativo = "S";
 		$stmt -> execute();
 
@@ -1430,7 +1430,7 @@
 		$idProfDisciplina = 7;
 		$nome = "Trabalho TOP";
 		$data = "26/10/2017";
-		$valor = "15";
+		$valor = 15.00;
 		$ativo = "S";
 		$stmt -> execute();
 
@@ -1438,7 +1438,7 @@
 		$idProfDisciplina = 8;
 		$nome = "Trabalho Materiais";
 		$data = "26/10/2017";
-		$valor = "15";
+		$valor = 15.00;
 		$ativo = "S";
 		$stmt -> execute();
 	####################################################
@@ -1694,7 +1694,7 @@
 	);
 
 	$stmt -> bind_param (
-		"iiissss", 
+		"iiisdss", 
 		$idConteudo, $idMatricula, $idAtividade, $faltas, $nota, $ano, $ativo
 	);
 
@@ -1705,7 +1705,7 @@
 		$idMatricula = 1;
 		$idAtividade = 1;
 		$faltas = "0";
-		$nota = "0";
+		$nota = 0.00;
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
@@ -1714,7 +1714,7 @@
 		$idMatricula = 1;
 		$idAtividade = 9;
 		$faltas = "0";
-		$nota = "9";
+		$nota = 9.00;
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
@@ -1723,7 +1723,7 @@
 		$idMatricula = 1;
 		$idAtividade = 17;
 		$faltas = "0";
-		$nota = "7";
+		$nota = 7.00;
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
@@ -1734,7 +1734,7 @@
 		$idMatricula = 2;
 		$idAtividade = 2;
 		$faltas = "2";
-		$nota = "0";
+		$nota = 0.00;
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
@@ -1743,7 +1743,7 @@
 		$idMatricula = 2;
 		$idAtividade = 10;
 		$faltas = "0";
-		$nota = "6";
+		$nota = 6.00;
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
@@ -1752,7 +1752,7 @@
 		$idMatricula = 2;
 		$idAtividade = 18;
 		$faltas = "0";
-		$nota = "10";
+		$nota = 10.00;
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
@@ -1763,7 +1763,7 @@
 		$idMatricula = 3;
 		$idAtividade = 1;
 		$faltas = "1";
-		$nota = "0";
+		$nota = 0.00;
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
@@ -1772,7 +1772,7 @@
 		$idMatricula = 3;
 		$idAtividade = 9;
 		$faltas = "0";
-		$nota = "8";
+		$nota = 8.00;
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
@@ -1781,7 +1781,7 @@
 		$idMatricula = 3;
 		$idAtividade = 17;
 		$faltas = "0";
-		$nota = "8";
+		$nota = 8.00;
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
@@ -1792,7 +1792,7 @@
 		$idMatricula = 4;
 		$idAtividade = 2;
 		$faltas = "0";
-		$nota = "0";
+		$nota = 0.00;
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
@@ -1801,7 +1801,7 @@
 		$idMatricula = 4;
 		$idAtividade = 10;
 		$faltas = "0";
-		$nota = "7";
+		$nota = 7.00;
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
@@ -1810,7 +1810,7 @@
 		$idMatricula = 4;
 		$idAtividade = 18;
 		$faltas = "0";
-		$nota = "9";
+		$nota = 9.00;
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
@@ -1821,7 +1821,7 @@
 		$idMatricula = 5;
 		$idAtividade = 3;
 		$faltas = "0";
-		$nota = "0";
+		$nota = 0.00;
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
@@ -1830,7 +1830,7 @@
 		$idMatricula = 5;
 		$idAtividade = 11;
 		$faltas = "0";
-		$nota = "47";
+		$nota = 47.00;
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
@@ -1839,7 +1839,7 @@
 		$idMatricula = 5;
 		$idAtividade = 19;
 		$faltas = "0";
-		$nota = "38";
+		$nota = 38.00;
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
@@ -1850,7 +1850,7 @@
 		$idMatricula = 6;
 		$idAtividade = 4;
 		$faltas = "0";
-		$nota = "0";
+		$nota = 0.00;
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
@@ -1859,7 +1859,7 @@
 		$idMatricula = 6;
 		$idAtividade = 12;
 		$faltas = "0";
-		$nota = "28";
+		$nota = 28.00;
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
@@ -1868,7 +1868,7 @@
 		$idMatricula = 6;
 		$idAtividade = 20;
 		$faltas = "0";
-		$nota = "40";
+		$nota = 40.00;
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
@@ -1879,7 +1879,7 @@
 		$idMatricula = 7;
 		$idAtividade = 3;
 		$faltas = "4";
-		$nota = "0";
+		$nota = 0.00;
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
@@ -1888,7 +1888,7 @@
 		$idMatricula = 7;
 		$idAtividade = 11;
 		$faltas = "0";
-		$nota = "42";
+		$nota = 42.00;
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
@@ -1897,7 +1897,7 @@
 		$idMatricula = 7;
 		$idAtividade = 19;
 		$faltas = "0";
-		$nota = "42";
+		$nota = 42.00;
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
@@ -1908,7 +1908,7 @@
 		$idMatricula = 8;
 		$idAtividade = 4;
 		$faltas = "0";
-		$nota = "0";
+		$nota = 0.00;
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
@@ -1917,7 +1917,7 @@
 		$idMatricula = 8;
 		$idAtividade = 12;
 		$faltas = "0";
-		$nota = "28";
+		$nota = 28.00;
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
@@ -1926,7 +1926,7 @@
 		$idMatricula = 8;
 		$idAtividade = 20;
 		$faltas = "0";
-		$nota = "47";
+		$nota = 47.00;
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
@@ -1937,7 +1937,7 @@
 		$idMatricula = 9;
 		$idAtividade = 5;
 		$faltas = "0";
-		$nota = "0";
+		$nota = 0.00;
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
@@ -1946,7 +1946,7 @@
 		$idMatricula = 9;
 		$idAtividade = 13;
 		$faltas = "0";
-		$nota = "9";
+		$nota = 9.00;
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
@@ -1955,7 +1955,7 @@
 		$idMatricula = 9;
 		$idAtividade = 21;
 		$faltas = "0";
-		$nota = "8";
+		$nota = 8.00;
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
@@ -1966,7 +1966,7 @@
 		$idMatricula = 10;
 		$idAtividade = 6;
 		$faltas = "2";
-		$nota = "0";
+		$nota = 0.00;
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
@@ -1975,7 +1975,7 @@
 		$idMatricula = 10;
 		$idAtividade = 14;
 		$faltas = "0";
-		$nota = "10";
+		$nota = 10.00;
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
@@ -1984,7 +1984,7 @@
 		$idMatricula = 10;
 		$idAtividade = 22;
 		$faltas = "0";
-		$nota = "6";
+		$nota = 6.00;
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
@@ -1995,7 +1995,7 @@
 		$idMatricula = 11;
 		$idAtividade = 5;
 		$faltas = "0";
-		$nota = "0";
+		$nota = 0.00;
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
@@ -2004,7 +2004,7 @@
 		$idMatricula = 11;
 		$idAtividade = 13;
 		$faltas = "0";
-		$nota = "7";
+		$nota = 7.00;
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
@@ -2013,7 +2013,7 @@
 		$idMatricula = 11;
 		$idAtividade = 21;
 		$faltas = "0";
-		$nota = "8";
+		$nota = 8.00;
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
@@ -2024,7 +2024,7 @@
 		$idMatricula = 12;
 		$idAtividade = 6;
 		$faltas = "0";
-		$nota = "0";
+		$nota = 0.00;
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
@@ -2033,7 +2033,7 @@
 		$idMatricula = 12;
 		$idAtividade = 14;
 		$faltas = "0";
-		$nota = "10";
+		$nota = 10.00;
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
@@ -2042,7 +2042,7 @@
 		$idMatricula = 12;
 		$idAtividade = 22;
 		$faltas = "0";
-		$nota = "10";
+		$nota = 10.00;
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
@@ -2053,7 +2053,7 @@
 		$idMatricula = 13;
 		$idAtividade = 7;
 		$faltas = "0";
-		$nota = "0";
+		$nota = 0.00;
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
@@ -2062,7 +2062,7 @@
 		$idMatricula = 13;
 		$idAtividade = 15;
 		$faltas = "0";
-		$nota = "9";
+		$nota = 9.00;
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
@@ -2071,7 +2071,7 @@
 		$idMatricula = 13;
 		$idAtividade = 23;
 		$faltas = "0";
-		$nota = "8";
+		$nota = 8.00;
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
@@ -2082,7 +2082,7 @@
 		$idMatricula = 14;
 		$idAtividade = 8;
 		$faltas = "0";
-		$nota = "0";
+		$nota = 0.00;
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
@@ -2091,7 +2091,7 @@
 		$idMatricula = 14;
 		$idAtividade = 16;
 		$faltas = "0";
-		$nota = "5";
+		$nota = 5.00;
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
@@ -2100,7 +2100,7 @@
 		$idMatricula = 14;
 		$idAtividade = 24;
 		$faltas = "0";
-		$nota = "6";
+		$nota = 6.00;
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
@@ -2111,7 +2111,7 @@
 		$idMatricula = 15;
 		$idAtividade = 7;
 		$faltas = "0";
-		$nota = "0";
+		$nota = 0.00;
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
@@ -2120,7 +2120,7 @@
 		$idMatricula = 15;
 		$idAtividade = 15;
 		$faltas = "0";
-		$nota = "6";
+		$nota = 6.00;
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
@@ -2129,7 +2129,7 @@
 		$idMatricula = 15;
 		$idAtividade = 23;
 		$faltas = "0";
-		$nota = "10";
+		$nota = 10.00;
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
@@ -2140,7 +2140,7 @@
 		$idMatricula = 16;
 		$idAtividade = 8;
 		$faltas = "0";
-		$nota = "2";
+		$nota = 2.00;
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
@@ -2149,7 +2149,7 @@
 		$idMatricula = 16;
 		$idAtividade = 16;
 		$faltas = "0";
-		$nota = "7";
+		$nota = 7.00;
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
@@ -2158,7 +2158,7 @@
 		$idMatricula = 16;
 		$idAtividade = 24;
 		$faltas = "0";
-		$nota = "6";
+		$nota = 6.00;
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
@@ -2170,7 +2170,7 @@
 		$idMatricula = 1;
 		$idAtividade = 25;
 		$faltas = "0";
-		$nota = "0";
+		$nota = 0.00;
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
@@ -2179,7 +2179,7 @@
 		$idMatricula = 1;
 		$idAtividade = 33;
 		$faltas = "0";
-		$nota = "14";
+		$nota = 14.00;
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
@@ -2188,7 +2188,7 @@
 		$idMatricula = 1;
 		$idAtividade = 41;
 		$faltas = "0";
-		$nota = "7";
+		$nota = 7.00;
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
@@ -2199,7 +2199,7 @@
 		$idMatricula = 2;
 		$idAtividade = 26;
 		$faltas = "0";
-		$nota = "0";
+		$nota = 0.00;
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
@@ -2208,7 +2208,7 @@
 		$idMatricula = 2;
 		$idAtividade = 34;
 		$faltas = "0";
-		$nota = "12";
+		$nota = 12.00;
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
@@ -2217,7 +2217,7 @@
 		$idMatricula = 2;
 		$idAtividade = 42;
 		$faltas = "0";
-		$nota = "12";
+		$nota = 12.00;
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
@@ -2228,7 +2228,7 @@
 		$idMatricula = 3;
 		$idAtividade = 25;
 		$faltas = "1";
-		$nota = "0";
+		$nota = 0.00;
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
@@ -2237,7 +2237,7 @@
 		$idMatricula = 3;
 		$idAtividade = 33;
 		$faltas = "0";
-		$nota = "11";
+		$nota = 11.00;
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
@@ -2246,7 +2246,7 @@
 		$idMatricula = 3;
 		$idAtividade = 41;
 		$faltas = "0";
-		$nota = "8";
+		$nota = 8.00;
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
@@ -2257,7 +2257,7 @@
 		$idMatricula = 4;
 		$idAtividade = 26;
 		$faltas = "2";
-		$nota = "0";
+		$nota = 0.00;
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
@@ -2266,7 +2266,7 @@
 		$idMatricula = 4;
 		$idAtividade = 34;
 		$faltas = "0";
-		$nota = "12";
+		$nota = 12.00;
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
@@ -2275,7 +2275,7 @@
 		$idMatricula = 4;
 		$idAtividade = 42;
 		$faltas = "0";
-		$nota = "12";
+		$nota = 12.00;
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
@@ -2286,7 +2286,7 @@
 		$idMatricula = 5;
 		$idAtividade = 27;
 		$faltas = "0";
-		$nota = "0";
+		$nota = 0.00;
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
@@ -2295,7 +2295,7 @@
 		$idMatricula = 5;
 		$idAtividade = 35;
 		$faltas = "0";
-		$nota = "40";
+		$nota = 40.00;
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
@@ -2304,7 +2304,7 @@
 		$idMatricula = 5;
 		$idAtividade = 43;
 		$faltas = "0";
-		$nota = "30";
+		$nota = 30.00;
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
@@ -2315,7 +2315,7 @@
 		$idMatricula = 6;
 		$idAtividade = 28;
 		$faltas = "0";
-		$nota = "0";
+		$nota = 0.00;
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
@@ -2324,7 +2324,7 @@
 		$idMatricula = 6;
 		$idAtividade = 36;
 		$faltas = "0";
-		$nota = "10";
+		$nota = 10.00;
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
@@ -2333,7 +2333,7 @@
 		$idMatricula = 6;
 		$idAtividade = 44;
 		$faltas = "0";
-		$nota = "41";
+		$nota = 41.00;
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
@@ -2344,7 +2344,7 @@
 		$idMatricula = 7;
 		$idAtividade = 27;
 		$faltas = "2";
-		$nota = "0";
+		$nota = 0.00;
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
@@ -2353,7 +2353,7 @@
 		$idMatricula = 7;
 		$idAtividade = 35;
 		$faltas = "0";
-		$nota = "44";
+		$nota = 44.00;
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
@@ -2362,7 +2362,7 @@
 		$idMatricula = 7;
 		$idAtividade = 43;
 		$faltas = "0";
-		$nota = "46";
+		$nota = 46.00;
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
@@ -2373,7 +2373,7 @@
 		$idMatricula = 8;
 		$idAtividade = 28;
 		$faltas = "3";
-		$nota = "0";
+		$nota = 0.00;
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
@@ -2382,7 +2382,7 @@
 		$idMatricula = 8;
 		$idAtividade = 36;
 		$faltas = "0";
-		$nota = "31";
+		$nota = 31.00;
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
@@ -2391,7 +2391,7 @@
 		$idMatricula = 8;
 		$idAtividade = 44;
 		$faltas = "0";
-		$nota = "20";
+		$nota = 20.00;
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
@@ -2402,7 +2402,7 @@
 		$idMatricula = 9;
 		$idAtividade = 29;
 		$faltas = "0";
-		$nota = "0";
+		$nota = 0.00;
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
@@ -2411,7 +2411,7 @@
 		$idMatricula = 9;
 		$idAtividade = 37;
 		$faltas = "0";
-		$nota = "9";
+		$nota = 9.00;
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
@@ -2420,7 +2420,7 @@
 		$idMatricula = 9;
 		$idAtividade = 45;
 		$faltas = "0";
-		$nota = "15";
+		$nota = 15.00;
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
@@ -2431,7 +2431,7 @@
 		$idMatricula = 10;
 		$idAtividade = 30;
 		$faltas = "1";
-		$nota = "0";
+		$nota = 0.00;
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
@@ -2440,7 +2440,7 @@
 		$idMatricula = 10;
 		$idAtividade = 38;
 		$faltas = "0";
-		$nota = "13";
+		$nota = 13.00;
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
@@ -2449,7 +2449,7 @@
 		$idMatricula = 10;
 		$idAtividade = 46;
 		$faltas = "0";
-		$nota = "10";
+		$nota = 10.00;
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
@@ -2460,7 +2460,7 @@
 		$idMatricula = 11;
 		$idAtividade = 37;
 		$faltas = "0";
-		$nota = "0";
+		$nota = 0.00;
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
@@ -2469,7 +2469,7 @@
 		$idMatricula = 11;
 		$idAtividade = 37;
 		$faltas = "0";
-		$nota = "12";
+		$nota = 12.00;
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
@@ -2478,7 +2478,7 @@
 		$idMatricula = 11;
 		$idAtividade = 45;
 		$faltas = "0";
-		$nota = "11";
+		$nota = 11.00;
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
@@ -2489,7 +2489,7 @@
 		$idMatricula = 12;
 		$idAtividade = 30;
 		$faltas = "0";
-		$nota = "0";
+		$nota = 0.00;
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
@@ -2498,7 +2498,7 @@
 		$idMatricula = 12;
 		$idAtividade = 38;
 		$faltas = "0";
-		$nota = "4";
+		$nota = 4.00;
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
@@ -2507,7 +2507,7 @@
 		$idMatricula = 12;
 		$idAtividade = 46;
 		$faltas = "0";
-		$nota = "8";
+		$nota = 8.00;
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
@@ -2518,7 +2518,7 @@
 		$idMatricula = 13;
 		$idAtividade = 31;
 		$faltas = "2";
-		$nota = "0";
+		$nota = 0.00;
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
@@ -2527,7 +2527,7 @@
 		$idMatricula = 13;
 		$idAtividade = 39;
 		$faltas = "0";
-		$nota = "3";
+		$nota = 3.00;
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
@@ -2536,7 +2536,7 @@
 		$idMatricula = 13;
 		$idAtividade = 47;
 		$faltas = "0";
-		$nota = "2";
+		$nota = 2.00;
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
@@ -2547,7 +2547,7 @@
 		$idMatricula = 14;
 		$idAtividade = 32;
 		$faltas = "1";
-		$nota = "0";
+		$nota = 0.00;
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
@@ -2556,7 +2556,7 @@
 		$idMatricula = 14;
 		$idAtividade = 40;
 		$faltas = "0";
-		$nota = "7";
+		$nota = 7.00;
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
@@ -2565,7 +2565,7 @@
 		$idMatricula = 14;
 		$idAtividade = 48;
 		$faltas = "0";
-		$nota = "5";
+		$nota = 5.00;
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
@@ -2576,7 +2576,7 @@
 		$idMatricula = 15;
 		$idAtividade = 31;
 		$faltas = "0";
-		$nota = "0";
+		$nota = 0.00;
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
@@ -2585,7 +2585,7 @@
 		$idMatricula = 15;
 		$idAtividade = 39;
 		$faltas = "0";
-		$nota = "9";
+		$nota = 9.00;
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
@@ -2594,7 +2594,7 @@
 		$idMatricula = 15;
 		$idAtividade = 47;
 		$faltas = "0";
-		$nota = "10";
+		$nota = 10.00;
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
@@ -2605,7 +2605,7 @@
 		$idMatricula = 16;
 		$idAtividade = 32;
 		$faltas = "0";
-		$nota = "2";
+		$nota = 2.00;
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
@@ -2614,7 +2614,7 @@
 		$idMatricula = 16;
 		$idAtividade = 40;
 		$faltas = "0";
-		$nota = "4";
+		$nota = 4.00;
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
@@ -2623,7 +2623,7 @@
 		$idMatricula = 16;
 		$idAtividade = 48;
 		$faltas = "0";
-		$nota = "7";
+		$nota = 7.00;
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
@@ -2636,7 +2636,7 @@
 		$idMatricula = 1;
 		$idAtividade = 49;
 		$faltas = "0";
-		$nota = "0";
+		$nota = 0.00;
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
@@ -2645,7 +2645,7 @@
 		$idMatricula = 1;
 		$idAtividade = 55;
 		$faltas = "0";
-		$nota = "8";
+		$nota = 8.00;
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
@@ -2654,7 +2654,7 @@
 		$idMatricula = 1;
 		$idAtividade = 61;
 		$faltas = "0";
-		$nota = "9";
+		$nota = 9.00;
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
@@ -2665,7 +2665,7 @@
 		$idMatricula = 2;
 		$idAtividade = 50;
 		$faltas = "0";
-		$nota = "0";
+		$nota = 0.00;
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
@@ -2674,7 +2674,7 @@
 		$idMatricula = 2;
 		$idAtividade = 56;
 		$faltas = "0";
-		$nota = "2";
+		$nota = 2.00;
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
@@ -2683,7 +2683,7 @@
 		$idMatricula = 2;
 		$idAtividade = 62;
 		$faltas = "0";
-		$nota = "10";
+		$nota = 10.00;
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
@@ -2694,7 +2694,7 @@
 		$idMatricula = 3;
 		$idAtividade = 49;
 		$faltas = "2";
-		$nota = "0";
+		$nota = 0.00;
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
@@ -2703,7 +2703,7 @@
 		$idMatricula = 3;
 		$idAtividade = 55;
 		$faltas = "0";
-		$nota = "7";
+		$nota = 7.00;
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
@@ -2712,7 +2712,7 @@
 		$idMatricula = 3;
 		$idAtividade = 61;
 		$faltas = "0";
-		$nota = "3";
+		$nota = 3.00;
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
@@ -2723,7 +2723,7 @@
 		$idMatricula = 4;
 		$idAtividade = 50;
 		$faltas = "2";
-		$nota = "0";
+		$nota = 0.00;
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
@@ -2732,7 +2732,7 @@
 		$idMatricula = 4;
 		$idAtividade = 56;
 		$faltas = "0";
-		$nota = "4";
+		$nota = 4.00;
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
@@ -2741,7 +2741,7 @@
 		$idMatricula = 4;
 		$idAtividade = 62;
 		$faltas = "0";
-		$nota = "2";
+		$nota = 2.00;
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
@@ -2752,7 +2752,7 @@
 		$idMatricula = 9;
 		$idAtividade = 51;
 		$faltas = "0";
-		$nota = "0";
+		$nota = 0.00;
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
@@ -2761,7 +2761,7 @@
 		$idMatricula = 9;
 		$idAtividade = 57;
 		$faltas = "0";
-		$nota = "6";
+		$nota = 6.00;
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
@@ -2770,7 +2770,7 @@
 		$idMatricula = 9;
 		$idAtividade = 63;
 		$faltas = "0";
-		$nota = "10";
+		$nota = 10.00;
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
@@ -2781,7 +2781,7 @@
 		$idMatricula = 10;
 		$idAtividade = 52;
 		$faltas = "1";
-		$nota = "0";
+		$nota = 0.00;
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
@@ -2790,7 +2790,7 @@
 		$idMatricula = 10;
 		$idAtividade = 58;
 		$faltas = "0";
-		$nota = "4";
+		$nota = 4.00;
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
@@ -2799,7 +2799,7 @@
 		$idMatricula = 10;
 		$idAtividade = 64;
 		$faltas = "0";
-		$nota = "7";
+		$nota = 7.00;
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
@@ -2810,7 +2810,7 @@
 		$idMatricula = 11;
 		$idAtividade = 51;
 		$faltas = "0";
-		$nota = "0";
+		$nota = 0.00;
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
@@ -2819,7 +2819,7 @@
 		$idMatricula = 11;
 		$idAtividade = 57;
 		$faltas = "0";
-		$nota = "6";
+		$nota = 6.00;
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
@@ -2828,7 +2828,7 @@
 		$idMatricula = 11;
 		$idAtividade = 63;
 		$faltas = "0";
-		$nota = "8";
+		$nota = 8.00;
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
@@ -2839,7 +2839,7 @@
 		$idMatricula = 12;
 		$idAtividade = 52;
 		$faltas = "2";
-		$nota = "0";
+		$nota = 0.00;
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
@@ -2848,7 +2848,7 @@
 		$idMatricula = 12;
 		$idAtividade = 58;
 		$faltas = "0";
-		$nota = "8";
+		$nota = 8.00;
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
@@ -2857,7 +2857,7 @@
 		$idMatricula = 12;
 		$idAtividade = 64;
 		$faltas = "0";
-		$nota = "7";
+		$nota = 7.00;
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
@@ -2868,7 +2868,7 @@
 		$idMatricula = 13;
 		$idAtividade = 53;
 		$faltas = "2";
-		$nota = "0";
+		$nota = 0.00;
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
@@ -2877,7 +2877,7 @@
 		$idMatricula = 13;
 		$idAtividade = 59;
 		$faltas = "0";
-		$nota = "5";
+		$nota = 5.00;
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
@@ -2886,7 +2886,7 @@
 		$idMatricula = 13;
 		$idAtividade = 65;
 		$faltas = "0";
-		$nota = "9";
+		$nota = 9.00;
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
@@ -2897,7 +2897,7 @@
 		$idMatricula = 14;
 		$idAtividade = 54;
 		$faltas = "1";
-		$nota = "0";
+		$nota = 0.00;
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
@@ -2906,7 +2906,7 @@
 		$idMatricula = 14;
 		$idAtividade = 60;
 		$faltas = "0";
-		$nota = "8";
+		$nota = 8.00;
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
@@ -2915,7 +2915,7 @@
 		$idMatricula = 14;
 		$idAtividade = 66;
 		$faltas = "0";
-		$nota = "6";
+		$nota = 6.00;
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
@@ -2926,7 +2926,7 @@
 		$idMatricula = 15;
 		$idAtividade = 53;
 		$faltas = "0";
-		$nota = "0";
+		$nota = 0.00;
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
@@ -2935,7 +2935,7 @@
 		$idMatricula = 15;
 		$idAtividade = 59;
 		$faltas = "0";
-		$nota = "9";
+		$nota = 9.00;
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
@@ -2944,7 +2944,7 @@
 		$idMatricula = 15;
 		$idAtividade = 65;
 		$faltas = "0";
-		$nota = "7";
+		$nota = 7.00;
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
@@ -2955,7 +2955,7 @@
 		$idMatricula = 16;
 		$idAtividade = 54;
 		$faltas = "0";
-		$nota = "2";
+		$nota = 2.00;
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
@@ -2964,7 +2964,7 @@
 		$idMatricula = 16;
 		$idAtividade = 60;
 		$faltas = "0";
-		$nota = "5";
+		$nota = 5.00;
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
@@ -2973,7 +2973,7 @@
 		$idMatricula = 16;
 		$idAtividade = 6;
 		$faltas = "0";
-		$nota = "8";
+		$nota = 8.00;
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
@@ -2986,7 +2986,7 @@
 		$idMatricula = 1;
 		$idAtividade = 67;
 		$faltas = "0";
-		$nota = "0";
+		$nota = 0.00;
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
@@ -2995,7 +2995,7 @@
 		$idMatricula = 1;
 		$idAtividade = 73;
 		$faltas = "0";
-		$nota = "8";
+		$nota = 8.00;
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
@@ -3004,7 +3004,7 @@
 		$idMatricula = 1;
 		$idAtividade = 79;
 		$faltas = "0";
-		$nota = "11";
+		$nota = 11.00;
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
@@ -3015,7 +3015,7 @@
 		$idMatricula = 2;
 		$idAtividade = 68;
 		$faltas = "0";
-		$nota = "0";
+		$nota = 0.00;
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
@@ -3024,7 +3024,7 @@
 		$idMatricula = 2;
 		$idAtividade = 74;
 		$faltas = "0";
-		$nota = "12";
+		$nota = 12.00;
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
@@ -3033,7 +3033,7 @@
 		$idMatricula = 2;
 		$idAtividade = 80;
 		$faltas = "0";
-		$nota = "11";
+		$nota = 11.00;
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
@@ -3044,7 +3044,7 @@
 		$idMatricula = 3;
 		$idAtividade = 67;
 		$faltas = "0";
-		$nota = "0";
+		$nota = 0.00;
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
@@ -3053,7 +3053,7 @@
 		$idMatricula = 3;
 		$idAtividade = 73;
 		$faltas = "0";
-		$nota = "9";
+		$nota = 9.00;
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
@@ -3062,7 +3062,7 @@
 		$idMatricula = 3;
 		$idAtividade = 79;
 		$faltas = "0";
-		$nota = "13";
+		$nota = 13.00;
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
@@ -3073,7 +3073,7 @@
 		$idMatricula = 4;
 		$idAtividade = 68;
 		$faltas = "1";
-		$nota = "0";
+		$nota = 0.00;
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
@@ -3082,7 +3082,7 @@
 		$idMatricula = 4;
 		$idAtividade = 74;
 		$faltas = "0";
-		$nota = "14";
+		$nota = 14.00;
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
@@ -3091,7 +3091,7 @@
 		$idMatricula = 4;
 		$idAtividade = 80;
 		$faltas = "0";
-		$nota = "12";
+		$nota = 12.00;
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
@@ -3102,7 +3102,7 @@
 		$idMatricula = 9;
 		$idAtividade = 69;
 		$faltas = "0";
-		$nota = "0";
+		$nota = 0.00;
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
@@ -3111,7 +3111,7 @@
 		$idMatricula = 9;
 		$idAtividade = 75;
 		$faltas = "0";
-		$nota = "6";
+		$nota = 6.00;
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
@@ -3120,7 +3120,7 @@
 		$idMatricula = 9;
 		$idAtividade = 81;
 		$faltas = "0";
-		$nota = "12";
+		$nota = 12.00;
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
@@ -3131,7 +3131,7 @@
 		$idMatricula = 10;
 		$idAtividade = 70;
 		$faltas = "1";
-		$nota = "0";
+		$nota = 0.00;
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
@@ -3140,7 +3140,7 @@
 		$idMatricula = 10;
 		$idAtividade = 76;
 		$faltas = "0";
-		$nota = "10";
+		$nota = 10.00;
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
@@ -3149,7 +3149,7 @@
 		$idMatricula = 10;
 		$idAtividade = 82;
 		$faltas = "0";
-		$nota = "9";
+		$nota = 9.00;
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
@@ -3160,7 +3160,7 @@
 		$idMatricula = 11;
 		$idAtividade = 69;
 		$faltas = "0";
-		$nota = "0";
+		$nota = 0.00;
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
@@ -3169,7 +3169,7 @@
 		$idMatricula = 11;
 		$idAtividade = 75;
 		$faltas = "0";
-		$nota = "10";
+		$nota = 10.00;
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
@@ -3178,7 +3178,7 @@
 		$idMatricula = 11;
 		$idAtividade = 81;
 		$faltas = "0";
-		$nota = "7";
+		$nota = 7.00;
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
@@ -3189,7 +3189,7 @@
 		$idMatricula = 12;
 		$idAtividade = 70;
 		$faltas = "0";
-		$nota = "0";
+		$nota = 0.00;
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
@@ -3198,7 +3198,7 @@
 		$idMatricula = 12;
 		$idAtividade = 76;
 		$faltas = "0";
-		$nota = "9";
+		$nota = 9.00;
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
@@ -3207,7 +3207,7 @@
 		$idMatricula = 12;
 		$idAtividade = 82;
 		$faltas = "0";
-		$nota = "12";
+		$nota = 12.00;
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
@@ -3218,7 +3218,7 @@
 		$idMatricula = 13;
 		$idAtividade = 71;
 		$faltas = "2";
-		$nota = "0";
+		$nota = 0.00;
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
@@ -3227,7 +3227,7 @@
 		$idMatricula = 13;
 		$idAtividade = 77;
 		$faltas = "0";
-		$nota = "15";
+		$nota = 15.00;
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
@@ -3236,7 +3236,7 @@
 		$idMatricula = 13;
 		$idAtividade = 83;
 		$faltas = "0";
-		$nota = "10";
+		$nota = 10.00;
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
@@ -3247,7 +3247,7 @@
 		$idMatricula = 14;
 		$idAtividade = 72;
 		$faltas = "1";
-		$nota = "0";
+		$nota = 0.00;
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
@@ -3256,7 +3256,7 @@
 		$idMatricula = 14;
 		$idAtividade = 78;
 		$faltas = "0";
-		$nota = "14";
+		$nota = 14.00;
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
@@ -3265,7 +3265,7 @@
 		$idMatricula = 14;
 		$idAtividade = 84;
 		$faltas = "0";
-		$nota = "13";
+		$nota = 13.00;
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
@@ -3276,7 +3276,7 @@
 		$idMatricula = 15;
 		$idAtividade = 71;
 		$faltas = "0";
-		$nota = "0";
+		$nota = 0.00;
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
@@ -3285,7 +3285,7 @@
 		$idMatricula = 15;
 		$idAtividade = 77;
 		$faltas = "0";
-		$nota = "11";
+		$nota = 11.00;
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
@@ -3294,7 +3294,7 @@
 		$idMatricula = 15;
 		$idAtividade = 83;
 		$faltas = "0";
-		$nota = "9";
+		$nota = 9.00;
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
@@ -3305,7 +3305,7 @@
 		$idMatricula = 16;
 		$idAtividade = 72;
 		$faltas = "2";
-		$nota = "2";
+		$nota = 2.00;
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
@@ -3314,7 +3314,7 @@
 		$idMatricula = 16;
 		$idAtividade = 78;
 		$faltas = "0";
-		$nota = "8";
+		$nota = 8.00;
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
@@ -3323,7 +3323,7 @@
 		$idMatricula = 16;
 		$idAtividade = 84;
 		$faltas = "0";
-		$nota = "13";
+		$nota = 13.00;
 		$ano = "2017";
 		$ativo = "S";
 		$stmt -> execute();
@@ -3640,7 +3640,7 @@
 	
 	$stmt -> bind_param (
 				"iis", 
-				$idAcervo, $idAutor
+				$idAcervo, $idAutor, $ativo
 			 );
 
 	####################################################

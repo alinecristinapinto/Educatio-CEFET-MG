@@ -1,7 +1,9 @@
+<?php header ('Content-type: text/html; charset=ISO-8859-1'); ?>
 <!DOCTYPE html>
 <html>
     <head>
         <title>Acessar professores</title>
+        <meta charset="utf-8">
 
         <!-- CSS do Bootstrap -->
         <link href="css/bootstrap.min.css" rel="stylesheet" />
@@ -10,6 +12,7 @@
         <!-- CSS do grupo -->
         <link href="css/JHJ-web-estilos.css" rel="stylesheet" />
         <link href="css/JHJ-web-estilos-relatorio9-tabela.css" rel="stylesheet" />
+        <link href="css/JHJ-web-estilos-relatorio9-tabela-filtros.css" rel="stylesheet" />
 
         <!-- Arquivos js -->
         <script src="js/popper.js"></script>
@@ -20,43 +23,9 @@
 
         <!-- Fontes e icones -->
         <link href="css/nucleo-icons.css" rel="stylesheet">   
-
-        <style type="text/css">
-            .panel {              
-              border: 2px solid #164c87;
-              box-shadow: none;
-              border-radius: 10px;
-            }
-
-            .panel-heading{
-                background-color: #164c87;
-                color: white;
-                text-align: center;
-                border-radius: 3px;
-            }
-            .btn-info {
-              background-color: #164c87;
-              border-color: #164c87;
-              color: white;
-              opacity: 1;
-              filter: alpha(opacity=100);
-            }
-            .btn-info:hover, .btn-info:focus, .btn-info:active, .btn-info.active, .show > .btn-info.dropdown-toggle {
-              background-color: #164c87;
-              color: white;
-              border-color: #164c87;
-            }
-            #padin{
-                padding-left: 15px;
-            }
-
-        </style>     
-
     </head>
     <body>
-        <?php //header ('Content-type: text/html; charset=ISO-8859-1'); ?>
-        <?php //header ('Content-type: text/html; charset=UTF-8'); ?>
-        <h2 class="text-center">Acessar professores</h2>
+        <h2 class="text-center">ACESSAR PROFESSORES</h2>
         <?php
             // Conectando com o servidor MySQL
             $link = mysqli_connect("localhost", "root", "");
@@ -104,19 +73,18 @@
                     }
                 }
             } else {
+                header ('Content-type: text/html; charset=UTF-8'); 
                 echo "
-                <div class='wrapper'>     
-                    <div class='section landing-section'>
-                        <div class='container'>
-                            <div class='row'>
-                                <div class='col-md-8 ml-auto mr-auto'>                    
-                                    <div class='panel'>
-                                        <div class='panel-heading'>
-                                            <div class='panel-title'>Curso de ".$strNomeCursoSelecionado." - ".$strNomeDeptoCursoSelecionado."</div>
-                                        </div>  
-                                        <div style='padding-top:20px' class='panel-body' id = 'padin'>  
-                                            <p style = 'font-weight:bold'>O relatório não pode ser exibido!</p>   
-                                            <p>Não existe nenhuma turma no curso selecionado</p>";
+                <div class='container' style='margin-top: 50px;'>
+                    <div class='row'>
+                        <div class='col-md-8 ml-auto mr-auto'>                    
+                            <div class='panel'>
+                                <div class='panel-heading' style='margin-top: 0px;'>
+                                    <div class='panel-title'>Curso de ".$strNomeCursoSelecionado." - ".$strNomeDeptoCursoSelecionado."</div>
+                                </div>  
+                                <div style='padding-top:20px' class='panel-body' id = 'padin'>  
+                                    <p style = 'font-weight:bold'>O relatório não pode ser exibido!</p>   
+                                    <p>Não existe nenhuma turma no curso selecionado</p>";
                         }
             //seleciona id's dos professores em profdisciplinas por meio dos id's das disciplinas
             $intExisteProfessor = 0;
@@ -145,20 +113,22 @@
             } if ($intExisteDisciplina == 0 && $intExisteTurma == 0) {
                 echo "<p>Não existe nenhuma disciplina no curso selecionado</p>";
             } if ($intExisteDisciplina == 0 && $intExisteTurma == 1) {
+                header ('Content-type: text/html; charset=UTF-8'); 
                 echo "
-                <div class='container'>    
-                    <div style='margin-top:50px;' class='mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2'>                    
-                        <div class='panel panel-info'>
-                            <div class='panel-heading'>
-                                <div class='panel-title'>Curso de ".$strNomeCursoSelecionado." - ".$strNomeDeptoCursoSelecionado."</div>
-                            </div>  
-                            <div style='padding-top:20px' class='panel-body'>  
-                                <p><strong>O relatório não pode ser exibido!</strong></p>   
-                                <p>Não existe nenhuma disciplina no curso selecionado</p>";
+                <div class='container' style='margin-top: 50px;'>
+                    <div class='row'>
+                        <div class='col-md-8 ml-auto mr-auto'>                    
+                            <div class='panel'>
+                                <div class='panel-heading' style='margin-top: 0px;'>
+                                    <div class='panel-title'>Curso de ".$strNomeCursoSelecionado." - ".$strNomeDeptoCursoSelecionado."</div>
+                                </div>  
+                                <div style='padding-top:20px' class='panel-body' id = 'padin'>  
+                                    <p style = 'font-weight:bold'>O relatório não pode ser exibido!</p>    
+                                    <p>Não existe nenhuma disciplina no curso selecionado</p>";
             }
             if($intExisteProfessor == 1){
                 //seleciona idSIAPE de todos os professores ativos em fucionario para comparar com id de profdisciplinas
-                $query = mysqli_query($link, "SELECT idSIAPE FROM funcionario WHERE hierarquia = 'P' AND ativo = 'S' ");
+                $query = mysqli_query($link, "SELECT idSIAPE FROM funcionario WHERE hierarquia = 'Professor' OR hierarquia = 'Coordenador' AND ativo = 'S' ");
                 $intI = 0;
                 $vetIdSiapeProfessores[$intI] = 0;
                 while($funcionario = mysqli_fetch_array($query)){
@@ -265,117 +235,91 @@
                 } 
                 // print_r($vetAuxNomeDisciplinas);
                 // echo "<br>";
-                // print_r($vetAuxCargaHorariaDisciplinas);
+                //print_r($vetAuxCargaHorariaDisciplinas);
 
                 // TABELA ONDE SERÃO EXIBIDOS OS DADOS DO RELATORIO
                 echo "
-                <div class='container'>
-                    <div class='row'>
-                        <div class='panel panel-primary filterable'>
-                            <div class='panel-heading'>
-                                <h3 class='panel-title'>Curso de ".$strNomeCursoSelecionado." - ".$strNomeDeptoCursoSelecionado."</h3>
-                                <div class='pull-right'>
-                                    <button class='btn btn-default btn-xs btn-filter'><span class='glyphicon glyphicon-filter'></span> Filtrar</button>
-                                </div>
+                <div class='container' style='margin-top: 30px;'>
+                    <div class='panel panel-primary filterable'>
+                        <div class='panel-heading'>
+                            <h3 class='panel-title'>Curso de ".$strNomeCursoSelecionado." - ".$strNomeDeptoCursoSelecionado."</h3>
+                            <div class='pull-right'>
+                                <button style='margin-left: 1000px; margin-top: -10px; color: white;' class='btn btn-default btn-xs btn-filter btn-link'><span class='glyphicon glyphicon-filter'></span> Filtrar</button>
                             </div>
-                            <table class='table'>
-                                <thead>
-                                    <tr class='filters'>
-                                        <th><input type='text' class='form-control' placeholder='Nome do professor' disabled></th>
-                                        <th><input type='text' class='form-control' placeholder='Disciplinas' disabled></th>
-                                        <th><input type='text' class='form-control' placeholder='Horas de trabalho' disabled></th>
-                                    </tr>
-                                </thead>
-                                <tbody>";
-                echo "
-                 <table class='table'>
-                    <thead class='thead-dark'>
-                      <tr>
-                        <th>Firstname</th>
-                        <th>Lastname</th>
-                        <th>Email</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td>John</td>
-                        <td>Doe</td>
-                        <td>john@example.com</td>
-                      </tr>
-                      <tr>
-                        <td>Mary</td>
-                        <td>Moe</td>
-                        <td>mary@example.com</td>
-                      </tr>
-                      <tr>
-                        <td>July</td>
-                        <td>Dooley</td>
-                        <td>july@example.com</td>
-                      </tr>
-                    </tbody>
-                </table>";
-                                  
-                                    //função array_sum calcula a soma dos elementos de um array
-                                    $intJ = 0;
-                                    for ($intI = 0; $intI < count($vetNomeProfessores); $intI++){
-                                        echo "
-                                            <tr>
-                                                <td rowspan = ".count($vetAuxIdDisciplinas[$intI]).">".$vetNomeProfessores[$intI]."</td>
-                                                <td>".$vetAuxNomeDisciplinas[$intI][$intJ]."</td>
-                                                <td rowspan = ".count($vetAuxIdDisciplinas[$intI]).">".array_sum($vetAuxCargaHorariaDisciplinas[$intI])."</td>";
-                                                $intJ++;
-                                        echo "</tr>";
-                                        $intQuantidadeDisciplinas = count($vetAuxIdDisciplinas[$intI]);
-                                        for ($intK = 0; $intK < ($intQuantidadeDisciplinas-1); $intK++){
-                                            echo "
-                                            <tr>
-                                                <td>".$vetAuxNomeDisciplinas[$intI][$intJ]."</td>
-                                            </tr>";
-                                            $intJ++;
-                                        }
-                                    }
-
-                                echo "
-                                </tbody>
-                            </table>
                         </div>
+                        <table class='table'>
+                            <thead>
+                                <tr class='filters'>
+                                    <th><input style='font-weight:bold' type='text' class='form-control' placeholder='Nome do professor' disabled></th>
+                                    <th><input style='font-weight:bold' type='text' class='form-control' placeholder='Disciplinas' disabled></th>
+                                    <th><input style='font-weight:bold' type='text' class='form-control' placeholder='Horas de trabalho' disabled></th>
+                                </tr>
+                            </thead>
+                            <tbody>";
+                              
+                                //função array_sum calcula a soma dos elementos de um array
+                                $intJ = 0;
+                                for ($intI = 0; $intI < count($vetNomeProfessores); $intI++){
+                                    echo "
+                                        <tr>
+                                            <td>".$vetNomeProfessores[$intI]."</td>
+                                            <td>".$vetAuxNomeDisciplinas[$intI][$intJ]."</td>
+                                            <td>".$vetAuxCargaHorariaDisciplinas[$intI][$intJ]."</td>";
+                                            $intJ++;
+                                    echo "</tr>";
+                                    $intQuantidadeDisciplinas = count($vetAuxIdDisciplinas[$intI]);
+                                    for ($intK = 0; $intK < ($intQuantidadeDisciplinas-1); $intK++){
+                                        echo "
+                                        <tr>
+                                            <td>".$vetNomeProfessores[$intI]."</td>
+                                            <td>".$vetAuxNomeDisciplinas[$intI][$intJ]."</td>
+                                            <td>".$vetAuxCargaHorariaDisciplinas[$intI][$intJ]."</td>
+                                        </tr>";
+                                        $intJ++;
+                                    }
+                                }
+
+                            echo "
+                            </tbody>
+                        </table>
                     </div>
                 </div>
-                <div class='alinhamento-botao-voltar'>
-                    <input type='button' class='btn btn-primary' value='Voltar' onClick='voltarParaPaginaAcessarProfessoresSelecionarCurso()'/>  
+                <div class='row'>
+                    <div class='col-md-4 ml-auto mr-auto'>
+                        <button style='margin-top: 10px; margin-left: 155%' type='button' class='btn btn-info btn-round' value='Voltar' onClick='voltarParaPaginaAcessarProfessoresSelecionarCurso()'>Voltar</button>  
+                    </div>
                 </div>";
             } // fim do if que verifica existencia do professor 
             if ($intExisteProfessor == 0 && $intExisteDisciplina == 0) {
-                echo "<p>Não existe nenhum professor no curso selecionado<p>";
+                echo "<p>Não existe nenhum professor associado a disciplina no curso selecionado<p>";
             }
             if ($intExisteProfessor == 0 && $intExisteDisciplina == 1) {
+                header ('Content-type: text/html; charset=UTF-8'); 
                 echo "
-                <div class='container'>    
-                    <div style='margin-top:50px;' class='mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2'>                    
-                        <div class='panel panel-info'>
-                            <div class='panel-heading'>
-                                <div class='panel-title'>Curso de ".$strNomeCursoSelecionado." - ".$strNomeDeptoCursoSelecionado."</div>
-                            </div>  
-                            <div style='padding-top:20px' class='panel-body'>  
-                                <p><strong>O relatório não pode ser exibido!</strong></p>   
-                                <p>Não existe nenhum professor associado a disciplina no curso selecionado</p>";
+                <div class='container' style='margin-top: 50px;'>
+                    <div class='row'>
+                        <div class='col-md-8 ml-auto mr-auto'>                    
+                            <div class='panel'>
+                                <div class='panel-heading' style='margin-top: 0px;'>
+                                    <div class='panel-title'>Curso de ".$strNomeCursoSelecionado." - ".$strNomeDeptoCursoSelecionado."</div>
+                                </div>  
+                                <div style='padding-top:20px' class='panel-body' id = 'padin'>  
+                                    <p style='font-weight:bold'>O relatório não pode ser exibido!</p>   
+                                    <p>Não existe nenhum professor associado a disciplina no curso selecionado</p>";
 
             }
             if ($intExisteTurma == 0 || $intExisteDisciplina == 0 || $intExisteProfessor == 0){ 
                 echo "      
-                            <div class='row'>
-                                <div class='col-md-4 ml-auto mr-auto'>
-                                <button type='button' class='btn btn-info btn-round' value='Voltar' onClick='voltarParaPaginaAcessarProfessoresSelecionarCurso()'>Voltar</button>
-                                <p>
-                            </div>
-                            </div>                     
-                        </div>  
-                    </div>
-                </div>
-                </div>
-                </div>
-                </div>";
-
+                                    <div class='row'>
+                                        <div class='col-md-4 ml-auto mr-auto'>
+                                            <button style='margin-bottom: 10px; margin-left: 50px;' type='button' class='btn btn-info btn-round' value='Voltar' onClick='voltarParaPaginaAcessarProfessoresSelecionarCurso()'>Voltar</button>
+                                        </div>
+                                    </div>                     
+                                </div>  
+                            </div> <!-- panel -->
+                        </div>
+                    </div> <!-- row -->
+                </div> <!-- conteiner -->";
             }
         ?>
     </body>

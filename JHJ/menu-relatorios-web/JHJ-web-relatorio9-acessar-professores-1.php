@@ -1,3 +1,4 @@
+<?php header ('Content-type: text/html; charset=ISO-8859-1'); ?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -18,14 +19,13 @@
 
         <!-- Fontes e icones -->
         <link href="css/nucleo-icons.css" rel="stylesheet">
-
     </head>
     <body>
-    <div class="section landing-section">
+    <!-- <div class="section landing-section"> -->
         <div class="container">
             <div class="row">
                 <div class="col-md-8 ml-auto mr-auto">
-                    <h2 class="text-center">Acessar Professores</h2>
+                    <h2 class="text-center">ACESSAR PROFESSORES</h2>
                         <?php
                             // Conectando com o servidor MySQL
                             $link = mysqli_connect("localhost", "root", "");
@@ -51,7 +51,7 @@
                                             <i class="nc-icon nc-settings"></i>
                                         </span>
                                         <select class="form-control" name="selectCampusParaAcessarProfessores[]" required="required">
-                                            <option value="">Selecione um campus&nbsp;</option>
+                                            <option value="">Selecione um campus</option>
                                             <?php while($campus = mysqli_fetch_array($query)) { ?>
                                                 <option name="selectCampusParaAcessarProfessores[]" value="<?php echo $campus['id'] ?>">
                                                 <?php echo $campus['nome']." - ".$campus['cidade']."-".$campus['UF'] ?></option>
@@ -69,7 +69,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    <!-- </div> -->
     <?php
         if (!isset($_POST['selectCampusParaAcessarProfessores'])){ 
             //echo "select campus ainda não foi preenchido";
@@ -106,44 +106,44 @@
                     $intJ++;
                 }
             }    
-        if (count($vetIdDeptos) == 1 &&  $vetIdDeptos[0] == 0){
+            
+        if (!isset($vetIdCursos)) {
+        header ('Content-type: text/html; charset=UTF-8');
      ?>
-        <div class="alinhamento">
-            <h4>Impossível acessar professores! Não existem cursos no <strong><?php echo $strNomeCampusSelecionado." - ".$strCidadeCampusSelecionado."-".$strUFCampusSelecionado ?></strong>.</h4>
+        <div class="container">
+            <label class="fonteTexto" style="margin-top: 20px; margin-left: 170px;">Impossível acessar professores! Não existem cursos no <label style="font-weight: bold;"><?php echo $strNomeCampusSelecionado." - ".$strCidadeCampusSelecionado."-".$strUFCampusSelecionado ?></label>.</label>
         </div>
     <?php
         } else {
     ?>
-    <div class="section landing-section">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-8 ml-auto mr-auto">
-                    <form class="contact-form" action="JHJ-web-relatorio9-acessar-professores-2.php" method="POST">
-                        <div class="row">
-                            <!-- Usando os dados do BD para fazer o select com os cursos -->
-                            <label class="fonteTexto">Cursos existentes no <strong><?php echo $strNomeCampusSelecionado." - ".$strCidadeCampusSelecionado."-".$strUFCampusSelecionado ?></strong>:</label>
-                            <div class="input-group">
-                                <span class="input-group-addon">
-                                    <i class="nc-icon nc-settings"></i>
-                                </span>
-                                <select class="form-control" name="selectCursoParaAcessarProfessores[]" required="required">
-                                    <option value="">Selecione um curso&nbsp;</option>
-                                        <?php
-                                            for ($intZ = 0; $intZ < count($vetIdCursos); $intZ++){ 
-                                                echo "<option name='selectCursoParaAcessarProfessores[]' value='$vetIdCursos[$intZ]'>".
-                                                $vetNomeCursos[$intZ]."</option>";
-                                            } 
-                                        ?>
-                                        </select>
-                            </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 ml-auto mr-auto">
+                <form class="contact-form" action="JHJ-web-relatorio9-acessar-professores-2.php" method="POST">
+                    <div class="row">
+                        <!-- Usando os dados do BD para fazer o select com os cursos -->
+                        <label class="fonteTexto">Cursos existentes no <label style="font-weight: bold;"><?php echo $strNomeCampusSelecionado." - ".$strCidadeCampusSelecionado."-".$strUFCampusSelecionado ?></label>:</label>
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <i class="nc-icon nc-settings"></i>
+                            </span>
+                            <select class="form-control" name="selectCursoParaAcessarProfessores[]" required="required">
+                                <option value="">Selecione um curso</option>
+                                    <?php
+                                        for ($intZ = 0; $intZ < count($vetIdCursos); $intZ++){ 
+                                            echo "<option name='selectCursoParaAcessarProfessores[]' value='$vetIdCursos[$intZ]'>".
+                                            $vetNomeCursos[$intZ]."</option>";
+                                        } 
+                                    ?>
+                                    </select>
                         </div>
-
-                        <div class="row">
-                            <div class="col-md-4 ml-auto mr-auto">
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4 ml-auto mr-auto">
                             <button type="submit" class="btn btn-info btn-round" >Acessar professores!</button>
-                        </div>       
-                    </form> <!-- fim do formularioCurso -->
-                </div>
+                        </div>
+                    </div>       
+                </form> <!-- fim do formularioCurso -->
             </div>
         </div>
     </div>

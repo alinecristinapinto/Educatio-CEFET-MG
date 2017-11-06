@@ -34,7 +34,7 @@
 						  'Aluno', 'Matrícula', 'Funcionário', 'Disciplina', 
 						  'ProfDisciplina', 'Etapa', 'Atividade', 'Conteúdo', 
 						  'Diário', 'Obra', 'Livro', 'Acadêmico', 
-						  'Midia', 'Periódico', 'Parte', 'AutorAcervo', 
+						  'Mídia', 'Periódico', 'Parte', 'AutorAcervo', 
 						  'Autor', 'Reserva', 'Empréstimo', 'Descarte');
 
 	$houveErro = false;
@@ -51,23 +51,28 @@
 
 		if($rstMae -> num_rows > 0)
 		{
-			while($linhaAtual = $rstMae -> fetch_array(MYSQLI_BOTH))
+			while($linhaMae = $rstMae -> fetch_array(MYSQLI_BOTH))
 			{
 				//echo "<br>".$opc;
 				$stmtFilho = $conn -> prepare("SELECT * FROM `{$arrayTabelas[$tabelaFilho]}` WHERE ativo = ? AND $opc = ?");
 				$stmtFilho -> bind_param('si', $param1, $param2);
 
 				$param1 = 'S';
-				$param2 = $linhaAtual[0];
+				$param2 = $linhaMae[0];
 				
 				$stmtFilho -> execute();
 
 				$rstFilho = $stmtFilho -> get_result();
 
+				//$linhaFilho = $rstFilho -> fetch_assoc();
+
 				if($rstFilho -> num_rows == 0)
 				{
-					$stringRelatorioErros .= $arrayNomesTabelas[$tabelaMae]." com id = ".$linhaAtual[0]." não possui nenhum(a) ".$arrayNomesTabelas[$tabelaFilho].".<br>";
-					$GLOBALS['houveErro'] = true;
+					if($opc != 'idAcervo' || ($opc == 'idAcervo' && $linhaMae['tipo'] != 'Periódico'))
+					{
+						$stringRelatorioErros .= $arrayNomesTabelas[$tabelaMae].' com id = '.$linhaMae[0].' não possui nenhum(a) '.$arrayNomesTabelas[$tabelaFilho].".<br>";
+						$GLOBALS['houveErro'] = true;
+					}
 				}
 			}
 		}
@@ -158,11 +163,9 @@
 	'Descarte' 23
 	*/
 
-	//Conferindo integridade de Acervo (13)
+	//Conferindo integridade de Acervo (13), exceto por Periódico
 	conferidorDeIntegridade(13,19,'idAcervo');
 	/*
-	conferidorDeIntegridade(13,14,'idAcervo');
-
 	if($bibliotecaVazia == true)
 	{
 		conferidorDeIntegridade(13,15,'idAcervo');

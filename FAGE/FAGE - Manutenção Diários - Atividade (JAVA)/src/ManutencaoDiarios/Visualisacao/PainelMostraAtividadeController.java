@@ -1,4 +1,4 @@
-package ManutencaoDiarios.Visualizacao;
+package ManutencaoDiarios.Visualisacao;
 
 import ManutencaoDiarios.ManutencaoDiarios;
 import ManutencaoDiarios.Modelo.Atividade;

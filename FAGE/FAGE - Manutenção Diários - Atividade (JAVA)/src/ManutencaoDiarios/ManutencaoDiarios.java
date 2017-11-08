@@ -1,8 +1,8 @@
 package ManutencaoDiarios;
 
 import ManutencaoDiarios.Visualisacao.MostraDisciplinasController;
-import ManutencaoDiarios.Visualizacao.PainelInsereController;
-import ManutencaoDiarios.Visualizacao.PainelMostraAtividadeController;
+import ManutencaoDiarios.Visualisacao.PainelInsereController;
+import ManutencaoDiarios.Visualisacao.PainelMostraAtividadeController;
 import java.io.IOException;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -12,7 +12,7 @@ import javafx.stage.Stage;
 
 /**
  *
- * @author Aluno
+ * @author Felipe
  */
 public class ManutencaoDiarios extends Application {
     
@@ -24,7 +24,7 @@ public class ManutencaoDiarios extends Application {
         this.palcoPrincipal = palcoPrincipal;
         palcoPrincipal.setTitle("Manutenção Diários - Atividades");
         
-        chamaMostraDisciplinas();
+        chamaLayoutInsere();
     }
     
     public void chamaLayoutInsere(){

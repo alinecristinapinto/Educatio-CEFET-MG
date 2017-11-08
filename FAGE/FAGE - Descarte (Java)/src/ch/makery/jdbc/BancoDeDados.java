@@ -1,7 +1,6 @@
 package ch.makery.jdbc;
 
 import java.sql.Connection;
-import java.util.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -21,39 +20,71 @@ public class BancoDeDados {
     
     
     private void deletaExemplar(int idAcervo) throws SQLException, ClassNotFoundException{
-        String sql = "SELECT tipo FROM acervo WHERE id = '?'";
+        int i=0;
+        String sql = "SELECT * FROM acervo WHERE id = '"+idAcervo+"'";
         PreparedStatement stmt = conexao.prepareStatement(sql);
-        stmt.setInt(1, idAcervo);
         ResultSet rs = stmt.executeQuery();
-        String tipo = rs.getString(0);
-        if("periodicos".equals(tipo)){//Se for um periodico exclui partes tambem
-            sql="SELECT * FROM periodicos WHERE idAcervo = " + idAcervo;
-            rs = stmt.executeQuery(sql);
-            sql = "UPDATE 'partes' SET 'ativo' = 'N' WHERE idPeriodico = " + rs.getInt("id");
-            stmt.executeQuery(sql);
+        if(!rs.next()){
+            System.out.println("Erro! Acervo sem nenhum exemplar");
+            rs.close();
+            return;
+        }else{
+            String tipo = rs.getString("tipo");
+            
+            switch (tipo) {
+                case "Periódico":
+                    tipo = "periodicos";
+                break;
+                case "Livro":
+                    tipo = "livros";
+                break;
+                case "Acadêmico":
+                    tipo = "academicos";
+                break;
+                case "Mídia":
+                    tipo = "midias";
+                break;
+                default:
+                    
+                break;
+            }
+            
+            if(tipo.equals("periodicos")){//Se for um periodico exclui partes tambem
+                sql="SELECT * FROM periodicos WHERE idAcervo = " + idAcervo;
+                rs = stmt.executeQuery(sql);
+                if(!rs.next()){
+                    System.out.println("Erro! Periodico sem nenhuma parte");
+                    rs.close();
+                    return;
+                }else{
+                    int idPeriodico = rs.getInt("id");
+                    rs.close();
+                    sql = "UPDATE partes SET ativo = 'N' WHERE idPeriodico = " + idPeriodico;
+                    stmt.executeUpdate(sql);   
+                }  
+            }
+            sql = "UPDATE " + tipo + " SET ativo = 'N' WHERE idAcervo = " + idAcervo; //Comando
+            stmt.executeUpdate(sql);
         }
-        sql = "UPDATE " + tipo + " SET 'ativo' = 'N' WHERE idAcervo = '?'"; //Comando
-        stmt.setInt(1, idAcervo);
-        stmt.executeQuery(sql);
         stmt.close();
     }
     
     public void deletaAcervo(int idAcervo) throws SQLException, ClassNotFoundException{
         deletaExemplar(idAcervo);
-        String sql = "UPDATE acervo SET ativo = 'N' WHERE id = '?' ";//Comando
+        String sql = "UPDATE acervo SET ativo = 'N' WHERE id = " + idAcervo;//Comando
         PreparedStatement stmt = conexao.prepareStatement(sql);
-        stmt.setInt(1, idAcervo);
         stmt.execute();
         stmt.close();//Fecha statement
     }
     
     public void guardaDescarte(Integer idAcervo, String data, String motivo, String idFuncionario) throws SQLException, ClassNotFoundException{
-        String sql = "INSERT INTO descartes " + "(idAcervo, dataDescarte, motivos, operador)" + " values (?,?,?,?)";//Comando
+        String sql = "INSERT INTO descartes(idAcervo, idFuncionario, dataDescarte, motivos, ativo) values (?,?,?,?,?)";//Comando
         PreparedStatement stmt = conexao.prepareStatement(sql);
         stmt.setInt(1, idAcervo);
-        stmt.setString(2, data);
-        stmt.setString(3, motivo);
-        stmt.setString(4, idFuncionario);
+        stmt.setString(2, idFuncionario);
+        stmt.setString(3, data);
+        stmt.setString(4, motivo);
+        stmt.setString(5, "S");
         stmt.execute();
         stmt.close();//Fecha statement
     }

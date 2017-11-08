@@ -1,6 +1,6 @@
 package ch.makery.address.view;
 
-import ch.makery.address.MainApp;
+/*import ch.makery.address.MainApp;
 import ch.makery.address.model.Acervo;
 import ch.makery.jdbc.BancoDeDados;
 import ch.makery.jdbc.ConectaComBD;
@@ -39,20 +39,15 @@ public class ListaAcervoController {
     
     private ObservableList<Acervo> lista;
     
-    private MainApp mainApp;
-    private Acervo acervoMostra;
+    private Acervo acervoDeletado;
     private static Connection conexao;
     
     public void setAcervoMostra(Acervo acervoMostra) {
-        this.acervoMostra = acervoMostra;
-    }
-
-    public void setMainApp(MainApp mainApp) {
-        this.mainApp = mainApp;
+        this.acervoDeletado = acervoDeletado;
     }
     
     @FXML
-    private void selecionaId() {
+    private void deletaAcervo() {
         System.out.println(tabela.getSelectionModel().getSelectedItem());
         BancoDeDados bd = new BancoDeDados();
         try {
@@ -117,4 +112,4 @@ public class ListaAcervoController {
                 tabela.setItems(sorteiaDados);
     }
     
-}  
+}  */

@@ -20,7 +20,7 @@ import obrasdoacervo.model.ObrasDoAcervo;
  *
  * @author Aluno
  */
-public class FormularioCriaLivroController implements Initializable{
+public class CriaMidiaController implements Initializable{
     private ObrasDoAcervo main;
     private com.mysql.jdbc.Connection link;
     
@@ -41,14 +41,14 @@ public class FormularioCriaLivroController implements Initializable{
             // TODO
             link = (com.mysql.jdbc.Connection) DriverManager.getConnection("jdbc:mysql://localhost:3307/educatio", "root", "usbw");
         } catch (SQLException ex) {
-            Logger.getLogger(FormularioCriaLivroController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(CriaMidiaController.class.getName()).log(Level.SEVERE, null, ex);
         }
         if(link == null)
             System.out.println("Erro!");
         else
             System.out.println("Conexao feita com sucesso!");
             
-    } 
+    }
     
         public void setMain(ObrasDoAcervo main) {
         this.main = main;

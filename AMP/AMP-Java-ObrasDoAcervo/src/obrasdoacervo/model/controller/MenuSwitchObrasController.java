@@ -5,6 +5,7 @@
  */
 package obrasdoacervo.model.controller;
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -50,8 +51,38 @@ public class MenuSwitchObrasController implements Initializable{
             System.out.println("Conexao feita com sucesso!");
             
     } 
+        
+    @FXML
+    public void abreCriaLivro() throws IOException{
+        main.abreCriaLivro();
+    }
     
-        public void setMain(ObrasDoAcervo main) {
+    @FXML
+    public void abreCriaMidia() throws IOException{
+        main.abreCriaMidia();
+    }
+    
+    @FXML
+    public void abreCriaAcademico() throws IOException{
+        main.abreCriaAcademico();
+    }
+    
+    @FXML
+    public void abreCriaParte() throws IOException{
+        main.abreCriaParte();
+    }
+    
+    @FXML
+    public void abreCriaPeriodico() throws IOException{
+        main.abreCriaPeriodico();
+    }
+    
+    @FXML
+    public void sair() throws IOException{
+        System.exit(0);
+    }
+    
+    public void setMain(ObrasDoAcervo main) {
         this.main = main;
     }
 }

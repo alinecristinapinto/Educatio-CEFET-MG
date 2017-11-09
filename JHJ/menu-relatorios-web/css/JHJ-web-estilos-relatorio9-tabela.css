@@ -1,23 +1,28 @@
-.filterable {
-    margin-top: 15px;
+.panel {              
+  border: 2px solid #164c87;
+  box-shadow: none;
+  border-radius: 10px;
 }
-.filterable .panel-heading .pull-right {
+
+.panel-heading{
+    background-color: #164c87;
+    color: white;
+    text-align: center;
+    border-radius: 3px;
     margin-top: -20px;
 }
-.filterable .filters input[disabled] {
-    background-color: transparent;
-    border: none;
-    cursor: auto;
-    box-shadow: none;
-    padding: 0;
-    height: auto;
+.btn-link {
+  background-color: #164c87;
+  border-color: #164c87;
+  color: white;
+  opacity: 1;
+  filter: alpha(opacity=100);
 }
-.filterable .filters input[disabled]::-webkit-input-placeholder {
-    color: #333;
+.btn-link:hover, .btn-info:focus, .btn-info:active, .btn-info.active, .show > .btn-info.dropdown-toggle {
+  background-color: #164c87;
+  color: white;
+  border-color: #164c87;
 }
-.filterable .filters input[disabled]::-moz-placeholder {
-    color: #333;
-}
-.filterable .filters input[disabled]:-ms-input-placeholder {
-    color: #333;
+#padin{
+    padding-left: 15px;
 }

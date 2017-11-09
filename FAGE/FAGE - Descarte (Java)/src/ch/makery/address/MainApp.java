@@ -1,7 +1,7 @@
 package ch.makery.address;
 
 import ch.makery.address.model.Acervo;
-import ch.makery.address.view.ListaAcervoController;
+//import ch.makery.address.view.ListaAcervoController;
 import ch.makery.address.view.PrincipalController;
 import java.io.IOException;
 
@@ -41,13 +41,13 @@ public class MainApp extends Application {
             primaryStage.setScene(scene);
             primaryStage.show();
             PrincipalController controller = loader.getController();
-            controller.setMainApp(this);
+            //controller.setMainApp(this);
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
     
-    public void invocaListaAcervos(Acervo acervo) {
+ /*   public void invocaListaAcervos(Acervo acervo) {
         try {
             // Carrega o root layout do arquivo fxml.
             FXMLLoader loader = new FXMLLoader();
@@ -61,11 +61,10 @@ public class MainApp extends Application {
             ListaAcervoController controller = (ListaAcervoController)loader.getController();
             controller.setMainApp(this);
             controller.setAcervoMostra(acervo);
-            controller.montaTabela();
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
+    }*/
 
     /**
      * Mostra o person overview dentro do root layout.

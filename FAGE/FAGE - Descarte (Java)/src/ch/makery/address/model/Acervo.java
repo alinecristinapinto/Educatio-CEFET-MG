@@ -17,7 +17,9 @@ public class Acervo {
     private StringProperty local;
     private StringProperty editora;
     private StringProperty ano;
+    private Integer idCampi;
     private String tipo;
+    private String paginas;
     private String motivo;
     private String idFuncionario;
     private String data;
@@ -26,12 +28,15 @@ public class Acervo {
         
     }
     
-    public Acervo(Integer id, String nome, String local, String editora, String ano){
+    public Acervo(Integer id, Integer idCampi, String nomeAcervo, String tipo, String local, String ano, String editora, String paginas){
         this.idAcervo = new SimpleIntegerProperty(id);
-        this.nomeAcervo = new SimpleStringProperty(nome);
+        this.idCampi = idCampi;
+        this.nomeAcervo = new SimpleStringProperty(nomeAcervo);
+        this.tipo = tipo;
         this.local = new SimpleStringProperty(local);
-        this.editora = new SimpleStringProperty(editora);
         this.ano = new SimpleStringProperty(ano);
+        this.editora = new SimpleStringProperty(editora);
+        this.paginas = paginas;
     }
     
     public void setTudo(Integer id, String nomeAcervo, String local, String editora, String ano, String tipo, String motivo, String idFuncionario, String data){
@@ -46,29 +51,49 @@ public class Acervo {
         this.data = data;
     }
 
+    public IntegerProperty getIdAcervo() {
+        return idAcervo;
+    }
+
     @Override
     public String toString() {
-        return "Acervo{" + "idAcervo=" + idAcervo + ", nomeAcervo=" + nomeAcervo + ", local=" + local + ", editora=" + editora + ", ano=" + ano + ", tipo=" + tipo + ", motivo=" + motivo + ", idFuncionario=" + idFuncionario + ", data=" + data + '}';
-    }
-    
-    public Integer getIdAcervo() {
-        return idAcervo.get();
-    }
-    
-    public String getNomeAcervo() {
-        return nomeAcervo.get();
+        return "Acervo{" + "idAcervo=" + idAcervo.get() + ", nomeAcervo=" + nomeAcervo.get() + ", local=" + local.get() + ", editora=" + editora.get() + ", ano=" + ano.get() + ", idCampi=" + idCampi + ", tipo=" + tipo + ", paginas=" + paginas + ", motivo=" + motivo + ", idFuncionario=" + idFuncionario + ", data=" + data + '}';
     }
 
-    public String getLocal() {
-        return local.get();
+    public void setIdAcervo(IntegerProperty idAcervo) {
+        this.idAcervo = idAcervo;
     }
 
-    public String getEditora() {
-        return editora.get();
+    public StringProperty getNomeAcervo() {
+        return nomeAcervo;
     }
 
-    public String getAno() {
-        return ano.get();
+    public void setNomeAcervo(StringProperty nomeAcervo) {
+        this.nomeAcervo = nomeAcervo;
+    }
+
+    public StringProperty getLocal() {
+        return local;
+    }
+
+    public void setLocal(StringProperty local) {
+        this.local = local;
+    }
+
+    public StringProperty getEditora() {
+        return editora;
+    }
+
+    public void setEditora(StringProperty editora) {
+        this.editora = editora;
+    }
+
+    public StringProperty getAno() {
+        return ano;
+    }
+
+    public void setAno(StringProperty ano) {
+        this.ano = ano;
     }
 
     public String getTipo() {
@@ -102,6 +127,5 @@ public class Acervo {
     public void setData(String data) {
         this.data = data;
     }
-    
     
 }

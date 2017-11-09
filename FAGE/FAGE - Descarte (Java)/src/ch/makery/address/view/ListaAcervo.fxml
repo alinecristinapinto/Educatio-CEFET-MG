@@ -1,21 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ch.makery.address.view.ListaAcervoController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="438.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ch.makery.address.view.ListaAcervoController">
    <children>
-      <Button layoutX="524.0" layoutY="371.0" mnemonicParsing="false" onAction="#selecionaId" text="Concluir" />
-      <TableView fx:id="tabela" layoutX="15.0" layoutY="14.0" prefHeight="347.0" prefWidth="571.0">
-         <columns>
-            <TableColumn fx:id="idAcervo" prefWidth="57.0" text="Id" />
-            <TableColumn fx:id="nomeAcervo" prefWidth="268.0" text="Nome" />
-            <TableColumn fx:id="editora" prefWidth="96.0" text="Editora" />
-            <TableColumn fx:id="local" prefWidth="99.0" text="Local" />
-            <TableColumn fx:id="ano" prefWidth="50.0" text="Ano" />
-         </columns>
+      <TableView fx:id="tabela" layoutX="54.0" layoutY="99.0" prefHeight="274.0" prefWidth="618.0">
+        <columns>
+          <TableColumn fx:id="colunaIdAcervo" prefWidth="75.0" text="Id" />
+          <TableColumn fx:id="colunaNomeAcervo" prefWidth="220.0" text="Nome" />
+            <TableColumn fx:id="colunaLocal" prefWidth="98.0" text="Local" />
+            <TableColumn fx:id="colunaEditora" prefWidth="150.0" text="Editora" />
+            <TableColumn fx:id="colunaAno" prefWidth="74.0" text="Ano" />
+        </columns>
       </TableView>
+      <Button layoutX="587.0" layoutY="381.0" mnemonicParsing="false" onAction="#selecionaId" prefHeight="37.0" prefWidth="85.0" text="Descarta" />
+      <Label layoutX="150.0" layoutY="37.0" prefHeight="17.0" prefWidth="67.0" text="Nome:" />
+      <TextField fx:id="txtNomeAcervo" layoutX="350.0" layoutY="33.0" prefHeight="25.0" prefWidth="192.0" promptText="Nome do acervo" />
    </children>
 </AnchorPane>

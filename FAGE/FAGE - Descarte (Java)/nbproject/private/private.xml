@@ -2,13 +2,6 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/C:/Users/Aluno/Desktop/FAGE-Descarte/src/ch/makery/jdbc/ConectaComBD.java</file>
-            <file>file:/C:/Users/Aluno/Desktop/FAGE-Descarte/src/ch/makery/address/view/PrincipalController.java</file>
-            <file>file:/C:/Users/Aluno/Desktop/FAGE-Descarte/src/ch/makery/address/view/ListaAcervo.fxml</file>
-            <file>file:/C:/Users/Aluno/Desktop/FAGE-Descarte/src/ch/makery/address/view/ListaAcervoController.java</file>
-            <file>file:/C:/Users/Aluno/Desktop/FAGE-Descarte/src/ch/makery/address/MainApp.java</file>
-            <file>file:/C:/Users/Aluno/Desktop/FAGE-Descarte/src/ch/makery/address/model/Acervo.java</file>
-        </group>
+        <group/>
     </open-files>
 </project-private>

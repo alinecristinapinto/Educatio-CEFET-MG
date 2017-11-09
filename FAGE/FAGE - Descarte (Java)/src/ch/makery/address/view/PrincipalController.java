@@ -2,40 +2,55 @@ package ch.makery.address.view;
 
 import ch.makery.address.MainApp;
 import ch.makery.address.model.Acervo;
+import ch.makery.jdbc.BancoDeDados;
+import ch.makery.jdbc.ConectaComBD;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.format.DateTimeFormatter;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
-import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextArea;
-import javafx.scene.control.ToggleGroup;
+
 public class PrincipalController {
     @FXML
     private TextField txtIdFuncionario;
     @FXML
-    private TextField txtNomeAcervo;
-    @FXML
     private TextArea txtMotivo;
     @FXML
-    private ToggleGroup tipoDoAcervo;
-    @FXML
-    private RadioButton midias;
-    @FXML
-    private RadioButton livros;
-    @FXML
-    private RadioButton periodicos;
-    @FXML
-    private RadioButton academicos;
-    @FXML
     private DatePicker data;
-
+    @FXML
+    private TextField txtNomeAcervo;
+    @FXML
+    private TableView<Acervo> tabela;
+    @FXML
+    private TableColumn<Acervo, Integer> colunaIdAcervo;
+    @FXML
+    private TableColumn<Acervo, String> colunaNomeAcervo;
+    @FXML
+    private TableColumn<Acervo, String> colunaAno;
+    @FXML
+    private TableColumn<Acervo, String> colunaLocal;
+    @FXML
+    private TableColumn<Acervo, String> colunaEditora;
+    
+    private ObservableList<Acervo> lista;
     private MainApp mainApp;
-    private Acervo acervoRecebe;
-    private String tipo;
+    private static Connection conexao;
+    
+    public void setMainApp(MainApp mainApp) {
+        this.mainApp = mainApp;
+    }
     
     public TextField getTxtIdFuncionario() {
         return txtIdFuncionario;
@@ -45,14 +60,6 @@ public class PrincipalController {
         this.txtIdFuncionario = txtIdFuncionario;
     }
 
-    public TextField getTxtNomeAcervo() {
-        return txtNomeAcervo;
-    }
-
-    public void setTxtNomeAcervo(TextField txtNomeAcervo) {
-        this.txtNomeAcervo = txtNomeAcervo;
-    }
-
     public TextArea getTxtMotivo() {
         return txtMotivo;
     }
@@ -60,58 +67,107 @@ public class PrincipalController {
     public void setTxtMotivo(TextArea txtMotivo) {
         this.txtMotivo = txtMotivo;
     }
-
-    public void setMainApp(MainApp mainApp) {
-        this.mainApp = mainApp;
-    }
-    
-    private void setAcervoRecebe(){
-        acervoRecebe = new Acervo();
-        acervoRecebe.setTudo(10,txtNomeAcervo.getText(), null, null, null, tipo, txtMotivo.getText(), txtIdFuncionario.getText(), data.getValue().format(DateTimeFormatter.ofPattern("dd-MM-yyyy")));
-        System.out.println(acervoRecebe);
-    }
-    
     
     @FXML
-    private void recebeDados(){
-        if(tipoDoAcervo.getSelectedToggle().equals(livros)){
-            tipo = "livros";
-        }if(tipoDoAcervo.getSelectedToggle().equals(academicos)){
-            tipo = "academicos";
-        }if(tipoDoAcervo.getSelectedToggle().equals(midias)){
-            tipo = "midias";
-        }if(tipoDoAcervo.getSelectedToggle().equals(periodicos)){
-            tipo = "periodicos";
+    private void deletaAcervo() {
+        BancoDeDados bd = new BancoDeDados();
+        if(!emprestado()){
+            try {
+                bd.deletaAcervo(tabela.getSelectionModel().getSelectedItem().getIdAcervo().get());
+                bd.guardaDescarte(
+                    tabela.getSelectionModel().getSelectedItem().getIdAcervo().get(),
+                    data.getValue().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")),
+                    txtMotivo.getText(),
+                    txtIdFuncionario.getText());
+            } catch (SQLException | ClassNotFoundException ex) {
+                Logger.getLogger(PrincipalController.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
-        setAcervoRecebe();
-        mainApp.invocaListaAcervos(acervoRecebe);
+            txtMotivo.setText("");
+            txtNomeAcervo.setText("");
+            data.setValue(null);
+            montaTabela();
     }
     
+    private boolean emprestado(){
+        String sql = "SELECT * FROM emprestimos WHERE ativo = 'S'";
+        try{
+            PreparedStatement stmt = conexao.prepareStatement(sql);
+            ResultSet rs = stmt.executeQuery(sql);
+            if(!rs.next()){
+                rs.close();
+                return false;
+            }    
+                while(rs.next()){
+                    if(tabela.getSelectionModel().getSelectedItem().getIdAcervo().get()==rs.getInt(3)){
+                        System.out.println("Livro emprestado para o aluno de id: " + rs.getString(2) +"\nData prevista para devolução: " + rs.getString(5));
+                        return true;
+                    }
+                }
+                rs.close();
+        }catch (SQLException ex) {
+            Logger.getLogger(PrincipalController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
+    }
+    
+    //private boolean entradaCorreta(){
+        
+    //}
+
     @FXML
-    private boolean isInputValid() {
-        String errorMessage = "";
-        if(txtIdFuncionario == null||txtNomeAcervo == null||txtMotivo == null){
-            errorMessage += "Campo em branco!\n";
-        }else{
-           try{
-               Integer.parseInt(txtIdFuncionario.getText());
-           }catch(NumberFormatException e){
-               errorMessage += "Matricula e um inteiro!\n";
-           }
-           
+    public void initialize() {
+        try {
+            conexao = ConectaComBD.getConnection();
+        } catch (SQLException | ClassNotFoundException ex) {
+            Logger.getLogger(PrincipalController.class.getName()).log(Level.SEVERE, null, ex);
         }
-
-        if (errorMessage.length() == 0) {
-            return true;
-        } else {
-            // Mostra a mensagem de erro.
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-                      alert.setTitle("Campos invalidos");
-                      alert.setHeaderText("Por favor, corrija os campos invalidos");
-                      alert.setContentText(errorMessage);
-                alert.showAndWait();
-
-            return false;
+        
+        colunaIdAcervo.setCellValueFactory(cellData -> cellData.getValue().getIdAcervo().asObject());
+        colunaNomeAcervo.setCellValueFactory(cellData -> cellData.getValue().getNomeAcervo());
+        colunaEditora.setCellValueFactory(cellData -> cellData.getValue().getEditora());
+        colunaLocal.setCellValueFactory(cellData -> cellData.getValue().getLocal());  
+        colunaAno.setCellValueFactory(cellData -> cellData.getValue().getAno());
+        
+        montaTabela();
+        
+        FilteredList<Acervo> filtraDados = new FilteredList<>(lista, p -> true);
+        txtNomeAcervo.textProperty().addListener((observable, oldValue, newValue) -> 
+        {
+            filtraDados.setPredicate(Acervo -> {
+            // If filter text is empty, display all persons.
+            if (newValue == null || newValue.isEmpty()) {
+                return true;
+            }
+            // Compare first name and last name of every person with filter text.
+            String lowerCaseFilter = newValue.toLowerCase();
+            if (Acervo.getNomeAcervo().toString().toLowerCase().contains(lowerCaseFilter)) {
+                return true; // Filter matches first name.
+            }
+                return false; // Does not match.
+            });
+        });
+        SortedList<Acervo> sorteiaDados = new SortedList<>(filtraDados);
+        sorteiaDados.comparatorProperty().bind(tabela.comparatorProperty());
+        tabela.setItems(sorteiaDados);
+    }
+    
+    private void montaTabela(){
+        lista = FXCollections.observableArrayList();
+        String sql = "SELECT * FROM acervo WHERE ativo = 'S'";
+        try (PreparedStatement stmt = conexao.prepareStatement(sql)) {
+            ResultSet rs = stmt.executeQuery();
+                while(rs.next()){
+                    lista.add(new Acervo(rs.getInt(1),rs.getInt(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8)));
+                }
+                rs.close();
+        }catch (SQLException ex) {
+            Logger.getLogger(PrincipalController.class.getName()).log(Level.SEVERE, null, ex);
         }
+        tabela.setItems(lista);
+    }
+    
+    private void retornaTela(){
+        
     }
 }

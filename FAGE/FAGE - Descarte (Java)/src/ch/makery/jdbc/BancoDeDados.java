@@ -1,123 +1,92 @@
 package ch.makery.jdbc;
 
 import java.sql.Connection;
-import java.util.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class BancoDeDados {
     private static Connection conexao;
 
-    public BancoDeDados(Connection conexao) {
-        this.conexao = conexao;
+    public BancoDeDados() {
+        try {
+            conexao = ConectaComBD.getConnection();
+        } catch (SQLException | ClassNotFoundException ex) {
+            Logger.getLogger(BancoDeDados.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
     
-    private void deletaExemplar(int idAcervo, String tipo) throws SQLException, ClassNotFoundException{
-        String sql = null;
+    private void deletaExemplar(int idAcervo) throws SQLException, ClassNotFoundException{
+        int i=0;
+        String sql = "SELECT * FROM acervo WHERE id = '"+idAcervo+"'";
         PreparedStatement stmt = conexao.prepareStatement(sql);
         ResultSet rs = stmt.executeQuery();
-        if(tipo=="periodicos"){//Se for um periodico exclui partes tambem
-            sql="SELECT * FROM periodicos WHERE idAcervo = " + idAcervo;
-            rs = stmt.executeQuery(sql);
-            sql = "UPDATE 'partes' SET 'ativo' = 'N' WHERE idPeriodico = "+rs.getInt("id");
-            stmt.executeQuery(sql);
-            if(!stmt.execute(sql)/*Executa comando*/){
-                //Mensagem de exito-------------
-            }
-        }
-        sql = "UPDATE " + tipo + " SET 'ativo' = 'N' WHERE idAcervo = " + idAcervo;//Comando
-        if(stmt.execute(sql)/*Executa comando*/){
-            //Mensagem de exito-------------
+        if(!rs.next()){
+            System.out.println("Erro! Acervo sem nenhum exemplar");
+            rs.close();
+            return;
         }else{
-            //Mensagem de erro-------------
+            String tipo = rs.getString("tipo");
+            
+            switch (tipo) {
+                case "Periódico":
+                    tipo = "periodicos";
+                break;
+                case "Livro":
+                    tipo = "livros";
+                break;
+                case "Acadêmico":
+                    tipo = "academicos";
+                break;
+                case "Mídia":
+                    tipo = "midias";
+                break;
+                default:
+                    
+                break;
+            }
+            
+            if(tipo.equals("periodicos")){//Se for um periodico exclui partes tambem
+                sql="SELECT * FROM periodicos WHERE idAcervo = " + idAcervo;
+                rs = stmt.executeQuery(sql);
+                if(!rs.next()){
+                    System.out.println("Erro! Periodico sem nenhuma parte");
+                    rs.close();
+                    return;
+                }else{
+                    int idPeriodico = rs.getInt("id");
+                    rs.close();
+                    sql = "UPDATE partes SET ativo = 'N' WHERE idPeriodico = " + idPeriodico;
+                    stmt.executeUpdate(sql);   
+                }  
+            }
+            sql = "UPDATE " + tipo + " SET ativo = 'N' WHERE idAcervo = " + idAcervo; //Comando
+            stmt.executeUpdate(sql);
         }
-        stmt.close();//Fecha statement
-        conexao.close();
+        stmt.close();
     }
     
-    public void deletaAcervo(int idAcervo, String tipo) throws SQLException, ClassNotFoundException{
-        deletaExemplar(idAcervo,tipo);
-        String sql = "UPDATE 'acervo' SET 'ativo' = 'N' WHERE id = " + idAcervo;//Comando
+    public void deletaAcervo(int idAcervo) throws SQLException, ClassNotFoundException{
+        deletaExemplar(idAcervo);
+        String sql = "UPDATE acervo SET ativo = 'N' WHERE id = " + idAcervo;//Comando
         PreparedStatement stmt = conexao.prepareStatement(sql);
-        if(!stmt.execute()/*Executa comando*/){
-            //Mensagem de exito----------
-        }
+        stmt.execute();
         stmt.close();//Fecha statement
-        conexao.close();
     }
     
-    public void guardaDescarte(Integer idAcervo, Date data, String motivo, String idFuncionario) throws SQLException, ClassNotFoundException{
-        String sql = "INSERT INTO descartes " + "(idAcervo, dataDescarte, motivos, operador)" + " values (?,?,?,?)";//Comando
+    public void guardaDescarte(Integer idAcervo, String data, String motivo, String idFuncionario) throws SQLException, ClassNotFoundException{
+        String sql = "INSERT INTO descartes(idAcervo, idFuncionario, dataDescarte, motivos, ativo) values (?,?,?,?,?)";//Comando
         PreparedStatement stmt = conexao.prepareStatement(sql);
         stmt.setInt(1, idAcervo);
-        stmt.setString(2, data.toString());
-        stmt.setString(3, motivo);
-        stmt.setString(4, idFuncionario);
-        if(stmt.execute()/*Executa comando*/){
-            //Mensagem de exito-------------
-        }else{
-            //Mensagem de erro-------------
-        }
+        stmt.setString(2, idFuncionario);
+        stmt.setString(3, data);
+        stmt.setString(4, motivo);
+        stmt.setString(5, "S");
+        stmt.execute();
         stmt.close();//Fecha statement
-        conexao.close();
     }
     
-    /*public String[][] retornaAcervos(String nomeAcervo) throws SQLException, ClassNotFoundException{
-        int i = 0;
-        String sql = "SELECT * FROM acervo WHERE nome = '" + nomeAcervo + "' ORDER BY id";
-        PreparedStatement stmt = conexao.prepareStatement(sql);
-        ResultSet rs = stmt.executeQuery();
-        String[][] dados = new String [rs.getFetchSize()][5];
-        while(rs.next()){
-          for(int j=0;j<5;j++){
-             if(j==0){
-               dados[i][j] = Integer.toString(rs.getInt("id"));
-             }if(j==1){
-               dados[i][j] =  rs.getString("nome");
-             }if(j==2){
-               dados[i][j] =  rs.getString("local");  
-             }if(j==3){
-               dados[i][j] =  rs.getString("ano");  
-             }if(j==4){
-               dados[i][j] =  rs.getString("editora");  
-             }
-          }
-          i++;
-        }
-        return dados;
-    }
-    
-    public int retornaId(String nome) throws SQLException, ClassNotFoundException{
-        Connection conexao = new ConnectionFactory().getConnection();
-        String sql = "SELECT * FROM acervo WHERE nome = '" + nome + "'";
-        PreparedStatement stmt = conexao.prepareStatement(sql);
-        ResultSet rs = stmt.executeQuery();
-        int id = rs.getInt("id");
-        stmt.close();
-        conexao.close();
-        return id;
-    }*/
-    
-    public boolean existeAcervo(int idAcervo) throws SQLException, ClassNotFoundException{
-        String sql = "SELECT * FROM acervo WHERE id = '" + idAcervo + "'";
-        PreparedStatement stmt = conexao.prepareStatement(sql);
-        if(stmt.execute()){
-            stmt.close();
-            conexao.close();
-            return true;
-        }else{
-            stmt.close();
-            conexao.close();
-            return false;
-        }
-    }
-    
-    public boolean acervoAtivo(int idAcervo) throws SQLException, ClassNotFoundException{
-        String sql = "SELECT * FROM acervo WHERE id = '" + idAcervo + "'";
-        PreparedStatement stmt = conexao.prepareStatement(sql);
-        ResultSet rs = stmt.executeQuery();
-        return rs.getString("ativo")=="S";
-    }
 }

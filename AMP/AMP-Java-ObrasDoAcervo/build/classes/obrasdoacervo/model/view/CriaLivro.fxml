@@ -83,6 +83,6 @@
             </TextField>
          </children>
       </GridPane>
-      <Button layoutX="433.0" layoutY="361.0" mnemonicParsing="false" text="Criar" />
+      <Button layoutX="433.0" layoutY="361.0" mnemonicParsing="false" onAction="#criaLivro" text="Criar" />
    </children>
 </AnchorPane>

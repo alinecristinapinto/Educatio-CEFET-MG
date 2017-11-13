@@ -33,8 +33,11 @@ public class CriaLivroController implements Initializable{
     private TextField nome;
     @FXML
     private TextField edicao;
+    
     @FXML
     private TextField idCampi;
+    //Select
+    
     @FXML
     private TextField local;
     @FXML

@@ -38,9 +38,9 @@ d8ac29
 
 	<div class="container">
 		<div class="head">
-             <h2 class="text-center">Periodicos</h2>
+             <h2 class="text-center">Livros</h2>
         </div>
-		<form class="contact-form">
+		<form class="contact-form" action="livro.php" method="post">
 			<div class="container">
 				<div class="row">
 					<div class="col ml-auto mr-auto">
@@ -50,18 +50,18 @@ d8ac29
 									<span class="input-group-addon">
 										<i class="nc-icon nc-tag-content"></i>
 									</span>
-									<input type="text" class="form-control" placeholder="Nome do periodico" required='required'>
+									<input type="text" name="nome" class="form-control" placeholder="Nome do livro" required='required'>
 								</div>
 				      </div>
 					</div>
 					<div class="col ml-auto mr-auto">
        			<div class="col-md-12">
-         			<label class="fonteTexto">Periodicidade:</label>
+         			<label class="fonteTexto">Edição:</label>
 							<div class="input-group">
 								<span class="input-group-addon">
 									<i class="nc-icon nc-check-2"></i>
 								</span>
-								<input type="text" class="form-control" placeholder="Periodicidade" required='required'>
+								<input type="text" class="form-control" name="edicao" placeholder="Edição do livro" required='required'>
 							</div>
 			      </div>
 					</div>	
@@ -70,12 +70,12 @@ d8ac29
 				<div class="row">
 					<div class="col ml-auto mr-auto">
 	       			<div class="col-md-12">
-	         			<label class="fonteTexto">Tipo:</label>
+	         			<label class="fonteTexto">ID Campi:</label>
 								<div class="input-group">
 									<span class="input-group-addon">
 										<i class="nc-icon nc-bookmark-2"></i>
 									</span>
-									<input type="text" class="form-control" placeholder="Tipo do periodico" required='required'>
+									<input type="text" class="form-control" name="tipo" placeholder="ID campi do livro" required='required'>
 								</div>
 				      </div>
 					</div>
@@ -86,7 +86,7 @@ d8ac29
 								<span class="input-group-addon">
 									<i class="nc-icon nc-pin-3"></i>
 								</span>
-								<input type="text" class="form-control" placeholder="Local do periodico" required='required'>
+								<input type="text" class="form-control" name="local" placeholder="Local do livro" required='required'>
 							</div>
 			      </div>
 					</div>	
@@ -100,7 +100,7 @@ d8ac29
 									<span class="input-group-addon">
 										<i class="nc-icon nc-calendar-60"></i>
 									</span>
-									<input type="number" class="form-control" placeholder="Ano do periodico" required='required'>
+									<input type="number" class="form-control" name="ano" placeholder="qualquer coisa" required='required'>
 								</div>
 				      </div>
 					</div>
@@ -111,7 +111,7 @@ d8ac29
 								<span class="input-group-addon">
 									<i class="nc-icon nc-paper"></i>
 								</span>
-								<input type="text" class="form-control" placeholder="Editora do periodico" required='required'>
+								<input type="text" class="form-control" name="editora" placeholder="Editora do livro" required='required'>
 							</div>
 			      </div>
 					</div>	
@@ -125,84 +125,78 @@ d8ac29
 									<span class="input-group-addon">
 										<i class="nc-icon nc-single-copy-04"></i>
 									</span>
-									<input type="number" class="form-control" placeholder="Numero de paginas" required='required'>
+									<input type="number" class="form-control" name="paginas" placeholder="Numero de paginas" required='required'>
 								</div>
 				      </div>
 					</div>
                     <div class="col ml-auto mr-auto">
 	       			<div class="col-md-12">
-	         			<label class="fonteTexto">Mês:</label>
+	         			<label class="fonteTexto">ISBN:</label>
 								<div class="input-group">
 									<span class="input-group-addon">
-										<i class="nc-icon nc-calendar-60"></i>
+										<i class="nc-icon nc-book-bookmark"></i>
 									</span>
-									<input type="number" class="form-control" placeholder="Mês do periodico" required='required'>
+									<input type="number" class="form-control" name="ISBN" placeholder="ISBN do livro" required='required'>
 								</div>
 				      </div>
 					</div>
 				</div>
+                
+                
+                
+                <div class="title" style="text-align: center;"> 
+                    <h2>Autor</h2>
+                </div>
                 
                 <div class="row">
 					<div class="col ml-auto mr-auto">
 	       			<div class="col-md-12">
-	         			<label class="fonteTexto">Volume:</label>
+	         			<label class="fonteTexto">Nome:</label>
 								<div class="input-group">
 									<span class="input-group-addon">
-										<i class="nc-icon nc-tile-56"></i>
+										<i class="nc-icon nc-single-02"></i>
 									</span>
-									<input type="number" class="form-control" placeholder="Volume do periodico" required='required'>
+									<input type="number" class="form-control" name="paginas" placeholder="Nome do autor" required='required'>
 								</div>
 				      </div>
 					</div>
                     <div class="col ml-auto mr-auto">
 	       			<div class="col-md-12">
-	         			<label class="fonteTexto">Subtipo:</label>
+	         			<label class="fonteTexto">Sobrenome:</label>
 								<div class="input-group">
 									<span class="input-group-addon">
-										<i class="nc-icon nc-bullet-list-67"></i>
+										<i class="nc-icon nc-single-02"></i>
 									</span>
-									<input type="text" class="form-control" placeholder="Subtipo do periodico" required='required'>
+									<input type="number" class="form-control" name="ISBN" placeholder="Sobrenome do autor" required='required'>
 								</div>
 				      </div>
 					</div>
 				</div>
-                
                 <div class="row">
+					<div class="col ml-auto mr-auto">
+	       			<div class="col-md-12">
+	         			<label class="fonteTexto">Ordem:</label>
+								<div class="input-group">
+									<span class="input-group-addon">
+										<i class="nc-icon nc-single-02"></i>
+									</span>
+									<input type="number" class="form-control" name="paginas" placeholder="Ordem do autor" required='required'>
+								</div>
+				      </div>
+					</div>
                     <div class="col ml-auto mr-auto">
-                    <div class="col-md-12">
-                        <label class="fonteTexto">ISSN:</label>
-                                <div class="input-group">
-                                    <span class="input-group-addon">
-                                        <i class="nc-icon nc-badge"></i>
-                                    </span>
-                                    <input type="number" class="form-control" placeholder="ISSN do periodico" required='required'>
-                                </div>
-                      </div>
-                    </div>
-                    
-                    <div class="col ml-auto mr-auto">
-                        <div class="col-md-12">
-                        <label class="fonteTexto">Selecione a parte para editar:</label>
-                                <div class="input-group">
-                                    <span class="input-group-addon">
-                                        <i class="nc-icon nc-badge"></i>
-                                    </span>
-                                    <select class="form-control" id="exampleFormControlSelect1">
-                                      <option>1</option>
-                                      <option>2</option>
-                                      <option>3</option>
-                                      <option>4</option>
-                                      <option>5</option>
-                                    </select>
-                                </div>
-                        </div>
-                    </div>
-                </div>
-
-				<div class="btn-group" role="group" aria-label="...">
-					<button class="btn btn-neutral">Excluir</button>
-					<button type="submit" class="btn btn-neutral">Editar</button>
+	       			<div class="col-md-12">
+	         			<label class="fonteTexto">Qualificação:</label>
+								<div class="input-group">
+									<span class="input-group-addon">
+										<i class="nc-icon nc-single-02"></i>
+									</span>
+									<input type="number" class="form-control" name="ISBN" placeholder="Qualificação do autor" required='required'>
+								</div>
+				      </div>
+					</div>
 				</div>
+					<button type="submit" id="criar" class="btn btn-info btn-round">Criar</button>
 			</div>	
 		</form>	
 	</div>

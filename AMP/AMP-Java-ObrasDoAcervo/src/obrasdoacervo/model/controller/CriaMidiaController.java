@@ -19,6 +19,8 @@ import javafx.scene.control.TextField;
 import obrasdoacervo.model.Autores;
 import obrasdoacervo.model.Midias;
 import obrasdoacervo.model.ObrasDoAcervo;
+import static obrasdoacervo.model.ObrasDoAcervo.insereAutores;
+import static obrasdoacervo.model.ObrasDoAcervo.insereMidias;
 
 /**
  *
@@ -83,9 +85,9 @@ public class CriaMidiaController implements Initializable{
         int idCampus = Integer.parseInt(idCampi.getText());
         
         Midias midia = new Midias(tempo.getText(), subtipo.getText(), idCampus, nome.getText(), "midias", local.getText(), ano.getText(), editora.getText(), paginas.getText());       
-        obrasdoacervo.model.ObrasDoAcervo.insereMidias(link, midia);
+        insereMidias(link, midia);
         Autores autor = new Autores(autorNome.getText(), autorSobrenome.getText(), autorOrdem.getText(), autorQualificacao.getText());
-        obrasdoacervo.model.ObrasDoAcervo.insereAutores(link, autor);
+        insereAutores(link, autor);
         //System.out.println("Criou uma turma.");
         main.abreMenuSwitchObras();
         }

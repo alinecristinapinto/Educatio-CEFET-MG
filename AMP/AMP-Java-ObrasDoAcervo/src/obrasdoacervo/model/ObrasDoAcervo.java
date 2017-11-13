@@ -28,6 +28,7 @@ import obrasdoacervo.model.controller.EditaParteController;
 import obrasdoacervo.model.controller.EditaPeriodicosController;
 import obrasdoacervo.model.controller.InterfacePrincipalController;
 import obrasdoacervo.model.controller.MenuSwitchObrasController;
+import obrasdoacervo.model.controller.PesquisarObraController;
 
 /**
  *
@@ -63,6 +64,25 @@ public class ObrasDoAcervo extends Application {
         InterfacePrincipalController controller = loader.getController();
         controller.setMain(this);
     }
+    
+    public void abrePesquisarObra() throws IOException{
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(ObrasDoAcervo.class.getResource("view/PesquisarObra.fxml"));
+        AnchorPane tela = (AnchorPane) loader.load();
+        borda.setCenter(tela);
+        PesquisarObraController controller = loader.getController();
+        controller.setMain(this);
+    }
+    
+    /*public void abrePesquisarAutor() throws IOException{
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(ObrasDoAcervo.class.getResource("view/PesquisarAutor.fxml"));
+        AnchorPane tela = (AnchorPane) loader.load();
+        borda.setCenter(tela);
+        PesquisarAutorController controller = loader.getController();
+        controller.setMain(this);
+    }
+    */
     
     public void abreCriaAcademico() throws IOException{
         FXMLLoader loader = new FXMLLoader();

@@ -20,6 +20,8 @@ import javafx.scene.control.TextField;
 import obrasdoacervo.model.Autores;
 import obrasdoacervo.model.ObrasDoAcervo;
 import obrasdoacervo.model.Livros;
+import static obrasdoacervo.model.ObrasDoAcervo.insereAutores;
+import static obrasdoacervo.model.ObrasDoAcervo.insereLivro;
 
 /**
  *
@@ -87,15 +89,15 @@ public class CriaLivroController implements Initializable{
         int idCampus = Integer.parseInt(idCampi.getText());
         
         Livros livro = new Livros(ISBN.getText(), edicao.getText(), idCampus, nome.getText(), "livros", local.getText(), ano.getText(), editora.getText(), paginas.getText());        
-        obrasdoacervo.model.ObrasDoAcervo.insereLivro(link, livro);
+        insereLivro(link, livro);
         Autores autor = new Autores(autorNome.getText(), autorSobrenome.getText(), autorOrdem.getText(), autorQualificacao.getText());
-        obrasdoacervo.model.ObrasDoAcervo.insereAutores(link, autor);
+        insereAutores(link, autor);
         //System.out.println("Criou uma turma.");
         main.abreMenuSwitchObras();
         }
      }
-        @FXML
     
+        @FXML
         public void setMain(ObrasDoAcervo main) {
         this.main = main;
     }

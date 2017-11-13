@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="600.0" styleClass="background" stylesheets="@CSSPadrão.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="obrasdoacervo.model.controller.InterfacePrincipalController">
+<AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="600.0" styleClass="background" stylesheets="@CSSPadrão.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="obrasdoacervo.model.controller.InterfacePrincipalController">
    <children>
       <Label layoutX="9.0" layoutY="25.0" prefHeight="42.0" prefWidth="533.0" styleClass="label-cabecalho" text="Manutenção de Obras">
          <font>
@@ -25,7 +25,7 @@
       </Label>
       <Button layoutX="500.0" layoutY="302.0" mnemonicParsing="false" onAction="#abreMenuSwitchObras" text="Criar Obra" />
       <Button layoutX="550.0" layoutY="455.0" mnemonicParsing="false" onAction="#sair" text="Sair" />
-      <Button layoutX="500.0" layoutY="196.0" mnemonicParsing="false" text="Pesquisar" />
+      <Button layoutX="500.0" layoutY="196.0" mnemonicParsing="false" onAction="#abrePesquisarObra" text="Pesquisar" />
       <TextField layoutX="9.0" layoutY="198.0" prefHeight="27.0" prefWidth="472.0" />
    </children>
 </AnchorPane>

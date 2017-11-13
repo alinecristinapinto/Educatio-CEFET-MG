@@ -5,7 +5,6 @@
  */
 package obrasdoacervo.model.controller;
 
-import java.io.IOException;
 import java.net.URL;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -16,54 +15,34 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TextField;
 import obrasdoacervo.model.ObrasDoAcervo;
-import static obrasdoacervo.model.ObrasDoAcervo.remove;
 
 /**
  *
  * @author Aluno
  */
-public class EditaLivroController implements Initializable{
+public class PesquisarObraController implements Initializable {
     private ObrasDoAcervo main;
     private com.mysql.jdbc.Connection link;
+
     
-    @FXML
-    private TextField nome;
-    @FXML
-    private TextField idAntigo;
-    @FXML
-    private TextField idCurso;
-    @FXML
-    private TextField serie;
-    /**
-     * Initializes the controller class.
-     */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         try {
             // TODO
             link = (com.mysql.jdbc.Connection) DriverManager.getConnection("jdbc:mysql://localhost:3307/educatio", "root", "usbw");
         } catch (SQLException ex) {
-            Logger.getLogger(EditaLivroController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(EditaPeriodicosController.class.getName()).log(Level.SEVERE, null, ex);
         }
         if(link == null)
             System.out.println("Erro!");
         else
             System.out.println("Conexao feita com sucesso!");
             
-    } 
-    
-        @FXML
-        public void excluir() throws IOException{
-            remove(link, 0, "livros");
-        }
-        
-        @FXML
-        public void editar() throws IOException{
-            System.exit(0);
-        }
-    
+    }
     
         public void setMain(ObrasDoAcervo main) {
         this.main = main;
     }
+
+    
 }

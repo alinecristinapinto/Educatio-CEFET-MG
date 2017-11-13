@@ -1,8 +1,9 @@
 package ManutencaoDiarios;
 
+import ManutencaoDiarios.Modelo.Atividade;
+import ManutencaoDiarios.Visualisacao.AlteraAtividadeController;
 import ManutencaoDiarios.Visualisacao.MostraDisciplinasController;
 import ManutencaoDiarios.Visualisacao.PainelInsereController;
-import ManutencaoDiarios.Visualisacao.PainelMostraAtividadeController;
 import java.io.IOException;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -24,7 +25,7 @@ public class ManutencaoDiarios extends Application {
         this.palcoPrincipal = palcoPrincipal;
         palcoPrincipal.setTitle("Manutenção Diários - Atividades");
         
-        chamaLayoutInsere();
+        chamaMostraDisciplinas();
     }
     
     public void chamaLayoutInsere(){
@@ -61,17 +62,18 @@ public class ManutencaoDiarios extends Application {
         }
     }
     
-    public void chamaLayoutMostraAtividades(){
+    public void chamaAlteraAtividade(Atividade atividade){
         try{
             FXMLLoader carregadorFXML = new FXMLLoader();
-            carregadorFXML.setLocation(ManutencaoDiarios.class.getResource("Visualisacao/PainelMostraAtividades.fxml"));
+            carregadorFXML.setLocation(ManutencaoDiarios.class.getResource("Visualisacao/AlteraAtividade.fxml"));
             telaBase = (AnchorPane) carregadorFXML.load();
             
             Scene cena = new Scene(telaBase);
             palcoPrincipal.setScene(cena);
             palcoPrincipal.show();
             
-            PainelMostraAtividadeController controller = carregadorFXML.getController();
+            AlteraAtividadeController controller = carregadorFXML.getController();
+            controller.setAtividade(atividade);
             controller.setManutencaoDiarios(this);
         }catch(IOException e){
             e.printStackTrace();

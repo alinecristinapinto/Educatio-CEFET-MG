@@ -11,14 +11,14 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="486.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="obrasdoacervo.model.controller.EditaPeriodicosController">
+<AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="600.0" styleClass="background" stylesheets="@CSSPadrão.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="obrasdoacervo.model.controller.EditaPeriodicosController">
    <children>
-      <Label layoutX="14.0" layoutY="30.0" text="Manutenção de Obras - Periodicos">
+      <Label layoutX="14.0" layoutY="30.0" styleClass="label-cabecalho" text="Manutenção de Obras - Periodicos">
          <font>
             <Font size="25.0" />
          </font>
       </Label>
-      <GridPane layoutX="14.0" layoutY="88.0" prefHeight="256.0" prefWidth="459.0">
+      <GridPane layoutX="14.0" layoutY="88.0" prefHeight="362.0" prefWidth="570.0">
          <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
@@ -38,12 +38,12 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
          </rowConstraints>
          <children>
-            <Label text="Nome:" />
-            <Label text="Tipo:" GridPane.rowIndex="2" />
-            <Label text="Local:" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <Label text="Ano:" GridPane.rowIndex="4" />
-            <Label text="Editora:" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-            <Label text="Paginas:" GridPane.rowIndex="6" />
+            <Label styleClass="label-pequena" text="Nome:" />
+            <Label styleClass="label-pequena" text="ID Campi:" GridPane.rowIndex="2" />
+            <Label styleClass="label-pequena" text="Local:" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <Label styleClass="label-pequena" text="Ano:" GridPane.rowIndex="4" />
+            <Label styleClass="label-pequena" text="Editora:" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <Label styleClass="label-pequena" text="Paginas:" GridPane.rowIndex="6" />
             <TextField GridPane.columnIndex="1" GridPane.rowIndex="3">
                <GridPane.margin>
                   <Insets right="20.0" />
@@ -54,13 +54,13 @@
                   <Insets right="20.0" />
                </GridPane.margin>
             </TextField>
-            <Label text="Periodicidade:" GridPane.columnIndex="1" />
+            <Label styleClass="label-pequena" text="Periodicidade:" GridPane.columnIndex="1" />
             <TextField GridPane.columnIndex="1" GridPane.rowIndex="7">
                <GridPane.margin>
                   <Insets right="20.0" />
                </GridPane.margin>
             </TextField>
-            <Label text="Mês:" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+            <Label styleClass="label-pequena" text="Mês:" GridPane.columnIndex="1" GridPane.rowIndex="6" />
             <TextField GridPane.rowIndex="1">
                <GridPane.margin>
                   <Insets right="20.0" />
@@ -81,10 +81,10 @@
                   <Insets right="20.0" />
                </GridPane.margin>
             </TextField>
-            <Label text="Volume:" GridPane.rowIndex="8" />
-            <Label text="ISSN:" GridPane.rowIndex="10" />
-            <Label text="Subtipo:" GridPane.columnIndex="1" GridPane.rowIndex="8" />
-            <Label text="Selecione a parte para editar:" GridPane.columnIndex="1" GridPane.rowIndex="10" />
+            <Label styleClass="label-pequena" text="Volume:" GridPane.rowIndex="8" />
+            <Label styleClass="label-pequena" text="ISSN:" GridPane.rowIndex="10" />
+            <Label styleClass="label-pequena" text="Subtipo:" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+            <Label styleClass="label-pequena" text="Selecione a parte para editar:" GridPane.columnIndex="1" GridPane.rowIndex="10" />
             <TextField GridPane.rowIndex="9">
                <GridPane.margin>
                   <Insets right="20.0" />
@@ -108,7 +108,7 @@
             </TextField>
          </children>
       </GridPane>
-      <Button layoutX="433.0" layoutY="361.0" mnemonicParsing="false" text="Editar" />
-      <Button layoutX="378.0" layoutY="361.0" mnemonicParsing="false" text="Excluir" />
+      <Button layoutX="533.0" layoutY="455.0" mnemonicParsing="false" text="Editar" />
+      <Button layoutX="473.0" layoutY="455.0" mnemonicParsing="false" text="Excluir" />
    </children>
 </AnchorPane>

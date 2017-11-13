@@ -1,31 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.gluonhq.charm.glisten.control.AutoCompleteTextField?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="362.0" prefWidth="560.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="interfaceprincipal.FXMLDocumentController">
+<AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="600.0" styleClass="background" stylesheets="@CSSPadrão.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="interfaceprincipal.FXMLDocumentController">
    <children>
-      <Label layoutX="8.0" layoutY="34.0" prefHeight="42.0" prefWidth="533.0" text="Manutenção de Professores">
+      <Label layoutX="8.0" layoutY="34.0" prefHeight="42.0" prefWidth="533.0" styleClass="label-cabecalho" text="Manutenção de Professores">
          <font>
             <Font size="25.0" />
          </font>
       </Label>
-      <Label layoutX="8.0" layoutY="203.0" text="Criar novo professor">
+      <Label layoutX="8.0" layoutY="281.0" styleClass="label-cabecalho" text="Criar novo professor">
          <font>
             <Font size="22.0" />
          </font>
       </Label>
-      <Label layoutX="8.0" layoutY="103.0" text="Pesquisar Professores e Obras">
+      <Label layoutX="8.0" layoutY="151.0" styleClass="label-cabecalho" text="Pesquisar Professores ">
          <font>
             <Font size="22.0" />
          </font>
       </Label>
-      <Button layoutX="452.0" layoutY="206.0" mnemonicParsing="false" text="Criar Professor" />
-      <Button layoutX="506.0" layoutY="323.0" mnemonicParsing="false" text="Sair" />
-      <Button layoutX="480.0" layoutY="142.0" mnemonicParsing="false" text="Pesquisar" />
-      <AutoCompleteTextField layoutX="8.0" layoutY="142.0" prefHeight="25.0" prefWidth="468.0" />
+      <Button layoutX="470.0" layoutY="288.0" mnemonicParsing="false" text="Criar Professor" />
+      <Button layoutX="546.0" layoutY="455.0" mnemonicParsing="false" text="Sair" />
+      <Button layoutX="507.0" layoutY="158.0" mnemonicParsing="false" text="Pesquisar" />
    </children>
 </AnchorPane>

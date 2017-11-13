@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="700.0" prefWidth="600.0" styleClass="background" stylesheets="@CSSPadrão.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="obrasdoacervo.model.controller.CriaPeriodicoController">
+<AnchorPane id="AnchorPane" prefHeight="700.0" prefWidth="600.0" styleClass="background" stylesheets="@CSSPadrão.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="obrasdoacervo.model.controller.CriaPeriodicoController">
    <children>
       <Label layoutX="14.0" layoutY="29.0" styleClass="label-cabecalho" text="Manutenção de Obras - Periodicos">
          <font>
@@ -47,39 +47,39 @@
             <Label styleClass="label-pequena" text="Ano:" GridPane.rowIndex="4" />
             <Label styleClass="label-pequena" text="Editora:" GridPane.columnIndex="1" GridPane.rowIndex="4" />
             <Label styleClass="label-pequena" text="Paginas:" GridPane.rowIndex="6" />
-            <TextField GridPane.columnIndex="1" GridPane.rowIndex="3">
+            <TextField fx:id="local" GridPane.columnIndex="1" GridPane.rowIndex="3">
                <GridPane.margin>
                   <Insets right="20.0" />
                </GridPane.margin>
             </TextField>
-            <TextField GridPane.columnIndex="1" GridPane.rowIndex="5">
+            <TextField fx:id="editora" GridPane.columnIndex="1" GridPane.rowIndex="5">
                <GridPane.margin>
                   <Insets right="20.0" />
                </GridPane.margin>
             </TextField>
             <Label styleClass="label-pequena" text="Periodicidade:" GridPane.columnIndex="1" />
-            <TextField GridPane.columnIndex="1" GridPane.rowIndex="7">
+            <TextField fx:id="mes" GridPane.columnIndex="1" GridPane.rowIndex="7">
                <GridPane.margin>
                   <Insets right="20.0" />
                </GridPane.margin>
             </TextField>
             <Label styleClass="label-pequena" text="Mês:" GridPane.columnIndex="1" GridPane.rowIndex="6" />
-            <TextField GridPane.rowIndex="1">
+            <TextField fx:id="nome" GridPane.rowIndex="1">
                <GridPane.margin>
                   <Insets right="20.0" />
                </GridPane.margin>
             </TextField>
-            <TextField GridPane.rowIndex="3">
+            <TextField fx:id="idCampi" GridPane.rowIndex="3">
                <GridPane.margin>
                   <Insets right="20.0" />
                </GridPane.margin>
             </TextField>
-            <TextField GridPane.rowIndex="5">
+            <TextField fx:id="ano" GridPane.rowIndex="5">
                <GridPane.margin>
                   <Insets right="20.0" />
                </GridPane.margin>
             </TextField>
-            <TextField GridPane.rowIndex="7">
+            <TextField fx:id="paginas" GridPane.rowIndex="7">
                <GridPane.margin>
                   <Insets right="20.0" />
                </GridPane.margin>
@@ -87,22 +87,22 @@
             <Label styleClass="label-pequena" text="Volume:" GridPane.rowIndex="8" />
             <Label styleClass="label-pequena" text="ISSN:" GridPane.rowIndex="10" />
             <Label styleClass="label-pequena" text="Subtipo:" GridPane.columnIndex="1" GridPane.rowIndex="8" />
-            <TextField GridPane.rowIndex="9">
+            <TextField fx:id="volume" GridPane.rowIndex="9">
                <GridPane.margin>
                   <Insets right="20.0" />
                </GridPane.margin>
             </TextField>
-            <TextField GridPane.rowIndex="11">
+            <TextField fx:id="ISSN" GridPane.rowIndex="11">
                <GridPane.margin>
                   <Insets right="20.0" />
                </GridPane.margin>
             </TextField>
-            <TextField GridPane.columnIndex="1" GridPane.rowIndex="9">
+            <TextField fx:id="subtipo" GridPane.columnIndex="1" GridPane.rowIndex="9">
                <GridPane.margin>
                   <Insets right="20.0" />
                </GridPane.margin>
             </TextField>
-            <TextField GridPane.columnIndex="1" GridPane.rowIndex="1">
+            <TextField fx:id="periodicidade" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <GridPane.margin>
                   <Insets right="20.0" />
                </GridPane.margin>
@@ -111,28 +111,28 @@
             <Label styleClass="label-pequena" text="Nome do autor:" GridPane.rowIndex="12" />
             <Label styleClass="label-pequena" text="Sobrenome do autor:" GridPane.columnIndex="1" GridPane.rowIndex="12" />
             <Label styleClass="label-pequena" text="Ordem do autor:" GridPane.rowIndex="14" />
-            <TextField GridPane.rowIndex="15">
+            <TextField fx:id="autorOrdem" GridPane.rowIndex="15">
                <GridPane.margin>
                   <Insets right="20.0" />
                </GridPane.margin>
             </TextField>
-            <TextField GridPane.rowIndex="13">
+            <TextField fx:id="autorNome" GridPane.rowIndex="13">
                <GridPane.margin>
                   <Insets right="20.0" />
                </GridPane.margin>
             </TextField>
-            <TextField GridPane.columnIndex="1" GridPane.rowIndex="15">
+            <TextField fx:id="autorQualificacao" GridPane.columnIndex="1" GridPane.rowIndex="15">
                <GridPane.margin>
                   <Insets right="20.0" />
                </GridPane.margin>
             </TextField>
-            <TextField GridPane.columnIndex="1" GridPane.rowIndex="13">
+            <TextField fx:id="autorSobrenome" GridPane.columnIndex="1" GridPane.rowIndex="13">
                <GridPane.margin>
                   <Insets right="20.0" />
                </GridPane.margin>
             </TextField>
          </children>
       </GridPane>
-      <Button layoutX="539.0" layoutY="655.0" mnemonicParsing="false" text="Criar" />
+      <Button layoutX="539.0" layoutY="655.0" mnemonicParsing="false" onAction="#criaPeriodicos" text="Criar" />
    </children>
 </AnchorPane>

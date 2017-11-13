@@ -15,7 +15,9 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
+import obrasdoacervo.model.Autores;
 import obrasdoacervo.model.ObrasDoAcervo;
 import obrasdoacervo.model.Livros;
 
@@ -31,8 +33,11 @@ public class CriaLivroController implements Initializable{
     private TextField nome;
     @FXML
     private TextField edicao;
+    
     @FXML
-    private TextField tipo;
+    private TextField idCampi;
+    //Select
+    
     @FXML
     private TextField local;
     @FXML
@@ -43,6 +48,14 @@ public class CriaLivroController implements Initializable{
     private TextField paginas;
     @FXML
     private TextField ISBN;
+    @FXML
+    private TextField autorNome;
+    @FXML
+    private TextField autorSobrenome;
+    @FXML
+    private TextField autorOrdem;
+    @FXML
+    private TextField autorQualificacao;
     /**
      * Initializes the controller class.
      */
@@ -64,10 +77,22 @@ public class CriaLivroController implements Initializable{
     // Falta idCampi
     @FXML
     public void criaLivro() throws IOException, SQLException{
-        //Livros livro = new Livros(ISBN.getText(), edicao.getText(), 1, nome.getText(), tipo.getText(), local.getText(), ano.getText(), editora.getText(), paginas.getText());        
-        //obrasdoacervo.model.ObrasDoAcervo.insereLivro(link, livro);
-        System.out.println("Criou uma turma.");
+        if (ISBN.getText().equals("") || edicao.getText().equals("") || idCampi.getText().equals("") || nome.getText().equals("") || local.getText().equals("") || ano.getText().equals("") || editora.getText().equals("") || paginas.getText().equals("") || autorNome.getText().equals("") || autorSobrenome.getText().equals("") || autorOrdem.getText().equals("") || autorQualificacao.getText().equals("")){
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            System.out.println("Alert");
+            
+            alert.showAndWait();
+        }else{
+            
+        int idCampus = Integer.parseInt(idCampi.getText());
+        
+        Livros livro = new Livros(ISBN.getText(), edicao.getText(), idCampus, nome.getText(), "livros", local.getText(), ano.getText(), editora.getText(), paginas.getText());        
+        obrasdoacervo.model.ObrasDoAcervo.insereLivro(link, livro);
+        Autores autor = new Autores(autorNome.getText(), autorSobrenome.getText(), autorOrdem.getText(), autorQualificacao.getText());
+        obrasdoacervo.model.ObrasDoAcervo.insereAutores(link, autor);
+        //System.out.println("Criou uma turma.");
         main.abreMenuSwitchObras();
+        }
      }
         @FXML
     

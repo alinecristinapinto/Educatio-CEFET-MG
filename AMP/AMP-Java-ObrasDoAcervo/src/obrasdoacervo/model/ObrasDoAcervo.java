@@ -207,8 +207,8 @@ public class ObrasDoAcervo extends Application {
         //pesquisaAutores(connection, "Kleber");
         //pesquisaAcervo(connection, "80");
         //System.out.println("\n Pesquisa 4 \n");
+        */
 
-*/
     }
 
     public static void insere (Connection connection, Obras obras){

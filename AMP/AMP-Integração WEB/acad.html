@@ -37,10 +37,10 @@ d8ac29
 		<p id="p1">Crie, edite e exclua obras do acervo</p>
 
 	<div class="container">
-		<div class="head">
-             <h2 class="text-center">Midias</h2>
+		<div class="title">
+             <h2 class="text-center">Academico</h2>
         </div>
-		<form class="contact-form">
+		<form class="contact-form" action="acad.php" method="post" >
 			<div class="container">
 				<div class="row">
 					<div class="col ml-auto mr-auto">
@@ -50,18 +50,18 @@ d8ac29
 									<span class="input-group-addon">
 										<i class="nc-icon nc-tag-content"></i>
 									</span>
-									<input type="text" class="form-control" placeholder="Nome da midia" required='required'>
+									<input type="text" name="nome" class="form-control" placeholder="Nome do academico" required='required'>
 								</div>
 				      </div>
 					</div>
 					<div class="col ml-auto mr-auto">
        			<div class="col-md-12">
-         			<label class="fonteTexto">Subtipo:</label>
+         			<label class="fonteTexto">Programa:</label>
 							<div class="input-group">
 								<span class="input-group-addon">
 									<i class="nc-icon nc-check-2"></i>
 								</span>
-								<input type="text" class="form-control" placeholder="Subtipo da midia" required='required'>
+								<input type="text" name="programa" class="form-control" placeholder="Programa do academico" required='required'>
 							</div>
 			      </div>
 					</div>	
@@ -70,12 +70,12 @@ d8ac29
 				<div class="row">
 					<div class="col ml-auto mr-auto">
 	       			<div class="col-md-12">
-	         			<label class="fonteTexto">Tipo:</label>
+	         			<label class="fonteTexto">ID Campi:</label>
 								<div class="input-group">
 									<span class="input-group-addon">
 										<i class="nc-icon nc-bookmark-2"></i>
 									</span>
-									<input type="text" class="form-control" placeholder="Tipo da midia" required='required'>
+									<input type="text" name="tipo" class="form-control" placeholder="ID Campi do academico" required='required'>
 								</div>
 				      </div>
 					</div>
@@ -86,7 +86,7 @@ d8ac29
 								<span class="input-group-addon">
 									<i class="nc-icon nc-pin-3"></i>
 								</span>
-								<input type="text" class="form-control" placeholder="Local da midia" required='required'>
+								<input type="text" name="local" class="form-control" placeholder="Local do academico" required='required'>
 							</div>
 			      </div>
 					</div>	
@@ -100,7 +100,7 @@ d8ac29
 									<span class="input-group-addon">
 										<i class="nc-icon nc-calendar-60"></i>
 									</span>
-									<input type="number" class="form-control" placeholder="qualquer coisa" required='required'>
+									<input type="number" name="ano" class="form-control" placeholder="qualquer coisa" required='required'>
 								</div>
 				      </div>
 					</div>
@@ -111,7 +111,7 @@ d8ac29
 								<span class="input-group-addon">
 									<i class="nc-icon nc-paper"></i>
 								</span>
-								<input type="text" class="form-control" placeholder="Editora da Midia" required='required'>
+								<input type="text" class="form-control" name="editora" placeholder="Editora do academico" required='required'>
 							</div>
 			      </div>
 					</div>	
@@ -125,27 +125,67 @@ d8ac29
 									<span class="input-group-addon">
 										<i class="nc-icon nc-single-copy-04"></i>
 									</span>
-									<input type="number" class="form-control" placeholder="Numero de paginas" required='required'>
+									<input type="number" class="form-control" name="paginas" placeholder="Numero de paginas" required='required'>
+								</div>
+				      </div>
+					</div>	
+				</div>
+                
+                <div class="title" style="text-align: center;"> 
+                    <h2>Autor</h2>
+                </div>
+                
+                <div class="row">
+					<div class="col ml-auto mr-auto">
+	       			<div class="col-md-12">
+	         			<label class="fonteTexto">Nome:</label>
+								<div class="input-group">
+									<span class="input-group-addon">
+										<i class="nc-icon nc-single-02"></i>
+									</span>
+									<input type="number" class="form-control" name="paginas" placeholder="Nome do autor" required='required'>
 								</div>
 				      </div>
 					</div>
                     <div class="col ml-auto mr-auto">
 	       			<div class="col-md-12">
-	         			<label class="fonteTexto">Tempo:</label>
+	         			<label class="fonteTexto">Sobrenome:</label>
 								<div class="input-group">
 									<span class="input-group-addon">
-										<i class="nc-icon nc-time-alarm"></i>
+										<i class="nc-icon nc-single-02"></i>
 									</span>
-									<input type="number" class="form-control" placeholder="Tempo da midia" required='required'>
+									<input type="number" class="form-control" name="ISBN" placeholder="Sobrenome do autor" required='required'>
+								</div>
+				      </div>
+					</div>
+				</div>
+                <div class="row">
+					<div class="col ml-auto mr-auto">
+	       			<div class="col-md-12">
+	         			<label class="fonteTexto">Ordem:</label>
+								<div class="input-group">
+									<span class="input-group-addon">
+										<i class="nc-icon nc-single-02"></i>
+									</span>
+									<input type="number" class="form-control" name="paginas" placeholder="Ordem do autor" required='required'>
+								</div>
+				      </div>
+					</div>
+                    <div class="col ml-auto mr-auto">
+	       			<div class="col-md-12">
+	         			<label class="fonteTexto">Qualificação:</label>
+								<div class="input-group">
+									<span class="input-group-addon">
+										<i class="nc-icon nc-single-02"></i>
+									</span>
+									<input type="number" class="form-control" name="ISBN" placeholder="Qualificação do autor" required='required'>
 								</div>
 				      </div>
 					</div>
 				</div>
 
-				<div class="btn-group" role="group" aria-label="...">
-					<button class="btn btn-neutral">Excluir</button>
-					<button type="submit" class="btn btn-neutral">Editar</button>
-				</div>
+					<button id="criar" type="submit" class="btn btn-info btn-round">Criar</button>
+			
 			</div>	
 		</form>	
 	</div>

@@ -26,7 +26,16 @@ public class InterfacePrincipalController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-            
+      try {
+            // TODO
+            link = (com.mysql.jdbc.Connection) DriverManager.getConnection("jdbc:mysql://localhost:3307/educatio", "root", "usbw");
+        } catch (SQLException ex) {
+            Logger.getLogger(InterfacePrincipalController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        if(link == null)
+        System.out.println("Erro!");
+        else
+            System.out.println("Conexao feita com sucesso!");  
     }
     
     

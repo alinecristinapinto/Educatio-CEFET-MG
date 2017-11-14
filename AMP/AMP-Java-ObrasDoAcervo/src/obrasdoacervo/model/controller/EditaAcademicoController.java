@@ -5,6 +5,7 @@
  */
 package obrasdoacervo.model.controller;
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -15,6 +16,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TextField;
 import obrasdoacervo.model.ObrasDoAcervo;
+import static obrasdoacervo.model.ObrasDoAcervo.remove;
 
 /**
  *
@@ -32,9 +34,8 @@ public class EditaAcademicoController implements Initializable{
     private TextField idCurso;
     @FXML
     private TextField serie;
-    /**
-     * Initializes the controller class.
-     */
+
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         try {
@@ -49,6 +50,16 @@ public class EditaAcademicoController implements Initializable{
             System.out.println("Conexao feita com sucesso!");
             
     } 
+    
+        @FXML
+        public void excluir() throws IOException{
+            remove(link, 0, "academicos");
+        }
+        
+        @FXML
+        public void editar() throws IOException{
+            System.exit(0);
+        }
     
         public void setMain(ObrasDoAcervo main) {
         this.main = main;

@@ -44,9 +44,15 @@ public class InterfacePrincipalController implements Initializable{
     
     
     @FXML
-    public void pesquisaObras() throws IOException{
-        main.abreInterfacePrincipal();
+    public void abrePesquisarObra() throws IOException{
+        main.abrePesquisarObra();
      }
+    
+    /*@FXML
+    public void abrePesquisarAutor() throws IOException{
+        main.abrePesquisarAutor();
+    }   
+    */
     
     @FXML
     public void abreMenuSwitchObras() throws IOException{

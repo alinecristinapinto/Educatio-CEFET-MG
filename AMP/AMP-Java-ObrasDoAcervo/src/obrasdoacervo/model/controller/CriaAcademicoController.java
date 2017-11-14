@@ -19,6 +19,8 @@ import javafx.scene.control.TextField;
 import obrasdoacervo.model.Academicos;
 import obrasdoacervo.model.Autores;
 import obrasdoacervo.model.ObrasDoAcervo;
+import static obrasdoacervo.model.ObrasDoAcervo.insereAcademicos;
+import static obrasdoacervo.model.ObrasDoAcervo.insereAutores;
 
 /**
  *
@@ -80,9 +82,9 @@ public class CriaAcademicoController implements Initializable{
         int idCampus = Integer.parseInt(idCampi.getText());
         
         Academicos academico = new Academicos(programa.getText(), idCampus, nome.getText(), "academicos", local.getText(), ano.getText(), editora.getText(), paginas.getText());       
-        obrasdoacervo.model.ObrasDoAcervo.insereAcademicos(link, academico);
+        insereAcademicos(link, academico);
         Autores autor = new Autores(autorNome.getText(), autorSobrenome.getText(), autorOrdem.getText(), autorQualificacao.getText());
-        obrasdoacervo.model.ObrasDoAcervo.insereAutores(link, autor);
+        insereAutores(link, autor);
         //System.out.println("Criou uma turma.");
         main.abreMenuSwitchObras();
      }

@@ -17,7 +17,7 @@ Seu projeto possui uma classe principal do JavaFX, aquela com o método start e 
 <li> Se já tem, crie outra variável com o nome da sua classe normal do java que equivale a sua main do JavaFX. Ex: "ManutencaoAluno manutencaoAluno;". Deixe esse código comentado também.</li>
 <li> Na sua classe principal existe uma variável que chama-se palcoPrincipal ou primaryStage (que é fora do padrão porém...), ela referencia o palco da sua aplicação e você a utiliza para mostrar as coisas na tela, então, crie um get para ela (apenas isso), você irá precisar disso na hora de chamar os Alert padrões e isso é necessário para a integração.</li>
 <li> Crie outro get comentado (mesmo nome), porém no return dele coloque "mainApp.getPalcoPrincipal();"</li>
-<ul>
+</ul>
     
 <h3> Último Passo </h3>
 Mandar para a gerência pela pasta do seu grupo no git, especificando que aquela é a versão final e se pertence a Java ou WEB.

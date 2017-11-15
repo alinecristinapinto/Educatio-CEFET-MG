@@ -10,7 +10,7 @@ Seu projeto possui uma classe principal do JavaFX, aquela com o método start e 
 <ul>
 <li> Crie uma <strong> CLASSE NORMAL DO JAVA </strong> com o mesmo nome da main do JavaFX, (O NOME TEM QUE SER UMA DESCRIÇÃO DO SEU PROJETO Ex: ManutencaoAluno, espera-se que seu pacote principal (que contém os outros) esteja com o mesmo nome).</li>
 <li> Nessa classe normal, copie todos os métodos da main do JavaFX, exceto pelo método <i> main </i> e pelo método <i> start </i></li>
-<li> Crie uma variável com o mesmo texto a seguir:"private mainApp mainApp;".</li>
+<li> Crie uma variável com o mesmo texto a seguir:"private mainApp mainApp;". Crie também um set para ela </li>
 <li> Essa variável é o acesso da classe com a main Principal do projeto e é necessária imprescindivelmente para a integração. Deixe essa parte do código comentada, pois você não tem como importar o objeto mainApp.</li>
 <li> Espera-se que todos os seu controladores tenham uma variável referenciando a sua classe principal do projeto, (se não estão crie!).</li>
 <li> Espera-se também que os controladores tenham um set que recebe a referência da classe principal direto da main quando você invoca o FXML e o controlador.</li>

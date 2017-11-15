@@ -1,6 +1,6 @@
 # Instruções para ajudar a integração do projeto final - Java
 
-<h3> Primeiro passo:</h3>
+<h3> Primeiro Passo</h3>
 Espera-se que seu trabalho esteja funcionando <strong> SEM ERROS</strong> mesmo com a utilização do BD disponibilizado pela Gerência. 
 Erros no seu projeto antes da integração não serão tolerados e a não correção deles após pedido da gerência será relatada aos professores e continuará com erro.
 Então certifique-se que seus projetos estão funcionando perfeitamente.

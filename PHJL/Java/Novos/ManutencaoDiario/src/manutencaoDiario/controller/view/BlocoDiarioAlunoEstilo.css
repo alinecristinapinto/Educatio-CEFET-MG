@@ -1,0 +1,22 @@
+
+.corCabecalho{
+    -fx-background-color:  white;
+}
+
+.corDivisor{
+    -fx-background-color:  #4F75FF;
+}
+
+.label-pequena{
+    -fx-font-family: 'Times New Roman';
+    -fx-font-size: 16px;
+    -fx-text-fill:white;  
+    -fx-alignment: CENTER;
+}
+
+.label-cabecalho{
+    -fx-font-family: 'Times New Roman';
+    -fx-font-size: 18px;
+    -fx-text-fill:black;  
+    -fx-alignment: CENTER;
+}

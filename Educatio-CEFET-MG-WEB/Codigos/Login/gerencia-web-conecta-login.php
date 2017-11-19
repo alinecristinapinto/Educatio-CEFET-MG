@@ -18,7 +18,7 @@
 
 	 		echo "
 				<script> 
-					location.href = '../Interfaces-de-usuario-WEB/gerencia-web-escolha-sistema-aluno.php';
+					location.href = '../Entrada/gerencia-web-escolha-sistema-aluno.php';
 				</script>";		 
 	 	}
 	

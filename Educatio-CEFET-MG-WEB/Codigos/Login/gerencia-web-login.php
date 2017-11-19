@@ -106,14 +106,14 @@
 			
 			mysqli_select_db($conexao, BD);
 
-			if($tipoFuncionario == 'P')
-				$query ="SELECT * FROM funcionario WHERE idSIAPE='$login' AND hierarquia='P'";
+			if($tipoFuncionario == 'Professor')
+				$query ="SELECT * FROM funcionario WHERE idSIAPE='$login' AND hierarquia='Professor'";
 
-			if($tipoFuncionario == 'B')
-				$query ="SELECT * FROM funcionario WHERE idSIAPE='$login' AND hierarquia='B'";
+			if($tipoFuncionario == 'Bibliotecario')
+				$query ="SELECT * FROM funcionario WHERE idSIAPE='$login' AND hierarquia='Bibliotecario'";
 
-			if($tipoFuncionario == 'C')
-				$query ="SELECT * FROM funcionario WHERE idSIAPE='$login' AND hierarquia='C'";
+			if($tipoFuncionario == 'Coordenador')
+				$query ="SELECT * FROM funcionario WHERE idSIAPE='$login' AND hierarquia='Coordenador'";
 
 				$resultado = mysqli_query($conexao, $query);
 

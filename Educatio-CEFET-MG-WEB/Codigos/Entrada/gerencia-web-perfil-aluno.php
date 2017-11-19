@@ -29,9 +29,6 @@
   <script src="../../Estaticos/Bootstrap/js/jquery-3.2.1.js" type="text/javascript"></script>
   <script src="../../Estaticos/Bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
   
-  <!-- js do grupo -->
-  <script src="../../Estaticos/js/gerencia-web-login.js"></script>
-
   <!-- Fontes e icones -->
   <link href="../../Estaticos/Bootstrap/css/nucleo-icons.css" rel="stylesheet">
  

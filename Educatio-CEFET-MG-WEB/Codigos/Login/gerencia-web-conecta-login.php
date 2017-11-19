@@ -27,7 +27,7 @@
 	else if ($opcao == 'Professor(a)')
 	{
 	
-		if ( $usuario = Login::logarFuncionario($login, $senha, 'P'))
+		if ( $usuario = Login::logarFuncionario($login, $senha, 'Professor'))
 		{
 	 	
 	 		$_SESSION['usuario'] = $usuario;
@@ -43,7 +43,7 @@
 	else if ($opcao == 'Bibliotecário(a)')
 	{
 	
-		if ( $usuario = Login::logarFuncionario($login, $senha, 'B'))
+		if ( $usuario = Login::logarFuncionario($login, $senha, 'Bibliotecario'))
 		{
 	 	
 	 		$_SESSION['usuario'] = $usuario;
@@ -59,13 +59,13 @@
 	else if ($opcao == 'Coordenador(a)')
 	{
 		
-		if ( $usuario = Login::logarFuncionario($login, $senha, 'C'))
+		if ( $usuario = Login::logarFuncionario($login, $senha, 'Coordenador'))
 		{
 	 		
 	 		$_SESSION['usuario'] = $usuario;
 	 		echo "
 				<script> 
-					location.href = '../Interfaces-de-usuario-WEB/gerencia-web-interface-coordenador.php';
+					location.href = '../Entrada/gerencia-web-perfil-coordenador.php';
 				</script>";	
 	 	
 	 	} 

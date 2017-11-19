@@ -39,7 +39,7 @@
          </rowConstraints>
          <children>
             <Label styleClass="label-pequena" text="Nome:" />
-            <Label styleClass="label-pequena" text="ID Campi:" GridPane.rowIndex="2" />
+            <Label styleClass="label-pequena" text="Campus:" GridPane.rowIndex="2" />
             <Label styleClass="label-pequena" text="Local:" GridPane.columnIndex="1" GridPane.rowIndex="2" />
             <Label styleClass="label-pequena" text="Ano:" GridPane.rowIndex="4" />
             <Label styleClass="label-pequena" text="Editora:" GridPane.columnIndex="1" GridPane.rowIndex="4" />
@@ -62,11 +62,6 @@
             </TextField>
             <Label styleClass="label-pequena" text="Mês:" GridPane.columnIndex="1" GridPane.rowIndex="6" />
             <TextField GridPane.rowIndex="1">
-               <GridPane.margin>
-                  <Insets right="20.0" />
-               </GridPane.margin>
-            </TextField>
-            <TextField GridPane.rowIndex="3">
                <GridPane.margin>
                   <Insets right="20.0" />
                </GridPane.margin>
@@ -106,6 +101,7 @@
                   <Insets right="20.0" />
                </GridPane.margin>
             </TextField>
+            <ChoiceBox prefWidth="150.0" GridPane.rowIndex="3" />
          </children>
       </GridPane>
       <Button layoutX="533.0" layoutY="455.0" mnemonicParsing="false" text="Editar" />

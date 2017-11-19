@@ -2,6 +2,7 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -10,7 +11,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="600.0" styleClass="background" stylesheets="@CSSPadrão.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="obrasdoacervo.model.controller.EditaLivroController">
+<AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="600.0" styleClass="background" stylesheets="@CSSPadrão.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="obrasdoacervo.model.controller.EditaLivroController">
    <children>
       <Label layoutX="14.0" layoutY="30.0" styleClass="label-cabecalho" text="Manutenção de Obras - Livro">
          <font>
@@ -34,7 +35,7 @@
         </rowConstraints>
          <children>
             <Label styleClass="label-pequena" text="Nome:" />
-            <Label styleClass="label-pequena" text="ID Campi:" GridPane.rowIndex="2" />
+            <Label styleClass="label-pequena" text="Campus:" GridPane.rowIndex="2" />
             <Label styleClass="label-pequena" text="Local:" GridPane.columnIndex="1" GridPane.rowIndex="2" />
             <Label styleClass="label-pequena" text="Ano:" GridPane.rowIndex="4" />
             <Label styleClass="label-pequena" text="Editora:" GridPane.columnIndex="1" GridPane.rowIndex="4" />
@@ -66,11 +67,6 @@
                   <Insets right="20.0" />
                </GridPane.margin>
             </TextField>
-            <TextField fx:id="idCampi" GridPane.rowIndex="3">
-               <GridPane.margin>
-                  <Insets right="20.0" />
-               </GridPane.margin>
-            </TextField>
             <TextField fx:id="ano" GridPane.rowIndex="5">
                <GridPane.margin>
                   <Insets right="20.0" />
@@ -81,6 +77,7 @@
                   <Insets right="20.0" />
                </GridPane.margin>
             </TextField>
+            <ChoiceBox prefWidth="150.0" GridPane.rowIndex="3" />
          </children>
       </GridPane>
       <Button layoutX="533.0" layoutY="455.0" mnemonicParsing="false" onAction="#editar" text="Editar" />

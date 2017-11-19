@@ -2,8 +2,8 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
@@ -11,14 +11,14 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="486.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="600.0" styleClass="background" stylesheets="@CSSPadrão.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Label layoutX="14.0" layoutY="30.0" text="Manutenção de Professores">
+      <Label layoutX="14.0" layoutY="30.0" styleClass="label-cabecalho" text="Manutenção de Professores">
          <font>
             <Font size="25.0" />
          </font>
       </Label>
-      <GridPane layoutX="14.0" layoutY="88.0" prefHeight="256.0" prefWidth="459.0">
+      <GridPane layoutX="14.0" layoutY="88.0" prefHeight="362.0" prefWidth="570.0">
          <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
@@ -32,40 +32,27 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
          </rowConstraints>
          <children>
-            <Label text="Nome:" />
-            <Label text="ID Departamento:" GridPane.rowIndex="2" />
-            <Label text="Titulação:" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <Label text="Senha:" GridPane.rowIndex="4" />
-            <Label text="Foto:" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <Label styleClass="label-pequena" text="Nome:" />
+            <Label styleClass="label-pequena" text="Departamento:" GridPane.rowIndex="2" />
+            <Label styleClass="label-pequena" text="Titulação:" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <Label styleClass="label-pequena" text="Foto:" GridPane.rowIndex="4" />
             <TextField GridPane.columnIndex="1" GridPane.rowIndex="1">
                <GridPane.margin>
                   <Insets right="20.0" />
                </GridPane.margin>
             </TextField>
-            <TextField GridPane.columnIndex="1" GridPane.rowIndex="3">
-               <GridPane.margin>
-                  <Insets right="20.0" />
-               </GridPane.margin>
-            </TextField>
-            <Label text="ID Siape:" GridPane.columnIndex="1" />
+            <Label styleClass="label-pequena" text="ID Siape:" GridPane.columnIndex="1" />
             <TextField GridPane.rowIndex="1">
                <GridPane.margin>
                   <Insets right="20.0" />
                </GridPane.margin>
             </TextField>
-            <TextField GridPane.rowIndex="3">
-               <GridPane.margin>
-                  <Insets right="20.0" />
-               </GridPane.margin>
-            </TextField>
-            <PasswordField GridPane.rowIndex="5">
-               <GridPane.margin>
-                  <Insets right="20.0" />
-               </GridPane.margin>
-            </PasswordField>
-            <Button mnemonicParsing="false" text="Escolher arquivo..." GridPane.columnIndex="1" GridPane.rowIndex="5" />
+            <Button mnemonicParsing="false" text="Escolher arquivo..." GridPane.rowIndex="5" />
+            <ChoiceBox prefWidth="150.0" GridPane.rowIndex="3" />
+            <ChoiceBox prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
          </children>
       </GridPane>
-      <Button layoutX="432.0" layoutY="361.0" mnemonicParsing="false" text="Criar" />
+      <Button layoutX="540.0" layoutY="455.0" mnemonicParsing="false" text="Criar" />
+      <Button layoutX="480.0" layoutY="455.0" mnemonicParsing="false" text="Voltar" />
    </children>
 </AnchorPane>

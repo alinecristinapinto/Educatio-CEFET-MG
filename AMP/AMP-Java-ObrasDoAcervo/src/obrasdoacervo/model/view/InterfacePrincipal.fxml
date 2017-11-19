@@ -2,11 +2,10 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="600.0" styleClass="background" stylesheets="@CSSPadrão.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="obrasdoacervo.model.controller.InterfacePrincipalController">
+<AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="600.0" styleClass="background" stylesheets="@CSSPadrão.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="obrasdoacervo.model.controller.InterfacePrincipalController">
    <children>
       <Label layoutX="9.0" layoutY="25.0" prefHeight="42.0" prefWidth="533.0" styleClass="label-cabecalho" text="Manutenção de Obras">
          <font>
@@ -18,14 +17,15 @@
             <Font size="22.0" />
          </font>
       </Label>
-      <Label layoutX="10.0" layoutY="288.0" styleClass="label-cabecalho" text="Criar nova Obra">
+      <Label layoutX="11.0" layoutY="317.0" styleClass="label-cabecalho" text="Criar nova Obra">
          <font>
             <Font size="22.0" />
          </font>
       </Label>
-      <Button layoutX="500.0" layoutY="302.0" mnemonicParsing="false" onAction="#abreMenuSwitchObras" text="Criar Obra" />
+      <Button layoutX="500.0" layoutY="324.0" mnemonicParsing="false" onAction="#abreMenuSwitchObras" text="Criar Obra" />
       <Button layoutX="550.0" layoutY="455.0" mnemonicParsing="false" onAction="#sair" text="Sair" />
-      <Button layoutX="500.0" layoutY="196.0" mnemonicParsing="false" onAction="#abrePesquisarObra" text="Pesquisar" />
-      <TextField layoutX="9.0" layoutY="198.0" prefHeight="27.0" prefWidth="472.0" />
+      <Button layoutX="503.0" layoutY="138.0" mnemonicParsing="false" onAction="#abrePesquisarObra" text="Pesquisar" />
+      <Label layoutX="11.0" layoutY="228.0" styleClass="label-cabecalho" text="Pesquisar autor" />
+      <Button layoutX="503.0" layoutY="235.0" mnemonicParsing="false" onAction="#abrePesquisarObra" text="Pesquisar" />
    </children>
 </AnchorPane>

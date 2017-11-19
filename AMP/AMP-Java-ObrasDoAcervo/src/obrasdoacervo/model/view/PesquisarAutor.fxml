@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="600.0" styleClass="background" stylesheets="@CSSPadrão.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label layoutX="9.0" layoutY="14.0" styleClass="label-cabecalho" text="Pesquisar Autor">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Label>
+      <Button layoutX="502.0" layoutY="69.0" mnemonicParsing="false" text="Pesquisar" />
+      <TextField layoutX="14.0" layoutY="71.0" prefHeight="27.0" prefWidth="467.0" />
+      <TableView layoutX="14.0" layoutY="123.0" prefHeight="360.0" prefWidth="570.0" styleClass="list-view">
+         <columns>
+            <TableColumn prefWidth="142.5" text="Nome" />
+            <TableColumn prefWidth="142.5" text="Sobrenome" />
+            <TableColumn prefWidth="142.5" text="Ordem" />
+            <TableColumn prefWidth="142.5" text="Qualificação" />
+         </columns>
+      </TableView>
+   </children>
+</AnchorPane>

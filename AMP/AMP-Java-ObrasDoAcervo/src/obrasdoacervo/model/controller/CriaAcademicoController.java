@@ -12,9 +12,11 @@ import java.sql.SQLException;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
 import obrasdoacervo.model.Academicos;
 import obrasdoacervo.model.Autores;
@@ -35,7 +37,7 @@ public class CriaAcademicoController implements Initializable{
     @FXML
     private TextField programa;
     @FXML
-    private TextField idCampi;
+    private ChoiceBox campus;
     @FXML
     private TextField local;
     @FXML
@@ -45,13 +47,6 @@ public class CriaAcademicoController implements Initializable{
     @FXML
     private TextField paginas;
     @FXML
-    private TextField autorNome;
-    @FXML
-    private TextField autorSobrenome;
-    @FXML
-    private TextField autorOrdem;
-    @FXML
-    private TextField autorQualificacao;
     /**
      * Initializes the controller class.
      */
@@ -72,19 +67,21 @@ public class CriaAcademicoController implements Initializable{
     
     @FXML
     public void criaAcademico() throws IOException, SQLException{   
-        if (programa.getText().equals("") || idCampi.getText().equals("") || nome.getText().equals("") || local.getText().equals("") || ano.getText().equals("") || editora.getText().equals("") || paginas.getText().equals("") || autorNome.getText().equals("") || autorSobrenome.getText().equals("") || autorOrdem.getText().equals("") || autorQualificacao.getText().equals("")){
+        if (programa.getText().equals("") || campus.getValue().equals("") || nome.getText().equals("") || local.getText().equals("") || ano.getText().equals("") || editora.getText().equals("") || paginas.getText().equals("")){
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             System.out.println("Alert");
             
             alert.showAndWait();
         }else{
             
-        int idCampus = Integer.parseInt(idCampi.getText());
+            
+        int idCampi = main.pegaIdCampi(link, (String) campus.getValue());
+            
         
-        Academicos academico = new Academicos(programa.getText(), idCampus, nome.getText(), "academicos", local.getText(), ano.getText(), editora.getText(), paginas.getText());       
+        Academicos academico = new Academicos(programa.getText(), idCampi, nome.getText(), "academicos", local.getText(), ano.getText(), editora.getText(), paginas.getText());       
         insereAcademicos(link, academico);
-        Autores autor = new Autores(autorNome.getText(), autorSobrenome.getText(), autorOrdem.getText(), autorQualificacao.getText());
-        insereAutores(link, autor);
+        //Autores autor = new Autores(autorNome.getText(), autorSobrenome.getText(), autorOrdem.getText(), autorQualificacao.getText());
+        //insereAutores(link, autor);
         //System.out.println("Criou uma turma.");
         main.abreMenuSwitchObras();
      }
@@ -93,5 +90,19 @@ public class CriaAcademicoController implements Initializable{
     
         public void setMain(ObrasDoAcervo main) {
         this.main = main;
+        
+        ObservableList lista = null;
+        try {
+            lista = main.pesquisaCampi(link);
+        } catch (SQLException ex) {
+            Logger.getLogger(CriaLivroController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+            campus.setItems(lista);
     }
+        
+        @FXML
+        public void voltar() throws IOException{
+            main.abreMenuSwitchObras();
+        }
 }

@@ -166,21 +166,21 @@ d8ac29
 									<span class="input-group-addon">
 										<i class="nc-icon nc-bookmark-2"></i>
 									</span>
-								 <select class="form-control" name="entradaCampus" class="form-control" onchange = 'mostrarSelects("campi", this.value)' 
-									id = "entradaCampusID" required>
-										<option disabled selected value = ""> Selecione um Campus </option>
-                                        <?php
-                                        $conn = mysqli_connect("localhost", "root", "", "educatio");
-										if (!$conn) {
-											die("Conexão falhou: " . mysqli_connect_error());
+							 <select class="form-control" name="entradaCampus" class="form-control" onchange = 'mostrarSelects("campi", this.value)' 
+								id = "entradaCampusID" required>
+									<option disabled selected value = ""> Selecione um Campus </option>
+                                    <?php
+                                    $conn = mysqli_connect("localhost", "root", "", "educatio");
+									if (!$conn) {
+										die("Conexão falhou: " . mysqli_connect_error());
+									}
+										$sql = "SELECT * FROM campi";
+										$result = mysqli_query($conn, $sql);
+										while($linhaCampus = mysqli_fetch_array($result)){
+											echo "<option value = " .$linhaCampus[0] .">" .$linhaCampus[1] ."</option>";
 										}
-											$sql = "SELECT * FROM campi";
-											$result = mysqli_query($conn, $sql);
-											while($linhaCampus = mysqli_fetch_array($result)){
-												echo "<option value = " .$linhaCampus[0] .">" .$linhaCampus[1] ."</option>";
-											}
-										?>
-									</select>
+									?>
+								</select>
 								</div>
 				      </div>
 					</div>
@@ -205,7 +205,7 @@ d8ac29
 									<span class="input-group-addon">
 										<i class="nc-icon nc-lock-circle-open"></i>
 									</span>
-							  <select class="form-control" name="entradaDepto" class="form-control" onchange = 'mostrarSelects("deptos", this.value)' 
+							  <select class="form-control" name="entradaDepto" class="form-control" onchange = '' onchange = 'mostrarSelects("deptos", this.value)' 
 									id = "entradaDeptoID" required>
 									</select>
 								</div>

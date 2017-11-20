@@ -14,6 +14,7 @@ import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
@@ -63,6 +64,7 @@ public class CriaLivroController implements Initializable{
     /**
      * Initializes the controller class.
      */
+    @FXML
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         try {
@@ -75,34 +77,43 @@ public class CriaLivroController implements Initializable{
         System.out.println("Erro!");
         else
             System.out.println("Conexao feita com sucesso!");
-            
+        
     } 
     
     // Falta idCampi
     @FXML
     public void criaLivro() throws IOException, SQLException{
-        campus = new ChoiceBox();
-        campus.getItems().addAll("item1", "item2", "item3");
-        if (ISBN.getText().equals("") || edicao.getText().equals("") || /*campus.getValue().equals("") ||*/ nome.getText().equals("") || local.getText().equals("") || ano.getText().equals("") || editora.getText().equals("") || paginas.getText().equals("")){// || autorNome.getText().equals("") || autorSobrenome.getText().equals("") || autorOrdem.getText().equals("") || autorQualificacao.getText().equals("")){
+        if (ISBN.getText().equals("") || edicao.getText().equals("") || campus.getValue().equals("") || nome.getText().equals("") || local.getText().equals("") || ano.getText().equals("") || editora.getText().equals("") || paginas.getText().equals("")){// || autorNome.getText().equals("") || autorSobrenome.getText().equals("") || autorOrdem.getText().equals("") || autorQualificacao.getText().equals("")){
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             System.out.println("Alert");
             
             alert.showAndWait();
         }else{
 
+        int idCampi = main.pegaIdCampi(link, (String) campus.getValue());
         
-        Livros livro = new Livros(ISBN.getText(), edicao.getText(),0000, nome.getText(), "livros", local.getText(), ano.getText(), editora.getText(), paginas.getText());        
+        Livros livro = new Livros(ISBN.getText(), edicao.getText(),idCampi, nome.getText(), "livros", local.getText(), ano.getText(), editora.getText(), paginas.getText());        
         insereLivro(link, livro);
+        main.abreCriaAutor();
         //Autores autor = new Autores(autorNome.getText(), autorSobrenome.getText(), autorOrdem.getText(), autorQualificacao.getText());
         //insereAutores(link, autor);
         //System.out.println("Criou uma turma.");
-        main.abreMenuSwitchObras();
+        //main.abreMenuSwitchObras();
         }
      }
     
         @FXML
         public void setMain(ObrasDoAcervo main) {
         this.main = main;
+        
+        ObservableList lista = null;
+        try {
+            lista = main.pesquisaCampi(link);
+        } catch (SQLException ex) {
+            Logger.getLogger(CriaLivroController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+            campus.setItems(lista);
     }
         
         @FXML

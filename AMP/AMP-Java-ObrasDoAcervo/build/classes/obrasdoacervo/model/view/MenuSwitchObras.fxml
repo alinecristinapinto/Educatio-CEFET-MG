@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="600.0" styleClass="background" stylesheets="@CSSPadrão.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="obrasdoacervo.model.controller.MenuSwitchObrasController">
+<AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="600.0" styleClass="background" stylesheets="@CSSPadrão.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="obrasdoacervo.model.controller.MenuSwitchObrasController">
    <children>
       <Label layoutX="34.0" layoutY="25.0" prefHeight="42.0" prefWidth="533.0" styleClass="label-cabecalho" text="Manutenção de Obras">
          <font>
@@ -21,5 +21,6 @@
       <Label layoutX="44.0" layoutY="169.0" styleClass="label-pequena" text="Crie um novo academico" />
       <Label layoutX="363.0" layoutY="287.0" styleClass="label-pequena" text="Crie uma nova midia" />
       <Button layoutX="403.0" layoutY="316.0" mnemonicParsing="false" onAction="#abreCriaMidia" text="Criar Midia" />
+      <Button layoutX="487.0" layoutY="455.0" mnemonicParsing="false" onAction="#voltar" text="Voltar" />
    </children>
 </AnchorPane>

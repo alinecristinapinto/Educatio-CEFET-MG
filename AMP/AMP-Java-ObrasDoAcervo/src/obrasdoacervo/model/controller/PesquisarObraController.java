@@ -14,7 +14,12 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import obrasdoacervo.model.AcervoTabela;
+import obrasdoacervo.model.Obras;
 import obrasdoacervo.model.ObrasDoAcervo;
 
 /**
@@ -25,6 +30,24 @@ public class PesquisarObraController implements Initializable {
     private ObrasDoAcervo main;
     private com.mysql.jdbc.Connection link;
 
+    @FXML
+    private TextField pesquisa;
+    @FXML
+    private TableView<AcervoTabela> tabela;
+    @FXML
+    private TableColumn<AcervoTabela, String> campus;
+    @FXML
+    private TableColumn<AcervoTabela, String> nome;
+    @FXML
+    private TableColumn<AcervoTabela, String> tipo;
+    @FXML
+    private TableColumn<AcervoTabela, String> local;
+    @FXML
+    private TableColumn<AcervoTabela, String> ano;
+    @FXML
+    private TableColumn<AcervoTabela, String> editora;
+    @FXML
+    private TableColumn<AcervoTabela, String> paginas;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -43,10 +66,16 @@ public class PesquisarObraController implements Initializable {
         @FXML
         public void setMain(ObrasDoAcervo main) {
         this.main = main;
-    }
+        }
 
         @FXML
         public void voltar() throws IOException {
             main.abreInterfacePrincipal();
-    }
+        }
+        
+        @FXML
+        public void pesquisarObras() throws IOException {    
+        }
+        
+        
 }

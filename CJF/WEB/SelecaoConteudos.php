@@ -47,6 +47,15 @@ $sqlSql = "SELECT id FROM disciplinas WHERE nome='$strDisciplinapesquisada'";
 $sqlResultado = $sqlConexao->query($sqlSql);
 $genAux = $sqlResultado->fetch_assoc();
 $intIddisciplina = $genAux["id"];
+$strDisciplina = $strDisciplinapesquisada;
+
+if ($intIddisciplina == null) {
+	$intIddisciplina = $strDisciplinapesquisada;
+	$sqlSql = "SELECT nome FROM disciplinas WHERE id='$strDisciplinapesquisada'";
+	$sqlResultado = $sqlConexao->query($sqlSql);
+	$genAux = $sqlResultado->fetch_assoc();
+	$strDisciplina = $genAux['nome'];
+}
 
 //Pesquisa o conteúdo* por  meio dos id-etapas e o id-disciplinas;
 $sqlSql = "SELECT conteudo FROM conteudos WHERE idDisciplina='$intIddisciplina' AND idEtapa='$intEtapapesquisada'";
@@ -56,8 +65,15 @@ $genAux = $sqlResultado->fetch_assoc();
 
 $strConteudo = $genAux['conteudo'];
 
-echo "<b>".$strDisciplinapesquisada." ".$intEtapapesquisada."° etapa</b><br></br>";
-echo $strConteudo;	
+if ($strConteudo == null) {
+	echo "não achamos nada kappa pride batatinha quando nasce mata a vizinha e enterra no caixao";
+
+} else {
+	printf("<label class='fonteTexto'>");
+	echo "<b>".$strDisciplina." ".$intEtapapesquisada."° etapa</b><br></br>";
+	echo $strConteudo;
+	printf("</label>");
+}
 
 printf("		</div>
 			</div>

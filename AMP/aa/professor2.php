@@ -120,7 +120,7 @@ class professor{
 
     $professorProf = new professor;  
 
-    $professorProf -> pesquisaProfessor('nome', $_POST["pesquisado"]);  
+    $professorProf -> pesquisaProfessor('nome', $_POST["valorCPF"]);  
 
     echo "<script>location.href='editarprofessor.php';</script>";
 

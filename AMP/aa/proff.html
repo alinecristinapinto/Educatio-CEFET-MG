@@ -21,11 +21,54 @@
 		function func1(){
 			window.location.href="form_professor.html"
 		}
+		function enviaFormulario(valor){
+				document.querySelector("#valorCPFID").value = valor;
+				document.querySelector("#formulario").submit();
+			}
+			
+			//funcao utilizada para apagar um input
+			function Apaga(id){
+				document.querySelector("#" +id).value = "";
+			}
+			
+			//funcao utilizada para fazer uma requisicao a pagina ProcuraAlunos.php, esta que devolvera alguns dados de TODOS os alunos e estes dados 
+			//serao mostrados na tabela
+			function escreveNomes(str){
+				if (str.length == 0){
+					var xmlhttp = new XMLHttpRequest();
+					xmlhttp.onreadystatechange = function() {
+						if (this.readyState == 4 && this.status == 200) {
+							document.getElementById("tabela").innerHTML = this.responseText;
+						}
+					};
+					xmlhttp.open("GET", "tabela-descarte.php?q=mostrar", true);
+					xmlhttp.send();
+				}
+			}''
+			
+			//funcao utilizada para fazer uma requisicao a pagina ProcuraAlunos.php, onde serao pesquisados os alunos que possuam 'str' em seu nome/cpf, 
+			//e alguns dados desses alunos serao devolvidos e mostrados na tabela
+			function mostraAlunos(str, tipo) {
+				str = str.toString();
+				if (str.length == 0) { 
+					escreveNomes(str);
+					return;
+				} else {
+					var xmlhttp = new XMLHttpRequest();
+					xmlhttp.onreadystatechange = function() {
+						if (this.readyState == 4 && this.status == 200) {
+							document.getElementById("tabela").innerHTML = this.responseText;
+						}
+					};
+					xmlhttp.open("GET", "tabela-descarte.php?q=" + str + "&tipo=" + tipo, true);
+					xmlhttp.send();
+				}
+			}
 	</script>
 
 	<title></title>
 </head>
-<body>
+<body onload = "escreveNomes('')">
 
 	<div class="wrapper">
 		<div class="title" style="text-align: center;">
@@ -34,14 +77,57 @@
 			<p id="p1">Crie, edite e exclua professores</p>
 		<div class="container">
 			<h5>Pesquise Professores</h5>
-			<form action="professor2.php" method="post">
-			<div class="input-group input-group-lg">
-	  			<input type="text" class="form-control" name="pesquisado" placeholder="Pesquisar" aria-label="Pesquisar" aria-describedby="sizing-addon2">
-	  			<button type="submit" class="btn btn-neutral" onclick="">
-		  			<i class="nc-icon nc-zoom-split"></i>
-		  		</button>
-		  		</form>
+			<form method = "POST" action = "professor2.php" id="formulario">
+
+			<div class="row">
+				<div class="col">
+				<select class="form-control" name="entradaCampus" class="form-control" onchange = 'mostrarSelects("campi", this.value)' 
+					id = "entradaCampusID" required>
+					<option disabled selected value = ""> Selecione um Campus </option>
+                    <?php
+                    $conn = mysqli_connect("localhost", "root", "", "educatio");
+					if (!$conn) {
+						die("Conexão falhou: " . mysqli_connect_error());
+					}
+						$sql = "SELECT * FROM campi";
+						$result = mysqli_query($conn, $sql);
+						while($linhaCampus = mysqli_fetch_array($result)){
+							echo "<option value = " .$linhaCampus[0] .">" .$linhaCampus[1] ."</option>";
+						}
+					?>
+				</select>
+				</div>
+				<div class="col">
+				<select class="form-control" name="entradaDepto" class="form-control" onchange = 'mostrarSelects("deptos", this.value)' 
+									id = "entradaDeptoID" required>
+									</select>
+				</div>
 			</div>
+
+
+				<!-- A funcao Apaga() serve para sempre que um input text for focado, o outro input text apagar, assim prevenindo erros -->
+				<section class = "TamanhoDosCampos" id = "DIVentradaNomeID">
+					<!-- Input para pesquisar pelo nome do aluno. A funcao escreveNomes() eh chamada sempre que ele for focado para assim enviar o valor "" 
+					(nulo) e mostrar a tabela com todos os alunos. A funcao mostraAlunos() eh utilizada para escrever a tabela com os alunos pesquisados -->
+					<input type = "text" class = "form-control" name = "entradaNome" id = "entradaNomeID" placeholder = "Digite o nome" 
+					onfocus = "Apaga('entradaCPFID') ; escreveNomes(this.value)" onkeyup="mostraAlunos(this.value,'nome')" style="margin-top: 2%;">
+					<p>
+				</section>
+				
+				<!-- Input para pesquisar pelo CPF do aluno -->
+				
+				
+				<!-- Input do tipo hidden utilizado para armazenar o numero de CPF do aluno em que o usuario clicar, e entao ser enviado para a pagina 
+				de alteracao -->
+				<div class = "TamanhoDosCampos">
+					<input type = "hidden" class = "form-control" name = "valorCPF" id = "valorCPFID" >
+				</div>
+			</form>
+
+			<!-- tabela com os alunos -->
+			<div class = "TamanhoDosCampos">
+				<table id="tabela" class = "table table-hover"></table>
+			</div>	
 			<div class="row">
 				<div class="col">
 					<div class="card">

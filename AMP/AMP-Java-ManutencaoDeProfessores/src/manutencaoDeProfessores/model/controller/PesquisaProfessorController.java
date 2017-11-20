@@ -14,7 +14,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
 import manutencaoDeProfessores.model.ManutencaoDeProfessores;
 
@@ -22,27 +21,9 @@ import manutencaoDeProfessores.model.ManutencaoDeProfessores;
  *
  * @author Aluno
  */
-public class CriaProfessorController implements Initializable {
+public class PesquisaProfessorController implements Initializable {
     private com.mysql.jdbc.Connection link = null;
     private static ManutencaoDeProfessores main;
-    
-    
-    @FXML
-    private TextField nome;
-    @FXML
-    private TextField idSiape;
-    
-    //@FXML
-    //private TextField idCampi;
-    //Select para encontrar o departamento
-    
-    @FXML
-    private TextField idDepartamento;
-    //Select
-    
-    @FXML
-    private ChoiceBox titulacao;
-    //Select P,G,M,D
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -56,16 +37,6 @@ public class CriaProfessorController implements Initializable {
         System.out.println("Erro!");
         else
             System.out.println("Conexao feita com sucesso!");   
-    }
-    
-    
-    @FXML
-    public void criaProfessor() throws IOException{
-    }
-    
-    @FXML
-    public void voltar() throws IOException{
-        main.abreInterfacePrincipal();
     }
     
 

@@ -106,7 +106,7 @@ public class CriaLivroController implements Initializable{
     }
         
         @FXML
-        public void voltar(){
+        public void voltar() throws IOException{
             main.abreMenuSwitchObras();
         }
 }

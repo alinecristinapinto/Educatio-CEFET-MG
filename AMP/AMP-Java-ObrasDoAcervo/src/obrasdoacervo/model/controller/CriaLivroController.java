@@ -83,7 +83,7 @@ public class CriaLivroController implements Initializable{
     public void criaLivro() throws IOException, SQLException{
         campus = new ChoiceBox();
         campus.getItems().addAll("item1", "item2", "item3");
-        if (ISBN.getText().equals("") || edicao.getText().equals("") || campus.getValue().equals("") || nome.getText().equals("") || local.getText().equals("") || ano.getText().equals("") || editora.getText().equals("") || paginas.getText().equals("")){// || autorNome.getText().equals("") || autorSobrenome.getText().equals("") || autorOrdem.getText().equals("") || autorQualificacao.getText().equals("")){
+        if (ISBN.getText().equals("") || edicao.getText().equals("") || /*campus.getValue().equals("") ||*/ nome.getText().equals("") || local.getText().equals("") || ano.getText().equals("") || editora.getText().equals("") || paginas.getText().equals("")){// || autorNome.getText().equals("") || autorSobrenome.getText().equals("") || autorOrdem.getText().equals("") || autorQualificacao.getText().equals("")){
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             System.out.println("Alert");
             
@@ -104,4 +104,9 @@ public class CriaLivroController implements Initializable{
         public void setMain(ObrasDoAcervo main) {
         this.main = main;
     }
+        
+        @FXML
+        public void voltar(){
+            main.abreMenuSwitchObras();
+        }
 }

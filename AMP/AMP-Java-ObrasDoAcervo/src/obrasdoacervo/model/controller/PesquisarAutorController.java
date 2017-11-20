@@ -5,6 +5,7 @@
  */
 package obrasdoacervo.model.controller;
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -40,8 +41,14 @@ public class PesquisarAutorController implements Initializable {
             
     }
     
+    
         public void setMain(ObrasDoAcervo main) {
         this.main = main;
+    }
+        
+        @FXML
+        public void voltar() throws IOException {
+            main.abreInterfacePrincipal();
     }
 
     

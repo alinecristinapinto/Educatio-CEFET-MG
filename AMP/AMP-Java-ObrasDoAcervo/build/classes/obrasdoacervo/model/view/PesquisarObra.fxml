@@ -17,16 +17,17 @@
       </Label>
       <Button layoutX="502.0" layoutY="69.0" mnemonicParsing="false" text="Pesquisar" />
       <TextField layoutX="14.0" layoutY="71.0" prefHeight="27.0" prefWidth="467.0" />
-      <TableView layoutX="14.0" layoutY="123.0" prefHeight="360.0" prefWidth="527.0" styleClass="list-view">
+      <TableView layoutX="14.0" layoutY="123.0" prefHeight="325.0" prefWidth="570.0" styleClass="list-view">
          <columns>
-            <TableColumn prefWidth="75.0" text="ID Campi" />
-            <TableColumn prefWidth="75.0" text="Nome" />
-            <TableColumn prefWidth="75.0" text="Tipo" />
-            <TableColumn prefWidth="75.0" text="Local" />
-            <TableColumn prefWidth="75.0" text="Ano" />
-            <TableColumn prefWidth="75.0" text="Editora" />
-            <TableColumn prefWidth="75.0" text="Paginas" />
+            <TableColumn prefWidth="81.0" text="ID Campi" />
+            <TableColumn prefWidth="81.0" text="Nome" />
+            <TableColumn prefWidth="81.0" text="Tipo" />
+            <TableColumn prefWidth="81.0" text="Local" />
+            <TableColumn prefWidth="81.0" text="Ano" />
+            <TableColumn prefWidth="81.0" text="Editora" />
+            <TableColumn prefWidth="81.0" text="Paginas" />
          </columns>
       </TableView>
+      <Button layoutX="531.0" layoutY="455.0" mnemonicParsing="false" onAction="#voltar" text="Voltar" />
    </children>
 </AnchorPane>

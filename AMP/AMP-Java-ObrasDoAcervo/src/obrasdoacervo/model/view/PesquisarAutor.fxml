@@ -17,7 +17,7 @@
       </Label>
       <Button layoutX="502.0" layoutY="69.0" mnemonicParsing="false" text="Pesquisar" />
       <TextField layoutX="14.0" layoutY="71.0" prefHeight="27.0" prefWidth="467.0" />
-      <TableView layoutX="14.0" layoutY="123.0" prefHeight="360.0" prefWidth="570.0" styleClass="list-view">
+      <TableView layoutX="14.0" layoutY="123.0" prefHeight="325.0" prefWidth="570.0" styleClass="list-view">
          <columns>
             <TableColumn prefWidth="142.5" text="Nome" />
             <TableColumn prefWidth="142.5" text="Sobrenome" />
@@ -25,5 +25,6 @@
             <TableColumn prefWidth="142.5" text="Qualificação" />
          </columns>
       </TableView>
+      <Button layoutX="531.0" layoutY="455.0" mnemonicParsing="false" onAction="#voltar" text="Voltar" />
    </children>
 </AnchorPane>

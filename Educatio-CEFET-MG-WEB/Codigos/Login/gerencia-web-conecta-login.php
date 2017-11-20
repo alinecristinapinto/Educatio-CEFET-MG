@@ -33,7 +33,7 @@
 	 		$_SESSION['usuario'] = $usuario;
 	 		echo "
 				<script> 
-					location.href = '../Interfaces-de-usuario-WEB/gerencia-web-interface-professor.php';
+					location.href = '../Entrada/gerencia-web-perfil-professor.php';
 				</script>";	
 	 	
 	 	} 
@@ -49,7 +49,7 @@
 	 		$_SESSION['usuario'] = $usuario;
 	 		echo "
 				<script> 
-					location.href = '../Interfaces-de-usuario-WEB/gerencia-web-interface-bibliotecario.php';
+					location.href = '../Entrada/gerencia-web-perfil-bibliotecario.php';
 				</script>";		
 	 	
 	 	} 

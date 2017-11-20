@@ -2,7 +2,7 @@
 
 define ("SERVIDOR", "localhost");
 define ("USUARIO", "root");
-define ("SENHA", "Bruali16");
+define ("SENHA", "");
 define ("BD", "educatio");
 
    class Cadastra{
@@ -101,7 +101,7 @@ define ("BD", "educatio");
 			mysqli_select_db($conexao, BD);
 
 
-			$query ="SELECT * FROM funcionario WHERE idSIAPE='$login' AND hierarquia = 'P'";
+			$query ="SELECT * FROM funcionario WHERE idSIAPE='$login' AND hierarquia = 'Professor'";
 				$resultado = mysqli_query($conexao, $query);
 
 					if(!$resultado){
@@ -183,7 +183,7 @@ define ("BD", "educatio");
 			mysqli_select_db($conexao, BD);
 
 
-			$query ="SELECT * FROM funcionario WHERE idSIAPE='$login' AND hierarquia = 'B'";
+			$query ="SELECT * FROM funcionario WHERE idSIAPE='$login' AND hierarquia = 'Bibliotecario'";
 				$resultado = mysqli_query($conexao, $query);
 
 					if(!$resultado){
@@ -267,7 +267,7 @@ define ("BD", "educatio");
 			mysqli_select_db($conexao, BD);
 
 
-			$query ="SELECT * FROM funcionario WHERE idSIAPE='$login' AND hierarquia = 'C'";
+			$query ="SELECT * FROM funcionario WHERE idSIAPE='$login' AND hierarquia = 'Coordenador'";
 				$resultado = mysqli_query($conexao, $query);
 
 					if(!$resultado){

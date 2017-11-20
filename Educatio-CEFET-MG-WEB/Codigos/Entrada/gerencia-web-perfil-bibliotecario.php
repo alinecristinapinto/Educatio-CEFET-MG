@@ -116,65 +116,21 @@
         <div id="menu" class="collapse navbar-collapse" id="navbar-menu">
             <ul class="nav navbar-nav mr-auto">
                 <div class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" id="dropdownMenuButton" role="button" aria-haspopup="true" aria-expanded="false"><i class="nc-icon nc-book-bookmark"></i>Campi</a>
+                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" id="dropdownMenuButton" role="button" aria-haspopup="true" aria-expanded="false"><i class="nc-icon nc-book-bookmark"></i>Empréstimos</a>
                     <ul class="dropdown-menu">
-                        <a class="dropdown-item" href= "#">Alterar campus</a>
+                        <a class="dropdown-item" href= "#">Vizualizar empréstimos</a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Adicionar campus</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Remover campus</a>
+                        <a class="dropdown-item" href="#">Conceder empréstimo</a>
                     </ul>
                 </div>          
                 <div class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" id="dropdownMenuButton" role="button" aria-haspopup="true" aria-expanded="false"><i class="nc-icon nc-book-bookmark"></i>Departamentos</a>
+                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" id="dropdownMenuButton" role="button" aria-haspopup="true" aria-expanded="false"><i class="nc-icon nc-book-bookmark"></i>Reservas</a>
                     <ul class="dropdown-menu">
-                        <a class="dropdown-item" href= "#">Adicionar departamento</a>
+                        <a class="dropdown-item" href= "#">Vizualizar reservas</a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Remover departamento</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Vizualizar departamentos</a>
+                        <a class="dropdown-item" href="#">Registrar reserva</a>
                     </ul>
                 </div>  
-                <div class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" id="dropdownMenuButton" role="button" aria-haspopup="true" aria-expanded="false"><i class="nc-icon nc-book-bookmark"></i>Professores</a>
-                    <ul class="dropdown-menu">
-                        <a class="dropdown-item" href= "#">Adicionar professor</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Remover professor</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Vizualizar professores</a>
-                    </ul>
-                </div> 
-                <div class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" id="dropdownMenuButton" role="button" aria-haspopup="true" aria-expanded="false"><i class="nc-icon nc-book-bookmark"></i>Cursos</a>
-                    <ul class="dropdown-menu">
-                        <a class="dropdown-item" href= "#">Adicionar curso</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Remover curso</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Vizualizar cursos</a>
-                    </ul>
-                </div> 
-                <div class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" id="dropdownMenuButton" role="button" aria-haspopup="true" aria-expanded="false"><i class="nc-icon nc-book-bookmark"></i>Diciplinas</a>
-                    <ul class="dropdown-menu">
-                        <a class="dropdown-item" href= "#">Adicionar disciplina</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Remover disciplina</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Vizualizar disciplinas</a>
-                    </ul>
-                </div> 
-                <div class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" id="dropdownMenuButton" role="button" aria-haspopup="true" aria-expanded="false"><i class="nc-icon nc-book-bookmark"></i>Alunos</a>
-                    <ul class="dropdown-menu">
-                        <a class="dropdown-item" href= "#">Adicionar aluno</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Remover aluno</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Vizualizar alunos</a>
-                    </ul>
-                </div> 
             </ul>
             <ul class="nav navbar-nav">
                 <div class="nav-item dropdown">
@@ -188,7 +144,7 @@
                         } else {
                           echo '<img class="profile" src="data:image/jpeg;base64,'.base64_encode( $usuario['foto'] ).'"/>';
                         }
-                    ?> 
+                    ?>   
 
                     <?php echo $usuario['nome'];?> <span class="caret"></span></a>
                     <ul class="dropdown-menu dropdown-menu-right">
@@ -222,7 +178,7 @@
                     </div>
                     <div class="name">
                         <h4 class="title"><?php echo $usuario['nome'];?><br/></h4>
-                        <h6 class="description">Coordenador(a)</h6>
+                        <h6 class="description">Bibliotecario(a)</h6>
                     </div>
                 <div class="row">
                     <div class="col-md-6 ml-auto mr-auto text-center">

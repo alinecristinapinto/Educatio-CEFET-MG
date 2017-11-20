@@ -2,7 +2,7 @@
 
    define ("SERVIDOR", "localhost");
    define ("USUARIO", "root");
-   define ("SENHA", "Bruali16");
+   define ("SENHA", "");
    define ("BD", "educatio");
 
    class Login{

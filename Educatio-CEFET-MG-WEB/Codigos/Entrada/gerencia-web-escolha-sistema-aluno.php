@@ -121,7 +121,19 @@
             </ul>
             <ul class="nav navbar-nav">
                 <div class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" id="dropdownMenuButton" role="button" aria-haspopup="true" aria-expanded="false"><?php echo '<img class="profile" src="data:image/jpeg;base64,'.base64_encode( $usuario['foto'] ).'"/>';?>  <?php echo $usuario['nome'];?> <span class="caret"></span></a>
+                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" id="dropdownMenuButton" role="button" aria-haspopup="true" aria-expanded="false">
+
+                    <?php 
+
+                        if($usuario['foto'] == null){
+                          echo '<img class="profile" src="../../Estaticos/imagens/perfil.png"/>';
+
+                        } else {
+                          echo '<img class="profile" src="data:image/jpeg;base64,'.base64_encode( $usuario['foto'] ).'"/>';
+                        }
+                    ?>   
+
+                    <?php echo $usuario['nome'];?> <span class="caret"></span></a>
                     <ul class="dropdown-menu dropdown-menu-right">
                         <a class="dropdown-item" href="gerencia-web-perfil-aluno.php">Perfil</a>
                         <div class="dropdown-divider"></div>

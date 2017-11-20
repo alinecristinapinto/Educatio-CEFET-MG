@@ -2,17 +2,17 @@ package ManutencaoDiarios.Visualisacao;
 
 import ManutencaoDiarios.ManutencaoDiarios;
 import ManutencaoDiarios.Modelo.Atividade;
+import java.io.IOException;
 import java.sql.SQLException;
 import java.time.format.DateTimeFormatter;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import testeclassealert.AlertaPadrao;
 
 
 /**
@@ -57,10 +57,16 @@ public class PainelInsereController {
         labelValor.setVisible(false);
         labelData.setVisible(false);
         
+        dataAtividade.setEditable(false);
+        
         disciplinas.getSelectionModel().selectedItemProperty().addListener(
             (observable, oldValue, newValue) -> {
             try {
-                confirma(newValue.toString());
+                try {
+                    confirma(newValue.toString());
+                } catch (IOException ex) {
+                    Logger.getLogger(PainelInsereController.class.getName()).log(Level.SEVERE, null, ex);
+                }
             } catch (SQLException ex) {
                 Logger.getLogger(PainelInsereController.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -69,7 +75,11 @@ public class PainelInsereController {
         turmas.getSelectionModel().selectedItemProperty().addListener(
             (observable, oldValue, newValue) -> {
             try {
-                mostrarCamposInserir(newValue.toString());
+                try {
+                    mostrarCamposInserir(newValue.toString());
+                } catch (IOException ex) {
+                    Logger.getLogger(PainelInsereController.class.getName()).log(Level.SEVERE, null, ex);
+                }
             } catch (SQLException ex) {
                 Logger.getLogger(PainelInsereController.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -80,16 +90,13 @@ public class PainelInsereController {
         this.manutencaoDiarios = manutencaoDiarios;
     }
     
-    public void confirma(String valor) throws SQLException{
+    public void confirma(String valor) throws SQLException, IOException{
         disciplina = valor;
         
         if(disciplina == null){
-            Alert alerta = new Alert(Alert.AlertType.INFORMATION);
-            alerta.setTitle("Campos vazios");
-            alerta.setHeaderText(null);
-            alerta.setContentText("Preencha todos os campos para continuar!");
+            AlertaPadrao alerta = new AlertaPadrao();
+            alerta.mostraAlertErro(manutencaoDiarios.getPalcoPrincipal(), "Campos vazios", "Erro!", "Existem campos vazios, preencha todos para continuar.");
             
-            alerta.showAndWait();
         }else{
             turmas.setItems(atividade.pegaTurmas(disciplina));
             turmas.setVisible(true);
@@ -97,16 +104,13 @@ public class PainelInsereController {
         }
     }
     
-    public void mostrarCamposInserir(String valor) throws SQLException{
+    public void mostrarCamposInserir(String valor) throws SQLException, IOException{
         turma = valor;
         
         if(turma == null){
-            Alert alerta = new Alert(Alert.AlertType.INFORMATION);
-            alerta.setTitle("Campos vazios");
-            alerta.setHeaderText(null);
-            alerta.setContentText("Preencha todos os campos para continuar!");
+            AlertaPadrao alerta = new AlertaPadrao();
+            alerta.mostraAlertErro(manutencaoDiarios.getPalcoPrincipal(), "Campos vazios", "Erro!", "Existem campos vazios, preencha todos para continuar.");
             
-            alerta.showAndWait();
         }else{
             labelNome.setVisible(true);
             labelValor.setVisible(true);
@@ -117,25 +121,22 @@ public class PainelInsereController {
         }
     }
     
-    public void insereBd() throws ClassNotFoundException, SQLException{
+    public void insereBd() throws ClassNotFoundException, SQLException, IOException{
         if(valorAtividade.getText().equals("") || nomeAtividade.getText().equals("") || dataAtividade.getValue() == null){
-            Alert alerta = new Alert(AlertType.INFORMATION);
-            alerta.setTitle("Campos vazios");
-            alerta.setHeaderText(null);
-            alerta.setContentText("Preencha todos os campos para seguir!");
-
-            alerta.showAndWait();
+           AlertaPadrao alerta = new AlertaPadrao();
+            alerta.mostraAlertErro(manutencaoDiarios.getPalcoPrincipal(), "Campos vazios", "Erro!", "Existem campos vazios, preencha todos para continuar.");
+            
+        }else if(!valorAtividade.getText().matches("^([0-9]{1,2}){1}(.[0-9]{1,2})?$")){
+            AlertaPadrao alerta = new AlertaPadrao();
+            alerta.mostraAlertErro(manutencaoDiarios.getPalcoPrincipal(), "Campos preenchidos incorretamente", "Erro!", "Preencha corretamente todos os campos para continuar.");
+            
         }else{
             atividade.insereAtividade((String) disciplinas.getValue(), nomeAtividade.getText(), 
             dataAtividade.getValue().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")), 
             Double.parseDouble(valorAtividade.getText()), 1, (String) turmas.getValue());
         
-            Alert alerta = new Alert(AlertType.INFORMATION);
-            alerta.setTitle("Inserção no Banco de Dados");
-            alerta.setHeaderText(null);
-            alerta.setContentText("Inserção no Banco de Dados realizada com sucesso!");
-
-            alerta.showAndWait();
+            AlertaPadrao alerta = new AlertaPadrao();
+            alerta.mostraAlertConfirmacao(manutencaoDiarios.getPalcoPrincipal(), "Inserção", "Sucesso!", "Inserção realizada com sucesso no banco de dados.");
             
             System.exit(0);
         }

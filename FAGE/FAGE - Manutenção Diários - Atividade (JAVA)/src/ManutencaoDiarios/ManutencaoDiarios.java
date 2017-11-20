@@ -25,8 +25,13 @@ public class ManutencaoDiarios extends Application {
         this.palcoPrincipal = palcoPrincipal;
         palcoPrincipal.setTitle("Manutenção Diários - Atividades");
         
-        chamaMostraDisciplinas();
+        chamaLayoutInsere();
     }
+
+    public Stage getPalcoPrincipal() {
+        return palcoPrincipal;
+    }
+    
     
     public void chamaLayoutInsere(){
         try{

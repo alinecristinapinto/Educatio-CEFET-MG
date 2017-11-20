@@ -26,6 +26,6 @@
       <Button layoutX="550.0" layoutY="455.0" mnemonicParsing="false" onAction="#sair" text="Sair" />
       <Button layoutX="503.0" layoutY="138.0" mnemonicParsing="false" onAction="#abrePesquisarObra" text="Pesquisar" />
       <Label layoutX="11.0" layoutY="228.0" styleClass="label-cabecalho" text="Pesquisar autor" />
-      <Button layoutX="503.0" layoutY="235.0" mnemonicParsing="false" onAction="#abrePesquisarObra" text="Pesquisar" />
+      <Button layoutX="503.0" layoutY="235.0" mnemonicParsing="false" onAction="#abrePesquisarAutor" text="Pesquisar" />
    </children>
 </AnchorPane>

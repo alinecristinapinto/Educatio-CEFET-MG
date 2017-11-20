@@ -21,28 +21,18 @@ import obrasdoacervo.model.ObrasDoAcervo;
  *
  * @author Aluno
  */
-public class CriaPeriodicoController implements Initializable{
+public class PesquisarAutorController implements Initializable {
     private ObrasDoAcervo main;
     private com.mysql.jdbc.Connection link;
+
     
-    @FXML
-    private TextField nome;
-    @FXML
-    private TextField idAntigo;
-    @FXML
-    private TextField idCurso;
-    @FXML
-    private TextField serie;
-    /**
-     * Initializes the controller class.
-     */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         try {
             // TODO
             link = (com.mysql.jdbc.Connection) DriverManager.getConnection("jdbc:mysql://localhost:3307/educatio", "root", "usbw");
         } catch (SQLException ex) {
-            Logger.getLogger(CriaPeriodicoController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(EditaPeriodicosController.class.getName()).log(Level.SEVERE, null, ex);
         }
         if(link == null)
             System.out.println("Erro!");
@@ -51,12 +41,15 @@ public class CriaPeriodicoController implements Initializable{
             
     }
     
+    
         public void setMain(ObrasDoAcervo main) {
         this.main = main;
     }
         
         @FXML
-        public void voltar() throws IOException{
-            main.abreMenuSwitchObras();
-        }
+        public void voltar() throws IOException {
+            main.abreInterfacePrincipal();
+    }
+
+    
 }

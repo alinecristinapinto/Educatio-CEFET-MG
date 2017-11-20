@@ -68,11 +68,6 @@ public class MenuSwitchObrasController implements Initializable{
     }
     
     @FXML
-    public void abreCriaParte() throws IOException{
-        main.abreCriaParte();
-    }
-    
-    @FXML
     public void abreCriaPeriodico() throws IOException{
         main.abreCriaPeriodico();
     }

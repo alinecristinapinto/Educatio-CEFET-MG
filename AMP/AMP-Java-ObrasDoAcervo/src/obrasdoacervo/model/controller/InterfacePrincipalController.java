@@ -48,11 +48,11 @@ public class InterfacePrincipalController implements Initializable{
         main.abrePesquisarObra();
      }
     
-    /*@FXML
+    @FXML
     public void abrePesquisarAutor() throws IOException{
         main.abrePesquisarAutor();
     }   
-    */
+    
     
     @FXML
     public void abreMenuSwitchObras() throws IOException{

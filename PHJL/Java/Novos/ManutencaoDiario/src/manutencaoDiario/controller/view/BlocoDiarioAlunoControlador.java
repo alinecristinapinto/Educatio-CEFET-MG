@@ -1,12 +1,33 @@
 package manutencaoDiario.controller.view;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.SplitPane;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.ToolBar;
 import javafx.scene.layout.BorderPane;
+import manutencaoDiario.controller.ManutencaoDiario;
+import manutencaoDiario.controller.model.TabelaAtividades;
 
 public class BlocoDiarioAlunoControlador {
+
+    AcessoDiarioAlunoControlador acesso;
+    private ManutencaoDiario manutencaoDiario;
+    private ObservableList<TabelaAtividades> dadosAtividade = FXCollections.observableArrayList();
+
+    @FXML
+    private TableView<TabelaAtividades> DiarioTabela;
+    @FXML
+    private TableColumn<TabelaAtividades, String> colunaConteudo;
+    @FXML
+    private TableColumn<TabelaAtividades, String> colunaAtividade;
+    @FXML
+    private TableColumn<TabelaAtividades, String> colunaData;
+    @FXML
+    private TableColumn<TabelaAtividades, String> colunaNota;
 
     @FXML
     private ToolBar suporteCabecalho;
@@ -28,9 +49,26 @@ public class BlocoDiarioAlunoControlador {
 
     @FXML
     public void initialize() {
-        // TODO
+
+        colunaConteudo.setCellValueFactory(cellData -> cellData.getValue().getConteudo());
+        colunaAtividade.setCellValueFactory(cellData -> cellData.getValue().getAtividade());
+        colunaData.setCellValueFactory(cellData -> cellData.getValue().getData());
+        colunaNota.setCellValueFactory(cellData -> cellData.getValue().getNota());
+ 
+    }
+    public void colocaDados()
+    {
+        DiarioTabela.setItems(acesso.getDadosAtividade());
+    }
+    public void setAcesso(AcessoDiarioAlunoControlador acesso) {
+        this.acesso = acesso;
     }
 
+    public void setManutencaoDiario(ManutencaoDiario manutencaoDiario) {
+        this.manutencaoDiario = manutencaoDiario;
+    }
+    
+    
     public ToolBar getSuporteCabecalho() {
         return suporteCabecalho;
     }
@@ -78,6 +116,5 @@ public class BlocoDiarioAlunoControlador {
     public void setBordas(BorderPane bordas) {
         this.bordas = bordas;
     }
-    
-    
+
 }

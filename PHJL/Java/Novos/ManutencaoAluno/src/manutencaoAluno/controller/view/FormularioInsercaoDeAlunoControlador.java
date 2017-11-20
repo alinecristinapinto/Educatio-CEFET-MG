@@ -15,12 +15,14 @@ import javafx.scene.input.KeyEvent;
 import javafx.stage.FileChooser;
 import manutencaoAluno.controller.AlteraDados;
 import manutencaoAluno.controller.BancoDeDados;
+import manutencaoAluno.controller.ManutencaoAluno;
 
 public class FormularioInsercaoDeAlunoControlador {
 
     private BancoDeDados acessoBancoDeDados = new BancoDeDados();
     private AlteraDados alterar = new AlteraDados();
     private String imagem;
+    private ManutencaoAluno manutencaoAluno;
 
     private static final int TAM_CPF = 14;
     private static final int INTERVALO_CPF = 4;
@@ -83,7 +85,6 @@ public class FormularioInsercaoDeAlunoControlador {
         cep.setPromptText("Apenas números.");
         uf.setPromptText("Digite a UF.");
         email.setPromptText("exemplo@email.com");
-        //  botaoEnviar.setDisable(true);
         acessoBancoDeDados.ObtemTurmas(turma);
 
         cpf.addEventHandler(
@@ -196,4 +197,10 @@ public class FormularioInsercaoDeAlunoControlador {
 
         acessoBancoDeDados.InsereMatricula(entradaTurma, entradaCPF);
     }
+
+    public void setManutencaoAluno(ManutencaoAluno manutencaoAluno) {
+        this.manutencaoAluno = manutencaoAluno;
+    }
+    
+    
 }

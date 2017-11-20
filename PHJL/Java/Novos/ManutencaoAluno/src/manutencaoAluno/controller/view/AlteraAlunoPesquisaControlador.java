@@ -20,6 +20,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import manutencaoAluno.controller.BancoDeDados;
 import manutencaoAluno.controller.Main;
+import manutencaoAluno.controller.ManutencaoAluno;
 import manutencaoAluno.controller.model.Aluno;
 
 /**
@@ -31,6 +32,8 @@ public class AlteraAlunoPesquisaControlador {
     private BancoDeDados acessoBancoDeDados = new BancoDeDados();
     private ObservableList<Aluno> dadosAluno = FXCollections.observableArrayList();
     private Connection conexao = null;
+    private ManutencaoAluno manutencaoAluno;
+    
     @FXML
     private TableView<Aluno> AlunoTabela;
     @FXML
@@ -57,14 +60,13 @@ public class AlteraAlunoPesquisaControlador {
 
         pesquisaNome.textProperty().addListener((observador, valorVelho, valorNovo) -> {
             filtraDados.setPredicate(Aluno -> {
-
                 if (valorNovo == null || valorNovo.isEmpty()) {
                     return true;
                 }
 
                 String lowerCaseFilter = valorNovo.toLowerCase();
 
-                if (Aluno.getNome().toString().toLowerCase().contains(lowerCaseFilter)) {
+                if (Aluno.getNome().get().toLowerCase().contains(lowerCaseFilter)) {
                     return true;
                 }
                 return false;
@@ -80,7 +82,7 @@ public class AlteraAlunoPesquisaControlador {
 
                 String lowerCaseFilter = valorNovo.toLowerCase();
 
-                if (Aluno.getCPF().toString().toLowerCase().contains(lowerCaseFilter)) {
+                if (Aluno.getCPF().get().toLowerCase().contains(lowerCaseFilter)) {
                     return true;
                 }
                 return false;
@@ -137,4 +139,9 @@ public class AlteraAlunoPesquisaControlador {
             //Código se o usuário clicou em Cancel
         }
     }
+
+    public void setManutencaoAluno(ManutencaoAluno manutencaoAluno) {
+        this.manutencaoAluno = manutencaoAluno;
+    }
+    
 }

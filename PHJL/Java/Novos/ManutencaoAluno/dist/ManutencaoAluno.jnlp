@@ -8,7 +8,7 @@
   </information>
   <resources>
     <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
-    <jar href="ManutencaoAluno.jar" size="31867" download="eager" />
+    <jar href="ManutencaoAluno.jar" size="31933" download="eager" />
     <jar href="lib\ClasseAlert.jar" size="13023" download="eager" />
     <jar href="lib\mysql-connector-java-5.1.44-bin.jar" size="999635" download="eager" />
   </resources>

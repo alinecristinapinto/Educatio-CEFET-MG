@@ -25,7 +25,7 @@
         </rowConstraints>
          <children>
             <Label prefWidth="221.0" styleClass="label-pequena" text="Disciplinas:" />
-            <Label prefHeight="23.0" prefWidth="255.0" styleClass="label-pequena" text="Turmas:" GridPane.rowIndex="1" />
+            <Label fx:id="labelTurma" prefHeight="23.0" prefWidth="255.0" styleClass="label-pequena" text="Turmas:" GridPane.rowIndex="1" />
             <ChoiceBox fx:id="disciplinas" prefHeight="25.0" prefWidth="417.0" GridPane.columnIndex="1" />
             <ChoiceBox fx:id="turmas" prefHeight="25.0" prefWidth="447.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
          </children>

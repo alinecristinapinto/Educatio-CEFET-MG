@@ -2,13 +2,14 @@ package ManutencaoDiarios.Visualisacao;
 
 import ManutencaoDiarios.ManutencaoDiarios;
 import ManutencaoDiarios.Modelo.Atividade;
+import java.io.IOException;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
+import testeclassealert.AlertaPadrao;
 
 /**
  *
@@ -50,36 +51,27 @@ public class AlteraAtividadeController {
     private DatePicker data;
     
     @FXML
-    public void initialize(){
-        
+    private void initialize(){
+        data.setEditable(false);
     }
     
-    public void confirma() throws ClassNotFoundException, SQLException{
+    public void confirma() throws ClassNotFoundException, SQLException, IOException{
         if(nome.getText().equals("") || valor.getText().equals("") || data.getValue() == null){
-            Alert alerta = new Alert(Alert.AlertType.INFORMATION);
-            alerta.setTitle("Campos vazios");
-            alerta.setHeaderText(null);
-            alerta.setContentText("Preencha todos os campos para continuar!");
+            AlertaPadrao alerta = new AlertaPadrao();
+            alerta.mostraAlertErro(manutencaoDiarios.getPalcoPrincipal(), "Campos vazios", "Erro!", "Existem campos vazios, preencha todos para continuar.");
             
-            alerta.showAndWait();
-        }else if(!valor.getText().matches("[0-9]+")){
-            Alert alerta = new Alert(Alert.AlertType.INFORMATION);
-            alerta.setTitle("Campos incorretos");
-            alerta.setHeaderText(null);
-            alerta.setContentText("Preencha o campo corretamente (double) para continuar!");
+        }else if(!valor.getText().matches("^([0-9]{1,2}){1}(.[0-9]{1,2})?$")){
+            AlertaPadrao alerta = new AlertaPadrao();
+            alerta.mostraAlertErro(manutencaoDiarios.getPalcoPrincipal(), "Campos preenchidos incorretamente", "Erro!", "Preencha corretamente todos os campos para continuar.");
             
-            alerta.showAndWait();
         }else{
             nomeNovoAtiv = nome.getText();
             valorNovoAtiv = Double.parseDouble(valor.getText());
             dataNovoAtiv = data.getValue().format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
-            
             atividade.alteraAtividade(nomeNovoAtiv, dataNovoAtiv, valorNovoAtiv, atividade.getIdProfDisciplina(), nomeAtiv, dataAtiv, valorAtiv);
             
-            Alert alerta = new Alert(Alert.AlertType.INFORMATION);
-            alerta.setTitle("Alteração");
-            alerta.setHeaderText(null);
-            alerta.setContentText("Alteração realizada com sucesso!");
+            AlertaPadrao alerta = new AlertaPadrao();
+            alerta.mostraAlertConfirmacao(manutencaoDiarios.getPalcoPrincipal(), "Alteração", "Sucesso!", "Alteração realizada com sucesso no banco de dados.");
         }
     }
     

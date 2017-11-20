@@ -1,9 +1,12 @@
 package ManutencaoDiarios;
 
 import ManutencaoDiarios.Modelo.Atividade;
+import ManutencaoDiarios.Modelo.Disciplina;
 import ManutencaoDiarios.Visualisacao.AlteraAtividadeController;
+import ManutencaoDiarios.Visualisacao.EscolheController;
 import ManutencaoDiarios.Visualisacao.MostraDisciplinasController;
 import ManutencaoDiarios.Visualisacao.PainelInsereController;
+import ManutencaoDiarios.Visualisacao.SelecionaDadosController;
 import java.io.IOException;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -25,8 +28,14 @@ public class ManutencaoDiarios extends Application {
         this.palcoPrincipal = palcoPrincipal;
         palcoPrincipal.setTitle("Manutenção Diários - Atividades");
         
-        chamaMostraDisciplinas();
+        
+        chamaSelecionaDados();
     }
+
+    public Stage getPalcoPrincipal() {
+        return palcoPrincipal;
+    }
+    
     
     public void chamaLayoutInsere(){
         try{
@@ -79,6 +88,43 @@ public class ManutencaoDiarios extends Application {
             e.printStackTrace();
         }
     }
+    
+    public void chamaEscolhe(Disciplina disciplina){
+        try{
+            FXMLLoader carregadorFXML = new FXMLLoader();
+            carregadorFXML.setLocation(ManutencaoDiarios.class.getResource("Visualisacao/Escolhe.fxml"));
+            telaBase = (AnchorPane) carregadorFXML.load();
+            
+            Scene cena = new Scene(telaBase);
+            palcoPrincipal.setScene(cena);
+            palcoPrincipal.show();
+            
+            EscolheController controller = carregadorFXML.getController();
+            controller.setManutencaoDiarios(this);
+            controller.setDisciplina(disciplina);
+        }catch(IOException e){
+            e.printStackTrace();
+        }
+    }
+    
+    public void chamaSelecionaDados(){
+        try{
+            FXMLLoader carregadorFXML = new FXMLLoader();
+            carregadorFXML.setLocation(ManutencaoDiarios.class.getResource("Visualisacao/SelecionaDados.fxml"));
+            telaBase = (AnchorPane) carregadorFXML.load();
+            
+            Scene cena = new Scene(telaBase);
+            palcoPrincipal.setScene(cena);
+            palcoPrincipal.show();
+            
+            SelecionaDadosController controller = carregadorFXML.getController();
+            controller.setManutencaoDiarios(this);
+        }catch(IOException e){
+            e.printStackTrace();
+        }
+    }
+    
+    
 
     public static void main(String[] args) {
         launch(args);

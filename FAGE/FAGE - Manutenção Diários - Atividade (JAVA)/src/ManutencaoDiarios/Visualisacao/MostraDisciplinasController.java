@@ -3,16 +3,18 @@ package ManutencaoDiarios.Visualisacao;
 import ManutencaoDiarios.ManutencaoDiarios;
 import ManutencaoDiarios.Modelo.Atividade;
 import ManutencaoDiarios.Modelo.AtividadeTabela;
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import testeclassealert.AlertaPadrao;
 
 /**
  *
@@ -33,6 +35,9 @@ public class MostraDisciplinasController {
     private ChoiceBox turmas;
     
     @FXML
+    private Label labelTurma;
+    
+    @FXML
     private TableView<AtividadeTabela> tabela;
     
     @FXML
@@ -49,12 +54,15 @@ public class MostraDisciplinasController {
         disciplinas.setItems(atividade.pegaDisciplinas());
         turmas.setVisible(false);
         tabela.setVisible(false);
+        labelTurma.setVisible(false);
         
         disciplinas.getSelectionModel().selectedItemProperty().addListener(
             (observable, oldValue, newValue) -> {
             try {
                 confirma(newValue.toString());
             } catch (SQLException ex) {
+                Logger.getLogger(MostraDisciplinasController.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (IOException ex) {
                 Logger.getLogger(MostraDisciplinasController.class.getName()).log(Level.SEVERE, null, ex);
             }
         });
@@ -65,6 +73,8 @@ public class MostraDisciplinasController {
                 colocaNomes(newValue.toString());
             } catch (SQLException ex) {
                 Logger.getLogger(MostraDisciplinasController.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (IOException ex) {
+                Logger.getLogger(MostraDisciplinasController.class.getName()).log(Level.SEVERE, null, ex);
             }
         });
     }
@@ -73,33 +83,28 @@ public class MostraDisciplinasController {
         this.manutencaoDiarios = manutencaoDiarios;
     }
     
-    public void confirma(String valor) throws SQLException{
+    public void confirma(String valor) throws SQLException, IOException{
         disciplina = valor;
         
         if(disciplina == null){
-            Alert alerta = new Alert(Alert.AlertType.INFORMATION);
-            alerta.setTitle("Campos vazios");
-            alerta.setHeaderText(null);
-            alerta.setContentText("Preencha todos os campos para continuar!");
+            AlertaPadrao alerta = new AlertaPadrao();
+            alerta.mostraAlertErro(manutencaoDiarios.getPalcoPrincipal(), "Campos vazios", "Erro!", "Existem campos vazios, preencha todos para continuar.");
             
-            alerta.showAndWait();
         }else{
             turmas.setItems(atividade.pegaTurmas(disciplina));
             turmas.setVisible(true);
+            labelTurma.setVisible(true);
             
         }
     }
     
-    public void colocaNomes(String valor) throws SQLException{
+    public void colocaNomes(String valor) throws SQLException, IOException{
         turma = valor;
         
         if(turma == null){
-            Alert alerta = new Alert(Alert.AlertType.INFORMATION);
-            alerta.setTitle("Campos vazios");
-            alerta.setHeaderText(null);
-            alerta.setContentText("Preencha todos os campos para continuar!");
+            AlertaPadrao alerta = new AlertaPadrao();
+            alerta.mostraAlertErro(manutencaoDiarios.getPalcoPrincipal(), "Campos vazios", "Erro!", "Existem campos vazios, preencha todos para continuar.");
             
-            alerta.showAndWait();
         }else{
             setTabela(turma, disciplina);
             tabela.setVisible(true);
@@ -120,14 +125,11 @@ public class MostraDisciplinasController {
     
     
     
-    public void alterar(){
+    public void alterar() throws IOException{
         if(tabela.getSelectionModel().getSelectedItem() == null){
-            Alert alerta = new Alert(Alert.AlertType.INFORMATION);
-            alerta.setTitle("Campos vazios");
-            alerta.setHeaderText(null);
-            alerta.setContentText("Preencha todos os campos para continuar!");
+            AlertaPadrao alerta = new AlertaPadrao();
+            alerta.mostraAlertErro(manutencaoDiarios.getPalcoPrincipal(), "Campos vazios", "Erro!", "Existem campos vazios, preencha todos para continuar.");
             
-            alerta.showAndWait();
         }else{
             String nomeAtiv = tabela.getSelectionModel().getSelectedItem().getNome().get();
             String dataAtiv = tabela.getSelectionModel().getSelectedItem().getData().get();
@@ -142,14 +144,11 @@ public class MostraDisciplinasController {
         
     }
     
-    public void deletar() throws ClassNotFoundException, SQLException{
+    public void deletar() throws ClassNotFoundException, SQLException, IOException{
         if(tabela.getSelectionModel().getSelectedItem() == null){
-            Alert alerta = new Alert(Alert.AlertType.INFORMATION);
-            alerta.setTitle("Campos vazios");
-            alerta.setHeaderText(null);
-            alerta.setContentText("Preencha todos os campos para continuar!");
+            AlertaPadrao alerta = new AlertaPadrao();
+            alerta.mostraAlertErro(manutencaoDiarios.getPalcoPrincipal(), "Campos vazios", "Erro!", "Existem campos vazios, preencha todos para continuar.");
             
-            alerta.showAndWait();
         }else{
             String nomeAtiv = tabela.getSelectionModel().getSelectedItem().getNome().get();
             String dataAtiv = tabela.getSelectionModel().getSelectedItem().getData().get();
@@ -157,14 +156,8 @@ public class MostraDisciplinasController {
 
             atividade.removeAtividade(disciplina, turma, nomeAtiv, dataAtiv, valorAtiv);
 
-            Alert alerta = new Alert(Alert.AlertType.INFORMATION);
-            alerta.setTitle("Deletar atividade do BD");
-            alerta.setHeaderText(null);
-            alerta.setContentText("Atividade apagada com sucesso!");
-
-            alerta.showAndWait();
-
-            System.exit(0);
+            AlertaPadrao alerta = new AlertaPadrao();
+            alerta.mostraAlertConfirmacao(manutencaoDiarios.getPalcoPrincipal(), "Delte", "Sucesso!", "Atividade apagada com sucesso no banco de dados.");
         }
     }
     

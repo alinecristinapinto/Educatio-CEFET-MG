@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="600.0" styleClass="background" stylesheets="@CSSPadrão.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="obrasdoacervo.model.controller.CriaAcademicoController">
+<AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="600.0" styleClass="background" stylesheets="@CSSPadrão.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="obrasdoacervo.model.controller.CriaAcademicoController">
    <children>
       <Label layoutX="17.0" layoutY="29.0" styleClass="label-cabecalho" text="Manutenção de Obras - Academico">
          <font>
@@ -71,10 +71,10 @@
                   <Insets right="20.0" />
                </GridPane.margin>
             </TextField>
-            <ChoiceBox prefWidth="150.0" GridPane.rowIndex="3" />
+            <ChoiceBox fx:id="campus" prefWidth="150.0" GridPane.rowIndex="3" />
          </children>
       </GridPane>
       <Button layoutX="538.0" layoutY="455.0" mnemonicParsing="false" onAction="#criaAcademico" text="Criar" />
-      <Button layoutX="478.0" layoutY="455.0" mnemonicParsing="false" text="Voltar" />
+      <Button layoutX="478.0" layoutY="455.0" mnemonicParsing="false" onAction="#voltar" text="Voltar" />
    </children>
 </AnchorPane>

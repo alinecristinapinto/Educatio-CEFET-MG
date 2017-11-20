@@ -13,7 +13,7 @@
 .label-cabecalho
 {
     -fx-font-family: 'Times New Roman';
-    -fx-font-size: 40px;
+    -fx-font-size: 16px;
     -fx-text-fill:white;  
     -fx-alignment: CENTER;
 
@@ -71,7 +71,7 @@
 }
 
 .table-view .column-header .label {
-    -fx-font-size: 20pt;
+    -fx-font-size: 10pt;
     -fx-font-family: "Times New Roman";
     -fx-text-fill: white;
     -fx-alignment: center-left;

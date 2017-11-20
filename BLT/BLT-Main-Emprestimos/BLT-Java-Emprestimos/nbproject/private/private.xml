@@ -4,9 +4,13 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/F:/BLT-Java-Emprestimos/src/blt/java/emprestimo/model/Emprestimo.java</file>
-            <file>file:/F:/BLT-Java-Emprestimos/src/blt/java/emprestimo/view/EmprestimoCaixaEditarControlador.java</file>
+            <file>file:/F:/BLT-Java-Emprestimos/src/blt/java/emprestimo/ManutencaoEmprestimos.java</file>
+            <file>file:/F:/BLT-Java-Emprestimos/src/blt/java/emprestimo/view/EmprestimoVisaoGeralControlador.java</file>
+            <file>file:/F:/BLT-Java-Emprestimos/src/blt/java/emprestimo/model/Reserva.java</file>
             <file>file:/F:/BLT-Java-Emprestimos/src/blt/java/emprestimo/jdbc/EmprestimoDao.java</file>
-            <file>file:/F:/BLT-Java-Emprestimos/src/blt/java/emprestimo/view/EmprestimoVisualizarControlador.java</file>
+            <file>file:/F:/BLT-Java-Emprestimos/src/blt/java/emprestimo/view/EmprestimoCaixaEditarControlador.java</file>
+            <file>file:/F:/BLT-Java-Emprestimos/src/blt/java/emprestimo/view/EmprestimoPesquisarControlador.java</file>
+            <file>file:/F:/BLT-Java-Emprestimos/src/blt/java/emprestimo/util/DataUtil.java</file>
         </group>
     </open-files>
 </project-private>

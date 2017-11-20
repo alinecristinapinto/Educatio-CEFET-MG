@@ -45,3 +45,12 @@ and open the template in the editor.
 #separador{
     -fx-border-color: white;
 }
+
+.label-cabecalho
+{
+    -fx-font-family: 'Times New Roman';
+    -fx-font-size: 40px;
+    -fx-text-fill:white;  
+    -fx-alignment: CENTER;
+
+}

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="relatoriodemultas.model.controller.TelaInicialController">
+   <children>
+      <Label layoutX="185.0" layoutY="236.0" text="Por favor digite o nome do aluno que as multas serão pesquisadas:" />
+      <TextField fx:id="aluno" layoutX="187.0" layoutY="281.0" prefHeight="25.0" prefWidth="355.0" promptText="Digite o nome do aluno aqui..." />
+      <Button fx:id="download" layoutX="386.0" layoutY="328.0" mnemonicParsing="false" text="Download" />
+      <Button fx:id="mostrar" layoutX="263.0" layoutY="328.0" mnemonicParsing="false" onAction="#alteraTelaRelatorio" text="Mostrar" />
+   </children>
+</AnchorPane>

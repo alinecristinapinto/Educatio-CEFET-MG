@@ -9,29 +9,34 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Scanner;
 
-/**
- *
- * @author Aluno
- */
+/*
+    Grupo:​ ​ MAE.
+    Data​ ​ de​ ​ modificação:​ ​ 24/10/2017.
+    Autor:​ ​Matheus Quintão Santiago.
+    ​Objetivo​ ​ da​ ​ modificação:​ ​ Padronizando o codigo e comentando.
+*/
 public class RelatorioObrasDescartadas {
-
-    /**
-     * @param args the command line arguments
-     * @throws java.sql.SQLException
-     */
     public static void main(String[] args) throws SQLException {
-        // TODO code application logic here
+        
+        // Instancia o Banco de Dados.
         BancoDeDados bancoDeDados = new BancoDeDados();
         Scanner leitor = new Scanner(System.in);
+        
+        // Recebe do ususario o nome do livro.
         System.out.println("Digite o nome do livro:");
         String nome = leitor.nextLine();
+        
+        // Seleciono tudo da tabela acervo que tenha o mesmo nome do livro que o usuario passou.
         ResultSet resultadoAcervo = bancoDeDados.selecionarRegistros("acervo", "nome", nome);
+        
+        // Seleciono tudo da tabela descartes que tenha o mesmo idAcervo do livro que o usuario passou.
         ResultSet resultadoDescartes = bancoDeDados.selecionarRegistros("descartes", "idAcervo", resultadoAcervo.getString("id"));
         
-        System.out.println("Dados do livro: " + nome);
-        System.out.println("Funcionario: " + resultadoDescartes.getString("idFuncionario"));
-        System.out.println("Data: " + resultadoDescartes.getString("dataDescarte"));
-        System.out.println("Motivo: " + resultadoDescartes.getString("motivos"));
+        // Imprime na tela os dados do livro.
+        System.out.println("Dados do livro " + nome);
+        System.out.println("Funcionario que fez o descarte: " + resultadoDescartes.getString("idFuncionario"));
+        System.out.println("Data do descarte: " + resultadoDescartes.getString("dataDescarte"));
+        System.out.println("Motivo do descarte: " + resultadoDescartes.getString("motivos"));
     }
     
 }

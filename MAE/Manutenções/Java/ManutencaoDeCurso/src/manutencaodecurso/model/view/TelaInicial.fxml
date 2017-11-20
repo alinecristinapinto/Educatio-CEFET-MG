@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="manutencaodecurso.model.controller.TelaInicialController">
+   <children>
+      <Label layoutX="294.0" layoutY="218.0" text="O que você deseja fazer?" />
+      <Button layoutX="302.0" layoutY="362.0" mnemonicParsing="false" onAction="#alteraTelaApagarCurso" prefHeight="31.0" prefWidth="116.0" text="Apagar um curso" />
+      <Button layoutX="302.0" layoutY="315.0" mnemonicParsing="false" onAction="#alteraTelaAlterarCurso" prefHeight="31.0" prefWidth="116.0" text="Alterar um curso" />
+      <Button layoutX="302.0" layoutY="265.0" mnemonicParsing="false" onAction="#alteraTelaCriarCurso" prefHeight="31.0" prefWidth="116.0" text="Criar um curso" />
+   </children>
+</AnchorPane>

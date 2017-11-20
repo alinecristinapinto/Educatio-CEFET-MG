@@ -11,8 +11,12 @@
 
 	//Seleciona o BD
 	$bd_select = mysqli_select_db ($conn, BD);
-	
-	$sql = "SELECT * FROM funcionario";
+
+	define ("valor", $_REQUEST["depto"]);
+
+	$valor = valor;
+
+	$sql = "SELECT * FROM funcionario WHERE idDepto = '$valor' " ;	
 	$result = mysqli_query($conn,$sql);
 
 	define ("VALOR_RECEBIDO", $_REQUEST["q"]);
@@ -20,6 +24,8 @@
 		define ("TIPO", $_REQUEST["tipo"]);
 	}
 	
+
+
 
 	$valorRetornado = "";
 

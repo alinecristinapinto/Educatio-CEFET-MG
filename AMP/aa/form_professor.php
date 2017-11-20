@@ -205,7 +205,7 @@ d8ac29
 									<span class="input-group-addon">
 										<i class="nc-icon nc-lock-circle-open"></i>
 									</span>
-							  <select class="form-control" name="entradaDepto" class="form-control" onchange = 'mostrarSelects("deptos", this.value)' 
+							  <select class="form-control" name="entradaDepto" class="form-control" onchange = '' onchange = 'mostrarSelects("deptos", this.value)' 
 									id = "entradaDeptoID" required>
 									</select>
 								</div>

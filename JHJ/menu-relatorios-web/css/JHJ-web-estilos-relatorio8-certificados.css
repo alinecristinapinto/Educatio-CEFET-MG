@@ -1,0 +1,39 @@
+/*permite que você utilize famílias de fonts fora do padrão do sistema*/
+@font-face {
+	font-family: 'Tangerine';
+	font-style: normal;
+	font-weight: 400;
+	src: local('Tangerine Regular'), local('Tangerine-Regular'), url(http://fonts.gstatic.com/s/tangerine/v9/HGfsyCL5WASpHOFnouG-RFtXRa8TVwTICgirnJhmVJw.woff2) format('woff2');
+	unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215;
+}
+h1 {
+	margin:50px auto;
+	width:700px;
+	text-align:center;
+	font: 100px Tangerine, Arial, Tahoma, Sans-serif;
+	color: #a36b35;
+}
+hr{
+	margin-top: 95px;
+  	border-color: #a36b35;
+  	box-sizing:border-box;
+  	width:70%;  
+}
+p {
+	margin-top: -10px;
+	font: Tahoma;
+	font-size: 30px;
+	color: #a36b35;
+}
+#certificado {
+	width: 1000px;
+	height: 580px;
+	margin: 0px auto; /*centraliza a div horizontalmente*/
+	margin-top: 30px; /*centraliza a div verticalmente*/
+	border: 15px solid #BE7B3A;
+	border-style: groove; /*efeito 3d*/
+	padding-right: 5px;
+	padding-left: 5px;
+	text-align: center;
+	background-color: #F0E68C;
+}

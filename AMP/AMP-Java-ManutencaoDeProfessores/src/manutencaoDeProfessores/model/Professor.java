@@ -1,5 +1,5 @@
 
-package manutencaoDeProfessores;
+package manutencaoDeProfessores.model;
 
 import javax.swing.JOptionPane;
 

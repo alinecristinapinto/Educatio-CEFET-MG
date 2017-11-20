@@ -14,6 +14,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
 import manutencaoDeProfessores.model.ManutencaoDeProfessores;
 
@@ -40,11 +41,8 @@ public class CriaProfessorController implements Initializable {
     //Select
     
     @FXML
-    private TextField titulacao;
+    private ChoiceBox titulacao;
     //Select P,G,M,D
-    
-    @FXML
-    private TextField senha;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -62,8 +60,12 @@ public class CriaProfessorController implements Initializable {
     
     
     @FXML
-    public void CriaProfessor() throws IOException{
-
+    public void criaProfessor() throws IOException{
+    }
+    
+    @FXML
+    public void voltar() throws IOException{
+        main.abreInterfacePrincipal();
     }
     
 

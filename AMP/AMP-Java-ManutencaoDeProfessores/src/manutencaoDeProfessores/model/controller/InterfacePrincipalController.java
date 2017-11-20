@@ -41,12 +41,13 @@ public class InterfacePrincipalController implements Initializable {
     
     
     @FXML
-    public void pesquisaObras() throws IOException{
-        main.abreInterfacePrincipal();
+    public void pesquisaProfessor() throws IOException{
+        main.abrePesquisaProfessor();
      }
     
     @FXML
-    public void CriaProfessor() throws IOException{
+    public void criaProfessor() throws IOException{
+        main.abreCriaProfessor();
     }
     
     @FXML

@@ -15,14 +15,14 @@
             <Font size="22.0" />
          </font>
       </Label>
-      <Button layoutX="502.0" layoutY="69.0" mnemonicParsing="false" text="Pesquisar" />
-      <TextField layoutX="14.0" layoutY="71.0" prefHeight="27.0" prefWidth="467.0" />
+      <Button layoutX="502.0" layoutY="69.0" mnemonicParsing="false" onAction="#pesquisar" text="Pesquisar" />
+      <TextField fx:id="pesquisa" layoutX="14.0" layoutY="71.0" prefHeight="27.0" prefWidth="467.0" />
       <TableView layoutX="14.0" layoutY="123.0" prefHeight="325.0" prefWidth="570.0" styleClass="list-view">
          <columns>
-            <TableColumn prefWidth="142.5" text="Nome" />
-            <TableColumn prefWidth="142.5" text="Sobrenome" />
-            <TableColumn prefWidth="142.5" text="Ordem" />
-            <TableColumn prefWidth="142.5" text="Qualificação" />
+            <TableColumn fx:id="nome" prefWidth="142.5" text="Nome" />
+            <TableColumn fx:id="sobrenome" prefWidth="142.5" text="Sobrenome" />
+            <TableColumn fx:id="ordem" prefWidth="142.5" text="Ordem" />
+            <TableColumn fx:id="qualificacao" prefWidth="142.5" text="Qualificação" />
          </columns>
       </TableView>
       <Button layoutX="531.0" layoutY="455.0" mnemonicParsing="false" onAction="#voltar" text="Voltar" />

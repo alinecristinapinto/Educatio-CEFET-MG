@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="600.0" styleClass="background" stylesheets="@CSSPadrão.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="600.0" styleClass="background" stylesheets="@CSSPadrão.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="manutencaoDeProfessores.model.controller.PesquisaProfessorController">
    <children>
       <Label layoutX="9.0" layoutY="14.0" styleClass="label-cabecalho" text="Pesquisar Professor">
          <font>

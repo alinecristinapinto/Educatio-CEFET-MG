@@ -11,7 +11,9 @@ import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import javax.swing.JOptionPane;
 import manutencaoDeProfessores.model.controller.CriaProfessorController;
+import manutencaoDeProfessores.model.controller.EditaProfessorController;
 import manutencaoDeProfessores.model.controller.InterfacePrincipalController;
+import manutencaoDeProfessores.model.controller.PesquisaProfessorController;
 
 
 public class ManutencaoDeProfessores extends Application {
@@ -34,6 +36,7 @@ public class ManutencaoDeProfessores extends Application {
             System.out.println("Não foi possível realizar a conexão");
         }
         
+        launch(args);
         /* String determinante;
         String determinado;                     
         
@@ -113,10 +116,28 @@ public class ManutencaoDeProfessores extends Application {
     
     public void abreCriaProfessor() throws IOException{
         FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(ManutencaoDeProfessores.class.getResource("view/CriaLivro.fxml"));
+        loader.setLocation(ManutencaoDeProfessores.class.getResource("view/CriaProfessor.fxml"));
         AnchorPane tela = (AnchorPane) loader.load();
         borda.setCenter(tela);
         CriaProfessorController controller = loader.getController();
+        controller.setMain(this);
+    }
+    
+    public void abrePesquisaProfessor() throws IOException{
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(ManutencaoDeProfessores.class.getResource("view/PesquisaProfessor.fxml"));
+        AnchorPane tela = (AnchorPane) loader.load();
+        borda.setCenter(tela);
+        PesquisaProfessorController controller = loader.getController();
+        controller.setMain(this);
+    }
+    
+    public void abreEditaProfessor() throws IOException{
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(ManutencaoDeProfessores.class.getResource("view/EditaProfessor.fxml"));
+        AnchorPane tela = (AnchorPane) loader.load();
+        borda.setCenter(tela);
+        EditaProfessorController controller = loader.getController();
         controller.setMain(this);
     }
 

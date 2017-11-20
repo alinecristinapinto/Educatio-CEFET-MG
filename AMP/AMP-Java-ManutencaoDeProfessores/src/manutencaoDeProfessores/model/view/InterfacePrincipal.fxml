@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="600.0" styleClass="background" stylesheets="@CSSPadrão.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="interfaceprincipal.FXMLDocumentController">
+<AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="600.0" styleClass="background" stylesheets="@CSSPadrão.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="manutencaoDeProfessores.model.controller.InterfacePrincipalController">
    <children>
       <Label layoutX="8.0" layoutY="34.0" prefHeight="42.0" prefWidth="533.0" styleClass="label-cabecalho" text="Manutenção de Professores">
          <font>
@@ -22,8 +22,8 @@
             <Font size="22.0" />
          </font>
       </Label>
-      <Button layoutX="470.0" layoutY="288.0" mnemonicParsing="false" text="Criar Professor" />
-      <Button layoutX="546.0" layoutY="455.0" mnemonicParsing="false" text="Sair" />
-      <Button layoutX="507.0" layoutY="158.0" mnemonicParsing="false" text="Pesquisar" />
+      <Button layoutX="470.0" layoutY="288.0" mnemonicParsing="false" onAction="#criaProfessor" text="Criar Professor" />
+      <Button layoutX="546.0" layoutY="455.0" mnemonicParsing="false" onAction="#sair" text="Sair" />
+      <Button layoutX="507.0" layoutY="158.0" mnemonicParsing="false" onAction="#pesquisaProfessor" text="Pesquisar" />
    </children>
 </AnchorPane>

@@ -32,12 +32,12 @@
             <Label styleClass="label-pequena" text="Titulo:" />
             <Label styleClass="label-pequena" text="Pagina Inicial:" GridPane.rowIndex="2" />
             <Label styleClass="label-pequena" text="Pagina Final:" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <TextField fx:id="palavraschave" GridPane.columnIndex="1" GridPane.rowIndex="1">
+            <TextField fx:id="palavrasChave" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <GridPane.margin>
                   <Insets right="20.0" />
                </GridPane.margin>
             </TextField>
-            <TextField fx:id="pagfinal" GridPane.columnIndex="1" GridPane.rowIndex="3">
+            <TextField fx:id="pagFinal" GridPane.columnIndex="1" GridPane.rowIndex="3">
                <GridPane.margin>
                   <Insets right="20.0" />
                </GridPane.margin>
@@ -48,14 +48,15 @@
                   <Insets right="20.0" />
                </GridPane.margin>
             </TextField>
-            <TextField fx:id="paginicial" GridPane.rowIndex="3">
+            <TextField fx:id="pagInicio" GridPane.rowIndex="3">
                <GridPane.margin>
                   <Insets right="20.0" />
                </GridPane.margin>
             </TextField>
          </children>
       </GridPane>
-      <Button layoutX="540.0" layoutY="455.0" mnemonicParsing="false" onAction="#criaParte" text="Criar" />
-      <Button layoutX="481.0" layoutY="455.0" mnemonicParsing="false" onAction="#voltar" text="Voltar" />
+      <Button layoutX="466.0" layoutY="455.0" mnemonicParsing="false" onAction="#criaParteFinal" text="Criar" />
+      <Button layoutX="520.0" layoutY="455.0" mnemonicParsing="false" onAction="#voltar" prefHeight="31.0" prefWidth="65.0" text="Voltar" />
+      <Button layoutX="370.0" layoutY="455.0" mnemonicParsing="false" onAction="#criaParte" prefHeight="31.0" prefWidth="89.0" text="Continuar" />
    </children>
 </AnchorPane>

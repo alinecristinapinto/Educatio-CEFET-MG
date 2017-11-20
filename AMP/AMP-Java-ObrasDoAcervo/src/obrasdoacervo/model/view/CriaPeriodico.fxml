@@ -102,7 +102,7 @@
             <ChoiceBox fx:id="campus" prefWidth="150.0" GridPane.rowIndex="3" />
          </children>
       </GridPane>
-      <Button layoutX="539.0" layoutY="655.0" mnemonicParsing="false" onAction="#criaPeriodicos" text="Criar" />
+      <Button layoutX="539.0" layoutY="655.0" mnemonicParsing="false" onAction="#criaPeriodico" text="Criar" />
       <Button layoutX="479.0" layoutY="655.0" mnemonicParsing="false" onAction="#voltar" text="Voltar" />
    </children>
 </AnchorPane>

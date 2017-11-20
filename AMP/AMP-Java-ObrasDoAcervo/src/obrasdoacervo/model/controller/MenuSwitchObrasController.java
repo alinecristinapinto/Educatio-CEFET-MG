@@ -77,6 +77,11 @@ public class MenuSwitchObrasController implements Initializable{
         System.exit(0);
     }
     
+    @FXML
+    public void voltar() throws IOException{
+        main.abreInterfacePrincipal();
+    }
+    
     public void setMain(ObrasDoAcervo main) {
         this.main = main;
     }

@@ -9,14 +9,18 @@ package obrasdoacervo.model;
 import java.io.IOException;
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.List;
 import javafx.application.Application;
 import static javafx.application.Application.launch;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import obrasdoacervo.model.controller.CriaAcademicoController;
+import obrasdoacervo.model.controller.CriaAutorController;
 import obrasdoacervo.model.controller.CriaLivroController;
 import obrasdoacervo.model.controller.CriaMidiaController;
 import obrasdoacervo.model.controller.CriaParteController;
@@ -121,12 +125,39 @@ public class ObrasDoAcervo extends Application {
         controller.setMain(this);
     }
     
+    public void abreCriaParteSecundario() throws IOException{
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(ObrasDoAcervo.class.getResource("view/CriaParteSecundario.fxml"));
+        AnchorPane tela = (AnchorPane) loader.load();
+        borda.setCenter(tela);
+        CriaParteController controller = loader.getController();
+        controller.setMain(this);
+    }
+    
     public void abreCriaPeriodico() throws IOException{
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(ObrasDoAcervo.class.getResource("view/CriaPeriodico.fxml"));
         AnchorPane tela = (AnchorPane) loader.load();
         borda.setCenter(tela);
         CriaPeriodicoController controller = loader.getController();
+        controller.setMain(this);
+    }
+    
+    public void abreCriaAutor() throws IOException{
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(ObrasDoAcervo.class.getResource("view/CriaAutor.fxml"));
+        AnchorPane tela = (AnchorPane) loader.load();
+        borda.setCenter(tela);
+        CriaAutorController controller = loader.getController();
+        controller.setMain(this);
+    }
+    
+    public void abreCriaAutorSecundario() throws IOException{
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(ObrasDoAcervo.class.getResource("view/CriaAutorSecundario.fxml"));
+        AnchorPane tela = (AnchorPane) loader.load();
+        borda.setCenter(tela);
+        CriaAutorController controller = loader.getController();
         controller.setMain(this);
     }
     
@@ -183,55 +214,6 @@ public class ObrasDoAcervo extends Application {
         controller.setMain(this);
     }
         
-    public static void main(String[] args) throws SQLException{
-        launch(args);
-        
-        /*
-        try{
-            //Carrega o driver especificado
-            Class.forName("com.mysql.jdbc.Driver");
-        }catch (ClassNotFoundException e) {
-            System.out.println("Driver não encontrado!"+e);
-        }
-        System.out.println("Driver encontrado com sucesso!");
-        
-        Connection connection = null;
-        connection = DriverManager.getConnection("jdbc:mysql://localhost:3307/educatio", "root", "usbw");
-        if (connection != null){
-            System.out.println("Conexão realizada com sucesso");
-        }else{
-            System.out.println("Não foi possível realizar a conexão");
-        }
-         
-        Periodicos periodicos = new Periodicos ("Semanal","Outubro",2, "Magazine", 1678, 2, "4",  "periodicos",  "5",  "6",  "7",  "60");
-        
-        Partes[] testes = new Partes[3];
-        int tam = 3;
-        
-        testes[0] = new Partes("Parte 1", 1, 20, "keywords");
-        testes[1] = new Partes("Parte 2", 21, 40, "keywords");
-        testes[2] = new Partes("Parte 3", 41, 60, "keywords");
-        Autores autores = new Autores("John", "Friedrich", "Escritor", "Graduado"); 
-        Autores autoresnovo = new Autores("K.", "J.", "John", "Doutora"); 
-        
-        System.out.println("\n\n");
-        //inserePartes(connection, testes, periodicos, tam);
-        //insereAutores(connection, autores);
-        //insereAutores(connection, autoresnovo);
-        //insereLivro(connection, testes);
-        //insereLivro(connection, testes);
-        //System.out.println("\n Insere 1 \n");
-        remove(connection, 9, "periodicos");
-        System.out.println("\n Remove 2 \n");
-        //altera(connection, 2, "acervo", "nome", "EMOCIONADO");
-        //System.out.println("\n Altera 3 \n");
-        //pesquisaAutores(connection, "Kleber");
-        //pesquisaAcervo(connection, "80");
-        //System.out.println("\n Pesquisa 4 \n");
-        */
-
-    }
-
     public static void insere (Connection connection, Obras obras){
         Statement stmt = null;
         // ResultSet rs = null;
@@ -352,7 +334,7 @@ public class ObrasDoAcervo extends Application {
         insere(connection, obras);
     }
     
-    public static void inserePartes (Connection connection, Partes[] partes, Periodicos periodicos, int tam){
+    public static void inserePartes (Connection connection, Partes partes/*, Periodicos periodicos*/){
         int id;
         Statement stmt = null;
         
@@ -364,11 +346,11 @@ public class ObrasDoAcervo extends Application {
         rs.last();
         id = rs.getInt("id");
         // rs = stmt.executeQuery(sql);
-        for (int i = 0; i < tam; i++){
-        String sql = "INSERT INTO partes(idPeriodico, titulo, pagInicio, pagFinal, palavrasChave, ativo) VALUES('" + (id + 1) + "', '" + partes[i].titulo + 
-               "', '" + partes[i].pagInicio + "', '" + partes[i].pagFinal + "', '" + partes[i].palavrasChave + "', 'S')";
+
+        String sql = "INSERT INTO partes(idPeriodico, titulo, pagInicio, pagFinal, palavrasChave, ativo) VALUES('" + (id + 1) + "', '" + partes.titulo + 
+               "', '" + partes.pagInicio + "', '" + partes.pagFinal + "', '" + partes.palavrasChave + "', 'S')";
         stmt.execute(sql);
-        }
+        
         
         }catch(SQLException e){
             System.out.println("SQLException: " + e.getMessage());
@@ -376,7 +358,7 @@ public class ObrasDoAcervo extends Application {
             System.out.println("VendorError: " + e.getErrorCode());
         }
         // Periodicos periodicos = new Periodicos (partes[0].periodicidade, partes[0].mes, partes[0].volume, partes[0].subtipo, partes[0].ISSN, partes[0].idCampi, partes[0].nome, "'periodicos'", partes[0].local, partes[0].ano, partes[0].editora, partes[0].paginas);
-        inserePeriodicos(connection, periodicos);
+        //inserePeriodicos(connection, periodicos);
     }
     
     public static void insereAutores (Connection connection, Autores autores){
@@ -552,12 +534,6 @@ public class ObrasDoAcervo extends Application {
             System.out.println("VendorError: " + e.getErrorCode());  
         }
                 
-        for(int j = 0; j < i; j++){
-            //System.out.println(j);
-            autor = lista.get(j);
-            System.out.println("\n\nAutor: " + "\nNome: " + autor.nome + "\nSobrenome: " + autor.sobrenome
-            + "\nOrdem: " + autor.ordem + "\nQualificacao: " + autor.qualificacao);
-        }
     }
     
     public static void pesquisaAcervo (Connection connection, String determinado){
@@ -589,12 +565,90 @@ public class ObrasDoAcervo extends Application {
             System.out.println("SQLState: " + e.getSQLState());
             System.out.println("VendorError: " + e.getErrorCode());  
         }
-                
-        for(int j = 0; j < i; j++){
-            //System.out.println(j);
-            obra = lista.get(j);
-            System.out.println("\n\nAcervo: " + "\nidCampi: " + obra.idCampi + "\nNome: " + obra.nome + "\nTipo: " + obra.tipo
-            + "\nLocal: " + obra.local + "\nAno: " + obra.ano + "\nEditora: " + obra.editora + "\nPaginas: " + obra.paginas);
+    }
+    
+    public ObservableList pesquisaCampi(Connection connection) throws SQLException{
+        ObservableList nomes = FXCollections.observableArrayList();
+        ResultSet result;
+        String sql_fetch = "SELECT nome FROM campi WHERE ativo='S'";
+        try{
+        Statement fetch = connection.createStatement();
+        result = fetch.executeQuery(sql_fetch);
+        while(result.next()){
+        nomes.add(result.getString("nome"));
         }
+        }catch(SQLException e){
+            System.out.println("SQLException: " + e.getMessage());
+            System.out.println("SQLState: " + e.getSQLState());
+            System.out.println("VendorError: " + e.getErrorCode());  
+        }
+        
+        return nomes;
+    }
+    
+    public int pegaIdCampi(Connection connection, String campus) throws SQLException{
+        int id = 0;
+        ResultSet result;
+        String sql_fetch = "SELECT id FROM campi WHERE ativo='S' AND nome='" + campus + "'";
+        try{
+        Statement fetch = connection.createStatement();
+        result = fetch.executeQuery(sql_fetch);
+        result.next();
+        id = result.getInt("id");
+        }catch(SQLException e){
+            System.out.println("SQLException: " + e.getMessage());
+            System.out.println("SQLState: " + e.getSQLState());
+            System.out.println("VendorError: " + e.getErrorCode());  
+        }
+        return id;
+    }
+        
+    public static void main(String[] args) throws SQLException{
+        launch(args);
+        
+        /*
+        try{
+            //Carrega o driver especificado
+            Class.forName("com.mysql.jdbc.Driver");
+        }catch (ClassNotFoundException e) {
+            System.out.println("Driver não encontrado!"+e);
+        }
+        System.out.println("Driver encontrado com sucesso!");
+        
+        Connection connection = null;
+        connection = DriverManager.getConnection("jdbc:mysql://localhost:3307/educatio", "root", "usbw");
+        if (connection != null){
+            System.out.println("Conexão realizada com sucesso");
+        }else{
+            System.out.println("Não foi possível realizar a conexão");
+        }
+         
+        Periodicos periodicos = new Periodicos ("Semanal","Outubro",2, "Magazine", 1678, 2, "4",  "periodicos",  "5",  "6",  "7",  "60");
+        
+        Partes[] testes = new Partes[3];
+        int tam = 3;
+        
+        testes[0] = new Partes("Parte 1", 1, 20, "keywords");
+        testes[1] = new Partes("Parte 2", 21, 40, "keywords");
+        testes[2] = new Partes("Parte 3", 41, 60, "keywords");
+        Autores autores = new Autores("John", "Friedrich", "Escritor", "Graduado"); 
+        Autores autoresnovo = new Autores("K.", "J.", "John", "Doutora"); 
+        
+        System.out.println("\n\n");
+        //inserePartes(connection, testes, periodicos, tam);
+        //insereAutores(connection, autores);
+        //insereAutores(connection, autoresnovo);
+        //insereLivro(connection, testes);
+        //insereLivro(connection, testes);
+        //System.out.println("\n Insere 1 \n");
+        remove(connection, 9, "periodicos");
+        System.out.println("\n Remove 2 \n");
+        //altera(connection, 2, "acervo", "nome", "EMOCIONADO");
+        //System.out.println("\n Altera 3 \n");
+        //pesquisaAutores(connection, "Kleber");
+        //pesquisaAcervo(connection, "80");
+        //System.out.println("\n Pesquisa 4 \n");
+        */
+
     }
 }

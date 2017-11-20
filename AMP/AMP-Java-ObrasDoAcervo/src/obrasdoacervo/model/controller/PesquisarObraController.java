@@ -43,10 +43,14 @@ public class PesquisarObraController implements Initializable {
         @FXML
         public void setMain(ObrasDoAcervo main) {
         this.main = main;
-    }
+        }
 
         @FXML
         public void voltar() throws IOException {
             main.abreInterfacePrincipal();
-    }
+        }
+        
+        @FXML
+        public void pesquisarObras() throws IOException {    
+        }
 }

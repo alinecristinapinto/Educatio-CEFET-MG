@@ -1,0 +1,251 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 24/10/2017, 22:29:53
+    Author     : 7
+*/
+/*Padrão de background cor*/
+
+.background
+{
+    -fx-background-color:#2644B2;
+}
+
+/*Padrão de botão*/
+
+.button
+{
+    -fx-padding: 5px;   
+    -fx-border-color: #6989FF;
+    -fx-border-width: 1px;
+    -fx-background-radius: 0px;
+    -fx-background-color: #4F75FF;
+    -fx-font-family: "Segoe UI", Helvetica, Arial, sans-serif;
+    -fx-font-size: 12pt;
+    -fx-text-fill: #ffffff;
+}
+
+.button:hover {
+    -fx-background-color: #6989FF;
+}
+
+/*Padrão de botão de rádio*/
+
+.radio-button{
+    -fx-padding: 5px;   
+    -fx-border-color: #6989FF;
+    -fx-border-width: 1px;
+    -fx-background-radius: 0px;
+    -fx-background-color: #4F75FF;
+    -fx-font-family: "Segoe UI", Helvetica, Arial, sans-serif;
+    -fx-font-size: 12pt;
+    -fx-text-fill: #ffffff;
+    -fx-alignment: CENTER;
+}
+
+.radio-button .radio {
+    -fx-border-width: 1px;
+    -fx-border-color:#d8ac29;
+    -fx-background-color:#6989FF;
+    -fx-border-radius: 15px;
+    -fx-padding: 4px;
+}
+.radio-button  .dot {
+    -fx-background-radius: 80px;
+    -fx-padding: 5px;
+    -fx-mark-color: white ;
+    
+}
+/*Padrão de checkbox*/
+
+.check-box {
+
+-fx-padding: 5px;   
+ -fx-border-color: #6989FF;
+ -fx-border-width: 1px;
+ -fx-background-radius: 0px;
+ -fx-background-color: #4F75FF;
+ -fx-font-family: "Segoe UI", Helvetica, Arial, sans-serif;
+ -fx-font-size: 12pt;
+  -fx-text-fill: #ffffff;
+  -fx-alignment: CENTER;
+
+}
+.check-box .box {
+
+-fx-background-color: #6989FF;
+-fx-border-color:#d8ac29;
+-fx-border-radius:1px; 
+
+}
+
+.check-box:selected .mark {
+
+-fx-background-color: white;
+
+}
+
+.check-box:selected .box {
+
+-fx-background-color:#6989FF;
+}
+
+/*Padrão de textfield*/
+
+.text-field
+{
+    -fx-background-color: #6989FF;
+    -fx-text-fill:white; 
+    -fx-border-color: #d8ac29;
+    -fx-border-width: 1px;
+}
+
+/*Padrão de textarea*/
+.text-area{
+    -fx-text-fill: #ffffff;
+    -fx-border-color: #d8ac29;
+    -fx-border-width: 1px;  
+}
+
+.text-area .content{
+    -fx-background-color: #6989FF;
+}
+
+/*Padrão de choice box*/
+
+.choice-box
+{
+    -fx-background-color: #6989FF;
+    -fx-text-fill:white; 
+    -fx-border-color: #d8ac29;
+    -fx-border-width: 1px;
+}
+
+/*Padrão de list-view*/
+
+.list-view
+{
+    -fx-background-color: #6989FF;
+    -fx-text-fill: #ffffff; 
+    -fx-border-color: #d8ac29;
+    -fx-border-width: 1px;
+}
+
+/*Padrão de tableview*/
+.table-view{
+   -fx-background-color: transparent;
+}
+
+.table-view:focused{
+    -fx-background-color: transparent;
+}
+/*Header*/
+.table-view .column-header-background{
+    -fx-background-color: linear-gradient(#6989FF 0%, #2644B2 100%);
+}
+
+.table-view .column-header-background .label{
+    -fx-background-color: transparent;
+    -fx-text-fill: white;
+}
+
+.table-view .column-header {
+    -fx-background-color: transparent;
+}
+/*Cor do texto*/
+.table-view .table-cell{
+    -fx-text-fill: white;
+}
+/*Cor das linhas impares*/
+.table-row-cell{
+    -fx-background-color: -fx-table-cell-border-color, #6989FF;
+    -fx-background-insets: 0, 0 0 1 0;
+    -fx-padding: 0.0em; /* 0 */
+}
+/*Cor das linhas pares*/
+.table-row-cell:odd{
+    -fx-background-color: -fx-table-cell-border-color, #2644B2;
+    -fx-background-insets: 0, 0 0 1 0;
+    -fx-padding: 0.0em; /* 0 */  
+}
+
+.table-row-cell:selected {
+    -fx-background-color: #005797;
+    -fx-background-insets: 0;
+    -fx-background-radius: 1;
+}
+
+.table-view > .virtual-flow > .scroll-bar:vertical,
+.table-view > .virtual-flow > .scroll-bar:vertical > .track,
+.table-view > .virtual-flow > .scroll-bar:vertical > .track-background, 
+.table-view > .virtual-flow > .scroll-bar:horizontal,
+.table-view > .virtual-flow > .scroll-bar:horizontal > .track,
+.table-view > .virtual-flow > .scroll-bar:horizontal > .track-background {
+    -fx-background-color: transparent;
+}
+
+
+
+.table-view > .virtual-flow > .scroll-bar > .increment-button, 
+.table-view > .virtual-flow > .scroll-bar > .decrement-button {
+    -fx-opacity: 0;
+}
+
+/*Padrão de date-picker*/
+
+.date-picker
+{
+    -fx-background-color: #6989FF;
+    -fx-text-fill:white; 
+    -fx-border-color: #d8ac29;
+    -fx-border-width: 1px;
+}
+
+/*Padrão de label para formulários*/
+
+.label-pequena{
+    -fx-font-family: 'Times New Roman';
+    -fx-font-size: 20px;
+    -fx-text-fill:white;  
+    -fx-alignment: CENTER;
+}
+
+/*Padrão de label para cabeçalhos*/
+
+.label-cabecalho
+{
+    -fx-font-family: 'Times New Roman';
+    -fx-font-size: 40px;
+    -fx-text-fill:white;  
+    -fx-alignment: CENTER;
+
+}
+
+/*Padrão de menu*/
+
+.menu{
+    -fx-padding: 5px;
+    -fx-font-family: 'Times New Roman';
+    -fx-font-size: 20px;
+    -fx-text-fill: rgb(255, 255, 255);
+    -fx-background-color:#2644B2;
+    -fx-alignment:center;
+    
+}
+
+/*Padrão de menu-bar*/
+
+.menu-bar{
+    -fx-background-color:#2644B2;
+    -fx-text-base-color:white;  
+}
+/*Padrão de menu-item*/
+
+.menu-item{
+    -fx-background-color:#2644B2;
+    -fx-text-base-color:white; 
+    
+}

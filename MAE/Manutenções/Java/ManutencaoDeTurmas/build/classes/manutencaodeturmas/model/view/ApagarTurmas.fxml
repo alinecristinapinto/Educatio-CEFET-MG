@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" fx:id="id" prefHeight="600.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="manutencaodeturmas.model.controller.ApagarTurmasController">
+    <children>
+      <Button layoutX="482.0" layoutY="499.0" mnemonicParsing="false" onAction="#apagaTurma" prefHeight="25.0" prefWidth="73.0" text="Apagar" />
+      <ListView fx:id="turmas" layoutX="250.0" layoutY="324.0" prefHeight="200.0" prefWidth="200.0" />
+      <Label layoutX="250.0" layoutY="77.0" text="Escolha o campi:" />
+      <ChoiceBox fx:id="campi" layoutX="250.0" layoutY="112.0" prefWidth="150.0" />
+      <Label layoutX="250.0" layoutY="158.0" text="Escolha o departamento:" />
+      <ChoiceBox fx:id="depto" layoutX="250.0" layoutY="193.0" prefWidth="150.0" />
+      <Label layoutX="250.0" layoutY="230.0" text="Escolha o curso:" />
+      <ChoiceBox fx:id="curso" layoutX="250.0" layoutY="265.0" prefWidth="150.0" />
+   </children>
+</AnchorPane>

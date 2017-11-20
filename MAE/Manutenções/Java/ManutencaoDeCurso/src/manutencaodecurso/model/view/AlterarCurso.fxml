@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="manutencaodecurso.model.controller.AlterarCursoController">
+   <children>
+      <ListView fx:id="curso" layoutX="45.0" layoutY="275.0" prefHeight="200.0" prefWidth="200.0" />
+      <Label layoutX="45.0" layoutY="109.0" text="Escolha o campi:" />
+      <ChoiceBox fx:id="campi" layoutX="45.0" layoutY="144.0" prefWidth="150.0" />
+      <Label layoutX="45.0" layoutY="190.0" text="Escolha o departamento:" />
+      <ChoiceBox fx:id="depto" layoutX="45.0" layoutY="225.0" prefWidth="150.0" />
+      <Label fx:id="labelEnunciado" layoutX="410.0" layoutY="86.0" text="Digite os dados que voce deseja alterar: " visible="false" />
+      <TextField fx:id="nome" layoutX="410.0" layoutY="159.0" prefHeight="25.0" prefWidth="214.0" promptText="(Inalterado)" visible="false" />
+      <Label fx:id="labelNome" layoutX="410.0" layoutY="130.0" text="Nome: " visible="false" />
+      <TextField fx:id="idDepto" layoutX="410.0" layoutY="237.0" prefHeight="25.0" prefWidth="214.0" promptText="(Inalterado)" visible="false" />
+      <Label fx:id="labelIdDepto" layoutX="410.0" layoutY="208.0" text="ID do departamento: " visible="false" />
+      <TextField fx:id="horasTotais" layoutX="410.0" layoutY="315.0" prefHeight="25.0" prefWidth="214.0" promptText="(Inalterado)" visible="false" />
+      <Label fx:id="labelHorasTotais" layoutX="410.0" layoutY="286.0" text="Horas totais" visible="false" />
+      <Button layoutX="572.0" layoutY="491.0" mnemonicParsing="false" onAction="#alteraCurso" text="Alterar" />
+      <Label fx:id="labelModalidade" layoutX="410.0" layoutY="368.0" text="Modalidade:" visible="false" />
+      <TextField fx:id="modalidade" layoutX="410.0" layoutY="397.0" prefHeight="25.0" prefWidth="214.0" promptText="(Inalterado)" visible="false" />
+   </children>
+</AnchorPane>

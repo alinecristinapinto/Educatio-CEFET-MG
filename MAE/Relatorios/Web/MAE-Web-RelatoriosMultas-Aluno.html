@@ -27,37 +27,24 @@ Autor:​ ​ Allan Barbosa
   <body>
     <!--Div container -->
     <div class="container">
-      <h2><center>Menu de relatórios, multas</center></h2>
+      <h2><center>Relatórios de multas</center></h2>
 
       <!--Form com input do ID do Aluno -->
-      <form action="MAE-Web-RelatoriosMultas-Aluno-Imprime.php" method='post'id="inputIDAluno" >
+      <form action="MAE-Web-RelatoriosMultas-Aluno-PDF.php" method='post'id="inputIDAluno" >
+
            <div class="input-group">
-             <input type="text" name="idAlunoPesquisa" class="form-control" placeholder="Confirme seu ID de aluno">
+             <input type="text" class="form-control" placeholder="Confirme seu ID de aluno" name="idAlunoPesquisa" required>
              <div class="input-group-btn">
                <button class="btn btn-default" type="submit">
-                 <i class="glyphicon glyphicon-arrow-right"></i>
+                 <i class="glyphicon glyphicon-download-alt"></i>
                </button>
              </div>
            </div>
+
        </form><br>
 
-      <p>Caro(a) (Nome do aluno logado), Escolha a opção desejada para mostrar das suas multas </p>
+      <center><p>Caro(a) (Nome do aluno logado), insira seu ID no campo </p></center>
 
-    <div class="btn-group">
-       <!--Div com botão para mostrar o relatório -->
-      <div class="form-group">
-          <button type="submit" class="btn btn-default" form="inputIDAluno" formaction="MAE-Web-RelatoriosMultas-Aluno-Imprime.php">
-           <span class="glyphicon glyphicon-arrow-right"></span>  Mostrar relatório
-          </button>
-      </div>
-
-      <!--Div com botão para fazer o dowload-->
-      <div class="form-group">
-          <button type="submit" class="btn btn-default" form="inputIDAluno" formaction="MAE-Web-RelatoriosMultas-Aluno-Download.php">
-            <span class="glyphicon glyphicon-download-alt"></span>  Download .txt
-          </button>
-      </div>
-    </div>
 
     </div>
   </body>

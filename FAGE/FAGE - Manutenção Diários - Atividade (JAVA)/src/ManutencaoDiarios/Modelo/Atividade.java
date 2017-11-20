@@ -4,12 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.List;
-import javafx.beans.property.DoubleProperty;
-import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javax.swing.JOptionPane;
 
 /**
  *
@@ -22,6 +18,7 @@ public class Atividade {
     private ObservableList nomes = FXCollections.observableArrayList();
     private ObservableList datas = FXCollections.observableArrayList();
     private ObservableList valores = FXCollections.observableArrayList();
+    private ObservableList conteudos = FXCollections.observableArrayList();
     
     private String nome;
     private String data;
@@ -277,5 +274,23 @@ public class Atividade {
         }
         
         return lista;
+    }
+    
+    public ObservableList pegaConteudos(String disciplina) throws SQLException{
+        Connection conexao = new ConnectionFactory().getConexao();
+        
+        int idDisc = pegaIdDisciplina(disciplina);
+        
+        String sql = "SELECT conteudo FROM conteudos WHERE idDisciplina = (?) AND ativo = 'S'";
+        
+        PreparedStatement declaracao = conexao.prepareStatement(sql);
+        declaracao.setInt(1, idDisc);
+        
+        ResultSet rs = declaracao.executeQuery();
+        while(rs.next()){
+            conteudos.add(rs.getString("conteudo"));
+        }
+        
+        return conteudos;
     }
 }

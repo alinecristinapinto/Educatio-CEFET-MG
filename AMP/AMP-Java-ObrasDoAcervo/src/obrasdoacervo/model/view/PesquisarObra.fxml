@@ -15,17 +15,17 @@
             <Font size="22.0" />
          </font>
       </Label>
-      <Button layoutX="502.0" layoutY="69.0" mnemonicParsing="false" text="Pesquisar" />
-      <TextField layoutX="14.0" layoutY="71.0" prefHeight="27.0" prefWidth="467.0" />
+      <Button layoutX="502.0" layoutY="69.0" mnemonicParsing="false" onAction="#pesquisar" text="Pesquisar" />
+      <TextField fx:id="pesquisa" layoutX="14.0" layoutY="71.0" prefHeight="27.0" prefWidth="467.0" />
       <TableView layoutX="14.0" layoutY="123.0" prefHeight="325.0" prefWidth="570.0" styleClass="list-view">
          <columns>
-            <TableColumn prefWidth="81.0" text="ID Campi" />
-            <TableColumn prefWidth="81.0" text="Nome" />
-            <TableColumn prefWidth="81.0" text="Tipo" />
-            <TableColumn prefWidth="81.0" text="Local" />
-            <TableColumn prefWidth="81.0" text="Ano" />
-            <TableColumn prefWidth="81.0" text="Editora" />
-            <TableColumn prefWidth="81.0" text="Paginas" />
+            <TableColumn fx:id="idacampi" prefWidth="81.0" text="ID Campi" />
+            <TableColumn fx:id="nome" prefWidth="81.0" text="Nome" />
+            <TableColumn fx:id="tipo" prefWidth="81.0" text="Tipo" />
+            <TableColumn fx:id="local" prefWidth="81.0" text="Local" />
+            <TableColumn fx:id="ano" prefWidth="81.0" text="Ano" />
+            <TableColumn fx:id="editora" prefWidth="81.0" text="Editora" />
+            <TableColumn fx:id="paginas" prefWidth="81.0" text="Paginas" />
          </columns>
       </TableView>
       <Button layoutX="531.0" layoutY="455.0" mnemonicParsing="false" onAction="#voltar" text="Voltar" />

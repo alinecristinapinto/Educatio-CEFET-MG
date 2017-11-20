@@ -32,30 +32,30 @@
             <Label styleClass="label-pequena" text="Nome: " />
             <Label styleClass="label-pequena" text="Ordem:" GridPane.rowIndex="2" />
             <Label styleClass="label-pequena" text="Qualificação:" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <TextField GridPane.columnIndex="1" GridPane.rowIndex="1">
+            <TextField fx:id="sobrenome" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <GridPane.margin>
                   <Insets right="20.0" />
                </GridPane.margin>
             </TextField>
-            <TextField GridPane.columnIndex="1" GridPane.rowIndex="3">
+            <TextField fx:id="qualificacao" GridPane.columnIndex="1" GridPane.rowIndex="3">
                <GridPane.margin>
                   <Insets right="20.0" />
                </GridPane.margin>
             </TextField>
             <Label styleClass="label-pequena" text="Sobrenome:" GridPane.columnIndex="1" />
-            <TextField GridPane.rowIndex="1">
+            <TextField fx:id="nome" GridPane.rowIndex="1">
                <GridPane.margin>
                   <Insets right="20.0" />
                </GridPane.margin>
             </TextField>
-            <TextField GridPane.rowIndex="3">
+            <TextField fx:id="ordem" GridPane.rowIndex="3">
                <GridPane.margin>
                   <Insets right="20.0" />
                </GridPane.margin>
             </TextField>
          </children>
       </GridPane>
-      <Button layoutX="540.0" layoutY="455.0" mnemonicParsing="false" text="Criar" />
-      <Button layoutX="481.0" layoutY="455.0" mnemonicParsing="false" text="Voltar" />
+      <Button layoutX="540.0" layoutY="455.0" mnemonicParsing="false" onAction="#criaAutor" text="Criar" />
+      <Button layoutX="481.0" layoutY="455.0" mnemonicParsing="false" onAction="#voltar" text="Voltar" />
    </children>
 </AnchorPane>

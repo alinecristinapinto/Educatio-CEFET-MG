@@ -9,7 +9,7 @@ public class CriaConexao {
 	public Connection getConexao() {
 	     try {
 	         return DriverManager.getConnection(
-	 "jdbc:mysql://localhost/educatio", "root", "");
+	 "jdbc:mysql://localhost:3306/educatio", "root", "");
 	     } catch (SQLException e) {
 	         throw new RuntimeException(e);
 	     }

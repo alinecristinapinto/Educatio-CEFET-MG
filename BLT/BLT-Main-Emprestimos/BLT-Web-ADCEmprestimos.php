@@ -33,13 +33,15 @@ if ($conn->connect_error) {
 
 $IDaluno = $_POST['IDaluno'];
 $IDacervo = $_POST['IDacervo'];
-$datacriacao = $_POST['datacriacao'];
 $datadevolucao = $_POST['datadevolucao'];
 $multa = "0";
 $ativo = "S";
 
 
 $sql = "SELECT idAluno, idAcervo, dataEmprestimo, dataPrevisaoDevolucao, dataDevolucao, multa, ativo FROM emprestimos WHERE idAcervo = '$IDacervo' AND ativo='S'";
+
+$datacriacao = date('Y-m-d')
+;
 
 $result = $conn->query($sql);
 $dataComp= "2016-12-12";

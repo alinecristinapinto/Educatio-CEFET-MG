@@ -54,6 +54,23 @@ public class DataUtil {
         }
     }
     
+    public static String adicionaXDias(String data1, int dias) throws ParseException{
+        try{
+            DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+            
+            LocalDate dt = parse(data1);
+            Date dt1 = df.parse(dt.format(DATA_FORMATO));
+            
+            long adicionaDia = dt1.getTime() + (1000*60*60*24*dias);
+            
+            Date d1 = new Date(adicionaDia);
+            return df.format(d1);
+            
+        }catch (DateTimeParseException e){
+            return null;
+        }
+    }
+    
     /**
      * Converte um String no formato definido {@link DateUtil#DATE_PATTERN} 
      * para um objeto {@link LocalDate}.
@@ -70,7 +87,7 @@ public class DataUtil {
             return null;
         }
     }
-
+    
     /**
      * Checa se o String é uma data válida.
      * 

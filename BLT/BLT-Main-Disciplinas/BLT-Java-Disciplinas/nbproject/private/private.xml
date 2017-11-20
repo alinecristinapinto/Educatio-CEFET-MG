@@ -2,6 +2,11 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/F:/BLT-Java-Disciplinas/src/blt/java/disciplina/view/DisciplinaCaixaEditarControlador.java</file>
+            <file>file:/F:/BLT-Java-Disciplinas/src/blt/java/disciplina/model/Disciplina.java</file>
+            <file>file:/F:/BLT-Java-Disciplinas/src/blt/java/disciplina/jdbc/CriaConexao.java</file>
+            <file>file:/F:/BLT-Java-Disciplinas/src/blt/java/disciplina/jdbc/DisciplinaDao.java</file>
+        </group>
     </open-files>
 </project-private>

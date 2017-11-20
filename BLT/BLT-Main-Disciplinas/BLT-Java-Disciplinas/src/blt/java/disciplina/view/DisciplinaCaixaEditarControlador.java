@@ -98,7 +98,7 @@ public class DisciplinaCaixaEditarControlador {
         String errorMessage = "";
 
 
-        if (idTurmaCampoTexto.getText() == null || idTurmaCampoTexto.getText().length() == 0 || Integer.parseInt(idTurmaCampoTexto.getText())==0) {
+        if (idTurmaCampoTexto.getText() == null || idTurmaCampoTexto.getText().length() == 0) {
             errorMessage += "Id da turma inválido!\n";
         } else {
             try {
@@ -113,7 +113,7 @@ public class DisciplinaCaixaEditarControlador {
         }
 
 
-        if (cargaHorariaMinCampoTexto.getText() == null || cargaHorariaMinCampoTexto.getText().length() == 0 ||  Integer.parseInt(cargaHorariaMinCampoTexto.getText())==0) {
+        if (cargaHorariaMinCampoTexto.getText() == null || cargaHorariaMinCampoTexto.getText().length() == 0) {
             errorMessage += "Carga Horaria Mínima inválida!\n";
         } else {
             // tenta converter a carga horároa mínima em um int.

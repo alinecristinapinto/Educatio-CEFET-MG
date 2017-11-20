@@ -6,6 +6,9 @@ import java.util.List;
 import blt.java.emprestimo.ManutencaoEmprestimos;
 import blt.java.emprestimo.jdbc.EmprestimoDao;
 import blt.java.emprestimo.model.Emprestimo;
+import blt.java.emprestimo.model.Reserva;
+import blt.java.emprestimo.util.DataUtil;
+import java.text.ParseException;
 import javafx.scene.control.Alert;
 
 
@@ -25,12 +28,34 @@ public class EmprestimoVisaoGeralControlador {
      * @throws SQLException
      */
     @FXML
-    private void botaoNovoEmprestimo()  {
+    private void botaoNovoEmprestimo() throws ParseException  {
         Emprestimo tempEmprestimo = new Emprestimo();
-
+        Reserva tempReserva = new Reserva();
+        String dataPrevisaoDevolucaoNovo = null;
+        
         boolean okClicked = mainApp.mostrarEmprestimoCaixaEditar(tempEmprestimo);
+        
         if (okClicked) {
-            bd.adiciona(tempEmprestimo);
+            if(bd.existeEmprestimo(tempEmprestimo)){
+                   tempReserva.setIdAluno(tempEmprestimo.getIdAluno());
+                   tempReserva.setIdAcervo(tempEmprestimo.getIdAcervo());
+                if(bd.existeReservaAdicionar(tempReserva)){
+                   
+                   tempReserva.setDataReserva(DataUtil.adicionaXDias(tempReserva.getDataReserva(), 8));
+                   tempReserva.setTempoEspera(7L);
+                   bd.adicionaReserva(tempReserva);
+                   
+                }else{
+                    
+                    tempReserva.setDataReserva(DataUtil.adicionaXDias(tempEmprestimo.getDataPrevisaoDevolucao(), 1));            
+                    tempReserva.setTempoEspera(7L);
+                    bd.adicionaReserva(tempReserva);
+                
+            }
+            } else {
+                bd.adicionaEmprestimo(tempEmprestimo);
+            }
+            
         }
     }
 
@@ -39,9 +64,10 @@ public class EmprestimoVisaoGeralControlador {
      * do aluno que realizou empréstimo.
      */
     @FXML
-    private void botaoDeletarEmprestimo() {
+    private void botaoDeletarEmprestimo() throws ParseException {
     	Emprestimo tempEmprestimo = new Emprestimo();
         Emprestimo tempEmprestimo2 = new Emprestimo();
+        Reserva tempReserva = new Reserva();
     	boolean existeEmprestimo = false;
         
         boolean okClicked = mainApp.mostrarEmprestimoPesquisar(tempEmprestimo2);
@@ -51,22 +77,49 @@ public class EmprestimoVisaoGeralControlador {
 
 
 		for (Emprestimo emprestimo : emprestimos) {
-			if(tempEmprestimo2.getIdAluno().equals( emprestimo.getIdAluno() )){
+			if(tempEmprestimo2.getIdAcervo() == emprestimo.getIdAcervo() ){
 				tempEmprestimo = emprestimo;
                                 existeEmprestimo = true;
 			}
 		}
                 
+                //Verifica se a data de devolução é maior que a de previsao
+                if(DataUtil.parse(tempEmprestimo2.getDataDevolucao()).toEpochDay() < DataUtil.parse(tempEmprestimo.getDataPrevisaoDevolucao()).toEpochDay()){
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                      alert.setTitle("Data de devolução Inválida");
+                      alert.setHeaderText("A data de entrega não pode ser anterior ao prazo de devolução!");
+                      alert.setContentText("Por favor, visualize os empréstimos existentes e tente novamente.");
+                      alert.showAndWait();
+                }else{ 
+                
+                //Verifica se o empréstimo existe
                 if(existeEmprestimo){
-			bd.remove(tempEmprestimo);
+                        tempEmprestimo.setDataDevolucao(tempEmprestimo2.getDataDevolucao());
+                        tempEmprestimo.setMulta(DataUtil.calculaDiferencaDias(DataUtil.parse(tempEmprestimo2.getDataDevolucao()), DataUtil.parse(tempEmprestimo.getDataPrevisaoDevolucao())));
+			
+                        //Remove o emprestimo e caso haja multa atualiza as reservas
+                        bd.remove(tempEmprestimo);
+                        tempReserva.setIdAcervo(tempEmprestimo.getIdAcervo());
+                        bd.atualizaReservas(tempEmprestimo.getMulta(), tempEmprestimo.getIdAcervo());
+                        
+                        //Verifica se há reservas para o empréstimo devolvido e caso haja coloca a menos recente nos empréstimos
+                        if(bd.existeReservaRemover(tempReserva)){
+                            tempEmprestimo.setDataEmprestimo(tempReserva.getDataReserva());
+                            tempEmprestimo.setDataPrevisaoDevolucao(DataUtil.adicionaXDias(tempReserva.getDataReserva(), 7));
+                            bd.emprestaReserva(tempReserva);
+                            tempEmprestimo.setIdAluno(tempReserva.getIdAluno());
+                            bd.adicionaEmprestimo(tempEmprestimo);
+                        }
+                         
                 }else{
                      Alert alert = new Alert(Alert.AlertType.ERROR);
-                      alert.setTitle("Id do aluno Inválido");
-                      alert.setHeaderText("Empréstimo não encontrada!");
+                      alert.setTitle("Id do acervo Inválido");
+                      alert.setHeaderText("Empréstimo não encontrado!");
                       alert.setContentText("Por favor, visualize os empréstimos existentes e tente novamente.");
                       alert.showAndWait();
                 }
-    	}
+                }
+        }
 
     }
 

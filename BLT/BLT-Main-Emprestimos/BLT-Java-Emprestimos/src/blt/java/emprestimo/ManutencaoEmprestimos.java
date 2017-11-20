@@ -86,7 +86,7 @@ public class ManutencaoEmprestimos extends Application {
 
             // Cria o palco dialogStage.
             Stage dialogStage = new Stage();
-            dialogStage.setTitle("Pesquisar Empréstimo");
+            dialogStage.setTitle("Finalizar Empréstimo");
             dialogStage.initModality(Modality.WINDOW_MODAL);
             dialogStage.initOwner(primaryStage);
             Scene scene = new Scene(page);
@@ -123,7 +123,7 @@ public class ManutencaoEmprestimos extends Application {
 
             // Cria o palco dialogStage.
             Stage dialogStage = new Stage();
-            dialogStage.setTitle("Editar Emprestimo");
+            dialogStage.setTitle("Criar Emprestimo");
             dialogStage.initModality(Modality.WINDOW_MODAL);
             dialogStage.initOwner(primaryStage);
             Scene scene = new Scene(page);

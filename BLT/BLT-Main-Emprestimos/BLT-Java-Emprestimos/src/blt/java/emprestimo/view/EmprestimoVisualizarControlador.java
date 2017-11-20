@@ -45,15 +45,16 @@ public class EmprestimoVisualizarControlador {
     @FXML
     private void initialize() {
         // Inicializa a tablea de pessoa com seis colunas.
-    	idAlunoColuna.setCellValueFactory(new PropertyValueFactory<Emprestimo, String>("idAluno"));
-        idAcervoColuna.setCellValueFactory(new PropertyValueFactory<Emprestimo, Integer>("idAcervo"));
-        dataEmprestimoColuna.setCellValueFactory(new PropertyValueFactory<Emprestimo, String>("dataEmprestimo"));
-        dataPrevisaoDevolucaoColuna.setCellValueFactory(new PropertyValueFactory<Emprestimo, String>("dataPrevisaoDevolucao"));
-        dataDevolucaoColuna.setCellValueFactory(new PropertyValueFactory<Emprestimo, String>("dataDevolucao"));
-        multaColuna.setCellValueFactory(new PropertyValueFactory<Emprestimo, Integer>("multa"));
+    	idAlunoColuna.setCellValueFactory(new PropertyValueFactory<>("idAluno"));
+        idAcervoColuna.setCellValueFactory(new PropertyValueFactory<>("idAcervo"));
+        dataEmprestimoColuna.setCellValueFactory(new PropertyValueFactory<>("dataEmprestimo"));
+        dataPrevisaoDevolucaoColuna.setCellValueFactory(new PropertyValueFactory<>("dataPrevisaoDevolucao"));
+        dataDevolucaoColuna.setCellValueFactory(new PropertyValueFactory<>("dataDevolucao"));
+        multaColuna.setCellValueFactory(new PropertyValueFactory<>("multa"));
         
         ObservableList<Emprestimo> emprestimos = FXCollections.observableArrayList(bd.getLista());
         emprestimoTabela.setItems(emprestimos);
+ 
     }
 
     @FXML

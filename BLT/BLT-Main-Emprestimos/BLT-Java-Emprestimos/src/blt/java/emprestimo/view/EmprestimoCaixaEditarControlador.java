@@ -4,12 +4,11 @@ import blt.java.emprestimo.model.Emprestimo;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import blt.java.emprestimo.util.DataUtil;
 import java.text.ParseException;
-import java.time.format.DateTimeFormatter;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
-import javafx.scene.control.DatePicker;
 
 
 
@@ -24,12 +23,6 @@ public class EmprestimoCaixaEditarControlador {
     private TextField idAlunoCampoTexto;
     @FXML
     private TextField idAcervoCampoTexto;
-    @FXML
-    private DatePicker dataEmprestimoCampoTexto;
-    @FXML
-    private DatePicker dataPrevisaoDevolucaoCampoTexto;
-    @FXML
-    private DatePicker dataDevolucaoCampoTexto;
   
 
     private Stage dialogStage;
@@ -80,10 +73,11 @@ public class EmprestimoCaixaEditarControlador {
 
             emprestimo.setIdAluno(idAlunoCampoTexto.getText());
             emprestimo.setIdAcervo(Integer.parseInt(idAcervoCampoTexto.getText()));
-            emprestimo.setDataEmprestimo(dataEmprestimoCampoTexto.getValue().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
-            emprestimo.setDataPrevisaoDevolucao(dataPrevisaoDevolucaoCampoTexto.getValue().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
-            emprestimo.setDataDevolucao(dataDevolucaoCampoTexto.getValue().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));  
-            emprestimo.setMulta(DataUtil.calculaDiferencaDias(dataDevolucaoCampoTexto.getValue(), dataPrevisaoDevolucaoCampoTexto.getValue()));
+            Date d = new Date();
+            emprestimo.setDataEmprestimo(new SimpleDateFormat("dd/MM/yyyy").format(d));
+            long timeNovaData = d.getTime() + (1000*60*60*24*7);
+            emprestimo.setDataPrevisaoDevolucao(new SimpleDateFormat("dd/MM/yyyy").format(new Date(timeNovaData))); 
+            
             
             okClicked = true;
             dialogStage.close();
@@ -91,7 +85,7 @@ public class EmprestimoCaixaEditarControlador {
     }
 
     /**
-     * Chamado quando o usuário clica Cancel.
+     * Chamado quando o usuário clica Cancelar.
      */
     @FXML
     private void botaoCancelar() {
@@ -107,7 +101,7 @@ public class EmprestimoCaixaEditarControlador {
         String errorMessage = "";
 
 
-        if (idAcervoCampoTexto.getText() == null || idAcervoCampoTexto.getText().length() == 0 || Integer.parseInt(idAcervoCampoTexto.getText())==0) {
+        if (idAcervoCampoTexto.getText() == null || idAcervoCampoTexto.getText().length() == 0 || idAcervoCampoTexto.getText().equals("0")) {
             errorMessage += "Id do acervo inválido!\n";
         } else {
             // tenta converter o id do acervo em um int.
@@ -118,21 +112,17 @@ public class EmprestimoCaixaEditarControlador {
             }
         }
 
-        if (idAlunoCampoTexto.getText() == null || idAlunoCampoTexto.getText().length() == 0) {
+        if (idAlunoCampoTexto.getText() == null || idAlunoCampoTexto.getText().length() != 11 || idAlunoCampoTexto.getText().equals("0")) {
             errorMessage += "Id do aluno inválido!\n";
+        } else {
+            // tenta converter o id do acervo em um int.
+            try {
+                Float.parseFloat(idAlunoCampoTexto.getText());
+            } catch (NumberFormatException e) {
+                errorMessage += "Id do aluno inválido (deve ser em formato cpf)!\n";
+            }
         }
-        
-        if (dataEmprestimoCampoTexto.getValue() == null) {
-            errorMessage += "Data do empréstimo inválido!\n";
-        }
-         
-        if (dataPrevisaoDevolucaoCampoTexto.getValue() == null) {
-            errorMessage += "Data de previsão de devolução inválida!\n";
-        }
-        
-        if (dataDevolucaoCampoTexto.getValue() == null) {
-            errorMessage += "Data de devolução inválida!\n";
-        } 
+
 
         if (errorMessage.length() == 0) {
             return true;

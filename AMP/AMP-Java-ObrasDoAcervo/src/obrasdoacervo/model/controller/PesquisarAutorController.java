@@ -5,7 +5,6 @@
  */
 package obrasdoacervo.model.controller;
 
-import java.io.IOException;
 import java.net.URL;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -14,59 +13,36 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.TextField;
 import obrasdoacervo.model.ObrasDoAcervo;
 
 /**
  *
  * @author Aluno
  */
-public class InterfacePrincipalController implements Initializable{
-    
-    
-    private com.mysql.jdbc.Connection link = null;
-    private static ObrasDoAcervo main;
+public class PesquisarAutorController implements Initializable {
+    private ObrasDoAcervo main;
+    private com.mysql.jdbc.Connection link;
 
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
         try {
+            // TODO
             link = (com.mysql.jdbc.Connection) DriverManager.getConnection("jdbc:mysql://localhost:3307/educatio", "root", "usbw");
         } catch (SQLException ex) {
-            Logger.getLogger(InterfacePrincipalController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(EditaPeriodicosController.class.getName()).log(Level.SEVERE, null, ex);
         }
         if(link == null)
             System.out.println("Erro!");
         else
             System.out.println("Conexao feita com sucesso!");
-        
+            
     }
     
-    
-    
-    @FXML
-    public void abrePesquisarObra() throws IOException{
-        main.abrePesquisarObra();
-     }
-    
-    @FXML
-    public void abrePesquisarAutor() throws IOException{
-        main.abrePesquisarAutor();
-    }   
-    
-    
-    @FXML
-    public void abreMenuSwitchObras() throws IOException{
-        main.abreMenuSwitchObras();
-    }
-    
-    @FXML
-    public void sair() throws IOException{
-        System.exit(0);
-    }
-
-    public void setMain(ObrasDoAcervo main) {
+        public void setMain(ObrasDoAcervo main) {
         this.main = main;
     }
 
-   
+    
 }

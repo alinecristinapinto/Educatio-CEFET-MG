@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="background" stylesheets="@LayoutCampiAlteracao.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ManutencaoCampi.control.LayoutCampiAlteracaoController">
+   <children>
+      <Label layoutX="40.0" layoutY="40.0" style="-fx-font-size: 25;" styleClass="label-pequena" text="Selecione o campus e os dados a serem alterados:" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <VBox layoutX="195.0" layoutY="89.0" prefHeight="46.0" prefWidth="199.0">
+         <children>
+            <ChoiceBox fx:id="caixaSelecao" prefHeight="25.0" prefWidth="199.0" styleClass="caixaselecao">
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+            </ChoiceBox>
+            <Label fx:id="labelErro" prefHeight="17.0" prefWidth="199.0" style="-fx-text-fill: red; -fx-font-size: 12px; -fx-font-weight: bold;" textFill="RED">
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+            </Label>
+         </children>
+      </VBox>
+      <VBox layoutX="195.0" layoutY="127.0" prefHeight="184.0" prefWidth="154.0">
+         <children>
+            <VBox prefHeight="149.0" prefWidth="159.0" spacing="8.0" styleClass="background">
+               <children>
+                  <CheckBox fx:id="checkBoxNome" mnemonicParsing="false" styleClass="textfield" text="Nome" />
+                  <CheckBox fx:id="checkBoxCidade" mnemonicParsing="false" styleClass="textfield" text="Cidade" />
+                  <CheckBox fx:id="checkBoxUf" mnemonicParsing="false" styleClass="textfield" text="UF" />
+                  <Label fx:id="labelErroCheckBox" prefHeight="17.0" prefWidth="194.0" style="-fx-text-fill: red; -fx-font-size: 12px; -fx-font-weight: bold;" textFill="RED" />
+               </children>
+            </VBox>
+            <HBox prefHeight="31.0" prefWidth="151.0">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#proxJanela" prefHeight="17.0" prefWidth="58.0" text="OK" />
+                  <Button mnemonicParsing="false" onAction="#cancela" text="Cancelar">
+                     <HBox.margin>
+                        <Insets left="20.0" />
+                     </HBox.margin>
+                  </Button>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

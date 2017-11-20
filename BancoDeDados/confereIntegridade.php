@@ -1,23 +1,23 @@
 <?php
 ###############################################################################################
 	header("Content-type: text/html; charset=utf-8");
-
+	ini_set('max_execution_time', 0); 
+###############################################################################################
 	$servername = "localhost";
 	$username = "root";
 	$password = "usbw";
 	$bd = "educatio";
-
-	$conn = new mysqli($servername, $username, $password, $bd);
+	$con = new mysqli($servername, $username, $password, $bd);
 	
-	mysqli_set_charset($conn, "utf8");
+	mysqli_set_charset($con, "utf8");
 	
 	// TESTANDO A CONEXÃO
-	if ($conn -> connect_error) 
+	if ($con->connect_error) 
 	{
-	    die("Conexão falhou: " . $conn -> connect_error);
+	    die("Conexão falhou: " . $con->connect_error);
 	}
-	//echo "<b>"."Conexão bem sucedida"."</b>".
-	//	 "<br><br>";
+	
+	echo "<b>".'Conexão bem sucedida.'."</b><br>";
 
 ###############################################################################################
 	$stringRelatorioErros = "";
@@ -44,29 +44,29 @@
 	{
 		//conferidorDeIntegridadeReversa($tabelaMae,$tabelaFilho,$opc);
 
-		global $conn, $stringRelatorioErros, $arrayTabelas, $arrayNomesTabelas;
+		global $con, $stringRelatorioErros, $arrayTabelas, $arrayNomesTabelas;
 
 		$GLOBALS['houveErro'] = false;
 
 		$sqlMae = "SELECT * FROM `{$arrayTabelas[$tabelaMae]}` WHERE ativo = 'S'";
-		$rstMae = $conn -> query($sqlMae);
+		$rstMae = $con->query($sqlMae);
 
-		if($rstMae -> num_rows > 0)
+		if($rstMae->num_rows > 0)
 		{
-			while($linhaMae = $rstMae -> fetch_array(MYSQLI_BOTH))
+			while($linhaMae = $rstMae->fetch_array(MYSQLI_BOTH))
 			{
 				//echo "<br>".$opc;
-				$stmtFilho = $conn -> prepare("SELECT * FROM `{$arrayTabelas[$tabelaFilho]}` WHERE ativo = ? AND $opc = ?");
-				$stmtFilho -> bind_param('si', $param1, $param2);
+				$stmtFilho = $con->prepare("SELECT * FROM `{$arrayTabelas[$tabelaFilho]}` WHERE ativo = ? AND $opc = ?");
+				$stmtFilho->bind_param('si', $param1, $param2);
 
 				$param1 = 'S';
 				$param2 = $linhaMae[0];
 				
-				$stmtFilho -> execute();
+				$stmtFilho->execute();
 
-				$rstFilho = $stmtFilho -> get_result();
+				$rstFilho = $stmtFilho->get_result();
 
-				if($rstFilho -> num_rows == 0)
+				if($rstFilho->num_rows == 0)
 				{
 					if($opc != 'idAcervo' || ($opc == 'idAcervo' && $linhaMae['tipo'] != 'Periódico'))
 					{
@@ -86,33 +86,33 @@
 	//CONFERINDO A INTEGRIDADE REVERSAMENTE
 	function conferidorDeIntegridadeReversa($tabelaMae,$tabelaFilho,$opc)
 	{
-		global $conn, $stringRelatorioErrosReverso, $arrayTabelas, $arrayNomesTabelas;
+		global $con, $stringRelatorioErrosReverso, $arrayTabelas, $arrayNomesTabelas;
 
 		$GLOBALS['houveErro'] = false;
 
 		$sqlFilho = "SELECT * FROM `{$arrayTabelas[$tabelaFilho]}` WHERE ativo = 'S'";
-		$rstFilho = $conn -> query($sqlFilho);
+		$rstFilho = $con->query($sqlFilho);
 
-		if($rstFilho -> num_rows > 0)
+		if($rstFilho->num_rows > 0)
 		{
-			while($linhaFilho = $rstFilho -> fetch_array(MYSQLI_BOTH))
+			while($linhaFilho = $rstFilho->fetch_array(MYSQLI_BOTH))
 			{
 				$sqlPadraoMae = "SELECT * FROM `{$arrayTabelas[$tabelaMae]}`";
-				$rstPadraoMae = $conn ->query($sqlPadraoMae);
-				$linhaPadraoMae = $rstPadraoMae -> fetch_assoc();
+				$rstPadraoMae = $con ->query($sqlPadraoMae);
+				$linhaPadraoMae = $rstPadraoMae->fetch_assoc();
 				$nomeColunas = array_keys($linhaPadraoMae); 
 
-				$stmtMae = $conn -> prepare("SELECT * FROM `{$arrayTabelas[$tabelaMae]}` WHERE ativo = ? AND $nomeColunas[0] = ?");
-				$stmtMae -> bind_param('ss', $param1, $param2);
+				$stmtMae = $con->prepare("SELECT * FROM `{$arrayTabelas[$tabelaMae]}` WHERE ativo = ? AND $nomeColunas[0] = ?");
+				$stmtMae->bind_param('ss', $param1, $param2);
 
 				$param1 = 'S';
 				$param2 = $linhaFilho[$opc];
 
-				$stmtMae -> execute();
+				$stmtMae->execute();
 
-				$rstMae = $stmtMae -> get_result();
+				$rstMae = $stmtMae->get_result();
 
-				if($rstMae -> num_rows == 0)
+				if($rstMae->num_rows == 0)
 				{
 					$stringRelatorioErrosReverso .= $arrayNomesTabelas[$tabelaFilho].' com id = '.$linhaFilho[0].' não possui '.$opc.' conectado a um(a) '.$arrayNomesTabelas[$tabelaMae].' ativo(a)'.".<br>";
 					$GLOBALS['houveErro'] = true;
@@ -209,8 +209,8 @@
 	//Conferindo integridade de Conteúdos (11)
 	conferidorDeIntegridade(11,12,'idConteudo');
 	//Conferindo integridade, agora, reversamente
-	conferidorDeIntegridadeReversa(7,11,'idEtapa');
-	conferidorDeIntegridadeReversa(9,11,'idDisciplina');
+	conferidorDeIntegridadeReversa(7,11,'idDisciplina');
+	conferidorDeIntegridadeReversa(9,11,'idEtapa');
 
 	//Conferindo integridade de Diários (12)
 	//Acredito que não há necessidade
@@ -319,10 +319,10 @@
 	conferidorDeIntegridadeReversa(13,23,'idAcervo');
 	conferidorDeIntegridadeReversa(6,23,'idFuncionario');
 	
-	echo "<b><h2>".'Erros de integridade: Direção -> De cima para baixo'."</h2></b>";					
+	echo "<b><h2>".'Erros de integridade: Direção->De cima para baixo'."</h2></b>";					
 	echo $stringRelatorioErros;
 	//echo "<b><h2>".'###############################################################################################'."</h2></b>";
-	echo "<b><h2>".'Erros de integridade: Direção -> De baixo para cima'."</h2></b>";
+	echo "<b><h2>".'Erros de integridade: Direção->De baixo para cima'."</h2></b>";
 	echo $stringRelatorioErrosReverso;
 ###############################################################################################
 ?>

@@ -21,23 +21,24 @@ import javafx.stage.Stage;
  * @author Aluno
  */
 public class ManutencaoDepto extends Application {
+
     private Stage palcoPrincipal;
     private AnchorPane telaInicial;
     private BorderPane telaBase;
-    
+
     @Override
     public void start(Stage primaryStage) throws Exception {
         this.palcoPrincipal = primaryStage;
-        
+
         Parent root = FXMLLoader.load(getClass().getResource("LayoutBase.fxml"));
-        
+
         invocaLayoutBase();
     }
-    
+
     Stage dialogStage = new Stage();
-    
-    public void invocaLayoutBase(){
-        try{
+
+    public void invocaLayoutBase() {
+        try {
             FXMLLoader carregadorFXML = new FXMLLoader();
             carregadorFXML.setLocation(ManutencaoDepto.class.getResource("TelaBase.fxml"));
             telaBase = (BorderPane) carregadorFXML.load();
@@ -53,14 +54,13 @@ public class ManutencaoDepto extends Application {
 
             LayoutBaseController controller = auxiliar.getController();
             controller.setManutencaoDepto(this);
-    }
-    catch (IOException e) {
+        } catch (IOException e) {
             e.printStackTrace();
+        }
     }
-    }
-    
-    public void invocaLayoutCriar() throws IOException{
-        try{
+
+    public void invocaLayoutCriar() throws IOException {
+        try {
             FXMLLoader carregadorFXML = new FXMLLoader();
             carregadorFXML.setLocation(ManutencaoDepto.class.getResource("TelaBase.fxml"));
             telaBase = (BorderPane) carregadorFXML.load();
@@ -76,14 +76,13 @@ public class ManutencaoDepto extends Application {
 
             LayoutCriarController controller = auxiliar.getController();
             controller.setManutencaoDepto(this);
-    }
-    catch (IOException e) {
+        } catch (IOException e) {
             e.printStackTrace();
+        }
     }
-    }
-    
-    public void invocaLayoutAlterar(int campi) throws IOException, SQLException{
-        try{
+
+    public void invocaLayoutAlterar(int campi) throws IOException, SQLException {
+        try {
             FXMLLoader carregadorFXML = new FXMLLoader();
             carregadorFXML.setLocation(ManutencaoDepto.class.getResource("TelaBase.fxml"));
             telaBase = (BorderPane) carregadorFXML.load();
@@ -101,14 +100,13 @@ public class ManutencaoDepto extends Application {
             controller.setManutencaoDepto(this);
             controller.setCampiB(campi);
             controller.setData();
-    }
-    catch (IOException e) {
+        } catch (IOException e) {
             e.printStackTrace();
+        }
     }
-    }
-    
-    public void invocaLayoutExcluir(int campi) throws IOException, SQLException{
-        try{
+
+    public void invocaLayoutExcluir(int campi) throws IOException, SQLException {
+        try {
             FXMLLoader carregadorFXML = new FXMLLoader();
             carregadorFXML.setLocation(ManutencaoDepto.class.getResource("TelaBase.fxml"));
             telaBase = (BorderPane) carregadorFXML.load();
@@ -126,14 +124,13 @@ public class ManutencaoDepto extends Application {
             controller.setManutencaoDepto(this);
             controller.setCampiB(campi);
             controller.setData();
-        }
-        catch (IOException e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
-    
-    public void invocaVerificaCampi(int sw){
-        try{
+
+    public void invocaVerificaCampi(int sw) throws SQLException {
+        try {
             FXMLLoader carregadorFXML = new FXMLLoader();
             carregadorFXML.setLocation(ManutencaoDepto.class.getResource("TelaBase.fxml"));
             telaBase = (BorderPane) carregadorFXML.load();
@@ -150,14 +147,86 @@ public class ManutencaoDepto extends Application {
             VerificaCampiController controller = auxiliar.getController();
             controller.setManutencaoDepto(this);
             controller.setSw(sw);
-    }
-    catch (IOException e) {
+            controller.VerificaCampiPrep();
+        } catch (IOException e) {
             e.printStackTrace();
+        }
     }
+
+    public void invocaVerificaDepto(int idCampi) throws SQLException {
+        try {
+            FXMLLoader carregadorFXML = new FXMLLoader();
+            carregadorFXML.setLocation(ManutencaoDepto.class.getResource("TelaBase.fxml"));
+            telaBase = (BorderPane) carregadorFXML.load();
+
+            FXMLLoader auxiliar = new FXMLLoader();
+            auxiliar.setLocation(ManutencaoDepto.class.getResource("VerificaDepto.fxml"));
+            telaInicial = (AnchorPane) auxiliar.load();
+
+            telaBase.setCenter(telaInicial);
+            Scene cena = new Scene(telaBase);
+            palcoPrincipal.setScene(cena);
+            palcoPrincipal.show();
+
+            VerificaDeptoController controller = auxiliar.getController();
+            controller.setManutencaoDepto(this);
+            controller.setIdCampi(idCampi);
+            controller.VerificaDeptoPrep();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
-    
-     public void invocaLayoutTransferirAluno(){
-        try{
+
+    public void invocaVerificaCurso(int idDepto) throws SQLException {
+        try {
+            FXMLLoader carregadorFXML = new FXMLLoader();
+            carregadorFXML.setLocation(ManutencaoDepto.class.getResource("TelaBase.fxml"));
+            telaBase = (BorderPane) carregadorFXML.load();
+
+            FXMLLoader auxiliar = new FXMLLoader();
+            auxiliar.setLocation(ManutencaoDepto.class.getResource("VerificaCurso.fxml"));
+            telaInicial = (AnchorPane) auxiliar.load();
+
+            telaBase.setCenter(telaInicial);
+            Scene cena = new Scene(telaBase);
+            palcoPrincipal.setScene(cena);
+            palcoPrincipal.show();
+
+            VerificaCursoController controller = auxiliar.getController();
+            controller.setManutencaoDepto(this);
+            controller.setIdDepto(idDepto);
+            controller.VerificaCursoPrep();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void invocaVerificaTurma(int idCurso) throws SQLException {
+        try {
+            FXMLLoader carregadorFXML = new FXMLLoader();
+            carregadorFXML.setLocation(ManutencaoDepto.class.getResource("TelaBase.fxml"));
+            telaBase = (BorderPane) carregadorFXML.load();
+
+            FXMLLoader auxiliar = new FXMLLoader();
+            auxiliar.setLocation(ManutencaoDepto.class.getResource("VerificaTurma.fxml"));
+            telaInicial = (AnchorPane) auxiliar.load();
+
+            telaBase.setCenter(telaInicial);
+            Scene cena = new Scene(telaBase);
+            palcoPrincipal.setScene(cena);
+            palcoPrincipal.show();
+
+            VerificaTurmaController controller = auxiliar.getController();
+            controller.setManutencaoDepto(this);
+            controller.setIdCurso(idCurso);
+            controller.VerificaTurmaPrep();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void invocaLayoutTransferirAluno(int idTurma) {
+        try {
             FXMLLoader carregadorFXML = new FXMLLoader();
             carregadorFXML.setLocation(ManutencaoDepto.class.getResource("TelaBase.fxml"));
             telaBase = (BorderPane) carregadorFXML.load();
@@ -173,14 +242,15 @@ public class ManutencaoDepto extends Application {
 
             LayoutTransferAlunoController controller = auxiliar.getController();
             controller.setManutencaoDepto(this);
-    }
-    catch (IOException e) {
+            controller.setIdTurma(idTurma);
+            controller.LayoutTransferirAlunoPrep();
+        } catch (IOException e) {
             e.printStackTrace();
+        }
     }
-    }
-    
+
     public static void main(String[] args) {
         launch(args);
     }
-    
+
 }

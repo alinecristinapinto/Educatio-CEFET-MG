@@ -7,14 +7,18 @@
 	$strSenha = null;
 	$strDBnome = "Educatio";
 
-	//recebe o CPF do Form
-	@$intCPF = $_POST['CPF'];
-
 	//Cria conexão
 	$conn = new mysqli($strNomeServer, $strNomeUsuario, $strSenha);
 	//Verifica conexão
 	if ($conn->connect_error) {
    		die("Falha na conexão: " . $conn->connect_error."<br>");
+	}
+
+	//Variável para verificar o Campus dos departamentos
+	$strTurma = $_GET['strTurma'];
+	$strSQL = $conn->query("SELECT id, nome FROM `Educatio`.`turmas` WHERE nome ='".$strTurma."'");
+	while($arrLinha = $strSQL->fetch_assoc()) {
+		$intIdTurma = $arrLinha['id'];
 	}
 
 ?>
@@ -61,17 +65,29 @@
 				<table class='table table-hover' id="tabela">
 				<?php
 				//Tabela de Pesquisa
-				$strSQL = $conn->query("SELECT idCPF, nome FROM `Educatio`.`alunos`");
+				$strSQL = $conn->query("SELECT idCPF, nome, ativo FROM `Educatio`.`alunos` WHERE idTurma = '".$intIdTurma."'");
 				while($arrLinha = $strSQL->fetch_assoc()) {
-					echo "<tr value='".$arrLinha['idCPF']."' onclick('document.getElementById('txt_consulta').value = document.getElementById(this).innerHTML')><th>".$arrLinha['idCPF']."</th><td>".$arrLinha['nome']."</td></tr>";
+					if($arrLinha['ativo'] != 'N'){
+						echo "<tr value='".$arrLinha['nome']."' onclick('document.getElementById('txt_consulta').value = document.getElementById(this).innerHTML')><th>".$arrLinha['idCPF']."</th><td>".$arrLinha['nome']."</td></tr>";
+					}
 				}
 				echo "</table>";
 				?>
 
+				<!-- Filtro da Tabela -->
 				<script>
  					$('input#txt_consulta').quicksearch('table#tabela tbody tr');
-				</script>		
+				</script>
 				
+				<!-- Função de clique na tabela -->
+				<script>
+					$(document.getElementById("tabela")).ready(function() {
+						$('tr').click(function () { 
+							document.getElementById("txt_consulta").value = $(this).attr("value");
+						});
+					});
+				</script>
+
 				<div class="row">
 					<div class="col-md-4 ml-auto mr-auto">
 						<input type="submit" name="Transferir" value="Transferir" class="btn btn-info btn-round">

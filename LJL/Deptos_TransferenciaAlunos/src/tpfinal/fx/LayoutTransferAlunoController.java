@@ -32,7 +32,7 @@ import javafx.scene.control.TextField;
  *
  * @author Aluno
  */
-public class LayoutTransferAlunoController implements Initializable{
+public class LayoutTransferAlunoController implements Initializable {
 
     private ManutencaoDepto manutencaoDepto;
     FilteredList<Aluno> filtraDados;
@@ -40,65 +40,65 @@ public class LayoutTransferAlunoController implements Initializable{
     private TableColumn<Aluno, String> alunoCPF;
     @FXML
     private TableColumn<Aluno, String> alunoNome;
+    private int idTurma;
     
-    public void setManutencaoDepto(ManutencaoDepto manutencaoDepto){
-        this.manutencaoDepto=manutencaoDepto;
+    
+    public void setManutencaoDepto(ManutencaoDepto manutencaoDepto) {
+        this.manutencaoDepto = manutencaoDepto;
     }
-    
-    public LayoutTransferAlunoController() throws SQLException{    
-        try{
-        String sql = null;
-        Conexão conn = new Conexão();
-        Connection connection = conn.getConnection();
-        if(connection!=null){   
-        }else{
-            System.out.println("deu ruim :(");
-        }
-        ResultSet result;
-        dadosAluno = FXCollections.observableArrayList();
-        sql = "SELECT * FROM alunos WHERE ativo='S'";
-        Statement fetch = connection.createStatement();
-        result = fetch.executeQuery(sql);
-        while(result.next()){
-            dadosAluno.add(new Aluno(result.getString("nome"), result.getString("CPF")));
-        }
-        alunoNome.setCellValueFactory(cellData -> cellData.getValue().getNome());
-        alunoCPF.setCellValueFactory(cellData -> cellData.getValue().getCPF());
-        alunos.setItems(dadosAluno);
-        
-        
-        filtraDados = new FilteredList<>(dadosAluno, p -> true);
-            
+
+    public LayoutTransferAlunoController() throws SQLException {
+        try {
+            String sql = null;
+            Conexão conn = new Conexão();
+            Connection connection = conn.getConnection();
+            if (connection != null) {
+            } else {
+                System.out.println("deu ruim :(");
+            }
+            ResultSet result;
+            dadosAluno = FXCollections.observableArrayList();
+            sql = "SELECT * FROM alunos WHERE ativo='S'";
+            Statement fetch = connection.createStatement();
+            result = fetch.executeQuery(sql);
+            while (result.next()) {
+                dadosAluno.add(new Aluno(result.getString("nome"), result.getString("CPF")));
+            }
+            alunoNome.setCellValueFactory(cellData -> cellData.getValue().getNome());
+            alunoCPF.setCellValueFactory(cellData -> cellData.getValue().getCPF());
+            alunos.setItems(dadosAluno);
+
+            filtraDados = new FilteredList<>(dadosAluno, p -> true);
+
             pesq.textProperty().addListener((observable, oldValue, newValue) -> {
-            filtraDados.setPredicate(Aluno -> {
-                // If filter text is empty, display all persons.
-                if (newValue == null || newValue.isEmpty()) {
-                    return true;
-                }
-                
-                // Compare first name and last name of every person with filter text.
-                String lowerCaseFilter = newValue.toLowerCase();
-                
-                if (Aluno.getNome().toString().toLowerCase().contains(lowerCaseFilter)) {
-                    return true; // Filter matches first name.
-                }
-                return false; // Does not match.
+                filtraDados.setPredicate(Aluno -> {
+                    // If filter text is empty, display all persons.
+                    if (newValue == null || newValue.isEmpty()) {
+                        return true;
+                    }
+
+                    // Compare first name and last name of every person with filter text.
+                    String lowerCaseFilter = newValue.toLowerCase();
+
+                    if (Aluno.getNome().toString().toLowerCase().contains(lowerCaseFilter)) {
+                        return true; // Filter matches first name.
+                    }
+                    return false; // Does not match.
+                });
             });
-        });
-           SortedList<Aluno> sorteiaDados = new SortedList<>(filtraDados);
-           sorteiaDados.comparatorProperty().bind(alunos.comparatorProperty());
-           alunos.setItems(sorteiaDados);
+            SortedList<Aluno> sorteiaDados = new SortedList<>(filtraDados);
+            sorteiaDados.comparatorProperty().bind(alunos.comparatorProperty());
+            alunos.setItems(sorteiaDados);
+        } catch (SQLException ex) {
+
+        }
     }
-    catch (SQLException ex){
-        
-    }
-    }
-    
+
     @FXML
-    public void handlePesq() throws SQLException{
+    public void handlePesq() throws SQLException {
         filtraDados = new FilteredList<>(dadosAluno, p -> true);
-            
-            pesq.textProperty().addListener((observable, oldValue, newValue) -> {
+
+        pesq.textProperty().addListener((observable, oldValue, newValue) -> {
             filtraDados.setPredicate(aluno -> {
                 // If filter text is empty, display all persons.
                 if (newValue == null || newValue.isEmpty()) {
@@ -126,34 +126,33 @@ public class LayoutTransferAlunoController implements Initializable{
         // 5. Add sorted (and filtered) data to the table.
         alunos.setItems(sortedData);
     }
-    
+
     @FXML
-    private boolean handleExistenciaAluno(){
-        if(alunos.getSelectionModel().getSelectedItem()==null){
+    private boolean handleExistenciaAluno() {
+        if (alunos.getSelectionModel().getSelectedItem() == null) {
             alunos.setStyle("-fx-background-color: #d13419");
             info.setText("Selecione um aluno");
             return false;
-        }
-        else{
+        } else {
             alunos.setStyle("-fx-background-color: #6989FF");
             info.setText("");
             return true;
         }
     }
-    
-    public void handleTransferirAction() throws SQLException{
-        if(handleExistenciaAluno()){
+
+    public void handleTransferirAction() throws SQLException {
+        if (handleExistenciaAluno()) {
             try {
                 String sql = null;
                 Conexão conn = new Conexão();
                 Connection connection = conn.getConnection();
-                if(connection!=null){   
-                }else{
+                if (connection != null) {
+                } else {
                     System.out.println("deu ruim :(");
                 }
                 sql = "UPDATE `alunos`"
-                + " SET `ativo` = 'N'"
-                + " WHERE `alunos`.`idCPF` = '"+alunos.getSelectionModel().getSelectedItem().getCPF().getValue()+"'";
+                        + " SET `ativo` = 'N'"
+                        + " WHERE `alunos`.`idCPF` = '" + alunos.getSelectionModel().getSelectedItem().getCPF().getValue() + "'";
                 PreparedStatement stmt = connection.prepareStatement(sql);
                 stmt.execute();
                 stmt.close();
@@ -164,12 +163,11 @@ public class LayoutTransferAlunoController implements Initializable{
             manutencaoDepto.invocaLayoutBase();
         }
     }
-    
-    
-    public void handleCancelarAction(){
+
+    public void handleCancelarAction() {
         manutencaoDepto.invocaLayoutBase();
     }
-    
+
     ObservableList<Aluno> dadosAluno;
     @FXML
     private TableView<Aluno> alunos;
@@ -177,36 +175,45 @@ public class LayoutTransferAlunoController implements Initializable{
     private Label info;
     @FXML
     private TextField pesq;
-    
+
     @Override
-    public void initialize(URL url, ResourceBundle rb){
-        try{
-        String sql = null;
-        Conexão conn = new Conexão();
-        Connection connection = conn.getConnection();
-        if(connection!=null){   
-        }else{
-            System.out.println("deu ruim :(");
-        }
-        ResultSet result;
-        dadosAluno = FXCollections.observableArrayList();
-        sql = "SELECT * FROM alunos WHERE ativo='S'";
-        Statement fetch = connection.createStatement();
-        result = fetch.executeQuery(sql);
-        while(result.next()){
-            dadosAluno.add(new Aluno(result.getString("nome"), result.getString("idCPF")));
-        }
-        alunoNome.setCellValueFactory(cellData -> cellData.getValue().getNome());
-        alunoCPF.setCellValueFactory(cellData -> cellData.getValue().getCPF());
-        alunos.setItems(dadosAluno);
-        
-        
-        
-    }
-    catch (SQLException ex){
-        
-    }
-           
+    public void initialize(URL url, ResourceBundle rb) {
+
     }
     
+    
+    public void LayoutTransferirAlunoPrep() {
+        try {
+            String sql = null;
+            Conexão conn = new Conexão();
+            Connection connection = conn.getConnection();
+            if (connection != null) {
+            } else {
+                System.out.println("deu ruim :(");
+            }
+            ResultSet result;
+            dadosAluno = FXCollections.observableArrayList();
+            sql = "SELECT * FROM alunos WHERE ativo='S' AND idTurma = "+idTurma;
+            Statement fetch = connection.createStatement();
+            result = fetch.executeQuery(sql);
+            while (result.next()) {
+                dadosAluno.add(new Aluno(result.getString("nome"), result.getString("idCPF")));
+            }
+            alunoNome.setCellValueFactory(cellData -> cellData.getValue().getNome());
+            alunoCPF.setCellValueFactory(cellData -> cellData.getValue().getCPF());
+            alunos.setItems(dadosAluno);
+
+        } catch (SQLException ex) {
+
+        }
+
+    }
+
+    /**
+     * @param idTurma the idTurma to set
+     */
+    public void setIdTurma(int idTurma) {
+        this.idTurma = idTurma;
+    }
+
 }

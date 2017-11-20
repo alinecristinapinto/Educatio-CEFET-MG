@@ -6,14 +6,18 @@
 	$strSenha = null;
 	$strDBnome = "Educatio";
 
-	//Variável para verificar o Campus dos departamentos
-	$intIdCampi = $_GET['intIdCampi'];
-
 	//Cria conexão
 	$conn = new mysqli($strNomeServer, $strNomeUsuario, $strSenha);
 	//Verifica conexão
 	if ($conn->connect_error) {
    		die("Falha na conexão: " . $conn->connect_error."<br>");
+	}
+
+	//Variável para verificar o Campus dos departamentos
+	$strCampi = $_GET['strCampi'];
+	$strSQL = $conn->query("SELECT id, nome FROM `Educatio`.`campi` WHERE nome ='".$strCampi."'");
+	while($arrLinha = $strSQL->fetch_assoc()) {
+		$intIdCampi = $arrLinha['id'];
 	}
 ?> 
 <!DOCTYPE html>
@@ -49,18 +53,33 @@
 
 			<form method="POST" action="" class="contact-form">
 
-				<div class="input-group">
-					<span class="input-group-addon"><i class="nc-icon nc-bank"></i></span>								
-					<select name="Onde" class="form-control" required='required'>
-						<option value="">Selecione o Departamento que será alterado</option>
-				  	  	<!-- Pega os dados do banco e coloca no select -->
-						<?php $strSQL = $conn->query("SELECT id, nome, idCampi, ativo FROM `Educatio`.`deptos` WHERE idCampi = '".$intIdCampi."'"); ?>	
-						<?php while($arrLinha = $strSQL->fetch_assoc()) { ?>
+			<div class="input-group">
+					<span class="input-group-addon"><i class="nc-icon nc-bank"></i></span>
+					<input type="text" name="Onde" id="txt_consulta" placeholder="Digite o Nome do Departamento que será alterado" class="form-control" required='required'>
+				</div>							
+				
+				<table class="table table-hover" required='required' id="tabela">
+					<!-- Pega os dados do banco e coloca no select -->
+					<?php $strSQL = $conn->query("SELECT id, nome, idCampi, ativo FROM `Educatio`.`deptos` WHERE idCampi = '".$intIdCampi."'"); ?>	
+					<?php while($arrLinha = $strSQL->fetch_assoc()) { ?>
 						<?php if ($arrLinha['ativo'] != 'N') {?>	
-						<option value="<?php echo $arrLinha['nome'];?>"><?php echo "Departamento: ".$arrLinha['nome'];?></option>
-						<?php }} ?>	
-					</select>
-				</div>
+							<?php echo "<tr value='".$arrLinha['nome']."' onclick('document.getElementById('txt_consulta').value = document.getElementById(this).innerHTML')><th>".$arrLinha['nome']."</th>";?>
+					<?php }} ?>
+				</table>
+
+				<!-- Filtro da Tabela -->
+				<script>
+ 					$('input#txt_consulta').quicksearch('table#tabela tbody tr');
+				</script>
+				
+				<!-- Função de clique na tabela -->
+				<script>
+					$(document.getElementById("tabela")).ready(function() {
+						$('tr').click(function () { 
+							document.getElementById("txt_consulta").value = $(this).attr("value");
+						});
+					});
+				</script>
 									
 				<br>
 

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="300.0" prefWidth="600.0" stylesheets="@LayoutBase.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ManutencaoCampi.control.LayoutBaseController">
+   <children>
+      <SplitPane layoutX="83.0" layoutY="78.0" prefHeight="300.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <items>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" styleClass="background">
+               <children>
+                  <Button layoutX="153.0" layoutY="131.0" mnemonicParsing="false" onAction="#handleCriaCampi" prefHeight="37.0" prefWidth="95.0" text="Adicionar">
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                  </Button>
+                  <Button layoutX="252.0" layoutY="131.0" mnemonicParsing="false" onAction="#handleDeletaCampi" prefHeight="37.0" prefWidth="95.0" text="Deletar">
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                  </Button>
+                  <Button layoutX="351.0" layoutY="131.0" mnemonicParsing="false" onAction="#handleEditaCampi" prefHeight="37.0" prefWidth="95.0" text="Alterar">
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                  </Button>
+                  <Pane layoutX="136.0" layoutY="86.0" prefHeight="25.0" prefWidth="328.0">
+                     <children>
+                        <TextField fx:id="campoTexto" onAction="#pesquisaCampus" onMouseClicked="#cliqueCampoTexto" prefHeight="25.0" prefWidth="328.0" style="-fx-text-fill: #CCCCCC;" text="Nome do campus" />
+                        <Button fx:id="botaoPesquisa" layoutX="300.0" layoutY="-5.0" mnemonicParsing="false" onAction="#pesquisaCampus" prefHeight="16.0" prefWidth="28.0" style="-fx-background-color: transparent; -fx-border-color: transparent;" />
+                     </children>
+                  </Pane>
+                  <Label layoutX="136.0" layoutY="59.0" prefHeight="27.0" prefWidth="174.0" styleClass="label-pequena" text="Pesquisa por campus:" />
+               </children>
+            </AnchorPane>
+        </items>
+      </SplitPane>
+   </children>
+</AnchorPane>

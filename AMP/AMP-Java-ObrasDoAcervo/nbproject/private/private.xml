@@ -5,34 +5,25 @@
         <group>
             <file>file:/C:/Users/Aluno/Desktop/Educatio-CEFET-MG/AMP/AMP-Java-ObrasDoAcervo/src/obrasdoacervo/model/controller/PesquisarAutorController.java</file>
             <file>file:/C:/Users/Aluno/Desktop/Educatio-CEFET-MG/AMP/AMP-Java-ObrasDoAcervo/src/obrasdoacervo/model/controller/CriaAcademicoController.java</file>
-            <file>file:/C:/Users/Aluno/Desktop/Educatio-CEFET-MG/AMP/AMP-Java-ObrasDoAcervo/src/obrasdoacervo/model/view/CriaAutor.fxml</file>
+            <file>file:/C:/Users/Aluno/Desktop/Educatio-CEFET-MG/AMP/AMP-Java-ObrasDoAcervo/src/obrasdoacervo/model/AcervoTabela.java</file>
+            <file>file:/C:/Users/Aluno/Desktop/Educatio-CEFET-MG/AMP/AMP-Java-ObrasDoAcervo/src/obrasdoacervo/model/controller/CriaMidiaController.java</file>
+            <file>file:/C:/Users/Aluno/Desktop/Educatio-CEFET-MG/AMP/AMP-Java-ObrasDoAcervo/src/obrasdoacervo/model/controller/CriaPeriodicoController.java</file>
             <file>file:/C:/Users/Aluno/Desktop/Educatio-CEFET-MG/AMP/AMP-Java-ObrasDoAcervo/src/obrasdoacervo/model/controller/EditaAutorController.java</file>
-            <file>file:/C:/Users/Aluno/Desktop/Educatio-CEFET-MG/AMP/AMP-Java-ObrasDoAcervo/src/obrasdoacervo/model/view/CriaAcademico.fxml</file>
             <file>file:/C:/Users/Aluno/Desktop/Educatio-CEFET-MG/AMP/AMP-Java-ObrasDoAcervo/src/obrasdoacervo/model/view/CriaAutorSecundario.fxml</file>
-            <file>file:/C:/Users/Aluno/Desktop/Educatio-CEFET-MG/AMP/AMP-Java-ObrasDoAcervo/src/obrasdoacervo/model/view/InterfacePrincipal.fxml</file>
-            <file>file:/C:/Users/Aluno/Desktop/Educatio-CEFET-MG/AMP/AMP-Java-ObrasDoAcervo/src/obrasdoacervo/model/view/PesquisarObra.fxml</file>
+            <file>file:/C:/Users/Aluno/Desktop/Educatio-CEFET-MG/AMP/AMP-Java-ObrasDoAcervo/src/obrasdoacervo/model/controller/EditaParteController.java</file>
+            <file>file:/C:/Users/Aluno/Desktop/Educatio-CEFET-MG/AMP/AMP-Java-ObrasDoAcervo/src/obrasdoacervo/model/controller/EditaLivroController.java</file>
             <file>file:/C:/Users/Aluno/Desktop/Educatio-CEFET-MG/AMP/AMP-Java-ObrasDoAcervo/src/obrasdoacervo/model/controller/CriaLivroController.java</file>
-            <file>file:/C:/Users/Aluno/Desktop/Educatio-CEFET-MG/AMP/AMP-Java-ObrasDoAcervo/src/obrasdoacervo/model/view/EditaAutor.fxml</file>
+            <file>file:/C:/Users/Aluno/Desktop/Educatio-CEFET-MG/AMP/AMP-Java-ObrasDoAcervo/src/obrasdoacervo/model/Autores.java</file>
+            <file>file:/C:/Users/Aluno/Desktop/Educatio-CEFET-MG/AMP/AMP-Java-ObrasDoAcervo/src/obrasdoacervo/model/ObrasDoAcervo.java</file>
             <file>file:/C:/Users/Aluno/Desktop/Educatio-CEFET-MG/AMP/AMP-Java-ObrasDoAcervo/src/obrasdoacervo/model/controller/MenuSwitchObrasController.java</file>
             <file>file:/C:/Users/Aluno/Desktop/Educatio-CEFET-MG/AMP/AMP-Java-ObrasDoAcervo/src/obrasdoacervo/model/Livros.java</file>
             <file>file:/C:/Users/Aluno/Desktop/Educatio-CEFET-MG/AMP/AMP-Java-ObrasDoAcervo/src/obrasdoacervo/model/controller/CriaParteController.java</file>
             <file>file:/C:/Users/Aluno/Desktop/Educatio-CEFET-MG/AMP/AMP-Java-ObrasDoAcervo/src/obrasdoacervo/model/Partes.java</file>
+            <file>file:/C:/Users/Aluno/Desktop/Educatio-CEFET-MG/AMP/AMP-Java-ObrasDoAcervo/src/obrasdoacervo/model/Periodicos.java</file>
             <file>file:/C:/Users/Aluno/Desktop/Educatio-CEFET-MG/AMP/AMP-Java-ObrasDoAcervo/src/obrasdoacervo/model/controller/PesquisarObraController.java</file>
-            <file>file:/C:/Users/Aluno/Desktop/Educatio-CEFET-MG/AMP/AMP-Java-ObrasDoAcervo/src/obrasdoacervo/model/view/CriaPeriodico.fxml</file>
+            <file>file:/C:/Users/Aluno/Desktop/Educatio-CEFET-MG/AMP/AMP-Java-ObrasDoAcervo/src/obrasdoacervo/model/controller/CriaAutorController.java</file>
             <file>file:/C:/Users/Aluno/Desktop/Educatio-CEFET-MG/AMP/AMP-Java-ObrasDoAcervo/src/obrasdoacervo/model/Obras.java</file>
             <file>file:/C:/Users/Aluno/Desktop/Educatio-CEFET-MG/AMP/AMP-Java-ObrasDoAcervo/src/obrasdoacervo/model/controller/InterfacePrincipalController.java</file>
-            <file>file:/C:/Users/Aluno/Desktop/Educatio-CEFET-MG/AMP/AMP-Java-ObrasDoAcervo/src/obrasdoacervo/model/view/CriaLivro.fxml</file>
-            <file>file:/C:/Users/Aluno/Desktop/Educatio-CEFET-MG/AMP/AMP-Java-ObrasDoAcervo/src/obrasdoacervo/model/controller/CriaMidiaController.java</file>
-            <file>file:/C:/Users/Aluno/Desktop/Educatio-CEFET-MG/AMP/AMP-Java-ObrasDoAcervo/src/obrasdoacervo/model/controller/CriaPeriodicoController.java</file>
-            <file>file:/C:/Users/Aluno/Desktop/Educatio-CEFET-MG/AMP/AMP-Java-ObrasDoAcervo/src/obrasdoacervo/model/view/CriaMidia.fxml</file>
-            <file>file:/C:/Users/Aluno/Desktop/Educatio-CEFET-MG/AMP/AMP-Java-ObrasDoAcervo/src/obrasdoacervo/model/view/PesquisarAutor.fxml</file>
-            <file>file:/C:/Users/Aluno/Desktop/Educatio-CEFET-MG/AMP/AMP-Java-ObrasDoAcervo/src/obrasdoacervo/model/view/CriaParte.fxml</file>
-            <file>file:/C:/Users/Aluno/Desktop/Educatio-CEFET-MG/AMP/AMP-Java-ObrasDoAcervo/src/obrasdoacervo/model/view/MenuSwitchObras.fxml</file>
-            <file>file:/C:/Users/Aluno/Desktop/Educatio-CEFET-MG/AMP/AMP-Java-ObrasDoAcervo/src/obrasdoacervo/model/controller/EditaLivroController.java</file>
-            <file>file:/C:/Users/Aluno/Desktop/Educatio-CEFET-MG/AMP/AMP-Java-ObrasDoAcervo/src/obrasdoacervo/model/Autores.java</file>
-            <file>file:/C:/Users/Aluno/Desktop/Educatio-CEFET-MG/AMP/AMP-Java-ObrasDoAcervo/src/obrasdoacervo/model/ObrasDoAcervo.java</file>
-            <file>file:/C:/Users/Aluno/Desktop/Educatio-CEFET-MG/AMP/AMP-Java-ObrasDoAcervo/src/obrasdoacervo/model/Periodicos.java</file>
-            <file>file:/C:/Users/Aluno/Desktop/Educatio-CEFET-MG/AMP/AMP-Java-ObrasDoAcervo/src/obrasdoacervo/model/controller/CriaAutorController.java</file>
         </group>
     </open-files>
 </project-private>

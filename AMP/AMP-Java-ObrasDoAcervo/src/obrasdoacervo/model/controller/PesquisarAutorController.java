@@ -14,8 +14,10 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import obrasdoacervo.model.ObrasDoAcervo;
+
 
 /**
  *
@@ -25,6 +27,11 @@ public class PesquisarAutorController implements Initializable {
     private ObrasDoAcervo main;
     private com.mysql.jdbc.Connection link;
 
+    @FXML
+    private TextField pesquisa;
+    
+    @FXML
+    private Label tabela;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {

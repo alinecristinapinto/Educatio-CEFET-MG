@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+	
+	<!-- CSS do Bootstrap -->
+	<link href="css/bootstrap.min.css" rel="stylesheet" />
+	<link href="css/bootstrap.css" rel="stylesheet"/>
+
+	<!-- CSS do grupo -->
+	 <link href="pagina_inicial.css" rel="stylesheet" />
+
+	<!-- Arquivos js -->
+	<script src="js/popper.js"></script>
+	<script src="js/jquery-3.2.1.js" type="text/javascript"></script>
+	<script src="js/bootstrap.min.js" type="text/javascript"></script>
+
+	<!-- Fontes e icones -->
+	<link href="css/nucleo-icons.css" rel="stylesheet">
+	
+	<script type="text/javascript">
+		function func1(){
+			window.location.href="form_professor.html"
+		}
+	</script>
+
+	<title></title>
+</head>
+<body>
+
+	<div class="wrapper">
+		<div class="title" style="text-align: center;">
+			<h1><b>Manutenção de Professores</b></h1>
+		</div>
+			<p id="p1">Crie, edite e exclua professores</p>
+		<div class="container">
+			<h5>Pesquise Professores</h5>
+			<form action="professor2.php" method="post">
+			<div class="input-group input-group-lg">
+	  			<input type="text" class="form-control" name="pesquisado" placeholder="Pesquisar" aria-label="Pesquisar" aria-describedby="sizing-addon2">
+	  			<button type="submit" class="btn btn-neutral" onclick="">
+		  			<i class="nc-icon nc-zoom-split"></i>
+		  		</button>
+		  		</form>
+			</div>
+			<div class="row">
+				<div class="col">
+					<div class="card">
+						<div class="card-body">	
+							<h5 class="card-title">Crie um novo Professor</h5>
+							<p>Cadastre um novo professor no sistema</p>
+							<button type="button" onclick="func1()" id="botaocria" class="btn btn-neutral btn-lg">Criar Professor</button>
+						</div>
+					</div>
+				</div>
+				<div class="col">
+					<div class="card">
+						<div class="card-body">
+							<h5 class="card-title">Edite Professores</h5>
+							<p>Pesquise os professores existentes e edite suas propriedades como senha, ID siape, departamento ou titulação</p>
+						</div>
+					</div>
+				</div>
+				<div class="col">
+					<div class="card">
+						<div class="card-body">
+							<h5 class="card-title">Exclua professores</h5>
+							<p>Delete professores que você não quer mais no sistema, use a ferramenta de pesquisa e clique em excluir para deletar um professor</p>
+						</div>
+					</div>
+				</div>	
+			</div>
+		</div>
+	</div>
+
+</body>
+</html>

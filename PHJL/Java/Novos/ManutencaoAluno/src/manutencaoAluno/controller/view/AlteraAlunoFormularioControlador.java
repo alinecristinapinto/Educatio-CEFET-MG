@@ -21,6 +21,7 @@ import javafx.scene.control.ToggleGroup;
 import javafx.stage.FileChooser;
 import manutencaoAluno.controller.AlteraDados;
 import manutencaoAluno.controller.BancoDeDados;
+import manutencaoAluno.controller.ManutencaoAluno;
 
 public class AlteraAlunoFormularioControlador {
 
@@ -31,6 +32,7 @@ public class AlteraAlunoFormularioControlador {
     private int valorIDTurma;
     private String entradaImagem;
     private Connection conexao = null;
+    private ManutencaoAluno manutencaoAluno;
 
     @FXML
     private TextField nome;
@@ -164,4 +166,9 @@ public class AlteraAlunoFormularioControlador {
                     entradaCEP, entradaUF, entradaEmail, entradaTurma, valorCPF, valorIDTurma, entradaImagem);
         }
     }
+
+    public void setManutencaoAluno(ManutencaoAluno manutencaoAluno) {
+        this.manutencaoAluno = manutencaoAluno;
+    }
+    
 }

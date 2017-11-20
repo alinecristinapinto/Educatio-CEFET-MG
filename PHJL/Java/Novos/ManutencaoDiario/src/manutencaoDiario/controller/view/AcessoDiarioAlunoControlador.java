@@ -6,6 +6,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
@@ -14,21 +16,25 @@ import javafx.scene.layout.VBox;
 import manutencaoDiario.controller.AlteraDados;
 import manutencaoDiario.controller.BancoDeDados;
 import manutencaoDiario.controller.Main;
+import manutencaoDiario.controller.ManutencaoDiario;
+import manutencaoDiario.controller.model.TabelaAtividades;
 
 public class AcessoDiarioAlunoControlador {
 
-    private BancoDeDados acessoBancoDeDados = new BancoDeDados();
-    private Connection conexao = null;
-    private AlteraDados alterar = new AlteraDados();
+    private final BancoDeDados acessoBancoDeDados = new BancoDeDados();
+    private final Connection conexao = null;
+    private final AlteraDados alterar = new AlteraDados();
+    private ManutencaoDiario manutencaoDiario;
 
-    private String valorCPF;
+    private final String valorCPF;
+    private ObservableList<TabelaAtividades> dadosAtividade = FXCollections.observableArrayList();
     List nomeDisciplinas = new ArrayList();
     List idDisciplinas = new ArrayList();
     List nomeProfessores = new ArrayList();
     List idConteudos = new ArrayList();
     List idMatriculas = new ArrayList();
     List atividades = new ArrayList();
-    
+
     @FXML
     private VBox vBox;
 
@@ -46,35 +52,50 @@ public class AcessoDiarioAlunoControlador {
         idDisciplinas = acessoBancoDeDados.pegaIdDisciplinas(valorCPF);
         idMatriculas = acessoBancoDeDados.pegaIdMatricula(valorCPF, idDisciplinas);
         atividades = acessoBancoDeDados.pegaAtividade(valorCPF, idMatriculas);
-        
-       /* List idConteudosDisciplina = new ArrayList();
-        idConteudosDisciplina.addAll(Arrays.asList(alterar.alteraConteudo(idConteudos.get(1).toString())));*/
-        
-        for (int j = 0; j < atividades.size(); j++) {
-            System.out.println(atividades.get(j));
-        }
 
         for (int k = 0; k < nomeDisciplinas.size(); k++) {
-            System.out.println(nomeDisciplinas.get(k));
+            dadosAtividade.clear();
             FXMLLoader carregadorFXML = new FXMLLoader();
             carregadorFXML.setLocation(Main.class.getResource("view/BlocoDiarioAluno.fxml"));
             AnchorPane painelPrincipal = (AnchorPane) carregadorFXML.load();
             BlocoDiarioAlunoControlador bloco = carregadorFXML.getController();
-            
+            bloco.setAcesso(this);
+
             List nomeAtividade = new ArrayList();
-            nomeAtividade.addAll(Arrays.asList(alterar.alteraList(atividades.get(k).toString())));
-            String atividadesLabel[];
-            for(int y=0;y<nomeAtividade.size();y++){
-                System.out.println(nomeAtividade.get(y));
+            String[] temp = alterar.alteraList(atividades.get(k).toString());
+            for (String temp1 : temp) {
+                nomeAtividade.addAll(Arrays.asList(alterar.alteraList(temp1)));
             }
-            
-            
+            int p = 0;
+            int o = 1;
+            int q = 2;
+            int r = 3;
+            int u = nomeAtividade.size() / 4;
+            for (int y = 0; y < u; y++) {
+                dadosAtividade.add(new TabelaAtividades(nomeAtividade.get(p).toString(), nomeAtividade.get(o).toString(), nomeAtividade.get(q).toString(), nomeAtividade.get(r).toString()));
+                r += 4;
+                p += 4;
+                o += 4;
+                q += 4;
+            }
+
             String cabecalho = nomeDisciplinas.get(k).toString() + " - " + nomeProfessores.get(k).toString();
             bloco.setLabelCabecalho(cabecalho);
+            bloco.colocaDados();
             vBox.getChildren().add(painelPrincipal);
             vBox.setSpacing(80);
 
             vBox.setAlignment(Pos.CENTER);
+
         }
     }
+
+    public ObservableList<TabelaAtividades> getDadosAtividade() {
+        return dadosAtividade;
+    }
+
+    public void setManutencaoDiario(ManutencaoDiario manutencaoDiario) {
+        this.manutencaoDiario = manutencaoDiario;
+    }
+
 }

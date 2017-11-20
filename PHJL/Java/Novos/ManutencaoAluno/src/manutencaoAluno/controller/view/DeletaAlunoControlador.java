@@ -21,19 +21,18 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import manutencaoAluno.controller.BancoDeDados;
 import manutencaoAluno.controller.Main;
+import manutencaoAluno.controller.ManutencaoAluno;
 import manutencaoAluno.controller.model.Aluno;
 import testeclassealert.AlertaPadrao;
 
-/**
- *
- * @author Pedro H
- */
+
 public class DeletaAlunoControlador {
 
     private BancoDeDados acessoBancoDeDados = new BancoDeDados();
     private ObservableList<Aluno> dadosAluno = FXCollections.observableArrayList();
     private Connection conexao = null;
     private Main acessoMain = new Main();
+    private ManutencaoAluno manutencaoAluno;
 
     @FXML
     private TableView<Aluno> AlunoTabela;
@@ -138,4 +137,8 @@ public class DeletaAlunoControlador {
 
     }
 
+    public void setManutencaoAluno(ManutencaoAluno manutencaoAluno) {
+        this.manutencaoAluno = manutencaoAluno;
+    }
+    
 }

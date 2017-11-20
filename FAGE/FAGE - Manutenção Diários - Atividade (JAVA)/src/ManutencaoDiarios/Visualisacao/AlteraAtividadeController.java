@@ -51,7 +51,7 @@ public class AlteraAtividadeController {
     private DatePicker data;
     
     @FXML
-    public void initialize(){
+    private void initialize(){
         data.setEditable(false);
     }
     

@@ -51,5 +51,8 @@ public class PesquisarAutorController implements Initializable {
             main.abreInterfacePrincipal();
     }
 
+        @FXML
+        public void pesquisarAutores() throws IOException {    
+        }
     
 }

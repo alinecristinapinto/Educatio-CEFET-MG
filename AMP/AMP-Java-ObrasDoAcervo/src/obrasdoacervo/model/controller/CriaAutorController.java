@@ -16,27 +16,28 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
+import obrasdoacervo.model.Autores;
 import obrasdoacervo.model.Livros;
 import obrasdoacervo.model.ObrasDoAcervo;
-import static obrasdoacervo.model.ObrasDoAcervo.inserePartes;
-import obrasdoacervo.model.Partes;
+import static obrasdoacervo.model.ObrasDoAcervo.insereAutores;
+import static obrasdoacervo.model.ObrasDoAcervo.insereLivro;
 
 /**
  *
  * @author Aluno
  */
-public class CriaParteController implements Initializable{
+public class CriaAutorController implements Initializable{
     private ObrasDoAcervo main;
     private com.mysql.jdbc.Connection link;
     
     @FXML
-    private TextField titulo;
+    private TextField autorNome;
     @FXML
-    private TextField palavrasChave;
+    private TextField autorSobrenome;
     @FXML
-    private TextField pagInicio;
+    private TextField autorOrdem;
     @FXML
-    private TextField pagFinal;
+    private TextField autorQualificacao;
     /**
      * Initializes the controller class.
      */
@@ -60,46 +61,25 @@ public class CriaParteController implements Initializable{
     }
         
         @FXML
+    public void criaAutor() throws IOException, SQLException{
+        if   (autorNome.getText().equals("") || autorSobrenome.getText().equals("") || autorOrdem.getText().equals("") || autorQualificacao.getText().equals("")){
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            System.out.println("Alert");
+            
+            alert.showAndWait();
+        }else{
+
+        
+
+        Autores autor = new Autores(autorNome.getText(), autorSobrenome.getText(), autorOrdem.getText(), autorQualificacao.getText());
+        insereAutores(link, autor);
+        main.abreCriaAutorSecundario();
+        }
+     }
+        
+        @FXML
         public void voltar() throws IOException{
             main.abreMenuSwitchObras();
         }
-        
-        @FXML
-        public void criaParte() throws IOException{
-            if (titulo.getText().equals("") || pagInicio.getText().equals("") || pagFinal.getText().equals("") || palavrasChave.getText().equals("")){
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            System.out.println("Alert");
-            
-            alert.showAndWait();
-        }else{
-                
-                
-        int inicio = Integer.parseInt(pagInicio.getText());
-        int fim = Integer.parseInt(pagFinal.getText());
-        
-        Partes parte = new Partes(titulo.getText(), inicio, fim, palavrasChave.getText());
-        main.inserePartes(link, parte);
-        main.abreCriaParteSecundario();
-        }
-        }
-        
-        @FXML
-        public void criaParteFinal() throws IOException{
-            if (titulo.getText().equals("") || pagInicio.getText().equals("") || pagFinal.getText().equals("") || palavrasChave.getText().equals("")){
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            System.out.println("Alert");
-            
-            alert.showAndWait();
-        }else{
-                
-                
-        int inicio = Integer.parseInt(pagInicio.getText());
-        int fim = Integer.parseInt(pagFinal.getText());
-        
-        Partes parte = new Partes(titulo.getText(), inicio, fim, palavrasChave.getText());
-        main.inserePartes(link, parte);
-        main.abreCriaAutor();
-        }
 
-        }
 }

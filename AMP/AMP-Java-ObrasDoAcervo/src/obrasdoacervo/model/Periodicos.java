@@ -12,11 +12,11 @@ package obrasdoacervo.model;
 public class Periodicos extends Obras {
     String periodicidade;
     String mes;
-    int volume;
+    String volume;
     String subtipo;
-    int ISSN;
+    String ISSN;
 
-    public Periodicos(String periodicidade, String mes, int volume, String subtipo, int ISSN, int idCampi, String nome, String tipo, String local, String ano, String editora, String paginas) {
+    public Periodicos(String periodicidade, String mes, String volume, String subtipo, String ISSN, int idCampi, String nome, String tipo, String local, String ano, String editora, String paginas) {
         super(idCampi, nome, tipo, local, ano, editora, paginas);
         
         this.periodicidade = periodicidade;
@@ -37,11 +37,11 @@ public class Periodicos extends Obras {
         this.mes = mes;
     }
 
-    public int getVolume() {
+    public String getVolume() {
         return volume;
     }
 
-    public void setVolume(int volume) {
+    public void setVolume(String volume) {
         this.volume = volume;
     }
 
@@ -53,11 +53,11 @@ public class Periodicos extends Obras {
         this.subtipo = subtipo;
     }
 
-    public int getISSN() {
+    public String getISSN() {
         return ISSN;
     }
 
-    public void setISSN(int ISSN) {
+    public void setISSN(String ISSN) {
         this.ISSN = ISSN;
     }
     

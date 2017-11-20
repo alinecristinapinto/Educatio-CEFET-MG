@@ -11,8 +11,12 @@
 
 	//Seleciona o BD
 	$bd_select = mysqli_select_db ($conn, BD);
-	
-	$sql = "SELECT * FROM acervo";
+
+	define ("valor", $_REQUEST["depto"]);
+
+	$valor = valor;
+
+	$sql = "SELECT * FROM funcionario WHERE idDepto = '$valor' " ;	
 	$result = mysqli_query($conn,$sql);
 
 	define ("VALOR_RECEBIDO", $_REQUEST["q"]);
@@ -20,6 +24,8 @@
 		define ("TIPO", $_REQUEST["tipo"]);
 	}
 	
+
+
 
 	$valorRetornado = "";
 
@@ -33,7 +39,7 @@
 				$nomeacervo=$row["nome"];
 				$tipoacervo=$row["idDepto"];
 				$localacervo=$row["titulacao"];				
-				$valorRetornado .= "<tr><td>".$idAcervo."</td><td>".$nomeacervo."</td><td>".$tipoacervo."</td><td>".$localacervo."</td></tr>";
+				$valorRetornado .= "<tr><td>".$idAcervo."</td><td>".$tipoacervo."</td><td>".$nomeacervo."</td><td>".$localacervo."</td></tr>";
 			}
 			
 		$valorRetornado .="</tbody></table>";
@@ -44,7 +50,7 @@
 			//stripos(string,valor) procura a primeira ocorrencia de 'valor' em 'string' e retorna FALSE se 'valor' nao for encontrado
 			if (stripos($linha["2"],VALOR_RECEBIDO) !== FALSE) {
 				if ($valorRetornado === "") {
-					$valorRetornado = "<thead><tr><th>id</th><th>Nome</th><th>tipo</th><th>Local</th><th>editora</th><th>ano</th></tr></thead><tbody style = 'cursor: pointer;'>";
+					$valorRetornado = "<thead><tr><th>Siape</th><th>Depto</th><th>Nome</th><th>Titulacao</th</tr></thead><tbody style = 'cursor: pointer;'>";
 					$valorRetornado .= "<tr onclick=\"enviaFormulario('" .$linha[2] ."')\"><td>$linha[0]</td><td>$linha[1]</td><td>$linha[2]</td><td>$linha[3]</td></tr>";
 				} else {
 					$valorRetornado .= "<tr onclick=\"enviaFormulario('" .$linha[2] ."')\"><td>$linha[0]</td><td>$linha[1]</td><td>$linha[2]</td><td>$linha[3]</td></tr>";

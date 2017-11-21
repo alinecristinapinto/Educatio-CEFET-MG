@@ -1,23 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="manutencaodecurso.model.controller.CriarCursoController">
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="700.0" styleClass="background" stylesheets="@Padrao.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="manutencaodecurso.model.controller.CriarCursoController">
    <children>
-      <Label fx:id="labelHorasTotais" layoutX="383.0" layoutY="273.0" prefHeight="25.0" prefWidth="172.0" text="Digite as horas totais do curso:" visible="false" />
-      <TextField fx:id="horasTotais" layoutX="383.0" layoutY="312.0" prefHeight="25.0" prefWidth="196.0" visible="false" />
+      <Label fx:id="labelHorasTotais" layoutX="383.0" layoutY="273.0" prefHeight="25.0" prefWidth="249.0" styleClass="label-pequena" text="Digite as horas totais do curso:" visible="false" />
+      <TextField fx:id="horasTotais" layoutX="383.0" layoutY="312.0" prefHeight="27.0" prefWidth="266.0" visible="false" />
       <Button layoutX="546.0" layoutY="514.0" mnemonicParsing="false" onAction="#criarCurso" prefHeight="25.0" prefWidth="65.0" text="Criar" />
-      <Label fx:id="labelNome" layoutX="383.0" layoutY="190.0" prefHeight="25.0" prefWidth="172.0" text="Digite o nome do novo curso:" visible="false" />
-      <TextField fx:id="nome" layoutX="384.0" layoutY="229.0" prefHeight="25.0" prefWidth="196.0" visible="false" />
-      <TextField fx:id="modalidade" layoutX="383.0" layoutY="394.0" prefHeight="25.0" prefWidth="196.0" visible="false" />
-      <Label fx:id="labelModalidade" layoutX="383.0" layoutY="355.0" prefHeight="25.0" prefWidth="172.0" text="Digite a modalidade do curso:" visible="false" />
-      <Label layoutX="145.0" layoutY="205.0" text="Escolha o campi:" />
-      <ChoiceBox fx:id="campi" layoutX="145.0" layoutY="240.0" prefWidth="150.0" />
-      <Label layoutX="145.0" layoutY="286.0" text="Escolha o departamento:" />
-      <ChoiceBox fx:id="depto" layoutX="145.0" layoutY="321.0" prefWidth="150.0" />
+      <Label fx:id="labelNome" layoutX="383.0" layoutY="190.0" prefHeight="25.0" prefWidth="239.0" styleClass="label-pequena" text="Digite o nome do novo curso:" visible="false" />
+      <TextField fx:id="nome" layoutX="384.0" layoutY="229.0" prefHeight="27.0" prefWidth="266.0" visible="false" />
+      <Label fx:id="labelModalidade" layoutX="383.0" layoutY="355.0" prefHeight="25.0" prefWidth="266.0" styleClass="label-pequena" text="Escolha a modalidade do curso:" visible="false" />
+      <Label layoutX="121.0" layoutY="204.0" styleClass="label-pequena" text="Escolha o campi:" />
+      <ChoiceBox fx:id="campi" layoutX="121.0" layoutY="243.0" prefHeight="27.0" prefWidth="198.0" />
+      <Label layoutX="121.0" layoutY="328.0" styleClass="label-pequena" text="Escolha o departamento:" />
+      <ChoiceBox fx:id="depto" layoutX="121.0" layoutY="384.0" prefHeight="27.0" prefWidth="198.0" />
+      <ChoiceBox fx:id="modalidade" layoutX="383.0" layoutY="397.0" prefHeight="27.0" prefWidth="266.0" visible="false" />
+      <Label layoutX="13.0" layoutY="14.0" prefHeight="17.0" prefWidth="216.0" styleClass="label-cabecalho" text="Criar Curso" />
+      <Button layoutX="458.0" layoutY="514.0" mnemonicParsing="false" onAction="#alteraTelaInicial" prefHeight="31.0" prefWidth="73.0" text="Voltar" />
    </children>
 </AnchorPane>

@@ -40,8 +40,7 @@ public class AlterarCursoController implements Initializable {
     private TextField idDepto;
     @FXML
     private TextField horasTotais;
-    @FXML
-    private TextField modalidade;
+
     @FXML
     private Label labelEnunciado;
     @FXML
@@ -52,9 +51,6 @@ public class AlterarCursoController implements Initializable {
     private Label labelModalidade;
     @FXML
     private Label labelHorasTotais;
-    
-    
-    
 
     @FXML
     private ChoiceBox campi;
@@ -62,8 +58,10 @@ public class AlterarCursoController implements Initializable {
     private ChoiceBox depto;
     @FXML
     private ListView curso;
+    @FXML
+    private ChoiceBox modalidade;
 
-
+    private ObservableList listaModalidade = FXCollections.observableArrayList();
     private ObservableList listaCampi = FXCollections.observableArrayList();
     private ObservableList listaDepto = FXCollections.observableArrayList();
     private ObservableList listaCurso = FXCollections.observableArrayList();
@@ -90,13 +88,18 @@ public class AlterarCursoController implements Initializable {
         try {
             ResultSet resultado = selecionarRegistros("campi");
             while (resultado.next()) {
-                if(resultado.getString("ativo").equals("S"))
+                if (resultado.getString("ativo").equals("S")) {
                     listaCampi.add(resultado.getString("nome"));
-            }   
+                }
+            }
         } catch (SQLException ex) {
             Logger.getLogger(AlterarCursoController.class.getName()).log(Level.SEVERE, null, ex);
         }
 
+        listaModalidade.add("Técnico Integrado");
+        listaModalidade.add("Graduação");
+
+        modalidade.setItems(listaModalidade);
         campi.setItems(listaCampi);
 
         campi.getSelectionModel().selectedItemProperty().addListener(
@@ -130,26 +133,22 @@ public class AlterarCursoController implements Initializable {
         nomeFormatado = nomeFormatado.replace("]", "");
         ResultSet resultado = selecionarRegistros("cursos", "nome", nomeFormatado);
         resultado.first();
-
+        System.out.println(nomeFormatado);
+        System.out.println(curso.getSelectionModel().getSelectedItems().toString());
         Statement comando = link.createStatement();
-                
-        if(!nome.getText().equals("")){
+
+        if (!nome.getText().equals("")) {
             String query = "UPDATE `cursos` SET `nome` = '" + nome.getText() + "' WHERE `id` = '" + resultado.getString("id") + "'";
             comando.executeUpdate(query);
         }
-        
-        if(!idDepto.getText().equals("")){
-            String query = "UPDATE `cursos` SET `nome` = '" + idDepto.getText() + "' WHERE `id` = '" + resultado.getString("id") + "'";
-            comando.executeUpdate(query);
-        }
-        
-        if(!horasTotais.getText().equals("")){
+
+        if (!horasTotais.getText().equals("")) {
             String query = "UPDATE `cursos` SET `horasTotal` = '" + horasTotais.getText() + "' WHERE `id` = '" + resultado.getString("id") + "'";
             comando.executeUpdate(query);
         }
-        
-        if(!modalidade.getText().equals("")){
-            String query = "UPDATE `cursos` SET `horasTotal` = '" + modalidade.getText() + "' WHERE `id` = '" + resultado.getString("id") + "'";
+        System.out.println(modalidade.getSelectionModel().getSelectedItem().toString());
+        if (!modalidade.getSelectionModel().getSelectedItem().toString().equals("")) {
+            String query = "UPDATE `cursos` SET `modalidade` = '" + modalidade.getSelectionModel().getSelectedItem().toString() + "' WHERE `id` = '" + resultado.getString("id") + "'";
             comando.executeUpdate(query);
         }
 
@@ -182,15 +181,16 @@ public class AlterarCursoController implements Initializable {
     public void atualizaListaDepto(String valor) throws SQLException {
         listaDepto.clear();
         listaCurso.clear();
-        
+
         ResultSet resultado = selecionarRegistros("campi", "nome", valor);
         resultado.next();
-        if(resultado.getString("ativo").equals("S")){
+        if (resultado.getString("ativo").equals("S")) {
             ResultSet resultado2 = selecionarRegistros("deptos", "idCampi", resultado.getString("id"));
 
             while (resultado2.next()) {
-                if(resultado2.getString("ativo").equals("S"))
+                if (resultado2.getString("ativo").equals("S")) {
                     listaDepto.add(resultado2.getString("nome"));
+                }
             }
         }
         depto.setItems(listaDepto);
@@ -199,15 +199,16 @@ public class AlterarCursoController implements Initializable {
     @FXML
     public void atualizaListaCurso(String valor) throws SQLException {
         listaCurso.clear();
-        
+
         ResultSet resultado = selecionarRegistros("deptos", "nome", valor);
         resultado.next();
-        if(resultado.getString("ativo").equals("S")){
+        if (resultado.getString("ativo").equals("S")) {
             ResultSet resultado2 = selecionarRegistros("cursos", "idDepto", resultado.getString("id"));
 
             while (resultado2.next()) {
-                if(resultado2.getString("ativo").equals("S"))
+                if (resultado2.getString("ativo").equals("S")) {
                     listaCurso.add(resultado2.getString("nome"));
+                }
             }
         }
         curso.setItems(listaCurso);
@@ -216,11 +217,9 @@ public class AlterarCursoController implements Initializable {
     public void setVisivel() {
         labelEnunciado.setVisible(true);
         labelNome.setVisible(true);
-        labelIdDepto.setVisible(true);
         labelHorasTotais.setVisible(true);
         labelModalidade.setVisible(true);
         nome.setVisible(true);
-        idDepto.setVisible(true);
         horasTotais.setVisible(true);
         modalidade.setVisible(true);
     }

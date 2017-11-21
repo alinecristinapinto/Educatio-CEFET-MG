@@ -32,25 +32,26 @@ public class VerificaCampiController implements Initializable {
     ObservableList<String> nomesCampi;
     int sw;
     @FXML
-      private ChoiceBox campus;
+    private ChoiceBox campus;
     @FXML
-      private Label info;
-    
+    private Label info;
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        campus.setItems(nomesCampi);
-    } 
-    public void setManutencaoDepto(ManutencaoDepto manutencaoDepto){
-        this.manutencaoDepto=manutencaoDepto;
+
     }
-    
-    public VerificaCampiController() throws SQLException{
-        
+
+    public void setManutencaoDepto(ManutencaoDepto manutencaoDepto) {
+        this.manutencaoDepto = manutencaoDepto;
+    }
+
+    public void VerificaCampiPrep() throws SQLException {
+
         String sql = null;
         Conexão conn = new Conexão();
         Connection connection = conn.getConnection();
-        if(connection!=null){   
-        }else{
+        if (connection != null) {
+        } else {
             System.out.println("deu ruim :(");
         }
         ResultSet result;
@@ -58,94 +59,89 @@ public class VerificaCampiController implements Initializable {
         sql = "SELECT nome FROM campi WHERE ativo='S'";
         Statement fetch = connection.createStatement();
         result = fetch.executeQuery(sql);
-        while(result.next()){
+        while (result.next()) {
             nomesCampi.add(result.getString("nome"));
         }
+        campus.setItems(nomesCampi);
     }
-    
-    public void setSw(int sw){
+
+    public void setSw(int sw) {
         this.sw = sw;
     }
-    
-    @FXML
-    private boolean handleExistenciaCampi(){
-        if(campus.getValue()==null){
+
+    private boolean handleExistenciaCampi() {
+        if (campus.getValue() == null) {
             campus.setStyle("-fx-background-color: #d13419");
             info.setText("Extre com um campi");
             return false;
-        }
-        else{
+        } else {
             campus.setStyle("-fx-background-color: #6989FF");
             info.setText("");
             return true;
         }
     }
-    
-    @FXML
-    private boolean deptoSub(int idCampus) throws SQLException{
+
+    private boolean deptoSub(int idCampus) throws SQLException {
         String sql = null;
         Conexão conn = new Conexão();
         Connection connection = conn.getConnection();
-        if(connection!=null){
-        }else{
+        if (connection != null) {
+        } else {
             System.out.println("deu ruim :(");
         }
         ResultSet result;
-        sql = "SELECT * FROM deptos WHERE ativo='S' AND idCampi = "+idCampus;
+        sql = "SELECT * FROM deptos WHERE ativo='S' AND idCampi = " + idCampus;
         Statement fetch = connection.createStatement();
         result = fetch.executeQuery(sql);
-        
-        if(!result.next()){
+
+        if (!result.next()) {
             campus.setStyle("-fx-background-color: #d13419");
             info.setText("Não existem departamentos nesse campus");
             return false;
-        }
-        else{
+        } else {
             campus.setStyle("-fx-background-color: #6989FF");
             info.setText("");
             return true;
         }
-        
+
     }
 
-    
     @FXML
     private void handleSeguirAction(ActionEvent event) throws SQLException, IOException {
-            int idCampus = 0;
-            if (handleExistenciaCampi()){
-                
-                String sql = null;
-                Conexão conn = new Conexão();
-                Connection connection = conn.getConnection();
-                if(connection!=null){
-                }else{
-                    System.out.println("deu ruim :(");
-                }
-                ResultSet result;
-                sql = "SELECT id FROM campi WHERE ativo='S' AND nome = '"+campus.getValue()+"'";
-                Statement fetch = connection.createStatement();
-                result = fetch.executeQuery(sql);
-                while(result.next()){
-                    idCampus = result.getInt("id");
-                }
-                if(deptoSub(idCampus)){
-                if (sw==1){
+        int idCampus = 0;
+        if (handleExistenciaCampi()) {
+
+            String sql = null;
+            Conexão conn = new Conexão();
+            Connection connection = conn.getConnection();
+            if (connection != null) {
+            } else {
+                System.out.println("deu ruim :(");
+            }
+            ResultSet result;
+            sql = "SELECT id FROM campi WHERE ativo='S' AND nome = '" + campus.getValue() + "'";
+            Statement fetch = connection.createStatement();
+            result = fetch.executeQuery(sql);
+            while (result.next()) {
+                idCampus = result.getInt("id");
+            }
+            if (deptoSub(idCampus)) {
+                if (sw == 1) {
                     manutencaoDepto.invocaLayoutAlterar(idCampus);
                 }
-                if (sw==2){
+                if (sw == 2) {
                     manutencaoDepto.invocaLayoutExcluir(idCampus);
                 }
-            } 
+                if (sw == 3) {
+                    manutencaoDepto.invocaVerificaDepto(idCampus);
+                }
+            }
         }
     }
-    
+
     @FXML
     private void handleCancelarAction(ActionEvent event) throws SQLException {
         manutencaoDepto.invocaLayoutBase();
     }
-    
-   
-    
-   
-    
+
 }

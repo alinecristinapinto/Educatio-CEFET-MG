@@ -6,15 +6,20 @@
 	$strSenha = "";
 	$strDBnome = "Educatio";
 
-	//Variável para verificar o Campus dos departamentos
-	$intIdCampi = $_GET['intIdCampi'];
-	
 	//Cria conexão
 	$conn = new mysqli($strNomeServer, $strNomeUsuario, $strSenha);
 	//Verifica conexão
 	if ($conn->connect_error) {
    		die("Falha na conexão: " . $conn->connect_error."<br>");
 	}
+
+	//Variável para verificar o Campus dos departamentos
+	$strCampi = $_GET['strCampi'];
+	$strSQL = $conn->query("SELECT id, nome FROM `Educatio`.`campi` WHERE nome ='".$strCampi."'");
+	while($arrLinha = $strSQL->fetch_assoc()) {
+		$intIdCampi = $arrLinha['id'];
+	}
+	
 ?>
 
 <!DOCTYPE html>

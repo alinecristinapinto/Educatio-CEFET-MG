@@ -36,20 +36,20 @@ public class LayoutBaseController implements Initializable {
     }
     
     @FXML
-    private void handleAlterarAction(ActionEvent event) throws IOException {
+    private void handleAlterarAction(ActionEvent event) throws IOException, SQLException {
         manutencaoDepto.invocaVerificaCampi(1);
         
     }
     
     @FXML
-    private void handleExcluirAction(ActionEvent event) throws IOException {
+    private void handleExcluirAction(ActionEvent event) throws IOException, SQLException {
         manutencaoDepto.invocaVerificaCampi(2);
         
     }
     
     @FXML
-    private void handleTransferirAlction(ActionEvent event) throws IOException {
-        manutencaoDepto.invocaLayoutTransferirAluno();
+    private void handleTransferirAlction(ActionEvent event) throws IOException, SQLException {
+        manutencaoDepto.invocaVerificaCampi(3);
         
     }
     

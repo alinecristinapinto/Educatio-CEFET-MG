@@ -46,18 +46,34 @@
 
 			<form method="POST" action="" class="contact-form">
 
-			<div class="input-group">
-					<span class="input-group-addon"><i class="nc-icon nc-hat-3"></i></span>
-					<select name="idCampi" class="form-control" required="required">
-						<option value="">Selecione o Campus</option>
-						<!-- Pega os dados do banco e coloca no select -->
-						<?php $strSQL = $conn->query("SELECT nome, id, ativo, cidade FROM `Educatio`.`campi`"); ?>	
-						<?php while($arrLinha2 = $strSQL->fetch_assoc()) { ?>
-						<?php if ($arrLinha2['ativo'] != 'N') {?>	
-						<option value="<?php echo $arrLinha2['id']?>"><?php echo $arrLinha2['nome']." - Cidade: ".$arrLinha2['cidade']; ?></option>
-						<?php }} ?>
-					</select>
-				</div>
+				<div class="input-group">
+					<span class="input-group-addon"><i class="nc-icon nc-bank"></i></span>
+					<input type="text" name="Nome" id="txt_consulta" placeholder="Digite o Nome do Departamento que será Alterado" class="form-control" required='required'>
+				</div>							
+			
+				<table class="table table-hover" required='required' id="tabela">
+					<!-- Pega os dados do banco e coloca na tabela -->
+					<?php $strSQL = $conn->query("SELECT id, nome, ativo, cidade, UF FROM `Educatio`.`campi`");
+					while($arrLinha = $strSQL->fetch_assoc()) {
+						if ($arrLinha['ativo'] != 'N') {	
+							echo "<tr value='".$arrLinha['nome']."' onclick('document.getElementById('txt_consulta').value = document.getElementById(this).innerHTML')><th>".$arrLinha['nome']."</th><td>".$arrLinha['cidade']."</td><td>".$arrLinha['UF']."</td></tr>";
+						}
+					}?>
+				</table>
+
+				<!-- Filtro da Tabela -->
+				<script>
+					$('input#txt_consulta').quicksearch('table#tabela tbody tr');
+				</script>
+			
+				<!-- Função de clique na tabela -->
+				<script>
+					$(document.getElementById("tabela")).ready(function() {
+						$('tr').click(function () { 
+							document.getElementById("txt_consulta").value = $(this).attr("value");
+						});
+					});
+				</script>
 				
 				<div class="row">
 					<div class="col-md-4 ml-auto mr-auto">
@@ -76,7 +92,7 @@
 
 <?php
 	if (isset($_POST["Selecionar"])){
-	  	header('Location: DepartamentoExcluir.php?intIdCampi='.$_POST['idCampi']);
+	  	header('Location: DepartamentoExcluir.php?strCampi='.$_POST['Nome']);
 	}
  	
 	//Fecha a conexão

@@ -24,6 +24,9 @@ public class Atividade {
     private String data;
     private double valor;
     private int idProfDisciplina;
+    private String nomeConteudo;
+    private String dataConteudo;
+    private int etapaConteudo;
     
     private ObservableList<AtividadeTabela> lista;
     
@@ -63,6 +66,32 @@ public class Atividade {
     public void setValor(double valor) {
         this.valor = valor;
     }
+
+    public String getNomeConteudo() {
+        return nomeConteudo;
+    }
+
+    public void setNomeConteudo(String nomeConteudo) {
+        this.nomeConteudo = nomeConteudo;
+    }
+
+    public String getDataConteudo() {
+        return dataConteudo;
+    }
+
+    public void setDataConteudo(String dataConteudo) {
+        this.dataConteudo = dataConteudo;
+    }
+
+    public int getEtapaConteudo() {
+        return etapaConteudo;
+    }
+
+    public void setEtapaConteudo(int etapaConteudo) {
+        this.etapaConteudo = etapaConteudo;
+    }
+    
+    
     
     
     public void insereAtividade(String nomeDisciplina, String nomeAtividade, String dataAtividade, double valorAtividade, int idProfessor, String nomeTurma) throws ClassNotFoundException, SQLException{
@@ -292,5 +321,89 @@ public class Atividade {
         }
         
         return conteudos;
+    }
+    
+    public void insereConteudo(int etapa, String disciplina, String conteudo, String data) throws SQLException{
+        Connection conexao = new ConnectionFactory().getConexao();
+        
+        String sql = "INSERT INTO conteudos (idEtapa, idDisciplina, conteudo, datas, ativo) VALUES (?, ?, ?, ?, ?)";
+        
+        PreparedStatement declaracao = conexao.prepareStatement(sql);
+
+        declaracao.setInt(1, etapa);
+        declaracao.setInt(2, pegaIdDisciplina(disciplina));
+        declaracao.setString(3, conteudo);
+        declaracao.setString(4, data);
+        declaracao.setString(5, "S");
+
+        declaracao.execute();
+        declaracao.close();
+        
+        conexao.close();
+    }
+    
+    public int pegaEtapa(String conteudo, String disciplina) throws SQLException{
+        Connection conexao = new ConnectionFactory().getConexao();
+        
+        String sql = "SELECT * FROM conteudos WHERE conteudo = (?) AND idDisciplina = (?) AND ativo = 'S'";
+        
+        PreparedStatement declaracao = conexao.prepareStatement(sql);
+        declaracao.setString(1, conteudo);
+        declaracao.setInt(2, pegaIdDisciplina(disciplina));
+        
+        ResultSet rs = declaracao.executeQuery();
+        
+        rs.next();
+        return rs.getInt("idEtapa");
+    }
+    
+    public String pegaData(String conteudo, String disciplina) throws SQLException{
+        Connection conexao = new ConnectionFactory().getConexao();
+        
+        String sql = "SELECT * FROM conteudos WHERE conteudo = (?) AND idDisciplina = (?) AND ativo = 'S'";
+        
+        PreparedStatement declaracao = conexao.prepareStatement(sql);
+        declaracao.setString(1, conteudo);
+        declaracao.setInt(2, pegaIdDisciplina(disciplina));
+        
+        ResultSet rs = declaracao.executeQuery();
+        
+        rs.next();
+        return rs.getString("datas");
+    }
+    
+    public void alteraConteudo(String conteudo, String disciplina, String conteudoNovo, int etapaNova, String dataNova) throws SQLException{
+        Connection conexao = new ConnectionFactory().getConexao();
+        
+        String sql = "UPDATE conteudos SET conteudo = (?), idEtapa = (?), datas = (?) WHERE conteudo = (?) AND idDisciplina = (?) AND ativo = \"S\"";
+       
+        PreparedStatement declaracao = conexao.prepareStatement(sql);
+        
+        declaracao.setString(1, conteudoNovo);
+        declaracao.setInt(2, etapaNova);
+        declaracao.setString(3, dataNova);
+        declaracao.setString(4, conteudo);
+        declaracao.setDouble(5, pegaIdDisciplina(disciplina));
+        
+        declaracao.execute();
+        declaracao.close();
+        
+        conexao.close();
+    }
+    
+    public void removeConteudo(String disciplina, String turma, String conteudo) throws SQLException{
+        Connection conexao = new ConnectionFactory().getConexao();
+        
+        String sql = "UPDATE conteudos SET ativo = 'N' WHERE conteudo = (?) AND idDisciplina = (?) AND ativo = 'S'";
+        
+        PreparedStatement declaracao = conexao.prepareStatement(sql);
+
+        declaracao.setString(1, conteudo);
+        declaracao.setInt(2, pegaIdDisciplina(disciplina));
+        
+        declaracao.execute();
+        declaracao.close();
+        
+        conexao.close();
     }
 }

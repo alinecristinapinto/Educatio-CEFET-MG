@@ -17,72 +17,67 @@ import testeclassealert.AlertaPadrao;
  *
  * @author Felipe
  */
-public class AlteraAtividadeController {
+public class AlteraConteudoController {
     private ManutencaoDiarios manutencaoDiarios;
     private Atividade atividade;
     private Disciplina disciplina;
     private Turma turma;
-    private String nomeNovoAtiv;
-    private String dataNovoAtiv;
-    private double valorNovoAtiv;
-    private String nomeAtiv;
-    private String dataAtiv;
-    private double valorAtiv;
-
-    public void setManutencaoDiarios(ManutencaoDiarios manutencaoDiarios) {
-        this.manutencaoDiarios = manutencaoDiarios;
-    }
-
-    public void setDisciplina(Disciplina disciplina) {
-        this.disciplina = disciplina;
-    }
-
-    public void setTurma(Turma turma) {
-        this.turma = turma;
-    }
     
-    
-
-    public void setAtividade(Atividade atividade) {
-        this.atividade = atividade;
-        
-        nomeAtiv = atividade.getNome();
-        dataAtiv = atividade.getData();
-        valorAtiv = atividade.getValor();
-        
-        nome.setText(nomeAtiv);
-        valor.setText(Double.toString(valorAtiv));
-        data.setValue(LocalDate.parse(dataAtiv, DateTimeFormatter.ofPattern("dd/MM/yyyy")));
-    }
+    private String nomeNovo;
+    private int etapaNova;
+    private String dataNova;
     
     @FXML
     private TextField nome;
     
     @FXML
-    private TextField valor;
+    private TextField etapa;
     
     @FXML
     private DatePicker data;
+    
+
+    public ManutencaoDiarios getManutencaoDiarios() {
+        return manutencaoDiarios;
+    }
+
+    public void setManutencaoDiarios(ManutencaoDiarios manutencaoDiarios) {
+        this.manutencaoDiarios = manutencaoDiarios;
+    }
+
+    public void setAtividade(Atividade atividade) {
+        this.atividade = atividade;
+        
+        nome.setText(atividade.getNomeConteudo());
+        etapa.setText(Integer.toString(atividade.getEtapaConteudo()));
+        data.setValue(LocalDate.parse(atividade.getDataConteudo(), DateTimeFormatter.ofPattern("dd/MM/yyyy")));
+    }
+
+    public void setDisciplina(Disciplina disciplina) {
+        this.disciplina = disciplina;
+    }
+    
+
+    public void setTurma(Turma turma) {
+        this.turma = turma;
+    }
     
     @FXML
     private void initialize(){
         data.setEditable(false);
     }
     
-    public void confirma() throws ClassNotFoundException, SQLException, IOException{
-        if(nome.getText().equals("") || valor.getText().equals("") || data.getValue() == null){
+    public void confirma() throws IOException, SQLException{
+        if(nome.getText().equals("") || etapa.getText().equals("") || data.getValue() == null){
             AlertaPadrao alerta = new AlertaPadrao();
             alerta.mostraAlertErro(manutencaoDiarios.getPalcoPrincipal(), "Campos vazios", "Erro!", "Existem campos vazios, preencha todos para continuar.");
             
-        }else if(!valor.getText().matches("^([0-9]{1,2}){1}(.[0-9]{1,2})?$")){
-            AlertaPadrao alerta = new AlertaPadrao();
-            alerta.mostraAlertErro(manutencaoDiarios.getPalcoPrincipal(), "Campos preenchidos incorretamente", "Erro!", "Preencha corretamente todos os campos para continuar.");
-            
         }else{
-            nomeNovoAtiv = nome.getText();
-            valorNovoAtiv = Double.parseDouble(valor.getText());
-            dataNovoAtiv = data.getValue().format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
-            atividade.alteraAtividade(nomeNovoAtiv, dataNovoAtiv, valorNovoAtiv, atividade.getIdProfDisciplina(), nomeAtiv, dataAtiv, valorAtiv);
+            nomeNovo = nome.getText();
+            etapaNova = Integer.parseInt(etapa.getText());
+            dataNova = data.getValue().format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+            
+            atividade.alteraConteudo(atividade.getNomeConteudo(), disciplina.getNome(), nomeNovo, etapaNova, dataNova);
             
             AlertaPadrao alerta = new AlertaPadrao();
             alerta.mostraAlertConfirmacao(manutencaoDiarios.getPalcoPrincipal(), "Alteração", "Sucesso!", "Alteração realizada com sucesso no banco de dados.");

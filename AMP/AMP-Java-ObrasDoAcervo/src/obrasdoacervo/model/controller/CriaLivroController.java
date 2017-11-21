@@ -83,12 +83,14 @@ public class CriaLivroController implements Initializable{
     // Falta idCampi
     @FXML
     public void criaLivro() throws IOException, SQLException{
+        int i = 0;
         if (ISBN.getText().equals("") || edicao.getText().equals("") || campus.getValue().equals("") || nome.getText().equals("") || local.getText().equals("") || ano.getText().equals("") || editora.getText().equals("") || paginas.getText().equals("")){// || autorNome.getText().equals("") || autorSobrenome.getText().equals("") || autorOrdem.getText().equals("") || autorQualificacao.getText().equals("")){
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             System.out.println("Alert");
-            
-            alert.showAndWait();
-        }else{
+            i = 1;
+            alert.setContentText("Existem campos vazios, não é possível criar a obra");
+            alert.showAndWait();           
+        }else if(i == 0){
 
         int idCampi = main.pegaIdCampi(link, (String) campus.getValue());
         

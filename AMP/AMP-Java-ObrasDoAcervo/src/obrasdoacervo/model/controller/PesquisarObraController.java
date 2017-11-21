@@ -12,6 +12,8 @@ import java.sql.SQLException;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
@@ -32,6 +34,7 @@ public class PesquisarObraController implements Initializable {
 
     @FXML
     private TextField pesquisa;
+    private ObservableList<AcervoTabela> listaAtiv = FXCollections.observableArrayList();
     @FXML
     private TableView<AcervoTabela> tabela;
     @FXML
@@ -74,7 +77,22 @@ public class PesquisarObraController implements Initializable {
         }
         
         @FXML
-        public void pesquisarObras() throws IOException {    
+        public void pesquisarObras() throws IOException, SQLException {
+            tabela.setEditable(true);
+        
+        campus.setCellValueFactory(cellData -> cellData.getValue().getCampus());
+        nome.setCellValueFactory(cellData -> cellData.getValue().getNome());
+        local.setCellValueFactory(cellData -> cellData.getValue().getTipo());
+        tipo.setCellValueFactory(cellData -> cellData.getValue().getLocal());
+        ano.setCellValueFactory(cellData -> cellData.getValue().getAno());
+        editora.setCellValueFactory(cellData -> cellData.getValue().getEditora());
+        paginas.setCellValueFactory(cellData -> cellData.getValue().getPaginas());
+        //data.setCellValueFactory(cellData -> cellData.getValue().getData());
+        //.setCellValueFactory(cellData -> cellData.getValue().getValor().asObject());
+        
+        listaAtiv = main.montaListaAcervo(link, pesquisa.getText());
+        
+        tabela.setItems(listaAtiv);
         }
         
         

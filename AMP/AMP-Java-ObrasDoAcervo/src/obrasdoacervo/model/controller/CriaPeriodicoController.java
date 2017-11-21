@@ -92,12 +92,14 @@ public class CriaPeriodicoController implements Initializable{
         
         @FXML
         public void criaPeriodico() throws IOException, SQLException{
+            int i = 0;
            if (ISSN.getText().equals("") || subtipo.getText().equals("") || volume.getText().equals("") || campus.getValue().equals("") || nome.getText().equals("") || local.getText().equals("") || ano.getText().equals("") || editora.getText().equals("") || paginas.getText().equals("")){
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             System.out.println("Alert");
-            
+            i = 1;
+            alert.setContentText("Não foi possível criar a obra, existem campos vazios");
             alert.showAndWait();
-        }else{
+        }else if(i==0){
             int idCampi = main.pegaIdCampi(link, (String) campus.getValue());   
                
             Periodicos periodico = new Periodicos(periodicidade.getText(), mes.getText(), volume.getText(), subtipo.getText(), ISSN.getText(), idCampi, nome.getText(), "periodicos", local.getText(), ano.getText(), editora.getText(), paginas.getText());

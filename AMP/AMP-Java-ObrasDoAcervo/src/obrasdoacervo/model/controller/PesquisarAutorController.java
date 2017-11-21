@@ -12,10 +12,16 @@ import java.sql.SQLException;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import obrasdoacervo.model.AcervoTabela;
+import obrasdoacervo.model.AutoresTabela;
 import obrasdoacervo.model.ObrasDoAcervo;
 
 
@@ -26,12 +32,20 @@ import obrasdoacervo.model.ObrasDoAcervo;
 public class PesquisarAutorController implements Initializable {
     private ObrasDoAcervo main;
     private com.mysql.jdbc.Connection link;
+    private ObservableList<AutoresTabela> listaAtiv = FXCollections.observableArrayList();
 
     @FXML
     private TextField pesquisa;
-    
     @FXML
-    private Label tabela;
+    private TableView<AutoresTabela> tabela;
+    @FXML
+    private TableColumn<AutoresTabela, String> sobrenome;
+    @FXML
+    private TableColumn<AutoresTabela, String> nome;
+    @FXML
+    private TableColumn<AutoresTabela, String> ordem;
+    @FXML
+    private TableColumn<AutoresTabela, String> qualificacao;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -59,7 +73,24 @@ public class PesquisarAutorController implements Initializable {
     }
 
         @FXML
-        public void pesquisarAutores() throws IOException {    
+        public void pesquisarAutores() throws IOException, SQLException {
+            
+        tabela.setEditable(true);
+        
+//        campus.setCellValueFactory(cellData -> cellData.getValue().getCampus());
+        nome.setCellValueFactory(cellData -> cellData.getValue().getNome());
+        sobrenome.setCellValueFactory(cellData -> cellData.getValue().getSobrenome());
+        ordem.setCellValueFactory(cellData -> cellData.getValue().getOrdem());
+        qualificacao.setCellValueFactory(cellData -> cellData.getValue().getQualificacao());
+        //editora.setCellValueFactory(cellData -> cellData.getValue().getEditora());
+        //paginas.setCellValueFactory(cellData -> cellData.getValue().getPaginas());
+        //data.setCellValueFactory(cellData -> cellData.getValue().getData());
+        //.setCellValueFactory(cellData -> cellData.getValue().getValor().asObject());
+        
+        listaAtiv = main.montaListaAutores(link, pesquisa.getText());
+        
+        tabela.setItems(listaAtiv);
         }
+        
     
 }

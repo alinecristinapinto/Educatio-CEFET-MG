@@ -18,8 +18,16 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.print.PageLayout;
+import javafx.print.PageOrientation;
+import javafx.print.Paper;
+import javafx.print.Printer;
+import javafx.print.PrinterAttributes;
+import javafx.print.PrinterJob;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.transform.Scale;
 import relatoriodemultas.model.Multa;
 import relatoriodemultas.model.RelatorioDeMultas;
 
@@ -40,7 +48,8 @@ public class RelatorioController implements Initializable {
     private TableColumn<Multa, String> multas;
     @FXML
     private TableView<Multa> listaMulta;
-
+    @FXML
+    private AnchorPane relatorio;
     /**
      * Initializes the controller class.
      *
@@ -98,6 +107,27 @@ public class RelatorioController implements Initializable {
     @FXML
     public void alterarTelaInicial() throws IOException {
         main.abreTelaInicial();
+    }
+    
+    @FXML
+    public void imprimePDF() {
+        Printer printer = Printer.getDefaultPrinter();
+        PageLayout pageLayout = printer.createPageLayout(Paper.A4, PageOrientation.PORTRAIT, Printer.MarginType.HARDWARE_MINIMUM);
+        PrinterAttributes attr = printer.getPrinterAttributes();
+        PrinterJob job = PrinterJob.createPrinterJob();
+        double scaleX = (pageLayout.getPrintableWidth() / relatorio.getBoundsInParent().getWidth())-0.15;
+        double scaleY = 1;
+       
+        Scale scale = new Scale(scaleX, scaleY);
+        relatorio.getTransforms().add(scale);
+
+        if (job != null && job.showPrintDialog(relatorio.getScene().getWindow())) {
+            boolean success = job.printPage(pageLayout, relatorio);
+            if (success) {
+                job.endJob();
+            }
+        }
+        relatorio.getTransforms().remove(scale);
     }
 
 }

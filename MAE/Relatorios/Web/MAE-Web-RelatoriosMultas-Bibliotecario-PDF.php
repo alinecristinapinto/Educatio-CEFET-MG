@@ -4,81 +4,102 @@
   Grupo:​ ​ MAE
     Data​ ​ de​ ​ modificação:​ ​ 09/10/2017
     Autor:​ ​ Allan Barbosa
-​ ​ ​ ​ ​ ​ ​ ​ ​Objetivo​ ​ da​ ​ modificação:​ Criação do script da impressão via tela dos relatórios de multas
+​ ​ ​ ​ ​ ​ ​ ​ ​Objetivo​ ​ da​ ​ modificação:​ Criação do script da impressão via pdf dos relatórios de multas
 
-        Comentário do desenvolvedor: Desculpe pela "gambiarra" usando vários echos, não sei fazer de outra forma ;-;
   */
 
 //Inclui a biblioteca do MPDF
-include("C:/wamp64/www/mpdf60/mpdf.php");
+include("mpdf60/mpdf.php");
 
 // Cria conexão
+
 $conn = new mysqli("localhost", "root", "","educatio");
 // Checa conexão
+
 if ($conn->connect_error) {
     die("Conecção falhou: " . $conn->connect_error);
 }
 
 //recebe via POST o Id do aluno a ser pesquisado,se não tiver nada no input ele manda o pdf com TODAS as multas
-if (!empty($_POST["idAlunoPesquisa"])) {
-  $idAlunoPesquisa=$_POST["idAlunoPesquisa"];
+if (!empty($_POST["nomeAlunoPesquisa"])) {
+  $nomeAluno = $_POST["nomeAlunoPesquisa"];
 
-  //Seleciona do BD o ID do aluno com as suas multas correspondentes
-  $sql = "SELECT idAluno, multa FROM emprestimos WHERE idAluno = $idAlunoPesquisa ";
-  $result = $conn->query($sql);
+  //seleciona o ID do aluno pelo seu nome
+  $stmt = $conn->prepare("SELECT idCPF FROM alunos WHERE nome = ?");
+  $stmt->bind_param('s', $nomeAluno);
+  $stmt->execute();
+  $rst = $stmt->get_result();
+
+  while($row = $rst->fetch_assoc()){
+    $idAluno = $row['idCPF'];
+  }
+
+  //seleciona a multa pelo ID do aluno
+  $stmt = $conn->prepare("SELECT multa FROM emprestimos WHERE idAluno = ?");
+  $stmt->bind_param('s', $idAluno);
+  $stmt->execute();
+  $rst = $stmt->get_result();
+
+  while($row = $rst->fetch_assoc()){
+    $multaAluno[] = $row['multa'];
+  }
+
 }
 else {
-  //Seleciona da tabela emprestimos todas as multas
-  $sql = "SELECT idAluno, multa FROM emprestimos ORDER BY idAluno ASC";
-  $result = $conn->query($sql);
+  //seleciona as multa e o ID do aluno
+  $sql = "SELECT multa,idAluno FROM emprestimos ";
+  $rst = $conn->query($sql);
+
+  while($row = $rst->fetch_assoc()){
+    $multaAluno[] = $row['multa'];
+    $idAluno= $row['idAluno'];
+  }
+
+  //seleciona o nome pelo id aluno correspondente
+  $stmt = $conn->prepare("SELECT nome FROM alunos WHERE idCPF = ?");
+  $stmt->bind_param('s', $idAluno);
+  $stmt->execute();
+  $rst = $stmt->get_result();
+
+  while($row = $rst->fetch_assoc()){
+    $nomeAluno = $row['nome'];
+  }
 }
-
-//Seta as opções do Bootstrap no html e o código para gerar a tabela que seleciona o ID do aluno e suas multas
 $html = "<!DOCTYPE html>
-        <html lang='pt-br'>
-          <head>
-            <!-- Bootstrap -->
-            <meta charset='utf-8'>
-            <meta name='viewport' content='width=device-width, initial-scale=1'>
-            <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css'>
-            <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
-            <script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js'></script>
-
-
-            <!-- jQuery (plugins JavaScript do Bootstrap) -->
-            <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js'></script>
-            <script src='js/bootstrap.min.js'></script>
-          </head>
-            <body>
-                <div class='container'>
-                 <!-- Cria o começo da tabela com ID e Multa como colunas -->
-
-                  <table class='table'>
-                      <caption><center><strong> Tabela de multas atrasadas </strong></center></caption>
-                      <tr>
-                       <th>Id do aluno</th>
-                       <th>Multas</th>
-                      </tr>";
-                      while($row = $result->fetch_assoc()) {
-                            //echo dos valores do id do Aluno e multas
-                        $html .= " <tr>
-                                    <td>".$row["idAluno"]."</td>
-                                    <td>".$row["multa"]."</td>
-                                   </tr>
-                                 ";
-                          }
-$html.= "         </table>
-                </div>
-            </body>
-        </html>";
+          <html lang='pt-br'>
+            <head>
+            </head>
+              <body>
+                <h3> Relatorio de Multas <h3>
+                 <table>
+                    <tr>
+                      <th>Nome do aluno</th>
+                      <th>Id do aluno</th>
+                      <th>Multas</th>
+                    </tr>";
+            //laco que pega todas as multas do aluno
+            foreach ($multaAluno as $multas) {
+$html .=            "<tr>
+                        <td>". $nomeAluno ."</td>
+                        <td>". $idAluno ."</td>
+                        <td>". $multas ."</td>
+                     </tr>";
+            }
+$html .=          "</table>
+                  </body>
+                 </html>";
 
 $dataAtual = date("d-m-y"); //cria a Data da geração do arquivo
 $nomeDoArquivo = "Relatorio de multas (" .$dataAtual. ").pdf"; //cria nome do arquivo de acordo com a data atual
 
- $mpdf = new mPDF();
- $mpdf -> SetTitle($nomeDoArquivo);
- $mpdf -> SetDisplayMode('fullpage');
- $mpdf -> WriteHTML($html);
- $mpdf -> Output($nomeDoArquivo, 'D');
+$mpdf = new mPDF();
+$stylesheet = file_get_contents('tabelaPDF.css'); // css da tabela
+$mpdf->WriteHTML($stylesheet,1);
+
+$mpdf -> SetTitle($nomeDoArquivo);
+$mpdf -> SetDisplayMode('fullpage');
+$mpdf -> WriteHTML($html);
+
+$mpdf -> Output($nomeDoArquivo, 'D');
 
 ?>

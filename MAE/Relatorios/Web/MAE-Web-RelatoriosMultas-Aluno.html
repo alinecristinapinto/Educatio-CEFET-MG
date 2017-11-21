@@ -10,42 +10,83 @@ Autor:​ ​ Allan Barbosa
 
 <!DOCTYPE html>
 <html lang="pt-br">
-  <head>
-    <!-- Bootstrap -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<head>
+    <title>Relatório de Turmas</title>
+    <meta charset="utf-8" />
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+    <meta name="viewport" content="width=device-width" />
 
-    <title>Relatórios de Multas</title>
+    <!-- CSS do Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+    <link href="css/bootstrap.css" rel="stylesheet"/>
 
-    <!-- jQuery (plugins JavaScript do Bootstrap) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-  </head>
+    <!-- Arquivos js -->
+    <script src="js/jquery-3.2.1.js" type="text/javascript"></script>
+    <script src="js/bootstrap.min.js" type="text/javascript"></script>
+
+    <!-- Fontes e icones -->
+    <link href="https://fonts.googleapis.com/css?family=Abel|Inconsolata" rel="stylesheet">
+    <link href="css/nucleo-icons.css" rel="stylesheet">
+
+    <script type="text/javascript" src="js/MAE-web-script.js"></script>
+
+    <style type="text/css">
+    .text-center{
+       font-family: 'Abel', sans-serif;
+       color: #d8ac29;
+    }
+    .fonteTexto{
+       font-family: 'Inconsolata', monospace;
+       font-size: 16px;
+    }
+    .btn-info {
+      background-color: #162e87;
+      border-color: #162e87;
+      color: #FFFFFF;
+      opacity: 1;
+      filter: alpha(opacity=100);
+    }
+    .btn-info:hover, .btn-info:focus, .btn-info:active, .btn-info.active, .show > .btn-info.dropdown-toggle {
+      background-color: #11277a;
+      color: #FFFFFF;
+      border-color: #11277a;
+    }
+    </style>
+</head>
   <body>
-    <!--Div container -->
-    <div class="container">
-      <h2><center>Relatórios de multas</center></h2>
+    <div class="wrapper">
+        <div class="section landing-sectionv">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8 ml-auto mr-auto">
 
-      <!--Form com input do ID do Aluno -->
-      <form action="MAE-Web-RelatoriosMultas-Aluno-PDF.php" method='post'id="inputIDAluno" >
+                        <center><h2 class="text-center">Relatórios de multas</h2></center>
 
-           <div class="input-group">
-             <input type="text" class="form-control" placeholder="Confirme seu ID de aluno" name="idAlunoPesquisa" required>
-             <div class="input-group-btn">
-               <button class="btn btn-default" type="submit">
-                 <i class="glyphicon glyphicon-download-alt"></i>
-               </button>
-             </div>
-           </div>
+                        <div class="form-group">
+                          <!--Form com input do ID do Aluno -->
+                          <form class="contact-form" action="MAE-Web-RelatoriosMultas-Aluno-PDF.php" method='post'id="inputIDAluno" >
+                              <div class="row">
 
-       </form><br>
+                               <label class="fonteTexto">Seu ID de aluno:</label>
+                               <div class="input-group">
+                                   <span class="input-group-addon">
+                                       <i class="nc-icon nc-touch-id"></i>
+                                   </span>
+                                   <input type="text" class="form-control" placeholder="Confirme seu ID" name="idAlunoPesquisa" required="required">
+                               </div>
 
-      <center><p>Caro(a) (Nome do aluno logado), insira seu ID no campo </p></center>
+                               <div class="col-md-4 ml-auto mr-auto">
+                                <button type="submit" class="btn btn-info btn-round">Download</button>
+                               </div>
 
+                             </div>
+                           </form>
+                         </div>
 
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </body>
 </html>

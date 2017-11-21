@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<jnlp spec="1.0" xmlns:jfx="http://javafx.com" href="JHJ-java-relatorio7-historico.jnlp">
+  <information>
+    <title>JHJ-java-relatorio7-historico</title>
+    <vendor>gabri_000</vendor>
+    <description>null</description>
+    <offline-allowed/>
+  </information>
+  <resources>
+    <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
+    <jar href="JHJ-java-relatorio7-historico.jar" size="21089" download="eager" />
+    <jar href="lib\mysql-connector-java-5.1.44-bin.jar" size="999635" download="eager" />
+  </resources>
+  <applet-desc  width="800" height="600" main-class="com.javafx.main.NoJavaFXFallback"  name="JHJ-java-relatorio7-historico" >
+    <param name="requiredFXVersion" value="8.0+"/>
+  </applet-desc>
+  <jfx:javafx-desc  width="800" height="600" main-class="Relatorio7.Relatorio7"  name="JHJ-java-relatorio7-historico" />
+  <update check="always"/>
+</jnlp>

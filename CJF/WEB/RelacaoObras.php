@@ -29,8 +29,7 @@ printf("
 		<div class='container'>
 			<div class='row'>
 				<div class='col-md-8 ml-auto mr-auto'>
-					<h2 class='text-center'>Relação de obras</h2><br>
-						<div class='col-md-6'>");
+					<h2 class='text-center'>Relação de obras</h2><br>");
 
 if (isset($_POST['data'])) {
 
@@ -47,7 +46,7 @@ if (isset($_POST['data'])) {
 		$arrayDados = array();
 		$intContador = 0;
 
-		$sqlSql = "SELECT * FROM emprestimos";
+		$sqlSql = "SELECT * FROM emprestimos ORDER BY id";
 		$sqlResultado = $sqlConexao->query($sqlSql);
 		while ($genAux = $sqlResultado->fetch_assoc()) {
 			if ($genAux['ativo'] = "S") {
@@ -57,6 +56,7 @@ if (isset($_POST['data'])) {
 				$arrayDados[$intContador]['dataEmprestimo'] = $genAux['dataEmprestimo'];
 				$arrayDados[$intContador]['dataPrevisaoDevolucao'] = $genAux['dataPrevisaoDevolucao'];
 				$arrayDados[$intContador]['multa'] = $genAux['multa'];
+				$intContador++;
 			}
 		}
 		
@@ -78,14 +78,14 @@ if (isset($_POST['data'])) {
 			$intContador++;
 		}
 
-		echo "<table border='1'>
+		echo "<table class='table table-hover'>
 		<tr>
-		<td>Id do Emprestimo</td>
-		<td>Aluno</td>
-		<td>Nome</td>
-		<td>Data do Emprestimo</td>
-		<td>Data da previsao de Entrega</td>
-		<td>Multa</td>
+		<th>Id do Emprestimo</th>
+		<th>Aluno</th>
+		<th>Nome</th>
+		<th>Data do Emprestimo</th>
+		<th>Data da previsao de Entrega</th>
+		<th>Multa</th>
 		</tr>";
 		foreach ($arrayDados as $valor) {
 			echo "<tr>
@@ -105,7 +105,7 @@ if (isset($_POST['data'])) {
 		$arrayDados = array();
 		$intContador = 0;
 
-		$sqlSql = "SELECT * FROM emprestimos WHERE dataprevisaoDevolucao='$dateDataEscolhida'";
+		$sqlSql = "SELECT * FROM emprestimos WHERE dataEmprestimo='$dateDataEscolhida' ORDER BY id";
 		$sqlResultado = $sqlConexao->query($sqlSql);
 		while ($genAux = $sqlResultado->fetch_assoc()) {
 			if ($genAux['ativo'] = "S") {
@@ -115,6 +115,7 @@ if (isset($_POST['data'])) {
 				$arrayDados[$intContador]['dataEmprestimo'] = $genAux['dataEmprestimo'];
 				$arrayDados[$intContador]['dataPrevisaoDevolucao'] = $genAux['dataPrevisaoDevolucao'];
 				$arrayDados[$intContador]['multa'] = $genAux['multa'];
+				$intContador++;
 			}
 		}
 
@@ -136,41 +137,47 @@ if (isset($_POST['data'])) {
 			$intContador++;
 		}
 
-		echo "<table border='1'>
-		<tr>
-		<td>Id do Emprestimo</td>
-		<td>Aluno</td>
-		<td>Nome</td>
-		<td>Data do Emprestimo</td>
-		<td>Data da previsao de Entrega</td>
-		<td>Multa</td>
-		</tr>";
-		foreach ($arrayDados as $valor) {
-			echo "<tr>
-			<td>".$valor['id']."</td>
-			<td>".$valor['nomeAluno']."</td>
-			<td>".$valor['nome']."</td>
-			<td>".$valor['dataEmprestimo']."</td>
-			<td>".$valor['dataPrevisaoDevolucao']."</td>
-			<td>".$valor['multa']."</td>
-			</tr>";		
+		if ($arrayDados != null) {
+			echo "<table class='table table-hover'>
+			<tr>
+			<th>Id do Emprestimo</th>
+			<th>Aluno</th>
+			<th>Nome</th>
+			<th>Data do Emprestimo</th>
+			<th>Data da previsao de Entrega</th>
+			<th>Multa</th>
+			</tr>";
+			foreach ($arrayDados as $valor) {
+				echo "<tr>
+				<td>".$valor['id']."</td>
+				<td>".$valor['nomeAluno']."</td>
+				<td>".$valor['nome']."</td>
+				<td>".$valor['dataEmprestimo']."</td>
+				<td>".$valor['dataPrevisaoDevolucao']."</td>
+				<td>".$valor['multa']."</td>
+				</tr>";		
+			}
+			echo "</table>";
+		} else {
+			echo "Não achamos nada nesta data!";
 		}
-		echo "</table>";
-
 	}
+		
 
     
 
 } else {
 	echo "Não econtramos o que deve ser pesquisado!";
 
-printf("				</div>
+	printf("				
+						</div>
 					</div>
-				</div>
-			</div>				
-		</div>					
-</body>
-</html>");	
+				</div>				
+			</div>					
+	</body>
+	</html>");	
 }
+
+?>
 
 	

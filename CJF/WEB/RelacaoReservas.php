@@ -29,8 +29,7 @@ printf("
 		<div class='container'>
 			<div class='row'>
 				<div class='col-md-8 ml-auto mr-auto'>
-					<h2 class='text-center'>Relação de reservas</h2><br>
-						<div class='col-md-6'>");
+					<h2 class='text-center'>Relação de reservas</h2><br>");
 
 if (isset($_POST['data'])) {
 
@@ -47,7 +46,7 @@ if (isset($_POST['data'])) {
 		$arrayDados = array();
 		$intContador = 0;
 
-		$sqlSql = "SELECT * FROM reservas";
+		$sqlSql = "SELECT * FROM reservas ORDER BY id";
 		$sqlResultado = $sqlConexao->query($sqlSql);
 		while ($genAux = $sqlResultado->fetch_assoc()) {
 			if ($genAux['ativo'] = "S") {
@@ -57,6 +56,7 @@ if (isset($_POST['data'])) {
 				$arrayDados[$intContador]['dataReserva'] = $genAux['dataReserva'];
 				$arrayDados[$intContador]['tempoEspera'] = $genAux['tempoEspera'];
 				$arrayDados[$intContador]['emprestou'] = $genAux['emprestou'];
+				$intContador++;
 			}
 		}
 		
@@ -78,14 +78,14 @@ if (isset($_POST['data'])) {
 			$intContador++;
 		}
 
-		echo "<table border='1'>
+		echo "<table class='table table-hover'>
 		<tr>
-		<td>Id da Reserva</td>
-		<td>Aluno</td>
-		<td>Nome</td>
-		<td>Data da Reserva</td>
-		<td>Tempo de Espera</td>
-		<td>Emprestou</td>
+		<th>Id da Reserva</th>
+		<th>Aluno</th>
+		<th>Nome</th>
+		<th>Data da Reserva</th>
+		<th>Tempo de Espera</th>
+		<th>Emprestou</th>
 		</tr>";
 		foreach ($arrayDados as $valor) {
 			echo "<tr>
@@ -105,7 +105,7 @@ if (isset($_POST['data'])) {
 		$arrayDados = array();
 		$intContador = 0;
 
-		$sqlSql = "SELECT * FROM reservas WHERE dataReserva='$dateReserva'";
+		$sqlSql = "SELECT * FROM reservas WHERE dataReserva='$dateReserva' ORDER BY id";
 		$sqlResultado = $sqlConexao->query($sqlSql);
 		while ($genAux = $sqlResultado->fetch_assoc()) {
 			if ($genAux['ativo'] = "S") {
@@ -115,6 +115,7 @@ if (isset($_POST['data'])) {
 				$arrayDados[$intContador]['dataReserva'] = $genAux['dataReserva'];
 				$arrayDados[$intContador]['tempoEspera'] = $genAux['tempoEspera'];
 				$arrayDados[$intContador]['emprestou'] = $genAux['emprestou'];
+				$intContador++;
 			}
 		}
 		
@@ -136,26 +137,31 @@ if (isset($_POST['data'])) {
 			$intContador++;
 		}
 
-		echo "<table border='1'>
-		<tr>
-		<td>Id da Reserva</td>
-		<td>Aluno</td>
-		<td>Nome</td>
-		<td>Data da Reserva</td>
-		<td>Tempo de Espera</td>
-		<td>Emprestou</td>
-		</tr>";
-		foreach ($arrayDados as $valor) {
-			echo "<tr>
-			<td>".$valor['id']."</td>
-			<td>".$valor['nomeAluno']."</td>
-			<td>".$valor['nome']."</td>
-			<td>".$valor['dataReserva']."</td>
-			<td>".$valor['tempoEspera']."</td>
-			<td>".$valor['emprestou']."</td>
-			</tr>";		
+		if ($arrayDados != null) {
+			echo "<table class='table table-hover'>
+			<tr>
+			<th>Id da Reserva</th>
+			<th>Aluno</th>
+			<th>Nome</th>
+			<th>Data da Reserva</th>
+			<th>Tempo de Espera</th>
+			<th>Emprestou</th>
+			</tr>";
+			foreach ($arrayDados as $valor) {
+				echo "<tr>
+				<td>".$valor['id']."</td>
+				<td>".$valor['nomeAluno']."</td>
+				<td>".$valor['nome']."</td>
+				<td>".$valor['dataReserva']."</td>
+				<td>".$valor['tempoEspera']."</td>
+				<td>".$valor['emprestou']."</td>
+				</tr>";		
+			}
+			echo "</table>";
+		} else {
+			echo "Não achamos nada!";
 		}
-		echo "</table>";
+		
 
 	}
 
@@ -164,7 +170,7 @@ if (isset($_POST['data'])) {
 } else {
 	echo "Não econtramos o que deve ser pesquisado!";
 }
-printf("				</div>
+printf("				
 					</div>
 				</div>
 			</div>				

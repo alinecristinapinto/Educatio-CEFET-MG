@@ -62,14 +62,15 @@ public class CriaAutorController implements Initializable{
         
         @FXML
     public void criaAutor() throws IOException, SQLException{
+        int i = 0;
         if   (autorNome.getText().equals("") || autorSobrenome.getText().equals("") || autorOrdem.getText().equals("") || autorQualificacao.getText().equals("")){
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             System.out.println("Alert");
-            
+            i = 1;
+            alert.setContentText("Não foi possível criar o autor, existem campos vazios");
             alert.showAndWait();
-        }else{
+        }else if(i==0){
 
-        
 
         Autores autor = new Autores(autorNome.getText(), autorSobrenome.getText(), autorOrdem.getText(), autorQualificacao.getText());
         insereAutores(link, autor);

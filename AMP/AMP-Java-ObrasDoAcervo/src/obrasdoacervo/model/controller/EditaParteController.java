@@ -25,13 +25,13 @@ public class EditaParteController implements Initializable{
     private com.mysql.jdbc.Connection link;
     
     @FXML
-    private TextField nome;
+    private TextField titulo;
     @FXML
-    private TextField idAntigo;
+    private TextField palavrasChave;
     @FXML
-    private TextField idCurso;
+    private TextField pagInicio;
     @FXML
-    private TextField serie;
+    private TextField pagFinal;
     /**
      * Initializes the controller class.
      */
@@ -53,4 +53,14 @@ public class EditaParteController implements Initializable{
         public void setMain(ObrasDoAcervo main) {
         this.main = main;
     }
+        
+        @FXML
+        public void excluir(){
+            
+        }
+        
+        @FXML
+        public void editar(){
+            
+        }
 }

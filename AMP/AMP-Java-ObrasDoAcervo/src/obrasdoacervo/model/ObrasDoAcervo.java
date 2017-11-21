@@ -44,6 +44,9 @@ public class ObrasDoAcervo extends Application {
     private Stage stage;
     private BorderPane borda;
     
+    private ObservableList<AcervoTabela> listaAcervo;
+    private ObservableList<AutoresTabela> listaAutores;
+    
     @Override
     public void start(Stage stage) throws IOException{
         
@@ -245,8 +248,8 @@ public class ObrasDoAcervo extends Application {
         rs = stmt.executeQuery(findId);
         rs.last();
         id = rs.getInt("id");
-        sql = "INSERT INTO livros(idAcervo, ISBN, edicao, ativo) VALUES(" + (id + 1) + ", " + livro.ISBN + 
-              ", " + livro.edicao + ", 'S')";
+        sql = "INSERT INTO livros(idAcervo, ISBN, edicao, ativo) VALUES(" + (id + 1) + ", '" + livro.ISBN + 
+              "', '" + livro.edicao + "', 'S')";
        stmt.execute(sql);
 
         }catch(SQLException e){
@@ -269,8 +272,8 @@ public class ObrasDoAcervo extends Application {
         rs = stmt.executeQuery(findId);
         rs.last();
         id = rs.getInt("id");
-        String sql = "INSERT INTO midias(idAcervo, tempo, subtipo, ativo) VALUES(" + (id + 1) + ", " + midia.tempo + 
-               ", " + midia.subtipo + ", 'S')";
+        String sql = "INSERT INTO midias(idAcervo, tempo, subtipo, ativo) VALUES(" + (id + 1) + ", '" + midia.tempo + 
+               "', '" + midia.subtipo + "', 'S')";
         stmt.execute(sql);
         
         }catch(SQLException e){
@@ -293,7 +296,7 @@ public class ObrasDoAcervo extends Application {
         rs = stmt.executeQuery(findId);
         rs.last();
         id = rs.getInt("id");
-        String sql = "INSERT INTO academicos(idAcervo, programa, ativo) VALUES(" + (id + 1) + ", " + academicos.programa + ", 'S')";
+        String sql = "INSERT INTO academicos(idAcervo, programa, ativo) VALUES(" + (id + 1) + ", '" + academicos.programa + "', 'S')";
         stmt.execute(sql);
         
         }catch(SQLException e){
@@ -601,6 +604,40 @@ public class ObrasDoAcervo extends Application {
             System.out.println("VendorError: " + e.getErrorCode());  
         }
         return id;
+    }
+    
+    public ObservableList<AcervoTabela> montaListaAcervo(Connection connection, String determinado) throws SQLException{      
+        listaAcervo = FXCollections.observableArrayList();
+        //int idProfDisc = pegaIdProfDisciplina(pegaIdDisciplina(disciplina), pegaIdTurma(turma));
+
+        String sql = "SELECT * FROM acervo WHERE nome = '" + determinado + "' AND ativo = 'S'";
+        
+        PreparedStatement declaracao = connection.prepareStatement(sql);
+        // declaracao.setInt(1, idProfDisc);
+        
+        ResultSet rs = declaracao.executeQuery();
+        while(rs.next()){
+            listaAcervo.add(new AcervoTabela("Campus", rs.getString("nome"), rs.getString("tipo"), rs.getString("local"), rs.getString("ano"), rs.getString("editora"), rs.getString("paginas")));
+        }
+        
+        return listaAcervo;
+    }
+    
+    public ObservableList<AutoresTabela> montaListaAutores(Connection connection, String determinado) throws SQLException{      
+        listaAutores = FXCollections.observableArrayList();
+        //int idProfDisc = pegaIdProfDisciplina(pegaIdDisciplina(disciplina), pegaIdTurma(turma));
+
+        String sql = "SELECT * FROM autores WHERE nome = '" + determinado + "' AND ativo = 'S'";
+        
+        PreparedStatement declaracao = connection.prepareStatement(sql);
+        // declaracao.setInt(1, idProfDisc);
+        
+        ResultSet rs = declaracao.executeQuery();
+        while(rs.next()){
+            listaAutores.add(new AutoresTabela(rs.getString("nome"), rs.getString("sobrenome"), rs.getString("ordem"), rs.getString("qualificacao")));
+        }
+        
+        return listaAutores;
     }
         
     public static void main(String[] args) throws SQLException{

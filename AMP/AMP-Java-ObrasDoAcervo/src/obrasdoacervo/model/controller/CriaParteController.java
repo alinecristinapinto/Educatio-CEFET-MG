@@ -66,18 +66,17 @@ public class CriaParteController implements Initializable{
         
         @FXML
         public void criaParte() throws IOException{
+            int i = 0;
             if (titulo.getText().equals("") || pagInicio.getText().equals("") || pagFinal.getText().equals("") || palavrasChave.getText().equals("")){
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             System.out.println("Alert");
-            
+            i = 1;
+            alert.setContentText("Existem campos vazios, não foi possível criar a obra");
             alert.showAndWait();
-        }else{
-                
-                
-        int inicio = Integer.parseInt(pagInicio.getText());
-        int fim = Integer.parseInt(pagFinal.getText());
+        }else if(i==0){
+
         
-        Partes parte = new Partes(titulo.getText(), inicio, fim, palavrasChave.getText());
+        Partes parte = new Partes(titulo.getText(), pagInicio.getText(), pagFinal.getText(), palavrasChave.getText());
         main.inserePartes(link, parte);
         main.abreCriaParteSecundario();
         }
@@ -96,7 +95,7 @@ public class CriaParteController implements Initializable{
         int inicio = Integer.parseInt(pagInicio.getText());
         int fim = Integer.parseInt(pagFinal.getText());
         
-        Partes parte = new Partes(titulo.getText(), inicio, fim, palavrasChave.getText());
+        Partes parte = new Partes(titulo.getText(), pagInicio.getText(), pagFinal.getText(), palavrasChave.getText());
         main.inserePartes(link, parte);
         main.abreCriaAutor();
         }

@@ -13,6 +13,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
 import obrasdoacervo.model.ObrasDoAcervo;
 
@@ -28,11 +29,28 @@ public class EditaPeriodicosController implements Initializable{
     @FXML
     private TextField nome;
     @FXML
-    private TextField idAntigo;
+    private TextField editora;
+    
     @FXML
-    private TextField idCurso;
+    private ChoiceBox campus;
+    
     @FXML
-    private TextField serie;
+    private TextField local;
+
+    @FXML
+    private TextField ano;
+    @FXML
+    private TextField paginas;
+    @FXML
+    private TextField periodicidade;
+    @FXML
+    private TextField mes;
+    @FXML
+    private TextField volume;
+    @FXML
+    private TextField subtipo;
+    @FXML
+    private TextField ISSN;
     /**
      * Initializes the controller class.
      */
@@ -53,6 +71,16 @@ public class EditaPeriodicosController implements Initializable{
     
         public void setMain(ObrasDoAcervo main) {
         this.main = main;
-    }
+        }
+        
+        @FXML
+        public void editar(){
+            
+        }
+        
+        @FXML
+        public void excluir(){
+            
+        }
 }
     

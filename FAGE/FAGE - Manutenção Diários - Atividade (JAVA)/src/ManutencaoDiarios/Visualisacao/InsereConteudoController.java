@@ -12,27 +12,32 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import testeclassealert.AlertaPadrao;
 
-
 /**
  *
  * @author Felipe
  */
-public class PainelInsereController {
+public class InsereConteudoController {
     private ManutencaoDiarios manutencaoDiarios;
     private Atividade atividade = new Atividade();
     private Disciplina disciplina;
     private Turma turma;
     
     @FXML
-    private TextField nomeAtividade;
-    @FXML
-    private TextField valorAtividade;
-    @FXML
-    private DatePicker dataAtividade;
+    private TextField nomeConteudo;
     
     @FXML
-    private void initialize() throws SQLException{
-        dataAtividade.setEditable(false);
+    private DatePicker dataConteudo;
+    
+    @FXML
+    private TextField etapaConteudo;
+    
+    @FXML
+    public void initialize(){
+        dataConteudo.setEditable(false);
+    }
+
+    public void setManutencaoDiarios(ManutencaoDiarios manutencaoDiarios) {
+        this.manutencaoDiarios = manutencaoDiarios;
     }
 
     public void setDisciplina(Disciplina disciplina) {
@@ -42,24 +47,14 @@ public class PainelInsereController {
     public void setTurma(Turma turma) {
         this.turma = turma;
     }
-
-    public void setManutencaoDiarios(ManutencaoDiarios manutencaoDiarios) {
-        this.manutencaoDiarios = manutencaoDiarios;
-    }
     
-    public void insereBd() throws ClassNotFoundException, SQLException, IOException{
-        if(valorAtividade.getText().equals("") || nomeAtividade.getText().equals("") || dataAtividade.getValue() == null){
+    public void insereBd() throws IOException, SQLException{
+        if(nomeConteudo.getText().equals("") || dataConteudo.getValue() == null){
            AlertaPadrao alerta = new AlertaPadrao();
            alerta.mostraAlertErro(manutencaoDiarios.getPalcoPrincipal(), "Campos vazios", "Erro!", "Existem campos vazios, preencha todos para continuar.");
-            
-        }else if(!valorAtividade.getText().matches("^([0-9]{1,2}){1}(.[0-9]{1,2})?$")){
-            AlertaPadrao alerta = new AlertaPadrao();
-            alerta.mostraAlertErro(manutencaoDiarios.getPalcoPrincipal(), "Campos preenchidos incorretamente", "Erro!", "Preencha corretamente todos os campos para continuar.");
-            
         }else{
-            atividade.insereAtividade(disciplina.getNome(), nomeAtividade.getText(), 
-            dataAtividade.getValue().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")), 
-            Double.parseDouble(valorAtividade.getText()), 1, (String) turma.getNome());
+            atividade.insereConteudo(Integer.parseInt(etapaConteudo.getText()), disciplina.getNome(), nomeConteudo.getText(),
+            dataConteudo.getValue().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
         
             AlertaPadrao alerta = new AlertaPadrao();
             alerta.mostraAlertConfirmacao(manutencaoDiarios.getPalcoPrincipal(), "Inserção", "Sucesso!", "Inserção realizada com sucesso no banco de dados.");
@@ -70,4 +65,5 @@ public class PainelInsereController {
     public void cancela() throws SQLException{
         manutencaoDiarios.chamaEscolhe(disciplina, turma);
     }
+    
 }

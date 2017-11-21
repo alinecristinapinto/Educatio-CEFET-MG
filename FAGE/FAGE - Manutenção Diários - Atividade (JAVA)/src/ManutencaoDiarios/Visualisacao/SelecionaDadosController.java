@@ -22,7 +22,7 @@ public class SelecionaDadosController {
     private Atividade atividade = new Atividade();
     private Disciplina disciplina = new Disciplina();
     private Turma turma = new Turma();
-    private String disc = new String();
+    private String nomeDisciplina = new String();
     
     @FXML
     private ChoiceBox disciplinas;
@@ -55,22 +55,23 @@ public class SelecionaDadosController {
     }
     
     public void continuar(String valor) throws SQLException, IOException{
-        disc = valor;
+        nomeDisciplina = valor;
         
-        if(disc == null){
+        if(nomeDisciplina == null){
             AlertaPadrao alerta = new AlertaPadrao();
             alerta.mostraAlertErro(manutencaoDiarios.getPalcoPrincipal(), "Campos vazios", "Erro!", "Existem campos vazios, preencha todos para continuar.");
             
         }else{
-            turmas.setItems(atividade.pegaTurmas(disc));
+            turmas.setItems(atividade.pegaTurmas(nomeDisciplina));
             turmas.setVisible(true);
             labelTurma.setVisible(true);
         }
     }
     
-    public void confirmar(){
-        disciplina.setNome(disc);
-        manutencaoDiarios.chamaEscolhe(disciplina);
+    public void confirmar() throws SQLException{
+        disciplina.setNome(nomeDisciplina);
+        turma.setNome(turmas.getSelectionModel().getSelectedItem().toString());
+        manutencaoDiarios.chamaEscolhe(disciplina, turma);
     }
     
     public void sair(){

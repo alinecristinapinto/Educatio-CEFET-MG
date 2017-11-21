@@ -68,21 +68,23 @@ public class CriaMidiaController implements Initializable{
     // Falta idCampi
     @FXML
     public void criaMidias() throws IOException, SQLException{
+        int i = 0;
         if (tempo.getText().equals("") || subtipo.getText().equals("") || campus.getValue().equals("") || nome.getText().equals("") || local.getText().equals("") || ano.getText().equals("") || editora.getText().equals("") || paginas.getText().equals("")){
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             System.out.println("Alert");
-            
+            i = 1;
+            alert.setContentText("Existem campos vazios, não é possível criar a obra");
             alert.showAndWait();
-        }else{
+        }else if(i==0){
             
-            int idCampi = main.pegaIdCampi(link, (String) campus.getValue());
+        int idCampi = main.pegaIdCampi(link, (String) campus.getValue());
         
         Midias midia = new Midias(tempo.getText(), subtipo.getText(), idCampi, nome.getText(), "midias", local.getText(), ano.getText(), editora.getText(), paginas.getText());       
         insereMidias(link, midia);
         //Autores autor = new Autores(autorNome.getText(), autorSobrenome.getText(), autorOrdem.getText(), autorQualificacao.getText());
         //insereAutores(link, autor);
         //System.out.println("Criou uma turma.");
-        main.abreMenuSwitchObras();
+        main.abreCriaAutor();
         }
      }
         @FXML

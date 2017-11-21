@@ -14,6 +14,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
 import obrasdoacervo.model.ObrasDoAcervo;
 import static obrasdoacervo.model.ObrasDoAcervo.remove;
@@ -29,11 +30,18 @@ public class EditaAcademicoController implements Initializable{
     @FXML
     private TextField nome;
     @FXML
-    private TextField idAntigo;
+    private TextField programa;
     @FXML
-    private TextField idCurso;
+    private ChoiceBox campus;
     @FXML
-    private TextField serie;
+    private TextField local;
+    @FXML
+    private TextField editora;
+    @FXML
+    private TextField ano;
+    @FXML
+    private TextField paginas;
+    @FXML
 
     
     @Override

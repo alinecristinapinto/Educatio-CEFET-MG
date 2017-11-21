@@ -1,0 +1,36 @@
+h3{
+  color: #333;
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 22px
+}
+
+table {
+  color: #333;
+  font-family: Helvetica, Arial, sans-serif;
+  width: 640px;
+  /* Resetar as configurações */
+  border-spacing: 0;
+}
+
+td, th {
+  border: 0 none;
+  height: 30px;
+}
+
+th {
+  /* fundo degrade da celula principias */
+	background: linear-gradient(#333 0%,#444 100%);
+	color: #FFF;
+  font-weight: bold;
+	height: 40px;
+}
+
+td { background: #FAFAFA; text-align: center; }
+
+/* linhas listradas */
+tr:nth-child(even) td {
+  background: #EEE;
+}
+tr:nth-child(odd) td {
+  background: #FDFDFD;
+}

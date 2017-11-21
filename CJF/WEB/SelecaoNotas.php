@@ -1,5 +1,6 @@
 <?php
 
+session_start();
 
 if (isset($_POST['aluno'])) {
 
@@ -43,42 +44,88 @@ printf("
 						<div class='col-md-6'>");
 
 	$strAluno = $_POST['aluno'];
+	$_SESSION['Aluno'] = $strAluno;
+	$strano = $_POST['ano'];
+	$_SESSION['Ano'] = $strano;
+
 
 	//Pesquisa do ID do aluno por meio do nome na tabela alunos;
-	$sqlSql = "SELECT idCPF FROM alunos WHERE nome='$strAluno'";
+	$sqlSql = "SELECT nome, idCPF FROM alunos WHERE nome='$strAluno'";
 	$sqlResultado = $sqlConexao->query($sqlSql);
 	$genAux = $sqlResultado->fetch_assoc();
 	$intIdCPF = $genAux['idCPF'];
+	$strNome = $genAux['nome'];
 
-	if ($intIdCPF == null) {
+	//Pesquisa do ID-matricula por meio do id-CPF na tabela matriculas;
+	$intContador = 0;
+	$arrayMatricula = array();
+	$sqlSql = "SELECT id FROM matriculas WHERE idAluno='$intIdCPF'";
+	$sqlResultado = $sqlConexao->query($sqlSql);
+	while ($genAux = $sqlResultado->fetch_assoc()) {
+		$arrayMatricula[$intContador] = $genAux['id'];
+		$intContador++;
+	}
+
+	if ($arrayMatricula == null) {
+		$sqlSql = "SELECT id FROM matriculas WHERE idAluno='$strAluno'";
+		$sqlResultado = $sqlConexao->query($sqlSql);
+		while ($genAux = $sqlResultado->fetch_assoc()) {
+			$arrayMatricula[$intContador] = $genAux['id'];
+		}
+
+		$sqlSql = "SELECT nome FROM alunos WHERE idCPF='$strAluno'";
+		$sqlResultado = $sqlConexao->query($sqlSql);
+		$genAux = $sqlResultado->fetch_assoc();
+		$strNome = $genAux['nome'];
+		$intIdCPF = $strAluno;
+	}
+	
+
+	if ($arrayMatricula == null) {
 		printf("<div class='alert alert-info' role='alert'>
  					 Aluno(a) não encontrado! <a href='SelecaoNotasHtml.php' class='alert-link'>Tentar novamente</a>. 
-				</div>
+							</div>
 						</div>
-					</div>
-				</div>	
-			</div>				
-		</div>					
+					</div>	
+				</div>
+			</div>	
+		</div>				
+	</div>					
 </body>
 </html>");
 		exit;
 	}
 
-	//Pesquisa do ID-matricula por meio do id-CPF na tabela matriculas;
-	$sqlSql = "SELECT id FROM matriculas WHERE idAluno='$intIdCPF'";
-	$sqlResultado = $sqlConexao->query($sqlSql);
-	$genAux = $sqlResultado->fetch_assoc();
-	$intIdmatricula = $genAux['id'];
 
 	//Pesquisa da nota e do id-conteudo por meio do id-matricula na tabela diarios;
-	$sqlSql = "SELECT nota,idConteudo FROM diarios WHERE idMatricula='$intIdmatricula'";
-	$sqlResultado = $sqlConexao->query($sqlSql);
-	$arrayDados = array();
 	$intContador = 0;
-	while ($genAux = $sqlResultado->fetch_assoc()) {
-		$arrayDados[$intContador]['intNota'] = $genAux['nota'];
-		$arrayDados[$intContador]['intIdconteudo'] = $genAux['idConteudo'];
-		$intContador++;
+	$arrayDados = array();
+	foreach ($arrayMatricula as $valor){
+		$sqlSql = "SELECT nota,idConteudo,faltas FROM diarios WHERE idMatricula='$valor' AND ano='$strano'";
+		$sqlResultado = $sqlConexao->query($sqlSql);
+		while ($genAux = $sqlResultado->fetch_assoc()) {
+			$arrayDados[$intContador]['intNota'] = $genAux['nota'];
+			$arrayDados[$intContador]['intIdconteudo'] = $genAux['idConteudo'];
+			$arrayDados[$intContador]['intFaltas'] = $genAux['faltas'];
+			$intContador++;
+		}
+	}
+
+
+
+	if ($arrayDados == null) {
+	printf("<div class='alert alert-info' role='alert'>
+ 				 Nenhuma nota encontrada no ano pesquisado! <a href='SelecaoNotasHtml.php' class='alert-link'>Tentar novamente<a>. 
+							</div>
+						</div>
+					</div>	
+				</div>
+			</div>	
+		</div>				
+	</div>					
+</body>
+</html>");
+		exit;
 	}
 
 	//Pesquisa do id-etapa e id-disciplina por meio do id-conteudos na tabela conteudos;
@@ -110,7 +157,25 @@ printf("
 		$strDisciplina = $valor['strNomedisciplina'];
 		$intEtapa = $valor['intIdetapa'];
 		$intNota = $valor['intNota'];
-		$arrayFinal[$strDisciplina][$intEtapa] = $intNota;
+		if (isset($arrayFinal[$strDisciplina][$intEtapa])) {
+			$arrayFinal[$strDisciplina][$intEtapa] += $intNota;
+		} else {
+			$arrayFinal[$strDisciplina][$intEtapa] = $intNota;
+		}
+		
+	}
+
+	//Coloca os valores da faltas em um array;
+	$arrayFaltas = array();
+	foreach ($arrayDados as $valor) {
+		$strDisciplina = $valor['strNomedisciplina'];
+		$intEtapa = $valor['intIdetapa'];
+		$intFaltas = $valor['intFaltas'];
+		if (isset($arrayFaltas[$strDisciplina][$intEtapa])) {
+			$arrayFaltas[$strDisciplina][$intEtapa] += $intFaltas;
+		} else {
+			$arrayFaltas[$strDisciplina][$intEtapa] = $intFaltas;
+		}
 	}
 
 	//Confere quais etapas serão mostradas no boletim;
@@ -123,34 +188,79 @@ printf("
 	$arrayEtapas = array_unique($arrayEtapas);
 	sort($arrayEtapas);
 
+	$intNotaTotal = 0;
+	$intNotaMaxima = 0;
+	foreach ($arrayFinal as $key => $valor) {
+		for ($intX = 0; $intX < count($arrayEtapas); $intX++) {
+			if(array_key_exists($arrayEtapas[$intX], $arrayFinal[$key])) {
+				$sqlSql = "SELECT valor FROM etapas WHERE idOrdem='$arrayEtapas[$intX]'";
+				$sqlResultado = $sqlConexao->query($sqlSql);
+				$genAux = $sqlResultado->fetch_assoc();
+				$intNotaMaxima += $genAux['valor'];
+				$intNotaTotal += $valor[$arrayEtapas[$intX]];
+			}
+		}		
+	}
+
+
+	//Dados do aluno
+	$intNotaTotal = (100*$intNotaTotal)/$intNotaMaxima;
+
+	printf("<label class='fonteTexto'>");
+	echo "Nome do aluno: ".$strNome.".<br>CPF: ".$intIdCPF.".<br>Ano: ".$strano.".<br>Coeficiente de Rendimento: ".number_format($intNotaTotal,2)."%.";
+	printf("</label>");
+	
+
+
+
 	//Cria a tabela/boletim;
-	echo "<table border='1'><tr><td>Notas</td>";
+	echo "<table class='table table-hover'>
+			<tr>
+			<th bgcolor = '#C0C0C0' >Etapas</th>";
 	foreach ($arrayEtapas as $valor) {
-		echo "<td>".$valor."</td>";
+		echo "<th bgcolor = '#C0C0C0' colspan='2'><center>".$valor."</center></th>";
+	}
+	echo "</tr><tr><th bgcolor = '#C0C0C0' >Matérias</th>";
+	foreach ($arrayEtapas as  $valor) {
+		echo "<th>Nota</th><th bgcolor = '#DCDCDC'>Faltas</th>";
 	}
 	echo "</tr>";
+
 	foreach ($arrayFinal as $key => $valor) {
-		echo "<tr><td>".$key."</td>";
+		echo "<tr><th bgcolor = '#C0C0C0' >".$key."</th>";
 		for ($intX = 0; $intX < count($arrayEtapas); $intX++) {
 			if(array_key_exists($arrayEtapas[$intX], $arrayFinal[$key])) {
 				echo "<td>".$arrayFinal[$key][$arrayEtapas[$intX]]."</td>";
+				echo "<td bgcolor = '#DCDCDC'>".$arrayFaltas[$key][$arrayEtapas[$intX]]."</td>";
 			} else {
-				echo "<td>NE</td>";
+				echo "<td>NE</td><td>NE</td>";
 			}
 		}
 		echo "</tr>";
 	}
 	echo "</table>";
 
+	echo 	"<form method='post' action='SelecaoNotas-Impressao.php'>
+				<input class='btn btn-info btn-round' type='submit' value='Download'>
+			</form>";
+
+	$_SESSION['arrayDados'] = $arrayFinal;
+	$_SESSION['arrayEtapas'] = $arrayEtapas;
+	$_SESSION['arrayFaltas'] = $arrayFaltas;
+	$_SESSION['rendimento'] = $intNotaTotal;
+	$_SESSION['CPF'] = $intIdCPF;
+
+
 } else {
 	echo "Nome a ser pesquisado nao econtrado!";
 }
 
-printf("				</div>
+printf("				
 					</div>
 				</div>
 			</div>				
-		</div>					
+		</div>	
+	</div>				
 </body>
 </html>");
 ?>

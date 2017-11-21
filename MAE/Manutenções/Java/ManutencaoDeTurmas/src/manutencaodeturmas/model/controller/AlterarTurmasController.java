@@ -146,11 +146,6 @@ public class AlterarTurmasController implements Initializable {
             comando.executeUpdate(query);
         }
 
-        if (!idCurso.getText().equals("")) {
-            String query = "UPDATE `turmas` SET `idCurso` = '" + idCurso.getText() + "' WHERE `id` = '" + resultado.getString("id") + "'";
-            comando.executeUpdate(query);
-        }
-
         alteraTelaInicial();
     }
 
@@ -226,10 +221,9 @@ public class AlterarTurmasController implements Initializable {
     public void setVisivel() {
         labelEnunciado.setVisible(true);
         labelNome.setVisible(true);
-        labelIdCurso.setVisible(true);
         nome.setVisible(true);
-        idCurso.setVisible(true);
         serie.setVisible(true);
         labelSerie.setVisible(true);
     }
+    
 }

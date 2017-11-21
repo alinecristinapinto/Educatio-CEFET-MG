@@ -7,11 +7,7 @@ package manutencaodecurso.model.controller;
 
 import java.io.IOException;
 import java.net.URL;
-import java.sql.DriverManager;
-import java.sql.SQLException;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import manutencaodecurso.model.ManutencaoDeCurso;
@@ -29,7 +25,7 @@ public class TelaInicialController<E> implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
+
     }
 
     @FXML

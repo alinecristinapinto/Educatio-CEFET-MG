@@ -66,24 +66,25 @@ public class CriaAcademicoController implements Initializable{
     } 
     
     @FXML
-    public void criaAcademico() throws IOException, SQLException{   
+    public void criaAcademico() throws IOException, SQLException{  
+        int i = 0;
         if (programa.getText().equals("") || campus.getValue().equals("") || nome.getText().equals("") || local.getText().equals("") || ano.getText().equals("") || editora.getText().equals("") || paginas.getText().equals("")){
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             System.out.println("Alert");
-            
-            alert.showAndWait();
-        }else{
-            
+            i = 1;
+            alert.setContentText("Existem campos vazios, não é possível criar a obra");
+            alert.showAndWait();           
+        }else if(i == 0){        
             
         int idCampi = main.pegaIdCampi(link, (String) campus.getValue());
-            
+        
         
         Academicos academico = new Academicos(programa.getText(), idCampi, nome.getText(), "academicos", local.getText(), ano.getText(), editora.getText(), paginas.getText());       
         insereAcademicos(link, academico);
         //Autores autor = new Autores(autorNome.getText(), autorSobrenome.getText(), autorOrdem.getText(), autorQualificacao.getText());
         //insereAutores(link, autor);
         //System.out.println("Criou uma turma.");
-        main.abreMenuSwitchObras();
+        main.abreCriaAutor();
      }
     }
         @FXML

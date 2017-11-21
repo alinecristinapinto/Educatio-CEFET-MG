@@ -11,11 +11,11 @@ package obrasdoacervo.model;
  */
 public class Partes{
     String titulo;
-    int pagInicio;
-    int pagFinal;
+    String pagInicio;
+    String pagFinal;
     String palavrasChave;
 
-    public Partes(String titulo, int pagInicio, int pagFinal, String palavrasChave) {
+    public Partes(String titulo, String pagInicio, String pagFinal, String palavrasChave) {
         this.titulo = titulo;
         this.pagInicio = pagInicio;
         this.pagFinal = pagFinal;
@@ -31,19 +31,19 @@ public class Partes{
         this.titulo = titulo;
     }
 
-    public int getPagInicio() {
+    public String getPagInicio() {
         return pagInicio;
     }
 
-    public void setPagInicio(int pagInicio) {
+    public void setPagInicio(String pagInicio) {
         this.pagInicio = pagInicio;
     }
 
-    public int getPagFinal() {
+    public String getPagFinal() {
         return pagFinal;
     }
 
-    public void setPagFinal(int pagFinal) {
+    public void setPagFinal(String pagFinal) {
         this.pagFinal = pagFinal;
     }
 

@@ -5,6 +5,7 @@
  */
 package obrasdoacervo.model;
 
+import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
 /**
@@ -19,5 +20,72 @@ public class AcervoTabela {
     private StringProperty ano;
     private StringProperty editora;
     private StringProperty paginas;
+
+    public AcervoTabela(String campus, String nome, String tipo, String local, String ano, String editora, String paginas) {
+        this.campus = new SimpleStringProperty(campus);
+        this.nome = new SimpleStringProperty(nome);
+        this.tipo = new SimpleStringProperty(tipo);
+        this.local = new SimpleStringProperty(local);
+        this.ano = new SimpleStringProperty(ano);
+        this.editora = new SimpleStringProperty(editora);
+        this.paginas = new SimpleStringProperty(paginas);
+    }
+
+    public StringProperty getCampus() {
+        return campus;
+    }
+
+    public void setCampus(StringProperty campus) {
+        this.campus = campus;
+    }
+
+    public StringProperty getNome() {
+        return nome;
+    }
+
+    public void setNome(StringProperty nome) {
+        this.nome = nome;
+    }
+
+    public StringProperty getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(StringProperty tipo) {
+        this.tipo = tipo;
+    }
+
+    public StringProperty getLocal() {
+        return local;
+    }
+
+    public void setLocal(StringProperty local) {
+        this.local = local;
+    }
+
+    public StringProperty getAno() {
+        return ano;
+    }
+
+    public void setAno(StringProperty ano) {
+        this.ano = ano;
+    }
+
+    public StringProperty getEditora() {
+        return editora;
+    }
+
+    public void setEditora(StringProperty editora) {
+        this.editora = editora;
+    }
+
+    public StringProperty getPaginas() {
+        return paginas;
+    }
+
+    public void setPaginas(StringProperty paginas) {
+        this.paginas = paginas;
+    }
+    
     
 }

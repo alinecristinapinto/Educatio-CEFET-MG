@@ -1,6 +1,4 @@
-/*
 
- */
 package selecaoconteudos;
 
 import java.sql.Connection;
@@ -27,7 +25,7 @@ public class SelecaoConteudos{
 
         //estabelecendo conxao com o bd test
         Connection Conexao=null;
-        Conexao=DriverManager.getConnection("jdbc:mysql://localhost:3306/educatio?useSSL=true","root","");
+        Conexao=DriverManager.getConnection("jdbc:mysql://localhost:3307/educatio","root","usbw");
         
         if(Conexao==null){
             System.out.println("Status-------->Nao Conectado com sucesso!");
@@ -38,6 +36,7 @@ public class SelecaoConteudos{
         ResultSet ResultadoSQL1=null;
         ResultSet ResultadoSQL2=null;
         String nomeDisciplina;
+        int idDisciplina;
         int idConteudo;
         
         String menuDisciplinas="";
@@ -47,23 +46,26 @@ public class SelecaoConteudos{
             executaComando2=Conexao.createStatement();
             //Mostrar todas as opcoes de MenuDisciplinas
             
-            ResultadoSQL1=executaComando1.executeQuery("SELECT nome FROM disciplinas ");
+            ResultadoSQL1=executaComando1.executeQuery("SELECT nome, id FROM disciplinas ");
             while(ResultadoSQL1.next()){
                 nomeDisciplina=ResultadoSQL1.getString("nome");
-                menuDisciplinas+=nomeDisciplina;
-                ResultadoSQL2=executaComando2.executeQuery("SELECT id FROM disciplinas WHERE nome LIKE '%"+nomeDisciplina+"%'");
-                while(ResultadoSQL2.next()){
-                    menuDisciplinas+="  ID : "+ResultadoSQL2.getInt("id")+"\n";
-                }
+                idDisciplina=Integer.parseInt(ResultadoSQL1.getString("id"));
+                menuDisciplinas+=nomeDisciplina+"   idDisciplina:   "+idDisciplina+"\n";
             }
             System.out.println(menuDisciplinas);
             //Agora selecionar a etapa e a disciplina para pegar o conteudo
             int escolhaIdDisciplina=Integer.parseInt(JOptionPane.showInputDialog(null, "Escolha uma disciplina por id"));
-            
-            ResultadoSQL1=executaComando1.executeQuery("SELECT id FROM menuEtapas ");
+            //Teste para saber se a disciplina existe; tratar
+            /*ResultadoSQL1=executaComando1.executeQuery("SELECT id FROM disciplinas WHERE  id);
                 while(ResultadoSQL1.next()){
                     menuEtapas+=ResultadoSQL1.getInt("id")+" ";
+                }*/
+            
+            ResultadoSQL1=executaComando1.executeQuery("SELECT idOrdem FROM etapas ");
+                while(ResultadoSQL1.next()){
+                    menuEtapas+=ResultadoSQL1.getInt("idOrdem")+" ";
                 }
+            
             
             System.out.println("Etapas existentes: "+menuEtapas);
             int escolhaIdEtapa=Integer.parseInt(JOptionPane.showInputDialog(null, "Escolha uma etapa por id"));
@@ -76,7 +78,7 @@ public class SelecaoConteudos{
                 ResultadoSQL2=executaComando2.executeQuery("SELECT conteudo FROM conteudos WHERE id LIKE '%"+idConteudo+"%' && idDisciplina LIKE '%"+escolhaIdDisciplina+"%'");//N FUNCIONA
                 while(ResultadoSQL2.next()){
                     String conteudo=ResultadoSQL2.getString("conteudo");
-                    System.out.print(conteudo);
+                    System.out.println(conteudo);
                 }
                 
             }

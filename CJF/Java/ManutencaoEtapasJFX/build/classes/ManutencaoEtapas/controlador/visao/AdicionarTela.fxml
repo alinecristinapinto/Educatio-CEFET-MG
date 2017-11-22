@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ManutencaoEtapas.controlador.visao.AdicionarTelaControlador">
+   <children>
+      <GridPane layoutX="200.0" layoutY="169.0" prefHeight="63.0" prefWidth="200.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+            <RowConstraints maxHeight="42.0" minHeight="10.0" prefHeight="33.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="30.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Label prefHeight="32.0" prefWidth="100.0" text="Número da etapa:" />
+            <Label prefHeight="25.0" prefWidth="100.0" text="Valor da etapa:" GridPane.rowIndex="1" />
+            <TextField fx:id="idOrdemField" prefWidth="100.0" GridPane.columnIndex="1" />
+            <TextField fx:id="valorField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+         </children>
+      </GridPane>
+      <Label layoutX="266.0" layoutY="103.0" text="Adicionar etapa" />
+      <Button layoutX="275.0" layoutY="275.0" mnemonicParsing="false" onAction="#BotaoAdicionarEtapaClicado" text="Adicionar" />
+      <Button layoutX="14.0" layoutY="337.0" mnemonicParsing="false" onAction="#BotaoVoltarClicado" text="Voltar" />
+   </children>
+</AnchorPane>

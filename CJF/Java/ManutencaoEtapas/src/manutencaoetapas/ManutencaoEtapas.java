@@ -18,7 +18,7 @@ public class ManutencaoEtapas {
             System.out.println("Driver nao encontrado!"+e);
         }
 
-        //estabelecendo conxao com o bd test
+        //estabelecendo conexao com o bd test
         Connection Conexao=null;
         Conexao=DriverManager.getConnection("jdbc:mysql://localhost:3306/educatio?useSSL=true","root","");
         
@@ -36,44 +36,44 @@ public class ManutencaoEtapas {
         ResultSet ResultadoSQL4=null;
         boolean verificaResultadoSQL1;
         try{
-            executaComando1=Conexao.prepareStatement("INSERT INTO etapas (id, valor, ativo) VALUES (?,?,?)");
+            executaComando1=Conexao.prepareStatement("INSERT INTO etapas (idOrdem, valor, ativo) VALUES (?,?,?)");
             executaComando2=Conexao.createStatement();
             executaComando3=Conexao.createStatement();
             executaComando4=Conexao.createStatement();
             String etapasExistentes="";
             int valorEtapa;
-            int idEtapa;
+            int idOrdemEtapa;
             int opcao;
-            int idEtapaAlterar;
+            int idOrdemEtapaAlterar;
             int valorEtapaAlterar;
             char aux='S';
             char notAux='N';
             String ativoEtapa;
             
             etapasExistentes="";
-            ResultadoSQL1 = executaComando1.executeQuery("SELECT id, valor FROM etapas WHERE ativo='"+aux+"'");
+            ResultadoSQL1 = executaComando1.executeQuery("SELECT idOrdem, valor FROM etapas WHERE ativo='"+aux+"'");
             while(ResultadoSQL1.next()){
-                idEtapa=ResultadoSQL1.getInt("id");
+                idOrdemEtapa=ResultadoSQL1.getInt("idOrdem");
                 valorEtapa=ResultadoSQL1.getInt("valor");
-                if( !etapasExistentes.contains("Etapa: "+idEtapa+"  Valor da Etapa: "+valorEtapa+"\n")){
-                    etapasExistentes+="Etapa: "+idEtapa+"  Valor da Etapa: "+valorEtapa+"\n";
+                if( !etapasExistentes.contains("Etapa: "+idOrdemEtapa+"  Valor da Etapa: "+valorEtapa+"\n")){
+                    etapasExistentes+="Etapa: "+idOrdemEtapa+"  Valor da Etapa: "+valorEtapa+"\n";
                 }
             }
             System.out.print(etapasExistentes);
             
             //Adiciona nova etapa
             System.out.println("Adicionando nova etapa");
-            idEtapa=Integer.parseInt( JOptionPane.showInputDialog(null, "Digite o id da etapa: "));
-            //Verificar se aquele id existe na tabela
-            ResultadoSQL1=executaComando1.executeQuery("SELECT id FROM etapas WHERE id='"+idEtapa+"' AND ativo='"+aux+"'");
+            idOrdemEtapa=Integer.parseInt( JOptionPane.showInputDialog(null, "Digite o idOrdem da etapa: "));
+            //Verificar se aquele idOrdem existe na tabela
+            ResultadoSQL1=executaComando1.executeQuery("SELECT idOrdem FROM etapas WHERE idOrdem='"+idOrdemEtapa+"' AND ativo='"+aux+"'");
             while(ResultadoSQL1.next()){
-                idEtapa=Integer.parseInt(JOptionPane.showInputDialog(null,"ID de etapa ja existe! Digite outro ID."));
-                ResultadoSQL1=executaComando1.executeQuery("SELECT id FROM etapas WHERE id='"+idEtapa+"'");
+                idOrdemEtapa=Integer.parseInt(JOptionPane.showInputDialog(null,"ID de etapa ja existe! Digite outro ID."));
+                ResultadoSQL1=executaComando1.executeQuery("SELECT idOrdem FROM etapas WHERE idOrdem='"+idOrdemEtapa+"'");
             }
-            System.out.println("id da nova etapa: "+idEtapa);
+            System.out.println("idOrdem da nova etapa: "+idOrdemEtapa);
             valorEtapa=Integer.parseInt( JOptionPane.showInputDialog(null, "Digite o valor da etapa: "));
             System.out.println("Valor da nova etapa: "+valorEtapa);
-            executaComando1.setInt(1,idEtapa);
+            executaComando1.setInt(1,idOrdemEtapa);
             executaComando1.setInt(2,valorEtapa);
             executaComando1.setString(3, "S");
             verificaResultadoSQL1=executaComando1.execute();
@@ -88,50 +88,50 @@ public class ManutencaoEtapas {
             
             //metodo de atualizar etapa
             etapasExistentes="";
-            ResultadoSQL1 = executaComando1.executeQuery("SELECT id, valor FROM etapas WHERE ativo='"+aux+"'");
+            ResultadoSQL1 = executaComando1.executeQuery("SELECT idOrdem, valor FROM etapas WHERE ativo='"+aux+"'");
             while(ResultadoSQL1.next()){
-                idEtapa=ResultadoSQL1.getInt("id");
+                idOrdemEtapa=ResultadoSQL1.getInt("idOrdem");
                 valorEtapa=ResultadoSQL1.getInt("valor");
-                if( !etapasExistentes.contains("Etapa: "+idEtapa+"  Valor da Etapa: "+valorEtapa+"\n")){
-                    etapasExistentes+="Etapa: "+idEtapa+"  Valor da Etapa: "+valorEtapa+"\n";
+                if( !etapasExistentes.contains("Etapa: "+idOrdemEtapa+"  Valor da Etapa: "+valorEtapa+"\n")){
+                    etapasExistentes+="Etapa: "+idOrdemEtapa+"  Valor da Etapa: "+valorEtapa+"\n";
                 }
             }
             System.out.print(etapasExistentes);
             
             
-            idEtapa=Integer.parseInt(JOptionPane.showInputDialog(null,"Digite o id da etapa a se alterar"));
-            ResultadoSQL1=executaComando1.executeQuery("SELECT valor FROM etapas WHERE id='"+idEtapa+"' AND ativo='"+aux+"'");
+            idOrdemEtapa=Integer.parseInt(JOptionPane.showInputDialog(null,"Digite o idOrdem da etapa a se alterar"));
+            ResultadoSQL1=executaComando1.executeQuery("SELECT valor FROM etapas WHERE idOrdem='"+idOrdemEtapa+"' AND ativo='"+aux+"'");
             while(!ResultadoSQL1.next()){
-                System.out.println("Etapa nao existe! Digite outro id de etapa. ");
+                System.out.println("Etapa nao existe! Digite outro idOrdem de etapa. ");
                 System.out.print(etapasExistentes);
-                idEtapa=Integer.parseInt(JOptionPane.showInputDialog(null, "Novo id de etapa: "));
+                idOrdemEtapa=Integer.parseInt(JOptionPane.showInputDialog(null, "Novo idOrdem de etapa: "));
             }
             if(ResultadoSQL1.next()){
                 valorEtapa=ResultadoSQL1.getInt("valor");
-                System.out.println("Etapa selecionada: \nEtapa: "+idEtapa+" valor: "+valorEtapa);
+                System.out.println("Etapa selecionada: \nEtapa: "+idOrdemEtapa+" valor: "+valorEtapa);
             }
                 
             
-            opcao=Integer.parseInt(JOptionPane.showInputDialog(null,"Deseja alterar id ou valor? 1-id, 2-valor"));
+            opcao=Integer.parseInt(JOptionPane.showInputDialog(null,"Deseja alterar idOrdem ou valor? 1-idOrdem, 2-valor"));
             switch(opcao){
                 case 1:
-                    idEtapaAlterar=Integer.parseInt(JOptionPane.showInputDialog(null,"Para qual id voce deseja alterar? - id nao deve existir na tabela"));
-                    verificaResultadoSQL1=executaComando1.execute("UPDATE etapas SET id='"+idEtapaAlterar +"'WHERE id='"+idEtapa+"'");
+                    idOrdemEtapaAlterar=Integer.parseInt(JOptionPane.showInputDialog(null,"Para qual idOrdem voce deseja alterar? - idOrdem nao deve existir na tabela"));
+                    verificaResultadoSQL1=executaComando1.execute("UPDATE etapas SET idOrdem='"+idOrdemEtapaAlterar +"'WHERE idOrdem='"+idOrdemEtapa+"'");
                     //update nao retorna nada-> not nada=alguma coisa
                     if(!verificaResultadoSQL1){
                         System.out.println("Alteracao realizada com sucesso!");
-                        ResultadoSQL2=executaComando1.executeQuery("SELECT valor FROM etapas WHERE id='"+idEtapaAlterar+"'");
+                        ResultadoSQL2=executaComando1.executeQuery("SELECT valor FROM etapas WHERE idOrdem='"+idOrdemEtapaAlterar+"'");
                         if(ResultadoSQL2.next()){
                             valorEtapa=ResultadoSQL2.getInt("valor");
-                            System.out.println("Nova etapa:  Etapa: "+idEtapaAlterar+"  Valor: "+valorEtapa);
+                            System.out.println("Nova etapa:  Etapa: "+idOrdemEtapaAlterar+"  Valor: "+valorEtapa);
                             //Mostra etapas existentes
                             etapasExistentes="";
-                            ResultadoSQL1 = executaComando1.executeQuery("SELECT id, valor FROM etapas WHERE ativo='"+aux+"'");
+                            ResultadoSQL1 = executaComando1.executeQuery("SELECT idOrdem, valor FROM etapas WHERE ativo='"+aux+"'");
                             while(ResultadoSQL1.next()){
-                                idEtapa=ResultadoSQL1.getInt("id");
+                                idOrdemEtapa=ResultadoSQL1.getInt("idOrdem");
                                 valorEtapa=ResultadoSQL1.getInt("valor");
-                                if( !etapasExistentes.contains("Etapa: "+idEtapa+"  Valor da Etapa: "+valorEtapa+"\n")){
-                                    etapasExistentes+="Etapa: "+idEtapa+"  Valor da Etapa: "+valorEtapa+"\n";
+                                if( !etapasExistentes.contains("Etapa: "+idOrdemEtapa+"  Valor da Etapa: "+valorEtapa+"\n")){
+                                    etapasExistentes+="Etapa: "+idOrdemEtapa+"  Valor da Etapa: "+valorEtapa+"\n";
                                 }
                             }
                             System.out.println(etapasExistentes); 
@@ -142,38 +142,38 @@ public class ManutencaoEtapas {
                             System.out.println("Erro na alteracao!");
                             //Mostra etapas existentes
                             etapasExistentes="";
-                            ResultadoSQL1 = executaComando1.executeQuery("SELECT id, valor FROM etapas WHERE ativo='"+aux+"'");
+                            ResultadoSQL1 = executaComando1.executeQuery("SELECT idOrdem, valor FROM etapas WHERE ativo='"+aux+"'");
                             while(ResultadoSQL1.next()){
-                                idEtapa=ResultadoSQL1.getInt("id");
+                                idOrdemEtapa=ResultadoSQL1.getInt("idOrdem");
                                 valorEtapa=ResultadoSQL1.getInt("valor");
-                                if( !etapasExistentes.contains("Etapa: "+idEtapa+"  Valor da Etapa: "+valorEtapa+"\n")){
-                                    etapasExistentes+="Etapa: "+idEtapa+"  Valor da Etapa: "+valorEtapa+"\n";
+                                if( !etapasExistentes.contains("Etapa: "+idOrdemEtapa+"  Valor da Etapa: "+valorEtapa+"\n")){
+                                    etapasExistentes+="Etapa: "+idOrdemEtapa+"  Valor da Etapa: "+valorEtapa+"\n";
                                 }
                             }
                             System.out.println(etapasExistentes); 
-                            idEtapaAlterar=Integer.parseInt(JOptionPane.showInputDialog(null,"Digite outro valor para o id"));
-                            verificaResultadoSQL1=executaComando1.execute("UPDATE etapas SET id='"+idEtapaAlterar +"'WHERE id='"+idEtapa+"'");
+                            idOrdemEtapaAlterar=Integer.parseInt(JOptionPane.showInputDialog(null,"Digite outro valor para o idOrdem"));
+                            verificaResultadoSQL1=executaComando1.execute("UPDATE etapas SET idOrdem='"+idOrdemEtapaAlterar +"'WHERE idOrdem='"+idOrdemEtapa+"'");
                         }
                     }
                     break;
                 case 2:
                     valorEtapaAlterar=Integer.parseInt(JOptionPane.showInputDialog(null,"Para qual valor voce deseja alterar?"));
-                    verificaResultadoSQL1=executaComando1.execute("UPDATE etapas SET valor='"+valorEtapaAlterar +"'WHERE id='"+idEtapa+"'");
+                    verificaResultadoSQL1=executaComando1.execute("UPDATE etapas SET valor='"+valorEtapaAlterar +"'WHERE idOrdem='"+idOrdemEtapa+"'");
                     if(!verificaResultadoSQL1){
                         System.out.println("Alteracao realizada com sucesso!");
                         ResultadoSQL2=executaComando1.executeQuery("SELECT valor FROM etapas");
                         if(ResultadoSQL2.next()){
                             valorEtapa=ResultadoSQL2.getInt("valor");
-                            System.out.println("Nova etapa:  Etapa: "+idEtapa+"  Valor: "+valorEtapa);
+                            System.out.println("Nova etapa:  Etapa: "+idOrdemEtapa+"  Valor: "+valorEtapa);
                         }
                         //Mostrando etapas existentes
                         etapasExistentes="";
-                        ResultadoSQL1 = executaComando1.executeQuery("SELECT id, valor FROM etapas WHERE ativo='"+aux+"'");
+                        ResultadoSQL1 = executaComando1.executeQuery("SELECT idOrdem, valor FROM etapas WHERE ativo='"+aux+"'");
                         while(ResultadoSQL1.next()){
-                            idEtapa=ResultadoSQL1.getInt("id");
+                            idOrdemEtapa=ResultadoSQL1.getInt("idOrdem");
                             valorEtapa=ResultadoSQL1.getInt("valor");
-                            if( !etapasExistentes.contains("Etapa: "+idEtapa+"  Valor da Etapa: "+valorEtapa+"\n")){
-                                etapasExistentes+="Etapa: "+idEtapa+"  Valor da Etapa: "+valorEtapa+"\n";
+                            if( !etapasExistentes.contains("Etapa: "+idOrdemEtapa+"  Valor da Etapa: "+valorEtapa+"\n")){
+                                etapasExistentes+="Etapa: "+idOrdemEtapa+"  Valor da Etapa: "+valorEtapa+"\n";
                             }
                         }
                         System.out.println(etapasExistentes);
@@ -181,8 +181,8 @@ public class ManutencaoEtapas {
                         while(verificaResultadoSQL1){
                             System.out.println("Erro na alteracao!");
                             System.out.println(etapasExistentes);
-                            idEtapaAlterar=Integer.parseInt(JOptionPane.showInputDialog(null,"Digite outro valor para o id"));
-                            verificaResultadoSQL1=executaComando1.execute("UPDATE etapas SET id='"+idEtapaAlterar +"'WHERE id='"+idEtapa+"'");
+                            idOrdemEtapaAlterar=Integer.parseInt(JOptionPane.showInputDialog(null,"Digite outro valor para o idOrdem"));
+                            verificaResultadoSQL1=executaComando1.execute("UPDATE etapas SET idOrdem='"+idOrdemEtapaAlterar +"'WHERE idOrdem='"+idOrdemEtapa+"'");
                         }
                     }
                     break;
@@ -191,40 +191,40 @@ public class ManutencaoEtapas {
             //Mostrando etapas existentes
             //metodo de atualizar etapa
             etapasExistentes="";
-            ResultadoSQL1 = executaComando1.executeQuery("SELECT id, valor FROM etapas WHERE ativo='"+aux+"'");
+            ResultadoSQL1 = executaComando1.executeQuery("SELECT idOrdem, valor FROM etapas WHERE ativo='"+aux+"'");
             while(ResultadoSQL1.next()){
-                idEtapa=ResultadoSQL1.getInt("id");
+                idOrdemEtapa=ResultadoSQL1.getInt("idOrdem");
                 valorEtapa=ResultadoSQL1.getInt("valor");
-                if( !etapasExistentes.contains("Etapa: "+idEtapa+"  Valor da Etapa: "+valorEtapa+"\n")){
-                    etapasExistentes+="Etapa: "+idEtapa+"  Valor da Etapa: "+valorEtapa+"\n";
+                if( !etapasExistentes.contains("Etapa: "+idOrdemEtapa+"  Valor da Etapa: "+valorEtapa+"\n")){
+                    etapasExistentes+="Etapa: "+idOrdemEtapa+"  Valor da Etapa: "+valorEtapa+"\n";
                 }
             }
             System.out.println(etapasExistentes);
-            idEtapa=Integer.parseInt(JOptionPane.showInputDialog(null,"Digite o id da etapa que deseja excluir"));
-            //Verificando idEtapa
-            ResultadoSQL1=executaComando1.executeQuery("SELECT id FROM etapas WHERE id='"+idEtapa+"'");
+            idOrdemEtapa=Integer.parseInt(JOptionPane.showInputDialog(null,"Digite o idOrdem da etapa que deseja excluir"));
+            //Verificando idOrdemEtapa
+            ResultadoSQL1=executaComando1.executeQuery("SELECT idOrdem FROM etapas WHERE idOrdem='"+idOrdemEtapa+"'");
             while(!ResultadoSQL1.next()){
-                idEtapa=Integer.parseInt(JOptionPane.showInputDialog(null,"ID de etapa nao existe! Digite outro ID."));
-                ResultadoSQL1=executaComando1.executeQuery("SELECT id FROM etapas WHERE id='"+idEtapa+"'");
+                idOrdemEtapa=Integer.parseInt(JOptionPane.showInputDialog(null,"ID de etapa nao existe! Digite outro ID."));
+                ResultadoSQL1=executaComando1.executeQuery("SELECT idOrdem FROM etapas WHERE idOrdem='"+idOrdemEtapa+"'");
             }
-            verificaResultadoSQL1=executaComando1.execute("UPDATE etapas SET ativo='"+notAux+"' WHERE id='"+idEtapa+"'");
+            verificaResultadoSQL1=executaComando1.execute("UPDATE etapas SET ativo='"+notAux+"' WHERE idOrdem='"+idOrdemEtapa+"'");
             while(verificaResultadoSQL1){
-                System.out.println("Etapa nao existe! Digite outro id de etapa. ");
+                System.out.println("Etapa nao existe! Digite outro idOrdem de etapa. ");
                 etapasExistentes="";
-                ResultadoSQL2 = executaComando2.executeQuery("SELECT id, valor FROM etapas WHERE ativo='"+aux+"'");
+                ResultadoSQL2 = executaComando2.executeQuery("SELECT idOrdem, valor FROM etapas WHERE ativo='"+aux+"'");
                 while(ResultadoSQL2.next()){
-                    idEtapa=ResultadoSQL2.getInt("id");
+                    idOrdemEtapa=ResultadoSQL2.getInt("idOrdem");
                     valorEtapa=ResultadoSQL2.getInt("valor");
-                    if( !etapasExistentes.contains("Etapa: "+idEtapa+"  Valor da Etapa: "+valorEtapa+"\n")){
-                        etapasExistentes+="Etapa: "+idEtapa+"  Valor da Etapa: "+valorEtapa+"\n";
+                    if( !etapasExistentes.contains("Etapa: "+idOrdemEtapa+"  Valor da Etapa: "+valorEtapa+"\n")){
+                        etapasExistentes+="Etapa: "+idOrdemEtapa+"  Valor da Etapa: "+valorEtapa+"\n";
                     }
                 }
                 System.out.print(etapasExistentes);
-                idEtapa=Integer.parseInt(JOptionPane.showInputDialog(null, "Novo id de etapa: "));
+                idOrdemEtapa=Integer.parseInt(JOptionPane.showInputDialog(null, "Novo idOrdem de etapa: "));
             }
             if(!verificaResultadoSQL1){
-                System.out.println("Etapa de id igual a "+idEtapa+" apagada com sucesso.Dados que  armazenados: ");
-                ResultadoSQL2 = executaComando2.executeQuery("SELECT ativo, valor FROM etapas WHERE id='"+idEtapa+"'");
+                System.out.println("Etapa de idOrdem igual a "+idOrdemEtapa+" apagada com sucesso.Dados que  armazenados: ");
+                ResultadoSQL2 = executaComando2.executeQuery("SELECT ativo, valor FROM etapas WHERE idOrdem='"+idOrdemEtapa+"'");
                 if(ResultadoSQL2.next()){
                     ativoEtapa=ResultadoSQL2.getString("ativo");
                     System.out.println("Ativo atual: "+ativoEtapa);
@@ -233,12 +233,12 @@ public class ManutencaoEtapas {
                 }
                 //Agora mostrar todas as etapas existentes
                 etapasExistentes="";
-                ResultadoSQL1 = executaComando1.executeQuery("SELECT id, valor FROM etapas WHERE ativo='"+aux+"'");
+                ResultadoSQL1 = executaComando1.executeQuery("SELECT idOrdem, valor FROM etapas WHERE ativo='"+aux+"'");
                 while(ResultadoSQL1.next()){
-                    idEtapa=ResultadoSQL1.getInt("id");
+                    idOrdemEtapa=ResultadoSQL1.getInt("idOrdem");
                     valorEtapa=ResultadoSQL1.getInt("valor");
-                    if( !etapasExistentes.contains("Etapa: "+idEtapa+"  Valor da Etapa: "+valorEtapa+"\n")){
-                        etapasExistentes+="Etapa: "+idEtapa+"  Valor da Etapa: "+valorEtapa+"\n";
+                    if( !etapasExistentes.contains("Etapa: "+idOrdemEtapa+"  Valor da Etapa: "+valorEtapa+"\n")){
+                        etapasExistentes+="Etapa: "+idOrdemEtapa+"  Valor da Etapa: "+valorEtapa+"\n";
                     }
                 }
                 System.out.println("etapasExistentes: "+etapasExistentes);

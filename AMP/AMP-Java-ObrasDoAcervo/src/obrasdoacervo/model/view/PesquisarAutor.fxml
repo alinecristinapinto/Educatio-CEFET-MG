@@ -17,7 +17,7 @@
       </Label>
       <Button layoutX="502.0" layoutY="69.0" mnemonicParsing="false" onAction="#pesquisarAutores" text="Pesquisar" />
       <TextField fx:id="pesquisa" layoutX="14.0" layoutY="71.0" prefHeight="27.0" prefWidth="467.0" />
-      <TableView fx:id="tabela" layoutX="14.0" layoutY="123.0" prefHeight="325.0" prefWidth="570.0" styleClass="list-view">
+      <TableView fx:id="tabela" layoutX="14.0" layoutY="123.0" onContextMenuRequested="#pesquisar" prefHeight="325.0" prefWidth="570.0" styleClass="list-view">
          <columns>
             <TableColumn fx:id="nome" prefWidth="142.5" text="Nome" />
             <TableColumn fx:id="sobrenome" prefWidth="142.5" text="Sobrenome" />

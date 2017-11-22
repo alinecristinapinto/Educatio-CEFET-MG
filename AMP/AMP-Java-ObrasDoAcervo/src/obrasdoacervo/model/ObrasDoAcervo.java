@@ -26,6 +26,7 @@ import obrasdoacervo.model.controller.CriaMidiaController;
 import obrasdoacervo.model.controller.CriaParteController;
 import obrasdoacervo.model.controller.CriaPeriodicoController;
 import obrasdoacervo.model.controller.EditaAcademicoController;
+import obrasdoacervo.model.controller.EditaAutorController;
 import obrasdoacervo.model.controller.EditaLivroController;
 import obrasdoacervo.model.controller.EditaMidiaController;
 import obrasdoacervo.model.controller.EditaParteController;
@@ -164,49 +165,60 @@ public class ObrasDoAcervo extends Application {
         controller.setMain(this);
     }
     
-    public void abreEditaAcademico() throws IOException{
+    public void abreEditaAcademico(Connection link, String nome, String tipo, String local, String ano, String editora, String paginas) throws IOException{
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(ObrasDoAcervo.class.getResource("view/EditaAcademico.fxml"));
         AnchorPane tela = (AnchorPane) loader.load();
         borda.setCenter(tela);
         EditaAcademicoController controller = loader.getController();
-        controller.setMain(this);
+        controller.setMain(this, link, nome, tipo, local, ano, editora, paginas);
     }
     
-    public void abreEditaLivro() throws IOException{    FXMLLoader loader = new FXMLLoader();
+    public void abreEditaLivro(Connection link, String nome, String tipo, String local, String ano, String editora, String paginas) throws IOException{    FXMLLoader loader = new FXMLLoader();
         loader.setLocation(ObrasDoAcervo.class.getResource("view/EditaLivro.fxml"));
         AnchorPane tela = (AnchorPane) loader.load();
         borda.setCenter(tela);
         EditaLivroController controller = loader.getController();
-        controller.setMain(this);
+        controller.setMain(this, link, nome, tipo, local, ano, editora, paginas);
     }
     
-    public void abreEditaMidia() throws IOException{
+    public void abreEditaMidia(Connection link, String nome, String tipo, String local, String ano, String editora, String paginas) throws IOException{
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(ObrasDoAcervo.class.getResource("view/EditaMidia.fxml"));
         AnchorPane tela = (AnchorPane) loader.load();
         borda.setCenter(tela);
         EditaMidiaController controller = loader.getController();
-        controller.setMain(this);
+        controller.setMain(this, link, nome, tipo, local, ano, editora, paginas);
     }
     
-    public void abreEditaParte() throws IOException{
+    public void abreEditaParte(Connection link, String nome, String tipo, String local, String ano, String editora, String paginas) throws IOException{
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(ObrasDoAcervo.class.getResource("view/EditaParte.fxml"));
         AnchorPane tela = (AnchorPane) loader.load();
         borda.setCenter(tela);
         EditaParteController controller = loader.getController();
-        controller.setMain(this);
+        //controller.setMain(this, link, nome, tipo, local, ano, editora, paginas);
     }
     
-    public void abreEditaPeriodicos() throws IOException{
+    public void abreEditaPeriodicos(Connection link, String nome, String tipo, String local, String ano, String editora, String paginas) throws IOException{
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(ObrasDoAcervo.class.getResource("view/EditaPeriodicos.fxml"));
         AnchorPane tela = (AnchorPane) loader.load();
         borda.setCenter(tela);
         EditaPeriodicosController controller = loader.getController();
-        controller.setMain(this);
+        controller.setMain(this, link, nome, tipo, local, ano, editora, paginas);
     }
+
+    public void abreEditaAutor(String nome, String sobrenome, String ordem, String qualificacao) throws IOException{
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(ObrasDoAcervo.class.getResource("view/EditaAutor.fxml"));
+        AnchorPane tela = (AnchorPane) loader.load();
+        borda.setCenter(tela);
+        EditaAutorController controller = loader.getController();
+        controller.setMain(this, nome, sobrenome, ordem, qualificacao);
+        //EditaAutorController.preenche(nome, sobrenome, ordem, qualificacao);
+    }
+    
     
     public void abreMenuSwitchObras() throws IOException{
         FXMLLoader loader = new FXMLLoader();
@@ -494,9 +506,24 @@ public class ObrasDoAcervo extends Application {
             System.out.println("VendorError: " + e.getErrorCode());
         }
     }
+    
+    public static void alteraAcervo (Connection connection, String nome, String tipo, String local, String ano, String editora, String paginas, String tabela, String campo, String valor){
+        String sql = "UPDATE " + tabela + " SET " + campo + "='" + valor + "' WHERE nome='" + nome + "' AND tipo='"+tipo+"' AND ano='"+ano+"' AND editora='"+editora+"' AND ativo = 'S'";
+        Statement stmt = null;
+        
+        try{
+        stmt = connection.createStatement();
+        stmt.execute(sql);
+        }catch(SQLException e){
+            System.out.println("SQLException: " + e.getMessage());
+            System.out.println("SQLState: " + e.getSQLState());
+            System.out.println("VendorError: " + e.getErrorCode());
+        }
+        
+    }
 
-    public static void altera (Connection connection, int ident, String tabela, String campo, String valor){
-        String sql = "UPDATE " + tabela + " SET " + campo + "='" + valor + "' WHERE id=" + ident;
+    public static void alteraAutor (Connection connection, String nome, String sobrenome, String ordem, String qualificacao, String tabela, String campo, String valor){
+        String sql = "UPDATE " + tabela + " SET " + campo + "='" + valor + "' WHERE nome='" + nome + "' AND sobrenome='"+sobrenome+"' AND ordem='"+ordem+"' AND qualificacao='"+qualificacao+"' AND ativo = 'S'";
         Statement stmt = null;
         
         try{
@@ -613,11 +640,25 @@ public class ObrasDoAcervo extends Application {
         String sql = "SELECT * FROM acervo WHERE nome = '" + determinado + "' AND ativo = 'S'";
         
         PreparedStatement declaracao = connection.prepareStatement(sql);
+       
         // declaracao.setInt(1, idProfDisc);
         
         ResultSet rs = declaracao.executeQuery();
+        
+        //String comm = "SELECT * FROM campi WHERE id = '" + rs.getInt("idCampi") + "' AND ativo = 'S'";
+        //        PreparedStatement declara = connection.prepareStatement(comm);
+        //        ResultSet result = declara.executeQuery();
+        String comm;
+        PreparedStatement declara;
+        ResultSet result;
+        
+            
         while(rs.next()){
-            listaAcervo.add(new AcervoTabela("Campus", rs.getString("nome"), rs.getString("tipo"), rs.getString("local"), rs.getString("ano"), rs.getString("editora"), rs.getString("paginas")));
+            comm = "SELECT * FROM campi WHERE id = '" + rs.getInt("idCampi") + "' AND ativo = 'S'";
+            declara = connection.prepareStatement(comm);
+            result = declara.executeQuery();
+            result.next();
+            listaAcervo.add(new AcervoTabela(result.getString("nome"), rs.getString("nome"), rs.getString("tipo"), rs.getString("local"), rs.getString("ano"), rs.getString("editora"), rs.getString("paginas")));
         }
         
         return listaAcervo;

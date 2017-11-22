@@ -71,6 +71,19 @@ public class PesquisarAutorController implements Initializable {
         public void voltar() throws IOException {
             main.abreInterfacePrincipal();
     }
+        
+        @FXML
+        public void pesquisar() throws IOException{
+            String nomeTabela = tabela.getSelectionModel().getSelectedItem().getNome().get();
+            String sobrenomeTabela = tabela.getSelectionModel().getSelectedItem().getSobrenome().get();
+            String ordemTabela = tabela.getSelectionModel().getSelectedItem().getOrdem().get();
+            String qualificacaoTabela = tabela.getSelectionModel().getSelectedItem().getQualificacao().get();
+    
+            
+           main.abreEditaAutor(nomeTabela, sobrenomeTabela, ordemTabela, qualificacaoTabela);
+           //EditaAutorController.preenche(nomeTabela, sobrenomeTabela, ordemTabela, qualificacaoTabela);
+            
+        }
 
         @FXML
         public void pesquisarAutores() throws IOException, SQLException {

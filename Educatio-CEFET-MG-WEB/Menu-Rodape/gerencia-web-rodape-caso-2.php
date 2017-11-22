@@ -22,7 +22,7 @@
                 <div class="col-md-4">
                    <h6><strong>Desenvolvedores</strong></h6>
                         <p></span> Alunos da turma de Informática 2A 2017 do CEFET-MG.
-                        <a href="#">Clique aqui</a> para saber mais.</p>  
+                        <a href="../Colaboradores/gerencia-web-colaboradores.php">Clique aqui</a> para saber mais.</p>  
                 </div>
                 <div class="col-md-4">
                     <h6><strong>Instituição</strong></h6>

@@ -17,6 +17,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
 import obrasdoacervo.model.ObrasDoAcervo;
@@ -62,6 +63,7 @@ public class EditaPeriodicosController implements Initializable{
     private String anoP;
     private String editoraP;
     private String paginasP;
+    private String localP;
     /**
      * Initializes the controller class.
      */
@@ -87,6 +89,7 @@ public class EditaPeriodicosController implements Initializable{
         this.nomeP=nomeP;
         this.tipoP=tipoP;
         this.anoP=anoP;
+        this.localP = localP;
         this.editoraP=editoraP;
         this.paginasP=paginasP;
             
@@ -112,8 +115,28 @@ public class EditaPeriodicosController implements Initializable{
         }
         
         @FXML
-        public void editar(){
+        public void editar() throws IOException{
+            int i = 0;
+        if   (nome.getText().equals("") || local.getText().equals("") || ano.getText().equals("") || editora.getText().equals("") || paginas.getText().equals("")){
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            System.out.println("Alert");
+            i = 1;
+            alert.setContentText("Não foi possível editar o autor, existem campos vazios");
+            alert.showAndWait();
+        }else if(i==0){
+
+
             
+        main.alteraAcervo(link, nomeP, tipoP, localP, anoP, editoraP, paginasP, "acervo", "nome", nome.getText());
+        //main.alteraAcervo(link, nomeP, tipoP, localP, anoP, editoraP, paginasP, "acervo", "tipo", autorSobrenome.getText());
+        main.alteraAcervo(link, nomeP, tipoP, localP, anoP, editoraP, paginasP, "acervo", "ano", ano.getText());
+        main.alteraAcervo(link, nomeP, tipoP, localP, anoP, editoraP, paginasP, "acervo", "local", local.getText());
+        main.alteraAcervo(link, nomeP, tipoP, localP, anoP, editoraP, paginasP, "acervo", "editora", editora.getText());
+        main.alteraAcervo(link, nomeP, tipoP, localP, anoP, editoraP, paginasP, "acervo", "paginas", paginas.getText());
+
+        
+        main.abrePesquisarObra();
+        }
         }
 }
     

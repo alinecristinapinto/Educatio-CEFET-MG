@@ -7,8 +7,11 @@ package obrasdoacervo.model.controller;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -41,6 +44,12 @@ public class EditaAcademicoController implements Initializable{
     private TextField ano;
     @FXML
     private TextField paginas;
+    private String paginasP;
+    private String editoraP;
+    private String anoP;
+    private String tipoP;
+    private String nomeP;
+    private Connection connection;
     @FXML
 
     
@@ -60,8 +69,17 @@ public class EditaAcademicoController implements Initializable{
     } 
     
         @FXML
-        public void excluir() throws IOException{
-            remove(link, 0, "academicos");
+        public void excluir() throws IOException, SQLException{
+            Statement stmt = null;
+            stmt = connection.createStatement();
+            String sql = "SELECT * FROM acervo WHERE nome='"+nomeP+"' AND ativo='S'";
+            ResultSet rs; 
+            rs = stmt.executeQuery(sql);
+            rs.next();
+            int i = rs.getInt("id");
+            remove(link, i, "academicos");
+            
+            main.abrePesquisarObra();
         }
         
         @FXML
@@ -69,7 +87,19 @@ public class EditaAcademicoController implements Initializable{
             System.exit(0);
         }
     
-        public void setMain(ObrasDoAcervo main) {
+        public void setMain(ObrasDoAcervo main, Connection connection, String nomeP, String tipoP, String localP, String anoP, String editoraP, String paginasP) {
+        this.connection = connection;
         this.main = main;
-    }
+        this.nomeP=nomeP;
+        this.tipoP=tipoP;
+        this.anoP=anoP;
+        this.editoraP=editoraP;
+        this.paginasP=paginasP;
+            
+        nome.setText(nomeP);
+        local.setText(localP);
+        ano.setText(anoP);
+        editora.setText(editoraP);
+        paginas.setText(paginasP);
+}
 }

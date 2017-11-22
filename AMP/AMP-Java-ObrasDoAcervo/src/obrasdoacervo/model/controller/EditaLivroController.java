@@ -7,8 +7,11 @@ package obrasdoacervo.model.controller;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -26,6 +29,14 @@ import static obrasdoacervo.model.ObrasDoAcervo.remove;
 public class EditaLivroController implements Initializable{
     private ObrasDoAcervo main;
     private com.mysql.jdbc.Connection link;
+    
+    Connection connection;
+    String nomeP;
+    String editoraP;
+    String localP;
+    String paginasP;
+    String anoP;
+    String tipoP;
     
     @FXML
     private TextField nome;
@@ -64,8 +75,17 @@ public class EditaLivroController implements Initializable{
     } 
     
         @FXML
-        public void excluir() throws IOException{
-            remove(link, 0, "livros");
+        public void excluir() throws IOException, SQLException{
+            Statement stmt = null;
+            stmt = connection.createStatement();
+            String sql = "SELECT * FROM acervo WHERE nome='"+nomeP+"' AND ativo='S'";
+            ResultSet rs; 
+            rs = stmt.executeQuery(sql);
+            rs.next();
+            int i = rs.getInt("id");
+            remove(link, i, "livros");
+            
+            main.abrePesquisarObra();
         }
         
         @FXML
@@ -74,7 +94,20 @@ public class EditaLivroController implements Initializable{
         }
     
     
-        public void setMain(ObrasDoAcervo main) {
+        public void setMain(ObrasDoAcervo main, Connection connection, String nomeP, String tipoP, String localP, String anoP, String editoraP, String paginasP) {
+        this.connection = connection;
         this.main = main;
+        this.nomeP=nomeP;
+        this.tipoP=tipoP;
+        this.anoP=anoP;
+        this.editoraP=editoraP;
+        this.paginasP=paginasP;
+            
+        nome.setText(nomeP);
+        local.setText(localP);
+        ano.setText(anoP);
+        editora.setText(editoraP);
+        paginas.setText(paginasP);
+
     }
 }

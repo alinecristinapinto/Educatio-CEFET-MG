@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="600.0" styleClass="background" stylesheets="@CSSPadrão.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="manutencaoDeProfessores.model.controller.PesquisaProfessorController">
+<AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="600.0" styleClass="background" stylesheets="@CSSPadrão.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="manutencaoDeProfessores.model.controller.PesquisaProfessorController">
    <children>
       <Label layoutX="9.0" layoutY="14.0" styleClass="label-cabecalho" text="Pesquisar Professor">
          <font>
@@ -30,5 +30,6 @@
       <Label layoutX="324.0" layoutY="82.0" styleClass="label-pequena" text="Departamento" />
       <ChoiceBox layoutX="14.0" layoutY="112.0" prefWidth="150.0" />
       <ChoiceBox layoutX="324.0" layoutY="112.0" prefWidth="150.0" />
+      <Button layoutX="505.0" layoutY="113.0" mnemonicParsing="false" onAction="#voltar" text="Voltar" />
    </children>
 </AnchorPane>

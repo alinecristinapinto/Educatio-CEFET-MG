@@ -4,6 +4,8 @@ package manutencaoDeProfessores.model;
 import java.io.IOException;
 import java.sql.*;
 import javafx.application.Application;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
@@ -96,6 +98,30 @@ public class ManutencaoDeProfessores extends Application {
         abreInterfacePrincipal();
         
     }
+    public ObservableList pesquisaDepto(Connection connection) throws SQLException{
+        System.out.println("101");
+        ObservableList nomes = FXCollections.observableArrayList();
+        ResultSet result;
+        System.out.println("104");
+        String sql_fetch = "SELECT nome FROM deptos WHERE ativo='S'";
+        try{
+            System.out.println("105");
+        Statement fetch = connection.createStatement();
+            System.out.println("106");
+        result = fetch.executeQuery(sql_fetch);
+        while(result.next()){
+        nomes.add(result.getString("nome"));
+        }
+            System.out.println("107");
+        }catch(SQLException e){
+            System.out.println("SQLException: " + e.getMessage());
+            System.out.println("SQLState: " + e.getSQLState());
+            System.out.println("VendorError: " + e.getErrorCode());  
+        }
+        
+        return nomes;
+    }
+    
     
     public void abreBaseTelaInicial() throws IOException{
         FXMLLoader loader = new FXMLLoader();
@@ -114,13 +140,13 @@ public class ManutencaoDeProfessores extends Application {
         controller.setMain(this);
     }
     
-    public void abreCriaProfessor() throws IOException{
+    public void abreCriaProfessor(Connection link) throws IOException{
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(ManutencaoDeProfessores.class.getResource("view/CriaProfessor.fxml"));
         AnchorPane tela = (AnchorPane) loader.load();
         borda.setCenter(tela);
         CriaProfessorController controller = loader.getController();
-        controller.setMain(this);
+        controller.setMain(this, link);
     }
     
     public void abrePesquisaProfessor() throws IOException{

@@ -44,5 +44,9 @@ public class PesquisaProfessorController implements Initializable {
         this.main = main;
     }
 
+    @FXML
+    public void voltar() throws IOException{
+        main.abreInterfacePrincipal();
+    }
    
 }

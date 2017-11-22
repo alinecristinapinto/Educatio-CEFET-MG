@@ -47,7 +47,7 @@ public class InterfacePrincipalController implements Initializable {
     
     @FXML
     public void criaProfessor() throws IOException{
-        main.abreCriaProfessor();
+        main.abreCriaProfessor(link);
     }
     
     @FXML

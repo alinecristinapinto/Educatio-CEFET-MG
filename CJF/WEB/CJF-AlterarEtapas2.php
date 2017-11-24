@@ -77,14 +77,40 @@ if (isset($_POST['valor'])) {
 			echo"Erro ao alterar etapa!";
 		}
 
+		echo "<br></br><form method='post' action='CJF-AlterarEtapas1.php'>
+				<input class='btn btn-info btn-round' type='submit' value='Alterar Outra'>
+			  </form>";
+
 	} else {
 
-		echo "Variavel nao encontrada!";
+		printf("<div class='alert alert-info' role='alert'>
+ 					 Falha ao processar sua requisição! <a href='CJF-AlterarEtapas1.php' class='alert-link'>Tentar novamente</a>. 
+							</div>
+						</div>
+					</div>	
+				</div>
+			</div>	
+		</div>				
+	</div>					
+</body>
+</html>");
+		exit;
 	}
 
 } else {
 
-	echo "Variavel nao encontrada!";
+	printf("<div class='alert alert-info' role='alert'>
+ 					 Falha ao processar sua requisição! <a href='CJF-AlterarEtapas1.php' class='alert-link'>Tentar novamente</a>. 
+							</div>
+						</div>
+					</div>	
+				</div>
+			</div>	
+		</div>				
+	</div>					
+</body>
+</html>");
+		exit;
 }
 printf("		</h>		
 				</div>

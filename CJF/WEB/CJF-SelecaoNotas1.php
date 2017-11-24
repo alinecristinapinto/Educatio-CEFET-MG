@@ -1,4 +1,9 @@
-<?php  
+﻿<?php  
+
+/*Grupo Felipe, Juliana, Carlos;
+Autor Felipe Linhares;
+Seleção de notas por aluno/ano 1
+*/
 
 	ini_set('default_charset','UTF-8');
 
@@ -19,8 +24,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Manutenção de Etapas - Exclusão</title>
-	<meta charset="utf-8">
+	<title>Seleção de notas</title>
+  	<meta charset="utf-8">
   	<meta http-equiv="X-UA-Compatible" content="IE=edge">
   	<meta name="viewport" content="width=device-width, initial-scale=1.0">
   	<link href="https://fonts.googleapis.com/css?family=Abel|Inconsolata" rel="stylesheet">
@@ -40,29 +45,28 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.quicksearch/2.3.1/jquery.quicksearch.js"></script>
 
 	<!-- Fontes e icones -->
-	<link href="css/nucleo-icons.css" rel="stylesheet">	
+	<link href="css/nucleo-icons.css" rel="stylesheet">
 </head>
 <body>
 	<div class="section landing-section">
 		<div class="container">
 			<div class="row">
 				<div class="col-md-8 ml-auto mr-auto">
-					<h2 class="text-center">Exclusão de etapa</h2>
-					<form method='post' action='ExcluirEtapas.php' class="contact-form">
+					<h2 class="text-center">Seleção de notas</h2>	
+					<form method='post' action='CJF-SelecaoNotas2.php' class="contact-form">	
 						<div class="col-md-6">
-							<label class="fonteTexto">Digite o Id da etapa que deseja excluir:</label>
+							<label class="fonteTexto">Digite o nome ou o CPF do Aluno COMPLETO: </label>
 							<div class="input-group">
-								<span class="input-group-addon">
-									<i class="nc-icon nc-check-2"></i>
-								</span>
-								<input type='textarea' class="form-control" name='etapa' placeholder="Id da etapa" required='required' id="txt_consulta">
-							</div>
+								<span class="input-group-addon"><i class="nc-icon nc-single-02"></i></span>
+								<!-- Recebe o nome/cpf -->
+								<input type="text" name="aluno" id="txt_consulta" placeholder="CPF ou Nome do Aluno" class="form-control" required='required'>
+							</div>	
 							<table class='table table-hover' id="tabela">
 								<?php
 								//Tabela de Pesquisa
-								$strSQL = $conn->query("SELECT idOrdem FROM `Educatio`.`etapas`");
+								$strSQL = $conn->query("SELECT idCPF, nome FROM `Educatio`.`alunos`");
 								while($arrLinha = $strSQL->fetch_assoc()) {
-									echo "<tr value='".$arrLinha['idOrdem']."' onclick('document.getElementById('txt_consulta').value = document.getElementById(this).innerHTML')><th>".$arrLinha['idOrdem']."</th></tr>";
+									echo "<tr value='".$arrLinha['idCPF']."' onclick('document.getElementById('txt_consulta').value = document.getElementById(this).innerHTML')><th>".$arrLinha['idCPF']."</th><td>".utf8_encode($arrLinha['nome'])."</td></tr>";
 								}
 								echo "</table>";
 								?>
@@ -80,14 +84,21 @@
 										});
 									});
 								</script>
-							<input class="btn btn-info btn-round" type='submit' value='Excluir'>
+							<label class="fonteTexto">Digite o ano: </label>
+							<div class="input-group">
+								<span class="input-group-addon">
+									<i class="nc-icon nc-single-02"></i>
+								</span>
+								<!-- recebe o ano -->
+								<input type="text" class="form-control" name='ano' placeholder="Ano" required='required'>
+							</div>
+							<input class="btn btn-info btn-round" type='submit' value='Exibir'>
+							<br>
 						</div>
 					</form>
-				</div>
-			</div>
-		</div>				
-	</div>
+				</div>	
+			</div>	
+		</div>	
+	</div>	
 </body>
 </html>
-
-

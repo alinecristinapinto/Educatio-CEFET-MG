@@ -1,15 +1,11 @@
 <?php
 
+/*Grupo Felipe, Juliana, Carlos;
+Autor Felipe Linhares;
+Seleção de notas por aluno/ano 2
+*/
+
 session_start();
-
-if (isset($_POST['aluno'])) {
-
-	$sqlConexao = mysqli_connect("localhost", "root", "", "educatio");
-
-	if (!$sqlConexao) {
-		echo "Falha na conexao com o Banco de Dados!";
-		exit;
-	}
 
 printf(" 
 	<html>
@@ -43,13 +39,25 @@ printf("
 					<h2 class='text-center'>Seleção de notas</h2><br>
 						<div class='col-md-6'>");
 
+
+//confere se existe a variável a ser mostrada
+if (isset($_POST['aluno'])) {
+
+	$sqlConexao = mysqli_connect("localhost", "root", "", "educatio");
+
+	if (!$sqlConexao) {
+		echo "Falha na conexao com o Banco de Dados!";
+		exit;
+	}
+
+
+
 	$strAluno = $_POST['aluno'];
-	$_SESSION['Aluno'] = $strAluno;
 	$strano = $_POST['ano'];
 	$_SESSION['Ano'] = $strano;
 
 
-	//Pesquisa do ID do aluno por meio do nome na tabela alunos;
+	//Pesquisa ID e Nome caso seja colocado o nome;
 	$sqlSql = "SELECT nome, idCPF FROM alunos WHERE nome='$strAluno'";
 	$sqlResultado = $sqlConexao->query($sqlSql);
 	$genAux = $sqlResultado->fetch_assoc();
@@ -66,11 +74,15 @@ printf("
 		$intContador++;
 	}
 
+
+	//caso nada seja encontrado repete o processo pesqusiando pelo idCPF;
 	if ($arrayMatricula == null) {
+		$intContador = 0;
 		$sqlSql = "SELECT id FROM matriculas WHERE idAluno='$strAluno'";
 		$sqlResultado = $sqlConexao->query($sqlSql);
 		while ($genAux = $sqlResultado->fetch_assoc()) {
 			$arrayMatricula[$intContador] = $genAux['id'];
+			$intContador++;
 		}
 
 		$sqlSql = "SELECT nome FROM alunos WHERE idCPF='$strAluno'";
@@ -80,10 +92,10 @@ printf("
 		$intIdCPF = $strAluno;
 	}
 	
-
+	//se nada for encontrado encerra o programa;
 	if ($arrayMatricula == null) {
 		printf("<div class='alert alert-info' role='alert'>
- 					 Aluno(a) não encontrado! <a href='SelecaoNotasHtml.php' class='alert-link'>Tentar novamente</a>. 
+ 					 Aluno(a) não encontrado! <a href='CJF-SelecaoNotas1.php' class='alert-link'>Tentar novamente</a>. 
 							</div>
 						</div>
 					</div>	
@@ -97,7 +109,7 @@ printf("
 	}
 
 
-	//Pesquisa da nota e do id-conteudo por meio do id-matricula na tabela diarios;
+	//Pesquisa das notas, faltas e dos ids-conteudo por meio dos ids-matricula na tabela diarios;
 	$intContador = 0;
 	$arrayDados = array();
 	foreach ($arrayMatricula as $valor){
@@ -115,7 +127,7 @@ printf("
 
 	if ($arrayDados == null) {
 	printf("<div class='alert alert-info' role='alert'>
- 				 Nenhuma nota encontrada no ano pesquisado! <a href='SelecaoNotasHtml.php' class='alert-link'>Tentar novamente<a>. 
+ 				 Nenhuma nota encontrada no ano pesquisado! <a href='CJF-SelecaoNotas1.php' class='alert-link'>Tentar novamente<a>. 
 							</div>
 						</div>
 					</div>	
@@ -151,7 +163,7 @@ printf("
 		$intContador++;
 	}
 	
-	//Coloca os valores úteis em um array;
+	//Computa e salva os valores das notas em um array;
 	$arrayFinal = array();
 	foreach ($arrayDados as $valor) {
 		$strDisciplina = $valor['strNomedisciplina'];
@@ -165,7 +177,7 @@ printf("
 		
 	}
 
-	//Coloca os valores da faltas em um array;
+	//Coloca os valores das faltas em um array;
 	$arrayFaltas = array();
 	foreach ($arrayDados as $valor) {
 		$strDisciplina = $valor['strNomedisciplina'];
@@ -207,10 +219,9 @@ printf("
 	$intNotaTotal = (100*$intNotaTotal)/$intNotaMaxima;
 
 	printf("<label class='fonteTexto'>");
-	echo "Nome do aluno: ".$strNome.".<br>CPF: ".$intIdCPF.".<br>Ano: ".$strano.".<br>Coeficiente de Rendimento: ".number_format($intNotaTotal,2)."%.";
+	echo "Nome do aluno: ".utf8_encode($strNome).".<br>CPF: ".$intIdCPF.".<br>Ano: ".$strano.".<br>Coeficiente de Rendimento: ".number_format($intNotaTotal,2)."%.";
 	printf("</label>");
 	
-
 
 
 	//Cria a tabela/boletim;
@@ -227,7 +238,7 @@ printf("
 	echo "</tr>";
 
 	foreach ($arrayFinal as $key => $valor) {
-		echo "<tr><th bgcolor = '#C0C0C0' >".$key."</th>";
+		echo "<tr><th bgcolor = '#C0C0C0' >".utf8_encode($key)."</th>";
 		for ($intX = 0; $intX < count($arrayEtapas); $intX++) {
 			if(array_key_exists($arrayEtapas[$intX], $arrayFinal[$key])) {
 				echo "<td>".$arrayFinal[$key][$arrayEtapas[$intX]]."</td>";
@@ -240,19 +251,32 @@ printf("
 	}
 	echo "</table>";
 
-	echo 	"<form method='post' action='SelecaoNotas-Impressao.php'>
+	echo 	"<form method='post' action='CJF-SelecaoNotasImpressao.php'>
 				<input class='btn btn-info btn-round' type='submit' value='Download'>
 			</form>";
 
+	//salva dados para um futuro dowload;
 	$_SESSION['arrayDados'] = $arrayFinal;
 	$_SESSION['arrayEtapas'] = $arrayEtapas;
 	$_SESSION['arrayFaltas'] = $arrayFaltas;
 	$_SESSION['rendimento'] = $intNotaTotal;
 	$_SESSION['CPF'] = $intIdCPF;
+	$_SESSION['Aluno'] = $strNome;
 
 
 } else {
-	echo "Nome a ser pesquisado nao econtrado!";
+	printf("<div class='alert alert-info' role='alert'>
+ 					Erro: Falha na Pesquisa. <a href='CJF-SelecaoNotas1.php' class='alert-link'>Tentar novamente</a>. 
+							</div>
+						</div>
+					</div>	
+				</div>
+			</div>	
+		</div>				
+	</div>					
+</body>
+</html>");
+		exit;
 }
 
 printf("				

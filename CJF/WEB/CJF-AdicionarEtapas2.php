@@ -57,7 +57,17 @@ if (isset($_POST['valor'])) {
 		}
 
 		if ($intContador != 0) {
-			echo "Etapa Já existente!";
+					echo "Etapa Já Existente!<br></br><form method='post' action='CJF-AdicionarEtapas1.php'>
+				<input class='btn btn-info btn-round' type='submit' value='Adicionar Outra'>
+			  </form>";
+			printf("		</h>		
+				</div>
+			</div>
+		</div>				
+	</div>
+</body>
+</html>");
+
 			exit;
 		}
 
@@ -87,14 +97,41 @@ if (isset($_POST['valor'])) {
 				echo"Erro ao criar etapa!";
 			}
 		}
+
+		echo "<br></br><form method='post' action='CJF-AdicionarEtapas1.php'>
+				<input class='btn btn-info btn-round' type='submit' value='Adicionar Outra'>
+			  </form>";
 		
 	} else {
-		echo "Variável nao encontrada!";
+		printf("<div class='alert alert-info' role='alert'>
+ 					 Falha ao processar sua requisição! <a href='CJF-AdicionarEtapas1.php' class='alert-link'>Tentar novamente</a>. 
+							</div>
+						</div>
+					</div>	
+				</div>
+			</div>	
+		</div>				
+	</div>					
+</body>
+</html>");
+		exit;
 	}
 } else {
 
-	echo "Variável não encontrada!";
-}
+	printf("<div class='alert alert-info' role='alert'>
+ 					 Falha ao processar sua requisição! <a href='CJF-AdicionarEtapas1.php' class='alert-link'>Tentar novamente</a>. 
+							</div>
+						</div>
+					</div>	
+				</div>
+			</div>	
+		</div>				
+	</div>					
+</body>
+</html>");
+		exit;
+	}
+	
 printf("		</h>		
 				</div>
 			</div>
@@ -103,4 +140,3 @@ printf("		</h>
 </body>
 </html>");
 ?>
-

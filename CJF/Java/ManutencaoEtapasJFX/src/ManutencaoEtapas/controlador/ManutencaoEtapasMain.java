@@ -106,6 +106,7 @@ public class ManutencaoEtapasMain extends Application {
             
             AlterarTelaControlador controlador = loader.getController();
             controlador.setDadosEtapas(new DadosEtapas());
+            controlador.setManutencao(new ManutencaoEtapasBD());
             controlador.setManutencaoEtapasMain(this);
             
         } catch (IOException e) {
@@ -125,6 +126,7 @@ public class ManutencaoEtapasMain extends Application {
             
             ExcluirTelaControlador controlador = loader.getController();
             controlador.setDadosEtapas(new DadosEtapas());
+            controlador.setManutencao(new ManutencaoEtapasBD());
             controlador.setManutencaoEtapasMain(this);
             
         } catch (IOException e) {
@@ -139,6 +141,10 @@ public class ManutencaoEtapasMain extends Application {
     public Stage getPrimaryStage() {
         return primaryStage;
     }
+    
+    /*public Stage getPrimaryStage() {
+        return manutencaoEtapasMain.PalcoPrincipal();
+    }*/
 
     public static void main(String[] args) {
         launch(args);

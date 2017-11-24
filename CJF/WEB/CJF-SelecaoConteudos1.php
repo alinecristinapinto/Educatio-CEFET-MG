@@ -1,4 +1,9 @@
-﻿<?php  
+<?php  
+
+/*Grupo Felipe, Juliana, Carlos;
+Autor Felipe Linhares;
+Seleção de Conteudos por etapa/disciplina 1
+*/
 
 	ini_set('default_charset','UTF-8');
 
@@ -19,7 +24,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Seleção de notas</title>
+
+	<title>Seleção de conteúdos</title>
   	<meta charset="utf-8">
   	<meta http-equiv="X-UA-Compatible" content="IE=edge">
   	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -47,20 +53,23 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-md-8 ml-auto mr-auto">
-					<h2 class="text-center">Seleção de notas</h2>	
-					<form method='post' action='SelecaoNotas.php' class="contact-form">	
+					<h2 class="text-center">Seleção de conteúdos</h2>
+					<form method='post' action='CJF-SelecaoConteudos2.php' class="contact-form">
 						<div class="col-md-6">
-							<label class="fonteTexto">Digite o nome ou o CPF do Aluno: </label>
+							<!-- Recebe a turma -->
+							<label class="fonteTexto">Digite o nome ou o ID da turma: </label>
 							<div class="input-group">
-								<span class="input-group-addon"><i class="nc-icon nc-single-02"></i></span>
-								<input type="text" name="aluno" id="txt_consulta" placeholder="CPF ou Nome do Aluno" class="form-control" required='required'>
-							</div>	
+								<span class="input-group-addon">
+									<i class="nc-icon nc-globe-2"></i>
+								</span>
+								<input type='textarea' class="form-control" name='turma' placeholder="Turma" required='required' id='txt_consulta'>
+							</div>
 							<table class='table table-hover' id="tabela">
 								<?php
 								//Tabela de Pesquisa
-								$strSQL = $conn->query("SELECT idCPF, nome FROM `Educatio`.`alunos`");
+								$strSQL = $conn->query("SELECT id, nome FROM `Educatio`.`turmas`");
 								while($arrLinha = $strSQL->fetch_assoc()) {
-									echo "<tr value='".$arrLinha['nome']."' onclick('document.getElementById('txt_consulta').value = document.getElementById(this).innerHTML')><th>".$arrLinha['idCPF']."</th><td>".$arrLinha['nome']."</td></tr>";
+									echo "<tr value='".$arrLinha['id']."' onclick('document.getElementById('txt_consulta').value = document.getElementById(this).innerHTML')><th>".$arrLinha['id']."</th><td>".$arrLinha['nome']."</td></tr>";
 								}
 								echo "</table>";
 								?>
@@ -78,20 +87,13 @@
 										});
 									});
 								</script>
-							<label class="fonteTexto">Digite o ano: </label>
-							<div class="input-group">
-								<span class="input-group-addon">
-									<i class="nc-icon nc-single-02"></i>
-								</span>
-								<input type="text" class="form-control" name='ano' placeholder="Ano" required='required'>
-							</div>
-							<input class="btn btn-info btn-round" type='submit' value='Exibir'>
-							<br>
+
+							<input class="btn btn-info btn-round" type='submit' value='Continuar'>
 						</div>
 					</form>
-				</div>	
-			</div>	
-		</div>	
-	</div>	
+				</div>
+			</div>
+		</div>				
+	</div>					
 </body>
 </html>

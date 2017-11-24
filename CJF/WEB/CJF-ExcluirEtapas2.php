@@ -41,6 +41,7 @@ if (isset($_POST['etapa'])) {
 
 	$intId = $_POST['etapa'];
 
+	//pesquisa se a etapa existe;
 	$sqlSql = "SELECT idOrdem FROM etapas WHERE ativo='S'";
 	$sqlResultado = $sqlConexao->query($sqlSql);
 	$arrayDados = array();
@@ -53,9 +54,44 @@ if (isset($_POST['etapa'])) {
 	}
 
 	if ($intContador == 0) {
-		echo "Etapa inexistente!";
-		exit;
+		echo "Etapa Inexistente!<br></br><form method='post' action='CJF-ExcluirEtapas1.php'>
+				<input class='btn btn-info btn-round' type='submit' value='Excluir Outra'>
+			  </form>";
+			printf("		</h>		
+				</div>
+			</div>
+		</div>				
+	</div>
+</body>
+</html>");
+
+			exit;
 	}
+
+	//confere se existe algo vinculado a etapa;
+	$intContador = 0;
+	$sqlSql = "SELECT id FROM conteudos WHERE idEtapa='$intId'";
+	$sqlResultado = $sqlConexao->query($sqlSql);
+	while ($genAux = $sqlResultado->fetch_assoc()) {
+		$intContador++;
+		break;
+	}
+
+	if ($intContador != 0) {
+		echo "Impossível excluir: etapa vinculada a conteúdo(s)!<br></br><form method='post' action='CJF-ExcluirEtapas1.php'>
+				<input class='btn btn-info btn-round' type='submit' value='Excluir Outra'>
+			  </form>";
+			printf("		</h>		
+				</div>
+			</div>
+		</div>				
+	</div>
+</body>
+</html>");
+
+			exit;
+	}
+
 
 	$sqlSql = "UPDATE etapas SET ativo='N' WHERE idOrdem='".$intId."'";
 	
@@ -66,9 +102,23 @@ if (isset($_POST['etapa'])) {
 	} else {
 		echo"Erro ao excluir etapa!";
 	}
+	echo "<br></br><form method='post' action='CJF-ExcluirEtapas1.php'>
+			<input class='btn btn-info btn-round' type='submit' value='Excluir Outra'>
+		  </form>";
 } else {
 
-	echo "Variavel nao encontrada!";
+	printf("<div class='alert alert-info' role='alert'>
+ 					 Falha ao processar sua requisição! <a href='CJF-ExcluirEtapas1.php' class='alert-link'>Tentar novamente</a>. 
+							</div>
+						</div>
+					</div>	
+				</div>
+			</div>	
+		</div>				
+	</div>					
+</body>
+</html>");
+		exit;
 }
 printf("		</h>		
 				</div>

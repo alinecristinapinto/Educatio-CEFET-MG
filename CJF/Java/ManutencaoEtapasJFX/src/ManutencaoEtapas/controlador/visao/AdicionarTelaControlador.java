@@ -85,9 +85,10 @@ public class AdicionarTelaControlador {
     }
     
     @FXML
-    private void BotaoVoltarClicado() {
+    public void BotaoVoltarClicado() {
         manutencaoEtapasMain.showLayoutMenu();
-        
+        dadosEtapas.setIdOrdem(null);
+        dadosEtapas.setValor(null);
         botaoVoltar = true;
     }
     

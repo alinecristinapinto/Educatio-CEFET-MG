@@ -59,7 +59,6 @@ if (isset($_POST['acervo'])) {
 				$arrayDados[$intContador]['idCampi'] = $genAux['idCampi'];
 				$arrayDados[$intContador]['local'] = $genAux['local'];
 				$arrayDados[$intContador]['ano'] = $genAux['ano'];
-				$arrayDados[$intContador]['editora'] = $genAux['editora'];
 				$arrayDados[$intContador]['nome'] = $genAux['nome'];
 				$intContador++;
 			}
@@ -113,51 +112,64 @@ if (isset($_POST['acervo'])) {
 			$intContador++;
 		}
 
+		// nada encontrado...
+		if ($arrayDados == null) {
+			printf("<div class='alert alert-info' role='alert'>
+ 					 Nenhum livro encontrado no sistema! <a href='CJF-RelacaoAcervo1.php' class='alert-link'>Tentar novamente</a>. 
+							</div>
+						</div>
+					</div>	
+				</div>
+			</div>	
+		</div>				
+	</div>					
+</body>
+</html>");
+		exit;
+		}
+
 
 		//exibe os dados em uma tabela
 		echo "<table class='table table-hover'>
 		<tr>
 		<th>Id da Obra</th>
-		<th>Id no Acervo</th
-		><th>Nome da obra</th>
+		<th>Id no Acervo</th>
+		<th white-space: nowrap>Nome Da Obra</th>
 		<th> Autor </th>
 		<th> Campi </th>
 		<th> Local </th>
 		<th> Ano </th>
-		<th>Editora</th>
 		<th> Tempo </th>
 		<th>Subtipo</th>
 		</tr>";
 		foreach ($arrayDados as $valor) {
 			$intContador = 0;
-			echo "<tr>
+			echo utf8_encode("<tr>
 			<td>".$valor['idObra']."</td>
 			<td>".$valor['idAcervo']."</td>
-			<td>".$valor['nome']."</td><td>";
+			<td>".$valor['nome']."</td><td >");
 			for ($intI = 0; $intI < $intAutorestotais; $intI++) {
 				if (isset($arrayAutores[$valor['idAcervo']][$intI])) {
 					if ($intContador != 0) {
 						echo ", ";
 					}
-					echo $arrayAutores[$valor['idAcervo']][$intI];
+					echo utf8_encode($arrayAutores[$valor['idAcervo']][$intI]);
 					$intContador++;
 				}
 			}
 			echo
-			"</td><td>".$valor['idCampi']."</td>
+			utf8_encode("</td><td>".$valor['idCampi']."</td>
 			<td>".$valor['local']."</td>
 			<td>".$valor['ano']."</td>
-			<td>".$valor['editora']."</td>
 			<td>".$valor['tempo']."</td>
 			<td>".$valor['subtipo']."</td>
-			</tr>";		
+			</tr>");		
 		}
 		echo "</table>";
 
 		$_SESSION['arrayAutores'] = $arrayAutores;
 		$_SESSION['autoresTotais'] = $intAutorestotais;
 		$_SESSION['arrayDados'] = $arrayDados;
-
 
 //____________________________________________________________________________________________________________________________________________-
 	//relatorio livros
@@ -233,13 +245,29 @@ if (isset($_POST['acervo'])) {
 			$intContador++;
 		}
 
+		//nada encontrado...
+		if ($arrayDados == null) {
+			printf("<div class='alert alert-info' role='alert'>
+ 					 Nenhum livro encontrado no sistema! <a href='CJF-RelacaoAcervo1.php' class='alert-link'>Tentar novamente</a>. 
+							</div>
+						</div>
+					</div>	
+				</div>
+			</div>	
+		</div>				
+	</div>					
+</body>
+</html>");
+		exit;
+		}
+
 
 		//exibe os dados em uma tabela
 		echo "<table class='table table-hover'>
 		<tr>
 		<th>Id da Obra</th>
 		<th>Id no Acervo</th
-		><th width='30' >Nome da obra</th>
+		><th white-space: nowrap>Nome da obra</th>
 		<th> Autores </th>
 		<th> Campi </th>
 		<th> Local </th>
@@ -251,29 +279,30 @@ if (isset($_POST['acervo'])) {
 		</tr>";
 		foreach ($arrayDados as $valor) {
 			$intContador = 0;
-			echo "<tr>
+			echo utf8_encode("<tr>
 			<td>".$valor['idObra']."</td>
 			<td>".$valor['idAcervo']."</td>
-			<td>".$valor['nome']."</td><td>";
+			<td>".$valor['nome']."</td><td white-space: nowrap>");
 			for ($intI = 0; $intI < $intAutorestotais; $intI++) {
 				if (isset($arrayAutores[$valor['idAcervo']][$intI])) {
 					if ($intContador != 0) {
-						echo ", ";
+						echo ",<br></br>";
 					}
-					echo $arrayAutores[$valor['idAcervo']][$intI];
+					echo utf8_encode($arrayAutores[$valor['idAcervo']][$intI]);
 					$intContador++;
 				}
 			}
 			echo
-			"</td><td>".$valor['idCampi']."</td>
+			utf8_encode("</td><td>".$valor['idCampi']."</td>
 			<td>".$valor['local']."</td>
 			<td>".$valor['ano']."</td>
 			<td>".$valor['editora']."</td>
 			<td>".$valor['ISBN']."</td>
 			<td>".$valor['edicao']."</td>
 			<td>".$valor['paginas']."</td>
-			</tr>";		
+			</tr>");		
 		}
+		echo "</table>";
 
 		$_SESSION['arrayAutores'] = $arrayAutores;
 		$_SESSION['autoresTotais'] = $intAutorestotais;
@@ -339,6 +368,23 @@ if (isset($_POST['acervo'])) {
 			
 		}
 
+		//nada encontrado...
+		if ($arrayDados == null) {
+			printf("<div class='alert alert-info' role='alert'>
+ 					 Nenhum periódico encontrado no sistema! <a href='CJF-RelacaoAcervo1.php' class='alert-link'>Tentar novamente</a>. 
+							</div>
+						</div>
+					</div>	
+				</div>
+			</div>	
+		</div>				
+	</div>					
+</body>
+</html>");
+		exit;
+
+		}
+
 
 
 		//exibe os dados em uma tabela
@@ -346,7 +392,7 @@ if (isset($_POST['acervo'])) {
 		<tr>
 		<th>Id da Obra</th>
 		<th>Id no Acervo</th>
-		<th>Nome da obra</th>
+		<th white-space: nowrap>Nome da obra</th>
 		<th> Partes </th>
 		<th> Campi </th>
 		<th> Local </th>
@@ -360,21 +406,21 @@ if (isset($_POST['acervo'])) {
 		</tr>";
 		foreach ($arrayDados as $valor) {
 			$intContador = 0;
-			echo "<tr>
+			echo utf8_encode("<tr>
 			<td>".$valor['idObra']."</td>
 			<td>".$valor['idAcervo']."</td>
-			<td>".$valor['nome']."</td><td>";
+			<td>".$valor['nome']."</td><td>");
 			for ($intI = 0; $intI < $intPartestotais; $intI++) {
 				if (isset($arrayPartes[$valor['idObra']][$intI])) {
 					if ($intContador != 0) {
 						echo ", ";
 					}
-					echo $arrayPartes[$valor['idObra']][$intI];
+					echo utf8_encode($arrayPartes[$valor['idObra']][$intI]);
 					$intContador++;
 				}
 			}
 			echo
-			"</td><td>".$valor['idCampi']."</td>
+			utf8_encode("</td><td>".$valor['idCampi']."</td>
 			<td>".$valor['local']."</td>
 			<td>".$valor['ano']."</td>
 			<td>".$valor['editora']."</td>
@@ -383,8 +429,9 @@ if (isset($_POST['acervo'])) {
 			<td>".$valor['mes']."</td>
 			<td>".$valor['volume']."</td>
 			<td>".$valor['ISSN']."</td>
-			</tr>";		
+			</tr>");		
 		}
+		echo "</table>";
 
 		$_SESSION['arrayPartes'] = $arrayPartes;
 		$_SESSION['partesTotais'] = $intPartestotais;
@@ -460,14 +507,30 @@ if (isset($_POST['acervo'])) {
 			$intContador++;
 		}
 
+		//nada encontrado...
+		if ($arrayDados == null) {
+			printf("<div class='alert alert-info' role='alert'>
+ 					 Nenhum acadêmico encontrado no sistema! <a href='CJF-RelacaoAcervo1.php' class='alert-link'>Tentar novamente</a>. 
+							</div>
+						</div>
+					</div>	
+				</div>
+			</div>	
+		</div>				
+	</div>					
+</body>
+</html>");
+		exit;
+		}
+
 
 		//exibe os dados em uma tabela
 		echo "<table class='table table-hover'>
 		<tr>
 		<th>Id da Obra</th>
 		<th>Id no Acervo</th
-		><th>Nome da obra</th>
-		<th> Autor </th>
+		><th white-space: nowrap>Nome da obra</th>
+		<th><center>Autor</center></th>
 		<th> Campi </th>
 		<th> Local </th>
 		<th> Ano </th>
@@ -475,41 +538,52 @@ if (isset($_POST['acervo'])) {
 		</tr>";
 		foreach ($arrayDados as $valor) {
 			$intContador = 0;
-			echo "<tr>
+			echo utf8_encode("<tr>
 			<td>".$valor['idObra']."</td>
 			<td>".$valor['idAcervo']."</td>
-			<td>".$valor['nome']."</td><td>";
+			<td>".$valor['nome']."</td><td white-space: nowrap>");
 			for ($intI = 0; $intI < $intAutorestotais; $intI++) {
 				if (isset($arrayAutores[$valor['idAcervo']][$intI])) {
 					if ($intContador != 0) {
-						echo ", ";
+						echo ",<br></br>";
 					}
-					echo $arrayAutores[$valor['idAcervo']][$intI];
+					echo utf8_encode($arrayAutores[$valor['idAcervo']][$intI]);
 					$intContador++;
 				}
 			}
 			echo
-			"</td><td>".$valor['idCampi']."</td>
+			utf8_encode("</td><td>".$valor['idCampi']."</td>
 			<td>".$valor['local']."</td>
 			<td>".$valor['ano']."</td>
 			<td>".$valor['programa']."</td>
-			</tr>";		
+			</tr>");		
 		}
+		echo "</table>";
 
 		$_SESSION['arrayAutores'] = $arrayAutores;
 		$_SESSION['autoresTotais'] = $intAutorestotais;
 		$_SESSION['arrayDados'] = $arrayDados;
-
 		
 	}
 
-	echo 	"<form method='post' action='RelacaoAcervo-Impressao.php'>
+	echo 	"<form method='post' action='CJF-RelacaoAcervoImpressao.php'>
 			<input class='btn btn-info btn-round' type='submit' value='Download'>
 			</form>";
 
-
+//nada encontrado...
 } else {
-	echo "Nao encontramos sua pesquisa!";
+	printf("<div class='alert alert-info' role='alert'>
+ 					 Nenhum empréstimo encontrado no sistema! <a href='CJF-RelacaoAcervo1.php' class='alert-link'>Tentar novamente</a>. 
+							</div>
+						</div>
+					</div>	
+				</div>
+			</div>	
+		</div>				
+	</div>					
+</body>
+</html>");
+		exit;
 }
 
 printf("		

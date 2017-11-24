@@ -19,6 +19,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
 import manutencaoDeProfessores.model.ManutencaoDeProfessores;
@@ -30,20 +31,18 @@ import manutencaoDeProfessores.model.ManutencaoDeProfessores;
 public class CriaProfessorController implements Initializable {
     private Connection link = null;
     private static ManutencaoDeProfessores main;
+    private String disc;
     
     @FXML
     private TextField nome;
     @FXML
     private TextField IDSiape;
     
-    //@FXML
-    //private TextField idCampi;
-    //Select para encontrar o departamento
-
-    
     @FXML
     private ChoiceBox titulacao;
     //Select P,G,M,D
+    @FXML
+    private ChoiceBox campus;
     
     @FXML
     private ChoiceBox departamento;
@@ -70,13 +69,23 @@ public class CriaProfessorController implements Initializable {
         
         titulacao.setItems(nomes);        
        
+        departamento.setVisible(false);
+        
+        campus.getSelectionModel().selectedItemProperty().addListener(
+            (observable, oldValue, newValue) -> {
+            try {
+                continuar(newValue.toString());
+            } catch (SQLException | IOException ex) {
+                Logger.getLogger(CriaProfessorController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        });
         
     }
     
     
     @FXML
     public void criaProfessor() throws IOException{
-        String sql = "INSERT INTO funcionario (idSiape, idDepto, nome, titulacao, hierarquia, senha, foto, ativo) values ('"+IDSiape.getText()+"', 1, '"+nome.getText()+"', '"+nome.getText()+"', 'professor', 0, 0 , 'S')";
+        String sql = "INSERT INTO funcionario (idSiape, idDepto, nome, titulacao, hierarquia, senha, foto, ativo) values ('"+IDSiape.getText()+"', 1, '"+nome.getText()+"', '"+(String) titulacao.getValue()+"', 'professor', 0, 0 , 'S')";
         Statement stmt = null;
     
         try{
@@ -118,15 +127,29 @@ public class CriaProfessorController implements Initializable {
         this.main = main;
         this.link =connection;
         
-        ObservableList deps = FXCollections.observableArrayList();
+        ObservableList lista2= null;
         try {
-            deps = main.pesquisaDepto(link);
+            lista2 = main.pesquisaCampi(link);
         } catch (SQLException ex) {
-            Logger.getLogger(CriaProfessorController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(PesquisaProfessorController.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-        departamento.setItems(deps);
+            campus.setItems(lista2);
     }
 
-   
+   public void continuar(String valor) throws SQLException, IOException{
+       System.out.println("Chama continuar"); 
+       disc = valor;
+        int value;
+        
+        if(disc == null){
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setContentText("Existem campos vazios, não é possível pesquisar");
+            alert.showAndWait(); 
+        }else{
+            value = main.pegaIdCampi(link, (String) campus.getValue());
+            departamento.setItems(main.pesquisaDepto(link, value));
+            departamento.setVisible(true);
+        }
+    }
 }

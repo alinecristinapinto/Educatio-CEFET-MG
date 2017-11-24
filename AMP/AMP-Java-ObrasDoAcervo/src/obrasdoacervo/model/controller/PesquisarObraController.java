@@ -8,7 +8,9 @@ package obrasdoacervo.model.controller;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -105,15 +107,22 @@ public class PesquisarObraController implements Initializable {
             String editoraTabela = tabela.getSelectionModel().getSelectedItem().getEditora().get();
             String paginasTabela = tabela.getSelectionModel().getSelectedItem().getPaginas().get();
             
+            Statement stmt = null;
+            stmt = link.createStatement();
+            String sql = "SELECT * FROM acervo WHERE nome='"+nomeTabela+"' AND ativo='S'";
+            ResultSet rs; 
+            rs = stmt.executeQuery(sql);
+            rs.next();
+            int id = rs.getInt("id");
             
             if(tipoTabela.equals("livros")){
-                main.abreEditaLivro(link, nomeTabela, tipoTabela, localTabela, anoTabela, editoraTabela, paginasTabela);
+                main.abreEditaLivro(link, nomeTabela, tipoTabela, localTabela, anoTabela, editoraTabela, paginasTabela, id);
             }else if(tipoTabela.equals("periodicos")){
-                main.abreEditaPeriodicos(link, nomeTabela, tipoTabela, localTabela, anoTabela, editoraTabela, paginasTabela);
+                main.abreEditaPeriodicos(link, nomeTabela, tipoTabela, localTabela, anoTabela, editoraTabela, paginasTabela, id);
             }else if(tipoTabela.equals("midias")){
-                main.abreEditaMidia(link, nomeTabela, tipoTabela, localTabela, anoTabela, editoraTabela, paginasTabela);
+                main.abreEditaMidia(link, nomeTabela, tipoTabela, localTabela, anoTabela, editoraTabela, paginasTabela, id);
             }else if(tipoTabela.equals("academicos")){
-                main.abreEditaAcademico(link, nomeTabela, tipoTabela, localTabela, anoTabela, editoraTabela, paginasTabela);
+                main.abreEditaAcademico(link, nomeTabela, tipoTabela, localTabela, anoTabela, editoraTabela, paginasTabela, id);
             }
             
         }

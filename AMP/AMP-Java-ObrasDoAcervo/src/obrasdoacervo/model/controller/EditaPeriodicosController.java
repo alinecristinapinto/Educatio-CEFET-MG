@@ -15,6 +15,7 @@ import java.sql.Statement;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
@@ -39,6 +40,8 @@ public class EditaPeriodicosController implements Initializable{
     
     @FXML
     private ChoiceBox campus;
+    @FXML
+    private ChoiceBox partes;
     
     @FXML
     private TextField local;
@@ -64,6 +67,7 @@ public class EditaPeriodicosController implements Initializable{
     private String editoraP;
     private String paginasP;
     private String localP;
+    private int id;
     /**
      * Initializes the controller class.
      */
@@ -82,7 +86,7 @@ public class EditaPeriodicosController implements Initializable{
             
     }
     
-        public void setMain(ObrasDoAcervo main, Connection connection, String nomeP, String tipoP, String localP, String anoP, String editoraP, String paginasP) {
+        public void setMain(ObrasDoAcervo main, Connection connection, String nomeP, String tipoP, String localP, String anoP, String editoraP, String paginasP, int id) throws SQLException {
 
             this.connection = connection;
         this.main = main;
@@ -92,12 +96,44 @@ public class EditaPeriodicosController implements Initializable{
         this.localP = localP;
         this.editoraP=editoraP;
         this.paginasP=paginasP;
-            
+        this.id=id;
+        
+        Statement stmt = null;
+        stmt = connection.createStatement();
+        String sql = "SELECT * FROM periodicos WHERE idAcervo='"+id+"' AND ativo='S'";
+        ResultSet rs; 
+        rs = stmt.executeQuery(sql);
+        rs.next();
+    
         nome.setText(nomeP);
         local.setText(localP);
         ano.setText(anoP);
         editora.setText(editoraP);
         paginas.setText(paginasP);
+        periodicidade.setText(rs.getString("periodicidade"));
+        subtipo.setText(rs.getString("subtipo"));
+        volume.setText(rs.getString("volume"));
+        ISSN.setText(rs.getString("ISSN"));
+        mes.setText(rs.getString("mes"));
+        
+        ObservableList lista = null;
+        try {
+            lista = main.pesquisaCampi(link);
+        } catch (SQLException ex) {
+            Logger.getLogger(EditaPeriodicosController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+            campus.setItems(lista);
+            
+        ObservableList lista1 = null;
+        try {
+            lista1 = main.pesquisaPartes(link, rs.getInt("id"));
+        } catch (SQLException ex) {
+            Logger.getLogger(EditaPeriodicosController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+            partes.setItems(lista1);
+        
 }
         
         @FXML
@@ -115,7 +151,7 @@ public class EditaPeriodicosController implements Initializable{
         }
         
         @FXML
-        public void editar() throws IOException{
+        public void editar() throws IOException, SQLException{
             int i = 0;
         if   (nome.getText().equals("") || local.getText().equals("") || ano.getText().equals("") || editora.getText().equals("") || paginas.getText().equals("")){
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -124,8 +160,6 @@ public class EditaPeriodicosController implements Initializable{
             alert.setContentText("Não foi possível editar o autor, existem campos vazios");
             alert.showAndWait();
         }else if(i==0){
-
-
             
         main.alteraAcervo(link, nomeP, tipoP, localP, anoP, editoraP, paginasP, "acervo", "nome", nome.getText());
         //main.alteraAcervo(link, nomeP, tipoP, localP, anoP, editoraP, paginasP, "acervo", "tipo", autorSobrenome.getText());
@@ -133,9 +167,18 @@ public class EditaPeriodicosController implements Initializable{
         main.alteraAcervo(link, nomeP, tipoP, localP, anoP, editoraP, paginasP, "acervo", "local", local.getText());
         main.alteraAcervo(link, nomeP, tipoP, localP, anoP, editoraP, paginasP, "acervo", "editora", editora.getText());
         main.alteraAcervo(link, nomeP, tipoP, localP, anoP, editoraP, paginasP, "acervo", "paginas", paginas.getText());
+        main.alteraPeriodicos(link, mes.getText(), periodicidade.getText(), volume.getText(), subtipo.getText(), id);
 
-        
-        main.abrePesquisarObra();
+        if((String) partes.getValue() != null){
+            System.out.println((String) partes.getValue());
+            int idPeriodico = main.pegaIdParte(connection, (String) partes.getValue());
+            main.abreEditaParte(connection, idPeriodico);
+            System.out.println("Não pula IF");
+        }else{
+            System.out.println("Pula if");
+                  main.abrePesquisarObra();  
+        }
+
         }
         }
 }

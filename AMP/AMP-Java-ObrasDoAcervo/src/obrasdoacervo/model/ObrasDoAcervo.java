@@ -165,48 +165,48 @@ public class ObrasDoAcervo extends Application {
         controller.setMain(this);
     }
     
-    public void abreEditaAcademico(Connection link, String nome, String tipo, String local, String ano, String editora, String paginas) throws IOException{
+    public void abreEditaAcademico(Connection link, String nome, String tipo, String local, String ano, String editora, String paginas, int id) throws IOException, SQLException{
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(ObrasDoAcervo.class.getResource("view/EditaAcademico.fxml"));
         AnchorPane tela = (AnchorPane) loader.load();
         borda.setCenter(tela);
         EditaAcademicoController controller = loader.getController();
-        controller.setMain(this, link, nome, tipo, local, ano, editora, paginas);
+        controller.setMain(this, link, nome, tipo, local, ano, editora, paginas, id);
     }
     
-    public void abreEditaLivro(Connection link, String nome, String tipo, String local, String ano, String editora, String paginas) throws IOException{    FXMLLoader loader = new FXMLLoader();
+    public void abreEditaLivro(Connection link, String nome, String tipo, String local, String ano, String editora, String paginas, int id) throws IOException, SQLException{    FXMLLoader loader = new FXMLLoader();
         loader.setLocation(ObrasDoAcervo.class.getResource("view/EditaLivro.fxml"));
         AnchorPane tela = (AnchorPane) loader.load();
         borda.setCenter(tela);
         EditaLivroController controller = loader.getController();
-        controller.setMain(this, link, nome, tipo, local, ano, editora, paginas);
+        controller.setMain(this, link, nome, tipo, local, ano, editora, paginas, id);
     }
     
-    public void abreEditaMidia(Connection link, String nome, String tipo, String local, String ano, String editora, String paginas) throws IOException{
+    public void abreEditaMidia(Connection link, String nome, String tipo, String local, String ano, String editora, String paginas, int id) throws IOException, SQLException{
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(ObrasDoAcervo.class.getResource("view/EditaMidia.fxml"));
         AnchorPane tela = (AnchorPane) loader.load();
         borda.setCenter(tela);
         EditaMidiaController controller = loader.getController();
-        controller.setMain(this, link, nome, tipo, local, ano, editora, paginas);
+        controller.setMain(this, link, nome, tipo, local, ano, editora, paginas, id);
     }
     
-    public void abreEditaParte(Connection link, String nome, String tipo, String local, String ano, String editora, String paginas) throws IOException{
+    public void abreEditaParte(Connection link, int id) throws IOException, SQLException{
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(ObrasDoAcervo.class.getResource("view/EditaParte.fxml"));
         AnchorPane tela = (AnchorPane) loader.load();
         borda.setCenter(tela);
         EditaParteController controller = loader.getController();
-        //controller.setMain(this, link, nome, tipo, local, ano, editora, paginas);
+        controller.setMain(this, link, id);
     }
     
-    public void abreEditaPeriodicos(Connection link, String nome, String tipo, String local, String ano, String editora, String paginas) throws IOException{
+    public void abreEditaPeriodicos(Connection link, String nome, String tipo, String local, String ano, String editora, String paginas, int id) throws IOException, SQLException{
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(ObrasDoAcervo.class.getResource("view/EditaPeriodicos.fxml"));
         AnchorPane tela = (AnchorPane) loader.load();
         borda.setCenter(tela);
         EditaPeriodicosController controller = loader.getController();
-        controller.setMain(this, link, nome, tipo, local, ano, editora, paginas);
+        controller.setMain(this, link, nome, tipo, local, ano, editora, paginas, id);
     }
 
     public void abreEditaAutor(String nome, String sobrenome, String ordem, String qualificacao) throws IOException{
@@ -362,7 +362,7 @@ public class ObrasDoAcervo extends Application {
         id = rs.getInt("id");
         // rs = stmt.executeQuery(sql);
 
-        String sql = "INSERT INTO partes(idPeriodico, titulo, pagInicio, pagFinal, palavrasChave, ativo) VALUES('" + (id + 1) + "', '" + partes.titulo + 
+        String sql = "INSERT INTO partes(idPeriodico, titulo, pagInicio, pagFinal, palavrasChave, ativo) VALUES('" + (id) + "', '" + partes.titulo + 
                "', '" + partes.pagInicio + "', '" + partes.pagFinal + "', '" + partes.palavrasChave + "', 'S')";
         stmt.execute(sql);
         
@@ -521,6 +521,78 @@ public class ObrasDoAcervo extends Application {
         }
         
     }
+    
+    public static void alteraLivro (Connection connection, String edicao, String ISBN, int id){
+        String sql = "UPDATE livros SET ISBN='"+ISBN+"', edicao='"+edicao+"' WHERE ativo='S' AND idAcervo="+id;
+        Statement stmt = null;
+        
+        try{
+        stmt = connection.createStatement();
+        stmt.execute(sql);
+        }catch(SQLException e){
+            System.out.println("SQLException: " + e.getMessage());
+            System.out.println("SQLState: " + e.getSQLState());
+            System.out.println("VendorError: " + e.getErrorCode());
+        }
+        
+        
+    }
+    
+    public static void alteraMidia (Connection connection, String tempo, String subtipo, int id){
+        String sql = "UPDATE midias SET tempo='"+tempo+"', subtipo='"+subtipo+"' WHERE ativo='S' AND idAcervo="+id;
+        Statement stmt = null;
+        
+        try{
+        stmt = connection.createStatement();
+        stmt.execute(sql);
+        }catch(SQLException e){
+            System.out.println("SQLException: " + e.getMessage());
+            System.out.println("SQLState: " + e.getSQLState());
+            System.out.println("VendorError: " + e.getErrorCode());
+        }        
+    }
+    
+    public static void alteraAcademicos (Connection connection, String programa, int id){
+        String sql = "UPDATE academicos SET programa='"+programa+"' WHERE ativo='S' AND idAcervo="+id;
+        Statement stmt = null;
+        
+        try{
+        stmt = connection.createStatement();
+        stmt.execute(sql);
+        }catch(SQLException e){
+            System.out.println("SQLException: " + e.getMessage());
+            System.out.println("SQLState: " + e.getSQLState());
+            System.out.println("VendorError: " + e.getErrorCode());
+        }        
+    }
+    
+    public static void alteraPeriodicos (Connection connection, String mes, String periodicidade, String volume, String subtipo, int id){
+        String sql = "UPDATE periodicos SET mes='"+mes+"', periodicidade='"+periodicidade+"', subtipo='"+subtipo+"', volume='"+volume+"' WHERE ativo='S' AND idAcervo="+id;
+        Statement stmt = null;
+        
+        try{
+        stmt = connection.createStatement();
+        stmt.execute(sql);
+        }catch(SQLException e){
+            System.out.println("SQLException: " + e.getMessage());
+            System.out.println("SQLState: " + e.getSQLState());
+            System.out.println("VendorError: " + e.getErrorCode());
+        }        
+    }
+    
+    public static void alteraPartes (Connection connection, String titulo, String pagInicio, String pagFinal, String palavraschave, int id){
+        String sql = "UPDATE partes SET titulo='"+titulo+"', pagInicio='"+pagInicio+"', pagFinal='"+pagFinal+"', palavraschave='"+palavraschave+"' WHERE ativo='S' AND id="+id;
+        Statement stmt = null;
+        
+        try{
+        stmt = connection.createStatement();
+        stmt.execute(sql);
+        }catch(SQLException e){
+            System.out.println("SQLException: " + e.getMessage());
+            System.out.println("SQLState: " + e.getSQLState());
+            System.out.println("VendorError: " + e.getErrorCode());
+        }        
+    }
 
     public static void alteraAutor (Connection connection, String nome, String sobrenome, String ordem, String qualificacao, String tabela, String campo, String valor){
         String sql = "UPDATE " + tabela + " SET " + campo + "='" + valor + "' WHERE nome='" + nome + "' AND sobrenome='"+sobrenome+"' AND ordem='"+ordem+"' AND qualificacao='"+qualificacao+"' AND ativo = 'S'";
@@ -616,6 +688,25 @@ public class ObrasDoAcervo extends Application {
         return nomes;
     }
     
+    public ObservableList pesquisaPartes(Connection connection, int id) throws SQLException{
+        ObservableList nomes = FXCollections.observableArrayList();
+        ResultSet result;
+        String sql_fetch = "SELECT * FROM partes WHERE ativo='S' AND id="+id;
+        try{
+        Statement fetch = connection.createStatement();
+        result = fetch.executeQuery(sql_fetch);
+        while(result.next()){
+        nomes.add(result.getString("titulo"));
+        }
+        }catch(SQLException e){
+            System.out.println("SQLException: " + e.getMessage());
+            System.out.println("SQLState: " + e.getSQLState());
+            System.out.println("VendorError: " + e.getErrorCode());  
+        }
+        
+        return nomes;
+    }
+    
     public int pegaIdCampi(Connection connection, String campus) throws SQLException{
         int id = 0;
         ResultSet result;
@@ -631,6 +722,24 @@ public class ObrasDoAcervo extends Application {
             System.out.println("VendorError: " + e.getErrorCode());  
         }
         return id;
+    }
+    
+    public int pegaIdParte(Connection connection, String parte){
+        int id = 0;
+        ResultSet result;
+        String sql_fetch = "SELECT id FROM partes WHERE ativo='S' AND titulo='" + parte + "'";
+        try{
+        Statement fetch = connection.createStatement();
+        result = fetch.executeQuery(sql_fetch);
+        result.next();
+        id = result.getInt("id");
+        }catch(SQLException e){
+            System.out.println("SQLException: " + e.getMessage());
+            System.out.println("SQLState: " + e.getSQLState());
+            System.out.println("VendorError: " + e.getErrorCode());  
+        }
+        return id;
+        
     }
     
     public ObservableList<AcervoTabela> montaListaAcervo(Connection connection, String determinado) throws SQLException{      
@@ -658,7 +767,7 @@ public class ObrasDoAcervo extends Application {
             declara = connection.prepareStatement(comm);
             result = declara.executeQuery();
             result.next();
-            listaAcervo.add(new AcervoTabela(result.getString("nome"), rs.getString("nome"), rs.getString("tipo"), rs.getString("local"), rs.getString("ano"), rs.getString("editora"), rs.getString("paginas")));
+            listaAcervo.add(new AcervoTabela(result.getString("nome"), rs.getString("nome"), rs.getString("tipo"), rs.getString("local"), rs.getString("ano"), rs.getString("editora"), rs.getString("paginas"), rs.getInt("id")));
         }
         
         return listaAcervo;

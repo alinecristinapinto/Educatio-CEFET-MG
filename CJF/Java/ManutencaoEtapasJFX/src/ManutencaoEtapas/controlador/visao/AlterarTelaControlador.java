@@ -9,6 +9,7 @@ import BD.CriaConexao;
 import javafx.fxml.FXML;
 import ManutencaoEtapas.controlador.ManutencaoEtapasMain;
 import ManutencaoEtapas.controlador.modelo.DadosEtapas;
+import BD.ManutencaoEtapasBD;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -27,12 +28,14 @@ import javafx.scene.layout.GridPane;
  */
 public class AlterarTelaControlador{
     private ManutencaoEtapasMain manutencaoEtapasMain;
+    private ManutencaoEtapasBD manutencao;
     private DadosEtapas dadosEtapas;
     private boolean botaoVoltar = false;
     private boolean botaoConfirmaEtapa = false;
     private boolean botaoAlterarEtapa = false;
     Connection conexao=null;
     private ResultSet result;
+    private String etapaSelecionada;
     private ObservableList<String> nomesEtapa;
     @FXML
     private ChoiceBox caixaSelecao;
@@ -62,11 +65,7 @@ public class AlterarTelaControlador{
         dadosEtapas = new DadosEtapas();
         caixaSelecao.setItems(nomesEtapa);
         painelAlterar.setVisible(false);
-        botaoALterarFXML.setVisible(false);
-        
-        
-        
-        
+        botaoALterarFXML.setVisible(false);     
     }
     
     public void setManutencaoEtapasMain(ManutencaoEtapasMain manutencaoEtapasMain) {
@@ -78,6 +77,10 @@ public class AlterarTelaControlador{
 
         idOrdemField.setText(dadosEtapas.getIdOrdem());
         valorField.setText(dadosEtapas.getValor());
+    }
+    
+    public void setManutencao(ManutencaoEtapasBD manutencao){
+        this.manutencao = manutencao;
     }
     
     public boolean isBotaoVoltar() {
@@ -92,20 +95,29 @@ public class AlterarTelaControlador{
         return botaoConfirmaEtapa;
     }
     
+    public void setEtapaSelecionada(String etapaSelecionada){
+        this.etapaSelecionada = etapaSelecionada;
+    }
+    public String getEtapaSelecionda(){
+        return etapaSelecionada;
+    }
+    
     @FXML
     private void BotaoConfirmaEtapaClicado(){
         painelAlterar.setVisible(true);
         botaoALterarFXML.setVisible(true);
-        
+        setEtapaSelecionada((String) caixaSelecao.getValue());
         botaoConfirmaEtapa = true;
     }
     
     @FXML
-    private void BotaoAlterarEtapaClicado() {
+    private void BotaoAlterarEtapaClicado() throws SQLException {
         if (ValidaCampo()) {           
             dadosEtapas.setIdOrdem(idOrdemField.getText());
             dadosEtapas.setValor(valorField.getText());
-         
+            
+            manutencao.alteraEtapa(idOrdemField.getText(), valorField.getText());
+            
             botaoAlterarEtapa = true;
             
             String mensagem = "Número atual da etapa: "+dadosEtapas.getIdOrdem()+"\nValor atual da etapa: "+dadosEtapas.getValor();
@@ -114,6 +126,7 @@ public class AlterarTelaControlador{
                       alert.setHeaderText("Etapa alterada com sucesso.");
                       alert.setContentText(mensagem);
                       alert.showAndWait();
+                      BotaoVoltarClicado();
         }
     }
     

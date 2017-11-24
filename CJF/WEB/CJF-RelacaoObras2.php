@@ -1,9 +1,12 @@
 <?php
 
+session_start();
+ini_set('default_charset','UTF-8');
+
 printf(" 
 	<html>
 	<head>
-	<title>Relação de reservas</title>
+	<title>Relação de obras</title>
   	<meta charset='utf-8'>
   	<meta http-equiv='X-UA-Compatible' content='IE=edge'>
   	<meta name='viewport' content='width=device-width, initial-scale=1.0'>
@@ -29,8 +32,9 @@ printf("
 		<div class='container'>
 			<div class='row'>
 				<div class='col-md-8 ml-auto mr-auto'>
-					<h2 class='text-center'>Relação de reservas</h2><br>");
+					<h2 class='text-center'>Relação de obras</h2><br>");
 
+//canfere se existe a variavel post enviada de CFJ-RelatorioObras1.php;
 if (isset($_POST['data'])) {
 
 	$sqlConexao = mysqli_connect("localhost", "root", "", "educatio");
@@ -46,16 +50,16 @@ if (isset($_POST['data'])) {
 		$arrayDados = array();
 		$intContador = 0;
 
-		$sqlSql = "SELECT * FROM reservas ORDER BY id";
+		$sqlSql = "SELECT * FROM emprestimos ORDER BY id";
 		$sqlResultado = $sqlConexao->query($sqlSql);
 		while ($genAux = $sqlResultado->fetch_assoc()) {
 			if ($genAux['ativo'] = "S") {
 				$arrayDados[$intContador]['id'] = $genAux['id'];
 				$arrayDados[$intContador]['idAluno'] = $genAux['idAluno'];
 				$arrayDados[$intContador]['idAcervo'] = $genAux['idAcervo'];
-				$arrayDados[$intContador]['dataReserva'] = $genAux['dataReserva'];
-				$arrayDados[$intContador]['tempoEspera'] = $genAux['tempoEspera'];
-				$arrayDados[$intContador]['emprestou'] = $genAux['emprestou'];
+				$arrayDados[$intContador]['dataEmprestimo'] = $genAux['dataEmprestimo'];
+				$arrayDados[$intContador]['dataPrevisaoDevolucao'] = $genAux['dataPrevisaoDevolucao'];
+				$arrayDados[$intContador]['multa'] = $genAux['multa'];
 				$intContador++;
 			}
 		}
@@ -78,47 +82,70 @@ if (isset($_POST['data'])) {
 			$intContador++;
 		}
 
+		//caso de errado a pesquisa
+		if ($arrayDados == null) {
+			printf("<div class='alert alert-info' role='alert'>
+ 					 Nenhum empréstimo encontrado no sistema! <a href='CJF-RelacaoObras1.php' class='alert-link'>Tentar novamente</a>. 
+							</div>
+						</div>
+					</div>	
+				</div>
+			</div>	
+		</div>				
+	</div>					
+</body>
+</html>");
+		exit;
+		}
+
 		echo "<table class='table table-hover'>
 		<tr>
-		<th>Id da Reserva</th>
+		<th>Id do Emprestimo</th>
 		<th>Aluno</th>
 		<th>Nome</th>
-		<th>Data da Reserva</th>
-		<th>Tempo de Espera</th>
-		<th>Emprestou</th>
+		<th>Data do Emprestimo</th>
+		<th>Data da previsao de Entrega</th>
+		<th>Multa</th>
 		</tr>";
 		foreach ($arrayDados as $valor) {
-			echo "<tr>
+			echo utf8_encode("<tr>
 			<td>".$valor['id']."</td>
 			<td>".$valor['nomeAluno']."</td>
 			<td>".$valor['nome']."</td>
-			<td>".$valor['dataReserva']."</td>
-			<td>".$valor['tempoEspera']."</td>
-			<td>".$valor['emprestou']."</td>
-			</tr>";		
+			<td>".$valor['dataEmprestimo']."</td>
+			<td>".$valor['dataPrevisaoDevolucao']."</td>
+			<td>".$valor['multa']."</td>
+			</tr>");		
 		}
 		echo "</table>";
 
+		echo "<form method='post' action='CJF-RelacaoObrasImpressao.php'>
+				<input class='btn btn-info btn-round' type='submit' value='Download'>
+			</form>";
+
+			$_SESSION['arrayDados'] = $arrayDados;
+			$_SESSION['data'] = $_POST['data'];
+
 	} else {
 
-		$dateReserva = $_POST['data'];
+		$dateDataEscolhida = $_POST['data'];
 		$arrayDados = array();
 		$intContador = 0;
 
-		$sqlSql = "SELECT * FROM reservas WHERE dataReserva='$dateReserva' ORDER BY id";
+		$sqlSql = "SELECT * FROM emprestimos WHERE dataEmprestimo='$dateDataEscolhida' ORDER BY id";
 		$sqlResultado = $sqlConexao->query($sqlSql);
 		while ($genAux = $sqlResultado->fetch_assoc()) {
 			if ($genAux['ativo'] = "S") {
 				$arrayDados[$intContador]['id'] = $genAux['id'];
 				$arrayDados[$intContador]['idAluno'] = $genAux['idAluno'];
 				$arrayDados[$intContador]['idAcervo'] = $genAux['idAcervo'];
-				$arrayDados[$intContador]['dataReserva'] = $genAux['dataReserva'];
-				$arrayDados[$intContador]['tempoEspera'] = $genAux['tempoEspera'];
-				$arrayDados[$intContador]['emprestou'] = $genAux['emprestou'];
+				$arrayDados[$intContador]['dataEmprestimo'] = $genAux['dataEmprestimo'];
+				$arrayDados[$intContador]['dataPrevisaoDevolucao'] = $genAux['dataPrevisaoDevolucao'];
+				$arrayDados[$intContador]['multa'] = $genAux['multa'];
 				$intContador++;
 			}
 		}
-		
+
 		$intContador = 0;
 
 		foreach ($arrayDados as $valor) {
@@ -140,41 +167,66 @@ if (isset($_POST['data'])) {
 		if ($arrayDados != null) {
 			echo "<table class='table table-hover'>
 			<tr>
-			<th>Id da Reserva</th>
+			<th>Id do Emprestimo</th>
 			<th>Aluno</th>
 			<th>Nome</th>
-			<th>Data da Reserva</th>
-			<th>Tempo de Espera</th>
-			<th>Emprestou</th>
+			<th>Data do Emprestimo</th>
+			<th>Data da previsao de Entrega</th>
+			<th>Multa</th>
 			</tr>";
 			foreach ($arrayDados as $valor) {
 				echo "<tr>
 				<td>".$valor['id']."</td>
 				<td>".$valor['nomeAluno']."</td>
 				<td>".$valor['nome']."</td>
-				<td>".$valor['dataReserva']."</td>
-				<td>".$valor['tempoEspera']."</td>
-				<td>".$valor['emprestou']."</td>
+				<td>".$valor['dataEmprestimo']."</td>
+				<td>".$valor['dataPrevisaoDevolucao']."</td>
+				<td>".$valor['multa']."</td>
 				</tr>";		
 			}
 			echo "</table>";
+
+			echo "<form method='post' action='CJF-RelacaoObrasImpressao.php'>
+					<input class='btn btn-info btn-round' type='submit' value='Download'>
+				</form>";
+
+			$_SESSION['arrayDados'] = $arrayDados;
+			$_SESSION['data'] = $dateDataEscolhida;
+
 		} else {
-			echo "Não achamos nada!";
-		}
-		
-
-	}
-
-    
-
-} else {
-	echo "Não econtramos o que deve ser pesquisado!";
-}
-printf("				
-					</div>
+			//caso de errado a pesquisa
+			printf("<div class='alert alert-info' role='alert'>
+ 					 Nenhum empréstimo encontrado nessa data! <a href='CJF-RelacaoObras1.php' class='alert-link'>Tentar novamente</a>. 
+							</div>
+						</div>
+					</div>	
 				</div>
-			</div>				
-		</div>					
+			</div>	
+		</div>				
+	</div>					
 </body>
 </html>");
-?>	
+		exit;
+		}
+	}  
+
+} else {
+			//caso de errado a pesquisa
+			printf("<div class='alert alert-info' role='alert'>
+ 					 Erro: Falha na pesquisa. <a href='CJF-RelacaoObras1.php' class='alert-link'>Tentar novamente</a>. 
+							</div>
+						</div>
+					</div>	
+				</div>
+			</div>	
+		</div>				
+	</div>					
+</body>
+</html>");
+		exit;
+		
+}
+
+?>
+
+	

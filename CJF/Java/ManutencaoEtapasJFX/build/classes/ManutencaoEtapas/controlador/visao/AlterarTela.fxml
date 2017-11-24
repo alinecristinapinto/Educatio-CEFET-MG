@@ -8,17 +8,17 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ManutencaoEtapas.controlador.visao.AlterarTelaControlador">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="background" stylesheets="@CSSPadrão.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ManutencaoEtapas.controlador.visao.AlterarTelaControlador">
    <children>
-      <Label layoutX="268.0" layoutY="55.0" text="Alterar etapa" />
+      <Label layoutX="156.0" layoutY="50.0" prefHeight="47.0" prefWidth="288.0" styleClass="label-cabecalho"  text="Alterar etapa" textFill="#eeecec" />
       <ChoiceBox fx:id="caixaSelecao" layoutX="40.0" layoutY="117.0" prefWidth="150.0" />
-      <Button layoutX="14.0" layoutY="336.0" mnemonicParsing="false" onAction="#BotaoVoltarClicado" text="Voltar" />
+      <Button layoutX="14.0" layoutY="320.0" mnemonicParsing="false" onAction="#BotaoVoltarClicado" text="Voltar" />
       <Button layoutX="40.0" layoutY="165.0" mnemonicParsing="false" onAction="#BotaoConfirmaEtapaClicado" text="OK" />
       <Button fx:id="botaoALterarFXML" layoutX="370.0" layoutY="269.0" mnemonicParsing="false" onAction="#BotaoAlterarEtapaClicado" text="Alterar" />
-      <GridPane fx:id="painelAlterar" layoutX="337.0" layoutY="178.0" prefHeight="63.0" prefWidth="200.0">
+      <GridPane fx:id="painelAlterar" layoutX="200" layoutY="178.0" prefHeight="63.0" prefWidth="315.0">
          <children>
-            <Label prefHeight="32.0" prefWidth="100.0" text="Número da etapa:" />
-            <Label prefHeight="25.0" prefWidth="100.0" text="Valor da etapa:" GridPane.rowIndex="1" />
+            <Label prefHeight="32.0" prefWidth="169.0" styleClass="label-pequena" text="Número da etapa:" textFill="#f8f7f7" />
+            <Label prefHeight="25.0" prefWidth="162.0" styleClass="label-pequena" text="Valor da etapa:" textFill="#ebe8e8" GridPane.rowIndex="1" />
             <TextField fx:id="idOrdemField" prefWidth="100.0" GridPane.columnIndex="1" />
             <TextField fx:id="valorField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
          </children>

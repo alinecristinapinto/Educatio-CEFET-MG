@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Relação de reservas</title>
+	<title>Manutenção de Etapas - Inclusão</title>
   	<meta charset="utf-8">
   	<meta http-equiv="X-UA-Compatible" content="IE=edge">
   	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -20,29 +20,36 @@
 	<script src="js/bootstrap.min.js" type="text/javascript"></script>
 
 	<!-- Fontes e icones -->
-	<link href="css/nucleo-icons.css" rel="stylesheet">
+	<link href="css/nucleo-icons.css" rel="stylesheet">	
 </head>
 <body>
 	<div class="section landing-section">
 		<div class="container">
 			<div class="row">
 				<div class="col-md-8 ml-auto mr-auto">
-					<h2 class="text-center">Relação de reservas por data e geral</h2>
-					<form method='post' action='RelacaoReservas.php' class="contact-form">
+					<h2 class="text-center">Criação de etapa</h2>
+					<form method='post' action='CJF-AdicionarEtapas2.php' class="contact-form">
 						<div class="col-md-6">
-							<label class="fonteTexto">Digite a data das reservas ou deixe em branco para gerar um relatório geral:</label>
+							<label class="fonteTexto">Digite o valor da etapa:</label>
 							<div class="input-group">
 								<span class="input-group-addon">
-									<i class="nc-icon nc-book-bookmark"></i>
+									<i class="nc-icon nc-check-2"></i>
 								</span>
-								<input type='textarea' class="form-control" name='data' placeholder="Data das reservas">
+								<input type='textarea' class="form-control" name='valor' placeholder="Valor da etapa" required='required'>
 							</div>
-							<input class="btn btn-info btn-round" type='submit' value='Exibir'>
-						</div>	
+							<label class="fonteTexto">Digite o Id da etapa:</label>
+							<div class="input-group">
+								<span class="input-group-addon">
+									<i class="nc-icon nc-check-2"></i>
+								</span>
+								<input type='textarea' class="form-control" name='etapa' placeholder="Id da etapa" required='required'>
+							</div>
+							<input class="btn btn-info btn-round" type='submit' value='Adicionar'>
+						</div>
 					</form>
 				</div>
 			</div>
-		</div>	
+		</div>				
 	</div>
 </body>
 </html>

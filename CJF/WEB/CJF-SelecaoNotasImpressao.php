@@ -1,10 +1,18 @@
 <?php
+
+/*Grupo Felipe, Juliana, Carlos;
+Autor Felipe Linhares;
+Seleção de notas por aluno/ano impressao
+*/
+
+
 session_start();
 //Inclui a biblioteca do MPDF
-include("C:\wamp\www\Felps\mpdf60/mpdf.php");
-header ('Content-type: text/html; charset=ISO-8859-1');
+include("mpdf60/mpdf.php");
+
 ini_set('default_charset','UTF-8');
 
+// "recebe" as variaveis
 $strAluno = $_SESSION['Aluno'];
 $strano = $_SESSION['Ano'];
 $arrayDados = $_SESSION['arrayDados'];
@@ -15,7 +23,7 @@ $CPF = $_SESSION['CPF'];
 
 
   if ($arrayDados != null) {
-    //Seta as opções do Bootstrap no html e o código para gerar a tabela que seleciona o ID do aluno e suas multas
+    //Seta as opções do Bootstrap no html
     $html = "<!DOCTYPE html>
             <html lang='pt-br'>
               <head>
@@ -31,9 +39,9 @@ $CPF = $_SESSION['CPF'];
               <!-- CSS do grupo -->
               <link href='CJF-web-estilos.css' rel='stylesheet' type='text/css' >
               </head>
-              <body>
-
-              <p>Nome do aluno: ".$strAluno.".</p><p>CPF: ".$CPF.".</p><p>Ano: ".$strano.".</p><p>Coeficiente de Rendimento: ".number_format($intNotaTotal,2)."%.</p>
+              <body>";
+              // cria a tabela no pdf
+              $html.="<p>Nome do aluno: ".$strAluno.".</p><p>CPF: ".$CPF.".</p><p>Ano: ".$strano.".</p><p>Coeficiente de Rendimento: ".number_format($intNotaTotal,2)."%.</p>
                 <table class='table table-hover'>
                 <tr>
                 <th class='a' rowspan='2'></th>";
@@ -62,11 +70,12 @@ $CPF = $_SESSION['CPF'];
                 </html>";
             }
 
-
-$nomeDoArquivo = "Boletim - ".$strAluno.".pdf"; //cria nome do arquivo
-
+//cria nome do arquivo
+$nomeDoArquivo = utf8_encode("Boletim - ".$strAluno.".pdf"); 
+//configurãcoes dp mPDF, e escrita no arquivo;
  $mpdf = new mPDF('utf-8', 'A4-P');
- $html = mb_convert_encoding($html, 'UTF-8', 'ISO-8859-1'); //evita o erro HTML contains invalid UTF-8 character(s) devido a acentuação no BD
+ $mpdf->charset_in='windows-1252';
+ $html = mb_convert_encoding($html, 'UTF-8', 'ISO-8859-1');
  $mpdf -> SetTitle($nomeDoArquivo);
  $mpdf -> SetDisplayMode('fullpage');
  $mpdf -> WriteHTML($html);

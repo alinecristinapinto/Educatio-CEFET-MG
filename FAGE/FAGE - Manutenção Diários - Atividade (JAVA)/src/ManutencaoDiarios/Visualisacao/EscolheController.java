@@ -3,10 +3,13 @@ package ManutencaoDiarios.Visualisacao;
 import ManutencaoDiarios.ManutencaoDiarios;
 import ManutencaoDiarios.Modelo.Atividade;
 import ManutencaoDiarios.Modelo.AtividadeTabela;
+import ManutencaoDiarios.Modelo.Conteudo;
 import ManutencaoDiarios.Modelo.Disciplina;
 import ManutencaoDiarios.Modelo.Turma;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -14,6 +17,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.layout.AnchorPane;
 import testeclassealert.AlertaPadrao;
 
 /**
@@ -24,6 +28,7 @@ public class EscolheController {
     private ManutencaoDiarios manutencaoDiarios;
     private Disciplina disciplina;
     private Turma turma;
+    private Conteudo conteudo = new Conteudo();
     private Atividade atividade= new Atividade();
     private String visivel;
     
@@ -31,6 +36,9 @@ public class EscolheController {
     private Label atividades;
     
     private ObservableList<AtividadeTabela> listaAtiv = FXCollections.observableArrayList();
+    
+    @FXML
+    private AnchorPane painelDireita;
     
     @FXML
     private ListView listaConteudos;
@@ -58,29 +66,44 @@ public class EscolheController {
     
     public void setTurma(Turma turma) throws SQLException{
         this.turma = turma;
-        setTabela(disciplina.getNome(), turma.getNome());
+        setTabela(disciplina.getNome(), turma.getNome(), conteudo.getNome());
     }
     
     @FXML
     private void initialize() throws SQLException{
-        
+        listaConteudos.getSelectionModel().selectedItemProperty().addListener(
+            (observable, oldValue, newValue) -> {
+            try {
+                conteudo.setNome(newValue.toString());
+                setTabela(disciplina.getNome(), turma.getNome(), conteudo.getNome());
+            } catch (SQLException ex) {
+                Logger.getLogger(EscolheController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        });
     }
     
-    public void setTabela(String disciplina, String turma) throws SQLException{
+    public void setTabela(String disciplina, String turma, String conteudo) throws SQLException{
         tabela.setEditable(true);
 
         nome.setCellValueFactory(cellData -> cellData.getValue().getNome());
         data.setCellValueFactory(cellData -> cellData.getValue().getData());
         valor.setCellValueFactory(cellData -> cellData.getValue().getValor().asObject());
         
-        listaAtiv = atividade.montaLista(disciplina, turma);
+        listaAtiv = atividade.montaLista(disciplina, turma, conteudo);
         
         tabela.setItems(listaAtiv);
+        painelDireita.setVisible(true);
     }
     
-    public void inserirAtividade() throws SQLException{
-        manutencaoDiarios.chamaLayoutInsere(disciplina, turma);
-        setTabela(disciplina.getNome(), turma.getNome());
+    public void inserirAtividade() throws SQLException, IOException{
+        if(listaConteudos.getSelectionModel().getSelectedItem() == null){
+            AlertaPadrao alerta = new AlertaPadrao();
+            alerta.mostraAlertErro(manutencaoDiarios.getPalcoPrincipal(), "Campos vazios", "Erro!", "Selecione um conteúdo para continuar.");
+        }else{
+            conteudo.setNome(listaConteudos.getSelectionModel().getSelectedItem().toString());
+            manutencaoDiarios.chamaLayoutInsere(disciplina, turma, conteudo);
+            setTabela(disciplina.getNome(), turma.getNome(), conteudo.getNome());
+        }
     }
     
     public void alterarAtividade() throws SQLException, IOException{
@@ -99,7 +122,7 @@ public class EscolheController {
 
             manutencaoDiarios.chamaAlteraAtividade(atividade, disciplina, turma);
             
-            setTabela(disciplina.getNome(), turma.getNome());
+            setTabela(disciplina.getNome(), turma.getNome(), conteudo.getNome());
         }
     }
     
@@ -115,7 +138,7 @@ public class EscolheController {
 
             atividade.removeAtividade(disciplina.getNome(), turma.getNome(), nomeAtiv, dataAtiv, valorAtiv);
             
-            setTabela(disciplina.getNome(), turma.getNome());
+            setTabela(disciplina.getNome(), turma.getNome(), conteudo.getNome());
             
             AlertaPadrao alerta = new AlertaPadrao();
             alerta.mostraAlertConfirmacao(manutencaoDiarios.getPalcoPrincipal(), "Delte", "Sucesso!", "Atividade apagada com sucesso no banco de dados.");

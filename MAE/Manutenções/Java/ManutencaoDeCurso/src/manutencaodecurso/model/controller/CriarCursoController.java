@@ -41,8 +41,6 @@ public class CriarCursoController implements Initializable {
     @FXML
     private TextField horasTotais;
     @FXML
-    private TextField modalidade;
-    @FXML
     private ChoiceBox campi;
     @FXML
     private ChoiceBox depto;
@@ -57,6 +55,11 @@ public class CriarCursoController implements Initializable {
     private Label labelHorasTotais;
     @FXML
     private Label labelNome;
+    @FXML
+    private ChoiceBox modalidade;
+
+
+    private ObservableList listaModalidade = FXCollections.observableArrayList();
 
     /**
      * Initializes the controller class.
@@ -84,6 +87,11 @@ public class CriarCursoController implements Initializable {
             Logger.getLogger(AlterarCursoController.class.getName()).log(Level.SEVERE, null, ex);
         }
 
+        listaModalidade.add("Técnico Integrado");
+        listaModalidade.add("Graduação");
+
+        modalidade.setItems(listaModalidade);
+        campi.setItems(listaCampi);
         campi.setItems(listaCampi);
 
         campi.getSelectionModel().selectedItemProperty().addListener(
@@ -112,9 +120,9 @@ public class CriarCursoController implements Initializable {
         comando.setString(1, resultado.getString("id"));
         comando.setString(2, nome.getText());
         comando.setString(3, horasTotais.getText());
-        comando.setString(4, modalidade.getText());
+        comando.setString(4, modalidade.getSelectionModel().getSelectedItem().toString());
         comando.execute();
-        System.out.println("Criou uma curso.");
+        System.out.println("Criou um curso.");
         alteraTelaInicial();
     }
 

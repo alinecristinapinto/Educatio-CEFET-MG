@@ -4,27 +4,57 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ManutencaoDiarios.Visualisacao.EscolheController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ManutencaoDiarios.Visualisacao.EscolheController">
    <children>
       <SplitPane dividerPositions="0.5" layoutX="125.0" layoutY="85.0" prefHeight="160.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <items>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                <children>
-                  <HBox layoutX="14.0" layoutY="71.0" prefHeight="25.0" prefWidth="270.0" spacing="10.0">
+                  <HBox layoutX="14.0" layoutY="71.0" prefHeight="25.0" prefWidth="270.0" spacing="10.0" AnchorPane.bottomAnchor="302.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="71.0">
                      <children>
-                        <Button mnemonicParsing="false" prefWidth="85.0" text="Button" />
-                        <Button mnemonicParsing="false" prefWidth="85.0" text="Button" />
-                        <Button mnemonicParsing="false" prefWidth="85.0" text="Button" />
+                        <Button mnemonicParsing="false" onAction="#inserirConteudo" prefWidth="85.0" text="Inserir" />
+                        <Button mnemonicParsing="false" onAction="#alterarConteudo" prefWidth="85.0" text="Alterar" />
+                        <Button mnemonicParsing="false" onAction="#deletarConteudo" prefWidth="85.0" text="Deletar" />
                      </children>
                   </HBox>
                   <Label layoutX="14.0" layoutY="14.0" prefHeight="17.0" prefWidth="270.0" text="Conteúdos:" />
-                  <ListView fx:id="listaConteudos" layoutX="14.0" layoutY="126.0" prefHeight="252.0" prefWidth="270.0" />
+                  <ListView fx:id="listaConteudos" layoutX="14.0" layoutY="126.0" prefHeight="252.0" prefWidth="270.0" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="126.0" />
                </children>
             </AnchorPane>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" />
+          <AnchorPane fx:id="painelDireita" minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+               <children>
+                  <Label layoutX="14.0" layoutY="14.0" prefHeight="17.0" prefWidth="270.0" text="Atividades:" />
+                  <HBox layoutX="13.0" layoutY="74.0" prefHeight="25.0" prefWidth="270.0" spacing="10.0" AnchorPane.bottomAnchor="302.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="71.0">
+                     <children>
+                        <Button mnemonicParsing="false" onAction="#inserirAtividade" prefWidth="85.0" text="Inserir" />
+                        <Button mnemonicParsing="false" onAction="#alterarAtividade" prefWidth="85.0" text="Alterar" />
+                        <Button mnemonicParsing="false" onAction="#deletarAtividade" prefWidth="85.0" text="Deletar" />
+                     </children>
+                  </HBox>
+                  <HBox layoutX="178.0" layoutY="359.0" spacing="10.0" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="10.0">
+                     <children>
+                        <Button mnemonicParsing="false" onAction="#sair" prefWidth="60.0" text="Sair" />
+                     </children>
+                  </HBox>
+                  <TableView fx:id="tabela" layoutX="14.0" layoutY="125.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="126.0">
+                    <columns>
+                      <TableColumn fx:id="nome" prefWidth="92.0" text="Nome" />
+                      <TableColumn fx:id="valor" prefWidth="92.0" text="Valor" />
+                        <TableColumn fx:id="data" prefWidth="92.0" text="Data" />
+                    </columns>
+                  </TableView>
+                  <HBox layoutX="14.0" layoutY="363.0" spacing="10.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0">
+                     <children>
+                        <Button mnemonicParsing="false" prefWidth="85.0" text="Notas" />
+                        <Button mnemonicParsing="false" prefWidth="85.0" text="Faltas" />
+                     </children>
+                  </HBox>
+               </children></AnchorPane>
         </items>
       </SplitPane>
    </children>

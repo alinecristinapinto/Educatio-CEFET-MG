@@ -1,13 +1,17 @@
 package ManutencaoDiarios;
 
 import ManutencaoDiarios.Modelo.Atividade;
+import ManutencaoDiarios.Modelo.Conteudo;
 import ManutencaoDiarios.Modelo.Disciplina;
+import ManutencaoDiarios.Modelo.Turma;
 import ManutencaoDiarios.Visualisacao.AlteraAtividadeController;
+import ManutencaoDiarios.Visualisacao.AlteraConteudoController;
 import ManutencaoDiarios.Visualisacao.EscolheController;
-import ManutencaoDiarios.Visualisacao.MostraDisciplinasController;
+import ManutencaoDiarios.Visualisacao.InsereConteudoController;
 import ManutencaoDiarios.Visualisacao.PainelInsereController;
 import ManutencaoDiarios.Visualisacao.SelecionaDadosController;
 import java.io.IOException;
+import java.sql.SQLException;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -37,7 +41,7 @@ public class ManutencaoDiarios extends Application {
     }
     
     
-    public void chamaLayoutInsere(){
+    public void chamaLayoutInsere(Disciplina disciplina, Turma turma, Conteudo conteudo){
         try{
             FXMLLoader carregadorFXML = new FXMLLoader();
             carregadorFXML.setLocation(ManutencaoDiarios.class.getResource("Visualisacao/PainelInsere.fxml"));
@@ -49,29 +53,15 @@ public class ManutencaoDiarios extends Application {
             
             PainelInsereController controller = carregadorFXML.getController();
             controller.setManutencaoDiarios(this);
+            controller.setDisciplina(disciplina);
+            controller.setTurma(turma);
+            controller.setConteudo(conteudo);
         }catch(IOException e){
             e.printStackTrace();
         }
     }
     
-    public void chamaMostraDisciplinas(){
-        try{
-            FXMLLoader carregadorFXML = new FXMLLoader();
-            carregadorFXML.setLocation(ManutencaoDiarios.class.getResource("Visualisacao/MostraDisciplinas.fxml"));
-            telaBase = (AnchorPane) carregadorFXML.load();
-            
-            Scene cena = new Scene(telaBase);
-            palcoPrincipal.setScene(cena);
-            palcoPrincipal.show();
-            
-            MostraDisciplinasController controller = carregadorFXML.getController();
-            controller.setManutencaoDiarios(this);
-        }catch(IOException e){
-            e.printStackTrace();
-        }
-    }
-    
-    public void chamaAlteraAtividade(Atividade atividade){
+    public void chamaAlteraAtividade(Atividade atividade, Disciplina disciplina, Turma turma){
         try{
             FXMLLoader carregadorFXML = new FXMLLoader();
             carregadorFXML.setLocation(ManutencaoDiarios.class.getResource("Visualisacao/AlteraAtividade.fxml"));
@@ -84,12 +74,14 @@ public class ManutencaoDiarios extends Application {
             AlteraAtividadeController controller = carregadorFXML.getController();
             controller.setAtividade(atividade);
             controller.setManutencaoDiarios(this);
+            controller.setDisciplina(disciplina);
+            controller.setTurma(turma);
         }catch(IOException e){
             e.printStackTrace();
         }
     }
     
-    public void chamaEscolhe(Disciplina disciplina){
+    public void chamaEscolhe(Disciplina disciplina, Turma turma) throws SQLException{
         try{
             FXMLLoader carregadorFXML = new FXMLLoader();
             carregadorFXML.setLocation(ManutencaoDiarios.class.getResource("Visualisacao/Escolhe.fxml"));
@@ -102,6 +94,7 @@ public class ManutencaoDiarios extends Application {
             EscolheController controller = carregadorFXML.getController();
             controller.setManutencaoDiarios(this);
             controller.setDisciplina(disciplina);
+            controller.setTurma(turma);
         }catch(IOException e){
             e.printStackTrace();
         }
@@ -124,6 +117,44 @@ public class ManutencaoDiarios extends Application {
         }
     }
     
+    public void chamaInsereConteudo(Disciplina disciplina, Turma turma) throws SQLException{
+        try{
+            FXMLLoader carregadorFXML = new FXMLLoader();
+            carregadorFXML.setLocation(ManutencaoDiarios.class.getResource("Visualisacao/InsereConteudo.fxml"));
+            telaBase = (AnchorPane) carregadorFXML.load();
+            
+            Scene cena = new Scene(telaBase);
+            palcoPrincipal.setScene(cena);
+            palcoPrincipal.show();
+            
+            InsereConteudoController controller = carregadorFXML.getController();
+            controller.setManutencaoDiarios(this);
+            controller.setDisciplina(disciplina);
+            controller.setTurma(turma);
+        }catch(IOException e){
+            e.printStackTrace();
+        }
+    }
+    
+    public void chamaAlteraConteudo(Atividade atividade, Disciplina disciplina, Turma turma){
+        try{
+            FXMLLoader carregadorFXML = new FXMLLoader();
+            carregadorFXML.setLocation(ManutencaoDiarios.class.getResource("Visualisacao/AlteraConteudo.fxml"));
+            telaBase = (AnchorPane) carregadorFXML.load();
+            
+            Scene cena = new Scene(telaBase);
+            palcoPrincipal.setScene(cena);
+            palcoPrincipal.show();
+            
+            AlteraConteudoController controller = carregadorFXML.getController();
+            controller.setManutencaoDiarios(this);
+            controller.setAtividade(atividade);
+            controller.setDisciplina(disciplina);
+            controller.setTurma(turma);
+        }catch(IOException e){
+            e.printStackTrace();
+        }
+    }
     
 
     public static void main(String[] args) {

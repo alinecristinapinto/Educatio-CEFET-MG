@@ -130,7 +130,7 @@ public class CriarTurmasController implements Initializable {
 
     public ResultSet selecionarRegistros(String tabela) throws SQLException {
         Statement comando = link.createStatement();
-        String query = "SELECT * FROM `" + tabela;
+        String query = "SELECT * FROM `" + tabela + "`";
         ResultSet resultado = comando.executeQuery(query);
         return resultado;
     }

@@ -1,31 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
-<?import java.lang.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="manutencaodeturmas.model.controller.AlterarTurmasController">
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="700.0" styleClass="background" stylesheets="@Padrao.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="manutencaodeturmas.model.controller.AlterarTurmasController">
    <children>
-      <Button layoutX="562.0" layoutY="481.0" mnemonicParsing="false" onAction="#alteraTurma" text="Alterar" />
-      <ChoiceBox fx:id="curso" layoutX="52.0" layoutY="247.0" prefWidth="150.0" />
-      <Label layoutX="52.0" layoutY="212.0" text="Escolha o curso:" />
-      <ChoiceBox fx:id="depto" layoutX="52.0" layoutY="175.0" prefWidth="150.0" />
-      <Label layoutX="52.0" layoutY="140.0" text="Escolha o departamento:" />
-      <ChoiceBox fx:id="campi" layoutX="52.0" layoutY="94.0" prefWidth="150.0" />
-      <Label layoutX="52.0" layoutY="59.0" text="Escolha o campi:" />
-      <ListView fx:id="turmas" layoutX="52.0" layoutY="306.0" prefHeight="200.0" prefWidth="200.0" />
-      <Label fx:id="labelSerie" layoutX="400.0" layoutY="276.0" text="Serie:" visible="false" />
-      <TextField fx:id="serie" layoutX="400.0" layoutY="305.0" prefHeight="25.0" prefWidth="214.0" promptText="(Inalterado)" visible="false" />
-      <Label fx:id="labelIdCurso" layoutX="400.0" layoutY="198.0" text="ID do curso: " visible="false" />
-      <TextField fx:id="idCurso" layoutX="400.0" layoutY="227.0" prefHeight="25.0" prefWidth="214.0" promptText="(Inalterado)" visible="false" />
-      <Label fx:id="labelNome" layoutX="400.0" layoutY="120.0" text="Nome: " visible="false" />
-      <TextField fx:id="nome" layoutX="400.0" layoutY="149.0" prefHeight="25.0" prefWidth="214.0" promptText="(Inalterado)" visible="false" />
-      <Label fx:id="labelEnunciado" layoutX="400.0" layoutY="76.0" text="Digite os dados que voce deseja alterar: " visible="false" />
+      <Button layoutX="531.0" layoutY="554.0" mnemonicParsing="false" onAction="#alteraTurma" text="Alterar" />
+      <ChoiceBox fx:id="curso" layoutX="53.0" layoutY="312.0" prefHeight="27.0" prefWidth="198.0" />
+      <Label layoutX="53.0" layoutY="279.0" styleClass="label-pequena" text="Escolha o curso:" />
+      <ChoiceBox fx:id="depto" layoutX="53.0" layoutY="244.0" prefHeight="27.0" prefWidth="198.0" />
+      <Label layoutX="53.0" layoutY="213.0" styleClass="label-pequena" text="Escolha o departamento:" />
+      <ChoiceBox fx:id="campi" layoutX="53.0" layoutY="177.0" prefHeight="27.0" prefWidth="198.0" />
+      <Label layoutX="53.0" layoutY="144.0" styleClass="label-pequena" text="Escolha o campus:" />
+      <ListView fx:id="turmas" layoutX="52.0" layoutY="385.0" prefHeight="200.0" prefWidth="200.0" />
+      <Label fx:id="labelSerie" layoutX="393.0" layoutY="351.0" styleClass="label-pequena" text="Serie:" visible="false" />
+      <TextField fx:id="serie" layoutX="393.0" layoutY="380.0" prefHeight="27.0" prefWidth="198.0" promptText="(Inalterado)" visible="false" />
+      <Label fx:id="labelNome" layoutX="393.0" layoutY="271.0" styleClass="label-pequena" text="Nome: " visible="false" />
+      <TextField fx:id="nome" layoutX="393.0" layoutY="300.0" prefHeight="27.0" prefWidth="198.0" promptText="(Inalterado)" visible="false" />
+      <Label fx:id="labelEnunciado" layoutX="330.0" layoutY="98.0" styleClass="label-pequena" text="Digite os dados que voce deseja alterar: " visible="false" />
+      <Button fx:id="voltar" layoutX="453.0" layoutY="554.0" mnemonicParsing="false" onAction="#alteraTelaInicial" prefHeight="31.0" prefWidth="60.0" text="Voltar" />
+      <Label layoutX="24.0" layoutY="37.0" styleClass="label-cabecalho" text="Altera Turma" />
+      <Label fx:id="labelEnunciado1" layoutX="24.0" layoutY="98.0" styleClass="label-pequena" text="Dados da turma:" />
+      <Label layoutX="52.0" layoutY="351.0" styleClass="label-pequena" text="Escolha a turma:" />
    </children>
 </AnchorPane>

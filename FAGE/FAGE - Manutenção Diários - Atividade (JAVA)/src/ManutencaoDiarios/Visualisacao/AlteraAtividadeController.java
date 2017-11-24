@@ -2,6 +2,8 @@ package ManutencaoDiarios.Visualisacao;
 
 import ManutencaoDiarios.ManutencaoDiarios;
 import ManutencaoDiarios.Modelo.Atividade;
+import ManutencaoDiarios.Modelo.Disciplina;
+import ManutencaoDiarios.Modelo.Turma;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.time.LocalDate;
@@ -18,6 +20,8 @@ import testeclassealert.AlertaPadrao;
 public class AlteraAtividadeController {
     private ManutencaoDiarios manutencaoDiarios;
     private Atividade atividade;
+    private Disciplina disciplina;
+    private Turma turma;
     private String nomeNovoAtiv;
     private String dataNovoAtiv;
     private double valorNovoAtiv;
@@ -28,6 +32,16 @@ public class AlteraAtividadeController {
     public void setManutencaoDiarios(ManutencaoDiarios manutencaoDiarios) {
         this.manutencaoDiarios = manutencaoDiarios;
     }
+
+    public void setDisciplina(Disciplina disciplina) {
+        this.disciplina = disciplina;
+    }
+
+    public void setTurma(Turma turma) {
+        this.turma = turma;
+    }
+    
+    
 
     public void setAtividade(Atividade atividade) {
         this.atividade = atividade;
@@ -72,10 +86,13 @@ public class AlteraAtividadeController {
             
             AlertaPadrao alerta = new AlertaPadrao();
             alerta.mostraAlertConfirmacao(manutencaoDiarios.getPalcoPrincipal(), "Alteração", "Sucesso!", "Alteração realizada com sucesso no banco de dados.");
+            
+            manutencaoDiarios.chamaEscolhe(disciplina, turma);
+            
         }
     }
     
-    public void cancela(){
-        manutencaoDiarios.chamaMostraDisciplinas();
+    public void cancela() throws SQLException{
+        manutencaoDiarios.chamaEscolhe(disciplina, turma);
     }
 }

@@ -3,154 +3,80 @@
     <head>
         <title>Adicionar Campus</title>
         <meta charset="utf-8">
-        <link href="css/bootstrap.css" rel="stylesheet">
-        <link href="css/JHJ-web-estilos.css" rel="stylesheet">
-        <script src="js/jquery.min.js"></script>
-        <script src="js/bootstrap.min.js"></script> 
-        <script type="text/javascript" src="js/JHJ-web-script.js"></script>
+
+        <!-- CSS do Bootstrap -->
+        <link href="css/bootstrap.min.css" rel="stylesheet" />
+        <link href="css/bootstrap.css" rel="stylesheet"/>
+
+        <!-- CSS do grupo -->
+        <link href="css/JHJ-web-estilos.css" rel="stylesheet"/>
+        <link href="css/JHJ-web-estilos-painel.css" rel="stylesheet"/>
+
+        <!-- Arquivos js -->
+        <script src="js/popper.js"></script>
+        <script src="js/jquery-3.2.1.js" type="text/javascript"></script>
+        <script src="js/bootstrap.min.js" type="text/javascript"></script>
+        <script src="js/JHJ-web-script-adicionar-campus.js" type="text/javascript"></script>
+
+        <!-- Fontes e icones -->
+        <link href="css/nucleo-icons.css" rel="stylesheet">
     </head>
     <body>
-        <!-- menu coordenador (codigo da gerencia)-->
-        <nav role="navigation" class="navbar navbar-default">        
-        <div class="navbar-header">
-            <button type="button" data-target="#menu" data-toggle="collapse" class="navbar-toggle">                    
-                <span class="sr-only"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>                
-            </button>                
-                <a href="#" class="navbar-brand"><img src="slogan.png"></a>
-        </div>
-            
-        <div id="menu" class="collapse navbar-collapse">
-            <ul class="nav navbar-nav">
-                <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-pushpin"></span> Campus</a>
-                    <ul class="dropdown-menu">
-                        <li><a href="#">Alterar Campus</a></li>
-                        <li class="divider"></li>
-                        <li><a href="#">Adicionar Campus</a></li>
-                        <li class="divider"></li>
-                        <li><a href="#">Remover Campus</a></li>
-                    </ul>
-                </li>
+        <div class="wrapper">         
+            <div class="section landing-section">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-8 ml-auto mr-auto">
+                            <h2 class="text-center">INCLUSÃO DE CAMPUS</h2>
+                            <?php
+                                $strNomeCampus = $_POST["nomeCampus"];
+                                $strCidadeCampus = $_POST["cidadeCampus"];
+                                $strUFCampus = $_POST["ufCampus"];
 
-                <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-list"></span>  Departamentos</a>
-                    <ul class="dropdown-menu">
-                        <li><a href="#">Adicionar departamentos</a></li>
-                        <li class="divider"></li>
-                        <li><a href="#">Remover departamentos</a></li>
-                        <li class="divider"></li>
-                        <li><a href="#">Acessar departamentos</a></li>
-                    </ul>
-                </li>
+                                // Conectando com o servidor MySQL
+                                $link = mysqli_connect("localhost", "root", "");
+                                if (!$link){
+                                //     die("Conexao falhou: ".mysqli_connect_error()."<br/>");
+                                } else {
+                                //     echo "Conexao efetuada com sucesso!<br/>";
+                                }
+                                //Selecionado BD
+                                $sql = mysqli_select_db($link, 'Educatio');
 
-                <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon  glyphicon-user"></span>  Professores</a>
-                    <ul class="dropdown-menu">
-                        <li><a href="#">Adicionar professores</a></li>
-                        <li class="divider"></li>
-                        <li><a href="#">Remover professores</a></li>
-                        <li class="divider"></li>
-                        <li><a href="#">Acessar professores</a></li>
-                    </ul>
-                </li>
-
-                <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-list-alt"></span>  Cursos</a>
-                    <ul class="dropdown-menu">
-                        <li><a href="#">Adicionar cursos</a></li>
-                        <li class="divider"></li>
-                        <li><a href="#">Remover cursos</a></li>
-                        <li class="divider"></li>
-                        <li><a href="#">Acessar cursos</a></li>
-                    </ul>
-                </li>
-
-                <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-book"></span>  Disciplinas</a>
-                    <ul class="dropdown-menu">
-                        <li><a href="#">Adicionar disciplinas</a></li>
-                        <li class="divider"></li>
-                        <li><a href="#">Remover disciplinas</a></li>
-                        <li class="divider"></li>
-                        <li><a href="#">Acessar disciplinas</a></li>
-                    </ul>
-                </li>
-
-                <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="   glyphicon glyphicon-pencil"></span>  Alunos</a>
-                    <ul class="dropdown-menu">
-                        <li><a href="#">Adicionar alunos</a></li>
-                        <li class="divider"></li>
-                        <li><a href="#">Remover alunos</a></li>
-                        <li class="divider"></li>
-                        <li><a href="#">Acessar alunos</a></li>
-                    </ul>
-                </li>
-
-                <li><a href="#"><span class="glyphicon glyphicon-folder-open"></span> Registros</a>
-
-                <li><a href="#"><span class="glyphicon glyphicon-transfer"></span> Transferências</a>
-                </ul>
-
-                <ul class="nav navbar-nav navbar-right">
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img class="profile" src="padrao.png">  Coordenador (a) <span class="caret"></span>&emsp;</a>
-
-                    <ul class="dropdown-menu">
-                        <li><a href="#"><span class="glyphicon glyphicon-user icon-size"></span> - Seu perfil </a></li>
-                        <li class="divider"></li>
-                        <li><a href="#"><span class="glyphicon glyphicon-log-out"></span> - Sair</a></li>
-                    </ul>
-                </li>
-                </ul>
-        </div>
-        </nav>        
-        <!-- fim do menu coordenador (codigo da gerencia)-->
-
-        <h1>Inclusão de Campus</h1>
-        <?php
-            $strNomeCampus = $_POST["nomeCampus"];
-            $strCidadeCampus = $_POST["cidadeCampus"];
-            $strUFCampus = $_POST["ufCampus"];
-
-            // Conectando com o servidor MySQL
-            $link = mysqli_connect("localhost", "root", "");
-            if (!$link){
-            //     die("Conexao falhou: ".mysqli_connect_error()."<br/>");
-            } else {
-            //     echo "Conexao efetuada com sucesso!<br/>";
-            }
-            //Selecionado BD
-            $sql = mysqli_select_db($link, 'Educatio');
-
-            //Inserindo dados na tabela campi
-            $sql = "INSERT INTO campi (nome, cidade, UF, ativo) VALUES ('$strNomeCampus', '$strCidadeCampus', '$strUFCampus', 'S')";
-            if (mysqli_query($link, $sql)) {
-            //     echo "Campus adicionado com sucesso!";
-            }else{
-            //     echo "Erro ao adicionar campus: ".$sql."<br/>".$link->error."<br/>";
-            }
-        ?>
-        
-        <!-- exibindo informações do novo campus adicionado dentro de um painel -->
-        <div class="container">    
-            <div style="margin-top:50px;" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">                    
-                <div class="panel panel-info" >
-                    <div class="panel-heading">
-                        <div class="panel-title">Campus adicionado com sucesso!</div>
-                    </div>  
-                    <div style="padding-top:20px" class="panel-body">     
-                            <p><strong>As informações do novo campus são:</strong><p> 
-                            <p><strong>Nome:</strong><?php echo " ".$strNomeCampus ?><p>
-                            <p><strong>Cidade:</strong><?php echo " ".$strCidadeCampus ?><p>
-                            <p><strong>UF:</strong><?php echo " ".$strUFCampus ?><p>
-                            <input type="button" class="btn btn-primary" value="Voltar" onClick="voltarParaPaginaInsercaoCampus()"/>
-                    </div>                     
-                </div>  
-            </div>
-        </div>
-
-        <!-- rodape -->
-        <div class="containeer">
-            <div class="row">
-                <p><center><p class="footertext"><strong><a class="a" href="Colaboradores/gerencia-web-colaboradores.html">Educatio CEFET-MG - Copyright 2017</a></strong></p></center></p>
+                                //Inserindo dados na tabela campi
+                                $sql = "INSERT INTO campi (nome, cidade, UF, ativo) VALUES ('$strNomeCampus', '$strCidadeCampus', '$strUFCampus', 'S')";
+                                if (mysqli_query($link, $sql)) {
+                                //     echo "Campus adicionado com sucesso!";
+                                }else{
+                                //     echo "Erro ao adicionar campus: ".$sql."<br/>".$link->error."<br/>";
+                                }
+                            ?>                   
+                            <!-- exibindo informações do novo campus adicionado -->
+                            <div class='container' style='margin-top: 50px;'>
+                                <div class='row'>
+                                    <div class='col-md-8 ml-auto mr-auto'>                    
+                                        <div class='panel'>
+                                            <div class='panel-heading' style='margin-top: 0px;'>
+                                                <div class='panel-title'>Campus adicionado com sucesso!</div>
+                                            </div>  
+                                            <div style='padding-top: 20px' class='panel-body' id='padin'>  
+                                                <p style="font-weight: bold;">As informações do novo campus são:</p> 
+                                                <p><label style="font-weight: bold; margin-bottom: 0;">Nome:</label><?php echo " ".$strNomeCampus ?></p>
+                                                <p><label style="font-weight: bold; margin-bottom: 0;">Cidade:</label><?php echo " ".$strCidadeCampus ?></p>
+                                                <p><label style="font-weight: bold; margin-bottom: 0;">UF:</label><?php echo " ".$strUFCampus ?></p>
+                                                <div class='row'>
+                                                    <div class='col-md-4 ml-auto mr-auto'>
+                                                        <button style='margin-bottom: 10px; margin-left: 10px;' type='button' class='btn btn-info btn-round' onClick='voltarParaPaginaInsercaoCampus()'>VOLTAR</button>
+                                                    </div>
+                                                </div>                     
+                                            </div>  
+                                        </div> <!-- panel -->
+                                    </div>
+                                </div> <!-- row -->
+                            </div> <!-- conteiner -->
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </body>

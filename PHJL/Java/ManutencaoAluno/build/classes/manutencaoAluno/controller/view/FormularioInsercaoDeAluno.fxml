@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.media.*?>
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<ScrollPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="690.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="manutencaoAluno.controller.view.FormularioInsercaoDeAlunoControlador">
+   <content>
+      <AnchorPane id="AnchorPane" prefHeight="690.0" prefWidth="800.0" styleClass="telaBackground" stylesheets="@FormularioInsercaoDeAlunoEstilo.css">
+         <children>
+            <GridPane layoutX="25.0" layoutY="50.0" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="25.0" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="60.0">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="170.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="300.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Label styleClass="label-pequena" stylesheets="@FormularioInsercaoDeAlunoEstilo.css" text="Nome" />
+                  <Label styleClass="label-pequena" stylesheets="@FormularioInsercaoDeAlunoEstilo.css" text="Sexo" GridPane.rowIndex="1" />
+                  <Label styleClass="label-pequena" stylesheets="@FormularioInsercaoDeAlunoEstilo.css" text="Data de Nascimento" GridPane.rowIndex="2" />
+                  <Label styleClass="label-pequena" stylesheets="@FormularioInsercaoDeAlunoEstilo.css" text="CPF" GridPane.rowIndex="3" />
+                  <Label styleClass="label-pequena" stylesheets="@FormularioInsercaoDeAlunoEstilo.css" text="Logradouro" GridPane.rowIndex="4" />
+                  <Label styleClass="label-pequena" stylesheets="@FormularioInsercaoDeAlunoEstilo.css" text="Número" GridPane.rowIndex="5" />
+                  <Label styleClass="label-pequena" stylesheets="@FormularioInsercaoDeAlunoEstilo.css" text="Complemento" GridPane.rowIndex="6" />
+                  <Label styleClass="label-pequena" stylesheets="@FormularioInsercaoDeAlunoEstilo.css" text="Bairro" GridPane.rowIndex="7" />
+                  <Label styleClass="label-pequena" stylesheets="@FormularioInsercaoDeAlunoEstilo.css" text="Cidade" GridPane.rowIndex="8" />
+                  <Label styleClass="label-pequena" stylesheets="@FormularioInsercaoDeAlunoEstilo.css" text="CEP" GridPane.rowIndex="9" />
+                  <Label styleClass="label-pequena" stylesheets="@FormularioInsercaoDeAlunoEstilo.css" text="UF" GridPane.rowIndex="10" />
+                  <Label styleClass="label-pequena" stylesheets="@FormularioInsercaoDeAlunoEstilo.css" text="E-mail" GridPane.rowIndex="11" />
+                  <Label styleClass="label-pequena" stylesheets="@FormularioInsercaoDeAlunoEstilo.css" text="Foto" GridPane.rowIndex="12" />
+                  <TextField fx:id="cpf" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                  <TextField fx:id="logradouro" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                  <TextField fx:id="numero" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                  <TextField fx:id="complemento" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                  <TextField fx:id="bairro" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+                  <TextField fx:id="cidade" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+                  <TextField fx:id="cep" GridPane.columnIndex="1" GridPane.rowIndex="9" />
+                  <TextField fx:id="uf" GridPane.columnIndex="1" GridPane.rowIndex="10" />
+                  <TextField fx:id="email" GridPane.columnIndex="1" GridPane.rowIndex="11" />
+                  <TextField fx:id="nome" GridPane.columnIndex="1" />
+                  <RadioButton mnemonicParsing="false" styleClass="corDaFont" text="Feminino" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                     <toggleGroup>
+                        <ToggleGroup fx:id="sexoi" />
+                     </toggleGroup>
+                  </RadioButton>
+                  <RadioButton mnemonicParsing="false" styleClass="corDaFont" text="Masculino" textFill="WHITE" toggleGroup="$sexoi" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                     <GridPane.margin>
+                        <Insets />
+                     </GridPane.margin>
+                  </RadioButton>
+                  <DatePicker fx:id="dataDeNascimento" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <Button fx:id="foto" mnemonicParsing="false" onAction="#acaoButao" text="Escolher Arquivo" GridPane.columnIndex="1" GridPane.rowIndex="12" />
+                  <ListView fx:id="listaDeVizualizacao" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="45.0" prefWidth="287.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="12">
+                     <GridPane.margin>
+                        <Insets left="140.0" />
+                     </GridPane.margin>
+                  </ListView>
+                  <Label styleClass="label-pequena" stylesheets="@FormularioInsercaoDeAlunoEstilo.css" text="Campus" GridPane.rowIndex="13" />
+                  <ComboBox fx:id="campus" maxWidth="1.7976931348623157E308" GridPane.columnIndex="1" GridPane.rowIndex="13" />
+                  <Label styleClass="label-pequena" text="Departamento" GridPane.rowIndex="14" />
+                  <Label styleClass="label-pequena" text="Curso" GridPane.rowIndex="15" />
+                  <Label styleClass="label-pequena" text="Turma" GridPane.rowIndex="16" />
+                  <ComboBox fx:id="departamento" maxWidth="1.7976931348623157E308" GridPane.columnIndex="1" GridPane.rowIndex="14" />
+                  <ComboBox fx:id="curso" maxWidth="1.7976931348623157E308" GridPane.columnIndex="1" GridPane.rowIndex="15" />
+                  <ComboBox fx:id="turma" maxWidth="1.7976931348623157E308" GridPane.columnIndex="1" GridPane.rowIndex="16" />
+               </children>
+            </GridPane>
+            <Button fx:id="botaoEnviar" layoutX="549.0" layoutY="561.0" mnemonicParsing="false" onAction="#acaoEntrada" prefHeight="25.0" prefWidth="76.0" text="Enviar" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="25.0" />
+            <Label layoutX="175.0" layoutY="14.0" styleClass="label-cabecalho" stylesheets="@FormularioInsercaoDeAlunoEstilo.css" text="Cadastro de Aluno" AnchorPane.leftAnchor="175.0" AnchorPane.rightAnchor="175.0" AnchorPane.topAnchor="15.0" />
+         </children>
+      </AnchorPane>
+   </content>
+</ScrollPane>

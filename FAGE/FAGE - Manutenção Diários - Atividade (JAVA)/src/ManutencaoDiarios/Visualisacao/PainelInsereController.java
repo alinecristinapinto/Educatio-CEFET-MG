@@ -2,6 +2,7 @@ package ManutencaoDiarios.Visualisacao;
 
 import ManutencaoDiarios.ManutencaoDiarios;
 import ManutencaoDiarios.Modelo.Atividade;
+import ManutencaoDiarios.Modelo.Conteudo;
 import ManutencaoDiarios.Modelo.Disciplina;
 import ManutencaoDiarios.Modelo.Turma;
 import java.io.IOException;
@@ -22,6 +23,7 @@ public class PainelInsereController {
     private Atividade atividade = new Atividade();
     private Disciplina disciplina;
     private Turma turma;
+    private Conteudo conteudo;
     
     @FXML
     private TextField nomeAtividade;
@@ -42,6 +44,10 @@ public class PainelInsereController {
     public void setTurma(Turma turma) {
         this.turma = turma;
     }
+    
+    public void setConteudo(Conteudo conteudo){
+        this.conteudo = conteudo;
+    }
 
     public void setManutencaoDiarios(ManutencaoDiarios manutencaoDiarios) {
         this.manutencaoDiarios = manutencaoDiarios;
@@ -59,7 +65,7 @@ public class PainelInsereController {
         }else{
             atividade.insereAtividade(disciplina.getNome(), nomeAtividade.getText(), 
             dataAtividade.getValue().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")), 
-            Double.parseDouble(valorAtividade.getText()), 1, (String) turma.getNome());
+            Double.parseDouble(valorAtividade.getText()), turma.getNome(), conteudo.getNome());
         
             AlertaPadrao alerta = new AlertaPadrao();
             alerta.mostraAlertConfirmacao(manutencaoDiarios.getPalcoPrincipal(), "Inserção", "Sucesso!", "Inserção realizada com sucesso no banco de dados.");

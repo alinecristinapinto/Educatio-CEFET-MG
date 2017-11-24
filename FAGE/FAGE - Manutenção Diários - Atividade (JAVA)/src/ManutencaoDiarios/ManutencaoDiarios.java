@@ -1,6 +1,7 @@
 package ManutencaoDiarios;
 
 import ManutencaoDiarios.Modelo.Atividade;
+import ManutencaoDiarios.Modelo.Conteudo;
 import ManutencaoDiarios.Modelo.Disciplina;
 import ManutencaoDiarios.Modelo.Turma;
 import ManutencaoDiarios.Visualisacao.AlteraAtividadeController;
@@ -40,7 +41,7 @@ public class ManutencaoDiarios extends Application {
     }
     
     
-    public void chamaLayoutInsere(Disciplina disciplina, Turma turma){
+    public void chamaLayoutInsere(Disciplina disciplina, Turma turma, Conteudo conteudo){
         try{
             FXMLLoader carregadorFXML = new FXMLLoader();
             carregadorFXML.setLocation(ManutencaoDiarios.class.getResource("Visualisacao/PainelInsere.fxml"));
@@ -54,6 +55,7 @@ public class ManutencaoDiarios extends Application {
             controller.setManutencaoDiarios(this);
             controller.setDisciplina(disciplina);
             controller.setTurma(turma);
+            controller.setConteudo(conteudo);
         }catch(IOException e){
             e.printStackTrace();
         }

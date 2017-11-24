@@ -20,8 +20,9 @@ public class AcervoTabela {
     private StringProperty ano;
     private StringProperty editora;
     private StringProperty paginas;
+    private int id;
 
-    public AcervoTabela(String campus, String nome, String tipo, String local, String ano, String editora, String paginas) {
+    public AcervoTabela(String campus, String nome, String tipo, String local, String ano, String editora, String paginas, int id) {
         this.campus = new SimpleStringProperty(campus);
         this.nome = new SimpleStringProperty(nome);
         this.tipo = new SimpleStringProperty(tipo);
@@ -29,6 +30,15 @@ public class AcervoTabela {
         this.ano = new SimpleStringProperty(ano);
         this.editora = new SimpleStringProperty(editora);
         this.paginas = new SimpleStringProperty(paginas);
+        this.id = id;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public StringProperty getCampus() {

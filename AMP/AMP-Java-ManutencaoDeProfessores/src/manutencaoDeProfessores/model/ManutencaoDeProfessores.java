@@ -19,7 +19,8 @@ import manutencaoDeProfessores.model.controller.PesquisaProfessorController;
 
 
 public class ManutencaoDeProfessores extends Application {
-
+    
+    private ObservableList<ProfTabela> listaProf;
     
     public static void main(String[] args) throws SQLException {
         try{
@@ -98,21 +99,16 @@ public class ManutencaoDeProfessores extends Application {
         abreInterfacePrincipal();
         
     }
-    public ObservableList pesquisaDepto(Connection connection) throws SQLException{
-        System.out.println("101");
+    public ObservableList pesquisaDepto(Connection connection, int value) throws SQLException{
         ObservableList nomes = FXCollections.observableArrayList();
         ResultSet result;
-        System.out.println("104");
-        String sql_fetch = "SELECT nome FROM deptos WHERE ativo='S'";
+        String sql_fetch = "SELECT nome FROM deptos WHERE ativo='S' AND idCampi=" +value;
         try{
-            System.out.println("105");
         Statement fetch = connection.createStatement();
-            System.out.println("106");
         result = fetch.executeQuery(sql_fetch);
         while(result.next()){
         nomes.add(result.getString("nome"));
         }
-            System.out.println("107");
         }catch(SQLException e){
             System.out.println("SQLException: " + e.getMessage());
             System.out.println("SQLState: " + e.getSQLState());
@@ -158,13 +154,83 @@ public class ManutencaoDeProfessores extends Application {
         controller.setMain(this);
     }
     
-    public void abreEditaProfessor() throws IOException{
+    public void abreEditaProfessor(String nome, String IDSiape, String titulacao) throws IOException{
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(ManutencaoDeProfessores.class.getResource("view/EditaProfessor.fxml"));
         AnchorPane tela = (AnchorPane) loader.load();
         borda.setCenter(tela);
         EditaProfessorController controller = loader.getController();
-        controller.setMain(this);
+        controller.setMain(this, nome, IDSiape, titulacao);
     }
+    
+    public ObservableList montaListaProfessores(Connection connection, String determinado) throws SQLException{
+        listaProf = FXCollections.observableArrayList();
+        //int idProfDisc = pegaIdProfDisciplina(pegaIdDisciplina(disciplina), pegaIdTurma(turma));
 
+        String sql = "SELECT * FROM funcionario WHERE nome = '" + determinado + "' AND ativo = 'S' AND hierarquia = 'professor'";
+        
+        PreparedStatement declaracao = connection.prepareStatement(sql);
+        // declaracao.setInt(1, idProfDisc);
+        
+        ResultSet rs = declaracao.executeQuery();
+        while(rs.next()){
+            listaProf.add(new ProfTabela(rs.getString("nome"), rs.getString("idSIAPE"), rs.getString("titulacao")));
+        }
+        
+        return listaProf;
+        
+    }
+    
+    public ObservableList pesquisaCampi(Connection connection) throws SQLException{
+        ObservableList nomes = FXCollections.observableArrayList();
+        ResultSet result;
+        String sql_fetch = "SELECT nome FROM campi WHERE ativo='S'";
+        try{
+        Statement fetch = connection.createStatement();
+        result = fetch.executeQuery(sql_fetch);
+        while(result.next()){
+        nomes.add(result.getString("nome"));
+        }
+        }catch(SQLException e){
+            System.out.println("SQLException: " + e.getMessage());
+            System.out.println("SQLState: " + e.getSQLState());
+            System.out.println("VendorError: " + e.getErrorCode());  
+        }
+        
+        return nomes;
+    }
+    
+    public int pegaIdCampi(Connection connection, String campus) throws SQLException{
+        int id = 0;
+        ResultSet result;
+        String sql_fetch = "SELECT id FROM campi WHERE ativo='S' AND nome='" + campus + "'";
+        try{
+        Statement fetch = connection.createStatement();
+        result = fetch.executeQuery(sql_fetch);
+        result.next();
+        id = result.getInt("id");
+        }catch(SQLException e){
+            System.out.println("SQLException: " + e.getMessage());
+            System.out.println("SQLState: " + e.getSQLState());
+            System.out.println("VendorError: " + e.getErrorCode());  
+        }
+        return id;
+    }
+    
+    public int pegaIdProf (Connection connection, String determinado) throws SQLException{
+        int id = 0;
+        ResultSet result;
+        String sql_fetch = "SELECT idSIAPE FROM funcionario WHERE ativo='S' AND titulacao='professor' AND nome='" + determinado + "'";
+        try{
+        Statement fetch = connection.createStatement();
+        result = fetch.executeQuery(sql_fetch);
+        result.next();
+        id = result.getInt("idSIAPE");
+        }catch(SQLException e){
+            System.out.println("SQLException: " + e.getMessage());
+            System.out.println("SQLState: " + e.getSQLState());
+            System.out.println("VendorError: " + e.getErrorCode());  
+        }
+        return id;
+    }
 }

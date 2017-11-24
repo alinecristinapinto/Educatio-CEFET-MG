@@ -15,6 +15,7 @@ import java.sql.Statement;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
@@ -38,6 +39,9 @@ public class EditaLivroController implements Initializable{
     String paginasP;
     String anoP;
     String tipoP;
+    String ISBNP;
+    String edicaoP;
+    int id;
     
     @FXML
     private TextField nome;
@@ -102,19 +106,18 @@ public class EditaLivroController implements Initializable{
 
             
         main.alteraAcervo(link, nomeP, tipoP, localP, anoP, editoraP, paginasP, "acervo", "nome", nome.getText());
-        //main.alteraAcervo(link, nomeP, tipoP, localP, anoP, editoraP, paginasP, "acervo", "tipo", autorSobrenome.getText());
         main.alteraAcervo(link, nomeP, tipoP, localP, anoP, editoraP, paginasP, "acervo", "ano", ano.getText());
         main.alteraAcervo(link, nomeP, tipoP, localP, anoP, editoraP, paginasP, "acervo", "local", local.getText());
         main.alteraAcervo(link, nomeP, tipoP, localP, anoP, editoraP, paginasP, "acervo", "editora", editora.getText());
         main.alteraAcervo(link, nomeP, tipoP, localP, anoP, editoraP, paginasP, "acervo", "paginas", paginas.getText());
-
+        main.alteraLivro(link, edicao.getText(), ISBN.getText(), id);
         
         main.abrePesquisarObra();
         }
         }
     
     
-        public void setMain(ObrasDoAcervo main, Connection connection, String nomeP, String tipoP, String localP, String anoP, String editoraP, String paginasP) {
+        public void setMain(ObrasDoAcervo main, Connection connection, String nomeP, String tipoP, String localP, String anoP, String editoraP, String paginasP, int id) throws SQLException {
         this.connection = connection;
         this.main = main;
         this.nomeP=nomeP;
@@ -122,12 +125,31 @@ public class EditaLivroController implements Initializable{
         this.anoP=anoP;
         this.editoraP=editoraP;
         this.paginasP=paginasP;
+        this.id=id;
+        
+        Statement stmt = null;
+        stmt = connection.createStatement();
+        String sql = "SELECT * FROM livros WHERE idAcervo='"+id+"' AND ativo='S'";
+        ResultSet rs; 
+        rs = stmt.executeQuery(sql);
+        rs.next();
             
         nome.setText(nomeP);
         local.setText(localP);
         ano.setText(anoP);
         editora.setText(editoraP);
         paginas.setText(paginasP);
+        ISBN.setText(rs.getString("ISBN"));
+        edicao.setText(rs.getString("edicao"));
+        
+        ObservableList lista = null;
+        try {
+            lista = main.pesquisaCampi(link);
+        } catch (SQLException ex) {
+            Logger.getLogger(CriaLivroController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+            campus.setItems(lista);
 
     }
 }

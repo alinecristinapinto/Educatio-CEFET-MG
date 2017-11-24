@@ -106,6 +106,6 @@ class professor{
     $professorProf -> deletaProfessor('nome', $_SESSION['nome']);
   
 
-	echo "<script>location.href='acervo.html';</script>";
+	echo "<script>location.href='proff.php';</script>";
 
 ?>

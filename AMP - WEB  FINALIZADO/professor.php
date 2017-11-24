@@ -91,22 +91,13 @@ class professor{
 	}	
 }
 
-    $professorProf = new professor;  
+		define ("IMAGEM", $_FILES['foto']['tmp_name']);
+	define ("TAMANHO", $_FILES['foto']['size']);
+	define ("TIPO", $_FILES['foto']['type']);
+	define ("NOMEIMG", $_FILES['foto']['name']);
+	
 
-    $target_dir = "uploads/";
-	$target_file = $target_dir . basename($_FILES["foto"]["name"]);
-	$uploadOk = 1;
-	$imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
-	if ($uploadOk == 0) {
-    	echo "Sorry, your file was not uploaded.";
-// if everything is ok, try to upload file
-	} else {
-    	if (move_uploaded_file($_FILES["foto"]["tmp_name"], $target_file)) {
-    		
-    	} else {
-    	    echo "Sorry, there was an error uploading your file.";
-   	 }
-}
+    $professorProf = new professor;  
 
  
 		$sqlConexao = mysqli_connect("localhost", "root", "", "educatio");
@@ -116,12 +107,28 @@ class professor{
 
 		$a = $_POST["entradaDepto"];	
 
+			$b = '';
+
+	$encriptado = md5($b);
+
+
+		if ( IMAGEM != "none" ) {
+		$fp = fopen(IMAGEM, "rb");
+		$conteudo = fread($fp, TAMANHO);
+		$conteudo = addslashes($conteudo);
+		fclose($fp);
+		
+	} else {
+		print "Não foi possível carregar a imagem.";
+	}
 
 
 
 
-    $professorProf->adicionaProfessor($_POST["siape"],$a,$_POST["nome"],$_POST["titulacao"],'S','Professor','',$target_file);
 
-    	echo "<script>location.href='proff.php';</script>";
+    $professorProf->adicionaProfessor($_POST["siape"],$a,$_POST["nome"],$_POST["titulacao"],'S','Professor',$encriptado,$conteudo);
+
+   
+
 
 ?>

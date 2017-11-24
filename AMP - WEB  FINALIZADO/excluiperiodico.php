@@ -29,8 +29,26 @@ function deletaLivroISBN($charISBN){
 		$sqlDeletando = "UPDATE periodicos SET ativo = 'N' WHERE idAcervo = '$intIdAcervo'";
 		if (mysqli_query($sqlConexao, $sqlDeletando)) {
 			
-		}		
-	
+		}			
+		
+
+
+		$sql = "SELECT id FROM periodicos WHERE idAcervo = '$intIdAcervo' ";
+		
+		$result = mysqli_query($sqlConexao, $sql);
+
+		$aux = mysqli_fetch_array($result);			
+
+		$intIdAcervo = $aux[0];
+
+
+
+	$sqlDeletando = "UPDATE partes SET ativo = 'N' WHERE idPeriodico = '$intIdAcervo'";
+		if (mysqli_query($sqlConexao, $sqlDeletando)) {
+			
+		}			
+		
+
 
 	}
 

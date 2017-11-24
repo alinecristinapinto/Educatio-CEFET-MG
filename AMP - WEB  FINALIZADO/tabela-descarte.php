@@ -16,7 +16,7 @@
 
 	$valor = valor;
 
-	$sql = "SELECT * FROM funcionario WHERE idDepto = '$valor' " ;	
+	$sql = "SELECT * FROM funcionario WHERE idDepto = '$valor' AND hierarquia = 'professor' AND ativo = 'S'" ;	
 	$result = mysqli_query($conn,$sql);
 
 	define ("VALOR_RECEBIDO", $_REQUEST["q"]);

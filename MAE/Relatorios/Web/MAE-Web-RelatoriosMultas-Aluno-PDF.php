@@ -28,11 +28,12 @@ $result = $conn->query($sql);
 
 
 $html = "<!DOCTYPE html>
-
-        </head>
+          <html lang='pt-br'>
+          <head>
+          </head>
           <body>
             <h3> Relatorio de Multas <h3>
-              <table class='tabela'>
+              <table>
                  <tr>
                     <th>Minhas multas</th>
                  </tr>";

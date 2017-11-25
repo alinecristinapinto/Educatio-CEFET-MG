@@ -1,0 +1,27 @@
+MAE-Web-ManutencaoCurso-Altera1.php
+-linha 61
+	foi deixado apenar 'ORDER BY nome ASC'
+
+MAE-Web-ManutencaoCurso-Altera2.php
+-linha 114
+	mudança para um select quando é alterado a modalidade do curso
+
+MAE-Web-ManutencaoCurso-Altera3.php
+-não há alterações
+
+MAE-Web-ManutencaoCurso-Deleta1.php
+-linha 61
+	inclusao do 'ORDER BY nome ASC' para organizar os curso na hora q aparecem na tela
+-linha 80
+	pequena mudança no q vai ser exibido no select
+
+MAE-Web-ManutencaoCurso-Deleta2.php
+-não há alterações
+
+MAE-Web-ManutencaoCurso-Inclui1.php
+-não há alterações
+
+MAE-Web-ManutencaoCurso-Inclui2.php
+-não há alterações
+
+...acho q é isso

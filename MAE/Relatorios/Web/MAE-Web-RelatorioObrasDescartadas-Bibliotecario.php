@@ -9,7 +9,7 @@
  include("mpdf60/mpdf.php");
 
  // Cria conexão
- $conn = new mysqli("localhost", "root", "","educatio");
+ $conn = new mysqli("localhost", "root", "Bruali16","educatio");
 
  // Checa conexão
  if ($conn->connect_error) {
@@ -21,60 +21,67 @@
 		$nomeObra = $_POST["nomeObra"];
 
 		//seleciona o ID da obra pelo seu nome
-		$stmt = $conn->prepare("SELECT id FROM acervo WHERE nome = ?");
+		$stmt = $conn->prepare("SELECT nome, id FROM acervo WHERE nome = ?");
 		$stmt->bind_param('s', $nomeObra);
 		$stmt->execute();
 		$rst = $stmt->get_result();
 
+		$numRegistrosAcervo = mysqli_num_rows($rst);
+
 		while($row = $rst->fetch_assoc()){
 			//o ID acervo é o id da obra que está no acervo
-			$idAcervo = $row['id'];
+			$idAcervo[] = $row['id'];
+			$nomeAcervo[] = $row['nome'];
 		}
 
-		//seleciona a data do descarte pelo ID do acervo
-		$stmt = $conn->prepare("SELECT dataDescarte FROM descartes WHERE idAcervo = ?");
-		$stmt->bind_param('s', $idAcervo);
-		$stmt->execute();
-		$rst = $stmt->get_result();
+		$sql = "SELECT idAcervo, dataDescarte, idFuncionario, motivos FROM descartes";
+  		$rst1 = $conn->query($sql);
 
-			while($row = $rst->fetch_assoc()){
-				$dataDescarte[] = $row['dataDescarte'];
+		$numRegistrosDescarte = mysqli_num_rows($rst1);
+
+			while($row1 = $rst1->fetch_assoc()){
+				$idAcervoDescarte[] = $row1['idAcervo'];
+				$dataDescarte[] = $row1['dataDescarte'];
+				$idFuncionario[] = $row1['idFuncionario'];
+				$motivos[] = $row1['motivos'];
 			}
 
-			//seleciona o ID funcionario pelo ID do acervo
-			$stmt = $conn->prepare("SELECT idFuncionario FROM descartes WHERE idAcervo = ?");
-			$stmt->bind_param('s', $idAcervo);
-			$stmt->execute();
-			$rst = $stmt->get_result();
+		 $k = 0;
 
-				while($row = $rst->fetch_assoc()){
-					$idFuncionario = $row['id'];
-				}
+		  for ($i=0; $i < $numRegistrosDescarte ; $i++) { 
+		  	for ($j=0; $j < $numRegistrosAcervo ; $j++) { 
+		  		if ($idAcervo[$j] == $idAcervoDescarte[$i]) {
+		  			$dataDescarteDescartes[$k] = $dataDescarte[$i];
+		  			$idFuncionarioDescartes[$k] = $idFuncionario[$i];
+		  			$motivosDescartes[$k] = $motivos[$i];
+		  			$k ++;
+		  		}
+		  	}
+		  }
 
-			//seleciona o nome do funcionario pelo ID do funcionario
-			$stmt = $conn->prepare("SELECT nome FROM funcionario WHERE idSIAPE = ?");
-			$stmt->bind_param('s', $idFuncionario);
-			$stmt->execute();
-			$rst = $stmt->get_result();
+		$sql = "SELECT nome, idSIAPE FROM funcionario";
+  		$rst2 = $conn->query($sql);
 
-				while($row = $rst->fetch_assoc()){
-					//o nome do Operador que fez o descarte é o nome do funcionario no BD
-					$nomeOperador[] = $row['nome'];
-					echo "<br><h4>".$nomeOperador[0]."</h4>";
-				}
+  		$numRegistrosFuncionario = mysqli_num_rows($rst2);
 
-				//seleciona o motivo do descarte pelo ID do acervo
-				$stmt = $conn->prepare("SELECT motivos FROM descartes WHERE idAcervo = ?");
-				$stmt->bind_param('s', $idAcervo);
-				$stmt->execute();
-				$rst = $stmt->get_result();
+  		while($row2 = $rst2->fetch_assoc()){
+			$nomeFuncionario[] = $row2['nome'];
+			$idFuncionarioFuncionarios[] = $row2['idSIAPE'];
+		}
 
-					while($row = $rst->fetch_assoc()){
-						$motivos[] = $row['motivos'];
-					}
-	}
+		 $k = 0;
 
-  $html .= " <!DOCTYPE html>
+		  for ($i=0; $i < $numRegistrosFuncionario ; $i++) { 
+		  	for ($j=0; $j < $numRegistrosDescarte ; $j++) { 
+		  		if ($idFuncionarioDescartes[$j] == $idFuncionarioFuncionarios[$i]) {
+		  			$nomeFuncionarioFinal[$k] = $nomeFuncionario[$i];
+		  			$k ++;
+		  		}
+		  	}
+		  }
+
+
+		   $html .= " <!DOCTYPE html>
 						<html lang='pt-br'>
 						<head>
 						</head>
@@ -82,31 +89,31 @@
 							<h3> Tabela de obras descartadas <h3>
               <table>
               	<tr>
-									<th>Nome da Obra</th>
-                  <th>Data do descarte</th>
-									<th>Nome do operador do descarte<th>
-									<th>Motivos<th>
+									<th>Nome da Obra </th>
+                  					<th>Data do descarte</th>
+									<th>Nome do operador</th>
+									<th>Motivos</th>
                 </tr> ";
-								foreach ($dataDescarte as $data) {
-	$html .=      	"<tr>
-				             <td>". $nomeObra ."</td>
-				             <td>". $data ."</td> ";
-										foreach ($nomeOperador as $operador) {
-	$html .=      			"<td>". $operador ."</td> ";
-							  				foreach ($motivos as $motivo) {
-	$html .=      						" <td>". $motivo ."</td> ";
-												}//final do foreach, motivos
-										}//final do foreach, nomes dos operadores
-	$html .=	      "</tr> ";
-		            }//final do foreach, datas de descartes
-  $html.= "     </table>
-            </body>
+				 for ($i = 0; $i  < $numRegistrosAcervo; $i ++) { 
+        $html .= "<tr>
+                    <td>".$nomeAcervo[$i]."</td>
+                    <td>".$dataDescarteDescartes[$i]."</td>
+                    <td>".$nomeFuncionarioFinal[$i]."</td>
+                    <td>".$motivosDescartes[$i]."</td>
+                  </tr>
+                                 ";
+                          }
+                           
+$html.="   
+								</table>
+            	</body>
         		</html> ";
 
-	echo $html;
+	}
 
-	/*
-  $dataAtual = date("d-m-y"); //cria a Data da geração do arquivo
+
+	
+  	$dataAtual = date("d-m-y"); //cria a Data da geração do arquivo
 	$nomeDoArquivo = "Obras descartadas (" .$dataAtual. ").pdf"; //cria nome do arquivo de acordo com a data atual
 
 	$mpdf = new mPDF();
@@ -115,8 +122,9 @@
 
 	$mpdf -> SetTitle($nomeDoArquivo);
 	$mpdf -> SetDisplayMode('fullpage');
+	$html = mb_convert_encoding($html, 'UTF-8', 'ISO-8859-1');
 	$mpdf -> WriteHTML($html);
 
-	$mpdf -> Output($nomeDoArquivo, 'D');
-	*/
+	$mpdf -> Output($nomeDoArquivo, 'D'); 
+	
 ?>

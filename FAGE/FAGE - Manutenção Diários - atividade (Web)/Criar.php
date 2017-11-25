@@ -16,21 +16,21 @@
 <!DOCTYPE html>
 
 <!-- CSS do Bootstrap -->
-<link href="css/bootstrap.min.css" rel="stylesheet" />
-<link href="css/bootstrap.css" rel="stylesheet"/>
+<link href = "css/bootstrap.min.css" rel = "stylesheet" />
+<link href = "css/bootstrap.css" rel = "stylesheet"/>
 
 <!-- CSS do grupo -->
- <link href="" rel="stylesheet" />
+ <link href = "" rel = "stylesheet" />
 
 <!-- Arquivos js -->
-<script src="js/popper.js"></script>
-<script src="js/jquery-3.2.1.js" type="text/javascript"></script>
-<script src="js/bootstrap.min.js" type="text/javascript"></script>
+<script src = "js/popper.js"></script>
+<script src = "js/jquery-3.2.1.js" type = "text/javascript"></script>
+<script src = "js/bootstrap.min.js" type = "text/javascript"></script>
 
 <!-- Fontes e icones -->
-<link href="css/nucleo-icons.css" rel="stylesheet">
+<link href = "css/nucleo-icons.css" rel = "stylesheet">
 
-<style type="text/css">
+<style type = "text/css">
   .text-center{
        font-family: 'Abel', sans-serif;
        color: #d8ac29;
@@ -59,49 +59,49 @@
 	<title></title>
 </head>
 <body>
-	<div class="section landing-section">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-8 ml-auto mr-auto">
-          <h2 class="text-center"> Criar Atividade </h2>
-            <form class="contact-form" method = "POST" action = "Cria.php">
+	<div class = "section landing-section">
+    <div class = "container">
+      <div class = "row">
+        <div class = "col-md-8 ml-auto mr-auto">
+          <h2 class = "text-center"> Criar Atividade </h2>
+            <form class  = "contact-form" method = "POST" action = "Cria.php">
               <div class = "row">
-                <label class="fonteTexto" for = "NomeAtividade"> Nome da Atividade </label>
-                <div class="input-group">
-                    <span class="input-group-addon">
-                      <i class="nc-icon nc-check-2"></i>
+                <label class = "fonteTexto" for = "NomeAtividade"> Nome da Atividade </label>
+                <div class = "input-group">
+                    <span class = "input-group-addon">
+                      <i class = "nc-icon nc-check-2"></i>
                     </span>  
                     <input type = "text" class = "form-control" id = "NomeAtividade" name = "nome" required>
                 </div>
               </div>
             <div class = "row">
-              <label class="fonteTexto" for = "DataAtividade"> Data da Atividade </label>
-              <div class="input-group">
-                <span class="input-group-addon">
-                  <i class="nc-icon nc-calendar-60"></i>
+              <label class = "fonteTexto" for = "DataAtividade"> Data da Atividade </label>
+              <div class = "input-group">
+                <span class = "input-group-addon">
+                  <i class = "nc-icon nc-calendar-60"></i>
                 </span>  
                 <input type = "date" class = "form-control" id = "DataAtividade" name = "data" required>
               </div>
             </div>
           	<div class = "row">
-              <label class="fonteTexto" for = "ValorAtividade"> Valor da Atividade </label>
-              <div class="input-group">
-                <span class="input-group-addon">
-                  <i class="nc-icon nc-simple-add"></i>
+              <label class = "fonteTexto" for = "ValorAtividade"> Valor da Atividade </label>
+              <div class = "input-group">
+                <span class = "input-group-addon">
+                  <i class = "nc-icon nc-simple-add"></i>
                 </span>  
-                <input type = "number" class = "form-control" min = "0.1" step = "any" class = "form-control" id = "ValorAtividade" name = "valor" required>
+                <input type = "number" class = "form-control" min = "0.0" step = "any" class = "form-control" id = "ValorAtividade" name = "valor" required>
               </div>
             </div>
             <div class = "row">
-              <label class="fonteTexto" for = "MateriaAtividade"> Turma da Materia </label>
-               <div class="input-group">
-                  <span class="input-group-addon">
-                    <i class="nc-icon nc-book-bookmark"></i>
+              <label class = "fonteTexto" for = "MateriaAtividade"> Turma da Materia </label>
+               <div class = "input-group">
+                  <span class = "input-group-addon">
+                    <i class = "nc-icon nc-book-bookmark"></i>
                   </span>
                   <select class = "form-control" name = "materia" id = "MateriaAtividade" required>
                     <?php 
                       //variável utilizada para pegar o id do Usuario através da variável SESSION
-                      $idprof = 9543746; //$_SESSION['usuario']->idSIAPE;
+                      $idprof = 925437416; //$_SESSION['usuario']->idSIAPE;
                       //busca todas as disciplinas ministradas pelo professor idDisplina e id -> idProfDisciplina
                       $resultados = $conn->query( "SELECT idDisciplina, id, ativo FROM profdisciplinas WHERE idProfessor = $idprof  AND ativo = 'S' ORDER BY idDisciplina ASC "); 
                       //utilizada para descartar disciplinas desativadas
@@ -148,10 +148,13 @@
                   </select>
                 </div>
             </div>
-            <div class="row">
-              <div class="col-md-4 ml-auto mr-auto">
-                <button type="submit" class="btn btn-info btn-round">Criar</button>
+            <div class = "row">
+              <div class = "col-md-4 ml-auto mr-auto">
+                <button type = "submit" class = "btn btn-info btn-round"> Criar </button>
               </div>
+              <div class = 'col-md-4 ml-auto mr-auto'>
+              <button class = 'btn btn-info btn-round' type = "button" value = "Voltar" onClick = "history.go(-1)"> voltar </button> 
+            </div>
             </div>
           </form>
         </div>

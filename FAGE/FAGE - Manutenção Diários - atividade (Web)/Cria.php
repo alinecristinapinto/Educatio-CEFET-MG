@@ -1,6 +1,7 @@
 <?php
 $nome = $_POST['nome'];
 $data = $_POST['data'];
+$data = implode( '/', array_reverse( explode( '-', $data ) ) );
 $valor = $_POST['valor'];
 $idprofdisciplina = $_POST['materia'];
 //inclued("Conexao.php")
@@ -21,5 +22,5 @@ $sql = "INSERT INTO atividades ( idProfDisciplina, nome, data, valor, ativo ) VA
 mysqli_query( $conn,$sql ) or die( "Erro ao criar atividade" );
 mysqli_close( $conn );
 echo "<script>alert('Email enviado com Sucesso!);</script>";
-include("Atividades.php");
+//include("Atividades.php");
 ?>

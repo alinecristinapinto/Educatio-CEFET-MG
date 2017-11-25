@@ -1,3 +1,8 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package ManutencaoDiarios;
 
 import ManutencaoDiarios.Modelo.Atividade;
@@ -24,23 +29,18 @@ import javafx.stage.Stage;
  *
  * @author Felipe
  */
-public class ManutencaoDiarios extends Application {
-    
+public class ManutencaoDiariosIntegracao extends Application{
     private Stage palcoPrincipal;
     private AnchorPane telaBase;
+    //private mainApp mainApp;
     
-    @Override
-    public void start(Stage palcoPrincipal) {
-        this.palcoPrincipal = palcoPrincipal;
-        palcoPrincipal.setTitle("Manutenção Diários - Atividades");
-        
-        
-        chamaSelecionaDados();
-    }
-
     public Stage getPalcoPrincipal() {
         return palcoPrincipal;
     }
+    
+//    public Stage getPalcoPrincipal() {
+//        mainApp.getPalcoPrincipal();;
+//    }
     
     
     public void chamaLayoutInsere(Disciplina disciplina, Turma turma, Conteudo conteudo){
@@ -199,10 +199,4 @@ public class ManutencaoDiarios extends Application {
             e.printStackTrace();
         }
     }
-    
-
-    public static void main(String[] args) {
-        launch(args);
-    }
-    
 }

@@ -35,6 +35,11 @@ public class InsereConteudoController {
     public void initialize(){
         dataConteudo.setEditable(false);
     }
+    
+    //    private ManutencaoDiariosIntegracao manutencaoDiariosIntegracao;
+//    public ManutencaoDiariosIntegracao getManutencaoDiariosIntegracao(){
+//        return manutencaoDiariosIntegracao;
+//    }
 
     public void setManutencaoDiarios(ManutencaoDiarios manutencaoDiarios) {
         this.manutencaoDiarios = manutencaoDiarios;

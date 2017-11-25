@@ -28,6 +28,11 @@ public class AlteraAtividadeController {
     private String nomeAtiv;
     private String dataAtiv;
     private double valorAtiv;
+    
+    //    private ManutencaoDiariosIntegracao manutencaoDiariosIntegracao;
+//    public ManutencaoDiariosIntegracao getManutencaoDiariosIntegracao(){
+//        return manutencaoDiariosIntegracao;
+//    }
 
     public void setManutencaoDiarios(ManutencaoDiarios manutencaoDiarios) {
         this.manutencaoDiarios = manutencaoDiarios;

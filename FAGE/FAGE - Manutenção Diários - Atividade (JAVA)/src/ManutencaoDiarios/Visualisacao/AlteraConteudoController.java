@@ -1,6 +1,7 @@
 package ManutencaoDiarios.Visualisacao;
 
 import ManutencaoDiarios.ManutencaoDiarios;
+import ManutencaoDiarios.ManutencaoDiariosIntegracao;
 import ManutencaoDiarios.Modelo.Atividade;
 import ManutencaoDiarios.Modelo.Disciplina;
 import ManutencaoDiarios.Modelo.Turma;
@@ -35,6 +36,11 @@ public class AlteraConteudoController {
     
     @FXML
     private DatePicker data;
+    
+//    private ManutencaoDiariosIntegracao manutencaoDiariosIntegracao;
+//    public ManutencaoDiariosIntegracao getManutencaoDiariosIntegracao(){
+//        return manutencaoDiariosIntegracao;
+//    }
     
 
     public ManutencaoDiarios getManutencaoDiarios() {

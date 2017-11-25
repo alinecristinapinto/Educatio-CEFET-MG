@@ -48,6 +48,11 @@ public class PainelInsereController {
     public void setConteudo(Conteudo conteudo){
         this.conteudo = conteudo;
     }
+    
+    //    private ManutencaoDiariosIntegracao manutencaoDiariosIntegracao;
+//    public ManutencaoDiariosIntegracao getManutencaoDiariosIntegracao(){
+//        return manutencaoDiariosIntegracao;
+//    }
 
     public void setManutencaoDiarios(ManutencaoDiarios manutencaoDiarios) {
         this.manutencaoDiarios = manutencaoDiarios;

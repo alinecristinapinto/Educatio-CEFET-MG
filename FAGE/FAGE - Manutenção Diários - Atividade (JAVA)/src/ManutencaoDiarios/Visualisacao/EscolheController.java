@@ -55,6 +55,11 @@ public class EscolheController {
     @FXML
     private TableColumn<AtividadeTabela, Double> valor;
     
+    //    private ManutencaoDiariosIntegracao manutencaoDiariosIntegracao;
+//    public ManutencaoDiariosIntegracao getManutencaoDiariosIntegracao(){
+//        return manutencaoDiariosIntegracao;
+//    }
+    
     public void setManutencaoDiarios(ManutencaoDiarios manutencaoDiarios) {
         this.manutencaoDiarios = manutencaoDiarios;
     }
@@ -185,8 +190,34 @@ public class EscolheController {
         }
     }
     
+    public void notas() throws IOException, SQLException{
+        if(tabela.getSelectionModel().getSelectedItem() == null){
+            AlertaPadrao alerta = new AlertaPadrao();
+            alerta.mostraAlertErro(manutencaoDiarios.getPalcoPrincipal(), "Campos vazios", "Erro!", "Existem campos vazios, preencha todos para continuar.");
+        }else{
+            atividade.setNome(tabela.getSelectionModel().getSelectedItem().getNome().get());
+            atividade.setData(tabela.getSelectionModel().getSelectedItem().getData().get());
+            atividade.setValor(tabela.getSelectionModel().getSelectedItem().getValor().get());
+            
+            manutencaoDiarios.chamaNotas(atividade, disciplina, turma, conteudo);
+        }
+    }
+    
+    public void faltas() throws IOException, SQLException{
+        if(tabela.getSelectionModel().getSelectedItem() == null){
+            AlertaPadrao alerta = new AlertaPadrao();
+            alerta.mostraAlertErro(manutencaoDiarios.getPalcoPrincipal(), "Campos vazios", "Erro!", "Existem campos vazios, preencha todos para continuar.");
+        }else{
+            atividade.setNome(tabela.getSelectionModel().getSelectedItem().getNome().get());
+            atividade.setData(tabela.getSelectionModel().getSelectedItem().getData().get());
+            atividade.setValor(tabela.getSelectionModel().getSelectedItem().getValor().get());
+            
+            manutencaoDiarios.chamaFaltas(atividade, disciplina, turma, conteudo);
+        }
+    }
+    
     public void sair(){
-        System.exit(0);
+        manutencaoDiarios.chamaSelecionaDados();
     }
     
 }

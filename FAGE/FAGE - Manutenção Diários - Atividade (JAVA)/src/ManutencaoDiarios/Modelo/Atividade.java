@@ -29,8 +29,11 @@ public class Atividade {
     private int etapaConteudo;
     private int[] idMatriculas;
     private int contadorMatriculas;
+    private int idProfessor = 849470835;
     
     private ObservableList<AtividadeTabela> lista;
+    private ObservableList<NotasTabela> listaNotasTabela;
+    private ObservableList<FaltasTabela> listaFaltasTabela;
     
     
     public Atividade(){
@@ -127,7 +130,7 @@ public class Atividade {
         valor = valorAtividade;
         pegaIdMatricula(nomeDisciplina);
         
-        for(int i=0; i<contadorMatriculas-1; i++){
+        for(int i=0; i<contadorMatriculas; i++){
             String sql = "INSERT INTO diarios (idConteudo, idMatricula, idAtividade, ativo, faltas, nota, ano) VALUES (?, ?, ?, ?, ?, ?, ?)";
         
             PreparedStatement declaracao = conexao.prepareStatement(sql);
@@ -220,12 +223,11 @@ public class Atividade {
     private int pegaIdProfDisciplina(int idDisciplina, int idTurma) throws SQLException{
         Connection conexao = new ConnectionFactory().getConexao();
         
-        int idprofessor = 849470835;
         
         String sql = "SELECT id FROM profdisciplinas WHERE idProfessor = (?) AND idDisciplina = (?) AND idTurma = (?) AND ativo = \"S\"";
         
         PreparedStatement declaracao = conexao.prepareStatement(sql);
-        declaracao.setInt(1, idprofessor);
+        declaracao.setInt(1, idProfessor);
         declaracao.setInt(2, idDisciplina);
         declaracao.setInt(3, idTurma);
         
@@ -242,7 +244,6 @@ public class Atividade {
         Connection conexao = new ConnectionFactory().getConexao();
         
         int idDisc;
-        int idProfessor = 849470835;
         
         String sql = "SELECT idDisciplina FROM profdisciplinas WHERE idProfessor = (?) AND ativo = 'S'";
         
@@ -318,17 +319,37 @@ public class Atividade {
         lista = FXCollections.observableArrayList();
         int idProfDisc = pegaIdProfDisciplina(pegaIdDisciplina(disciplina), pegaIdTurma(turma));
         
-        String sql = "SELECT id FROM conteudos WHERE conteudo = (?) AND ativo = 'S'";
-        
+        String sql = "SELECT idAluno FROM matriculas WHERE idDisciplina = (?) AND ativo = 'S'";
         PreparedStatement declaracao = conexao.prepareStatement(sql);
-        declaracao.setString(1, conteudo);
+        declaracao.setInt(1, pegaIdDisciplina(disciplina));
         
         ResultSet rs = declaracao.executeQuery();
+        rs.next();
+        double idAluno = rs.getDouble("idAluno");
+        
+        sql = "SELECT id FROM matriculas WHERE idAluno = (?) AND idDisciplina = (?) AND ativo = 'S'";
+        
+        declaracao = conexao.prepareStatement(sql);
+        declaracao.setDouble(1, idAluno);
+        declaracao.setInt(2, pegaIdDisciplina(disciplina));
+        
+        rs = declaracao.executeQuery();
+        rs.next();
+        int idMatricula = rs.getInt("id");
+        
+        
+        sql = "SELECT id FROM conteudos WHERE conteudo = (?) AND ativo = 'S'";
+        
+        declaracao = conexao.prepareStatement(sql);
+        declaracao.setString(1, conteudo);
+        
+        rs = declaracao.executeQuery();
         while(rs.next()){
-            sql = "SELECT idAtividade FROM diarios WHERE idConteudo = (?) AND ativo = 'S'";
+            sql = "SELECT idAtividade FROM diarios WHERE idConteudo = (?) AND idMatricula = (?) AND ativo = 'S'";
             
             declaracao = conexao.prepareStatement(sql);
             declaracao.setInt(1, rs.getInt("id"));
+            declaracao.setInt(2, idMatricula);
             
             ResultSet rs1 = declaracao.executeQuery();
             while(rs1.next()){
@@ -451,9 +472,51 @@ public class Atividade {
     public void removeConteudo(String disciplina, String turma, String conteudo) throws SQLException{
         Connection conexao = new ConnectionFactory().getConexao();
         
-        String sql = "UPDATE conteudos SET ativo = 'N' WHERE conteudo = (?) AND idDisciplina = (?) AND ativo = 'S'";
-        
+        String sql = "SELECT id FROM conteudos WHERE conteudo = (?) AND idDisciplina = (?) AND ativo = 'S'";
         PreparedStatement declaracao = conexao.prepareStatement(sql);
+        
+        declaracao.setString(1, conteudo);
+        declaracao.setInt(2, pegaIdDisciplina(disciplina));
+        
+        ResultSet rs = declaracao.executeQuery();
+        while(rs.next()){
+            sql = "SELECT idAtividade FROM diarios WHERE idConteudo = (?) AND ativo = 'S'";
+            
+            declaracao = conexao.prepareStatement(sql);
+            declaracao.setInt(1, rs.getInt("id"));
+            
+            ResultSet resultado = declaracao.executeQuery();
+            while(resultado.next()){
+                sql = "UPDATE atividades SET ativo = 'N' WHERE id = (?) AND idProfDisciplina = (?) AND ativo = 'S'";
+                
+                declaracao = conexao.prepareStatement(sql);
+                declaracao.setInt(1, resultado.getInt("idAtividade"));
+                declaracao.setInt(2, pegaIdProfDisciplina(pegaIdDisciplina(disciplina), pegaIdTurma(turma)));
+                
+                declaracao.execute();
+            }
+        }
+        
+        sql = "SELECT id FROM conteudos WHERE conteudo = (?) AND idDisciplina = (?) AND ativo = 'S'";
+        declaracao = conexao.prepareStatement(sql);
+        
+        declaracao.setString(1, conteudo);
+        declaracao.setInt(2, pegaIdDisciplina(disciplina));
+        
+        rs = declaracao.executeQuery();
+        while(rs.next()){
+            sql = "UPDATE diairios SET ativo = 'N' WHERE idConteudo = (?) AND ativo 'S'";
+            
+            declaracao = conexao.prepareStatement(sql);
+            declaracao.setInt(1, rs.getInt("id"));
+            
+            declaracao.execute();
+        }
+        
+        
+        sql = "UPDATE conteudos SET ativo = 'N' WHERE conteudo = (?) AND idDisciplina = (?) AND ativo = 'S'";
+        
+        declaracao = conexao.prepareStatement(sql);
 
         declaracao.setString(1, conteudo);
         declaracao.setInt(2, pegaIdDisciplina(disciplina));
@@ -478,6 +541,7 @@ public class Atividade {
         ResultSet rs = declaracao.executeQuery();
         while(rs.next()){
             idMatriculas[i] = rs.getInt("id");
+            i++;
             contadorMatriculas++;
         }
     }
@@ -497,5 +561,191 @@ public class Atividade {
         rs.next();
         
         return rs.getInt("id");
+    }
+    
+    public ObservableList<NotasTabela> montaListaNotas(String nomeCont) throws SQLException{
+        Connection conexao = new ConnectionFactory().getConexao();
+        
+        listaNotasTabela = FXCollections.observableArrayList();
+        int idAtiv = pegaIdAtividade();
+        int idCont = pegaIdConteudo(nomeCont);
+        String[] nomesAlunos = new String[1000];
+        Double[] notasAtividades = new Double[1000];
+        int i = 0;
+        int j = 0;
+        
+        String sql = "SELECT idMatricula FROM diarios WHERE idConteudo = (?) AND idAtividade = (?) AND ativo = 'S'";
+        
+        PreparedStatement declaracao = conexao.prepareStatement(sql);
+        declaracao.setInt(1, idCont);
+        declaracao.setInt(2, idAtiv);
+        
+        ResultSet rs = declaracao.executeQuery();
+        while(rs.next()){
+            sql = "SELECT idAluno FROM matriculas WHERE id = (?) AND ativo = 'S'";
+            
+            declaracao = conexao.prepareStatement(sql);
+            declaracao.setInt(1, rs.getInt("idMatricula"));
+            
+            ResultSet rs1 = declaracao.executeQuery();
+            while(rs1.next()){
+                sql = "SELECT nome FROM alunos WHERE idCPF = (?) AND ativo = 'S'";
+                
+                declaracao = conexao.prepareStatement(sql);
+                declaracao.setDouble(1, rs1.getDouble("idAluno"));
+                
+                ResultSet rs2 = declaracao.executeQuery();
+                while(rs2.next()){
+                    nomesAlunos[i] = rs2.getString("nome");
+                    i++;
+                }
+            }
+            
+            sql = "SELECT nota FROM diarios WHERE idAtividade = (?) AND idConteudo = (?) AND idMatricula = (?) AND ativo = 'S'";
+            
+            declaracao = conexao.prepareStatement(sql);
+            declaracao.setInt(1, idAtiv);
+            declaracao.setInt(2, idCont);
+            declaracao.setInt(3, rs.getInt("idMatricula"));
+            
+            ResultSet rs3 = declaracao.executeQuery();
+            while(rs3.next()){
+                notasAtividades[j] = rs3.getDouble("nota");
+                j++;
+            }
+        }
+        
+        for(i=0; i<j; i++){
+            listaNotasTabela.add(new NotasTabela(nomesAlunos[i], notasAtividades[i]));
+        }
+        
+        return listaNotasTabela;
+    }
+    
+    public void alteraNota(String aluno, double nota, String disciplina, String conteudo) throws SQLException{
+        Connection conexao = new ConnectionFactory().getConexao();
+        
+        String sql = "SELECT idCPF FROM alunos WHERE nome = (?) AND ativo = 'S'";
+        
+        PreparedStatement declaracao = conexao.prepareStatement(sql);
+        declaracao.setString(1, aluno);
+        
+        ResultSet rs = declaracao.executeQuery();
+        rs.next();
+        
+        sql = "SELECT id FROM matriculas WHERE idAluno = (?) AND idDisciplina = (?) AND ativo = 'S'";
+        
+        declaracao = conexao.prepareStatement(sql);
+        declaracao.setDouble(1, rs.getDouble("idCPF"));
+        declaracao.setInt(2, pegaIdDisciplina(disciplina));
+        
+        rs = declaracao.executeQuery();
+        rs.next();
+        
+        sql = "UPDATE diarios SET nota = (?) WHERE idConteudo = (?) AND idMatricula = (?) AND idAtividade = (?) AND ativo = 'S'";
+        
+        declaracao = conexao.prepareStatement(sql);
+        declaracao.setDouble(1, nota);
+        declaracao.setInt(2, pegaIdConteudo(conteudo));
+        declaracao.setInt(3, rs.getInt("id"));
+        declaracao.setInt(4, pegaIdAtividade());
+        
+        declaracao.execute();
+        declaracao.close();
+        
+        conexao.close();
+    }
+    
+    public ObservableList<FaltasTabela> montaListaFaltas(String nomeCont) throws SQLException{
+        Connection conexao = new ConnectionFactory().getConexao();
+        
+        listaFaltasTabela = FXCollections.observableArrayList();
+        int idAtiv = pegaIdAtividade();
+        int idCont = pegaIdConteudo(nomeCont);
+        String[] nomesAlunos = new String[1000];
+        Integer[] faltasAlunos = new Integer[1000];
+        int i = 0;
+        int j = 0;
+        
+        String sql = "SELECT idMatricula FROM diarios WHERE idConteudo = (?) AND idAtividade = (?) AND ativo = 'S'";
+        
+        PreparedStatement declaracao = conexao.prepareStatement(sql);
+        declaracao.setInt(1, idCont);
+        declaracao.setInt(2, idAtiv);
+        
+        ResultSet rs = declaracao.executeQuery();
+        while(rs.next()){
+            sql = "SELECT idAluno FROM matriculas WHERE id = (?) AND ativo = 'S'";
+            
+            declaracao = conexao.prepareStatement(sql);
+            declaracao.setInt(1, rs.getInt("idMatricula"));
+            
+            ResultSet rs1 = declaracao.executeQuery();
+            while(rs1.next()){
+                sql = "SELECT nome FROM alunos WHERE idCPF = (?) AND ativo = 'S'";
+                
+                declaracao = conexao.prepareStatement(sql);
+                declaracao.setDouble(1, rs1.getDouble("idAluno"));
+                
+                ResultSet rs2 = declaracao.executeQuery();
+                while(rs2.next()){
+                    nomesAlunos[i] = rs2.getString("nome");
+                    i++;
+                }
+            }
+            
+            sql = "SELECT faltas FROM diarios WHERE idAtividade = (?) AND idConteudo = (?) AND idMatricula = (?) AND ativo = 'S'";
+            
+            declaracao = conexao.prepareStatement(sql);
+            declaracao.setInt(1, idAtiv);
+            declaracao.setInt(2, idCont);
+            declaracao.setInt(3, rs.getInt("idMatricula"));
+            
+            ResultSet rs3 = declaracao.executeQuery();
+            while(rs3.next()){
+                faltasAlunos[j] = rs3.getInt("faltas");
+                j++;
+            }
+        }
+        
+        for(i=0; i<j; i++){
+            listaFaltasTabela.add(new FaltasTabela(nomesAlunos[i], faltasAlunos[i]));
+        }
+        
+        return listaFaltasTabela;
+    }
+    
+    public void alteraFaltas(String aluno, int faltas, String disciplina, String conteudo) throws SQLException{
+        Connection conexao = new ConnectionFactory().getConexao();
+        
+        String sql = "SELECT idCPF FROM alunos WHERE nome = (?) AND ativo = 'S'";
+        
+        PreparedStatement declaracao = conexao.prepareStatement(sql);
+        declaracao.setString(1, aluno);
+        
+        ResultSet rs = declaracao.executeQuery();
+        rs.next();
+        
+        sql = "SELECT id FROM matriculas WHERE idAluno = (?) AND idDisciplina = (?) AND ativo = 'S'";
+        
+        declaracao = conexao.prepareStatement(sql);
+        declaracao.setDouble(1, rs.getDouble("idCPF"));
+        declaracao.setInt(2, pegaIdDisciplina(disciplina));
+        
+        rs = declaracao.executeQuery();
+        rs.next();
+        
+        sql = "UPDATE diarios SET faltas = (?) WHERE idConteudo = (?) AND idMatricula = (?) AND idAtividade = (?) AND ativo = 'S'";
+        
+        declaracao = conexao.prepareStatement(sql);
+        declaracao.setInt(1, faltas);
+        declaracao.setInt(2, pegaIdConteudo(conteudo));
+        declaracao.setInt(3, rs.getInt("id"));
+        declaracao.setInt(4, pegaIdAtividade());
+        
+        declaracao.execute();
+        declaracao.close();
+        
+        conexao.close();
     }
 }

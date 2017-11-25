@@ -97,7 +97,11 @@ public class PrincipalController {
             if(!rs.next()){
                 rs.close();
                 return false;
-            }    
+            }
+                if(tabela.getSelectionModel().getSelectedItem().getIdAcervo().get()==rs.getInt(3)){
+                        System.out.println("Livro emprestado para o aluno de id: " + rs.getString(2) +"\nData prevista para devolução: " + rs.getString(5));
+                        return true;
+                }
                 while(rs.next()){
                     if(tabela.getSelectionModel().getSelectedItem().getIdAcervo().get()==rs.getInt(3)){
                         System.out.println("Livro emprestado para o aluno de id: " + rs.getString(2) +"\nData prevista para devolução: " + rs.getString(5));

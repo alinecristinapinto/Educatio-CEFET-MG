@@ -1,8 +1,8 @@
 <?php
-$nomeedit = $_POST['nomeedit'];
-$idprofdisciplinaform = $_POST["materiaedit"] ;
+$idatividade = $_POST["num"] ;
 $nome = $_POST['nome'];
 $data = $_POST['data'];
+$data = implode( '/', array_reverse( explode( '-', $data ) ) );
 $valor = $_POST['valor'];
 $idprofdisplina = $_POST['materia'];
 //inclued("Conexao.php")
@@ -12,17 +12,9 @@ if ( mysqli_connect_errno() ){
   echo "Failed to connect to MySQL: " .mysqli_connect_error();
  }
 
-$sql = "SELECT id FROM atividades WHERE nome = '$nomeedit' AND idProfDisciplina = $idprofdisciplinaform AND ativo = 'S' ";
-$result = mysqli_query( $conn, $sql );
 
-// Associative array
-$row = mysqli_fetch_assoc( $result );
-$id = $row['id'];
+$sql = " UPDATE atividades SET idProfDisciplina = '$idprofdisplina' , nome = '$nome' , data = '$data' , valor = '$valor'  WHERE id = $idatividade ";
 
-$sql = " UPDATE atividades SET idProfDisciplina = '$idprofdisplina' , nome = '$nome' , data = '$data' , valor = '$valor'  WHERE id = $id ";
-
-mysqli_free_result( $result );
 mysqli_query( $conn, $sql ) or die( "Erro ao alterar atividade" );
 mysqli_close( $conn );
-include("Atividades.php");
 ?>

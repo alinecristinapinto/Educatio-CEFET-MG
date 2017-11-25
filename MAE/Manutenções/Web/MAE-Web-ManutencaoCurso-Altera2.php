@@ -109,14 +109,13 @@
                                       </span>
                                       <input type="text" class="form-control" placeholder="Horas totais" name="NovoHorasTotal"  value='<?php  echo $_SESSION['horasTotal']; ?>'>
                                   </div>
-
-                                  <label class="fonteTexto">Nova modalidade:</label>
-                                  <div class="input-group">
-                                      <span class="input-group-addon">
-                                          <i class="nc-icon nc-credit-card"></i>
-                                      </span>
-                                      <input type="text" class="form-control" placeholder="Modalidade" name="NovoModalidade"  value='<?php  echo $_SESSION['modalidade']; ?>'>
-                                  </div>
+								  
+								  <label class="fonteTexto">Nova modalidade:</label>
+								  <select required="required" class="form-control" name="NovoModalidade" id="selectModalidade">
+                                        <option value="">Selecione a modalidade&nbsp;</option>
+                                        <option value="Graduação">Graduação</option>
+                                        <option value="Técnico Integrado">Técnico Integrado</option>
+                                    </select>
 					
                 									<!--Passa o nome e antigo do Curso-->
                 									<input type='hidden' name='idDepto' value='<?php  echo $_SESSION['idDepto']; ?>'/>

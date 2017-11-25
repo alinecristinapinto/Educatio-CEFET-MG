@@ -1,4 +1,21 @@
-<?php header ('Content-type: text/html; charset=ISO-8859-1'); ?>
+<?php 
+    session_start();
+    header ('Content-type: text/html; charset=ISO-8859-1'); 
+    $select = $_POST['selectCursoParaAcessarProfessores'];
+    foreach($select as $_valor){
+        $intIdCurso = $_valor; 
+        $_SESSION['intIdCurso'] =  $intIdCurso;   
+    }
+    // Conectando com o servidor MySQL
+    $link = mysqli_connect("localhost", "root", "");
+    if (!$link){
+    //     die("Conexao falhou: ".mysqli_connect_error()."<br/>");
+    } else {
+    //     echo "Conexao efetuada com sucesso!<br/>";
+    }
+    //Selecionado BD
+    $sql = mysqli_select_db($link, 'Educatio');
+?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -27,20 +44,7 @@
     <body>
         <h2 class="text-center">ACESSAR PROFESSORES</h2>
         <?php
-            // Conectando com o servidor MySQL
-            $link = mysqli_connect("localhost", "root", "");
-            if (!$link){
-            //     die("Conexao falhou: ".mysqli_connect_error()."<br/>");
-            } else {
-            //     echo "Conexao efetuada com sucesso!<br/>";
-            }
-            //Selecionado BD
-            $sql = mysqli_select_db($link, 'Educatio');
-            //Pega id e dados do curso que foi selecionado
-            $select = $_POST['selectCursoParaAcessarProfessores'];
-            foreach($select as $_valor){
-                $intIdCurso = $_valor;    
-            }
+            //Pega dados do curso que foi selecionado por meio do id
             $query = mysqli_query($link, "SELECT idDepto, nome FROM cursos WHERE id = $intIdCurso");
             $curso = mysqli_fetch_array($query);
             $intIdDeptoCursoSelecionado = $curso['idDepto'];  
@@ -110,6 +114,7 @@
                         $intAux++;
                     } //fim do while
                 }
+           // print_r($vetIdProfDisciplinas);
             } if ($intExisteDisciplina == 0 && $intExisteTurma == 0) {
                 echo "<p>Não existe nenhuma disciplina no curso selecionado</p>";
             } if ($intExisteDisciplina == 0 && $intExisteTurma == 1) {
@@ -285,8 +290,11 @@
                     </div>
                 </div>
                 <div class='row'>
-                    <div class='col-md-4 ml-auto mr-auto'>
-                        <button style='margin-top: 10px; margin-left: 155%' type='button' class='btn btn-info btn-round' value='Voltar' onClick='voltarParaPaginaAcessarProfessoresSelecionarCurso()'>Voltar</button>  
+                    <div style='float: left;' class='col-md-4 ml-auto mr-auto'>
+                        <button style='margin-top: 10px; margin-left: 750px;' type='button' class='btn btn-info btn-round' onClick='voltarParaPaginaAcessarProfessoresSelecionarCurso()'>Voltar</button>  
+                    </div>
+                    <div style='float: left;' class='col-md-4 ml-auto mr-auto'>
+                        <button style='margin-top: 10px; margin-left: 150px;' type='button' class='btn btn-info btn-round' onClick='irParaPaginaDownloadRealtorioAcessarProfessores()'>Download do Relat&oacuterio em PDF</button>  
                     </div>
                 </div>";
             } // fim do if que verifica existencia do professor 

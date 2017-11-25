@@ -56,6 +56,5 @@
          </children>
       </GridPane>
       <Button layoutX="533.0" layoutY="455.0" mnemonicParsing="false" onAction="#editar" text="Editar" />
-      <Button layoutX="473.0" layoutY="455.0" mnemonicParsing="false" onAction="#excluir" text="Excluir" />
    </children>
 </AnchorPane>

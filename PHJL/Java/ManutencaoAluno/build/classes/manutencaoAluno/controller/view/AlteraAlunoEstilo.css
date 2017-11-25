@@ -1,0 +1,152 @@
+.telaBackground {
+    -fx-background-color:#2644B2;
+}
+
+.corDaFont{
+    -fx-text-fill: #000000;
+}
+
+.button
+{
+    -fx-padding: 5px;   
+    -fx-border-color: #6989FF;
+    -fx-border-width: 1px;
+    -fx-background-radius: 0px;
+    -fx-background-color: #4F75FF;
+    -fx-font-family: "Segoe UI", Helvetica, Arial, sans-serif;
+    -fx-font-size: 12pt;
+    -fx-text-fill: #ffffff;
+}
+
+.button:hover {
+    -fx-background-color: #6989FF;
+}
+
+.text-field
+{
+    -fx-background-color: #6989FF;
+    -fx-text-fill:white; 
+    -fx-border-color: #d8ac29;
+    -fx-border-width: 1px;
+}
+
+
+
+/*Padrão de label para formulários*/
+
+.label-pequena{
+    -fx-font-family: 'Times New Roman';
+    -fx-font-size: 20px;
+    -fx-text-fill:white;  
+    -fx-alignment: CENTER;
+}
+
+/*Padrão de label para cabeçalhos*/
+
+.label-cabecalho
+{
+    -fx-font-family: 'Times New Roman';
+    -fx-font-size: 40px;
+    -fx-text-fill:white;  
+    -fx-alignment: CENTER;
+
+}
+
+.table-view{
+   -fx-background-color: transparent;
+}
+
+.table-view:focused{
+    -fx-background-color: transparent;
+}
+
+.table-view .column-header-background{
+    -fx-background-color: linear-gradient(#6989FF 0%, #2644B2 100%);
+}
+
+.table-view .column-header-background .label{
+    -fx-background-color: transparent;
+    -fx-text-fill: white;
+}
+
+.table-view .column-header {
+    -fx-background-color: transparent;
+}
+
+.table-view .table-cell{
+    -fx-text-fill: white;
+}
+
+.table-row-cell{
+    -fx-background-color: -fx-table-cell-border-color, #6989FF;
+    -fx-background-insets: 0, 0 0 1 0;
+    -fx-padding: 0.0em; /* 0 */
+}
+
+.table-row-cell:odd{
+    -fx-background-color: -fx-table-cell-border-color, #2644B2;
+    -fx-background-insets: 0, 0 0 1 0;
+    -fx-padding: 0.0em; /* 0 */  
+}
+
+.table-row-cell:selected {
+    -fx-background-color: #005797;
+    -fx-background-insets: 0;
+    -fx-background-radius: 1;
+}
+
+.table-view > .virtual-flow > .scroll-bar:vertical,
+.table-view > .virtual-flow > .scroll-bar:vertical > .track,
+.table-view > .virtual-flow > .scroll-bar:vertical > .track-background, 
+.table-view > .virtual-flow > .scroll-bar:horizontal,
+.table-view > .virtual-flow > .scroll-bar:horizontal > .track,
+.table-view > .virtual-flow > .scroll-bar:horizontal > .track-background {
+    -fx-background-color: transparent;
+}
+
+.dialog-pane{
+  -fx-border-color:#4F75FF;
+  -fx-border-width:2.0px;
+ }
+/**Costumization of The Bar where the buttons are located**/
+.dialog-pane > .button-bar > .container {
+  -fx-background-color: #2644B2;
+}
+
+.dialog-pane > .content.label {
+   -fx-padding: 0.5em 0.5em 0.5em 0.5em;
+   -fx-background-color: #2644B2;
+   -fx-text-fill:white;
+   -fx-font-size:15.0px;
+}
+
+/**Costumization of DialogPane Header**/
+.dialog-pane:header .header-panel {
+  -fx-background-color: #2644B2;
+}
+
+.dialog-pane:header .header-panel .label{
+  -fx-background-color: #2644B2;
+  -fx-background-radius:10px;
+  -fx-text-fill:white;
+  -fx-font-size:15.0px;
+}
+
+
+/**Costumization of Buttons**/
+.dialog-pane .button
+{
+    -fx-padding: 5px;   
+    -fx-border-color: #6989FF;
+    -fx-border-width: 1px;
+    -fx-background-radius: 0px;
+    -fx-background-color: #4F75FF;
+    -fx-font-family: "Segoe UI", Helvetica, Arial, sans-serif;
+    -fx-font-size: 12pt;
+    -fx-text-fill: white;
+}
+
+.dialog-pane .button:hover {
+    -fx-background-color: #6989FF;
+ }
+

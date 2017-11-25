@@ -9,26 +9,26 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="600.0" styleClass="background" stylesheets="@CSSPadrão.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="manutencaoDeProfessores.model.controller.PesquisaProfessorController">
+<AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="600.0" styleClass="background" stylesheets="@CSSPadrão.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="manutencaoDeProfessores.model.controller.PesquisaProfessorController">
    <children>
       <Label layoutX="9.0" layoutY="14.0" styleClass="label-cabecalho" text="Pesquisar Professor">
          <font>
             <Font size="22.0" />
          </font>
       </Label>
-      <Button layoutX="505.0" layoutY="162.0" mnemonicParsing="false" text="Pesquisar" />
-      <TextField layoutX="14.0" layoutY="164.0" prefHeight="27.0" prefWidth="467.0" />
-      <TableView layoutX="14.0" layoutY="203.0" prefHeight="280.0" prefWidth="570.0" styleClass="list-view">
+      <Button layoutX="505.0" layoutY="162.0" mnemonicParsing="false" onAction="#pesquisar" text="Pesquisar" />
+      <TextField fx:id="pesquisa" layoutX="14.0" layoutY="164.0" prefHeight="27.0" prefWidth="467.0" />
+      <TableView fx:id="tabela" layoutX="14.0" layoutY="203.0" onContextMenuRequested="#editaProf" prefHeight="280.0" prefWidth="570.0" styleClass="list-view">
          <columns>
-            <TableColumn minWidth="142.5" prefWidth="75.0" text="Nome" />
-            <TableColumn minWidth="142.5" prefWidth="75.0" text="Sobrenome" />
-            <TableColumn minWidth="142.5" prefWidth="75.0" text="ID Siape" />
-            <TableColumn minWidth="142.5" prefWidth="75.0" text="Titulação" />
+            <TableColumn fx:id="nome" minWidth="142.5" prefWidth="75.0" text="Nome" />
+            <TableColumn fx:id="IDSiape" minWidth="142.5" prefWidth="75.0" text="ID Siape" />
+            <TableColumn fx:id="titulacao" minWidth="142.5" prefWidth="75.0" text="Titulação" />
          </columns>
       </TableView>
       <Label layoutX="14.0" layoutY="82.0" styleClass="label-pequena" text="Campus" />
       <Label layoutX="324.0" layoutY="82.0" styleClass="label-pequena" text="Departamento" />
-      <ChoiceBox layoutX="14.0" layoutY="112.0" prefWidth="150.0" />
-      <ChoiceBox layoutX="324.0" layoutY="112.0" prefWidth="150.0" />
+      <ChoiceBox fx:id="campus" layoutX="14.0" layoutY="112.0" prefWidth="150.0" />
+      <ChoiceBox fx:id="depto" layoutX="324.0" layoutY="112.0" prefWidth="150.0" />
+      <Button layoutX="505.0" layoutY="113.0" mnemonicParsing="false" onAction="#voltar" text="Voltar" />
    </children>
 </AnchorPane>

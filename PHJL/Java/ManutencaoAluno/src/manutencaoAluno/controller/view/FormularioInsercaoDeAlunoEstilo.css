@@ -1,0 +1,148 @@
+.telaBackground {
+    -fx-background-color:#2644B2;
+}
+
+.corDaFont{
+    -fx-text-fill: #000000;
+}
+
+.button
+{
+    -fx-padding: 5px;   
+    -fx-border-color: #6989FF;
+    -fx-border-width: 1px;
+    -fx-background-radius: 0px;
+    -fx-background-color: #4F75FF;
+    -fx-font-family: "Segoe UI", Helvetica, Arial, sans-serif;
+    -fx-font-size: 12pt;
+    -fx-text-fill: #ffffff;
+}
+
+.button:hover {
+    -fx-background-color: #6989FF;
+}
+
+/*Padrão de botão de rádio*/
+
+.radio-button{
+    -fx-padding: 5px;   
+    -fx-border-color: #6989FF;
+    -fx-border-width: 1px;
+    -fx-background-radius: 0px;
+    -fx-background-color: #4F75FF;
+    -fx-font-family: "Segoe UI", Helvetica, Arial, sans-serif;
+    -fx-font-size: 12pt;
+    -fx-text-fill: #ffffff;
+    -fx-alignment: CENTER;
+}
+
+.radio-button .radio {
+    -fx-border-width: 1px;
+    -fx-border-color:#d8ac29;
+    -fx-background-color:#6989FF;
+    -fx-border-radius: 15px;
+    -fx-padding: 4px;
+}
+.radio-button  .dot {
+    -fx-background-radius: 80px;
+    -fx-padding: 5px;
+    -fx-mark-color: white ;
+    
+}
+
+.text-field
+{
+    -fx-background-color: #6989FF;
+    -fx-text-fill:white; 
+    -fx-border-color: #d8ac29;
+    -fx-border-width: 1px;
+}
+
+.date-picker
+{
+    -fx-background-color: #6989FF;
+    -fx-text-fill:white; 
+    -fx-border-color: #d8ac29;
+    -fx-border-width: 1px;
+}
+
+/*Padrão de label para formulários*/
+
+.label-pequena{
+    -fx-font-family: 'Times New Roman';
+    -fx-font-size: 20px;
+    -fx-text-fill:white;  
+    -fx-alignment: CENTER;
+}
+
+/*Padrão de label para cabeçalhos*/
+
+.label-cabecalho
+{
+    -fx-font-family: 'Times New Roman';
+    -fx-font-size: 40px;
+    -fx-text-fill:white;  
+    -fx-alignment: CENTER;
+
+}
+.list-view
+{
+    -fx-background-color: #6989FF;
+    -fx-text-fill:white; 
+    -fx-border-color: #d8ac29;
+    -fx-border-width: 1px;
+}
+
+.combo-box
+{
+    -fx-background-color:#6989FF;
+    -fx-text-fill:white; 
+    -fx-border-color: #d8ac29;
+    -fx-border-width: 1px;
+}
+
+.dialog-pane{
+  -fx-border-color:#4F75FF;
+  -fx-border-width:2.0px;
+ }
+/**Costumization of The Bar where the buttons are located**/
+.dialog-pane > .button-bar > .container {
+  -fx-background-color: #2644B2;
+}
+
+.dialog-pane > .content.label {
+   -fx-padding: 0.5em 0.5em 0.5em 0.5em;
+   -fx-background-color: #2644B2;
+   -fx-text-fill:white;
+   -fx-font-size:15.0px;
+}
+
+/**Costumization of DialogPane Header**/
+.dialog-pane:header .header-panel {
+  -fx-background-color: #2644B2;
+}
+
+.dialog-pane:header .header-panel .label{
+  -fx-background-color: #2644B2;
+  -fx-background-radius:10px;
+  -fx-text-fill:white;
+  -fx-font-size:15.0px;
+}
+
+
+/**Costumization of Buttons**/
+.dialog-pane .button
+{
+    -fx-padding: 5px;   
+    -fx-border-color: #6989FF;
+    -fx-border-width: 1px;
+    -fx-background-radius: 0px;
+    -fx-background-color: #4F75FF;
+    -fx-font-family: "Segoe UI", Helvetica, Arial, sans-serif;
+    -fx-font-size: 12pt;
+    -fx-text-fill: white;
+}
+
+.dialog-pane .button:hover {
+    -fx-background-color: #6989FF;
+ }

@@ -79,7 +79,7 @@
                                         <input type="text" class="form-control" placeholder="Horas Totais" name="horasTotal" required="required">
                                     </div>
                                     
-                                    <label class="fonteTexto">Inserir Modalidade:</label>
+                                    <label class="fonteTexto">Inserir modalidade:</label>
 
                                     <select required="required" class="form-control" name="modalidade" id="selectModalidade">
                                         <option value="">Selecione a modalidade&nbsp;</option>

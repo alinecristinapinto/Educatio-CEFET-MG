@@ -5,6 +5,8 @@ Grupo: MAE
     Objetivo da modificação: fazer filtragem
 -->
 <?php
+//EU NAO SOUBE ARRUMAR O ERRO DOS ACENTOS!!
+header ('Content-type: text/html; charset=ISO-8859-1');
 
 //Inclui a biblioteca do MPDF
 include("mpdf60/mpdf.php");
@@ -75,14 +77,19 @@ $html.= "         </table>
                 </div>
             </body>
         </html>";
-//cria a Data da geração do arquivo
-$dataAtual = date("d-m-y");
-//cria nome do arquivo de acordo com a data atual 
-$nomeDoArquivo = "Minhas multas (" .$dataAtual. ").pdf"; 
 
- $mpdf = new mPDF();
- $mpdf -> SetTitle($nomeDoArquivo);
- $mpdf -> SetDisplayMode('fullpage');
- $mpdf -> WriteHTML($html);
- $mpdf -> Output($nomeDoArquivo, 'D');
+//cria nome do arquivo de acordo com a data atual
+$nomeDoArquivo = "Relatorio de atrasos(" .$dataAtual. ").pdf"; 
+ //cria a Data da geração do arquivo
+$dataAtual = date("d-m-y");
+
+$mpdf = new mPDF();
+$stylesheet = file_get_contents('tabelaPDF.css'); // css da tabela
+$mpdf->WriteHTML($stylesheet,1);
+
+$mpdf -> SetTitle($nomeDoArquivo);
+$mpdf -> SetDisplayMode('fullpage');
+$mpdf -> WriteHTML($html);
+
+$mpdf -> Output($nomeDoArquivo, 'D');
 ?>

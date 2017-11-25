@@ -133,7 +133,7 @@
 			<div class="col-md-3 col-sm-4 col-xs-6">
 				<img class="img-responsive img-circle img" src="../../Estaticos/imagens/pedrolucas.jpeg" />
 				<p><strong>Pedro Lucas</strong></p>
-				<p>Descrição Curta</p>
+				<p>.</p>
 			</div>
     </div><br>
 
@@ -195,9 +195,9 @@
 			</div>
 
 			<div class="col-md-3 col-sm-4 col-xs-6">
-				<img class="img-responsive img-circle img" src="../../Estaticos/imagens/padrao.png" />
+				<img class="img-responsive img-circle img" src="../../Estaticos/imagens/epiphanio.jpg" />
 				<p><strong>Eduardo Moreira</strong></p>
-				<p>Descrição Curta</p>
+				<p>Não tenho capacidade de me descrever.</p>
 			</div>
 
 			<div class="col-md-3 col-sm-4 col-xs-6">
@@ -217,7 +217,7 @@
 			</div>
 
 			<div class="col-md-3 col-sm-4 col-xs-6">
-				<img class="img-responsive img-circle img" src="../../Estaticos/imagens/padrao.png" />
+				<img class="img-responsive img-circle img" src="../../Estaticos/imagens/hiago.jpg" />
 				<p><strong>Hiago Martins</strong></p>
 				<p>Descrição Curta</p>
 			</div>
@@ -249,9 +249,9 @@
 			</div>
 
 	        <div class="col-md-3 col-sm-4 col-xs-6">
-				<img class="img-responsive img-circle img" src="../../Estaticos/imagens/padrao.png" />
+				<img class="img-responsive img-circle img" src="../../Estaticos/imagens/manu.jpg" />
 				<p><strong>Emanuela Amorim</strong></p>
-				<p>Descrição Curta</p>
+				<p>Amante de gatos, fã de bandinhas indies e sad girl no twitter.</p>
 			</div>
 	</div><br>
 

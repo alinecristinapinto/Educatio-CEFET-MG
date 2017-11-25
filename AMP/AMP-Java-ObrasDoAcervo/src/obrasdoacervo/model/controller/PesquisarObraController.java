@@ -8,7 +8,9 @@ package obrasdoacervo.model.controller;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -82,8 +84,8 @@ public class PesquisarObraController implements Initializable {
         
         campus.setCellValueFactory(cellData -> cellData.getValue().getCampus());
         nome.setCellValueFactory(cellData -> cellData.getValue().getNome());
-        local.setCellValueFactory(cellData -> cellData.getValue().getTipo());
-        tipo.setCellValueFactory(cellData -> cellData.getValue().getLocal());
+        local.setCellValueFactory(cellData -> cellData.getValue().getLocal());
+        tipo.setCellValueFactory(cellData -> cellData.getValue().getTipo());
         ano.setCellValueFactory(cellData -> cellData.getValue().getAno());
         editora.setCellValueFactory(cellData -> cellData.getValue().getEditora());
         paginas.setCellValueFactory(cellData -> cellData.getValue().getPaginas());
@@ -95,5 +97,34 @@ public class PesquisarObraController implements Initializable {
         tabela.setItems(listaAtiv);
         }
         
+        @FXML
+        public void pesquisar() throws IOException, SQLException {
+            String campusTabela = tabela.getSelectionModel().getSelectedItem().getCampus().get();
+            String nomeTabela = tabela.getSelectionModel().getSelectedItem().getNome().get();
+            String localTabela = tabela.getSelectionModel().getSelectedItem().getLocal().get();
+            String tipoTabela = tabela.getSelectionModel().getSelectedItem().getTipo().get();
+            String anoTabela = tabela.getSelectionModel().getSelectedItem().getAno().get();
+            String editoraTabela = tabela.getSelectionModel().getSelectedItem().getEditora().get();
+            String paginasTabela = tabela.getSelectionModel().getSelectedItem().getPaginas().get();
+            
+            Statement stmt = null;
+            stmt = link.createStatement();
+            String sql = "SELECT * FROM acervo WHERE nome='"+nomeTabela+"' AND ativo='S'";
+            ResultSet rs; 
+            rs = stmt.executeQuery(sql);
+            rs.next();
+            int id = rs.getInt("id");
+            
+            if(tipoTabela.equals("livros")){
+                main.abreEditaLivro(link, nomeTabela, tipoTabela, localTabela, anoTabela, editoraTabela, paginasTabela, id);
+            }else if(tipoTabela.equals("periodicos")){
+                main.abreEditaPeriodicos(link, nomeTabela, tipoTabela, localTabela, anoTabela, editoraTabela, paginasTabela, id);
+            }else if(tipoTabela.equals("midias")){
+                main.abreEditaMidia(link, nomeTabela, tipoTabela, localTabela, anoTabela, editoraTabela, paginasTabela, id);
+            }else if(tipoTabela.equals("academicos")){
+                main.abreEditaAcademico(link, nomeTabela, tipoTabela, localTabela, anoTabela, editoraTabela, paginasTabela, id);
+            }
+            
+        }
         
 }

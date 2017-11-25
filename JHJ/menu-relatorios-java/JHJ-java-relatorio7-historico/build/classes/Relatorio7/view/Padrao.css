@@ -1,0 +1,228 @@
+
+.background
+{
+    -fx-background-color:#2644B2;
+}
+
+/*Padrão de botão*/
+
+.button
+{
+    -fx-padding: 5px;   
+    -fx-border-color: #6989FF;
+    -fx-border-width: 1px;
+    -fx-background-radius: 0px;
+    -fx-background-color: #4F75FF;
+    -fx-font-family: "Segoe UI", Helvetica, Arial, sans-serif;
+    -fx-font-size: 12pt;
+    -fx-text-fill: #ffffff;
+}
+
+.button:hover {
+    -fx-background-color: #6989FF;
+}
+
+/*Padrão de botão de rádio*/
+
+.radio-button{
+    -fx-padding: 5px;   
+    -fx-border-color: #6989FF;
+    -fx-border-width: 1px;
+    -fx-background-radius: 0px;
+    -fx-background-color: #4F75FF;
+    -fx-font-family: "Segoe UI", Helvetica, Arial, sans-serif;
+    -fx-font-size: 12pt;
+    -fx-text-fill: #ffffff;
+    -fx-alignment: CENTER;
+}
+
+.radio-button .radio {
+    -fx-border-width: 1px;
+    -fx-border-color:#d8ac29;
+    -fx-background-color:#6989FF;
+    -fx-border-radius: 15px;
+    -fx-padding: 4px;
+}
+.radio-button  .dot {
+    -fx-background-radius: 80px;
+    -fx-padding: 5px;
+    -fx-mark-color: white ;
+    
+}
+/*Padrão de checkbox*/
+
+.check-box {
+
+-fx-padding: 5px;   
+ -fx-border-color: #6989FF;
+ -fx-border-width: 1px;
+ -fx-background-radius: 0px;
+ -fx-background-color: #4F75FF;
+ -fx-font-family: "Segoe UI", Helvetica, Arial, sans-serif;
+ -fx-font-size: 12pt;
+  -fx-text-fill: #ffffff;
+  -fx-alignment: CENTER;
+
+}
+.check-box .box {
+
+-fx-background-color: #6989FF;
+-fx-border-color:#d8ac29;
+-fx-border-radius:1px; 
+
+}
+
+.check-box:selected .mark {
+
+-fx-background-color: white;
+
+}
+
+.check-box:selected .box {
+
+-fx-background-color:#6989FF;
+}
+
+
+/*Padrão de textfield*/
+
+.text-field
+{
+    -fx-background-color: #6989FF;
+    -fx-text-fill:white; 
+    -fx-border-color: #d8ac29;
+    -fx-border-width: 1px;
+}
+
+/*Padrão de choice box*/
+
+.choice-box
+{
+    -fx-background-color: #6989FF;
+    -fx-text-fill:white; 
+    -fx-border-color: #d8ac29;
+    -fx-border-width: 1px;
+    -fx-mark-color: white;
+}
+
+.choice-box .menu-item:focused {
+    -fx-background-color: #1020b0;
+    -fx-border-color: white;
+    -fx-text-fill: white;
+}
+
+.choice-box .context-menu {
+    -fx-background-color: #2644B2;
+}
+
+/*Padrão de list-view*/
+
+.list-view
+{
+    -fx-background-color: #6989FF;
+    -fx-text-fill:white; 
+    -fx-border-color: #d8ac29;
+    -fx-border-width: 1px;
+}
+
+/*Padrão de date-picker*/
+
+.date-picker
+{
+    -fx-background-color: #6989FF;
+    -fx-text-fill:white; 
+    -fx-border-color: #d8ac29;
+    -fx-border-width: 1px;
+}
+
+/*Padrão de label para formulários*/
+.label-bem-pequena{
+    -fx-font-family: 'Times New Roman';
+    -fx-font-size: 14px;
+    -fx-text-fill:white;  
+    -fx-alignment: CENTER;
+}
+
+.label-pequena{
+    -fx-font-family: 'Times New Roman';
+    -fx-font-size: 20px;
+    -fx-text-fill:white;  
+    -fx-alignment: CENTER;
+}
+
+/*Padrão de label para cabeçalhos*/
+
+.label-cabecalho
+{
+    -fx-font-family: 'Times New Roman';
+    -fx-font-size: 36px;
+    -fx-text-fill:white;  
+    -fx-alignment: CENTER;
+
+}
+
+/*Padrão de menu*/
+
+.menu{
+    -fx-padding: 5px;
+    -fx-font-family: 'Times New Roman';
+    -fx-font-size: 20px;
+    -fx-text-fill: rgb(255, 255, 255);
+    -fx-background-color:#2644B2;
+    -fx-alignment:center;
+    
+}
+
+/*Padrão de menu-bar*/
+
+.menu-bar{
+    -fx-background-color:#2644B2;
+    -fx-text-base-color:white;  
+}
+/*Padrão de menu-item*/
+
+.menu-item{
+    -fx-background-color:#2644B2;
+    -fx-text-base-color:white; 
+    
+}
+
+.myDialog{
+    -fx-border-color: #6989FF;
+    -fx-border-width: 1px;
+    -fx-background-color: #2644B2;
+}
+
+
+.myDialog > *.button
+{
+    -fx-padding: 5px;   
+    -fx-border-color: #6989FF;
+    -fx-border-width: 1px;
+    -fx-background-radius: 0px;
+    -fx-background-color: #4F75FF;
+    -fx-font-family: "Segoe UI", Helvetica, Arial, sans-serif;
+    -fx-font-size: 12pt;
+    -fx-text-fill: #ffffff;
+}
+
+.myDialog > *.button:hover {
+    -fx-background-color: #6989FF;
+}
+
+.myDialog > *.label.content{
+    -fx-font-family: 'Times New Roman';
+    -fx-font-size: 20px;
+    -fx-text-fill:white;  
+}
+
+.myDialog:header *.header-panel{
+    -fx-background-color: #2644B2;
+}
+
+.myDialog:header *.header-panel *.label{
+    -fx-font-family: 'Times New Roman';
+    -fx-font-size: 36px;
+    -fx-text-fill:white;  
+    -fx-alignment: CENTER;
+}

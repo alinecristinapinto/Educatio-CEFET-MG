@@ -91,9 +91,6 @@ public class CriaParteController implements Initializable{
             alert.showAndWait();
         }else{
                 
-                
-        int inicio = Integer.parseInt(pagInicio.getText());
-        int fim = Integer.parseInt(pagFinal.getText());
         
         Partes parte = new Partes(titulo.getText(), pagInicio.getText(), pagFinal.getText(), palavrasChave.getText());
         main.inserePartes(link, parte);

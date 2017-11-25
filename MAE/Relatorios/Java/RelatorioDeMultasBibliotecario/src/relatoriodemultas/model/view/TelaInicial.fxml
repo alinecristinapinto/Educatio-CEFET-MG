@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="700.0" styleClass="background" stylesheets="@CSSPadrão.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="relatoriodemultas.model.controller.TelaInicialController">
+   <children>
+      <Label layoutX="224.0" layoutY="250.0" styleClass="label-pequena" text="Insira o nome do aluno:" />
+      <Label layoutX="200.0" layoutY="127.0" styleClass="label-cabecalho" text="Relatório de Multas" />
+      <Button layoutX="225.0" layoutY="344.0" mnemonicParsing="false" onAction="#alteraTelaRelatorioTodos" prefHeight="31.0" prefWidth="268.0" stylesheets="@../../../../../RelatorioDeAtrasoBibliotecario/src/relatoriodeatraso/model/view/CSSPadrão.css" text="Mostrar multas de todos os alunos" />
+      <Button layoutX="425.0" layoutY="300.0" mnemonicParsing="false" onAction="#alteraTelaRelatorio" prefHeight="23.0" prefWidth="68.0" stylesheets="@../../../../../RelatorioDeAtrasoBibliotecario/src/relatoriodeatraso/model/view/CSSPadrão.css" text="Mostrar" />
+      <TextField fx:id="aluno" layoutX="225.0" layoutY="300.0" prefHeight="31.0" prefWidth="188.0" promptText="Nome do aluno" />
+   </children>
+</AnchorPane>

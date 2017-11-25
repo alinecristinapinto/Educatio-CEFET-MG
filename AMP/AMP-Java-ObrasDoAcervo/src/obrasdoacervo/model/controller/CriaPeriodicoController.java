@@ -33,13 +33,10 @@ public class CriaPeriodicoController implements Initializable{
     private TextField nome;
     @FXML
     private TextField editora;
-    
     @FXML
     private ChoiceBox campus;
-    
     @FXML
     private TextField local;
-
     @FXML
     private TextField ano;
     @FXML

@@ -1,61 +1,124 @@
 <?php
 
-/**
- * @author 
+/*
+ * @author
  * @copyright 2017
  */
 
-	include("C:/xampp/htdocs/matheus/mpdf60/mpdf.php");
+ //Inclui a biblioteca do MPDF
+ include("mpdf60/mpdf.php");
 
+ // Cria conexão
+ $conn = new mysqli("localhost", "root", "Bruali16","educatio");
 
-    if (isset($_POST["idAcervo"]))
-	  	$id=$_POST["idAcervo"];
-	else {
-	  	$url="http://localhost/MAE-Web-RelatorioObrasDescartadas.html";
-	  	echo '<script>window.location = "'.$url.'";</script>';
+ // Checa conexão
+ if ($conn->connect_error) {
+     die("Conecção falhou: " . $conn->connect_error);
+ }
+
+	//recebe via POST o Id do aluno a ser pesquisado
+	if (!empty($_POST["nomeObra"])) {
+	$nomeObra = $_POST["nomeObra"];
+
+	//seleciona o ID da obra pelo seu nome
+	$stmt = $conn->prepare("SELECT id FROM acervo WHERE nome = ?");
+	$stmt->bind_param('s', $nomeObra);
+	$stmt->execute();
+	$rst = $stmt->get_result();
+
+	while($row = $rst->fetch_assoc()){
+		$idObra = $row['id'];
 	}
 
-    $link = new mysqli("localhost", "root", "", "educatio");
-    if(!$link)
-        die("Conexão falhou.");
-    
-    $sql = "SELECT id,dataDescarte FROM `descartes` WHERE id=$id";
-    $resultado = $link->query($sql);
+	//seleciona a data do descarte pelo ID do acervo
+	$stmt = $conn->prepare("SELECT dataDescarte FROM descartes WHERE idAcervo = ?");
+	$stmt->bind_param('s', $idObra);
+	$stmt->execute();
+	$rst = $stmt->get_result();
 
-    if(!$resultado)
-    	die("Selecionar o Banco de Dados falhou.");
-	
-	$dataAtual = date("d-m-y"); //cria a Data da geração do arquivo
-    $nomeDoArquivo = "Relatorio de Obras Descartadas (" .$dataAtual. ").txt"; //cria nome do arquivo de acordo com 
+		while($row = $rst->fetch_assoc()){
+			$dataDescarte[] = $row['dataDescarte'];
+		}
 
-	$html = "<!DOCTYPE html>
-			<html>
-			<head>
-				<meta charset='utf-8'>
-				<meta name='viewport' content='width=device-width, initial-scale=1'>
-				<link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css'>
-				<script src='https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
-				<script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js'></script>
+		$html .= "<!DOCTYPE html>
+						<html lang='pt-br'>
+						<head>
+						</head>
+						<body>
+							<h3> Tabela de obras descartadas <h3>
+              <table>
+              	<tr>
+					<th>Nome da Obra</th>
+                  	<th>Data do descarte</th>
+                </tr> ";
+				foreach ($dataDescarte as $datas) {
+	$html .=      "<tr>
+			             <td>". $nomeObra ."</td>
+			             <td>". $datas ."</td>
+		            </tr>";
+		            }
+  $html.= "     </table>
+            </body>
+        		</html> ";
 
-				<title>Relatorio obras descartadas</title>
 
-				<!-- jQuery (plugins JavaScript do Bootstrap) -->
-				<script src='https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js'></script>
-				<script src='js/bootstrap.min.js'></script>
-			</head>
-			<body>
-				<div class='container-fluid'>
-					<h1>Relatorios:<small><em>Obras Descartadas</em></small></h1>
-					<h3>Resultados da pesquisa:</h3>";
+	} else {
 
-	while($row = $resultado->fetch_assoc()){
-		$html .=  "<br>O id do livro descartado e: ".$row['id'].
-		        					"<br>Data do descarte: ".$row['dataDescarte'];
-    }
+  $sql = "SELECT id, nome FROM acervo";
+  $rst = $conn->query($sql);
 
-    $mpdf = new mPDF();
+  $numRegistrosAcervo = mysqli_num_rows($rst);
+  
+  while($row = $rst->fetch_assoc()){
+    $idAcervoo[] = $row['id'];
+    $nomeAcervo[] = $row['nome'];
+  }
+
+  $stmt1 = "SELECT dataDescarte FROM descartes ORDER BY idAcervo";
+  $rst1 = $conn->query($stmt1);  
+
+  $numRegistrosDescarte = mysqli_num_rows($rst1);
+  
+  while($row1 = $rst1->fetch_assoc()){
+    $dataDescarteDescartes[] = $row1['dataDescarte'];
+  }
+
+  $html = "<!DOCTYPE html>
+          <html lang='pt-br'>
+            <head>
+            </head>
+              <body>
+                <h3> Relatorio de Multas <h3>
+                 <table>
+                      <tr>
+                        <th>Nome da Obra</th>
+                  		<th>Data do descarte</th>
+                      </tr>";
+
+      for ($i = 0; $i  < $numRegistrosDescarte; $i ++) { 
+        $html .= "<tr>
+                    <td>".$nomeAcervo[$i]."</td>
+                    <td>".$dataDescarteDescartes[$i]."</td>
+                  </tr>
+                                 ";
+                          }
+                           
+$html.="         </table>
+            </body>
+        </html>";
+
+}
+
+    $dataAtual = date("d-m-y"); //cria a Data da geração do arquivo
+	$nomeDoArquivo = "Obras descartadas (" .$dataAtual. ").pdf"; //cria nome do arquivo de acordo com a data atual
+
+	$mpdf = new mPDF();
+	$stylesheet = file_get_contents('tabelaPDF.css'); // css da tabela
+	$mpdf->WriteHTML($stylesheet,1);
+
 	$mpdf -> SetTitle($nomeDoArquivo);
 	$mpdf -> SetDisplayMode('fullpage');
 	$mpdf -> WriteHTML($html);
+
 	$mpdf -> Output($nomeDoArquivo, 'D');
 ?>

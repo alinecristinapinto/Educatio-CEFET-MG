@@ -37,7 +37,7 @@ CREATE TABLE IF NOT EXISTS `deptos` (
 CREATE TABLE IF NOT EXISTS `cursos` (
   id int(5) NOT NULL PRIMARY KEY AUTO_INCREMENT,
   idDepto int(5) NOT NULL,
-  nome varchar(30) NOT NULL,
+  nome varchar(70) NOT NULL,
   horasTotal varchar(4) NOT NULL,
   modalidade varchar(30) NOT NULL,
   ativo varchar(1) NOT NULL
@@ -47,7 +47,7 @@ CREATE TABLE IF NOT EXISTS `turmas` (
   id int(5) NOT NULL PRIMARY KEY AUTO_INCREMENT,
   idCurso int(5) NOT NULL,
   serie int(2) NOT NULL,
-  nome varchar(30) NOT NULL,
+  nome varchar(70) NOT NULL,
   ativo varchar(1) NOT NULL
   );
 
@@ -81,7 +81,7 @@ CREATE TABLE IF NOT EXISTS `matriculas` (
 CREATE TABLE IF NOT EXISTS `funcionario` (
   idSIAPE varchar(9) NOT NULL PRIMARY KEY,
   idDepto int(5) NOT NULL,
-  nome varchar(80) NOT NULL,
+  nome varchar(70) NOT NULL,
   titulacao varchar(15) NOT NULL,
   hierarquia varchar(15) NOT NULL,
   senha varchar(32) NOT NULL,
@@ -92,7 +92,7 @@ CREATE TABLE IF NOT EXISTS `funcionario` (
 CREATE TABLE IF NOT EXISTS `disciplinas` (
   id int(5) NOT NULL PRIMARY KEY AUTO_INCREMENT,
   idTurma int(5) NOT NULL,
-  nome varchar(30) NOT NULL,
+  nome varchar(70) NOT NULL,
   cargaHorariaMin varchar(4) NOT NULL,
   ativo varchar(1) NOT NULL
   );
@@ -124,7 +124,7 @@ CREATE TABLE IF NOT EXISTS `conteudos` (
   id int(5) NOT NULL PRIMARY KEY AUTO_INCREMENT,
   idEtapa int(5) NOT NULL,
   idDisciplina int(5) NOT NULL,
-  conteudo varchar(60) NOT NULL,
+  conteudo varchar(70) NOT NULL,
   datas varchar(10) NOT NULL,
   ativo varchar(1) NOT NULL
   );

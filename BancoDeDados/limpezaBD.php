@@ -21,25 +21,20 @@
 
 ###############################################################################################
 	//APAGA O CONTEÚDO DE TODAS AS TABELAS DO BANCO DE DADOS
-	
-	$arrayTabelas = array('campi', 'deptos', 'cursos', 'turmas' , 
-						  'alunos', 'matriculas', 'funcionario', 'disciplinas', 
-						  'profDisciplinas', 'etapas', 'atividades', 'conteudos', 
-						  'diarios', 'acervo', 'livros', 'academicos', 
-						  'midias', 'periodicos', 'partes', 'autorAcervo', 
-						  'autores', 'reservas', 'emprestimos', 'descartes');
 
-	$i=0;
-
-    for($i = 0; $i < 24; $i++)
-  	{
-  		$sqlTabela = "SELECT * FROM `{$arrayTabelas[$i]}`";
-  		$rstTabela = $con->query($sqlTabela);
-  		if($rstTabela->num_rows > 0)
-  		{
-	    	$con->query("TRUNCATE TABLE `{$arrayTabelas[$i]}`");
-  		}
-  	}
+    $sql = "SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA LIKE '".$bd."'";
+	$rst = $con->query($sql);
+	$tables = $rst->fetch_all(MYSQLI_ASSOC);
+	foreach($tables as $table)
+	{
+		$sql = "SELECT * FROM `".$table['TABLE_NAME']."`";
+		$rst = $con->query($sql);
+		if($rst->num_rows > 0)
+	    {
+	    	$sql = "TRUNCATE TABLE `".$table['TABLE_NAME']."`";
+	        $rst = $con->query($sql);
+	    }
+	}
 
 ###############################################################################################
 	echo "<b><h3>".'Dados apagados com sucesso.'."</b></h3>"

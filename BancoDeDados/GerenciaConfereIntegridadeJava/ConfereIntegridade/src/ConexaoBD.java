@@ -3,23 +3,28 @@ import java.sql.*;
 import javax.swing.ImageIcon;
 
 
-public class ManipulaBD {
+public class ConexaoBD {
     
     public Connection conexao;
     
-    public void conexaoServidor (String porta, String bancoDeDados, String usuario, String senha) throws ClassNotFoundException, SQLException {
+    public void conexaoServidor (String porta, String bancoDeDados, String usuario, String senha) throws ClassNotFoundException, SQLException 
+    {
         String driverName = "com.mysql.jdbc.Driver";
         Class.forName(driverName);
         
-        conexao = DriverManager.getConnection("jdbc:mysql://localhost:"+porta+"/"+bancoDeDados, usuario, senha);
+        conexao = DriverManager.getConnection("jdbc:mysql://localhost:" + porta + "/"+bancoDeDados, usuario, senha);
 
-        if (conexao != null) {
-            System.out.println("conectado com sucesso");
-        } else {
-            System.out.println("não conectado");
+        if (conexao != null) 
+        {
+            System.out.println("Conectado com sucesso");
+        } 
+        else 
+        {
+            System.out.println("Não conectado");
         }
     }
     
+    /*
     public void insercaoElementoBD (String tabela, Object [] elementos) throws SQLException {
         Statement st = conexao.createStatement();
         
@@ -39,6 +44,7 @@ public class ManipulaBD {
         pre.close();
         
     }
+    */
     
     //public ResultSet selecionaElementoBD () {}
     

@@ -55,7 +55,6 @@
 		{
 			while($linhaMae = $rstMae->fetch_array(MYSQLI_BOTH))
 			{
-				//echo "<br>".$opc;
 				$stmtFilho = $con->prepare("SELECT * FROM `{$arrayTabelas[$tabelaFilho]}` WHERE ativo = ? AND $opc = ?");
 				$stmtFilho->bind_param('si', $param1, $param2);
 
@@ -105,17 +104,31 @@
 				$stmtMae = $con->prepare("SELECT * FROM `{$arrayTabelas[$tabelaMae]}` WHERE ativo = ? AND $nomeColunas[0] = ?");
 				$stmtMae->bind_param('ss', $param1, $param2);
 
-				$param1 = 'S';
+				if($tabelaMae != 13 && $tabelaFilho != 23)
+				{
+					$param1 = 'S';
+				}
+				else 
+				{
+					$param1 = 'N';
+				}
 				$param2 = $linhaFilho[$opc];
 
 				$stmtMae->execute();
-
 				$rstMae = $stmtMae->get_result();
 
 				if($rstMae->num_rows == 0)
 				{
-					$stringRelatorioErrosReverso .= $arrayNomesTabelas[$tabelaFilho].' com id = '.$linhaFilho[0].' não possui '.$opc.' conectado a um(a) '.$arrayNomesTabelas[$tabelaMae].' ativo(a)'.".<br>";
-					$GLOBALS['houveErro'] = true;
+					if($tabelaMae != 13 && $tabelaFilho != 23)
+					{
+						$stringRelatorioErrosReverso .= $arrayNomesTabelas[$tabelaFilho].' com id = '.$linhaFilho[0].' não possui '.$opc.' conectado a um(a) '.$arrayNomesTabelas[$tabelaMae].' ativo(a)'.".<br>";	
+						$GLOBALS['houveErro'] = true;
+					}
+					else if($tabelaMae == 13 && $tabelaFilho == 23)
+					{
+						$stringRelatorioErrosReverso .= $arrayNomesTabelas[$tabelaFilho].' com id = '.$linhaFilho[0].' possui '.$opc.' conectado a um(a) '.$arrayNomesTabelas[$tabelaMae].' ativo(a)'.".<br>";	
+						$GLOBALS['houveErro'] = true;
+					}				
 				}
 			}
 		}
@@ -240,22 +253,6 @@
 	conferidorDeIntegridade(13,19,'idAcervo');
 	//Conferindo integridade, agora, reversamente
 	conferidorDeIntegridadeReversa(0,13,'idCampi');
-/*
-	if($bibliotecaVazia == true)
-	{
-		conferidorDeIntegridade(13,15,'idAcervo');
-
-		if($bibliotecaVazia == true)
-		{
-			conferidorDeIntegridade(13,16,'idAcervo');
-
-			if($bibliotecaVazia == true)
-			{
-				conferidorDeIntegridade(13,17,'idAcervo');
-			}
-		}
-	}
-*/
 
 	//Conferindo integridade de Livros (14)
 	//Acredito que não há necessidade
@@ -318,11 +315,26 @@
 	//Conferindo integridade, agora, reversamente
 	conferidorDeIntegridadeReversa(13,23,'idAcervo');
 	conferidorDeIntegridadeReversa(6,23,'idFuncionario');
-	
-	echo "<b><h2>".'Erros de integridade: Direção->De cima para baixo'."</h2></b>";					
-	echo $stringRelatorioErros;
-	//echo "<b><h2>".'###############################################################################################'."</h2></b>";
+
+	###############################################################################################
+	echo "<b><h2>".'Erros de integridade: Direção->De cima para baixo'."</h2></b>";	
+	if($stringRelatorioErros == '')
+	{
+		echo 'Não houve nenhum erro de integridade nesse sentido.';
+	}				
+	else
+	{
+		echo $stringRelatorioErros;
+	}
+	###
 	echo "<b><h2>".'Erros de integridade: Direção->De baixo para cima'."</h2></b>";
-	echo $stringRelatorioErrosReverso;
+	if($stringRelatorioErrosReverso == '')
+	{
+		echo 'Não houve nenhum erro de integridade nesse sentido.';
+	}				
+	else
+	{
+		echo $stringRelatorioErrosReverso;
+	}
 ###############################################################################################
 ?>

@@ -505,7 +505,7 @@ public class Atividade {
         
         rs = declaracao.executeQuery();
         while(rs.next()){
-            sql = "UPDATE diairios SET ativo = 'N' WHERE idConteudo = (?) AND ativo 'S'";
+            sql = "UPDATE diarios SET ativo = 'N' WHERE idConteudo = (?) AND ativo = 'S'";
             
             declaracao = conexao.prepareStatement(sql);
             declaracao.setInt(1, rs.getInt("id"));

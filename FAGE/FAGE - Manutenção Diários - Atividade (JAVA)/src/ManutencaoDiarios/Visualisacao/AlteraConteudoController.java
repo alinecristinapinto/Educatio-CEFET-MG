@@ -1,7 +1,7 @@
 package ManutencaoDiarios.Visualisacao;
 
 import ManutencaoDiarios.ManutencaoDiarios;
-import ManutencaoDiarios.ManutencaoDiariosIntegracao;
+//import ManutencaoDiarios.ManutencaoDiariosIntegracao;
 import ManutencaoDiarios.Modelo.Atividade;
 import ManutencaoDiarios.Modelo.Disciplina;
 import ManutencaoDiarios.Modelo.Turma;

@@ -9,10 +9,9 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ManutencaoDiarios.Visualisacao.SelecionaDadosController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" styleClass="background" stylesheets="@CSSPadrão.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ManutencaoDiarios.Visualisacao.SelecionaDadosController">
    <children>
-      <GridPane AnchorPane.bottomAnchor="150.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="150.0">
+      <GridPane AnchorPane.bottomAnchor="150.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="150.0">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="295.0" minWidth="10.0" prefWidth="151.0" />
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="502.0" minWidth="10.0" prefWidth="449.0" />
@@ -24,14 +23,14 @@
          <children>
             <ChoiceBox fx:id="disciplinas" prefHeight="25.0" prefWidth="526.0" GridPane.columnIndex="1" />
             <ChoiceBox fx:id="turmas" prefHeight="25.0" prefWidth="513.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <Label prefHeight="17.0" prefWidth="218.0" text="Disciplina" />
-            <Label fx:id="labelTurma" prefHeight="17.0" prefWidth="250.0" text="Turma" GridPane.rowIndex="1" />
+            <Label prefHeight="17.0" prefWidth="218.0" styleClass="label-pequena" text="Disciplina:" />
+            <Label fx:id="labelTurma" prefHeight="17.0" prefWidth="250.0" styleClass="label-pequena" text="Turma:" GridPane.rowIndex="1" />
          </children>
       </GridPane>
       <HBox layoutX="455.0" layoutY="355.0" spacing="10.0" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="10.0">
          <children>
-            <Button mnemonicParsing="false" onAction="#confirmar" text="Confirmar" />
-            <Button mnemonicParsing="false" onAction="#sair" text="Cancelar" />
+            <Button mnemonicParsing="false" onAction="#confirmar" prefWidth="90.0" text="Confirmar" />
+            <Button mnemonicParsing="false" onAction="#sair" prefWidth="90.0" text="Sair" />
          </children>
       </HBox>
    </children>

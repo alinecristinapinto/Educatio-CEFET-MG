@@ -1,1 +1,0 @@
-A fonte é usada no título dos certificados e deve ser instalada para que funcione.

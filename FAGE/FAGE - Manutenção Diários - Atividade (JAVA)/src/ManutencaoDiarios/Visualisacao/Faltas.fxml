@@ -15,9 +15,9 @@
             <TableColumn fx:id="faltas" prefWidth="200.0" text="Faltas" />
          </columns>
       </TableView>
-      <TextField fx:id="campo" layoutX="10.0" layoutY="311.0" prefHeight="25.0" prefWidth="312.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="188.0" AnchorPane.topAnchor="310.0" />
-      <Button layoutX="538.0" layoutY="311.0" mnemonicParsing="false" onAction="#confirma" prefHeight="25.0" prefWidth="80.0" text="Confirmar" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="310.0" />
-      <Button layoutX="534.0" layoutY="361.0" mnemonicParsing="false" onAction="#concluir" prefWidth="80.0" text="Concluir" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="10.0" />
+      <TextField fx:id="campo" layoutX="10.0" layoutY="311.0" prefHeight="25.0" prefWidth="312.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="210.0" AnchorPane.topAnchor="310.0" />
+      <Button layoutX="538.0" layoutY="311.0" mnemonicParsing="false" onAction="#confirma" prefHeight="31.0" prefWidth="90.0" text="Confirmar" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="310.0" />
+      <Button layoutX="534.0" layoutY="361.0" mnemonicParsing="false" onAction="#concluir" prefWidth="90.0" text="Concluir" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="10.0" />
    </children>
    <stylesheets>
       <URL value="@CSSPadrão.css" />

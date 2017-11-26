@@ -23,6 +23,7 @@ public class SelecionaDadosController {
     private Disciplina disciplina = new Disciplina();
     private Turma turma = new Turma();
     private String nomeDisciplina = new String();
+    private String nomeTurma = new String();
     
     @FXML
     private ChoiceBox disciplinas;
@@ -31,18 +32,35 @@ public class SelecionaDadosController {
     private ChoiceBox turmas;
     
     @FXML
+    private ChoiceBox serie;
+    
+    @FXML
     private Label labelTurma;
+    
+    @FXML
+    private Label labelSerie;
     
     @FXML
     private void initialize() throws SQLException{
         disciplinas.setItems(atividade.pegaDisciplinas());
         turmas.setVisible(false);
         labelTurma.setVisible(false);
+        serie.setVisible(false);
+            labelSerie.setVisible(false);
         
         disciplinas.getSelectionModel().selectedItemProperty().addListener(
             (observable, oldValue, newValue) -> {
             try {
                 continuar(newValue.toString());
+            } catch (SQLException | IOException ex) {
+                Logger.getLogger(SelecionaDadosController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        });
+        
+        turmas.getSelectionModel().selectedItemProperty().addListener(
+            (observable, oldValue, newValue) -> {
+            try {
+                mostraSeries(newValue.toString());
             } catch (SQLException | IOException ex) {
                 Logger.getLogger(SelecionaDadosController.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -73,9 +91,24 @@ public class SelecionaDadosController {
         }
     }
     
+    public void mostraSeries(String valor) throws IOException, SQLException{
+        nomeTurma = valor;
+        
+        if(nomeTurma == null){
+            AlertaPadrao alerta = new AlertaPadrao();
+            alerta.mostraAlertErro(manutencaoDiarios.getPalcoPrincipal(), "Campos vazios", "Erro!", "Existem campos vazios, preencha todos para continuar.");
+        }else{
+            serie.setItems(atividade.pegaSeries(nomeTurma));
+            serie.setVisible(true);
+            labelSerie.setVisible(true);
+        }
+        
+    }
+    
     public void confirmar() throws SQLException{
         disciplina.setNome(nomeDisciplina);
         turma.setNome(turmas.getSelectionModel().getSelectedItem().toString());
+        turma.setSerie(Integer.parseInt(serie.getSelectionModel().getSelectedItem().toString()));
         manutencaoDiarios.chamaEscolhe(disciplina, turma);
     }
     

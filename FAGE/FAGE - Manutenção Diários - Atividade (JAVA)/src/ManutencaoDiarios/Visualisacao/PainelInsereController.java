@@ -70,7 +70,7 @@ public class PainelInsereController {
         }else{
             atividade.insereAtividade(disciplina.getNome(), nomeAtividade.getText(), 
             dataAtividade.getValue().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")), 
-            Double.parseDouble(valorAtividade.getText()), turma.getNome(), conteudo.getNome());
+            Double.parseDouble(valorAtividade.getText()), turma.getNome(), turma.getSerie(), conteudo.getNome());
         
             AlertaPadrao alerta = new AlertaPadrao();
             alerta.mostraAlertConfirmacao(manutencaoDiarios.getPalcoPrincipal(), "Inserção", "Sucesso!", "Inserção realizada com sucesso no banco de dados.");

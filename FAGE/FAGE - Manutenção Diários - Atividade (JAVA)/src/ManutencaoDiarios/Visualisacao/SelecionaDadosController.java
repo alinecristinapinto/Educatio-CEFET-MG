@@ -85,6 +85,7 @@ public class SelecionaDadosController {
             alerta.mostraAlertErro(manutencaoDiarios.getPalcoPrincipal(), "Campos vazios", "Erro!", "Existem campos vazios, preencha todos para continuar.");
             
         }else{
+            disciplina.setId(atividade.pegaIdDisciplina(nomeDisciplina));
             turmas.setItems(atividade.pegaTurmas(nomeDisciplina));
             turmas.setVisible(true);
             labelTurma.setVisible(true);
@@ -98,7 +99,8 @@ public class SelecionaDadosController {
             AlertaPadrao alerta = new AlertaPadrao();
             alerta.mostraAlertErro(manutencaoDiarios.getPalcoPrincipal(), "Campos vazios", "Erro!", "Existem campos vazios, preencha todos para continuar.");
         }else{
-            serie.setItems(atividade.pegaSeries(nomeTurma));
+            turma.setId(atividade.pegaIdTurma(nomeDisciplina));
+            serie.setItems(atividade.pegaSeries(turma.getId()));
             serie.setVisible(true);
             labelSerie.setVisible(true);
         }

@@ -77,7 +77,7 @@ public class AlteraConteudoController {
         if(nome.getText().equals("") || etapa.getText().equals("") || data.getValue() == null){
             AlertaPadrao alerta = new AlertaPadrao();
             alerta.mostraAlertErro(manutencaoDiarios.getPalcoPrincipal(), "Campos vazios", "Erro!", "Existem campos vazios, preencha todos para continuar.");
-        }else if(!etapa.getText().matches("[1-4]")){
+        }else if(!etapa.getText().matches("[1-6]")){
             AlertaPadrao alerta = new AlertaPadrao();
             alerta.mostraAlertErro(manutencaoDiarios.getPalcoPrincipal(), "Campos incorretos", "Erro!", "Preencha todos os campos corretamente para continuar.");
         }else{

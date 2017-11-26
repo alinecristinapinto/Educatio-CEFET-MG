@@ -5,7 +5,6 @@ import ManutencaoDiarios.Modelo.Atividade;
 import ManutencaoDiarios.Modelo.Conteudo;
 import ManutencaoDiarios.Modelo.Disciplina;
 import ManutencaoDiarios.Modelo.FaltasTabela;
-import ManutencaoDiarios.Modelo.NotasTabela;
 import ManutencaoDiarios.Modelo.Turma;
 import java.io.IOException;
 import java.sql.SQLException;
@@ -92,11 +91,11 @@ public class FaltasController {
             AlertaPadrao alerta = new AlertaPadrao();
             alerta.mostraAlertErro(manutencaoDiarios.getPalcoPrincipal(), "Campos vazios", "Erro!", "Selecione uma linha para continuar.");
         }else{
-            int faltas = Integer.parseInt(campo.getText());
+            int falta = Integer.parseInt(campo.getText());
             String aluno = tabela.getSelectionModel().getSelectedItem().getNomeAluno().get();
             
-            atividade.alteraNota(aluno, faltas, disciplina.getNome(), conteudo.getNome());
-            manutencaoDiarios.chamaNotas(atividade, disciplina, turma, conteudo);
+            atividade.alteraFaltas(aluno, falta, disciplina.getNome(), conteudo.getNome());
+            manutencaoDiarios.chamaFaltas(atividade, disciplina, turma, conteudo);
         }
     }
     

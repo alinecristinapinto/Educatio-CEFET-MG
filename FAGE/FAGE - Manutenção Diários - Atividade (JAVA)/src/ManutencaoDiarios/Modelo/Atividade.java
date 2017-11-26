@@ -103,7 +103,7 @@ public class Atividade {
     public void insereAtividade(String nomeDisciplina, String nomeAtividade, String dataAtividade, double valorAtividade, String nomeTurma, int serie, String conteudo) throws ClassNotFoundException, SQLException{
         Connection conexao = new ConnectionFactory().getConexao();
         
-        idProfDisciplina = pegaIdProfDisciplina(pegaIdDisciplina(nomeDisciplina), pegaIdTurma(nomeTurma, serie));
+        idProfDisciplina = pegaIdProfDisciplina(pegaIdDisciplina(nomeDisciplina), pegaIdTurma(nomeDisciplina));
         
         String sql = "INSERT INTO atividades (idProfDisciplina, nome, data, valor, ativo) VALUES (?, ?, ?, ?, ?)";
         
@@ -173,7 +173,7 @@ public class Atividade {
     public void removeAtividade(String disciplina, String turma, int serie, String nomeAtividade, String dataAtividade, double valorAtividade) throws ClassNotFoundException, SQLException{
         Connection conexao = new ConnectionFactory().getConexao();
         
-        idProfDisciplina = pegaIdProfDisciplina(pegaIdDisciplina(disciplina), pegaIdTurma(turma, serie));
+        idProfDisciplina = pegaIdProfDisciplina(pegaIdDisciplina(disciplina), pegaIdTurma(disciplina));
         
         String sql = "UPDATE atividades SET ativo = (?) WHERE nome = (?) AND data = (?) AND valor = (?) AND idProfDisciplina = (?) AND ativo = \"S\"";
         
@@ -191,18 +191,18 @@ public class Atividade {
         conexao.close();
     }
 
-    public int pegaIdTurma(String nomeTurma, int serie) throws SQLException{
+    public int pegaIdTurma(String disciplina) throws SQLException{
         Connection conexao = new ConnectionFactory().getConexao();
         
-        String sql = "SELECT id FROM turmas WHERE nome = (?) AND serie = (?)AND ativo = \"S\""; 
+        
+        String sql = "SELECT idTurma FROM disciplinas WHERE id = (?) AND ativo = \"S\""; 
         
         PreparedStatement declaracao = conexao.prepareStatement(sql);
-        declaracao.setString(1, nomeTurma);
-        declaracao.setInt(2, serie);
+        declaracao.setInt(1, pegaIdDisciplina(disciplina));
         
         ResultSet rs = declaracao.executeQuery();
         rs.next();
-        int idTurma = rs.getInt("id");
+        int idTurma = rs.getInt("idTurma");
         
         return idTurma;
     }
@@ -300,7 +300,7 @@ public class Atividade {
     public ObservableList pegaNomes(String disciplina, String turma, int serie) throws SQLException{
         Connection conexao = new ConnectionFactory().getConexao();
         
-        int idProfDisc = pegaIdProfDisciplina(pegaIdDisciplina(disciplina), pegaIdTurma(turma, serie));
+        int idProfDisc = pegaIdProfDisciplina(pegaIdDisciplina(disciplina), pegaIdTurma(disciplina));
         
         String sql = "SELECT nome FROM atividades WHERE idProfDisciplina = (?) AND ativo = 'S'";
         
@@ -319,7 +319,7 @@ public class Atividade {
         Connection conexao = new ConnectionFactory().getConexao();
         
         lista = FXCollections.observableArrayList();
-        int idProfDisc = pegaIdProfDisciplina(pegaIdDisciplina(disciplina), pegaIdTurma(turma, serie));
+        int idProfDisc = pegaIdProfDisciplina(pegaIdDisciplina(disciplina), pegaIdTurma(disciplina));
         
         String sql = "SELECT idAluno FROM matriculas WHERE idDisciplina = (?) AND ativo = 'S'";
         PreparedStatement declaracao = conexao.prepareStatement(sql);
@@ -493,7 +493,7 @@ public class Atividade {
                 
                 declaracao = conexao.prepareStatement(sql);
                 declaracao.setInt(1, resultado.getInt("idAtividade"));
-                declaracao.setInt(2, pegaIdProfDisciplina(pegaIdDisciplina(disciplina), pegaIdTurma(turma, serie)));
+                declaracao.setInt(2, pegaIdProfDisciplina(pegaIdDisciplina(disciplina), pegaIdTurma(disciplina)));
                 
                 declaracao.execute();
             }
@@ -751,13 +751,13 @@ public class Atividade {
         conexao.close();
     }
     
-    public ObservableList pegaSeries(String turma) throws SQLException{
+    public ObservableList pegaSeries(int turma) throws SQLException{
         Connection conexao = new ConnectionFactory().getConexao();
         
-        String sql = "SELECT serie FROM turmas WHERE nome = (?) AND ativo = 'S'";
+        String sql = "SELECT serie FROM turmas WHERE id = (?) AND ativo = 'S'";
         
         PreparedStatement declaracao = conexao.prepareStatement(sql);
-        declaracao.setString(1, turma);
+        declaracao.setInt(1, turma);
         
         ResultSet rs = declaracao.executeQuery();
         while(rs.next()){

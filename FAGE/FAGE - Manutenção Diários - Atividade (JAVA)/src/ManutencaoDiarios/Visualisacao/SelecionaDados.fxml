@@ -26,7 +26,7 @@
             <ChoiceBox fx:id="turmas" prefHeight="25.0" prefWidth="513.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
             <Label prefHeight="17.0" prefWidth="218.0" styleClass="label-pequena" text="Disciplina:" />
             <Label fx:id="labelTurma" prefHeight="17.0" prefWidth="250.0" styleClass="label-pequena" text="Turma:" GridPane.rowIndex="1" />
-            <Label fx:id="labelSerie" prefHeight="23.0" prefWidth="203.0" styleClass="label-pequena" text="Label" GridPane.rowIndex="2" />
+            <Label fx:id="labelSerie" prefHeight="23.0" prefWidth="203.0" styleClass="label-pequena" text="Série:" GridPane.rowIndex="2" />
             <ChoiceBox fx:id="serie" prefHeight="27.0" prefWidth="479.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
          </children>
       </GridPane>

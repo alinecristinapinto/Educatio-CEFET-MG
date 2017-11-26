@@ -1,0 +1,72 @@
+#cabecalho1 {
+  width: 240px;
+  height: 80px;
+  float: left;
+}
+#cabecalho2 {
+  width: 275px;
+  height: 80px;
+  float: left;
+}
+#cabecalho3 {
+  width: 165px;
+  height: 80px;
+  float: left;
+}
+#espacamentoTabelas {
+  width: 240px;
+  height: 30px;
+}
+h2{
+  font-size: 18px;
+}
+
+h3{
+  color: #333;
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 13px;
+}
+
+table {
+  color: #333;
+  font-family: Helvetica, Arial, sans-serif;
+  width: 700px;
+  /* Resetar as configurações */
+  border-spacing: 0;
+}
+
+td, th {
+  border: 0 none;
+  height: 30px;
+}
+
+#tituloTabela {
+  /* fundo degrade da celula principias */
+	background: linear-gradient(#333 0%,#444 100%);
+  text-align: center;
+	color: #FFF;
+  font-weight: bold;
+	height: 30px;
+}
+
+#subtituloTabela {
+  /* fundo degrade da celula principias */
+  background: linear-gradient(#333 0%,#444 100%);
+  text-align: left;
+  color: #FFF;
+  font-weight: bold;
+  height: 30px;
+}
+
+td { 
+  background: #FAFAFA; 
+  text-align: left; 
+  }
+
+/* linhas listradas */
+tr:nth-child(even) td {
+  background: #EEE;
+}
+tr:nth-child(odd) td {
+  background: #FDFDFD;
+}

@@ -55,6 +55,11 @@ public class EscolheController {
     @FXML
     private TableColumn<AtividadeTabela, Double> valor;
     
+    //    private ManutencaoDiariosIntegracao manutencaoDiariosIntegracao;
+//    public ManutencaoDiariosIntegracao getManutencaoDiariosIntegracao(){
+//        return manutencaoDiariosIntegracao;
+//    }
+    
     public void setManutencaoDiarios(ManutencaoDiarios manutencaoDiarios) {
         this.manutencaoDiarios = manutencaoDiarios;
     }
@@ -66,7 +71,7 @@ public class EscolheController {
     
     public void setTurma(Turma turma) throws SQLException{
         this.turma = turma;
-        setTabela(disciplina.getNome(), turma.getNome(), conteudo.getNome());
+        setTabela(disciplina.getNome(), turma.getNome(), turma.getSerie(), conteudo.getNome());
     }
     
     @FXML
@@ -75,21 +80,21 @@ public class EscolheController {
             (observable, oldValue, newValue) -> {
             try {
                 conteudo.setNome(newValue.toString());
-                setTabela(disciplina.getNome(), turma.getNome(), conteudo.getNome());
+                setTabela(disciplina.getNome(), turma.getNome(), turma.getSerie(), conteudo.getNome());
             } catch (SQLException ex) {
                 Logger.getLogger(EscolheController.class.getName()).log(Level.SEVERE, null, ex);
             }
         });
     }
     
-    public void setTabela(String disciplina, String turma, String conteudo) throws SQLException{
+    public void setTabela(String disciplina, String turma, int serie, String conteudo) throws SQLException{
         tabela.setEditable(true);
 
         nome.setCellValueFactory(cellData -> cellData.getValue().getNome());
         data.setCellValueFactory(cellData -> cellData.getValue().getData());
         valor.setCellValueFactory(cellData -> cellData.getValue().getValor().asObject());
         
-        listaAtiv = atividade.montaLista(disciplina, turma, conteudo);
+        listaAtiv = atividade.montaLista(disciplina, turma, serie, conteudo);
         
         tabela.setItems(listaAtiv);
         painelDireita.setVisible(true);
@@ -102,7 +107,7 @@ public class EscolheController {
         }else{
             conteudo.setNome(listaConteudos.getSelectionModel().getSelectedItem().toString());
             manutencaoDiarios.chamaLayoutInsere(disciplina, turma, conteudo);
-            setTabela(disciplina.getNome(), turma.getNome(), conteudo.getNome());
+            setTabela(disciplina.getNome(), turma.getNome(), turma.getSerie(), conteudo.getNome());
         }
     }
     
@@ -122,7 +127,7 @@ public class EscolheController {
 
             manutencaoDiarios.chamaAlteraAtividade(atividade, disciplina, turma);
             
-            setTabela(disciplina.getNome(), turma.getNome(), conteudo.getNome());
+            setTabela(disciplina.getNome(), turma.getNome(), turma.getSerie(), conteudo.getNome());
         }
     }
     
@@ -136,9 +141,9 @@ public class EscolheController {
             String dataAtiv = tabela.getSelectionModel().getSelectedItem().getData().get();
             double valorAtiv = tabela.getSelectionModel().getSelectedItem().getValor().get();
 
-            atividade.removeAtividade(disciplina.getNome(), turma.getNome(), nomeAtiv, dataAtiv, valorAtiv);
+            atividade.removeAtividade(disciplina.getNome(), turma.getNome(), turma.getSerie(), nomeAtiv, dataAtiv, valorAtiv);
             
-            setTabela(disciplina.getNome(), turma.getNome(), conteudo.getNome());
+            setTabela(disciplina.getNome(), turma.getNome(), turma.getSerie(), conteudo.getNome());
             
             AlertaPadrao alerta = new AlertaPadrao();
             alerta.mostraAlertConfirmacao(manutencaoDiarios.getPalcoPrincipal(), "Delte", "Sucesso!", "Atividade apagada com sucesso no banco de dados.");
@@ -174,7 +179,7 @@ public class EscolheController {
         }else{
             String nomeCont = listaConteudos.getSelectionModel().getSelectedItem().toString();
 
-            atividade.removeConteudo(disciplina.getNome(), turma.getNome(), nomeCont);
+            atividade.removeConteudo(disciplina.getNome(), turma.getNome(), turma.getSerie(), nomeCont);
             
             AlertaPadrao alerta = new AlertaPadrao();
             alerta.mostraAlertConfirmacao(manutencaoDiarios.getPalcoPrincipal(), "Delete", "Sucesso!", "Atividade apagada com sucesso no banco de dados.");
@@ -185,8 +190,34 @@ public class EscolheController {
         }
     }
     
+    public void notas() throws IOException, SQLException{
+        if(tabela.getSelectionModel().getSelectedItem() == null){
+            AlertaPadrao alerta = new AlertaPadrao();
+            alerta.mostraAlertErro(manutencaoDiarios.getPalcoPrincipal(), "Campos vazios", "Erro!", "Existem campos vazios, preencha todos para continuar.");
+        }else{
+            atividade.setNome(tabela.getSelectionModel().getSelectedItem().getNome().get());
+            atividade.setData(tabela.getSelectionModel().getSelectedItem().getData().get());
+            atividade.setValor(tabela.getSelectionModel().getSelectedItem().getValor().get());
+            
+            manutencaoDiarios.chamaNotas(atividade, disciplina, turma, conteudo);
+        }
+    }
+    
+    public void faltas() throws IOException, SQLException{
+        if(tabela.getSelectionModel().getSelectedItem() == null){
+            AlertaPadrao alerta = new AlertaPadrao();
+            alerta.mostraAlertErro(manutencaoDiarios.getPalcoPrincipal(), "Campos vazios", "Erro!", "Existem campos vazios, preencha todos para continuar.");
+        }else{
+            atividade.setNome(tabela.getSelectionModel().getSelectedItem().getNome().get());
+            atividade.setData(tabela.getSelectionModel().getSelectedItem().getData().get());
+            atividade.setValor(tabela.getSelectionModel().getSelectedItem().getValor().get());
+            
+            manutencaoDiarios.chamaFaltas(atividade, disciplina, turma, conteudo);
+        }
+    }
+    
     public void sair(){
-        System.exit(0);
+        manutencaoDiarios.chamaSelecionaDados();
     }
     
 }

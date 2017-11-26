@@ -1,6 +1,7 @@
 package ManutencaoDiarios.Visualisacao;
 
 import ManutencaoDiarios.ManutencaoDiarios;
+//import ManutencaoDiarios.ManutencaoDiariosIntegracao;
 import ManutencaoDiarios.Modelo.Atividade;
 import ManutencaoDiarios.Modelo.Disciplina;
 import ManutencaoDiarios.Modelo.Turma;
@@ -35,6 +36,11 @@ public class AlteraConteudoController {
     
     @FXML
     private DatePicker data;
+    
+//    private ManutencaoDiariosIntegracao manutencaoDiariosIntegracao;
+//    public ManutencaoDiariosIntegracao getManutencaoDiariosIntegracao(){
+//        return manutencaoDiariosIntegracao;
+//    }
     
 
     public ManutencaoDiarios getManutencaoDiarios() {
@@ -71,7 +77,7 @@ public class AlteraConteudoController {
         if(nome.getText().equals("") || etapa.getText().equals("") || data.getValue() == null){
             AlertaPadrao alerta = new AlertaPadrao();
             alerta.mostraAlertErro(manutencaoDiarios.getPalcoPrincipal(), "Campos vazios", "Erro!", "Existem campos vazios, preencha todos para continuar.");
-        }else if(!etapa.getText().matches("[1-4]")){
+        }else if(!etapa.getText().matches("[1-6]")){
             AlertaPadrao alerta = new AlertaPadrao();
             alerta.mostraAlertErro(manutencaoDiarios.getPalcoPrincipal(), "Campos incorretos", "Erro!", "Preencha todos os campos corretamente para continuar.");
         }else{

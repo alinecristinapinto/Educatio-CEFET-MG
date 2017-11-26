@@ -7,7 +7,9 @@ import ManutencaoDiarios.Modelo.Turma;
 import ManutencaoDiarios.Visualisacao.AlteraAtividadeController;
 import ManutencaoDiarios.Visualisacao.AlteraConteudoController;
 import ManutencaoDiarios.Visualisacao.EscolheController;
+import ManutencaoDiarios.Visualisacao.FaltasController;
 import ManutencaoDiarios.Visualisacao.InsereConteudoController;
+import ManutencaoDiarios.Visualisacao.NotasController;
 import ManutencaoDiarios.Visualisacao.PainelInsereController;
 import ManutencaoDiarios.Visualisacao.SelecionaDadosController;
 import java.io.IOException;
@@ -151,6 +153,48 @@ public class ManutencaoDiarios extends Application {
             controller.setAtividade(atividade);
             controller.setDisciplina(disciplina);
             controller.setTurma(turma);
+        }catch(IOException e){
+            e.printStackTrace();
+        }
+    }
+    
+    public void chamaNotas(Atividade atividade, Disciplina disciplina, Turma turma, Conteudo conteudo) throws SQLException{
+        try{
+            FXMLLoader carregadorFXML = new FXMLLoader();
+            carregadorFXML.setLocation(ManutencaoDiarios.class.getResource("Visualisacao/Notas.fxml"));
+            telaBase = (AnchorPane) carregadorFXML.load();
+            
+            Scene cena = new Scene(telaBase);
+            palcoPrincipal.setScene(cena);
+            palcoPrincipal.show();
+            
+            NotasController controller = carregadorFXML.getController();
+            controller.setManutencaoDiarios(this);
+            controller.setAtividade(atividade);
+            controller.setDisciplina(disciplina);
+            controller.setTurma(turma);
+            controller.setConteudo(conteudo);
+        }catch(IOException e){
+            e.printStackTrace();
+        }
+    }
+    
+    public void chamaFaltas(Atividade atividade, Disciplina disciplina, Turma turma, Conteudo conteudo) throws SQLException{
+        try{
+            FXMLLoader carregadorFXML = new FXMLLoader();
+            carregadorFXML.setLocation(ManutencaoDiarios.class.getResource("Visualisacao/Faltas.fxml"));
+            telaBase = (AnchorPane) carregadorFXML.load();
+            
+            Scene cena = new Scene(telaBase);
+            palcoPrincipal.setScene(cena);
+            palcoPrincipal.show();
+            
+            FaltasController controller = carregadorFXML.getController();
+            controller.setManutencaoDiarios(this);
+            controller.setAtividade(atividade);
+            controller.setDisciplina(disciplina);
+            controller.setTurma(turma);
+            controller.setConteudo(conteudo);
         }catch(IOException e){
             e.printStackTrace();
         }

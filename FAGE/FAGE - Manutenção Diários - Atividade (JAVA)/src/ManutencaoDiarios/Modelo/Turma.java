@@ -7,6 +7,7 @@ package ManutencaoDiarios.Modelo;
 public class Turma {
     private int id;
     private String nome;
+    private int serie;
 
     public Turma() {
     }
@@ -26,6 +27,13 @@ public class Turma {
     public void setNome(String nome) {
         this.nome = nome;
     }
-    
+
+    public int getSerie() {
+        return serie;
+    }
+
+    public void setSerie(int serie) {
+        this.serie = serie;
+    }
     
 }

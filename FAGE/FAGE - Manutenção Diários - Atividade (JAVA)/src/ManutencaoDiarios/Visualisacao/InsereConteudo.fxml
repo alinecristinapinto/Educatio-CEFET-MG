@@ -27,7 +27,7 @@
             <Label fx:id="labelData" alignment="CENTER" prefHeight="23.0" prefWidth="535.0" styleClass="label-pequena" text="Data de início:" GridPane.rowIndex="2" />
             <TextField fx:id="nomeConteudo" GridPane.columnIndex="1" />
             <DatePicker fx:id="dataConteudo" prefHeight="29.0" prefWidth="521.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <Label prefHeight="17.0" prefWidth="313.0" text="Etapa:" GridPane.rowIndex="1" />
+            <Label prefHeight="17.0" prefWidth="313.0" styleClass="label-pequena" text="Etapa:" GridPane.rowIndex="1" />
             <TextField fx:id="etapaConteudo" GridPane.columnIndex="1" GridPane.rowIndex="1" />
          </children>
       </GridPane>

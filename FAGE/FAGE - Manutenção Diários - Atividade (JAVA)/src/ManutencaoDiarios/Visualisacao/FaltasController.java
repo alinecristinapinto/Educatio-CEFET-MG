@@ -90,6 +90,13 @@ public class FaltasController {
         if(tabela.getSelectionModel().getSelectedItem() == null){
             AlertaPadrao alerta = new AlertaPadrao();
             alerta.mostraAlertErro(manutencaoDiarios.getPalcoPrincipal(), "Campos vazios", "Erro!", "Selecione uma linha para continuar.");
+        }else if(lista == null){
+            AlertaPadrao alerta = new AlertaPadrao();
+            alerta.mostraAlertErro(manutencaoDiarios.getPalcoPrincipal(), "Turma sem alunos", "Erro!", "Essa turma não tem alunos.");
+            manutencaoDiarios.chamaEscolhe(disciplina, turma);
+        }else if(!campo.getText().matches("[0-2]")){
+            AlertaPadrao alerta = new AlertaPadrao();
+            alerta.mostraAlertErro(manutencaoDiarios.getPalcoPrincipal(), "Valor incorreto", "Erro!", "Valor inserido não permitido.");
         }else{
             int falta = Integer.parseInt(campo.getText());
             String aluno = tabela.getSelectionModel().getSelectedItem().getNomeAluno().get();

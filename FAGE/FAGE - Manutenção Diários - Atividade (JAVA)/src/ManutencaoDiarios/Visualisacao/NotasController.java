@@ -89,9 +89,16 @@ public class NotasController {
         if(tabela.getSelectionModel().getSelectedItem() == null){
             AlertaPadrao alerta = new AlertaPadrao();
             alerta.mostraAlertErro(manutencaoDiarios.getPalcoPrincipal(), "Campos vazios", "Erro!", "Selecione uma linha para continuar.");
+        }else if(!campo.getText().matches("[0-9]+")){
+            AlertaPadrao alerta = new AlertaPadrao();
+            alerta.mostraAlertErro(manutencaoDiarios.getPalcoPrincipal(), "Valor incorreto", "Erro!", "Valor inserido não permitido.");
         }else if(Double.parseDouble(campo.getText()) > atividade.getValor()){
             AlertaPadrao alerta = new AlertaPadrao();
             alerta.mostraAlertErro(manutencaoDiarios.getPalcoPrincipal(), "Valor incorreto", "Erro!", "Valor inserido maior do que o valor permitido.");
+        }else if(lista == null){
+            AlertaPadrao alerta = new AlertaPadrao();
+            alerta.mostraAlertErro(manutencaoDiarios.getPalcoPrincipal(), "Turma sem alunos", "Erro!", "Essa turma não tem alunos.");
+            manutencaoDiarios.chamaEscolhe(disciplina, turma);
         }else{
             double nota = Double.parseDouble(campo.getText());
             String aluno = tabela.getSelectionModel().getSelectedItem().getNomeAluno().get();

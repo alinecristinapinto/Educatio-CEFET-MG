@@ -1,4 +1,4 @@
-package bd;
+package relatorio8.bd;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -11,7 +11,7 @@ import java.util.stream.*;
 
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
-import model.Relatorio8Aluno;
+import relatorio8.model.*;
 
 public class Relatorio8Dao {
 

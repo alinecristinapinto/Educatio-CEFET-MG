@@ -22,7 +22,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import model.Relatorio8Aluno;
+import relatorio8.model.*;
 import relatorio8.controlador.*;
 import relatorio8.model.*;
 

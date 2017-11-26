@@ -1,4 +1,4 @@
-package model;
+package relatorio8.model;
 
 import java.util.ArrayList;
 

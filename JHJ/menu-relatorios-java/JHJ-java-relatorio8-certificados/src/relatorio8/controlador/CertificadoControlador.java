@@ -15,7 +15,7 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.transform.Scale;
 import javafx.stage.Stage;
-import model.Relatorio8Aluno;
+import relatorio8.model.*;
 import relatorio8.view.Relatorio8;
 
 public class CertificadoControlador {

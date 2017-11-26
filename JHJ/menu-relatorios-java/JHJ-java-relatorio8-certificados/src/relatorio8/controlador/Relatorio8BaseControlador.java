@@ -11,7 +11,7 @@ import java.util.ResourceBundle;
 
 import com.sun.javafx.beans.IDProperty;
 
-import bd.CriaConexao;
+
 
 import java.sql.PreparedStatement;
 
@@ -28,8 +28,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Control;
 import javafx.scene.control.Label;
-import model.*;
-import bd.*;
+import relatorio8.model.*;
+import relatorio8.bd.*;
 public class Relatorio8BaseControlador implements Initializable {
 
     private Relatorio8 relatorio8;

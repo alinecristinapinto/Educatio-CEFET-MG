@@ -53,7 +53,7 @@
 	<div class="container">
 		<div class="col-md-8 ml-auto mr-auto">
 
-			<h1 class="text-center">Transferência de aAluno</h1>
+			<h1 class="text-center">Transferência de Aluno</h1>
 
 			<form method="POST" action="" class="contact-form">
 

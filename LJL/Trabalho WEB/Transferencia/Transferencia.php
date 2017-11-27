@@ -117,8 +117,9 @@
 			//Verifica se o Departamento foi "excluido"
 			if ($conn->query($sql) === TRUE) {
 				echo "<script>alert('Aluno tranferido com sucesso');</script>";
+				header("location: JHJ-web-relatorio7-historico-6.php?cpfAluno=".$strAluno);
 			} else {
-				echo "<script>alert('Erro transferindo Aluno: ".$conn->error."');</script>";
+				echo "<script>alert('Erro transferindo o Aluno');</script>";
 			} 		
 		} else if (@mysqli_num_rows($conn->query("SELECT nome FROM `Educatio`.`alunos` WHERE nome = '".$strAluno."'")) != 0){
 	  		//Parametro em SQL
@@ -127,8 +128,13 @@
 			//Verifica se o Departamento foi "excluido"
 			if ($conn->query($sql) === TRUE) {
 				echo "<script>alert('Aluno tranferido com sucesso');</script>";
+				$strSQL1 = $conn->query("SELECT idCPF FROM `Educatio`.`alunos` WHERE nome = '".$strAluno."'");
+				while($arrLinha1 = $strSQL1->fetch_assoc()) {
+					$strAlunoCpf = $arrLinha1['idCPF'];
+				}
+				header("location: JHJ-web-relatorio7-historico-6.php?cpfAluno=".$strAlunoCpf);
 			} else {
-				echo "<script>alert('Erro transferindo Aluno: ".$conn->error."');</script>";
+				echo "<script>alert('Erro transferindo o Aluno');</script>";
 			} 		
 		} else {
 			echo "<script>alert('Não foi Encontrado Nenhum Aluno Relacionado a essa Informação.');</script>";

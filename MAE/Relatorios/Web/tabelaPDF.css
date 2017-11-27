@@ -7,7 +7,7 @@ h3{
 table {
   color: #333;
   font-family: Helvetica, Arial, sans-serif;
-  width: 640px;
+  width: 100%;
   /* Resetar as configurações */
   border-spacing: 0;
 }
@@ -15,13 +15,14 @@ table {
 td, th {
   border: 0 none;
   height: 30px;
+  padding: 15px;
 }
 
 th {
   /* fundo degrade da celula principias */
 	background: linear-gradient(#333 0%,#444 100%);
 	color: #FFF;
-  font-weight: bold;
+  	font-weight: bold;
 	height: 40px;
 }
 
@@ -33,4 +34,4 @@ tr:nth-child(even) td {
 }
 tr:nth-child(odd) td {
   background: #FDFDFD;
-}
+} 

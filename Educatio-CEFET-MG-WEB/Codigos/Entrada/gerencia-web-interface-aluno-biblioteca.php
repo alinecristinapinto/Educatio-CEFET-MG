@@ -49,30 +49,30 @@
  
     <?php 
       require "../../Menu-rodape/gerencia-web-menu-interface-aluno-biblioteca.php";
-    ?>    
 
-    <footer class="footer footer-black">
-        <div class="container centralizado">
-            <div class="row">
-                <div class="col-md-4">
-                   <h6><strong>Desenvolvedores</strong></h6>
-                        <p></span> Alunos da turma de Informática 2A 2017 do CEFET-MG.
-                        <a href="#">Clique aqui</a> para saber mais.</p>  
-                </div>
-                <div class="col-md-4">
-                    <h6><strong>Instituição</strong></h6>
-                        <p>Centro Federal de Educação Tecnológica de Minas Gerais. Av. Amazonas 5253 - Nova                         Suíssa - Belo Horizonte - Brasil.</p>
-                </div>
-                <div class="col-md-4">       
-                    <h6>Recursos Utilizados</h6>
-                    <p>
-                        <a href="https://github.com/NinaCris16/Educatio-CEFET-MG">GitHub</a><br>
-                        <a href="http://getbootstrap.com/">Bootstrap</a><br>
-                    </p>
-                </div>
-            </div>
-        </div>
-    </footer>
+      switch($_GET['acao']){
+        case 'acessarAtrasos':
+          require "../Opcoes-do-sistema/Relatorios/relatorio-4-atrasos/gerencia-web-chama-codigo-com-mpdf.php";
+          echo '<br>';
+          require "../../Menu-Rodape/gerencia-web-rodape-caso-2.php";
+          break;
+        case 'acessarMultas':
+          require "../Opcoes-do-sistema/Relatorios/relatorio-5-multas/gerencia-web-chama-codigo-com-mpdf.php";
+          echo '<br>';
+          require "../../Menu-Rodape/gerencia-web-rodape-caso-2.php";
+          break;
+        case 'acessarObrasDescartadas':
+          require "../Opcoes-do-sistema/Relatorios/relatorio-6-obras-descartadas/MAE-Web-RelatorioObrasDescartadas-Aluno1.php";
+          echo '<br>';
+          require "../../Menu-Rodape/gerencia-web-rodape-caso-2.php";
+          break;    
+        case "default": 
+          require "gerencia-web-tela-aluno-default.php";
+          require "../../Menu-rodape/gerencia-web-rodape-caso-2.php";
+          break; 
+      }
+      
+    ?>    
 
 </body>
 </html>  

@@ -12,25 +12,39 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <a class="navbar-brand"><img class="logo" src="../../Estaticos/Logo/Educatio.png"></a>
-            
-        <div id="menu" class="collapse navbar-collapse" id="navbar-menu">
+           
+        <div id="menu" class="collapse navbar-collapse" id="navbar-menu"> 
             <ul class="nav navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="gerencia-web-interface-bibliotecario.php?acao=acessarManutencaoAcervo"><i class="nc-icon nc-book-bookmark"></i>Manutenção do acervo</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="gerencia-web-interface-bibliotecario.php?acao=fazerDescarte"><i class="nc-icon nc-book-bookmark"></i>Descarte de obras</a>
+                </li>
                 <div class="nav-item dropdown">
                     <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" id="dropdownMenuButton" role="button" aria-haspopup="true" aria-expanded="false"><i class="nc-icon nc-book-bookmark"></i>Empréstimos</a>
                     <ul class="dropdown-menu">
-                        <a class="dropdown-item" href= "#">Vizualizar empréstimos</a>
+                        <a class="dropdown-item" href= "gerencia-web-interface-bibliotecario.php?acao=adicionarEmprestimo">Conceder empréstimo</a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Conceder empréstimo</a>
+                        <a class="dropdown-item" href="gerencia-web-interface-bibliotecario.php?acao=removerEmprestimo">Remover empréstimo</a>
                     </ul>
                 </div>          
                 <div class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" id="dropdownMenuButton" role="button" aria-haspopup="true" aria-expanded="false"><i class="nc-icon nc-book-bookmark"></i>Reservas</a>
+                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" id="dropdownMenuButton" role="button" aria-haspopup="true" aria-expanded="false"><i class="nc-icon nc-icon nc-sound-wave"></i>Relatórios</a>
                     <ul class="dropdown-menu">
-                        <a class="dropdown-item" href= "#">Vizualizar reservas</a>
+                        <a class="dropdown-item" href= "gerencia-web-interface-bibliotecario.php?acao=acessarObrasAcervo">Obras do acervo</a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Registrar reserva</a>
+                        <a class="dropdown-item" href= "gerencia-web-interface-bibliotecario.php?acao=acessarObrasEmprestadas">Obras emprestadas</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href= "gerencia-web-interface-bibliotecario.php?acao=acessarObrasReservadas">Obras reservadas</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="gerencia-web-interface-bibliotecario.php?acao=acessarObrasDescartadas">Obras descartadas</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href= "gerencia-web-interface-bibliotecario.php?acao=acessarAtrasos">Atrasos de devolução</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="gerencia-web-interface-bibliotecario.php?acao=acessarMultas">Multas</a>
                     </ul>
-                </div>  
+                </div>   
             </ul>
             <ul class="nav navbar-nav">
                 <div class="nav-item dropdown">

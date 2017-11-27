@@ -1,0 +1,16 @@
+INTEGRAÇÃO
+
+*Relatório de multas - grupo MAE - Mateus
+	-> Header do php tá entrando em conflito com o do mpdf - Consertei 
+
+GRUPOS
+
+*Relatório de atrasos - grupo MAE - Mateus
+	-> A pesquisa é feita pelo nome do aluno
+*Relatório de obras descartadas - grupo MAE - Mateus
+	-> Foreach dando problema - Consertei (eu acho)
+*Relatório de multas - grupo MAE - Mateus
+	-> Foreach dando problema - Consertei (eu acho)
+*Manutenção de professores
+	-> É preciso escrever o nome do professor ou pelo menos começar para que ele seja clicável e passível de
+           ser editado ou removido

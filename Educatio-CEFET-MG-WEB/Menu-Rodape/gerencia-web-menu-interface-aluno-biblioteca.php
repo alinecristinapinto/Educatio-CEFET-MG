@@ -15,24 +15,15 @@
             
         <div id="menu" class="collapse navbar-collapse" id="navbar-menu">
             <ul class="nav navbar-nav mr-auto">
-                <div class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" id="dropdownMenuButton" role="button" aria-haspopup="true" aria-expanded="false"><i class="nc-icon nc-book-bookmark"></i>Empréstimos</a>
-                    <ul class="dropdown-menu">
-                        <a class="dropdown-item" href= "#">Acessar empréstimos</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Renovar</a>
-                    </ul>
-                </div>          
-                <div class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" id="dropdownMenuButton" role="button" aria-haspopup="true" aria-expanded="false"><i class="nc-icon nc-book-bookmark"></i>Reservas</a>
-                    <ul class="dropdown-menu">
-                        <a class="dropdown-item" href= "#">Acessar reservas</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Fazer reserva</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Remover reserva</a>
-                    </ul>
-                </div>  
+                <li class="nav-item">
+                    <a class="nav-link" href = "gerencia-web-interface-aluno-biblioteca.php?acao=acessarAtrasos"><i class="nc-icon nc-zoom-split"></i>Atrasos de devolução</a>
+                </li>  
+                <li class="nav-item">
+                    <a class="nav-link" href = "gerencia-web-interface-aluno-biblioteca.php?acao=acessarMultas"><i class="nc-icon nc-zoom-split"></i>Multas</a>
+                </li> 
+                <li class="nav-item">
+                    <a class="nav-link" href = "gerencia-web-interface-aluno-biblioteca.php?acao=acessarObrasDescartadas"><i class="nc-icon nc-zoom-split"></i>Obras descartadas</a>
+                </li> 
             </ul>
             <ul class="nav navbar-nav">
                 <div class="nav-item dropdown">

@@ -1,0 +1,44 @@
+h1 {
+	margin: 50px auto;
+	width: 700px;
+	text-align:center;
+	font-size: 50px;
+	font-family: 'Cursive', Times, serif;
+	color: #a36b35;
+}
+hr{
+  	color: #a36b35;
+  	height: 2px;
+  	width: 80%;  
+  	margin-bottom: 20px;
+}
+p {
+	font-family: 'Times New Roman', Times, serif;
+	font-size: 30px;
+	color: #a36b35;
+}
+#textoConteudo {
+	margin-top: -500px;
+}
+#assinatura {
+	margin-top: 70px;
+
+}
+#certificado {
+	width: 1000px;
+	height: 600px;
+	margin: 0px auto; /*centraliza a div horizontalmente*/
+	margin-top: 30px; /*centraliza a div verticalmente*/
+	border: 15px solid #BE7B3A;
+	border-style: groove; /*efeito 3d*/
+	padding-right: 5px;
+	padding-left: 5px;
+	text-align: center;
+	background-color: #F0E68C;
+}
+
+#textoAssinatura {
+	font-size: 25px;
+	margin-top: -10px; 
+	margin-bottom: 0px;
+}

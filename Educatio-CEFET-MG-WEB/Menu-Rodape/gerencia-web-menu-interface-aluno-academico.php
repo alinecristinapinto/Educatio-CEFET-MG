@@ -15,31 +15,23 @@
         <div class="collapse navbar-collapse" id="navbar-menu">
             <ul class="nav navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a class="nav-link"><i class="nc-icon nc-book-bookmark"></i>Diário</a>
-                </li>
+                    <a class="nav-link" href = "gerencia-web-interface-aluno-academico.php?acao=acessarDiario"><i class="nc-icon nc-zoom-split"></i>Diário</a>
+                </li> 
                 <li class="nav-item">
-                    <a class="nav-link"><i class="nc-icon nc-single-copy-04"></i>Boletim</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link"><i class="nc-icon nc-zoom-split"></i>Histórico</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link"><i class="nc-icon nc-hat-3"></i>Certificado</a>
-                </li>   
+                    <a class="nav-link" href = "gerencia-web-interface-aluno-academico.php?acao=downloadHistorico"><i class="nc-icon nc-zoom-split"></i>Histórico</a>
+                </li> 
+                <div class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" id="dropdownMenuButton" role="button" aria-haspopup="true" aria-expanded="false"><i class="nc-icon nc-hat-3"></i>Certificado</a>
+                    <ul class="dropdown-menu">
+                        <a class="dropdown-item" href= "gerencia-web-interface-aluno-academico.php?acao=mostrarCertificado">Mostrar</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="gerencia-web-interface-aluno-academico.php?acao=downloadCertificado">Download em PDF</a>
+                    </ul>
+                </div>  
             </ul>    
             <ul class="nav navbar-nav">    
                 <div class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" id="dropdownMenuButton" role="button" aria-haspopup="true" aria-expanded="false">
-                        <?php 
-
-                        if($usuario['foto'] == null){
-                          echo '<img class="profile" src="../../Estaticos/imagens/perfil.png"/>';
-
-                        } else {
-                          echo '<img class="profile" src="data:image/jpeg;base64,'.base64_encode( $usuario['foto'] ).'"/>';
-                        }
-                    ?> 
-                    <?php echo $usuario['nome'];?> <span class="caret"></span></a>
+                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" id="dropdownMenuButton" role="button" aria-haspopup="true" aria-expanded="false"><?php echo '<img class="profile" src="data:image/jpeg;base64,'.base64_encode( $usuario['foto'] ).'"/>';?>  <?php echo $usuario['nome'];?> <span class="caret"></span></a>
                     <ul class="dropdown-menu dropdown-menu-right">
                         <a class="dropdown-item" href= "gerencia-web-perfil-aluno.php">Voltar para a escolha de sistema</a>
                         <div class="dropdown-divider"></div>

@@ -51,66 +51,153 @@
     require "../../Menu-Rodape/gerencia-web-menu-interface-coordenador.php";
 
     switch ($_GET['acao']) {
-      case 'adicionarAluno':
-        require "..Opcoes-do-sistema/insercao-aluno/PHJL-WEB-Formulario-de-insercao-de-aluno.php";
+      case 'adicionarCampus':
+        require "../Opcoes-do-sistema/Manutencao-campi/adicionar-campus/JHJ-web-adicionar-campus-1.php";
+        echo '<br>';
+        require "../../Menu-Rodape/gerencia-web-rodape-caso-2.php";
+        break;
+
+      case 'alterarCampus':
+        require "../Opcoes-do-sistema/Manutencao-campi/alterar-campus/JHJ-web-alterar-campus-1.php";
+        echo '<br>';
+        require "../../Menu-Rodape/gerencia-web-rodape-caso-2.php";
+        break;
+
+      case 'removerCampus':
+        require "../Opcoes-do-sistema/Manutencao-campi/remover-campus/JHJ-web-remover-campus-1.php";
+        echo '<br>';
+        require "../../Menu-Rodape/gerencia-web-rodape-caso-2.php";
+        break; 
+
+      case 'adicionarDepartamento':
+        require "../Opcoes-do-sistema/Manutencao-departamentos/DepartamentoIncluirVerificacao.php";
         echo '<br>';
         require "../../Menu-Rodape/gerencia-web-rodape.php";
         break;
-      
-      case "alterarAluno": 
-        require "../Opcoes-do-sistema/alteracao-aluno/PHJL-WEB-Pesquisa-alterar-aluno.php";
+
+      case 'removerDepartamento':
+        require "../Opcoes-do-sistema/Manutencao-departamentos/DepartamentoExcluirVerificacao.php";
         echo '<br>';
         require "../../Menu-Rodape/gerencia-web-rodape.php";
-        break;  
+        break;
 
-      case "deletarAluno": 
-        require "../Opcoes-do-sistema/remocao-aluno/PHJL-WEB-Pesquisa-deletar-aluno.php";
+      case 'alterarDepartamento':
+        require "../Opcoes-do-sistema/Manutencao-departamentos/DepartamentoAlterar.php";
         echo '<br>';
         require "../../Menu-Rodape/gerencia-web-rodape.php";
         break; 
 
-      case 'integridadeSistema':
-        require "../Integridade/confereIntegridade.php";
+      case 'professores':
+        require "../Opcoes-do-sistema/Manutencao-professores/proff.php";
         echo '<br>';
         require "../../Menu-Rodape/gerencia-web-rodape.php";
-        break;
-
-      case 'adicionarDisciplina':
-        require "../Disciplinas/BLT-Web-ADCDisciplinasMain.php";
-        echo '<br>';
-        require "../../Menu-Rodape/gerencia-web-rodape.php";
-        break;
-
-      case 'removerDisciplina':
-        require "../Disciplinas/BLT-Web-RMVDisciplinas.php";
-        echo '<br>';
-        require "../../Menu-Rodape/gerencia-web-rodape.php";
-        break;
-      
-      case 'editarDisciplina':
-        require "../Disciplinas/BLT-Web-EDTDisciplinas.php";
-        echo '<br>';
-        require "../../Menu-Rodape/gerencia-web-rodape.php";
-        break;
+        break;  
 
       case 'adicionarCurso':
-        require "../ManutencaoCurso/MAE-Web-ManutencaoCurso-Inclui1.php";
+        require "../Opcoes-do-sistema/Manutencao-curso/MAE-Web-ManutencaoCurso-Inclui1.php";
         echo '<br>';
         require "../../Menu-Rodape/gerencia-web-rodape.php";
         break;
       
       case 'removerCurso':
-        require "../ManutencaoCurso/MAE-Web-ManutencaoCurso-Deleta1.php";
+        require "../Opcoes-do-sistema/Manutencao-curso/MAE-Web-ManutencaoCurso-Deleta1.php";
         echo '<br>';
         require "../../Menu-Rodape/gerencia-web-rodape-caso-2.php";
         break;
  
       case 'alterarCurso':
-        require "../ManutencaoCurso/MAE-Web-ManutencaoCurso-Altera1.php";
+        require "../Opcoes-do-sistema/Manutencao-curso/MAE-Web-ManutencaoCurso-Altera1.php";
+        echo '<br>';
+        require "../../Menu-Rodape/gerencia-web-rodape-caso-2.php";
+        break;    
+
+      case 'adicionarTurma':
+        require "../Opcoes-do-sistema/Manutencao-turmas/MAE-Web-ManutencaoTurmas-Criar.php";
         echo '<br>';
         require "../../Menu-Rodape/gerencia-web-rodape-caso-2.php";
         break;
+
+      case 'removerTurma':
+        require "../Opcoes-do-sistema/Manutencao-turmas/MAE-Web-ManutencaoTurmas-SelecionarTurma-Excluir.php";
+        echo '<br>';
+        require "../../Menu-Rodape/gerencia-web-rodape-caso-2.php";
+        break;
+
+      case 'alterarTurma':
+        require "../Opcoes-do-sistema/Manutencao-turmas/MAE-Web-ManutencaoTurmas-SelecionarTurma-Editar.php";
+        echo '<br>';
+        require "../../Menu-Rodape/gerencia-web-rodape-caso-2.php";
+        break;
+
+      case 'adicionarDisciplina':
+        require "../Opcoes-do-sistema/Manutencao-disciplinas/BLT-Web-ADCDisciplinas1.php";
+        echo '<br>';
+        require "../../Menu-Rodape/gerencia-web-rodape.php";
+        break;
+
+      case 'removerDisciplina':
+        require "../Opcoes-do-sistema/Manutencao-disciplinas/BLT-Web-RMVDisciplinas1.php";
+        echo '<br>';
+        require "../../Menu-Rodape/gerencia-web-rodape.php";
+        break;
       
+      case 'editarDisciplina':
+        require "../Opcoes-do-sistema/Manutencao-disciplinas/BLT-Web-EDTDisciplinas1.php";
+        echo '<br>';
+        require "../../Menu-Rodape/gerencia-web-rodape.php";
+        break;
+
+      case 'adicionarAluno':
+        require "../Opcoes-do-sistema/Manutencao-aluno/insercao-aluno/PHJL-WEB-Formulario-de-insercao-de-aluno.php";
+        echo '<br>';
+        require "../../Menu-Rodape/gerencia-web-rodape.php";
+        break;
+      
+      case "alterarAluno": 
+        require "../Opcoes-do-sistema/Manutencao-aluno/alteracao-aluno/PHJL-WEB-Pesquisa-alterar-aluno.php";
+        echo '<br>';
+        require "../../Menu-Rodape/gerencia-web-rodape.php";
+        break;  
+
+      case "deletarAluno": 
+        require "../Opcoes-do-sistema/Manutencao-aluno/remocao-aluno/PHJL-WEB-Pesquisa-deletar-aluno.php";
+        echo '<br>';
+        require "../../Menu-Rodape/gerencia-web-rodape.php";
+        break;   
+
+      case "acessarProfessores": 
+        require "../Opcoes-do-sistema/Relatorios/relatorio-9-acessar-professores/JHJ-web-relatorio9-acessar-professores-1.php";
+        require "../../Menu-Rodape/gerencia-web-rodape-caso-2.php";
+        break;
+
+      case "acessarNotasAlunos": 
+        require "../Opcoes-do-sistema/Relatorios/relatorio-10-notas-alunos/CJF-SelecaoNotas1.php";
+        require "../../Menu-Rodape/gerencia-web-rodape.php";
+        break;
+
+      case 'acessarConteudos':
+          require "../Opcoes-do-sistema/Relatorios/relatorio-11-conteudos/CJF-SelecaoConteudos1.php";
+          echo '<br>';
+          require "../../Menu-Rodape/gerencia-web-rodape.php";
+          break; 
+
+      case 'acessarHistoricoAlunos':
+          require "../Opcoes-do-sistema/Relatorios/relatorio-7-historico/JHJ-web-relatorio7-historico-1.php";
+          echo '<br>';
+          require "../../Menu-Rodape/gerencia-web-rodape.php";
+          break;      
+
+      case 'integridadeSistema':
+        require "../Opcoes-do-sistema/Integridade/confereIntegridade.php";
+        echo '<br>';
+        require "../../Menu-Rodape/gerencia-web-rodape.php";
+        break;
+
+      case 'transferirAluno':
+        require "../Opcoes-do-sistema/Transferencia-aluno/TransferenciaVerificacaoCampi.php";
+        echo '<br>';
+        require "../../Menu-Rodape/gerencia-web-rodape.php";
+        break;
     }
   ?>    
 

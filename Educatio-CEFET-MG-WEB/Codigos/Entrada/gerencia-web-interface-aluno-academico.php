@@ -44,64 +44,43 @@
       }  
   </script>
 
-  <style type="text/css">
-        .profile{
-          border: 1px solid;
-          border-radius: 25px;
-          width: 22px; 
-          height: 22px;
-        }
-
-        .entrada{
-          height: 200px;
-          width: 200px;
-          position:absolute;
-          top:50%;
-          left:50%;
-          margin-top:-50px;
-          margin-left:-50px;
-        }
-        
-        .perfil{
-          border: 1px solid;
-          border-radius: 25px;
-          width: 22px; 
-          height: 22px;
-        }
-
-        .img {
-          height: 120px;
-          width: 120px;
-        }    
-    </style>
-
 </head>
 <body>
     
     <?php 
-      require "../../Menu-Rodape/gerencia-web-menu-interface-aluno-academico.php";
+      require "../../Menu-rodape/gerencia-web-menu-interface-aluno-academico.php";
 
-      switch ($_GET['acao']) {
-      case 'adicionarAluno':
-        require "..Opcoes-do-sistema/insercao-aluno/PHJL-WEB-Formulario-de-insercao-de-aluno.php";
-        break;
+      switch($_GET['acao']){
+        case "acessarDiario": 
+          require "../Opcoes-do-sistema/Diario-aluno/Diario-aluno.php";
+          echo "<br>";
+          require "../../Menu-rodape/gerencia-web-rodape.php";
+          break; 
+        case "downloadHistorico": 
+          require "../Opcoes-do-sistema/Relatorios/relatorio-7-historico/gerencia-web-chama-codigo-com-mpdf.php";
+          echo "<br>";
+          require "../../Menu-rodape/gerencia-web-rodape-caso-2.php";
+          break;  
+        case "mostrarCertificado": 
+          require "../Opcoes-do-sistema/Relatorios/relatorio-8-certificado/JHJ-web-relatorio8-certificados-2.php";
+          $_SESSION['opcaoEscolhida'] = "mostrarNaTela";
+          echo "<br>";
+          require "../../Menu-rodape/gerencia-web-rodape-caso-2.php";
+          break; 
+        case "downloadCertificado": 
+          require "../Opcoes-do-sistema/Relatorios/relatorio-8-certificado/JHJ-web-relatorio8-certificados-2.php";
+          $_SESSION['opcaoEscolhida'] = "fazerDownload";
+          echo "<br>";
+          require "../../Menu-rodape/gerencia-web-rodape-caso-2.php";
+          break;  
+        case "default": 
+          require "gerencia-web-tela-aluno-default.php";
+          echo "<br>";
+          require "../../Menu-rodape/gerencia-web-rodape-caso-2.php";
+          break;  
+      }
       
-      case 'integridadeSistema':
-        require "../Integridade/confereIntegridade.php";
-        break;
-
-      case 'integridadeSistema':
-        require "../Integridade/confereIntegridade.php";
-        break;
-      
-    }
-
-
-    echo '<br>';
-
-      require "../../Menu-Rodape/gerencia-web-rodape.php";
     ?>        
-
 
 </body>
 </html>  

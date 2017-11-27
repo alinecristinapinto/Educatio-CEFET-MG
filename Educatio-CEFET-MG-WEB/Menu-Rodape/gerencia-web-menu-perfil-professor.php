@@ -16,17 +16,18 @@
         <div id="menu" class="collapse navbar-collapse" id="navbar-menu">
             <ul class="nav navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="gerencia-web-interface-professor.php"><i class="nc-icon nc-book-bookmark"></i>Turmas</a>
+                    <a class="nav-link" href="gerencia-web-interface-professor.php?acao=acessarDiarios"><i class="nc-icon nc-book-bookmark"></i>Diários</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="gerencia-web-interface-professor.php"><i class="nc-icon nc-book-bookmark"></i>Alunos</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="gerencia-web-interface-professor.php"><i class="nc-icon nc-book-bookmark"></i>Etapas</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="gerencia-web-interface-professor.php"><i class="nc-icon nc-book-bookmark"></i>Diários</a>
-                </li>
+                <div class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" id="dropdownMenuButton" role="button" aria-haspopup="true" aria-expanded="false"><i class="nc-icon nc-book-bookmark"></i>Etapas</a>
+                    <ul class="dropdown-menu">
+                        <a class="dropdown-item" href= "gerencia-web-interface-professor.php?acao=adicionarEtapa">Adicionar etapas</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="gerencia-web-interface-professor.php?acao=removerEtapa">Remover etapas</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="gerencia-web-interface-professor.php?acao=alterarEtapa">Alterar etapas</a>                       
+                    </ul>
+                </div>
             </ul>
             <ul class="nav navbar-nav">
                 <div class="nav-item dropdown">

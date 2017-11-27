@@ -85,33 +85,36 @@
                 <div class="nav-item dropdown">
                     <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" id="dropdownMenuButton" role="button" aria-haspopup="true" aria-expanded="false"><i class="nc-icon nc-book-bookmark"></i>Campi</a>
                     <ul class="dropdown-menu">
-                        <a class="dropdown-item" href= "#">Alterar campus</a>
+                        <a class="dropdown-item" href= "gerencia-web-interface-coordenador.php?acao=adicionarCampus">Adicionar campus</a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Adicionar campus</a>
+                        <a class="dropdown-item" href="gerencia-web-interface-coordenador.php?acao=removerCampus">Remover campus</a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Remover campus</a>
+                        <a class="dropdown-item" href="gerencia-web-interface-coordenador.php?acao=alterarCampus">Alterar campus</a>                       
                     </ul>
                 </div>          
                 <div class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" id="dropdownMenuButton" role="button" aria-haspopup="true" aria-expanded="false"><i class="nc-icon nc-book-bookmark"></i>Departamentos</a>
+                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" id="dropdownMenuButton" role="button" aria-haspopup="true" aria-expanded="false"><i class="nc-icon nc-book-bookmark"></i>Deptos</a>
                     <ul class="dropdown-menu">
-                        <a class="dropdown-item" href= "#">Adicionar departamento</a>
+                        <a class="dropdown-item" href= "gerencia-web-interface-coordenador.php?acao=adicionarDepartamento">Adicionar departamento</a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Remover departamento</a>
+                        <a class="dropdown-item" href="gerencia-web-interface-coordenador.php?acao=removerDepartamento">Remover departamento</a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Vizualizar departamentos</a>
+                        <a class="dropdown-item" href="gerencia-web-interface-coordenador.php?acao=alterarDepartamento">Alterar departamentos</a>
                     </ul>
                 </div>  
-                <div class="nav-item dropdown">
+                <li class="nav-item">
+                    <a class="nav-link" href= "gerencia-web-interface-coordenador.php?acao=professores"><i class="nc-icon nc-book-bookmark"></i>Professores</a>
+                </li> 
+                <!-- <div class="nav-item dropdown">
                     <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" id="dropdownMenuButton" role="button" aria-haspopup="true" aria-expanded="false"><i class="nc-icon nc-book-bookmark"></i>Professores</a>
                     <ul class="dropdown-menu">
-                        <a class="dropdown-item" href= "#">Adicionar professor</a>
+                        <a class="dropdown-item" href= "gerencia-web-interface-coordenador.php?acao=adicionarProfessor">Adicionar professor</a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Remover professor</a>
+                        <a class="dropdown-item" href="gerencia-web-interface-coordenador.php?acao=adicionarProfessor">Remover professor</a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Vizualizar professores</a>
+                        <a class="dropdown-item" href="gerencia-web-interface-coordenador.php?acao=adicionarProfessor">Vizualizar professores</a>
                     </ul>
-                </div> 
+                </div>  -->
                 <div class="nav-item dropdown">
                     <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" id="dropdownMenuButton" role="button" aria-haspopup="true" aria-expanded="false"><i class="nc-icon nc-book-bookmark"></i>Cursos</a>
                     <ul class="dropdown-menu">
@@ -121,9 +124,19 @@
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="gerencia-web-interface-coordenador.php?acao=alterarCurso">Alterar cursos</a>
                     </ul>
+                </div>
+                <div class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" id="dropdownMenuButton" role="button" aria-haspopup="true" aria-expanded="false"><i class="nc-icon nc-book-bookmark"></i>Turmas</a>
+                    <ul class="dropdown-menu">
+                        <a class="dropdown-item" href= "gerencia-web-interface-coordenador.php?acao=adicionarTurma">Adicionar turma</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="gerencia-web-interface-coordenador.php?acao=removerTurma">Remover turma</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="gerencia-web-interface-coordenador.php?acao=alterarTurma">Alterar turma</a>
+                    </ul>
                 </div> 
                 <div class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" id="dropdownMenuButton" role="button" aria-haspopup="true" aria-expanded="false"><i class="nc-icon nc-book-bookmark"></i>Diciplinas</a>
+                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" id="dropdownMenuButton" role="button" aria-haspopup="true" aria-expanded="false"><i class="nc-icon nc-book-bookmark"></i>Disciplinas</a>
                     <ul class="dropdown-menu">
                         <a class="dropdown-item" href= "gerencia-web-interface-coordenador.php?acao=adicionarDisciplina">Adicionar disciplina</a>
                         <div class="dropdown-divider"></div>
@@ -135,16 +148,29 @@
                 <div class="nav-item dropdown">
                     <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" id="dropdownMenuButton" role="button" aria-haspopup="true" aria-expanded="false"><i class="nc-icon nc-book-bookmark"></i>Alunos</a>
                     <ul class="dropdown-menu">
-                        <a class="dropdown-item" href= "#">Adicionar aluno</a>
+                        <a class="dropdown-item" href= "gerencia-web-interface-coordenador.php?acao=adicionarAluno">Adicionar aluno</a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Remover aluno</a>
+                        <a class="dropdown-item" href="gerencia-web-interface-coordenador.php?acao=deletarAluno">Remover aluno</a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Vizualizar alunos</a>
+                        <a class="dropdown-item" href="gerencia-web-interface-coordenador.php?acao=alterarAluno">Alterar alunos</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="gerencia-web-interface-coordenador.php?acao=transferirAluno">Transferência</a>
                     </ul>
                 </div>
-                <li class="nav-item">
-                    <a class="nav-link" href="gerencia-web-interface-coordenador.php?acao=integridadeSistema"><i class="nc-icon nc-sound-wave"></i>Integridade</a>
-                </li> 
+                <div class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" id="dropdownMenuButton" role="button" aria-haspopup="true" aria-expanded="false"><i class="nc-icon nc-icon nc-sound-wave"></i>Relatórios</a>
+                    <ul class="dropdown-menu">
+                        <a class="dropdown-item" href="gerencia-web-interface-coordenador.php?acao=acessarNotasAlunos">Acessar notas de alunos</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="gerencia-web-interface-coordenador.php?acao=acessarHistoricoAlunos">Acessar históricos de alunos</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href= "gerencia-web-interface-coordenador.php?acao=acessarProfessores">Acessar professores</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="gerencia-web-interface-coordenador.php?acao=acessarConteudos">Acessar conteúdos de disciplinas</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="gerencia-web-interface-coordenador.php?acao=integridadeSistema">Verificar a integridade do sistema</a>
+                    </ul>
+                </div>
             </ul>
             <ul class="nav navbar-nav">
                 <div class="nav-item dropdown">

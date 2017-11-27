@@ -17,10 +17,10 @@
             <div class="collapse navbar-collapse" id="navbar-menu">
             <ul class="nav navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="gerencia-web-interface-aluno-academico.php"><i class="nc-icon nc-book-bookmark"></i>Acessar Sistema Acadêmico</a>
+                    <a class="nav-link" href="gerencia-web-interface-aluno-academico.php?acao=default"><i class="nc-icon nc-book-bookmark"></i>Acessar Sistema Acadêmico</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="gerencia-web-interface-aluno-biblioteca.php"><i class="nc-icon nc-book-bookmark"></i>Acessar Biblioteca</a>
+                    <a class="nav-link" href="gerencia-web-interface-aluno-biblioteca.php?acao=default"><i class="nc-icon nc-book-bookmark"></i>Acessar Biblioteca</a>
                 </li>
             </ul>            
             <ul class="nav navbar-nav">

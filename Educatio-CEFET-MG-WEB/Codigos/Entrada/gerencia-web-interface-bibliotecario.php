@@ -52,15 +52,58 @@
       require "../../Menu-Rodape/gerencia-web-menu-interface-bibliotecario.php";
 
       switch ($_GET['acao']) {
-        case 'adicionarAluno':
-          require "..Opcoes-do-sistema/insercao-aluno/PHJL-WEB-Formulario-de-insercao-de-aluno.php";
+        case 'acessarManutencaoAcervo':
+          require "../Opcoes-do-sistema/Manutencao-acervo/pagina_inicial_manutencaoacervo.php";
+          echo '<br>';
+          require "../../Menu-Rodape/gerencia-web-rodape.php";
           break;
+        case 'fazerDescarte':
+          require "../Opcoes-do-sistema/Descarte/FAGE-WEB-form.php";
+          echo '<br>';
+          require "../../Menu-Rodape/gerencia-web-rodape.php";
+          break;  
+        case 'adicionarEmprestimo':
+          require "../Opcoes-do-sistema/Manutencao-emprestimos/BLT-Web-ADCEmprestimos1.php";
+          echo '<br>';
+          require "../../Menu-Rodape/gerencia-web-rodape-caso-2.php";
+          break;  
+        case 'removerEmprestimo':
+          require "../Opcoes-do-sistema/Manutencao-emprestimos/BLT-Web-DLTEmprestimos1.php";
+          echo '<br>';
+          require "../../Menu-Rodape/gerencia-web-rodape-caso-2.php";
+          break;  
+        case 'acessarObrasAcervo':
+          require "../Opcoes-do-sistema/Relatorios/relatorio-1-obras-acervo/CJF-RelacaoAcervo1.php";
+          echo '<br>';
+          require "../../Menu-Rodape/gerencia-web-rodape-caso-2.php";
+          break;
+        case 'acessarObrasEmprestadas':
+          require "../Opcoes-do-sistema/Relatorios/relatorio-2-obras-emprestadas/CJF-RelacaoObras1.php";
+          echo '<br>';
+          require "../../Menu-Rodape/gerencia-web-rodape-caso-2.php";
+          break;
+        case 'acessarObrasReservadas':
+          require "../Opcoes-do-sistema/Relatorios/relatorio-3-obras-reservadas/CJF-RelacaoReservas1.php";
+          echo '<br>';
+          require "../../Menu-Rodape/gerencia-web-rodape-caso-2.php";
+          break;
+        case 'acessarObrasDescartadas':
+          require "../Opcoes-do-sistema/Relatorios/relatorio-6-obras-descartadas/MAE-Web-RelatorioObrasDescartadas-Bibliotecario1.php";
+          echo '<br>';
+          require "../../Menu-Rodape/gerencia-web-rodape-caso-2.php";
+          break;   
+        case 'acessarAtrasos':
+          require "../Opcoes-do-sistema/Relatorios/relatorio-4-atrasos/MAE-Web-RelatorioAtraso-Bibliotecario1.php";
+          echo '<br>';
+          require "../../Menu-Rodape/gerencia-web-rodape-caso-2.php";
+          break;
+        case 'acessarMultas':
+          require "../Opcoes-do-sistema/Relatorios/relatorio-5-multas/MAE-Web-RelatoriosMultas-Bibliotecario.php";
+          echo '<br>';
+          require "../../Menu-Rodape/gerencia-web-rodape-caso-2.php";
+          break;   
         
       }
-      
-      echo '<br>';
-
-      require "../../Menu-Rodape/gerencia-web-rodape.php";
     
     ?>
 

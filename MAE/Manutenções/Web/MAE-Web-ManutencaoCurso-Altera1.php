@@ -58,7 +58,7 @@
         //Selecionado BD
         $sql = mysqli_select_db($link, 'Educatio');
         //Seleciona os dados dos cursos ativos
-        $query = mysqli_query($link, " SELECT * FROM `cursos` WHERE ativo='S' ORDER BY nome ASC");
+        $query = mysqli_query($link, " SELECT * FROM `cursos` WHERE ativo='S' ORDER BY idDepto ASC, nome ASC, horasTotal ASC, modalidade ASC");
     ?>
 		
 		
@@ -79,7 +79,7 @@
                                         <!-- Usando os dados do BD para fazer o select com os cursos ativos -->
                                         <?php while($curso = mysqli_fetch_array($query)) { ?>
                                         <option name="selectParaAlterarCurso[]" value="<?php echo $curso['id'] ?>">
-                                        <?php echo $curso['nome']." - ".$curso['modalidade']." - ".$curso['horasTotal']." horas" ?></option><?php } ?>
+                                        <?php echo $curso['idDepto']." - ".$curso['nome']." - ".$curso['horasTotal']." - ".$curso['modalidade'] ?></option><?php } ?>
                                     </select><span class="required"> </span><br><br>
                                     
                                     <div class="col-md-4 ml-auto mr-auto">

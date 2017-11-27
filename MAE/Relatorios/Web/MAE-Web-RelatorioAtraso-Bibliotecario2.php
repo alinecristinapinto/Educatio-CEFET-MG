@@ -1,8 +1,8 @@
 <!--
 Grupo: MAE
-  Data de modificação: 20/11/2017
+  Data de modificaï¿½ï¿½o: 20/11/2017
   Autor: Emanuela Amorim
-    Objetivo da modificação: fazer filtragem
+    Objetivo da modificaï¿½ï¿½o: fazer filtragem
 -->
 <?php
 //EU NAO SOUBE ARRUMAR O ERRO DOS ACENTOS!!
@@ -11,14 +11,14 @@ header ('Content-type: text/html; charset=ISO-8859-1');
 //Inclui a biblioteca do MPDF
 include("mpdf60/mpdf.php");
 
-// Cria conexão
+// Cria conexï¿½o
 $conn = new mysqli("localhost", "root", "","educatio");
-// Checa conexão
+// Checa conexï¿½o
 if ($conn->connect_error) {
-    die("Conecção falhou: " . $conn->connect_error);
+    die("Conecï¿½ï¿½o falhou: " . $conn->connect_error);
 }
 
-//recebe via POST o Id do aluno a ser pesquisado,se não tiver nada no input ele manda o pdf com os dados
+//recebe via POST o Id do aluno a ser pesquisado,se nï¿½o tiver nada no input ele manda o pdf com os dados
 if (!empty($_POST["nomeAlunoPesquisa"])) {
 
   $nomeAlunoPesquisa = $_POST["nomeAlunoPesquisa"];
@@ -26,12 +26,11 @@ if (!empty($_POST["nomeAlunoPesquisa"])) {
   $stmt = $conn->prepare("SELECT nome, idCPF FROM alunos WHERE nome = ?");
   $stmt->bind_param('s',$nomeAlunoPesquisa);
   $stmt->execute();
-  $rst = $stmt->get_result(); 
+  $rst = $stmt->get_result();
 
   while($row  = $rst->fetch_assoc()){
     $idAluno = $row['idCPF'];
 	  $nomeAluno = $row['nome'];
-    //echo $nomeAluno. " - " .$idAluno;
   }
 
   $stmt = $conn->prepare("SELECT dataPrevisaoDevolucao, dataDevolucao FROM  emprestimos WHERE idAluno = ?");
@@ -42,7 +41,6 @@ if (!empty($_POST["nomeAlunoPesquisa"])) {
   while($row = $rst->fetch_assoc()){
     $dataPrevisaoDevolucao = $row['dataPrevisaoDevolucao'];
     $dataDevolucao[] = $row['dataDevolucao'];
-    //echo "<br>".$dataPrevisaoDevolucao. " - " .$dataDevolucao;
   }
 
   $html = "<!DOCTYPE html>
@@ -61,7 +59,6 @@ if (!empty($_POST["nomeAlunoPesquisa"])) {
 
 foreach ($dataDevolucao as $devolucao) {
 
-                            //echo dos valores do id do Aluno e datas
                         $html .= " <tr>
                                       <td>".$nomeAluno."</td>
                                       <td>".$idAluno."</td>
@@ -70,7 +67,7 @@ foreach ($dataDevolucao as $devolucao) {
                                    </tr>
                                  ";
                           }
-                           
+
 $html.= "         </table>
             </body>
         </html>";
@@ -83,7 +80,7 @@ else {
   $rst = $conn->query($sql);
 
   $numRegistrosEmprestimos = mysqli_num_rows($rst);
-  
+
   while($row = $rst->fetch_assoc()){
 	$dataDevolucao[] = $row['dataDevolucao'];
 	$dataPrevisaoDevolucao[] = $row['dataPrevisaoDevolucao'];
@@ -91,10 +88,10 @@ else {
   }
 
   $stmt1 = "SELECT nome, idCPF FROM  alunos";
-  $rst1 = $conn->query($stmt1);  
+  $rst1 = $conn->query($stmt1);
 
   $numRegistrosAlunos = mysqli_num_rows($rst1);
-  
+
   while($row1 = $rst1->fetch_assoc()){
     $nomeAluno[] = $row1['nome'];
     $idAlunoAlunos[] = $row1['idCPF'];
@@ -102,8 +99,8 @@ else {
 
  $k = 0;
 
-  for ($i=0; $i < $numRegistrosAlunos ; $i++) { 
-  	for ($j=0; $j < $numRegistrosEmprestimos ; $j++) { 
+  for ($i=0; $i < $numRegistrosAlunos ; $i++) {
+  	for ($j=0; $j < $numRegistrosEmprestimos ; $j++) {
   		if ($idAluno[$j] == $idAlunoAlunos[$i]) {
   			$nomeAlunoFinal[$k] = $nomeAluno[$i];
   			$k ++;
@@ -125,7 +122,7 @@ else {
                        <th>Data de devolucao &emsp;</th>
                       </tr>";
 
-      for ($i = 0; $i  < $numRegistrosEmprestimos; $i ++) { 
+      for ($i = 0; $i  < $numRegistrosEmprestimos; $i ++) {
         $html .= "<tr>
                     <td>".$nomeAlunoFinal[$i]."</td>
                     <td>".$idAluno[$i]."</td>
@@ -134,17 +131,16 @@ else {
                   </tr>
                                  ";
                           }
-                           
+
 $html.="         </table>
             </body>
         </html>";
 }
 
-
+//cria a Data da geraï¿½ï¿½o do arquivo
+$dataAtual = date("d-m-y");
 //cria nome do arquivo de acordo com a data atual
 $nomeDoArquivo = "Relatorio de atrasos(" .$dataAtual. ").pdf"; 
- //cria a Data da geração do arquivo
-$dataAtual = date("d-m-y");
 
 $mpdf = new mPDF();
 $stylesheet = file_get_contents('tabelaPDF.css'); // css da tabela

@@ -50,13 +50,16 @@ $html.= "     </table>
 $dataAtual = date("d-m-y"); //cria a Data da geração do arquivo
 $nomeDoArquivo = "Minhas multas (" .$dataAtual. ").pdf"; //cria nome do arquivo de acordo com a data atual
 
- $mpdf = new mPDF();
- $stylesheet = file_get_contents('tabelaPDF.css'); // css da tabela
- $mpdf->WriteHTML($stylesheet,1);
+$mpdf = new mPDF('utf-8');
+$stylesheet = file_get_contents('tabelaPDF.css'); // css da tabela
+$mpdf->WriteHTML($stylesheet,1);
 
- $mpdf -> SetTitle($nomeDoArquivo);
- $mpdf -> SetDisplayMode('fullpage');
- $mpdf -> WriteHTML($html);
+$html = utf8_encode($html);
+$mpdf -> SetTitle($nomeDoArquivo);
+$mpdf -> SetDisplayMode('fullpage');
+$mpdf -> WriteHTML($html);
 
- $mpdf -> Output($nomeDoArquivo, 'D');
+$mpdf -> Output($nomeDoArquivo, 'D');
+$mpdf -> charset_in = 'windows-1252';
+exit; 
 ?>

@@ -12,7 +12,7 @@
 include("mpdf60/mpdf.php");
 
 // Cria conexão
-$conn = new mysqli("localhost", "root", "Bruali16","educatio");
+$conn = new mysqli("localhost", "root", "","educatio");
 
 // Checa conexão
 if ($conn->connect_error) {
@@ -24,7 +24,7 @@ if (!empty($_POST["nomeAlunoPesquisa"])) {
   $nomeAluno = $_POST["nomeAlunoPesquisa"];
 
   //seleciona o ID do aluno pelo seu nome
-  $stmt = $conn->prepare("SELECT idCPF FROM alunos WHERE nome = ? AND ativo = 'N' ");
+  $stmt = $conn->prepare("SELECT idCPF FROM alunos WHERE nome = ? AND ativo = 'S' ");
   $stmt->bind_param('s', $nomeAluno);
   $stmt->execute();
   $rst = $stmt->get_result();
@@ -70,26 +70,6 @@ $html .=          "</table>
 
 //caso o usuário não quer alunos em especifico ele deixou a caixa em branco, portanto ele quer TODAS AS MULTAS
 else {
-  //seleciona as multa e o ID do aluno
- /* $sql = "SELECT multa,idAluno FROM emprestimos ";
-  $rst = $conn->query($sql);
-
-  while($row = $rst->fetch_assoc()){
-    $multaAluno[] = $row['multa'];
-    $idAluno= $row['idAluno'];
-  }
-
-  //seleciona o nome pelo id aluno correspondente
-  $stmt = $conn->prepare("SELECT nome FROM alunos WHERE idCPF = ?");
-  $stmt->bind_param('s', $idAluno);
-  $stmt->execute();
-  $rst = $stmt->get_result();
-
-  while($row = $rst->fetch_assoc()){
-    $nomeAluno = $row['nome'];
-  }
-*/
-
 
   $sql = "SELECT multa,idAluno FROM emprestimos ORDER BY idAluno";
   $rst = $conn->query($sql);

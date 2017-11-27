@@ -4,21 +4,38 @@
 	ini_set('max_execution_time', 0); 
 	date_default_timezone_set('America/Sao_Paulo');
 
-	//CONSTANTES QUE REPRESENTAM O FINAL DE CADA SUBTIPO + 1, NO ARQUIVO DE DADOS
+	################################
+	$arq = fopen("dadosAcervo-EmMassa.txt", "r");
+    if ($arq)
+    {
+    	//echo "Arquivo aberto (para leitura) com sucesso!<br>";	
+    } 
 
-	//const NUM_LIVROS = 109;
-	const FIM_LIVROS = 390;
+    $cont = 1;
+    While(!feof($arq))
+    {
+    	$linha = fgets($arq);
+	    $dados = explode(";", $linha);
 
-	//const NUM_ACADEMICOS = 89;
-	const FIM_ACADEMICOS = 479;
+	    if($dados[count($dados) - 2] == 'Acadêmico' && defined('FIM_LIVROS') == false)
+	    {
+	    	define('FIM_LIVROS', $cont);
+	    }
+	    elseif($dados[count($dados) - 2] == 'Mídia' && defined('FIM_ACADEMICOS') == false)
+	    {
+	    	define('FIM_ACADEMICOS', $cont);
+	    }
+	    elseif($dados[count($dados) - 2] == 'Periódico' && defined('FIM_MIDIAS') == false)
+	    {
+	    	define('FIM_MIDIAS', $cont);
+	    }
+	    $cont ++;
+    }
+    define('FIM_PERIODICOS', $cont);
+    $cont --;
+    define('NUM_ACERVO', $cont);
 
-	//const NUM_MIDIAS = 100;
-	const FIM_MIDIAS = 579;
-
-	//const NUM_PERIODICOS = 100;
-	const FIM_PERIODICOS = 679;
-
-	const NUM_ACERVO = 678;
+    ################################
 ###############################################################################################
 	$servername = "localhost";
 	$username = "root";
@@ -54,11 +71,7 @@
 
 	####################################################
 	################################
-    $arq = fopen("DadosParaInsercao/dadosAcervo-EmMassa.txt", "r");
-    if ($arq)
-    {
-    	//echo "Arquivo aberto (para leitura) com sucesso!<br>";	
-    } 
+	rewind($arq);
 
     $arrayEditoras = array('Autêntica Editora','Autores Associados','Betânia','Boitempo','Bors','Brasiliense','Cidade Futura','Companhia das Letras','Cortez','Cultrix','DP&A','Ed. da FGV','Ed. da Universidade Católica Dom Bosco','Ed. da Universidade São Francisco','Ediouro','Editora Campus','Editora Central Gospel','Editora da PUC/RS','Editora da UFMG','Editora da UFMS','Editora da UFRGS','Editora da UFRJ','Editora da UFSC','Editora da UNESP','Editora da UNICAMP','Editora da UNIMEP','Editora UNISINOS','Editora da Universidade de Brasília','Editora Gente','Editora Saraiva','Ed. da Universidade Regional de Blumenau (FURB)','EDIUPF','EDUSC','EDUSP','Elsevier','Escala','Escrituras','Escuta','Estação Liberdade','Fiel','Forense','FTD','Fundação Perseu Abramo','Fundamento','Graça Editorial','Gryphus','Holos Editora','Horizontal','Imprensa Oficial do Estado de SP','Loyola','Martin Claret','LPM','Martins Fontes','Madras','Meca','Makron Books','Mediação','Melhoramentos','Memnon','Mercado de Letras','Mercuryo','Moderna','Mundo Cristão','Nova Fronteira','Olho D’Água','Paulus','Papirus','Paz e Terra','Perspectiva','Plexus','Puritanos','Quartet','Relume','Rocco','Senado Federal Publicações','Sextante','Sinodal','Theasaurus','Summus','UFC Edições da Universidade Federal do Ceará','UFJF','UFMT','Ultimato','Unijuí','Vozes','Zahar','Grupo Especial');
     $arrayEditorasPeriodicos = array('Alternativa Editorial','Assinaweb','Associação Nacional de Editores de Revistas','Editora Escala','Editora Europa','Editora Globo','Editora Jazz','Editora Segmento','Editora Terceiro Milênio','Ferreira & Bento','Grupo Lund','RPA','SA Petter Editora','Sonel Editora');
@@ -205,8 +218,6 @@
 			$cont++;
 		}
 
-		fclose($arq);
-
 	####################################################################################
 	//INSERINDO NA TABELA LIVROS
 	$stmt = $con->prepare (
@@ -222,21 +233,17 @@
 
 	####################################################
 	################################
-	$arq = fopen("DadosParaInsercao/dadosAcervo-EmMassa.txt", "r");
-    if ($arq)
-    {
-    	//echo "Arquivo aberto (para leitura) com sucesso!<br>";	
-    } 
-
     $cont = 1;
 
     ################################
-    	while($cont != FIM_LIVROS)
+    	$sqlAcervoLivros = "SELECT id FROM `acervo` WHERE tipo = 'Livro'";
+    	$rstAcervoLivros = $con->query($sqlAcervoLivros);
+    	while($linhaAcervoLivros = $rstAcervoLivros->fetch_assoc())
     	{
     		$linha = fgets($arq);
 	        $dados = explode(";", $linha);
 			
-			$idAcervo = $cont;
+			$idAcervo = $linhaAcervoLivros['id'];
 			$ISBN1 = rand(100000000,999999999);
 			$ISBN2 = rand(1000,9999); 
 			$ISBN = "$ISBN1"."$ISBN2";
@@ -244,8 +251,6 @@
 			$ativo = 'S';
 
 			$stmt->execute();
-
-			$cont++;
 		}
 
 	####################################################################################
@@ -266,18 +271,18 @@
     $arrayProgramas = array('Monografia','Dissertação','Tese','TCC','Artigo técnico','Trabalho de nível superior');
 
     ################################
-    	while($cont != FIM_ACADEMICOS)
+    	$sqlAcervoAcademicos = "SELECT id FROM `acervo` WHERE tipo = 'Acadêmico'";
+    	$rstAcervoAcademicos = $con->query($sqlAcervoAcademicos);
+    	while($linhaAcervoAcademicos = $rstAcervoAcademicos->fetch_assoc())
     	{
     		$linha = fgets($arq);
 	        $dados = explode(";", $linha);
 			
-			$idAcervo = $cont;
+			$idAcervo = $linhaAcervoAcademicos['id'];
 			$programa = $arrayProgramas[rand(0,5)];
 			$ativo = 'S';
 
 			$stmt->execute();
-
-			$cont++;
 		}
 
 	####################################################################################
@@ -298,19 +303,19 @@
     $arraySubtipo = array('PenDrive','CD','DVD','Fita');
 
     ################################
-    	while($cont != FIM_MIDIAS)
+    	$sqlAcervoMidias = "SELECT id FROM `acervo` WHERE tipo = 'Mídia'";
+    	$rstAcervoMidias = $con->query($sqlAcervoMidias);
+    	while($linhaAcervoMidias = $rstAcervoMidias->fetch_assoc())
     	{
     		$linha = fgets($arq);
 	        $dados = explode(";", $linha);
 			
-			$idAcervo = $cont;
+			$idAcervo = $linhaAcervoMidias['id'];
 			$tempo = rand(55,195);
 			$subtipo = $arraySubtipo[rand(0,3)];
 			$ativo = 'S';
 
 			$stmt->execute();
-
-			$cont++;
 		}
 
 	####################################################################################
@@ -332,22 +337,19 @@
     $arraySubtipoPeriodicos = array('Revista', 'Jornal', 'Boletim');
 
     ################################
-    	while($cont != FIM_PERIODICOS)
+    	$sqlAcervoPeriodicos = "SELECT id FROM `acervo` WHERE tipo = 'Periódico'";
+    	$rstAcervoPeriodicos = $con->query($sqlAcervoPeriodicos);
+    	while($linhaAcervoPeriodicos = $rstAcervoPeriodicos->fetch_assoc())
     	{
-    		$linha = fgets($arq);
-	        $dados = explode(";", $linha);
-			
-			$idAcervo = $cont;
-			$periodicidade = $arrayPeriodicidade[rand(0, count($arrayPeriodicidade)-1)];
+			$idAcervo = $linhaAcervoPeriodicos['id'];
+			$periodicidade = $arrayPeriodicidade[rand(0, count($arrayPeriodicidade) - 1)];
 			$mes = rand(1, 12);
-			$volume = @$dados[1];
-			$subtipo = $arraySubtipoPeriodicos[rand(0, count($arraySubtipoPeriodicos)-1)];
+			$volume = rand(10, 200);
+			$subtipo = $arraySubtipoPeriodicos[rand(0, count($arraySubtipoPeriodicos) - 1)];
 			$ISSN = rand(10000000, 99999999);
 			$ativo = 'S';
 
 			$stmt->execute();
-
-			$cont++;
 		}
 
 	####################################################################################
@@ -437,11 +439,8 @@
 			 );
 
 	################################
-    $arq = fopen("DadosParaInsercao/dadosAcervo-EmMassa.txt", "r");
-    if ($arq)
-    {
-    	//echo "Arquivo aberto (para leitura) com sucesso!<br>";	
-    } 
+    rewind($arq);
+
     $cont = 1;
 
     $arrayAutores = array();
@@ -485,8 +484,6 @@
 			$cont ++;
 		}
 
-		fclose($arq);
-
 	####################################################################################
 	//INSERINDO NA TABELA AUTORACERVO
 	$stmt = $con->prepare (
@@ -502,11 +499,8 @@
 
 	####################################################
 	################################
-    $arq = fopen("DadosParaInsercao/dadosAcervo-EmMassa.txt", "r");
-    if ($arq)
-    {
-    	//echo "Arquivo aberto (para leitura) com sucesso!<br>";	
-    } 
+    rewind($arq);
+
     $cont = 1;
 
     ################################
@@ -530,8 +524,6 @@
 
 			$cont++;
 		}
-
-		fclose($arq);
 
 	####################################################################################
 	//INSERINDO NA TABELA RESERVAS
@@ -571,7 +563,7 @@
 			$data = new DateTime("$dia-$mes-$dia");
 
 			$dataReserva = $data->format('d/m/Y');
-			$tempoEspera = rand(0, 10);
+			$tempoEspera = rand(1, 20);
 			$emprestou = $arrayAtivo[rand(0, 1)];
 			$ativo = 'S';
 
@@ -595,8 +587,10 @@
 
 	####################################################
 	################################
-	$numEmprestimos = $numReservas;
-	$cont = $numEmprestimos;
+	$numEmprestimosDeReservas = $numReservas;
+	$numEmprestimos = rand(1,20);
+	$cont = $numEmprestimosDeReservas;
+	$arrayEmprestados = array();
 
     ################################
 		$sqlEmprestimos = "SELECT * FROM `reservas` WHERE ativo = 'S' AND emprestou = 'S'";
@@ -609,6 +603,8 @@
 			}
 			$idAluno = $linhaEmprestimos['idAluno'];
 			$idAcervo = $linhaEmprestimos['idAcervo'];
+
+			array_push($arrayEmprestados, $idAcervo);
 
 			$data1 = $linhaEmprestimos['dataReserva'];
 			$data1 = explode('/',$data1);
@@ -624,27 +620,89 @@
 			$data3->add(new DateInterval('P'.rand(0,21).'D'));
 			$dataDevolucao = $data3->format('d/m/Y');
 
-
 			$data4 = explode('/',$dataPrevisaoDevolucao);
 			$data4 = new DateTime("$data4[0]-$data4[1]-$data4[2]");
 
 			$data5 = explode('/',$dataDevolucao);
 			$data5 = new DateTime("$data5[0]-$data5[1]-$data5[2]");
 
-			if($data5 > $data4)
-			{
-				$data6 = $data4->diff($data5);
-				$multa = (($data6->format('%R%a')) - 7) * 2;
-			}
-			else if($data4 >= $data5)
+			if($data4 >= $data5)
 			{
 				$multa = 0;
+			}
+			else
+			{	
+				$data6 = $data4->diff($data5);
+				$multa = ($data6->format('%R%a')) * 2;
 			}
 			$ativo = 'S';
 			
 			$stmt->execute();
 
 			$cont --;
+		}
+
+		while($numEmprestimos != 0)
+		{
+			$rstAlunoRandom = $con->query("SELECT idCPF FROM `alunos` WHERE ativo = 'S' ORDER BY RAND() LIMIT 1");
+			$linhaAlunoRandom = $rstAlunoRandom->fetch_assoc();
+			$idAluno = $linhaAlunoRandom['idCPF'];
+			$acervoEmprestado = false;
+			while($acervoEmprestado == false)
+			{
+				$rstAcervoRandom = $con->query("SELECT id FROM `acervo` WHERE ativo = 'S' ORDER BY RAND() LIMIT 1");
+				$linhaAcervoRandom = $rstAcervoRandom->fetch_assoc();
+
+				for($i = 0; $i < (count($arrayEmprestados) - 1); $i ++)
+				{
+					if($arrayEmprestados[$i] == $linhaAcervoRandom['id'])
+					{
+						$acervoEmprestado = true;
+					}
+				}
+				if($acervoEmprestado == true)
+				{
+					$idAcervo = $linhaAcervoRandom['id'];
+					array_push($arrayEmprestados, $idAcervo);
+				}
+			}
+
+			$dia = rand(1,29);
+			$mes = rand(1,12);
+			$ano = rand(1990,2017);
+			$dataEmprestimo = "$dia/$mes/$ano";
+
+			$dataPrevisaoDevolucao = explode('/', $dataEmprestimo);
+			$dataPrevisaoDevolucao = new DateTime("$dataPrevisaoDevolucao[0]-$dataPrevisaoDevolucao[1]-$dataPrevisaoDevolucao[2]");
+			$dataPrevisaoDevolucao->add(new DateInterval('P7D'));
+			$dataPrevisaoDevolucao = $dataPrevisaoDevolucao->format('d/m/Y');
+
+			$dataDevolucao = explode('/', $dataPrevisaoDevolucao);
+			$dataDevolucao = new DateTime("$dataDevolucao[0]-$dataDevolucao[1]-$dataDevolucao[2]");
+			$dataDevolucao->add(new DateInterval('P'.rand(0, 21).'D'));
+			$dataDevolucao = $dataDevolucao->format('d/m/Y');
+
+			$data1 = explode('/',$dataPrevisaoDevolucao);
+			$data1 = new DateTime("$data1[0]-$data1[1]-$data1[2]");
+
+			$data2 = explode('/',$dataDevolucao);
+			$data2 = new DateTime("$data2[0]-$data2[1]-$data2[2]");
+
+			if($data1 >= $data2)
+			{
+				$multa = 0;
+			}
+			else
+			{	
+				$data3 = $data1->diff($data2);
+				$multa = ($data3->format('%R%a')) * 2;
+			}
+
+			$ativo = 'S';
+			
+			$stmt->execute();
+
+			$numEmprestimos --;
 		}
 
 	####################################################################################
@@ -664,6 +722,7 @@
 	################################
 	$numDescartes = rand(1,20);
 	$cont = $numDescartes;
+	$arrayMotivos = array('Amassado', 'Página rasgada', 'Páginas rasgadas', 'Sem capa', 'Páginas faltando', 'Obsoleto');
 
     ################################
 		$stmtDescartes = $con->prepare("SELECT id FROM `acervo` WHERE ativo = 'S' ORDER BY RAND() LIMIT ?");
@@ -673,7 +732,6 @@
 
 		$stmtDescartes->execute();
 		$rstDescartes = $stmtDescartes->get_result();
-		//$rstDescartes = $con->query($sqlDescartes);
 
 		while($linhaDescartes = $rstDescartes->fetch_assoc())
 		{
@@ -682,13 +740,18 @@
 				break;
 			}
 			$idAcervo = $linhaDescartes['id'];
-			$sqlFuncionario = "SELECT * FROM `funcionario` WHERE ativo = 'S' ORDER BY RAND() LIMIT 1"; //AND hierarquia = 'Bibliotecário' *ORDER BY RAND() LIMIT 1;
+			$sqlFuncionario = "SELECT idSIAPE FROM `funcionario` WHERE ativo = 'S' ORDER BY RAND() LIMIT 1";
 			$rstFuncionario = $con->query($sqlFuncionario);
 			$linhaFuncionario = $rstFuncionario->fetch_assoc();
 
 			$idFuncionario = $linhaFuncionario['idSIAPE'];
-			$dataDescarte = date('d/m/Y');
-			$motivos = 'Mal estado';
+
+			$dia = rand(1,29);
+			$mes = rand(1,12);
+			$ano = rand(1990,2017);
+			$dataDescarte = "$dia/$mes/$ano";
+
+			$motivos = $arrayMotivos[rand(0, (count($arrayMotivos)-1))];
 			$ativo = 'S';
 
 			$stmt->execute();
@@ -700,12 +763,47 @@
 		$rstDescartes = $con->query($sqlDescartes);
 		while($linhaDescartes = $rstDescartes->fetch_assoc())
 		{
-			$stmtFuncionario = $con->prepare("UPDATE `acervo` SET ativo = 'N' WHERE id = ?");
-			$stmtFuncionario->bind_param('i',$idAcervo);
+			$rstDescartesAcervo = $con->query("UPDATE `acervo` SET ativo = 'N' WHERE id = ".$linhaDescartes['idAcervo']."");
 
-			$idAcervo = $linhaDescartes['idAcervo'];
+			$rstDescartesLivros = $con->query("SELECT id FROM `livros` WHERE ativo = 'S' AND idAcervo = ".$linhaDescartes['idAcervo']."");
+			if($rstDescartesLivros->num_rows == 1)
+			{
+				$linhaDescartesLivros = $rstDescartesLivros->fetch_assoc();
+				$rstDescartesLivros = $con->query("UPDATE `livros` SET ativo = 'N' WHERE id = ".$linhaDescartesLivros['id']."");
+			}
+			else
+			{
+				$rstDescartesAcademicos = $con->query("SELECT id FROM `academicos` WHERE ativo = 'S' AND idAcervo = ".$linhaDescartes['idAcervo']."");
+				if($rstDescartesAcademicos->num_rows == 1)
+				{
+					$linhaDescartesAcademicos = $rstDescartesAcademicos->fetch_assoc();
+					$rstDescartesAcademicos = $con->query("UPDATE `academicos` SET ativo = 'N' WHERE id = ".$linhaDescartesAcademicos['id']."");
+				}
+				else
+				{
+					$rstDescartesMidias = $con->query("SELECT id FROM `midias` WHERE ativo = 'S' AND idAcervo = ".$linhaDescartes['idAcervo']."");
+					if($rstDescartesMidias->num_rows == 1)
+					{
+						$linhaDescartesMidias = $rstDescartesMidias->fetch_assoc();
+						$rstDescartesMidiasFinal = $con->query("UPDATE `midias` SET ativo = 'N' WHERE id = ".$linhaDescartesMidias['id']."");
+					}
+					else
+					{
+						$rstDescartesPeriodicos = $con->query("SELECT id FROM `periodicos` WHERE ativo = 'S' AND idAcervo = ".$linhaDescartes['idAcervo']."");
+						if($rstDescartesPeriodicos->num_rows == 1)
+						{
+							$linhaDescartesPeriodicos = $rstDescartesPeriodicos->fetch_assoc();
+							$rstDescartesPeriodicos = $con->query("UPDATE `periodicos` SET ativo = 'N' WHERE id = ".$linhaDescartesPeriodicos['id']."");
 
-			$stmtFuncionario->execute();
+							$rstDescartesPartes = $con->query("SELECT id FROM `partes` WHERE ativo = 'S' AND idPeriodico = ".$linhaDescartesPeriodicos['id']."");
+							while($linhaDescartesPartes = $rstDescartesPartes->fetch_assoc())
+							{
+								$rstDescartesPartesFinal = $con->query("UPDATE `partes` SET ativo = 'N' WHERE id = ".$linhaDescartesPartes['id']."");
+							}
+						}
+					}
+				}
+			}
 		}
 
 ###############################################################################################

@@ -653,10 +653,13 @@
 			$rstFuncionario = $con->query($sqlFuncionario);
 			$linhaFuncionario = $rstFuncionario->fetch_assoc();
 			$idFuncionario = $linhaFuncionario['idSIAPE'];
+			
 			$dia = rand(1,29);
 			$mes = rand(1,12);
 			$ano = rand(1990,2017);
-			$dataDescarte = "$dia/$mes/$ano";
+			$dataDescarte = new DateTime("$dia-$mes-$ano");
+			$dataDescarte = $dataDescarte->format('d/m/Y');
+
 			$motivos = $arrayMotivos[rand(0, (count($arrayMotivos)-1))];
 			$ativo = 'S';
 			$stmt->execute();

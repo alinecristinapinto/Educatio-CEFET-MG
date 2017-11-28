@@ -8,7 +8,8 @@
   </information>
   <resources>
     <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
-    <jar href="SelecaoNotasJFX.jar" size="9209" download="eager" />
+    <jar href="SelecaoNotasJFX.jar" size="11402" download="eager" />
+    <jar href="lib\mysql-connector-java-5.1.44-bin.jar" size="999635" download="eager" />
   </resources>
   <applet-desc  width="800" height="600" main-class="com.javafx.main.NoJavaFXFallback"  name="SelecaoNotasJFX" >
     <param name="requiredFXVersion" value="8.0+"/>

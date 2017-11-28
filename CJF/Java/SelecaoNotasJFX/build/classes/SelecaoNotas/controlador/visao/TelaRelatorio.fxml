@@ -1,20 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.HBox?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="SelecaoNotas.controlador.visao.TelaRelatorioControlador">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="background" stylesheets="@CSSPadrão.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="SelecaoNotas.controlador.visao.TelaRelatorioControlador">
    <children>
-      <TableView fx:id="dadosNotasTable" layoutX="140.0" layoutY="112.0" prefHeight="200.0" prefWidth="377.0">
+      <TableView fx:id="dadosNotasTable" layoutX="112.0" layoutY="100.0" prefHeight="200.0" prefWidth="377.0" styleClass="list-view" stylesheets="@CSSPadrão.css">
         <columns>
           <TableColumn fx:id="nomeDisciplinaColumn" prefWidth="75.0" text="Matéria" />
           <TableColumn fx:id="notaEtapaColumn" prefWidth="75.0" text="Etapa 1" />
@@ -23,18 +16,7 @@
             <TableColumn prefWidth="75.0" text="Etapa 4" />
         </columns>
       </TableView>
-      <Label fx:id="nomeAlunoLabel" layoutX="130.0" layoutY="39.0" prefHeight="17.0" prefWidth="92.0" text="Nome do aluno" />
-      <Label fx:id="cpfLabel" layoutX="130.0" layoutY="56.0" text="CPF" />
-      <Label fx:id="cursoLabel" layoutX="222.0" layoutY="39.0" text="Curso" />
-      <Label fx:id="turmaLabel" layoutX="269.0" layoutY="39.0" text="Turma" />
-      <Label fx:id="anoLabel" layoutX="328.0" layoutY="39.0" text="Ano" />
-      <Label fx:id="campusLabel" layoutX="365.0" layoutY="39.0" text="Campus" />
-      <HBox layoutX="424.0" layoutY="336.0" spacing="20.0">
-         <children>
-            <Button mnemonicParsing="false" text="Download" />
-            <Button mnemonicParsing="false" text="Impressão" />
-         </children>
-      </HBox>
-      <ImageView fitHeight="106.0" fitWidth="103.0" layoutX="14.0" layoutY="39.0" pickOnBounds="true" preserveRatio="true" />
+      <Button layoutX="489.0" layoutY="337.0" mnemonicParsing="false" text="Download" />
+      <Button layoutX="43.0" layoutY="340.0" mnemonicParsing="false" onAction="#BotaoVoltarClicado" text="Voltar" />
    </children>
 </AnchorPane>

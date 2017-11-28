@@ -30,7 +30,7 @@ public class EntradaNomeAluno {
         
         //estabelecendo conexao com BD
         Connection connection = null;
-        connection = DriverManager.getConnection("jdbc:mysql://localhost:3307/educatio","root","usbw");
+        connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/educatio?useSSL=true","root","");
         
         if(connection==null){
             System.out.println("Status-------->Erro ao conectar!");

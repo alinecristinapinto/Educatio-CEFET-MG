@@ -49,7 +49,6 @@ public class ReservasDataGeral {
             String tituloAcervo  = "";
             String dadosImpressao  = "";
             String dadosGeralImpressao  =  "";
-            ArrayList datas = new ArrayList();
             
             //Variaveis especificas para data
             ArrayList lista  =  new ArrayList(); 
@@ -114,7 +113,6 @@ public class ReservasDataGeral {
                 data  =  new Date((long) ms);
                 dataFormatada  =  formato.format(data);
                 //Agora pega todos os dados do BD que tem essa data
-                datas.add("\n\nReservas realizadas em: "+dataFormatada);
                 resultadoSQL1  =  executaComando1.executeQuery("SELECT * FROM reservas WHERE dataReserva='"+dataFormatada+"' AND ativo='"+"S"+"'");
                 while(resultadoSQL1.next()){
                     
@@ -154,7 +152,7 @@ public class ReservasDataGeral {
                         break;
                         
                     case 2:
-                        ImpressaoReservasDataGeral imprimir  =  new ImpressaoReservasDataGeral(bufferDadosReservaGeral, bufferDadosReservaData, datas);
+                        GeraPdfReservasDataGeral imprimir  =  new GeraPdfReservasDataGeral(bufferDadosReservaGeral, bufferDadosReservaData);
                         imprimir.imprimindo();
                         break;
                         

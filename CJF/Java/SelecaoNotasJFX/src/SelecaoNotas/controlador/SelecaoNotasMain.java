@@ -1,10 +1,10 @@
 package SelecaoNotas.controlador;
 
+import BD.SelecaoNotasBD;
 import SelecaoNotas.controlador.modelo.DadosNotas;
+import SelecaoNotas.controlador.visao.LayoutInicialControlador;
 import SelecaoNotas.controlador.visao.TelaRelatorioControlador;
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.SQLException;
 
 import javafx.application.Application;
@@ -26,7 +26,7 @@ public class SelecaoNotasMain extends Application  {
     @Override
     public void start(Stage primaryStage) {
         this.primaryStage = primaryStage;
-        this.primaryStage.setTitle("Seleção de notas");
+        this.primaryStage.setTitle("Relatorio de Notas");
 
         initBarraMenu();
 
@@ -38,12 +38,8 @@ public class SelecaoNotasMain extends Application  {
     private ObservableList<DadosNotas> dadosNotasTabela = FXCollections.observableArrayList();
     
     public SelecaoNotasMain(){
-        dadosNotasTabela.add(new DadosNotas("LP", "10","","","","","",""));
+        dadosNotasTabela.add(new DadosNotas("", "","","","","","",""));
     }
-    
-   /* public ObservableList<DadosNotas> getDadosNotas() {
-        return dadosNotas;
-    }*/
     
     /**
      * Inicializa o root layout (layout base).
@@ -77,6 +73,11 @@ public class SelecaoNotasMain extends Application  {
             // Define o person overview dentro do root layout.
             rootLayout.setCenter(LayoutInicial);
             
+            LayoutInicialControlador controlador = loader.getController();
+            controlador.setManutencao(new SelecaoNotasBD());
+            controlador.setDadosNotas(new DadosNotas());
+            controlador.setSelecaoNotasMain(this);
+            
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -96,6 +97,7 @@ public class SelecaoNotasMain extends Application  {
             TelaRelatorioControlador controlador = loader.getController();
             controlador.setSelecaoNotasMain(this);
             
+            
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -111,21 +113,6 @@ public class SelecaoNotasMain extends Application  {
 
     public static void main(String[] args) throws SQLException, Exception {
         launch(args);
-        
-        try{
-            //Carrega o driver especificado
-            Class.forName("com.mysql.jdbc.Driver");
-        } catch (ClassNotFoundException e){
-            System.out.println("Driver nao encontrado!"+e);
-        }
-        
-        //estabelecendo conexao com BD
-        Connection connection = null;
-        connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/educatio","root","");
-        
-        if(connection==null){
-            System.out.println("Status-------->Erro ao conectar!");
-            System.exit(0);
-        }
+
     }
 }

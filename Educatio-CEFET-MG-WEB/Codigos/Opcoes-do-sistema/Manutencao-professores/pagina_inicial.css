@@ -1,5 +1,6 @@
 button.btn {
-	background-color: #2644B2;
+	/*background-color: #2644B2;*/
+	background-color: black;
 	color: white;
 }
 
@@ -17,13 +18,6 @@ div.container {
 
 #p1 {
 	text-align: center;
-}
-
-div.card {
-	margin-top: 5%;
-	height: 100%;
-	width: 100%;
-    align-items: center;
 }
 
 #voltar {

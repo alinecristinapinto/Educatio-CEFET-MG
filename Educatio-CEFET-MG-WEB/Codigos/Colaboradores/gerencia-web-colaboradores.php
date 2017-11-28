@@ -92,7 +92,7 @@
 			</div>
 
 			<div class="col-md-3 col-sm-4 col-xs-6">
-				<img class="img-responsive img-circle img" src="../../Estaticos/imagens/padrao.png" />
+				<img class="img-responsive img-circle img" src="../../Estaticos/imagens/bryann.jpg" />
 				<p><strong>Bryann Bueno</strong></p>
 				<p>Descrição Curta</p>
 			</div>
@@ -147,9 +147,9 @@
 			</div>
 
 			<div class="col-md-3 col-sm-4 col-xs-6">
-				<img class="img-responsive img-circle img" src="../../Estaticos/imagens/padrao.png" />
+				<img class="img-responsive img-circle img" src="../../Estaticos/imagens/henrique.jpg" />
 				<p><strong>Pedro Henrique</strong></p>
-				<p>Descrição Curta</p>
+				<p>Lolzero de nascença, vivo minha vida pela programação!!!!</p>
 			</div>
 	</div><br>
 
@@ -271,9 +271,9 @@
 			</div>
 
 			 <div class="col-md-3 col-sm-4 col-xs-6">
-				<img class="img-responsive img-circle img" src="../../Estaticos/imagens/padrao.png" />
+				<img class="img-responsive img-circle img" src="../../Estaticos/imagens/luiz.jpg" />
 				<p><strong>Luis Gustavo</strong></p>
-				<p>Descrição Curta</p>
+				<p>Gosto de macarrão, física, todo tipo de música - principalmente pop anos 70 e 80 (EW&F < 3) - e perfumar programas</p>
 			</div>
 	</div><br><br>
 </div>

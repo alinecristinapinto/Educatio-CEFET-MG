@@ -5,8 +5,17 @@
   <meta charset="utf-8">
   <!-- CSS do grupo -->
     <link href="BLT-Web-Disciplinas.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Abel|Inconsolata" rel="stylesheet">
 
     <style type="text/css">
+      .text-center{
+           font-family: 'Abel', sans-serif;
+           color: #d8ac29;
+        }
+        .fonteTexto{
+           font-family: 'Inconsolata', monospace;
+           font-size: 16px;
+        }
       .btn-info {
         background-color: #162e87;
         border-color: #162e87;

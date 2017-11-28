@@ -17,6 +17,7 @@
 
       <!-- Fontes e icones -->
       <link href="../../../Estaticos/Bootstrap/css/nucleo-icons.css" rel="stylesheet">
+       <link href="https://fonts.googleapis.com/css?family=Abel|Inconsolata" rel="stylesheet">
 
       <style type="text/css">
       .text-center{
@@ -43,6 +44,10 @@
   </head>
   <body>
     <div class="wrapper">
+      <?php 
+      session_start();
+      require "../../Menu-Rodape-Secundarios/caso-2/gerencia-web-menu-interface-coordenador.php";
+      ?>
 
        <div class="container">
          <div class="row">
@@ -76,7 +81,7 @@
                   while($row = $resultadoTurma->fetch_assoc()) {
                         //echo dos valores do id do Aluno e multas
                     echo " <table class='table table-bordered'>
-                                <caption>Turma deletada</caption>
+                                <caption>Turma não deletada</caption>
                                 <tr>
                                   <td>
                                     <b>ID do  Curso</b>: ".$row["idCurso"]." <br>
@@ -89,7 +94,7 @@
                       }
 
                   echo "<script>alert('Existe disciplinas atreladas a turma')</script>";
-                  echo "<script>window.location.href = '../../Entrada/gerencia-web-interface-coordenador.php?acao=removerTurma';</script>";
+                 // echo "<script>window.location.href = '../../Entrada/gerencia-web-interface-coordenador.php?acao=removerTurma';</script>";
                 }
 
                 else{
@@ -114,8 +119,14 @@
                       $resultadoUPDATE = $conn->query($sql);
 
                       echo "<script>alert('Turma excluida com sucesso!')</script>";
-                      echo "<script>window.location.href = '../../Entrada/gerencia-web-interface-coordenador.php?acao=removerTurma';</script>";
+                     // echo "<script>window.location.href = '../../Entrada/gerencia-web-interface-coordenador.php?acao=removerTurma';</script>";
                 }
+
+                echo "<div class='row'>
+                  <div class='col-md-4 ml-auto mr-auto'>
+                    <button class='btn btn-info' onClick=\"window.location.href ='../../Entrada/gerencia-web-interface-coordenador.php?acao=removerTurma';\">Voltar</button>
+                  </div>
+                </div>  ";
               }
 
           ?>
@@ -123,7 +134,9 @@
         </div>
        </div>
       </div>
-      <?php require "../../Menu-Rodape/gerencia-web-rodape-caso-2.php"; ?>
+      <br><br>
+     
     </div>
+     <?php require "../../Menu-Rodape-Secundarios/caso-2/gerencia-web-rodape-caso-2.php";  ?>
   </body>
 </html>

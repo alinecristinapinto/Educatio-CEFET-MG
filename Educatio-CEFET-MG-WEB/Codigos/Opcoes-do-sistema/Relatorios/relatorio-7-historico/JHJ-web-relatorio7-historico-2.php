@@ -22,6 +22,10 @@
         <link href="../../../../Estaticos/Bootstrap/css/nucleo-icons.css" rel="stylesheet">
     </head>
     <body>
+    <?php 
+        session_start();
+        require "../../../Menu-Rodape-Secundarios/caso-1/gerencia-web-menu-interface-coordenador.php";
+    ?>
     <!-- <div class="section landing-section"> -->
         <div class="container">
             <div class="row">
@@ -82,10 +86,10 @@
                         ?>
                         <div class="row" style="margin-bottom: 10px;">
                             <div style="float: left;">
-                                <button style="margin-left: 220px;" type="submit" class="btn btn-info btn-round">Selecionar departamento</button>
+                                <button style="margin-left: 220px;" type="submit" class="btn btn-info">Selecionar departamento</button>
                             </div>
                             <div style="float: left;">
-                                <button style="margin-left: 10px;" type="button" class="btn btn-info btn-round" onClick="voltarParaPaginaSelecionarCampi()">Voltar</button>
+                                <button style="margin-left: 10px;" type="button" class="btn btn-info" onClick="voltarParaPaginaSelecionarCampi()">Voltar</button>
                             </div>
                         </div>  
 
@@ -113,5 +117,6 @@
                 </div>
             </div>
         </div>
+        <?php require "../../../Menu-Rodape-Secundarios/caso-1/gerencia-web-rodape-caso-2.php"; ?>
     </body>
 </html>

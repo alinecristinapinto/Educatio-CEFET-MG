@@ -39,7 +39,19 @@
         <script src="JHJ-web-script-relatorio9-tabela.js" type="text/javascript"></script>
 
         <!-- Fontes e icones -->
-        <link href="../../../../../Estaticos/Bootstrap/css/nucleo-icons.css" rel="stylesheet">   
+        <link href="../../../../Estaticos/Bootstrap/css/nucleo-icons.css" rel="stylesheet">   
+        <link href="https://fonts.googleapis.com/css?family=Abel|Inconsolata" rel="stylesheet">
+
+        <style type="text/css">
+            .text-center{
+              font-family: 'Abel', sans-serif;
+              color: #d8ac29;
+            }
+            .fonteTexto{
+              font-family: 'Inconsolata', monospace;
+              font-size: 16px;
+            }
+        </style>
         <script type="text/javascript">
             function voltarParaPaginaAcessarProfessoresSelecionarCurso(){
                 location.href = '../../../Entrada/gerencia-web-interface-coordenador.php?acao=acessarProfessores';
@@ -50,6 +62,8 @@
         </script>
     </head>
     <body>
+        <?php 
+        require "../../../Menu-Rodape-Secundarios/caso-1/gerencia-web-menu-interface-coordenador.php"; ?>
         <h2 class="text-center">ACESSAR PROFESSORES</h2>
         <?php
             //Pega dados do curso que foi selecionado por meio do id
@@ -85,7 +99,7 @@
                     }
                 }
             } else {
-                header ('Content-type: text/html; charset=UTF-8'); 
+               // header ('Content-type: text/html; charset=UTF-8'); 
                 echo "
                 <div class='container' style='margin-top: 50px;'>
                     <div class='row'>
@@ -299,10 +313,10 @@
                 </div>
                 <div class='row'>
                     <div style='float: left;' >
-                        <button style='margin-top: 10px; margin-left: 890px;' type='button' class='btn btn-info btn-round' onClick='voltarParaPaginaAcessarProfessoresSelecionarCurso()'>Voltar</button>  
+                        <button style='margin-top: 10px; margin-left: 890px;' type='button' class='btn btn-info' onClick='voltarParaPaginaAcessarProfessoresSelecionarCurso()'>Voltar</button>  
                     </div>
                     <div style='float: left;' >
-                        <button style='margin-top: 10px; margin-left: 20px;' type='button' class='btn btn-info btn-round' onClick='irParaPaginaDownloadRelatorioAcessarProfessores()'>Download do Relat&oacuterio em PDF</button>  
+                        <button style='margin-top: 10px; margin-left: 20px;' type='button' class='btn btn-info' onClick='irParaPaginaDownloadRelatorioAcessarProfessores()'>Download do Relat&oacuterio em PDF</button>  
                     </div>
                 </div>";
             } // fim do if que verifica existencia do professor 
@@ -328,7 +342,7 @@
                 echo "      
                                     <div class='row'>
                                         <div class='col-md-4 ml-auto mr-auto'>
-                                            <button style='margin-bottom: 10px; margin-left: 50px;' type='button' class='btn btn-info btn-round' value='Voltar' onClick='voltarParaPaginaAcessarProfessoresSelecionarCurso()'>Voltar</button>
+                                            <button style='margin-bottom: 10px; margin-left: 50px;' type='button' class='btn btn-info' value='Voltar' onClick='voltarParaPaginaAcessarProfessoresSelecionarCurso()'>Voltar</button>
                                         </div>
                                     </div>                     
                                 </div>  
@@ -338,5 +352,6 @@
                 </div> <!-- conteiner -->";
             }
         ?>
+        <?php require "../../../Menu-Rodape-Secundarios/caso-1/gerencia-web-rodape-caso-2.php"; ?>
     </body>
 </html>

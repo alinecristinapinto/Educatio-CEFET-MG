@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Adicionar Curso</title>
-		<meta charset="utf-8" />
-        <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
-        <meta name="viewport" content="width=device-width" />
+      <title>Adicionar Curso</title>
+		  <meta charset="utf-8" />
+      <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+      <meta name="viewport" content="width=device-width" />
     
         <!-- CSS do Bootstrap -->
       <link href="../../../Estaticos/Bootstrap/css/bootstrap.min.css" rel="stylesheet" />
@@ -21,7 +21,7 @@
 
       <!-- Fontes e icones -->
       <link href="../../../Estaticos/Bootstrap/css/nucleo-icons.css" rel="stylesheet">
-
+      <link href="https://fonts.googleapis.com/css?family=Abel|Inconsolata" rel="stylesheet">
 
         <style type="text/css">
         .text-center{
@@ -48,14 +48,17 @@
 
     </head>
     <body>
-
+       <?php 
+          session_start();
+          require "../../Menu-Rodape-Secundarios/caso-2/gerencia-web-menu-interface-coordenador.php";
+        ?>
         <?php
 
 
-			$strIdDepartamento = $_POST["idDepartamento"];
-			$strNomeCurso = $_POST["nomeCurso"];
-			$strHorasTotal = $_POST["horasTotal"];
-			$strModalidade = $_POST["modalidade"];
+			     $strIdDepartamento = $_POST["idDepartamento"];
+			     $strNomeCurso = $_POST["nomeCurso"];
+			     $strHorasTotal = $_POST["horasTotal"];
+			     $strModalidade = $_POST["modalidade"];
 
             // Conectando com o servidor MySQL
             $link = mysqli_connect("localhost", "root", "usbw");
@@ -78,7 +81,7 @@
         ?>
         
         <div class="wrapper">
-            <div class="section landing-sectionv">
+            <!--<div class="section landing-sectionv">-->
                 <div class="container">
                     <div class="row">
                         <div class="col-md-8 ml-auto mr-auto">
@@ -95,19 +98,19 @@
                                 <label class="fonteTexto">Modalidae:<?php echo " ".$strModalidade ?></label><br />
 
                                 <div class="col-md-4 ml-auto mr-auto">
-                                    <button type="submit" class="btn btn-info" onClick="window.location.href = '../Entrada/gerencia-web-interface-coordenador.php?acao=adicionarCurso'">Voltar</button>
+                                    <button type="submit" class="btn btn-info" onClick="window.location.href = '../../Entrada/gerencia-web-interface-coordenador.php?acao=adicionarCurso'">Voltar</button>
                                 </div>
                             </div>  
                             
                         </div>
                     </div>
-                </div>
+               <!-- </div>-->
             </div>
     <?php 
 
         echo '<br>';
 
-        require "../../../Menu-Rodape/gerencia-web-rodape-caso-2.php";
+        require "../../Menu-Rodape-Secundarios/caso-2/gerencia-web-rodape-caso-2.php"; 
     ?>
         </div>	                    
     </body>

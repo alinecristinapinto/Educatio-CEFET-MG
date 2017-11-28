@@ -11,6 +11,7 @@ Autor:​ ​ Allan Barbosa
 <head>
     <title>Editar Curso</title>
     <meta charset="utf-8" />
+     <link href="https://fonts.googleapis.com/css?family=Abel|Inconsolata" rel="stylesheet">
 
     <style type="text/css">
     .text-center{

@@ -38,6 +38,18 @@ Seleção de notas por aluno/ano 1
 	<!-- Arquivos js -->
 	<script src="https://code.jquery.com/jquery-3.1.1.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.quicksearch/2.3.1/jquery.quicksearch.js"></script>
+	<link href="https://fonts.googleapis.com/css?family=Abel|Inconsolata" rel="stylesheet">
+
+        <style type="text/css">
+            .text-center{
+              font-family: 'Abel', sans-serif;
+              color: #d8ac29;
+            }
+            .fonteTexto{
+              font-family: 'Inconsolata', monospace;
+              font-size: 16px;
+            }
+        </style>
 
 	<!-- Fontes e icones -->
 </head>
@@ -48,7 +60,7 @@ Seleção de notas por aluno/ano 1
 				<div class="col-md-8 ml-auto mr-auto">
 					<h2 class="text-center">Seleção de notas</h2>	
 					<form method='post' action='../Opcoes-do-sistema/Relatorios/relatorio-10-notas-alunos/CJF-SelecaoNotas2.php' class="contact-form">	
-						<div class="col-md-6">
+						<div class="row">
 							<label class="fonteTexto">Digite o nome ou o CPF do Aluno COMPLETO: </label>
 							<div class="input-group">
 								<span class="input-group-addon"><i class="nc-icon nc-single-02"></i></span>
@@ -86,7 +98,7 @@ Seleção de notas por aluno/ano 1
 								<!-- recebe o ano -->
 								<input type="text" class="form-control" name='ano' placeholder="Ano" required='required'>
 							</div>
-							<input class="btn btn-info btn-round" type='submit' value='Exibir'>
+							<input class="btn btn-info" type='submit' value='Exibir'>
 							<br>
 						</div>
 					</form>

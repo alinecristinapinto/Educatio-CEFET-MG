@@ -1,4 +1,5 @@
 <?php
+	session_start();
 	ini_set('default_charset','UTF-8');
 
 	$strNomeServer = "localhost";
@@ -24,7 +25,7 @@
 	function excluirDepartamento($strVar) {
 
 		//Cria conexão
-		$conn = new mysqli('localhost', 'root', null);
+		$conn = new mysqli('localhost', 'root', "usbw");
 		//Verifica conexão
 		if ($conn->connect_error) {
 			die("Falha na conexão: " . $conn->connect_error."<br>");
@@ -35,7 +36,10 @@
 		
 		//Verifica se o Departamento foi "excluido"
 		 if ($conn->query($strSQL) === TRUE) {
-			echo "<script>alert('Deparatamento deletado com sucesso')</script>";
+			echo "<script>
+					alert('Deparatamento deletado com sucesso');
+					window.location.href ='../../Entrada/gerencia-web-interface-coordenador.php?acao=removerDepartamento'
+				</script>";
 		} else {
 			echo "<script>alert('Erro deletando o Departamento: ".$conn->error."')</script>";
 		}
@@ -50,7 +54,7 @@
 	
 	<!-- CSS do Bootstrap -->
 	  <link href="../../../Estaticos/Bootstrap/css/bootstrap.min.css" rel="stylesheet" />
-	  <link href="../../Estaticos/Bootstrap/css/bootstrap.css" rel="stylesheet"/>
+	  <link href="../../../Estaticos/Bootstrap/css/bootstrap.css" rel="stylesheet"/>
 
 	  <!-- Arquivos js -->
 	  <script src="../../../Estaticos/Bootstrap/js/popper.js"></script>
@@ -59,11 +63,35 @@
 
 	  <!-- Fontes e icones -->
 	  <link href="../../../Estaticos/Bootstrap/css/nucleo-icons.css" rel="stylesheet">
+	  <link href="https://fonts.googleapis.com/css?family=Abel|Inconsolata" rel="stylesheet">
+
+	  <style type="text/css">
+        .text-center{
+           font-family: 'Abel', sans-serif;
+           color: #d8ac29;
+        }
+        .fonteTexto{
+           font-family: 'Inconsolata', monospace;
+           font-size: 16px;
+        }
+        .btn-info {
+          background-color: #162e87;
+          border-color: #162e87;
+          color: #FFFFFF;
+          opacity: 1;
+          filter: alpha(opacity=100);
+        }
+        .btn-info:hover, .btn-info:focus, .btn-info:active, .btn-info.active, .show > .btn-info.dropdown-toggle {
+          background-color: #11277a;
+          color: #FFFFFF;
+          border-color: #11277a;
+        }
+      </style>
 
 
 </head>
 <body>
-
+<?php require "../../Menu-Rodape-Secundarios/caso-2/gerencia-web-menu-interface-coordenador.php"; ?>
 <div class="wrapper">
 	<div class="container">
 		<div class="col-md-8 ml-auto mr-auto">
@@ -102,7 +130,8 @@
 
 				<div class="row">
 					<div class="col-md-4 ml-auto mr-auto">
-						<input type="submit" name="Excluir" value="Excluir" class="btn btn-info btn-round">
+						<input type="submit" name="Excluir" value="Excluir" class="btn btn-info">
+						<button class="btn btn-info" onClick="window.location.href ='../../Entrada/gerencia-web-interface-coordenador.php?acao=removerDepartamento'">Voltar</button>
 					</div>
 				</div>	
 
@@ -110,7 +139,7 @@
 
 		</div>
 	</div>
-	<?php require "../../Menu-Rodape/gerencia-web-rodape-caso-2.php"; ?>
+	<?php require "../../Menu-Rodape-Secundarios/caso-1/gerencia-web-rodape-caso-2.php"; ?>
 </div>
 
 </body>

@@ -58,11 +58,27 @@
 				color: white;
 				text-align: center;
 			}
+
+			#alerta {
+				visibility:hidden; 
+				color:#ff0000;
+				text-align: center;
+			}
 		</style>
 
+		<!-- função que verifica o capslock -->
+		<script language="Javascript">
+			function capLock(e){
+				kc = e.keyCode?e.keyCode:e.which;
+				sk = e.shiftKey?e.shiftKey:((kc == 16)?true:false);
+				if(((kc >= 65 && kc <= 90) && !sk)||((kc >= 97 && kc <= 122) && sk))
+					document.getElementById('alerta').style.visibility = 'visible';
+				else
+					document.getElementById('alerta').style.visibility = 'hidden';
+			}
+		</script>
 	</head>
 	<body>
-
 
 <div class="wrapper">   
 
@@ -82,7 +98,7 @@
 					            </div><br>
 			                    <div class="input-group">
 			                        <span class="input-group-addon"><i class="nc-icon nc-lock-circle-open"></i>&emsp;- Senha:&emsp;</span>
-			                        <input id="password" type="password" class="form-control" name="senha" placeholder="senha" required="">
+			                        <input id="password" type="password" class="form-control" name="senha" placeholder="senha" required="" onkeypress="capLock(event)">
 			                    </div><br>
                                 <div class="input-group">
 			                    	<span class="input-group-addon"><i class="nc-icon nc-touch-id"></i>&emsp;- Identificador:&emsp;</span>
@@ -97,6 +113,7 @@
 			                        <button type="submit" class="btn btn-info btn-block "> Entrar </button>                         
 			                    </div>
 			                    <a href="gerencia-web-cadastro-login.html">Cadastre-se</a>
+			                    <div id="alerta">*Caps Lock Ativado!</div> 
                             </form>
                         </div>
                         <!--/card-block-->

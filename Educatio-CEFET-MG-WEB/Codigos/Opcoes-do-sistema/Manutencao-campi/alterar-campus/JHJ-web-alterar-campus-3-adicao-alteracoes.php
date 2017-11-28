@@ -3,6 +3,9 @@
     <head>
         <title>Alterar Campus</title>
         <meta charset="utf-8">
+        <?php 
+            session_start();
+        ?>
         
         <!-- CSS do Bootstrap -->
         <link href="../../../../Estaticos/Bootstrap/css/bootstrap.min.css" rel="stylesheet" />
@@ -19,6 +22,18 @@
 
         <!-- Fontes e icones -->
         <link href="../../../../Estaticos/Bootstrap/css/nucleo-icons.css" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Abel|Inconsolata" rel="stylesheet">
+
+        <style type="text/css">
+            .text-center{
+              font-family: 'Abel', sans-serif;
+              color: #d8ac29;
+            }
+            .fonteTexto{
+              font-family: 'Inconsolata', monospace;
+              font-size: 16px;
+            }
+        </style>
 
         <script type="text/javascript">
             function voltarParaPaginaAlteracaoCampus(){
@@ -29,6 +44,7 @@
     <body>
       <div class="wrapper">         
         <!-- <div class="section landing-section"> -->
+        <?php require "../../../Menu-Rodape-Secundarios/caso-1/gerencia-web-menu-interface-coordenador.php"; ?>
             <div class="container">
                 <div class="row">
                     <div class="col-md-8 ml-auto mr-auto">
@@ -60,7 +76,7 @@
                 			echo "<form class='contact-form' action='JHJ-web-alterar-campus-4-alteracao-efetuada.php' method='POST'>";
                 			if($strVet[0] == 'Nome'){
                 				echo "
-                                <div class='col-md-6'>
+                                <div class='row'>
                                     <label class='fonteTexto'>ALTERAR NOME:</label>
                                     <div class='input-group'>
                                         <span class='input-group-addon'>
@@ -72,7 +88,7 @@
                 			} 
                 			if($strVet[1] == 'Cidade'){
                                 echo "
-                                <div class='col-md-6'>
+                                <div class='row'>
                                     <label class='fonteTexto'>ALTERAR CIDADE:</label>
                                     <div class='input-group'>
                                         <span class='input-group-addon'>
@@ -84,7 +100,7 @@
                 			} 
                 			if($strVet[2] == 'UF'){
                                 echo "
-                                <div class='col-md-6'>
+                                <div class='row'>
                                     <label class='fonteTexto'>ALTERAR UF:</label>
                                     <div class='input-group'>
                                         <span class='input-group-addon'>
@@ -97,10 +113,10 @@
                 			echo "
                             <div class='row'>
                                 <div style='float: left;' class='col-md-4 ml-auto mr-auto'>
-                                    <button style='margin-left: 155px;' type='submit' class='btn btn-info btn-round'>ALTERAR!</button>
+                                    <button style='margin-left: 155px;' type='submit' class='btn btn-info'>ALTERAR</button>
                                 </div>
                                 <div style='float: left;' class='col-md-4 ml-auto mr-auto'>
-                                    <button style='margin-left: -105px;' type='button' class='btn btn-info btn-round' onClick='voltarParaPaginaAlteracaoCampus()'>VOLTAR PARA O INÍCIO</button>
+                                    <button style='margin-left: -105px;' type='button' class='btn btn-info' onClick='voltarParaPaginaAlteracaoCampus()'>VOLTAR PARA O INÍCIO</button>
                                 </div>
                             </div>
                             </form>";
@@ -109,6 +125,7 @@
                     </div>
                 </div>
             </div>
+            <?php require "../../../Menu-Rodape-Secundarios/caso-1/gerencia-web-rodape-caso-2.php"; ?>
         <!-- </div> -->
     </body>
 </html>

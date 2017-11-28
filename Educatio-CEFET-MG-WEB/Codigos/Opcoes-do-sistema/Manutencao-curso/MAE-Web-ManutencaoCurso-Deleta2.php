@@ -22,7 +22,7 @@
 
         <!-- Fontes e icones -->
         <link href="../../../Estaticos/Bootstrap/css/nucleo-icons.css" rel="stylesheet">
-        
+        <link href="https://fonts.googleapis.com/css?family=Abel|Inconsolata" rel="stylesheet">        
         
         <style type="text/css">
         .text-center{
@@ -49,11 +49,12 @@
         
     </head>
     <body>
+    <?php 
+        session_start();
+        require "../../Menu-Rodape-Secundarios/caso-2/gerencia-web-menu-interface-coordenador.php";
+    ?>
 
     <?php
-        header ('Content-type: text/html; charset=ISO-8859-1');
-        
-        session_start();
         $select = $_POST['selectParaExcluirCurso'];
         foreach($select as $_valor){
             //pega id do curso que sera excluido
@@ -91,7 +92,7 @@
 
         <!-- exibindo informações dentro de um painel -->
         <div class="wrapper">
-            <div class="section landing-sectionv">
+            <!--<div class="section landing-sectionv">-->
                 <div class="container">
                     <div class="row">
                         <div class="col-md-8 ml-auto mr-auto">
@@ -108,14 +109,15 @@
                                 <label class="fonteTexto">Modalidae:<?php echo " ".$strModalidade ?></label><br />
 
                                 <div class="col-md-4 ml-auto mr-auto">
-                                    <button type="submit" class="btn btn-info btn-round" onClick="window.location.href = '../../Entrada/gerencia-web-interface-coordenador.php?acao=removerCurso'">Voltar</button>
+                                    <button type="submit" class="btn btn-info" onClick="window.location.href = '../../Entrada/gerencia-web-interface-coordenador.php?acao=removerCurso'">Voltar</button>
                                 </div>
                             </div>  
                             
                         </div>
                     </div>
                 </div>
-            </div>
+            <!--</div>-->
+             <?php require "../../Menu-Rodape-Secundarios/caso-2/gerencia-web-rodape-caso-2.php";  ?>
         </div>
     </body>
 </html>

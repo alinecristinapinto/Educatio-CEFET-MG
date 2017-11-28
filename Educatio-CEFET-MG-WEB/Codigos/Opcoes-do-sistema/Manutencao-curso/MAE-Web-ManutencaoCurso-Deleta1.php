@@ -7,6 +7,7 @@
         <meta name="viewport" content="width=device-width" />
         
         <script type="text/javascript" src="../Opcoes-do-sistema/Manutencao-curso/MAE-web-script.js"></script>
+        <link href="https://fonts.googleapis.com/css?family=Abel|Inconsolata" rel="stylesheet">
         
         <style type="text/css">
         .text-center{

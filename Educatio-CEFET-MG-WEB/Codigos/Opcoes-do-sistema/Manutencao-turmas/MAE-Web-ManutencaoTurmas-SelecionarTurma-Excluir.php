@@ -13,6 +13,7 @@ Autor:​ ​ Allan Barbosa
     <meta charset="utf-8" />
     
     <script type="text/javascript" src="MAE-web-script.js"></script>
+     <link href="https://fonts.googleapis.com/css?family=Abel|Inconsolata" rel="stylesheet">
 
     <style type="text/css">
     .text-center{
@@ -46,7 +47,7 @@ Autor:​ ​ Allan Barbosa
           <h2 class="text-center">Exclusão de Turma</h2>
 
           <!--select com os nomes das turma -->
-            <form class="contact-form" action="../Opcoes-do-sistema/ManutencaoTurmas/MAE-Web-ManutencaoTurmas-Excluir.php" method="post" >
+            <form class="contact-form" action="../Opcoes-do-sistema/Manutencao-turmas/MAE-Web-ManutencaoTurmas-Excluir.php" method="post" >
 
               <div class="form-group">
                 <label for="select" class="fonteTexto">Selecione uma turma para excluir:</label>

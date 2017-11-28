@@ -14,3 +14,9 @@ GRUPOS
 *Manutenção de professores
 	-> É preciso escrever o nome do professor ou pelo menos começar para que ele seja clicável e passível de
            ser editado ou removido
+
+*Remove Departamento - Grupo LJL 
+Não está gerando a tabela
+
+* MAE 
+Padrão alert errado

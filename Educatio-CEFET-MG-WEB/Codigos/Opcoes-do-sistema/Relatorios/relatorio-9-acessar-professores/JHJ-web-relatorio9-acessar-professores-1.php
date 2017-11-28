@@ -9,6 +9,18 @@
 
         <!-- CSS do grupo -->
         <link href="../Opcoes-do-sistema/Relatorios/relatorio-9-acessar-professores/JHJ-web-estilos.css" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css?family=Abel|Inconsolata" rel="stylesheet">
+
+        <style type="text/css">
+            .text-center{
+              font-family: 'Abel', sans-serif;
+              color: #d8ac29;
+            }
+            .fonteTexto{
+              font-family: 'Inconsolata', monospace;
+              font-size: 16px;
+            }
+        </style>
 
         <!-- Arquivos js -->
 
@@ -57,7 +69,7 @@
                             </div><br>
                             <div class="row">
                                 <div class="col-md-4 ml-auto mr-auto">
-                                <button type="submit" class="btn btn-info btn-round" id="flag">Selecionar campus</button>
+                                <button type="submit" class="btn btn-info" id="flag">Selecionar campus</button>
                             </div>                         
                         </form>
 
@@ -142,7 +154,7 @@
                     </div><br>
                     <div class="row">
                         <div class="col-md-4 ml-auto mr-auto">
-                            <button type="submit" class="btn btn-info btn-round" >Acessar professores!</button>
+                            <button type="submit" class="btn btn-info" >Acessar professores!</button>
                         </div>
                     </div>       
                 </form> <!-- fim do formularioCurso -->

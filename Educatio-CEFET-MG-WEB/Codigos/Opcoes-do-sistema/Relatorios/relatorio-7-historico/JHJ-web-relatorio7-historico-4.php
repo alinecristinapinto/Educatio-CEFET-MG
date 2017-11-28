@@ -23,6 +23,9 @@
     </head>
     <body>
     <!-- <div class="section landing-section"> -->
+        <?php 
+            require "../../../Menu-Rodape-Secundarios/caso-1/gerencia-web-menu-interface-coordenador.php";
+        ?>
         <div class="container">
             <div class="row">
                 <div class="col-md-8 ml-auto mr-auto">
@@ -187,5 +190,6 @@
                 </div>
             </div>
         </div>
+        <?php require "../../../Menu-Rodape-Secundarios/caso-1/gerencia-web-rodape.php"; ?>
     </body>
 </html>

@@ -1,4 +1,5 @@
 <?php
+	session_start(); 
 	ini_set('default_charset','UTF-8');
 	
 	$strNomeServer = "localhost";
@@ -41,6 +42,8 @@
 	  <link href="../../../Estaticos/Bootstrap/css/nucleo-icons.css" rel="stylesheet">
 	  <link href="https://fonts.googleapis.com/css?family=Abel|Inconsolata" rel="stylesheet">
 
+	  <?php require "../../Menu-Rodape-Secundarios/caso-2/gerencia-web-menu-interface-coordenador.php"; ?>
+
 	  <style type="text/css">
 	  	.btn-info {
 	      background-color: #162e87;
@@ -82,6 +85,7 @@
 				<div class="row">
 					<div class="col-md-4 ml-auto mr-auto">
 						<input type="submit" name="Incluir" value="Incluir" class="btn btn-info">
+						<button class="btn btn-info" onClick="window.location.href ='../../Entrada/gerencia-web-interface-coordenador.php?acao=adicionarDepartamento'">Voltar</button>
 					</div>
 				</div>	
 
@@ -89,6 +93,7 @@
 
 		</div>
 	</div>
+	<?php require "../../Menu-Rodape-Secundarios/caso-1/gerencia-web-rodape-caso-2.php"; ?>
 </div>
 
 </body>

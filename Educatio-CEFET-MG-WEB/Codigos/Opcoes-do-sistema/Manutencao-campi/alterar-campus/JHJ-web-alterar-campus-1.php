@@ -8,6 +8,18 @@
 
         <!-- CSS do grupo -->
         <link href="../Opcoes-do-sistema/Manutencao-campi/JHJ-web-estilos.css" rel="stylesheet"/>
+        <link href="https://fonts.googleapis.com/css?family=Abel|Inconsolata" rel="stylesheet">
+
+        <style type="text/css">
+            .text-center{
+              font-family: 'Abel', sans-serif;
+              color: #d8ac29;
+            }
+            .fonteTexto{
+              font-family: 'Inconsolata', monospace;
+              font-size: 16px;
+            }
+        </style>
 
         <!-- Arquivos js -->
 
@@ -34,8 +46,8 @@
                                 $query = mysqli_query($link, " SELECT id, nome, cidade, UF FROM campi WHERE ativo='S' ");
                             ?>
                             <form class="contact-form" action="../Opcoes-do-sistema/Manutencao-campi/alterar-campus/JHJ-web-alterar-campus-2-selecao-alteracoes.php" method="POST">
-                                <div class="col-md-6">
-                                    <label class="fonteTexto">Selecione um campus para alterar:</label>
+                                <div class="row">
+                                    <label class="fonteTexto">SELECIONE UM CAMPUS PARA ALTERAR:</label>
                                     <div class="input-group">
                                         <span class="input-group-addon">
                                             <i class="nc-icon nc-settings"></i>
@@ -51,7 +63,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-md-4 ml-auto mr-auto">
-                                        <button type="submit" class="btn btn-info btn-round">ALTERAR CAMPUS</button>
+                                        <button type="submit" class="btn btn-info">ALTERAR CAMPUS</button>
                                     </div>
                                 </div>
                             </form>

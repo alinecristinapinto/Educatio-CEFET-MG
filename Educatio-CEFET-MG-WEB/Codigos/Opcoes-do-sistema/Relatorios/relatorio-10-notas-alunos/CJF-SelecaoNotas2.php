@@ -30,8 +30,26 @@ printf("
 
 	<!-- Fontes e icones -->
 	<link href='../../../../Estaticos/Bootstrap/css/nucleo-icons.css' rel='stylesheet'>
+	<link href='https://fonts.googleapis.com/css?family=Abel|Inconsolata' rel='stylesheet'>
+
+    <style type='text/css'>
+        .text-center{
+        font-family: 'Abel', sans-serif;
+        color: #d8ac29;
+    }
+    .fonteTexto{
+        font-family: 'Inconsolata', monospace;
+        font-size: 16px;
+    }
+    </style>
+
 </head>
 <body>
+");
+
+    require "../../../Menu-Rodape-Secundarios/caso-1/gerencia-web-menu-interface-coordenador.php"; 
+    
+printf("
 
 		<div class='container'>
 			<div class='row'>
@@ -252,7 +270,7 @@ if (isset($_POST['aluno'])) {
 	echo "</table>";
 
 	echo 	"<form method='post' action='CJF-SelecaoNotasImpressao.php'>
-				<input class='btn btn-info btn-round' type='submit' value='Download'>
+				<input class='btn btn-info' type='submit' value='Download'>
 			</form>";
 
 	//salva dados para um futuro dowload;
@@ -283,8 +301,11 @@ printf("
 					</div>
 				</div>
 			</div>				
-		</div>	
-				
+		</div>	");
+
+require '../../../Menu-Rodape-Secundarios/caso-1/gerencia-web-rodape-caso-2.php'; 
+
+printf("
 </body>
 </html>");
 ?>

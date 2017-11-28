@@ -94,7 +94,7 @@ class professor{
 
    		// Abre a conexão com o banco de dados
 
-		$sqlConexao = mysqli_connect("localhost", "root", "", "educatio");
+		$sqlConexao = mysqli_connect("localhost", "root", "usbw", "educatio");
 		if (!$sqlConexao) {
 			die("Conexão falhou: " . mysqli_connect_error());
 		}	

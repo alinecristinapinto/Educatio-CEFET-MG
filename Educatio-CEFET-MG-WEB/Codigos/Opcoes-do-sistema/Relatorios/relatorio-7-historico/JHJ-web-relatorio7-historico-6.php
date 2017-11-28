@@ -41,6 +41,9 @@
         <link href="../../../../Estaticos/Bootstrap/css/nucleo-icons.css" rel="stylesheet">   
     </head>
     <body>
+        <?php 
+            require "../../../Menu-Rodape-Secundarios/caso-1/gerencia-web-menu-interface-coordenador.php";
+        ?>
         <h2 class='text-center'>HIST&OacuteRICO ESCOLAR</h2>
     </body>
 </html>
@@ -293,5 +296,7 @@
             <button style='margin-top: 10px; margin-left: 20px;' type='button' class='btn btn-info btn-round' onClick='irParaPaginaDownloadHistorico()'>Download do Hist&oacuterico em PDF</button>  
         </div>
     </div>
+    <br><br>
+    <?php require "../../../Menu-Rodape-Secundarios/caso-1/gerencia-web-rodape.php"; ?>
 </html>
 

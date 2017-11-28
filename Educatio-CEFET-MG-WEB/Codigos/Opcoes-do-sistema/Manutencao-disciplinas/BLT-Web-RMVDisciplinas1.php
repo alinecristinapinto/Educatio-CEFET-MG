@@ -6,8 +6,17 @@
 
   <!-- CSS do grupo-->
    <link href="../../Opcoes-do-sistema/Manutencao-disciplinas/BLT-Web-Disciplinas.css" rel="stylesheet">
+   <link href="https://fonts.googleapis.com/css?family=Abel|Inconsolata" rel="stylesheet">
 
     <style type="text/css">
+      .text-center{
+           font-family: 'Abel', sans-serif;
+           color: #d8ac29;
+        }
+        .fonteTexto{
+           font-family: 'Inconsolata', monospace;
+           font-size: 16px;
+        }
       .btn-info {
         background-color: #162e87;
         border-color: #162e87;
@@ -31,7 +40,7 @@
 <body>
 <div class="corpo">
   <div class="titulo">
-  <h1><b>Gerenciamento de Disciplinas</b></h1>
+  <h1 class="text-center"><b>Gerenciamento de Disciplinas</b></h1>
   </div>
 </div>
 </body>
@@ -74,7 +83,7 @@ if ($result->num_rows > 0) {
     </div>
   </div>";
 
-   echo "<h1><b>Exclusão de Disciplinas</b></h1><br><br>";
+   echo "<h1 class='text-center'><b>Exclusão de Disciplinas</b></h1><br><br>";
 
   echo "<body>
           <div class=\"container\">

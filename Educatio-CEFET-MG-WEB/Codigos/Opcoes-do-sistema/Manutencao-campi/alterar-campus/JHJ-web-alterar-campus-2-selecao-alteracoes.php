@@ -53,6 +53,18 @@
 
         <!-- Fontes e icones -->
         <link href="../../../../Estaticos/Bootstrap/css/nucleo-icons.css" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Abel|Inconsolata" rel="stylesheet">
+
+        <style type="text/css">
+            .text-center{
+              font-family: 'Abel', sans-serif;
+              color: #d8ac29;
+            }
+            .fonteTexto{
+              font-family: 'Inconsolata', monospace;
+              font-size: 16px;
+            }
+        </style>
 
         <script type="text/javascript">
             function voltarParaPaginaAlteracaoCampus(){
@@ -63,6 +75,7 @@
     <body>
         <div class="wrapper">         
             <!-- <div class="section landing-section"> -->
+            <?php require "../../../Menu-Rodape-Secundarios/caso-1/gerencia-web-menu-interface-coordenador.php"; ?>
                 <div class="container">
                     <div class="row">
                         <div class="col-md-8 ml-auto mr-auto">
@@ -94,10 +107,10 @@
                                                     </div>
                                                 <div class='row'>
                                                     <div style='float: left;' class='col-md-4 ml-auto mr-auto'>
-                                                        <input style='margin-bottom: 10px; margin-left: 50px;' id="botaoSelecionarAlteracoesCampus" type='submit' class='btn btn-info btn-round' value='PROSSEGUIR'>
+                                                        <input style='margin-bottom: 10px; margin-left: 50px;' id="botaoSelecionarAlteracoesCampus" type='submit' class='btn btn-info' value='PROSSEGUIR'>
                                                     </div>
                                                     <div style='float: left;' class='col-md-4 ml-auto mr-auto'>
-                                                        <input style='margin-bottom: 10px; margin-left: -40px;' type='button' class='btn btn-info btn-round' onClick='voltarParaPaginaAlteracaoCampus()' value="VOLTAR">
+                                                        <input style='margin-bottom: 10px; margin-left: -40px;' type='button' class='btn btn-info' onClick='voltarParaPaginaAlteracaoCampus()' value="VOLTAR">
                                                     </div>
                                                 </div>                     
                                             </div>  
@@ -130,6 +143,8 @@
                 </div>
             </div>
         </div>
+        <br><br>
         <!--  fim do alerta para verificar se o usuario selecionou pelo menos uma das opções de alteração -->
+        <?php require "../../../Menu-Rodape-Secundarios/caso-1/gerencia-web-rodape.php"; ?>
     </body>
 </html>

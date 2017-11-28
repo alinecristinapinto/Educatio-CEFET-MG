@@ -20,12 +20,36 @@ session_start();
 
 	<!-- Fontes e icones -->
 	<link href="../../../Estaticos/Bootstrap/css/nucleo-icons.css" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Abel|Inconsolata" rel="stylesheet">
+
+        <style type="text/css">
+        	.btn-info {
+	          background-color: #162e87;
+	          border-color: #162e87;
+	          color: #FFFFFF;
+	          opacity: 1;
+	          filter: alpha(opacity=100);
+	        }
+	        .btn-info:hover, .btn-info:focus, .btn-info:active, .btn-info.active, .show > .btn-info.dropdown-toggle {
+	          background-color: #11277a;
+	          color: #FFFFFF;
+	          border-color: #11277a;
+	        }
+            .text-center{
+              font-family: 'Abel', sans-serif;
+              color: #d8ac29;
+            }
+            .fonteTexto{
+              font-family: 'Inconsolata', monospace;
+              font-size: 16px;
+            }
+        </style>
 
 	
 	</script>
 	
 
-	<title></title>
+	<title>Edição de Professor</title>
 </head>
 <body>
  
@@ -35,17 +59,17 @@ session_start();
 4F75FF 
 d8ac29
 -->
-
+<?php require "../../Menu-Rodape-Secundarios/caso-2/gerencia-web-menu-interface-coordenador.php"; ?>
 
 <div class="wrapper">
 	<div class="title" style="text-align: center;">
-		<h1><b>Manutenção de Professor</b></h1>
+		<h2 class="text-center"><b>Manutenção de Professor</b></h2>
 	</div>
-		<p id="p1">Crie, edite e exclua professores</p>
+		<p id="p1" class="fonteTexto">Crie, edite e exclua professores</p>
 
 	<div class="container">
 		<div class="head">
-             <h2 class="text-center">Professor</h2>
+             <h3 class="text-center">Professor</h3>
         </div>
 		<form class="contact-form" action="professor3.php" method="post">
 			<div class="container">
@@ -100,7 +124,7 @@ d8ac29
 				</div>
 
 				<div class="row">
-					<div class="col ml-auto mr-auto">
+					<!-- <div class="col ml-auto mr-auto">
 	       			<div class="col-md-12">
 	         			<label class="fonteTexto">Senha:</label>
 								<div class="input-group">
@@ -110,8 +134,8 @@ d8ac29
 									<input type="password" name="senha" value="<?php echo $_SESSION['senha']?>" class="form-control" placeholder="********" required='required'>
 								</div>
 				      </div>
-					</div>
-					<div class="col ml-auto mr-auto">
+					</div> -->
+				<div class="col ml-auto mr-auto">
        			<div class="col-md-12">
          			<label class="fonteTexto">Foto:</label>	
                         <input type="file" class="form-control" placeholder="Editora do livro" required='required'>
@@ -120,19 +144,22 @@ d8ac29
 				</div>
 
 				<div class="btn-group" role="group" aria-label="...">								
-					<button type="submit" class="btn btn-neutral" >Editar</button>
+					<button type="submit" class="btn btn-info" >Editar</button>
 				</div>
 			</div>	
 		</form>	
 		<div>
+		<br><p>
 		<form action="professor4.php" method="post">
-			<button class="btn btn-neutral" name="excluir">Excluir</button>			
+			<button class="btn btn-info" name="excluir">Excluir</button>			
 		</form>
 </div>
 	</div>
 
 
 </div>
+<br><br>
+<?php require "../../Menu-Rodape-Secundarios/caso-2/gerencia-web-rodape.php";  ?>
 
 </body>
 </html>

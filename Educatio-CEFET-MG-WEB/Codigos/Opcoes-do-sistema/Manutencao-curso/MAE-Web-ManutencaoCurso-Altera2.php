@@ -17,6 +17,9 @@
       <script src="../../../Estaticos/Bootstrap/js/popper.js"></script>
       <script src="../../../Estaticos/Bootstrap/js/jquery-3.2.1.js" type="text/javascript"></script>
       <script src="../../../Estaticos/Bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+
+      <link href="https://fonts.googleapis.com/css?family=Abel|Inconsolata" rel="stylesheet">
+      <link href="../../../Estaticos/Bootstrap/css/nucleo-icons.css" rel="stylesheet">
      
       <style type="text/css">
         .text-center{
@@ -64,7 +67,7 @@
                 $result = $conn->query($sql);
                 while($curso = $result->fetch_assoc()) {
                   session_start();
-				  $_SESSION['idDepto'] = $curso["idDepto"];
+				          $_SESSION['idDepto'] = $curso["idDepto"];
                   $_SESSION['nome'] = $curso["nome"];
                   $_SESSION['horasTotal'] = $curso["horasTotal"];
                   $_SESSION['modalidade'] = $curso["modalidade"];
@@ -74,6 +77,7 @@
 		  
 		  
 		  <div class="wrapper">
+        <?php require "../../Menu-Rodape-Secundarios/caso-2/gerencia-web-menu-interface-coordenador.php"; ?>
                 <div class="container">
                     <div class="row">
                         <div class="col-md-8 ml-auto mr-auto">
@@ -123,7 +127,7 @@
 
                 									<div class="col-md-4 ml-auto mr-auto">
                                     <button type="submit" class="btn btn-info">Alterar</button>
-                                    <button type="button" class="btn btn-info" onClick="window.location.href ='../Entrada/gerencia-web-interface-coordenador.php?acao=alterarCurso'">Voltar</button>
+                                    <button type="button" class="btn btn-info" onClick="window.location.href ='../../Entrada/gerencia-web-interface-coordenador.php?acao=alterarCurso'">Voltar</button>
                                   </div>
             
                                 </div> 
@@ -133,7 +137,7 @@
                     </div>
                 </div>
             </div><br><br>
-            <?php require "../../../Menu-Rodape/gerencia-web-rodape.php"; ?>
+            <?php require "../../Menu-Rodape-Secundarios/caso-2/gerencia-web-rodape.php";  ?>
       </div>
   </body>
 </html>

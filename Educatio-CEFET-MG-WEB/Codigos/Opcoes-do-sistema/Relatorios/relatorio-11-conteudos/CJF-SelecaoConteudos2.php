@@ -52,19 +52,36 @@ Seleção de Conteudos por etapa/disciplina 2
 
 	<!-- Fontes e icones -->
 	<link href="../../../../Estaticos/Bootstrap/css/nucleo-icons.css" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Abel|Inconsolata" rel="stylesheet">
+
+    <style type="text/css">
+        .text-center{
+            font-family: 'Abel', sans-serif;
+            color: #d8ac29;
+        }
+        .fonteTexto{
+            font-family: 'Inconsolata', monospace;
+            font-size: 16px;
+        }
+    </style>
+
 </head>
 <body>
-
+	<?php 
+    require "../../../Menu-Rodape-Secundarios/caso-1/gerencia-web-menu-interface-coordenador.php";  ?>
 		<div class="container">
 			<div class="row">
 				<div class="col-md-8 ml-auto mr-auto">
 					<h2 class="text-center">Seleção de conteúdos</h2>
 					<form method='post' action='CJF-SelecaoConteudos3.php' class="contact-form">
-						<div class="col-md-6">
+						<div class="row">
 							<?php
 							//informa a turma previamente designada
-								echo "<label class='fontetexto'>ID da Turma Escolhida: ".$_SESSION['turma'].".</label>";
+								echo "<label>ID da Turma Escolhida: ".$_SESSION['turma']."</label>";
+								echo "<br><br>";
 							?>
+						</div>
+						<div class="row">
 							<label class="fonteTexto">Digite o número da etapa: </label>
 							<div class="input-group">
 								<!-- Recebe a etapa -->
@@ -111,12 +128,12 @@ Seleção de Conteudos por etapa/disciplina 2
 									});
 								</script>
 
-							<input class="btn btn-info btn-round" type='submit' value='Exibir'>
+							<input class="btn btn-info" type='submit' value='Exibir'>
 						</div>
 					</form>
 				</div>
 			</div>
 		</div>				
-				
+		<?php require "../../../Menu-Rodape-Secundarios/caso-1/gerencia-web-rodape-caso-2.php"; ?>
 </body>
 </html>

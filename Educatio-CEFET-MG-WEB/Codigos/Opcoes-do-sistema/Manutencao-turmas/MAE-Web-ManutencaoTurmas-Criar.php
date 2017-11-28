@@ -11,6 +11,8 @@ Autor:​ ​ Allan Barbosa
   <head>
     <title>Adicionar Turma</title>
 
+     <link href="https://fonts.googleapis.com/css?family=Abel|Inconsolata" rel="stylesheet">
+
     <style type="text/css">
     .text-center{
        font-family: 'Abel', sans-serif;

@@ -343,7 +343,7 @@
 
                             <div class="row">	
                                 <div class="col-md-4 ml-auto mr-auto">
-									<button type="submit" class="btn btn-info btn-round">Adicionar Aluno</button>
+									<button type="submit" class="btn btn-info">Adicionar Aluno</button>
 								</div>
 							</div>
 						</form>

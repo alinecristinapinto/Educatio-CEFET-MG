@@ -5,8 +5,17 @@
   <meta charset="utf-8">
   <!-- CSS do grupo -->
     <link href="../Opcoes-do-sistema/Manutencao-disciplinas/BLT-Web-Disciplinas.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Abel|Inconsolata" rel="stylesheet">
 
       <style type="text/css">
+        .text-center{
+           font-family: 'Abel', sans-serif;
+           color: #d8ac29;
+        }
+        .fonteTexto{
+           font-family: 'Inconsolata', monospace;
+           font-size: 16px;
+        }
         .btn-info {
           background-color: #162e87;
           border-color: #162e87;
@@ -29,9 +38,9 @@
 
 <body>
 <div class="corpo">
-  <div class="titulo">
-  <h1><b>Gerenciamento de Disciplinas</b></h1>
-  </div>
+<div class="titulo">
+  <h1 class="text-center"><b>Gerenciamento de Disciplinas</b></h1>
+</div>
 </div>
 </body>
 </html>
@@ -56,8 +65,6 @@ if ($conn->connect_error) {
 $sql = "SELECT idTurma, nome, cargaHorariaMin FROM disciplinas WHERE ativo = 'S'";
 $result = $conn->query($sql);
 
-echo "<br><br>";
-
 if ($result->num_rows > 0) {
   echo "<div class=\"container\">";
   	echo "<div class=\"row\">";
@@ -74,7 +81,7 @@ if ($result->num_rows > 0) {
     </div>
   </div>";
 
-  echo "<h1><b>Edição de Disciplinas</b></h1><br><br>";
+  echo "<h1 class='text-center'><b>Edição de Disciplinas</b></h1><br><br>";
 
   echo "<body>
           <div class=\"container\">

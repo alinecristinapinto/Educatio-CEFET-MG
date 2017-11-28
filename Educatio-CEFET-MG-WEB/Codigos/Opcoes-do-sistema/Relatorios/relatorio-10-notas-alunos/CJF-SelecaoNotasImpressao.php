@@ -35,6 +35,18 @@ $CPF = $_SESSION['CPF'];
               <!-- CSS do Bootstrap -->
               <link href='../../../../Estaticos/Bootstrap/css/bootstrap.min.css' rel='stylesheet' />
               <link href='../../../../Estaticos/Bootstrap/css/bootstrap.css' rel='stylesheet'/>
+              <link href='https://fonts.googleapis.com/css?family=Abel|Inconsolata' rel='stylesheet'>
+
+              <style type='text/css'>
+                  .text-center{
+                    font-family: 'Abel', sans-serif;
+                    color: #d8ac29;
+                  }
+                  .fonteTexto{
+                    font-family: 'Inconsolata', monospace;
+                    font-size: 16px;
+                  }
+              </style>
 
               <!-- CSS do grupo -->
               <link href='CJF-web-estilos.css' rel='stylesheet' type='text/css' >

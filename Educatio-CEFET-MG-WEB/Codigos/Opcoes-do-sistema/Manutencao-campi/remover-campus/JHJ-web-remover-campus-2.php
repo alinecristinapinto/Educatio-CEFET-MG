@@ -37,6 +37,18 @@
 
         <!-- Fontes e icones -->
         <link href="../../../../Estaticos/Bootstrap/css/nucleo-icons.css" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Abel|Inconsolata" rel="stylesheet">
+
+        <style type="text/css">
+            .text-center{
+              font-family: 'Abel', sans-serif;
+              color: #d8ac29;
+            }
+            .fonteTexto{
+              font-family: 'Inconsolata', monospace;
+              font-size: 16px;
+            }
+        </style>
 
         <script type="text/javascript">
             function voltarParaPaginaExclusaoCampus(){
@@ -47,6 +59,7 @@
     <body>
         <div class="wrapper">         
             <!-- <div class="section landing-section"> -->
+            <?php require "../../../Menu-Rodape-Secundarios/caso-1/gerencia-web-menu-interface-coordenador.php"; ?>
                 <div class="container">
                     <div class="row">
                         <div class="col-md-8 ml-auto mr-auto">
@@ -120,7 +133,7 @@
                                                     <p><label style='font-weight: bold; margin-bottom: 0;'>*</label>Para excluir um campus é necessário anteriormente remover os departamentos que estão interligados a ele.</p>
                                                     <div class='row'>
                                                         <div style='float: left;' class='col-md-4 ml-auto mr-auto'>
-                                                            <button style='margin-bottom: 10px; margin-left: 10px;' type='button' class='btn btn-info btn-round' onClick='voltarParaPaginaExclusaoCampus()'>VOLTAR</button>
+                                                            <button style='margin-bottom: 10px; margin-left: 10px;' type='button' class='btn btn-info' onClick='voltarParaPaginaExclusaoCampus()'>VOLTAR</button>
                                                         </div>
                                                     </div>                   
                                                 </div>  
@@ -146,7 +159,7 @@
                                                         <p><label style='font-weight: bold; margin-bottom: 0;'>*</label>O campus  não estava interligado com nenhum departamento.</p>
                                                         <div class='row'>
                                                             <div class='col-md-4 ml-auto mr-auto'>
-                                                                <button style='margin-bottom: 10px; margin-left: 10px;' type='button' class='btn btn-info btn-round' onClick='voltarParaPaginaExclusaoCampus()'>VOLTAR</button>
+                                                                <button style='margin-bottom: 10px; margin-left: 10px;' type='button' class='btn btn-info' onClick='voltarParaPaginaExclusaoCampus()'>VOLTAR</button>
                                                             </div>
                                                         </div>                     
                                                     </div>  
@@ -161,5 +174,6 @@
                 </div>
             <!-- </div> -->
         </div>
+        <?php require "../../../Menu-Rodape-Secundarios/caso-1/gerencia-web-rodape-caso-2.php"; ?>
     </body>
 </html>

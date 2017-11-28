@@ -5,9 +5,58 @@
 	<!-- CSS do Bootstrap -->
 
 	<!-- CSS do grupo -->
-	 <link href="../Opcoes-do-sistema/Manutencao-professores/pagina_inicial.css" rel="stylesheet" />
+	<!-- <link href="../Opcoes-do-sistema/Manutencao-professores/pagina_inicial.css" rel="stylesheet" /> -->
 
 	<!-- Arquivos js -->
+	<link href="https://fonts.googleapis.com/css?family=Abel|Inconsolata" rel="stylesheet">
+
+	<style type="text/css">
+		.text-center{
+           font-family: 'Abel', sans-serif;
+           color: #d8ac29;
+        }
+        .fonteTexto{
+           font-family: 'Inconsolata', monospace;
+           font-size: 20px;
+        }
+		button.btn {
+			background-color: #2644B2;
+			color: white;
+		}
+
+		div.title {
+			margin-top: 2%;
+		}
+
+		h1 {
+			color: #d8ac29; 
+		}
+
+		div.container {
+			margin-top: 2%;
+		}
+
+		#p1 {
+			text-align: center;
+		}
+
+		#voltar {
+		    margin-top: 5%;
+		    float: right;
+		}
+		.btn-info {
+          background-color: #162e87;
+          border-color: #162e87;
+          color: #FFFFFF;
+          opacity: 1;
+          filter: alpha(opacity=100);
+        }
+        .btn-info:hover, .btn-info:focus, .btn-info:active, .btn-info.active, .show > .btn-info.dropdown-toggle {
+          background-color: #11277a;
+          color: #FFFFFF;
+          border-color: #11277a;
+        }
+	</style>
 
 	<!-- Fontes e icones -->
 	
@@ -179,11 +228,11 @@ function retornaValores(inputid, valor, id){
 
 	<div class="wrapper">
 		<div class="title" style="text-align: center;">
-			<h1><b>Manutenção de Professores</b></h1>
+			<h2 class="text-center"><b>MANUTENÇÃO DE PROFESSORES</b></h2>
 		</div>
 			<p id="p1">Crie, edite e exclua professores</p>
 		<div class="container">
-			<h5>Pesquise Professores</h5>
+			<h2 class="fonteTexto">Pesquise Professores</h2>
 			<form method = "POST" action = "../Opcoes-do-sistema/Manutencao-professores/professor2.php" id="formulario">
 
 			<div class="row">
@@ -192,7 +241,7 @@ function retornaValores(inputid, valor, id){
 					id = "entradaCampusID" required>
 					<option disabled selected value = ""> Selecione um Campus </option>
                     <?php
-                    $conn = mysqli_connect("localhost", "root", "", "educatio");
+                    $conn = mysqli_connect("localhost", "root", "usbw", "educatio");
 					if (!$conn) {
 						die("Conexão falhou: " . mysqli_connect_error());
 					}
@@ -241,7 +290,7 @@ function retornaValores(inputid, valor, id){
 						<div class="card-body">	
 							<h5 class="card-title">Crie um novo Professor</h5>
 							<p>Cadastre um novo professor no sistema</p>
-							<button type="button" onclick="func1()" id="botaocria" class="btn btn-neutral btn-lg">Criar Professor</button>
+							<button type="button" onclick="func1()" id="botaocria" class="btn btn-info">Criar Professor</button>
 						</div>
 					</div>
 				</div>

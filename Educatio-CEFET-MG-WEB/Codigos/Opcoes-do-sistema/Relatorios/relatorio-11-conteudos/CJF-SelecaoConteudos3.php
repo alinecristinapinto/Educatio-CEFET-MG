@@ -38,9 +38,26 @@ printf("
 
 	<!-- Fontes e icones -->
 	<link href='../../../../Estaticos/Bootstrap/css/nucleo-icons.css' rel='stylesheet'>
+	<link href='https://fonts.googleapis.com/css?family=Abel|Inconsolata' rel='stylesheet'>
+
+    <style type='text/css'>
+        .text-center{
+            font-family: 'Abel', sans-serif;
+            color: #d8ac29;
+        }
+        .fonteTexto{
+            font-family: 'Inconsolata', monospace;
+            font-size: 16px;
+        }
+    </style>
+
 </head>
 <body>
+");
 
+    require "../../../Menu-Rodape-Secundarios/caso-1/gerencia-web-menu-interface-coordenador.php"; 
+
+print("
 		<div class='container'>
 			<div class='row'>
 				<div class='col-md-8 ml-auto mr-auto'>
@@ -82,10 +99,10 @@ if ($arrayConteudo == null) {
  				Nenhum Conteúdo Encontrado!. 
 					</div>
 						<br><form method='post' action='../../../Entrada/gerencia-web-interface-coordenador.php?acao=acessarConteudos'>
-								<input class='btn btn-info btn-round' type='submit' value='Outra turma!'>
+								<input class='btn btn-info' type='submit' value='Outra turma!'>
 							</form>
 							<form method='post' action='CJF-SelecaoConteudos2.php'>
-								<input class='btn btn-info btn-round' type='submit' value='Outra etapa/disciplina!'>
+								<input class='btn btn-info' type='submit' value='Outra etapa/disciplina!'>
 							</form>
 						</div>
 					</div>	
@@ -107,10 +124,10 @@ if ($arrayConteudo == null) {
 
 	//cria botoes para facilitar a "re-pesquisa"
 	echo "<br></br><form method='post' action='../../../Entrada/gerencia-web-interface-coordenador.php?acao=acessarConteudos'>
-		<input class='btn btn-info btn-round' type='submit' value='Outra turma!'>
+		<input class='btn btn-info' type='submit' value='Outra turma!'>
 		</form>";
 	echo "<form method='post' action='CJF-SelecaoConteudos2.php'>
-		<input class='btn btn-info btn-round' type='submit' value='Outra etapa/disciplina!'>
+		<input class='btn btn-info' type='submit' value='Outra etapa/disciplina!'>
 		</form>";
 	printf("</label>");
 }
@@ -119,6 +136,11 @@ printf("		</div>
 			</div>
 		</div>				
 				
+");
+
+ require "../../../Menu-Rodape-Secundarios/caso-1/gerencia-web-rodape-caso-2.php"; 
+
+printf("
 </body>
 </html>");
 ?>

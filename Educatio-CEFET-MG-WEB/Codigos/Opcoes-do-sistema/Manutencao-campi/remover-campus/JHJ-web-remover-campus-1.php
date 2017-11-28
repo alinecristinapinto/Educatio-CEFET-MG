@@ -8,6 +8,18 @@
 
         <!-- CSS do grupo -->
         <link href="../Opcoes-do-sistema/Manutencao-campi/JHJ-web-estilos.css" rel="stylesheet"/>
+        <link href="https://fonts.googleapis.com/css?family=Abel|Inconsolata" rel="stylesheet">
+
+        <style type="text/css">
+            .text-center{
+              font-family: 'Abel', sans-serif;
+              color: #d8ac29;
+            }
+            .fonteTexto{
+              font-family: 'Inconsolata', monospace;
+              font-size: 16px;
+            }
+        </style>
 
         <!-- Arquivos js -->
         <!-- <script src="../Opcoes-do-sistema/Manutencao-campi/JHJ-web-script-remover-campus.js" type="text/javascript"></script> -->
@@ -42,8 +54,8 @@
                             ?>
 
                             <form class="contact-form" action="../Opcoes-do-sistema/Manutencao-campi/remover-campus/JHJ-web-remover-campus-2.php" method="POST" onsubmit="return valida();">
-                                <div class="col-md-6">
-                                    <label class="fonteTexto">Selecione um campus para remover:</label>
+                                <div class="row">
+                                    <label class="fonteTexto">SELECIONE UM CAMPUS PARA REMOVER: </label>
                                     <div class="input-group">
                                         <span class="input-group-addon">
                                             <i class="nc-icon nc-simple-remove"></i>
@@ -59,7 +71,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-md-4 ml-auto mr-auto">
-                                        <input type="submit" class="btn btn-info btn-round" value="EXCLUIR CAMPUS">
+                                        <input type="submit" class="btn btn-info" value="EXCLUIR CAMPUS">
                                     </div>
                                 </div>
                             </form>

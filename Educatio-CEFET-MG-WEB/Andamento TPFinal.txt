@@ -27,7 +27,7 @@ Joice
 	-> Relatório 9 - Professores         V
 Leonardo
 	-> Manutenção de departamentos       V
-	-> Transferência de alunos	     V
+	-> Transferência de alunos
 Mateus
 	-> Manutenção de cursos              V 
 	-> Manutenção de turmas              V
@@ -56,7 +56,7 @@ Coordenador:
 	-> Relatório 10 - Notas alunos       V
 	-> Relatório 11 - Conteúdos          V
 	-> Integridade                       V
-	-> Transferência de alunos	     V
+	-> Transferência de alunos
 
 Professor:
 

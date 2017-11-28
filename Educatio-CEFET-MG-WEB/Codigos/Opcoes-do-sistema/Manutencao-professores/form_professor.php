@@ -1,3 +1,4 @@
+<?php session_start();?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,6 +17,30 @@
 
 	<!-- Fontes e icones -->
 	<link href="../../../Estaticos/Bootstrap/css/nucleo-icons.css" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Abel|Inconsolata" rel="stylesheet">
+
+        <style type="text/css">
+        	.btn-info {
+	          background-color: #162e87;
+	          border-color: #162e87;
+	          color: #FFFFFF;
+	          opacity: 1;
+	          filter: alpha(opacity=100);
+	        }
+	        .btn-info:hover, .btn-info:focus, .btn-info:active, .btn-info.active, .show > .btn-info.dropdown-toggle {
+	          background-color: #11277a;
+	          color: #FFFFFF;
+	          border-color: #11277a;
+	        }
+            .text-center{
+              font-family: 'Abel', sans-serif;
+              color: #d8ac29;
+            }
+            .fonteTexto{
+              font-family: 'Inconsolata', monospace;
+              font-size: 16px;
+            }
+        </style>
 	
 
 	<title></title>
@@ -120,16 +145,18 @@ function retornaValores(inputid, valor, id){
 d8ac29
 -->
 
-
+<?php 
+	require "../../Menu-Rodape-Secundarios/caso-2/gerencia-web-menu-interface-coordenador.php";
+?>
 <div class="wrapper">
 	<div class="title" style="text-align: center;">
-		<h1><b>Manutenção de Professor</b></h1>
+		<h2 class="text-center"><b>Manutenção de Professor</b></h2>
 	</div>
 		<p id="p1">Crie professores</p>
 
 	<div class="container">
 		<div class="head">
-             <h2 class="text-center">Professor</h2>
+             <h3 class="text-center">Professor</h3>
         </div>
 		<form class="contact-form" method="post" action="professor.php" enctype="multipart/form-data">
 			<div class="container">
@@ -170,7 +197,7 @@ d8ac29
 								id = "entradaCampusID" required>
 									<option disabled selected value = ""> Selecione um Campus </option>
                                     <?php
-                                    $conn = mysqli_connect("localhost", "root", "", "educatio");
+                                    $conn = mysqli_connect("localhost", "root", "usbw", "educatio");
 									if (!$conn) {
 										die("Conexão falhou: " . mysqli_connect_error());
 									}
@@ -227,7 +254,7 @@ d8ac29
 				</div>
 
 				<div class="btn-group" role="group" aria-label="...">					
-					<button type="submit" class="btn btn-neutral">Adicionar Professor</button>
+					<button type="submit" class="btn btn-info">Adicionar Professor</button>
 				</div>
 			</div>	
 		</form>	
@@ -235,6 +262,7 @@ d8ac29
 
 
 </div>
-
+<br><br><br><br><br>
+<?php require "../../Menu-Rodape-Secundarios/caso-2/gerencia-web-rodape.php";  ?>
 </body>
 </html>

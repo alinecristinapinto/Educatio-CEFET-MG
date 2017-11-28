@@ -44,6 +44,30 @@
 
   	<!-- Fontes e icones -->
   	<link href="../../../Estaticos/Bootstrap/css/nucleo-icons.css" rel="stylesheet">
+  	<link href="https://fonts.googleapis.com/css?family=Abel|Inconsolata" rel="stylesheet">
+
+  	<style type="text/css">
+  		.text-center{
+		   font-family: 'Abel', sans-serif;
+		   color: #d8ac29;
+		}
+		.fonteTexto{
+		   font-family: 'Inconsolata', monospace;
+		   font-size: 16px;
+		}
+		.btn-info {
+		  background-color: #162e87;
+		  border-color: #162e87;
+		  color: #FFFFFF;
+		  opacity: 1;
+		  filter: alpha(opacity=100);
+		}
+		.btn-info:hover, .btn-info:focus, .btn-info:active, .btn-info.active, .show > .btn-info.dropdown-toggle {
+		  background-color: #11277a;
+		  color: #FFFFFF;
+		  border-color: #11277a;
+		}
+  	</style>
 
 </head>
 
@@ -88,7 +112,7 @@
 				
 				<div class="row">
 					<div class="col-md-4 ml-auto mr-auto">
-						<input type="submit" name="Selecionar" value="Selecionar" class="btn btn-info btn-round">
+						<input type="submit" name="Selecionar" value="Selecionar" class="btn btn-info">
 					</div>
 				</div>	
 							

@@ -39,6 +39,18 @@ Seleção de Conteudos por etapa/disciplina 1
 	<!-- Arquivos js -->
 	<script src="https://code.jquery.com/jquery-3.1.1.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.quicksearch/2.3.1/jquery.quicksearch.js"></script>
+	<link href="https://fonts.googleapis.com/css?family=Abel|Inconsolata" rel="stylesheet">
+
+    <style type="text/css">
+        .text-center{
+            font-family: 'Abel', sans-serif;
+            color: #d8ac29;
+        }
+        .fonteTexto{
+            font-family: 'Inconsolata', monospace;
+            font-size: 16px;
+        }
+    </style>
 
 	<!-- Fontes e icones -->
 </head>
@@ -49,7 +61,7 @@ Seleção de Conteudos por etapa/disciplina 1
 				<div class="col-md-8 ml-auto mr-auto">
 					<h2 class="text-center">Seleção de conteúdos</h2>
 					<form method='post' action='../Opcoes-do-sistema/Relatorios/relatorio-11-conteudos/CJF-SelecaoConteudos2.php' class="contact-form">
-						<div class="col-md-6">
+						<div class="row">
 							<!-- Recebe a turma -->
 							<label class="fonteTexto">Digite o nome ou o ID da turma: </label>
 							<div class="input-group">
@@ -82,7 +94,7 @@ Seleção de Conteudos por etapa/disciplina 1
 									});
 								</script>
 
-							<input class="btn btn-info btn-round" type='submit' value='Continuar'>
+							<input class="btn btn-info" type='submit' value='Continuar'>
 						</div>
 					</form>
 				</div>

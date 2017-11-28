@@ -56,6 +56,9 @@
 	</head>
 	
 	<body>
+		 <?php 
+        session_start();
+        require "../../../Menu-Rodape-Secundarios/caso-1/gerencia-web-menu-interface-coordenador.php"; ?>
 							
 		<!-- A seguir verificamos o valor da constante RESULTADO e imprimimos uma tela diferente para cada caso.
 			Os iframes são utilizados para fazer com que o fundo da tela corresponda a o que o usuário está fazendo,
@@ -256,5 +259,6 @@
 				';
 			}
 		?>
+		<?php require "../../../Menu-Rodape-Secundarios/caso-1/gerencia-web-rodape-caso-2.php"; ?>
 	</body>
 </html>

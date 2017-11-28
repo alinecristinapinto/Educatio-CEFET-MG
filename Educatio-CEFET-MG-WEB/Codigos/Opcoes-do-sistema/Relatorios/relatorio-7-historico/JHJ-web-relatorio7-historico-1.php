@@ -72,7 +72,7 @@
                         ?>
                         <div class="row" style="margin-bottom: 10px;">
                             <div class="col-md-4 ml-auto mr-auto">
-                                <button type="submit" class="btn btn-info btn-round">Selecionar campus</button>
+                                <button type="submit" class="btn btn-info">Selecionar campus</button>
                             </div>
                         </div>  
 

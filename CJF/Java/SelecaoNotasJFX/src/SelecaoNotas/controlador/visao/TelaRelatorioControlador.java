@@ -18,6 +18,7 @@ import SelecaoNotas.controlador.modelo.DadosNotas;
  */
 public class TelaRelatorioControlador {
     
+    private boolean botaoVoltar = false;
     @FXML
     private TableView<DadosNotas> dadosNotasTabela;
     @FXML
@@ -34,24 +35,23 @@ public class TelaRelatorioControlador {
   * private TableColumn<DadosNotas, String> notaEtapa;
   */
     
-    @FXML
-    private Label nomeAlunoLabel;
-    @FXML
-    private Label cpfLabel;
-    @FXML
-    private Label cursoLabel;
-    @FXML
-    private Label turmaLabel;
-    @FXML
-    private Label anoLabel;
-    @FXML
-    private Label campusLabel; 
-    
     private SelecaoNotasMain selecaoNotasMain;
     
     public TelaRelatorioControlador(){
         
     }
+    
+    public boolean isBotaoVoltar() {
+        return botaoVoltar;
+    }
+    
+    @FXML
+    private void BotaoVoltarClicado() {
+        selecaoNotasMain.showLayoutInicial();
+        
+        botaoVoltar = true;
+    }
+    
     @FXML
     private void initialize() {
      

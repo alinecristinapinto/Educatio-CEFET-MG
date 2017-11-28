@@ -5,15 +5,19 @@
  */
 package SelecaoNotas.controlador.visao;
 
+import BD.SelecaoNotasBD;
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import SelecaoNotas.controlador.SelecaoNotasMain;
-import SelecaoNotas.controlador.modelo.DadosNotas;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.TextField;
+import SelecaoNotas.controlador.SelecaoNotasMain;
+import SelecaoNotas.controlador.modelo.DadosNotas;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import javafx.collections.ObservableList;
+import javafx.scene.control.ChoiceBox;
+import javafx.scene.layout.GridPane;
 
 
 /**
@@ -23,14 +27,26 @@ import javafx.scene.control.TextField;
 public class LayoutInicialControlador {
     private SelecaoNotasMain selecaoNotasMain;
     private DadosNotas dadosNotas;
-    private boolean okSelecionado = false;
-    
+    private boolean BotaoSelecionaAno = false;
+    private boolean BotaoChamaRelatorio = false;
+    private Connection conexao=null;
+    private ResultSet result;
+    private ObservableList<String> anosEtapa;
+    private SelecaoNotasBD manutencao;
     @FXML
     private TextField nomeAlunoField;
+    @FXML
+    private ChoiceBox caixaSelecao;
+    @FXML
+    private GridPane painelSelecionaAno;
+    
+    public LayoutInicialControlador(){
+        
+    }
     
     @FXML
     private void initialize() {
-        dadosNotas = new DadosNotas();
+        painelSelecionaAno.setVisible(false);
     }
     
     public void setDadosNotas(DadosNotas dadosNotas ) {
@@ -40,27 +56,49 @@ public class LayoutInicialControlador {
 
     }
     
-    public boolean isBotaoAdicionar() {
-        return okSelecionado;
+    public void setManutencao(SelecaoNotasBD manutencao){
+        this.manutencao = manutencao;
+    }
+    
+    public void setSelecaoNotasMain(SelecaoNotasMain selecaoNotasMain) {
+        this.selecaoNotasMain = selecaoNotasMain;
+    }
+    
+    public boolean isBotaoSelecionaAno() {
+        return BotaoSelecionaAno;
     }
     
     @FXML
     private void ChamaTelaRelatorio() {
         selecaoNotasMain.showTelaRelatorio();
-            
-            okSelecionado = true;
+            //caixaSelecao.getValue()
+            BotaoChamaRelatorio = true;
         }
     
-    public boolean isOkSelecionado() {
-        return okSelecionado;
+    @FXML
+    private void SelecionaAno() throws SQLException{
+        
+        if (campoInvalido()) {
+            dadosNotas.setNomeAluno(nomeAlunoField.getText());
+            painelSelecionaAno.setVisible(true);
+            BotaoSelecionaAno = true;
+        }
+        
+        /*this.conexao = new CriaConexao().getConexao();
+        anosEtapa = FXCollections.observableArrayList();
+        String sql_fetch = "SELECT ano FROM matriculas WHERE idAluno ='"+dadosNotas.getNomeAluno()+" OR idAluno ='"+dadosNotas.getNomeAluno()+"  'AND ativo='S'";
+        Statement fetch = conexao.createStatement();
+        result = fetch.executeQuery(sql_fetch);
+        while(result.next()){
+            anosEtapa.add(result.getString("ano"));
+        }
+        result.close();
+        
+        caixaSelecao.setItems(anosEtapa);*/
     }
     
-    private void BotaoOkClicado() {
-        if (campoInvalido()) {
-            dadosNotas.setNomeALuno(nomeAlunoField.getText());
-
-            okSelecionado = true;
-        }
+    public boolean isBotaoChamaRelatorio() {
+        return BotaoChamaRelatorio;
     }
     
     private boolean campoInvalido() {

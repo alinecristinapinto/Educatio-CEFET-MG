@@ -30,7 +30,7 @@ public class ExcluirTelaControlador {
     private ManutencaoEtapasMain manutencaoEtapasMain;
     private DadosEtapas dadosEtapas;
     private boolean botaoVoltar = false;
-    Connection conexao=null;
+    private Connection conexao=null;
     private ResultSet result;
     private ObservableList<String> nomesEtapa;
     private boolean botaoExcluirEtapa = false;
@@ -38,10 +38,10 @@ public class ExcluirTelaControlador {
     private PreparedStatement stmt;
     private ResultSet ResultadoSQL;
     private Statement executaComando;
-    
+    private ManutencaoEtapasBD manutencao;
     @FXML
     private ChoiceBox caixaSelecao;
-    private ManutencaoEtapasBD manutencao;
+    
     
     public ExcluirTelaControlador() throws SQLException{
         this.conexao = new CriaConexao().getConexao();
@@ -85,6 +85,7 @@ public class ExcluirTelaControlador {
     public boolean isBotaoVoltar() {
         return botaoVoltar;
     }
+    
     public boolean isBotaoExcluirEtapa() {
         return botaoExcluirEtapa;
     }

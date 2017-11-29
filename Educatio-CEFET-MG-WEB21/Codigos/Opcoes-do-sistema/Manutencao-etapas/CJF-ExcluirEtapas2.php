@@ -25,6 +25,12 @@ printf("<!DOCTYPE html>
 	<link href='../../../Estaticos/Bootstrap/css/nucleo-icons.css' rel='stylesheet'>	
 </head>
 <body>
+");
+
+		session_start();
+		require "../../Menu-Rodape-Secundarios/caso-2/gerencia-web-menu-interface-professor.php"; 
+
+print("
 
 		<div class='container'>
 			<div class='row'>
@@ -54,13 +60,17 @@ if (isset($_POST['etapa'])) {
 	}
 
 	if ($intContador == 0) {
-		echo "Etapa Inexistente!<br></br><form method='post' action='CJF-ExcluirEtapas1.php'>
-				<input class='btn btn-info btn-round' type='submit' value='Excluir Outra'>
+		echo "Etapa Inexistente!<br></br><form method='post' action='../../Entrada/gerencia-web-interface-professor.php?acao=removerEtapa'>
+				<input class='btn btn-info' type='submit' value='Excluir Outra'>
 			  </form>";
 			printf("		</h>		
 				</div>
 			</div>
-		</div>				
+		</div>	
+			"); 
+	require "../../Menu-Rodape-Secundarios/caso-2/gerencia-web-rodape-caso-2.php"; 
+	
+printf("			
 
 </body>
 </html>");
@@ -78,14 +88,18 @@ if (isset($_POST['etapa'])) {
 	}
 
 	if ($intContador != 0) {
-		echo "Impossível excluir: etapa vinculada a conteúdo(s)!<br></br><form method='post' action='CJF-ExcluirEtapas1.php'>
-				<input class='btn btn-info btn-round' type='submit' value='Excluir Outra'>
+		echo "Impossível excluir: etapa vinculada a conteúdo(s)!<br></br><form method='post' action='../../Entrada/gerencia-web-interface-professor.php?acao=removerEtapa'>
+				<input class='btn btn-info' type='submit' value='Excluir Outra'>
 			  </form>";
 			printf("		</h>		
 				</div>
 			</div>
 		</div>				
 	</div>
+		"); 
+	require "../../Menu-Rodape-Secundarios/caso-2/gerencia-web-rodape-caso-2.php"; 
+	
+printf("
 </body>
 </html>");
 
@@ -102,8 +116,8 @@ if (isset($_POST['etapa'])) {
 	} else {
 		echo"Erro ao excluir etapa!";
 	}
-	echo "<br></br><form method='post' action='CJF-ExcluirEtapas1.php'>
-			<input class='btn btn-info btn-round' type='submit' value='Excluir Outra'>
+	echo "<br></br><form method='post' action='../../Entrada/gerencia-web-interface-professor.php?acao=removerEtapa'>
+			<input class='btn btn-info' type='submit' value='Excluir Outra'>
 		  </form>";
 } else {
 
@@ -115,7 +129,11 @@ if (isset($_POST['etapa'])) {
 				</div>
 			</div>	
 		</div>				
-	</div>					
+	</div>		
+		"); 
+	require "../../Menu-Rodape-Secundarios/caso-2/gerencia-web-rodape-caso-2.php"; 
+	
+printf("			
 </body>
 </html>");
 		exit;
@@ -125,6 +143,10 @@ printf("		</h>
 			</div>
 		</div>				
 	</div>
+		"); 
+	require "../../Menu-Rodape-Secundarios/caso-2/gerencia-web-rodape-caso-2.php"; 
+	
+printf("
 </body>
 </html>");
 ?>

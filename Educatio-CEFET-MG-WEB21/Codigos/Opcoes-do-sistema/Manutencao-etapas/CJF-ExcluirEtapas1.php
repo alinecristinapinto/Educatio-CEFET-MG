@@ -43,7 +43,7 @@
 				<div class="col-md-8 ml-auto mr-auto">
 					<h2 class="text-center">Exclusão de etapa</h2>
 					<form method='post' action='../Opcoes-do-sistema/Manutencao-etapas/CJF-ExcluirEtapas2.php' class="contact-form">
-						<div class="col-md-6">
+						<div class="row">
 							<label class="fonteTexto">Selecione o Id da etapa que deseja excluir:</label>
 							<div class="input-group">
 								<select class="custom-select" name='etapa'>
@@ -68,7 +68,7 @@
 										});
 									});
 								</script>
-							<input class="btn btn-info btn-round" type='submit' value='Excluir'>
+							<input class="btn btn-info" type='submit' value='Excluir'>
 						</div>
 					</form>
 				</div>

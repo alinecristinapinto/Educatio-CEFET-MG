@@ -1,6 +1,4 @@
 <?php
-
-
 	
 	$id = $_POST['valorCPF'];
 
@@ -188,7 +186,7 @@ echo "<script>location.href='acad2.php';</script>";
 		$_SESSION['volume'] = $row["volume"];
 		$_SESSION['subtipo'] = $row["subtipo"];
 
-			echo "<script>location.href='editaperiodico.php';</script>";
+		echo "<script>location.href='editaperiodico.php';</script>";
 
 	}
 

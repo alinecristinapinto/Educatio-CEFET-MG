@@ -28,6 +28,11 @@ printf("
 	<link href='../../../../Estaticos/Bootstrap/css/nucleo-icons.css' rel='stylesheet'>
 </head>
 <body>
+");
+
+  require "../../../Menu-Rodape-Secundarios/caso-2/gerencia-web-menu-interface-bibliotecario.php"; 
+
+printf("
 
 		<div class='container'>
 			<div class='row'>
@@ -205,7 +210,12 @@ if (isset($_POST['data'])) {
 					</div>	
 				</div>
 			</div>	
-		</div>				
+		</div>		
+		");
+
+require "../../../Menu-Rodape-Secundarios/caso-2/gerencia-web-rodape.php"; 
+
+printf("		
 					
 </body>
 </html>");
@@ -226,8 +236,13 @@ exit;
 					</div>	
 				</div>
 			</div>	
-		</div>				
-					
+		</div>	
+			
+	");
+
+require "../../../Menu-Rodape-Secundarios/caso-2/gerencia-web-rodape.php"; 
+
+printf("				
 </body>
 </html>");
 exit;
@@ -236,7 +251,12 @@ printf("
 					</div>
 				</div>
 			</div>				
-		</div>					
+		</div>			
+");
+
+require "../../../Menu-Rodape-Secundarios/caso-2/gerencia-web-rodape.php"; 
+
+printf("		
 </body>
 </html>");
 ?>	

@@ -28,6 +28,11 @@ printf("
 	<link href='../../../../Estaticos/Bootstrap/css/nucleo-icons.css' rel='stylesheet'>
 </head>
 <body>
+");
+
+  require "../../../Menu-Rodape-Secundarios/caso-2/gerencia-web-menu-interface-bibliotecario.php"; 
+
+printf("
 
 		<div class='container'>
 			<div class='row'>
@@ -120,7 +125,7 @@ if (isset($_POST['data'])) {
 		echo "</table>";
 
 		echo "<form method='post' action='CJF-RelacaoObrasImpressao.php'>
-				<input class='btn btn-info btn-round' type='submit' value='Download'>
+				<input class='btn btn-info' type='submit' value='Download'>
 			</form>";
 
 			$_SESSION['arrayDados'] = $arrayDados;
@@ -202,7 +207,13 @@ if (isset($_POST['data'])) {
 					</div>	
 				</div>
 			</div>	
-		</div>				
+		</div>		
+
+		");
+
+ require "../../../Menu-Rodape-Secundarios/caso-1/gerencia-web-rodape.php"; 		
+
+printf("		
 					
 </body>
 </html>");
@@ -219,8 +230,13 @@ if (isset($_POST['data'])) {
 					</div>	
 				</div>
 			</div>	
-		</div>				
-					
+		</div>		
+	");
+
+ require "../../../Menu-Rodape-Secundarios/caso-1/gerencia-web-rodape.php"; 		
+
+printf("					
+		
 </body>
 </html>");
 		exit;
@@ -229,4 +245,4 @@ if (isset($_POST['data'])) {
 
 ?>
 
-	
+;

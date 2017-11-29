@@ -32,7 +32,7 @@
 								<!-- Recebe o valor a ser pesquisado -->
 								<input type='textarea' class="form-control" name='data' placeholder="Data das reservas">
 							</div>
-							<input class="btn btn-info btn-round" type='submit' value='Exibir'>
+							<input class="btn btn-info" type='submit' value='Exibir'>
 						</div>	
 					</form>
 				</div>

@@ -16,6 +16,55 @@
 
 	<!-- Fontes e icones -->
 	<link href="../../../Estaticos/Bootstrap/css/nucleo-icons.css" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Abel|Inconsolata" rel="stylesheet">
+
+	<style type="text/css">
+		.text-center{
+           font-family: 'Abel', sans-serif;
+           color: #d8ac29;
+        }
+        .fonteTexto{
+           font-family: 'Inconsolata', monospace;
+           font-size: 20px;
+        }
+		button.btn {
+			background-color: #2644B2;
+			color: white;
+		}
+
+		div.title {
+			margin-top: 2%;
+		}
+
+		h1 {
+			color: #d8ac29; 
+		}
+
+		div.container {
+			margin-top: 2%;
+		}
+
+		#p1 {
+			text-align: center;
+		}
+
+		#voltar {
+		    margin-top: 5%;
+		    float: right;
+		}
+		.btn-info {
+          background-color: #162e87;
+          border-color: #162e87;
+          color: #FFFFFF;
+          opacity: 1;
+          filter: alpha(opacity=100);
+        }
+        .btn-info:hover, .btn-info:focus, .btn-info:active, .btn-info.active, .show > .btn-info.dropdown-toggle {
+          background-color: #11277a;
+          color: #FFFFFF;
+          border-color: #11277a;
+        }
+	 </style>
 	
 
 	<title></title>
@@ -29,10 +78,15 @@
 d8ac29
 -->
 
+<?php 
+        session_start();
+        require "../../Menu-Rodape-Secundarios/caso-2/gerencia-web-menu-interface-bibliotecario.php"; 
+    ?>
+
 
 <div class="wrapper">
 	<div class="title" style="text-align: center;">
-		<h1><b>Manutenção de Acervo</b></h1>
+		<h1 class="text-center"><b>Manutenção de Acervo</b></h1>
 	</div>
 		<p id="p1">Crie, edite e exclua obras do acervo</p>
 
@@ -145,7 +199,7 @@ d8ac29
 					</div>	
 				</div>
 
-					<button id="criar" type="submit" class="btn btn-neutral">Criar</button>
+					<button id="criar" type="submit" class="btn btn-info">Criar</button>
 			
 			</div>	
 		</form>	
@@ -153,6 +207,10 @@ d8ac29
 
 
 </div>
+
+<br><br><br><br><br><br>
+	<?php require "../../Menu-Rodape-Secundarios/caso-2/gerencia-web-rodape.php"; ?>
+
 
 </body>
 </html>

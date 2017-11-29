@@ -93,7 +93,7 @@ if ($result->num_rows > 0) {
 	            echo "<div class=\"row\">
 	                  <div class=\"col-md-12 mb-3\">
 	                  <div class=\"container-fluid\">
-	                  <button type=\"button\" style=\"margin-top: 70px;\"class=\"btn btn-outline-info btn-block \" onclick=\"../../Entrada/gerencia-web-interface-bibliotecario.php?acao=adicionarEmprestimo'\">Pronto</button>
+	                  <button type=\"button\" style=\"margin-top: 70px;\"class=\"btn btn-info \" onclick=\"../../Entrada/gerencia-web-interface-bibliotecario.php?acao=adicionarEmprestimo'\">Pronto</button>
 	                  </div>
 	                  </div>
 	                  </div>";

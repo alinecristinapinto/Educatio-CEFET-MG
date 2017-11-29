@@ -1,5 +1,7 @@
 <?php
 
+session_start();
+
 printf(" 
 	<html>
 	<head>
@@ -25,7 +27,11 @@ printf("
 	<link href='../../../../Estaticos/Bootstrap/css/nucleo-icons.css' rel='stylesheet'>
 </head>
 <body>
+");
 
+  require "../../../Menu-Rodape-Secundarios/caso-1/gerencia-web-menu-interface-bibliotecario.php"; 
+
+printf("
 		<div class='container'>
 			<div class='row'>                                                                             
 				<div>
@@ -34,7 +40,7 @@ printf("
 
 if (isset($_POST['acervo'])) {
 
-	session_start();
+	//session_start();
 
 	$_SESSION['acervo'] = $_POST['acervo'];
 
@@ -567,7 +573,7 @@ if (isset($_POST['acervo'])) {
 	}
 
 	echo 	"<form method='post' action='CJF-RelacaoAcervoImpressao.php'>
-			<input class='btn btn-info btn-round' type='submit' value='Download'>
+			<input class='btn btn-info' type='submit' value='Download'>
 			</form>";
 
 //nada encontrado...
@@ -589,8 +595,13 @@ if (isset($_POST['acervo'])) {
 printf("		
 				</div>
 			</div>
-		</div>				
-					
+		</div>	
+	</div>
+");
+
+ require "../../../Menu-Rodape-Secundarios/caso-1/gerencia-web-rodape.php"; 		
+
+printf("					
 </body>
 </html>");
 ?>

@@ -94,11 +94,11 @@
 									
 									$sql = "SELECT * FROM deptos WHERE id = " .$linhaCurso[1] ." AND ativo = 'S'";
 									$resultDepto = mysqli_query($conn, $sql);
-									$linhaDepto = mysqli_fetch_array($resultDepto);
+									$linhaDepto = @mysqli_fetch_array($resultDepto);
 									
 									$sql = "SELECT * FROM campi WHERE id = " .$linhaDepto[1] ." AND ativo = 'S'";
 									$resultCampus = mysqli_query($conn, $sql);
-									$linhaCampus = mysqli_fetch_array($resultCampus);
+									$linhaCampus = @mysqli_fetch_array($resultCampus);
 									if((in_array($linhaTurma[0], $turmasProf) == FALSE) && ($linhaTurma[4] == 'S')){
 										echo "<tr onclick=\"EnviarID('" .$linhaTurma[0] ."')\" >";
 										echo "<td class = 'fonteTexto'>" .$linhaTurma[3] ."</td>";

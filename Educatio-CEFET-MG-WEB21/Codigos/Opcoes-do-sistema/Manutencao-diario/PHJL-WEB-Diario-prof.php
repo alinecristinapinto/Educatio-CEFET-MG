@@ -75,9 +75,12 @@
 	
 	<!--Chama a funcao com o evento onload para carregar a tabela assim que o body for gerado -->
 	<body>
-		
+		<?php 
+			//session_start();
+			require "../../Menu-Rodape-Secundarios/caso-2/gerencia-web-menu-interface-professor.php"; 
+		?>		
 		<div class="wrapper">
-			<div class="section landing-section">
+			<!-- <div class="section landing-section"> -->
 				<div class="container">
 					<div class="row">
 						<div class="col-md-8 ml-auto mr-auto">
@@ -111,13 +114,16 @@
 									
 								}
 							?>
-							<button class='btn btn-info btn-round' onclick='voltaPagina("PHJL-WEB-Escolhe-disciplina-diario")'>Voltar</button>
+							<button class='btn btn-info' onclick='voltaPagina("PHJL-WEB-Escolhe-disciplina-diario")'>Voltar</button>
 						</div>
 					</div>
 					
 				</div>
 			</div>	
 		</div>
-	
+		<br><br><br>
+		<?php 
+		require "../../Menu-Rodape-Secundarios/caso-2/gerencia-web-rodape.php"; 
+		?>
 	</body>
 </html>

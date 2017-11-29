@@ -73,7 +73,7 @@ if ($result->num_rows > 0) {
                             </div>
                             <div class=\"modal-footer\">
                               <button type=\"button\" class=\"btn btn-secondary\" data-dismiss=\"modal\">Fechar</button>
-                              <button type=\"button\" id=\"Envio\" class=\"btn btn-primary\">Pronto</button>
+                              <button type=\"button\" id=\"Envio\" class=\"btn btn-info\">Pronto</button>
                               </form>
 
                             </div>

@@ -94,33 +94,33 @@
         <div id="menu" class="collapse navbar-collapse" id="navbar-menu"> 
             <ul class="nav navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="../../Entrada/gerencia-web-interface-bibliotecario.php?acao=acessarManutencaoAcervo"><i class="nc-icon nc-book-bookmark"></i>Manutenção do acervo</a>
+                    <a class="nav-link" href="../../../Entrada/gerencia-web-interface-bibliotecario.php?acao=acessarManutencaoAcervo"><i class="nc-icon nc-book-bookmark"></i>Manutenção do acervo</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="../../Entrada/gerencia-web-interface-bibliotecario.php?acao=fazerDescarte"><i class="nc-icon nc-book-bookmark"></i>Descarte de obras</a>
+                    <a class="nav-link" href="../../../Entrada/gerencia-web-interface-bibliotecario.php?acao=fazerDescarte"><i class="nc-icon nc-book-bookmark"></i>Descarte de obras</a>
                 </li>
                 <div class="nav-item dropdown">
                     <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" id="dropdownMenuButton" role="button" aria-haspopup="true" aria-expanded="false"><i class="nc-icon nc-book-bookmark"></i>Empréstimos</a>
                     <ul class="dropdown-menu">
-                        <a class="dropdown-item" href= "../../Entrada/gerencia-web-interface-bibliotecario.php?acao=adicionarEmprestimo">Conceder empréstimo</a>
+                        <a class="dropdown-item" href= "../../../Entrada/gerencia-web-interface-bibliotecario.php?acao=adicionarEmprestimo">Conceder empréstimo</a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="../../Entrada/gerencia-web-interface-bibliotecario.php?acao=removerEmprestimo">Remover empréstimo</a>
+                        <a class="dropdown-item" href="../../../Entrada/gerencia-web-interface-bibliotecario.php?acao=removerEmprestimo">Remover empréstimo</a>
                     </ul>
                 </div>          
                 <div class="nav-item dropdown">
                     <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" id="dropdownMenuButton" role="button" aria-haspopup="true" aria-expanded="false"><i class="nc-icon nc-icon nc-sound-wave"></i>Relatórios</a>
                     <ul class="dropdown-menu">
-                        <a class="dropdown-item" href= "../../Entrada/erencia-web-interface-bibliotecario.php?acao=acessarObrasAcervo">Obras do acervo</a>
+                        <a class="dropdown-item" href= "../../../Entrada/erencia-web-interface-bibliotecario.php?acao=acessarObrasAcervo">Obras do acervo</a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href= "../../Entrada/gerencia-web-interface-bibliotecario.php?acao=acessarObrasEmprestadas">Obras emprestadas</a>
+                        <a class="dropdown-item" href= "../../../Entrada/gerencia-web-interface-bibliotecario.php?acao=acessarObrasEmprestadas">Obras emprestadas</a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href= "../../Entrada/gerencia-web-interface-bibliotecario.php?acao=acessarObrasReservadas">Obras reservadas</a>
+                        <a class="dropdown-item" href= "../../../Entrada/gerencia-web-interface-bibliotecario.php?acao=acessarObrasReservadas">Obras reservadas</a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="../../Entrada/gerencia-web-interface-bibliotecario.php?acao=acessarObrasDescartadas">Obras descartadas</a>
+                        <a class="dropdown-item" href="../../../Entrada/gerencia-web-interface-bibliotecario.php?acao=acessarObrasDescartadas">Obras descartadas</a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href= "../../Entrada/gerencia-web-interface-bibliotecario.php?acao=acessarAtrasos">Atrasos de devolução</a>
+                        <a class="dropdown-item" href= "../../../Entrada/gerencia-web-interface-bibliotecario.php?acao=acessarAtrasos">Atrasos de devolução</a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="../../Entrada/gerencia-web-interface-bibliotecario.php?acao=acessarMultas">Multas</a>
+                        <a class="dropdown-item" href="../../../Entrada/gerencia-web-interface-bibliotecario.php?acao=acessarMultas">Multas</a>
                     </ul>
                 </div>   
             </ul>
@@ -138,7 +138,7 @@
                     ?> 
                     <?php echo $usuario['nome'];?> <span class="caret"></span></a>
                     <ul class="dropdown-menu dropdown-menu-right">
-                        <a class="dropdown-item" href="gerencia-web-perfil-bibliotecario.php">Perfil</a>
+                        <a class="dropdown-item" href="../../../Entrada/gerencia-web-perfil-bibliotecario.php">Perfil</a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href= "../Login/gerencia-web-login.html" onclick = "fazerLogout()">Sair</a>
                     </ul>

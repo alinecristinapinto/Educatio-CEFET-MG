@@ -12,6 +12,7 @@
 	
 	define ("CONTEUDO", $_REQUEST["conteudo"]);
 	define ("IDETAPA", $_REQUEST["etapa"]);
+	date_default_timezone_set("Brazil/East"); 
 	define ("DATA", date_format(new DateTime($_REQUEST["data"]), "d/m/Y"));
 	
 	$erros = 0;

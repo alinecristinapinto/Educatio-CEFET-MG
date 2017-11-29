@@ -24,7 +24,7 @@
 				<div class="col-md-8 ml-auto mr-auto">
 					<h2 class="text-center">Criação de etapa</h2>
 					<form method='post' action='../Opcoes-do-sistema/Manutencao-etapas/CJF-AdicionarEtapas2.php' class="contact-form">
-						<div class="col-md-6">
+						<div class="row">
 							<label class="fonteTexto">Digite o valor da etapa:</label>
 							<div class="input-group">
 								<span class="input-group-addon">
@@ -39,7 +39,7 @@
 								</span>
 								<input type='textarea' class="form-control" name='etapa' placeholder="Id da etapa" required='required'>
 							</div>
-							<input class="btn btn-info btn-round" type='submit' value='Adicionar'>
+							<input class="btn btn-info" type='submit' value='Adicionar'>
 						</div>
 					</form>
 				</div>

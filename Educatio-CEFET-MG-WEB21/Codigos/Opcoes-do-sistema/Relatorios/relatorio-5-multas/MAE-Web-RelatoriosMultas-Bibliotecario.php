@@ -70,7 +70,7 @@ Autor:​ ​ Allan Barbosa
                                </div>
 
                                <div class="col-md-4 ml-auto mr-auto">
-                                <button type="submit" class="btn btn-info btn-round">Download</button>
+                                <button type="submit" class="btn btn-info">Download</button>
                                </div>
 
                              </div>

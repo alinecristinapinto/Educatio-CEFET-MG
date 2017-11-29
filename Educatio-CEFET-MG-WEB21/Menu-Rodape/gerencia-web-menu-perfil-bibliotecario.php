@@ -49,13 +49,12 @@
             <ul class="nav navbar-nav">
                 <div class="nav-item dropdown">
                     <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" id="dropdownMenuButton" role="button" aria-haspopup="true" aria-expanded="false">
-                    <?php 
-
+                    <?php
                         if($usuario['foto'] == null){
-                          echo '<img class="img-responsive img-circle img" src="../../Estaticos/imagens/perfil.png"/>';
+                          echo '<img class="profile" src="../../Estaticos/imagens/perfil.png"/>';
 
                         } else {
-                          echo '<img class="img-responsive img-circle img" src="data:image/jpeg;base64,'.base64_encode( $usuario['foto'] ).'"/>';
+                          echo '<img class="profile" src="data:image/jpeg;base64,'.base64_encode( $usuario['foto'] ).'"/>';
                         }
                       ?>
 

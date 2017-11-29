@@ -76,7 +76,7 @@
 
                           <div class="row">
                                 <div class="col-md-4 ml-auto mr-auto">
-                                <button type="button" class="btn btn-info btn-round" id="ADCEmp" data-toggle="modal" data-target="#alerta">Pronto</button>
+                                <button type="button" class="btn btn-info" id="ADCEmp" data-toggle="modal" data-target="#alerta">Pronto</button>
                                 </div>
                           </div>
 

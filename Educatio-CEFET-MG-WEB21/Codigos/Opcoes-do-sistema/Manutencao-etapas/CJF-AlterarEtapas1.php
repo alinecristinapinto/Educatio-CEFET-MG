@@ -43,7 +43,7 @@
 				<div class="col-md-8 ml-auto mr-auto">
 					<h2 class="text-center">Alteração de etapa</h2>
 					<form method='post' action='../Opcoes-do-sistema/Manutencao-etapas/CJF-AlterarEtapas2.php' class="contact-form">
-						<div class="col-md-6">
+						<div class="row">
 							<label class="fonteTexto">Selecione o Id da etapa que deseja alterar:</label>
 							<div class="input-group">
 								<select class="custom-select" name='etapa'>
@@ -75,7 +75,7 @@
 								</span>
 								<input type='textarea' class="form-control" name='valor' placeholder="Novo valor" required='required'>
 							</div>
-							<input class="btn btn-info btn-round" type='submit' value='Alterar'>
+							<input class="btn btn-info" type='submit' value='Alterar'>
 						</div>
 					</form>
 				</div>

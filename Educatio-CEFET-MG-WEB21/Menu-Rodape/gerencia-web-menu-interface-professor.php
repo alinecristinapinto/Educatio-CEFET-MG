@@ -3,6 +3,78 @@
 <head>	
     <title>Login - Educatio - CEFET-MG</title>
     <meta charset="utf-8">
+    <style type="text/css">
+        .profile{
+          border: 1px solid;
+          border-radius: 25px;
+          width: 22px; 
+          height: 22px;
+        }
+
+        h1{
+          text-align: center;
+          font-size: 45px;
+          color: #d8ac29;
+        }
+
+        .par{
+          font-size: 30px;
+        }
+
+        .entrada{
+          height: 200px;
+          width: 200px;
+          position:absolute;
+          top:50%;
+          left:50%;
+          margin-top:-50px;
+          margin-left:-50px;
+        }
+
+        .centralizado{
+          text-align: center;
+        }
+        
+        .navbar{
+          background-color: black;
+        }
+        
+        .logo{
+          margin-top: -5px;
+          height: 31px;
+          width: 30px;
+        }
+        
+        .perfil{
+          border: 1px solid;
+          border-radius: 25px;
+          width: 22px; 
+          height: 22px;
+        }
+        
+        .navbar-expand-md{
+          background-color: #0a0744;
+        }
+         
+        .navbar .navbar-toggler .navbar-toggler-bar {
+          background: white;
+        }
+        
+        .navbar .navbar-nav .nav-item .nav-link {
+          color: white;
+        }
+
+        .img {
+          height: 120px;
+          width: 120px;
+        }    
+    </style>  
+
+  <script type="text/javascript">
+    function fazerLogout(){
+      window.sessionStorage.setItem('logado', 'N');
+    }  
+  </script>
 </head>
 <body>
 	<nav class="navbar navbar-expand-md navbar-default">
@@ -31,7 +103,17 @@
             </ul>
             <ul class="nav navbar-nav">
                 <div class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" id="dropdownMenuButton" role="button" aria-haspopup="true" aria-expanded="false"><?php echo '<img class="profile" src="data:image/jpeg;base64,'.base64_encode( $usuario['foto'] ).'"/>';?>  <?php echo $usuario['nome'];?> <span class="caret"></span></a>
+                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" id="dropdownMenuButton" role="button" aria-haspopup="true" aria-expanded="false">
+                    <?php 
+
+                        if($usuario['foto'] == null){
+                          echo '<img class="profile" src="../../Estaticos/imagens/perfil.png"/>';
+
+                        } else {
+                          echo '<img class="profile" src="data:image/jpeg;base64,'.base64_encode( $usuario['foto'] ).'"/>';
+                        }
+                    ?>  
+                    <?php echo $usuario['nome'];?> <span class="caret"></span></a>
                     <ul class="dropdown-menu dropdown-menu-right">
                         <a class="dropdown-item" href="gerencia-web-perfil-professor.php">Perfil</a>
                         <div class="dropdown-divider"></div>

@@ -25,7 +25,12 @@ printf("<!DOCTYPE html>
 	<link href='../../../Estaticos/Bootstrap/css/nucleo-icons.css' rel='stylesheet'>	
 </head>
 <body>
+");
 
+		session_start();
+		require "../../Menu-Rodape-Secundarios/caso-2/gerencia-web-menu-interface-professor.php"; 
+
+print("
 		<div class='container'>
 			<div class='row'>
 				<div class='col-md-8 ml-auto mr-auto'>
@@ -57,13 +62,17 @@ if (isset($_POST['valor'])) {
 		}
 
 		if ($intContador != 0) {
-					echo "Etapa Já Existente!<br></br><form method='post' action='CJF-AdicionarEtapas1.php'>
-				<input class='btn btn-info btn-round' type='submit' value='Adicionar Outra'>
+					echo "Etapa Já Existente!<br></br><form method='post' action='../../Entrada/gerencia-web-interface-professor.php?acao=adicionarEtapa'>
+				<input class='btn btn-info' type='submit' value='Adicionar Outra'>
 			  </form>";
 			printf("		</h>		
 				</div>
 			</div>
-		</div>				
+		</div>	
+		"); 
+	require "../../Menu-Rodape-Secundarios/caso-2/gerencia-web-rodape-caso-2.php"; 
+	
+printf("			
 
 </body>
 </html>");
@@ -98,20 +107,24 @@ if (isset($_POST['valor'])) {
 			}
 		}
 
-		echo "<br></br><form method='post' action='CJF-AdicionarEtapas1.php'>
-				<input class='btn btn-info btn-round' type='submit' value='Adicionar Outra'>
+		echo "<br></br><form method='post' action='../../Entrada/gerencia-web-interface-professor.php?acao=adicionarEtapa'>
+				<input class='btn btn-info' type='submit' value='Adicionar Outra'>
 			  </form>";
 		
 	} else {
 		printf("<div class='alert alert-info' role='alert'>
- 					 Falha ao processar sua requisição! <a href='CJF-AdicionarEtapas1.php' class='alert-link'>Tentar novamente</a>. 
+ 					 Falha ao processar sua requisição! <a href='../../Entrada/gerencia-web-interface-professor.php?acao=adicionarEtapa' class='alert-link'>Tentar novamente</a>. 
 							</div>
 						</div>
 					</div>	
 				</div>
 			</div>	
 		</div>				
-	</div>					
+	</div>
+	"); 
+	require "../../Menu-Rodape-Secundarios/caso-2/gerencia-web-rodape-caso-2.php"; 
+	
+printf("					
 </body>
 </html>");
 		exit;
@@ -119,14 +132,18 @@ if (isset($_POST['valor'])) {
 } else {
 
 	printf("<div class='alert alert-info' role='alert'>
- 					 Falha ao processar sua requisição! <a href='CJF-AdicionarEtapas1.php' class='alert-link'>Tentar novamente</a>. 
+ 					 Falha ao processar sua requisição! <a href='../../Entrada/gerencia-web-interface-professor.php?acao=adicionarEtapa' class='alert-link'>Tentar novamente</a>. 
 							</div>
 						</div>
 					</div>	
 				</div>
 			</div>	
 		</div>				
-	</div>					
+	</div>	
+	"); 
+	require "../../Menu-Rodape-Secundarios/caso-2/gerencia-web-rodape-caso-2.php"; 
+	
+printf("				
 </body>
 </html>");
 		exit;
@@ -137,6 +154,10 @@ printf("		</h>
 			</div>
 		</div>				
 	</div>
+"); 
+	require "../../Menu-Rodape-Secundarios/caso-2/gerencia-web-rodape-caso-2.php"; 
+	
+printf("	
 </body>
 </html>");
 ?>

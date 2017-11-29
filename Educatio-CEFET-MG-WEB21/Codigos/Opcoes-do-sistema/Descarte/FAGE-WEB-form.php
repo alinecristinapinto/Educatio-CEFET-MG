@@ -156,10 +156,10 @@
 					<br>
 					<div class='row'>   
 						<div class='col-md-6 ml-auto mr-auto'>
-							<button class='btn btn-info btn-round' type="submit" name="fim" data-toggle='modal' data-target='#alerta'>Confirmar</button> 
+							<button class='btn btn-info' type="submit" name="fim" data-toggle='modal' data-target='#alerta'>Confirmar</button> 
 						</div>
 						<div class='col-md-6 ml-auto mr-auto'>
-							<button class='btn btn-info btn-round' type="reset" name="d">redefinir</button>
+							<button class='btn btn-info' type="reset" name="d">redefinir</button>
 						</div>
 						<!-- <div class='col-md-4 ml-auto mr-auto'>
 							<button class='btn btn-info btn-round' type="button" value="Voltar" onClick="history.go(-1)">voltar</button> 

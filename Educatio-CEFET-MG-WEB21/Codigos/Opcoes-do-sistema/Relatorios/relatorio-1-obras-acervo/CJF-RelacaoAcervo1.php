@@ -31,7 +31,7 @@
 								<option>Acadêmicos</option>
 								<option>Mídias</option>
 							</select>
-							<input class="btn btn-info btn-round" type='submit' value='Exibir'>
+							<input class="btn btn-info" type='submit' value='Exibir'>
 						</div>
 					</form>
 				</div>

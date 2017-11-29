@@ -25,6 +25,12 @@ printf("<!DOCTYPE html>
 	<link href='../../../Estaticos/Bootstrap/css/nucleo-icons.css' rel='stylesheet'>	
 </head>
 <body>
+");
+
+		session_start();
+		require "../../Menu-Rodape-Secundarios/caso-2/gerencia-web-menu-interface-professor.php"; 
+
+print("
 
 		<div class='container'>
 			<div class='row'>
@@ -77,20 +83,24 @@ if (isset($_POST['valor'])) {
 			echo"Erro ao alterar etapa!";
 		}
 
-		echo "<br></br><form method='post' action='CJF-AlterarEtapas1.php'>
-				<input class='btn btn-info btn-round' type='submit' value='Alterar Outra'>
+		echo "<br></br><form method='post' action='../../Entrada/gerencia-web-interface-professor.php?acao=alterarEtapa'>
+				<input class='btn btn-info' type='submit' value='Alterar Outra'>
 			  </form>";
 
 	} else {
 
 		printf("<div class='alert alert-info' role='alert'>
- 					 Falha ao processar sua requisição! <a href='CJF-AlterarEtapas1.php' class='alert-link'>Tentar novamente</a>. 
+ 					 Falha ao processar sua requisição! <a href='../../Entrada/gerencia-web-interface-professor.php?acao=alterarEtapa' class='alert-link'>Tentar novamente</a>. 
 							</div>
 						</div>
 					</div>	
 				</div>
 			</div>	
-		</div>				
+		</div>		
+			"); 
+	require "../../Menu-Rodape-Secundarios/caso-2/gerencia-web-rodape-caso-2.php"; 
+	
+printf("			
 					
 </body>
 </html>");
@@ -100,7 +110,7 @@ if (isset($_POST['valor'])) {
 } else {
 
 	printf("<div class='alert alert-info' role='alert'>
- 					 Falha ao processar sua requisição! <a href='CJF-AlterarEtapas1.php' class='alert-link'>Tentar novamente</a>. 
+ 					 Falha ao processar sua requisição! <a href='../../Entrada/gerencia-web-interface-professor.php?acao=alterarEtapa' class='alert-link'>Tentar novamente</a>. 
 							</div>
 						</div>
 					</div>	
@@ -108,6 +118,10 @@ if (isset($_POST['valor'])) {
 			</div>	
 		</div>				
 	</div>					
+		"); 
+	require "../../Menu-Rodape-Secundarios/caso-2/gerencia-web-rodape-caso-2.php"; 
+	
+printf("	
 </body>
 </html>");
 		exit;
@@ -117,6 +131,10 @@ printf("		</h>
 			</div>
 		</div>				
 	</div>
+		"); 
+	require "../../Menu-Rodape-Secundarios/caso-2/gerencia-web-rodape-caso-2.php"; 
+	
+printf("	
 </body>
 </html>");
 ?>

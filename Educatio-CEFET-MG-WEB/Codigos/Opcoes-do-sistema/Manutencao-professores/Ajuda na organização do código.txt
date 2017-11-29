@@ -1,8 +1,0 @@
-
--> Começa com proff.php
-
--> Funções de cada código
-	-> professor.php: Classe professor -> funções adiciona, remove, altera e pesquisa professor
-	-> professor2.php: quase a msm coisa da de cima
-	-> professor3.php: quase a msm coisa da de cima (chama a página inicial)
-	-> professor4.php: quase a msm coisa da de cima (chama a página inicial)

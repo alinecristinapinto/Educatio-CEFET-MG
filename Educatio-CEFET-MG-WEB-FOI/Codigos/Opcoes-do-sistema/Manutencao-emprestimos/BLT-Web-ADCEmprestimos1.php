@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+  <meta charset="utf-8">
+    <!-- CSS do Bootstrap -->
+
+    <!-- CSS do grupo -->
+    <link href="../Opcoes-do-sistema/Manutencao-emprestimos/BLT-Web-Emprestimos.css" rel="stylesheet">
+
+    <!-- Arquivos js -->
+
+    <!-- Fontes e icones -->
+    <link href="https://fonts.googleapis.com/css?family=Abel|Inconsolata" rel="stylesheet">
+
+    <!-- Deve estar em CSS externo, mas como é apenas um exemplo declaramos aqui -->
+
+    <style type="text/css">
+        .text-center{
+           font-family: 'Abel', sans-serif;
+           color: #d8ac29;
+        }
+        .fonteTexto{
+           font-family: 'Inconsolata', monospace;
+           font-size: 16px;
+        }
+        .btn-info {
+          background-color: #162e87;
+          border-color: #162e87;
+          color: #FFFFFF;
+          opacity: 1;
+          filter: alpha(opacity=100);
+        }
+        .btn-info:hover, .btn-info:focus, .btn-info:active, .btn-info.active, .show > .btn-info.dropdown-toggle {
+          background-color: #11277a;
+          color: #FFFFFF;
+          border-color: #11277a;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+  <div class="wrapper">     
+
+
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8 ml-auto mr-auto">
+
+                        <h2 class="text-center">Criar empréstimo</h2>
+
+                        <form class="contact-form" id="ADCEmpp" action="../Opcoes-do-sistema/Manutencao-emprestimos/BLT-Web-ADCEmprestimos2.php" method="post">
+
+                          <div class="row">
+                                <label class="fonteTexto">ID do acervo</label>
+                                <div class="input-group">
+                                    <span class="input-group-addon">
+                                        <i class="nc-icon nc-book-bookmark"></i>
+                                    </span>
+                                    <input type="number" class="form-control" placeholder="ID do acervo" required="required" name="IDacervo">
+                                </div>
+                          </div>
+
+                          <div class="row">
+                                <label class="fonteTexto">ID do aluno</label>
+                                <div class="input-group">
+                                    <span class="input-group-addon">
+                                        <i class="nc-icon nc-circle-10"></i>
+                                    </span>
+                                    <input type="text" class="form-control" placeholder="ID do aluno" required="required" name="IDaluno">
+                                </div>
+                          </div>
+
+                          <div class="row">
+                                <label class="fonteTexto">Data de devolução:</label>
+                                <div class="input-group">
+                                    <span class="input-group-addon">
+                                        <i class="nc-icon nc-circle-10"></i>
+                                    </span>
+                                    <input type="text" class="form-control" placeholder="Data de devolução" required="required" name="datadevolucao">
+                                </div>
+                          </div>
+
+                          <div class="row">
+                                <div class="col-md-4 ml-auto mr-auto">
+                                <button type="submit" class="btn btn-info" id="ADCEmp" data-toggle="modal" data-target="#alerta">Pronto</button>
+                                </div>
+                          </div>
+
+                          
+                          <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                              <div class="modal-content">
+                                <div class="modal-header">
+                                  <h5 class="modal-title" id="exampleModalLabel">Gerenciamento de empréstimo</h5>
+                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                  </button>
+                                </div>
+                                <div class="modal-body">
+                                  <div class="titulo">
+                                    <h4>As informações estão corretas?</h4>
+                                  </div>
+                                </div>
+                                <div class="modal-footer">
+                                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Não</button>
+                                  <button type="submit" id="conf" class="btn btn-primary">Sim</button>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+ 
+
+  </div>
+
+</body>
+</html>
